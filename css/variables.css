@@ -42,6 +42,11 @@
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --card-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.4);
 
+  /* Code / Technical */
+  --code-bg: #0d0e11;
+  --code-border: #2d2e34;
+  --code-text: #e8e8ea;
+
   /* Flashcard */
   --flashcard-front: #1c1d22;
   --flashcard-back: #18191d;

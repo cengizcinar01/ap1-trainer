@@ -114,96 +114,183 @@
   margin-bottom: var(--space-3);
 }
 
+/* --- Answer Area Styling --- */
 .flashcard-answer {
-  font-size: var(--font-size-sm);
+  font-size: 0.95rem;
+  /* Größer für bessere Lesbarkeit */
   color: var(--text-primary);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
-/* Answer paragraph styling */
+/* Paragraph spacing */
 .flashcard-answer p {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.85em;
 }
 
 .flashcard-answer p:last-child {
   margin-bottom: 0;
 }
 
-/* Section headers within answers */
+/* Sections - now with background card style */
 .flashcard-answer .answer-section {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  margin: 1.25em 0 0.5em 0;
+
+  font-family: var(--font-family);
   font-weight: 600;
+  font-size: 0.85rem;
   color: var(--accent-primary);
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-  font-size: 0.9em;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
+
+  display: flex;
+  align-items: center;
+}
+
+.flashcard-answer .answer-section::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  margin-right: var(--space-2);
+  box-shadow: 0 0 8px rgba(var(--accent-primary-rgb), 0.4);
 }
 
 .flashcard-answer .answer-section:first-child {
   margin-top: 0;
 }
 
-/* Bullet points styling */
+/* Enhanced List Styling */
 .flashcard-answer ul {
   list-style: none;
   padding: 0;
-  margin: 0.5em 0;
+  margin: 0.5em 0 1em 0;
 }
 
 .flashcard-answer li {
   position: relative;
-  padding-left: 1.25em;
-  margin-bottom: 0.35em;
+  padding-left: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
 }
 
 .flashcard-answer li::before {
-  content: "•";
+  content: "";
   position: absolute;
   left: 0;
-  color: var(--accent-primary);
-  font-weight: bold;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-tertiary);
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
 }
 
-/* Highlighted keywords */
+.flashcard:hover .flashcard-answer li::before {
+  background-color: var(--accent-primary);
+}
+
+/* Highlighted keywords - "Market pen" style */
 .flashcard-answer .highlight {
-  background: linear-gradient(120deg, rgba(var(--accent-primary-rgb), 0.15) 0%, rgba(var(--accent-primary-rgb), 0.1) 100%);
+  background: rgba(var(--accent-primary-rgb), 0.15);
+  color: var(--accent-primary-hover);
   padding: 0.1em 0.3em;
-  border-radius: 3px;
+  border-radius: 4px;
   font-weight: 500;
+  border: 1px solid rgba(var(--accent-primary-rgb), 0.1);
 }
 
-/* Formula/code blocks */
+/* Code / Formulas */
 .flashcard-answer code,
 .flashcard-answer .formula {
   font-family: var(--font-mono);
-  background: var(--bg-tertiary);
-  padding: 0.15em 0.4em;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  color: var(--code-text);
+  padding: 0.15em 0.5em;
   border-radius: 4px;
-  font-size: 0.9em;
-  color: var(--accent-primary);
-  border: 1px solid var(--border-color);
+  font-size: 0.85em;
+  display: inline-block;
+  margin: 0 0.1em;
 }
 
-/* Compact table-like rows (e.g., for comparisons) */
+/* Table-like rows */
 .flashcard-answer .answer-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.4em 0;
+  align-items: baseline;
+  padding: 0.6em var(--space-2);
   border-bottom: 1px solid var(--border-light);
+  transition: background 0.2s;
+}
+
+.flashcard-answer .answer-row:first-child {
+  border-top: 1px solid var(--border-light);
+}
+
+.flashcard-answer .answer-row:hover {
+  background: var(--bg-tertiary);
 }
 
 .flashcard-answer .answer-row:last-child {
   border-bottom: none;
 }
 
-/* Pro/Con styling */
+/* Pro / Con indicators with icons */
 .flashcard-answer .pro {
   color: var(--success);
+  font-weight: 500;
 }
 
 .flashcard-answer .con {
   color: var(--danger);
+  font-weight: 500;
+}
+
+.flashcard-answer strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* --- Dynamic Content Utilities (used by JS renderer) --- */
+.answer-table {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+.mb-2 {
+  margin-bottom: var(--space-2);
+}
+
+.mb-1 {
+  margin-bottom: var(--space-1);
+}
+
+.mr-2 {
+  margin-right: var(--space-2);
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
+.block {
+  display: block;
+}
+
+.text-accent {
+  color: var(--accent-primary);
 }
 
 /* --- Image Support --- */

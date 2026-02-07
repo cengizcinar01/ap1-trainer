@@ -163,49 +163,77 @@ const CardRenderer = (() => {
   function formatAnswer(text) {
     let html = escapeHtml(text);
 
-    // Convert section headers (lines ending with colon that start a new block)
+    // 1. Extract and format tables (lines containing '|')
+    // We do this first to avoid messing up with other replacements
+    html = html.replace(/((?:^|\n).*\|.*(?:\n.*\|.*)*)/g, (match) => {
+      const rows = match.trim().split('\n');
+      const tableRows = rows.map((row) => {
+        const cells = row.split('|').map((cell) => cell.trim());
+        const cellHtml = cells
+          .map((cell, i) =>
+            i === 0
+              ? `<div class="font-bold">${cell}</div>`
+              : `<div>${cell}</div>`,
+          )
+          .join('');
+        return `<div class="answer-row">${cellHtml}</div>`;
+      }).join('');
+      return `</p><div class="answer-table mb-4 border border-border-light rounded-md overflow-hidden">${tableRows}</div><p>`;
+    });
+
+    // 2. Convert section headers (lines ending with colon)
     html = html.replace(/^([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm, '<div class="answer-section">$1</div>');
     html = html.replace(/\n([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm, '</p>\n<div class="answer-section">$1</div>\n<p>');
 
-    // Convert formulas and code (text between backticks or mathematical expressions)
+    // 3. Convert formulas and code
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-    html = html.replace(/(\d+\s*[×xX+\-÷=]\s*\d+[\s=\d×xX+\-÷]*)/g, '<code>$1</code>');
+    // Simple math expressions detection
+    html = html.replace(/(\d+\s*[×xX+\-÷=]\s*\d+[\s=\d×xX+\-÷]*)/g, '<span class="formula">$1</span>');
 
-    // Highlight important numbers with units
-    html = html.replace(/(\d+(?:[,.]\d+)?)\s*(MB\/s|GB\/s|MHz|GHz|GB|MB|KB|TB|Bit|Byte|ms|%|€|V|A|W)/g, '<span class="highlight">$1 $2</span>');
+    // 4. Highlight numbers with units
+    html = html.replace(
+      /(\d+(?:[,.]\d+)?)\s*(MB\/s|GB\/s|Mbit\/s|Gbit\/s|MHz|GHz|GB|MB|KB|TB|Bit|Byte|ms|%|€|V|A|W)(?!\w)/g,
+      '<span class="highlight">$1 $2</span>',
+    );
 
-    // Highlight keywords in parentheses (often technical terms)
+    // 5. Highlight technical terms in parentheses
     html = html.replace(/\(([A-Z]{2,}[^)]*)\)/g, '(<span class="highlight">$1</span>)');
 
-    // Convert bullet points to proper list items
-    // First, wrap consecutive bullet lines in a <ul>
-    html = html.replace(/((?:^|\n)• [^\n]+(?:\n• [^\n]+)*)/g, (match) => {
-      const items = match.split('\n')
-        .filter(line => line.startsWith('•'))
-        .map(line => `<li>${line.substring(2)}</li>`)
+    // 6. Bullet points -> List
+    html = html.replace(/((?:^|\n)[•\-] [^\n]+(?:\n[•\-] [^\n]+)*)/g, (match) => {
+      const items = match
+        .split('\n')
+        .filter((line) => line.trim().length > 0)
+        .map((line) => {
+          const content = line.replace(/^[•\-]\s*/, '');
+          // Identify Pro/Con in list items
+          if (content.startsWith('+')) return `<li class="pro">${content}</li>`;
+          if (content.startsWith('−') || content.startsWith('-')) return `<li class="con">${content}</li>`;
+          return `<li>${content}</li>`;
+        })
         .join('\n');
-      return `</p>\n<ul>${items}</ul>\n<p>`;
+      return `</p><ul>${items}</ul><p>`;
     });
 
-    // Handle "+" advantages and "-" disadvantages  
-    html = html.replace(/\+ ([^\n|]+)/g, '<span class="pro">+ $1</span>');
-    html = html.replace(/- ([^\n|]+)(?=\n|$|<)/g, '<span class="con">− $1</span>');
+    // 7. Explicit Pro/Con lines (outside lists)
+    html = html.replace(/^\+ ([^\n]+)/gm, '<span class="pro block mb-1">+ $1</span>');
+    html = html.replace(/^[−-] ([^\n]+)/gm, '<span class="con block mb-1">− $1</span>');
 
-    // Handle numbered lists (1., 2., etc.)
-    html = html.replace(/(\d+)\.\s+([^\n]+)/g, '<strong>$1.</strong> $2');
+    // 8. Numbered lists (1. 2. 3.)
+    html = html.replace(/(?:^|\n)(\d+)\.\s+([^\n]+)/g, '<div class="mb-2"><span class="font-bold text-accent mr-2">$1.</span>$2</div>');
 
-    // Double newlines = new paragraph
-    html = html.replace(/\n\n/g, '</p>\n<p>');
-
-    // Single newlines = line break
+    // 9. Paragraph handling
+    html = html.replace(/\n\n/g, '</p><p>');
     html = html.replace(/\n/g, '<br>');
 
-    // Wrap in paragraph
+    // Wrap final result
     html = '<p>' + html + '</p>';
 
-    // Clean up empty paragraphs
+    // Cleanup empty tags
     html = html.replace(/<p>\s*<\/p>/g, '');
     html = html.replace(/<p>\s*<br>\s*<\/p>/g, '');
+    html = html.replace(/<p>\s*<div/g, '<div');
+    html = html.replace(/div>\s*<\/p>/g, 'div>');
 
     return html;
   }
