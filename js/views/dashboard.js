@@ -74,7 +74,7 @@ const DashboardView = (() => {
             </div>
             <div class="flex items-center gap-2">
               <span class="legend-dot" style="background:var(--danger)"></span>
-              <span class="text-xs text-secondary">N. gewusst ${stats.forgotCards}</span>
+              <span class="text-xs text-secondary">Nicht gewusst ${stats.forgotCards}</span>
             </div>
             <div class="flex items-center gap-2">
               <span class="legend-dot" style="background:var(--bg-tertiary)"></span>

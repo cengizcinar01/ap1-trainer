@@ -51,13 +51,15 @@ const StatisticsView = (() => {
 
         <div class="grid-2 mb-8">
           <!-- Card Status Distribution -->
-          <div class="card">
+          <div class="card h-full flex flex-col">
             <div class="card-header">
               <h3 class="card-title">Kartenstatus</h3>
             </div>
-            <div class="card-body">
-              <div class="donut-chart mb-6">
-                ${StatsChart.donutChart(
+            <div class="card-body flex-1">
+              <div class="stats-container">
+                <!-- Chart Side -->
+                <div class="stats-chart-wrapper">
+                  ${StatsChart.donutChart(
       [
         {
           value: stats.knewCards,
@@ -83,36 +85,49 @@ const StatisticsView = (() => {
       allCards.length,
       `${overallProgress}%`,
     )}
-              </div>
+                </div>
 
-              <!-- New Grid Legend -->
-              <div class="grid-2">
-                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
-                  <div class="w-3 h-3 rounded-full" style="background: var(--success);"></div>
-                  <div class="flex flex-col">
-                    <span class="text-xs text-tertiary">Gewusst</span>
-                    <span class="text-sm font-bold text-primary">${stats.knewCards}</span>
+                <!-- Legend Side -->
+                <div class="stats-legend">
+                   <div class="stats-legend-item">
+                    <div class="flex items-center gap-3">
+                      <div class="legend-indicator" style="background: var(--success);"></div>
+                      <span class="text-sm text-secondary">Gewusst</span>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-sm font-bold text-primary">${stats.knewCards}</div>
+                      <!-- Optional: Percentage if desired, or just count -->
+                    </div>
                   </div>
-                </div>
-                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
-                  <div class="w-3 h-3 rounded-full" style="background: var(--warning);"></div>
-                  <div class="flex flex-col">
-                    <span class="text-xs text-tertiary">Unsicher</span>
-                    <span class="text-sm font-bold text-primary">${stats.partialCards}</span>
+
+                  <div class="stats-legend-item">
+                    <div class="flex items-center gap-3">
+                      <div class="legend-indicator" style="background: var(--warning);"></div>
+                      <span class="text-sm text-secondary">Unsicher</span>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-sm font-bold text-primary">${stats.partialCards}</div>
+                    </div>
                   </div>
-                </div>
-                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
-                  <div class="w-3 h-3 rounded-full" style="background: var(--danger);"></div>
-                  <div class="flex flex-col">
-                    <span class="text-xs text-tertiary">Nicht gewusst</span>
-                    <span class="text-sm font-bold text-primary">${stats.forgotCards}</span>
+
+                  <div class="stats-legend-item">
+                    <div class="flex items-center gap-3">
+                      <div class="legend-indicator" style="background: var(--danger);"></div>
+                      <span class="text-sm text-secondary">Nicht gewusst</span>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-sm font-bold text-primary">${stats.forgotCards}</div>
+                    </div>
                   </div>
-                </div>
-                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
-                  <div class="w-3 h-3 rounded-full" style="background: var(--text-tertiary);"></div>
-                  <div class="flex flex-col">
-                    <span class="text-xs text-tertiary">Neu</span>
-                    <span class="text-sm font-bold text-primary">${stats.newCards}</span>
+
+                  <div class="stats-legend-item">
+                    <div class="flex items-center gap-3">
+                      <div class="legend-indicator" style="background: var(--bg-tertiary);"></div>
+                      <span class="text-sm text-secondary">Neu</span>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-sm font-bold text-primary">${stats.newCards}</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -120,12 +135,12 @@ const StatisticsView = (() => {
           </div>
 
           <!-- Activity -->
-          <div class="card">
+          <div class="card h-full flex flex-col">
             <div class="card-header">
               <h3 class="card-title">Letzte 7 Tage</h3>
               <span class="text-xs text-secondary">${stats.weekReviews} Wiederholungen</span>
             </div>
-            <div class="card-body">
+            <div class="card-body flex-1 flex flex-col justify-end">
               ${StatsChart.activityChart(stats.dailyReviews)}
             </div>
           </div>

@@ -62,7 +62,7 @@ const StatsChart = (() => {
           stroke-width="${strokeWidth}"
           stroke-dasharray="${dashLength} ${circumference - dashLength}"
           stroke-dashoffset="${-offset * circumference}"
-          stroke-linecap="round"
+          stroke-linecap="butt"
           transform="rotate(-90 ${size / 2} ${size / 2})"
           style="transition: stroke-dasharray 0.6s ease, stroke-dashoffset 0.6s ease;"
         />
@@ -85,19 +85,6 @@ const StatsChart = (() => {
         </svg>
         <div class="donut-chart-center">
           <div class="donut-chart-value">${centerText}</div>
-        </div>
-        <div class="donut-chart-legend">
-          ${segments
-        .map(
-          (seg) => `
-            <div class="donut-chart-legend-item">
-              <span class="donut-chart-legend-dot" style="background: ${seg.color}"></span>
-              <span class="donut-chart-legend-label">${seg.label}</span>
-              <span class="donut-chart-legend-value">${seg.value}</span>
-            </div>
-          `,
-        )
-        .join('')}
         </div>
       </div>
     `;

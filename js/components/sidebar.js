@@ -89,7 +89,7 @@ const Sidebar = (() => {
         </a>
         <div class="nav-divider"></div>
         <button class="nav-item" id="themeToggleBtn">
-          <span class="nav-item-icon icon">🌓</span>
+          <span class="nav-item-icon icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
           <span class="label">System</span>
         </button>
       </nav>
