@@ -14,9 +14,9 @@ const CardRenderer = (() => {
    */
   function renderCard(card, showMeta = true) {
     const difficultyDots = Array.from(
-      {length: 3},
+      { length: 3 },
       (_, i) =>
-        `<span class="flashcard-difficulty-dot ${i < card.difficulty ? 'active' : ''}"></span>`,
+        `<span class="flashcard-difficulty-dot ${i < card.difficulty ? 'active' : ''}"></span>`
     ).join('');
 
     // Image path — cards can have an `image` field, or we check for assets/images/{id}.png
@@ -80,7 +80,7 @@ const CardRenderer = (() => {
    */
   function tryLoadImage(cardId) {
     const placeholder = document.querySelector(
-      `.flashcard-image-placeholder[data-card-id="${cardId}"]`,
+      `.flashcard-image-placeholder[data-card-id="${cardId}"]`
     );
     if (!placeholder) return;
 
@@ -163,110 +163,188 @@ const CardRenderer = (() => {
     `;
   }
 
+  /**
+   * Format answer text with proper HTML markup.
+   * Uses a line-by-line parser for better control over structure.
+   */
   function formatAnswer(text) {
-    let html = escapeHtml(text);
+    const lines = text.split('\n');
+    const result = [];
+    let inList = false;
+    let listItems = [];
+    let inTable = false;
+    let tableRows = [];
 
-    // 1. Extract and format tables (lines containing '|')
-    // We do this first to avoid messing up with other replacements
-    html = html.replace(/((?:^|\n).*\|.*(?:\n.*\|.*)*)/g, (match) => {
-      const rows = match.trim().split('\n');
-      const tableRows = rows
-        .map((row) => {
-          const cells = row.split('|').map((cell) => cell.trim());
-          const cellHtml = cells
-            .map((cell, i) =>
-              i === 0
-                ? `<div class="font-bold">${cell}</div>`
-                : `<div>${cell}</div>`,
-            )
-            .join('');
-          return `<div class="answer-row">${cellHtml}</div>`;
-        })
-        .join('');
-      return `</p><div class="answer-table mb-4 border border-border-light rounded-md overflow-hidden">${tableRows}</div><p>`;
-    });
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmed = line.trim();
 
-    // 2. Convert section headers (lines ending with colon)
-    html = html.replace(
-      /^([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm,
-      '<div class="answer-section">$1</div>',
+      // Skip empty lines but preserve spacing
+      if (trimmed === '') {
+        if (inList) {
+          result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
+          listItems = [];
+          inList = false;
+        }
+        if (inTable) {
+          result.push(
+            `<div class="answer-table mb-4">${tableRows.join('')}</div>`
+          );
+          tableRows = [];
+          inTable = false;
+        }
+        continue;
+      }
+
+      // Check for table rows (lines containing |)
+      // Skip if it looks like a Pro/Con comparison with + and -
+      if (
+        trimmed.includes('|') &&
+        !(/\+\s+/.test(trimmed) && /-\s+/.test(trimmed))
+      ) {
+        if (!inTable) inTable = true;
+        const cells = trimmed
+          .split('|')
+          .map((c) => c.trim())
+          .filter((c) => c);
+        const cellHtml = cells
+          .map((cell, idx) =>
+            idx === 0
+              ? `<div class="font-bold">${cell}</div>`
+              : `<div>${cell}</div>`
+          )
+          .join('');
+        tableRows.push(`<div class="answer-row">${cellHtml}</div>`);
+        continue;
+      }
+
+      // End table if we were in one
+      if (inTable) {
+        result.push(
+          `<div class="answer-table mb-4">${tableRows.join('')}</div>`
+        );
+        tableRows = [];
+        inTable = false;
+      }
+
+      // Check for section headers (lines ending with colon, not bullet points)
+      if (/^[A-ZÄÖÜa-zäöü][^:]{2,50}:$/.test(trimmed)) {
+        if (inList) {
+          result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
+          listItems = [];
+          inList = false;
+        }
+        result.push(
+          `<div class="answer-section">${trimmed.slice(0, -1)}</div>`
+        );
+        continue;
+      }
+
+      // Check for bullet points
+      if (/^[•-]\s+/.test(trimmed)) {
+        if (!inList) inList = true;
+        let content = trimmed.replace(/^[•-]\s+/, '');
+        // Apply inline formatting to content
+        content = formatInline(content);
+        if (content.startsWith('+')) {
+          listItems.push(`<li class="pro">${content}</li>`);
+        } else if (content.startsWith('−') || content.startsWith('- ')) {
+          listItems.push(`<li class="con">${content}</li>`);
+        } else {
+          listItems.push(`<li>${content}</li>`);
+        }
+        continue;
+      }
+
+      // End list if we were in one
+      if (inList) {
+        result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
+        listItems = [];
+        inList = false;
+      }
+
+      // Check for numbered lists (1. 2. 3. etc. at start of line)
+      const numberedMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+      if (numberedMatch) {
+        const num = numberedMatch[1];
+        let content = numberedMatch[2];
+        // Apply inline formatting
+        content = formatInline(content);
+        result.push(
+          `<div class="mb-2"><span class="font-bold text-accent mr-2">${num}.</span>${content}</div>`
+        );
+        continue;
+      }
+
+      // Regular paragraph line - apply inline formatting
+      result.push(`<p>${formatInline(trimmed)}</p>`);
+    }
+
+    // Flush any remaining list or table
+    if (inList) {
+      result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
+    }
+    if (inTable) {
+      result.push(`<div class="answer-table mb-4">${tableRows.join('')}</div>`);
+    }
+
+    return result.join('\n');
+  }
+
+  /**
+   * Apply inline formatting to a line of text.
+   * Handles code, abbreviations, units, equations, etc.
+   */
+  function formatInline(text) {
+    // Code/inline formulas with backticks
+    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Technical abbreviations in parentheses (2-4 uppercase letters)
+    text = text.replace(
+      /\(([A-Z]{2,4})\)/g,
+      '(<span class="tech-abbr">$1</span>)'
     );
-    html = html.replace(
-      /\n([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm,
-      '</p>\n<div class="answer-section">$1</div>\n<p>',
+
+    // Simple math expressions WITHOUT units - must come before units replacement
+    // Match: 3200 × 2, 8 + 4, etc. but NOT 51.200 MB/s or 3.14 GHz
+    text = text.replace(
+      /(\d[\d\s.,]*\s*[×xX+\-÷]\s*[\d\s.,]+)(?!\s*(?:MB\/s|GB\/s|Mbit\/s|Gbit\/s|MHz|GHz|GB|MB|KB|KiB|MiB|GiB|TiB|TB|Bit|Byte|ms|%|€|V|A|W|Bit))/g,
+      '<span class="formula">$1</span>'
     );
 
-    // 3. Convert formulas and code
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-    // Simple math expressions detection
-    html = html.replace(
-      /(\d+\s*[×xX+\-÷=]\s*\d+[\s=\d×xX+\-÷]*)/g,
-      '<span class="formula">$1</span>',
+    // Numbers with units
+    text = text.replace(
+      /(\d{1,3}(?:[.,]\d{3})*(?:[.,]\d+)?|\d+(?:[.,]\d+)?)\s*(MB\/s|GB\/s|Mbit\/s|Gbit\/s|MHz|GHz|GB|MB|KB|KiB|MiB|GiB|TiB|TB|Bit|Byte|ms|%|€|V|A|W)(?!\w)/g,
+      '<span class="highlight">$1 $2</span>'
     );
 
-    // 4. Highlight numbers with units
-    html = html.replace(
-      /(\d+(?:[,.]\d+)?)\s*(MB\/s|GB\/s|Mbit\/s|Gbit\/s|MHz|GHz|GB|MB|KB|TB|Bit|Byte|ms|%|€|V|A|W)(?!\w)/g,
-      '<span class="highlight">$1 $2</span>',
+    // Pro/Con indicators (+ and -) in text
+    // After | symbol
+    text = text.replace(
+      /\|\s*\+\s+/g,
+      '| <span class="pro-indicator">+</span> '
+    );
+    text = text.replace(
+      /\|\s*-\s+/g,
+      '| <span class="con-indicator">-</span> '
+    );
+    // After : symbol
+    text = text.replace(
+      /:\s*\+\s+/g,
+      ': <span class="pro-indicator">+</span> '
+    );
+    text = text.replace(/:\s*-\s+/g, ': <span class="con-indicator">-</span> ');
+    // After . (period) - for cases like "...Vorgesetzten. + Klare..."
+    text = text.replace(
+      /\.\s*\+\s+/g,
+      '. <span class="pro-indicator">+</span> '
+    );
+    text = text.replace(
+      /\.\s*-\s+/g,
+      '. <span class="con-indicator">-</span> '
     );
 
-    // 5. Highlight technical terms in parentheses
-    html = html.replace(
-      /\(([A-Z]{2,}[^)]*)\)/g,
-      '(<span class="highlight">$1</span>)',
-    );
-
-    // 6. Bullet points -> List
-    html = html.replace(
-      /((?:^|\n)[•\-] [^\n]+(?:\n[•\-] [^\n]+)*)/g,
-      (match) => {
-        const items = match
-          .split('\n')
-          .filter((line) => line.trim().length > 0)
-          .map((line) => {
-            const content = line.replace(/^[•\-]\s*/, '');
-            // Identify Pro/Con in list items
-            if (content.startsWith('+'))
-              return `<li class="pro">${content}</li>`;
-            if (content.startsWith('−') || content.startsWith('-'))
-              return `<li class="con">${content}</li>`;
-            return `<li>${content}</li>`;
-          })
-          .join('\n');
-        return `</p><ul>${items}</ul><p>`;
-      },
-    );
-
-    // 7. Explicit Pro/Con lines (outside lists)
-    html = html.replace(
-      /^\+ ([^\n]+)/gm,
-      '<span class="pro block mb-1">+ $1</span>',
-    );
-    html = html.replace(
-      /^[−-] ([^\n]+)/gm,
-      '<span class="con block mb-1">− $1</span>',
-    );
-
-    // 8. Numbered lists (1. 2. 3.)
-    html = html.replace(
-      /(?:^|\n)(\d+)\.\s+([^\n]+)/g,
-      '<div class="mb-2"><span class="font-bold text-accent mr-2">$1.</span>$2</div>',
-    );
-
-    // 9. Paragraph handling
-    html = html.replace(/\n\n/g, '</p><p>');
-    html = html.replace(/\n/g, '<br>');
-
-    // Wrap final result
-    html = '<p>' + html + '</p>';
-
-    // Cleanup empty tags
-    html = html.replace(/<p>\s*<\/p>/g, '');
-    html = html.replace(/<p>\s*<br>\s*<\/p>/g, '');
-    html = html.replace(/<p>\s*<div/g, '<div');
-    html = html.replace(/div>\s*<\/p>/g, 'div>');
-
-    return html;
+    return text;
   }
 
   function escapeHtml(str) {
