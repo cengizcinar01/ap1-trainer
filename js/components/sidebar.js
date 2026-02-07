@@ -5,6 +5,7 @@
 import StorageManager from '../data/storageManager.js';
 import DataLoader from '../data/dataLoader.js';
 import Router from '../router.js';
+import ThemeManager from './themeManager.js';
 
 const Sidebar = (() => {
   const ICONS = {
@@ -18,6 +19,7 @@ const Sidebar = (() => {
 
   let sidebarEl = null;
   let overlayEl = null;
+  const themeManager = new ThemeManager();
 
   function render() {
     const allCards = DataLoader.getAllCards();
@@ -85,6 +87,11 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.statistics}</span>
           Statistiken
         </a>
+        <div class="nav-divider"></div>
+        <button class="nav-item" id="themeToggleBtn">
+          <span class="nav-item-icon icon">🌓</span>
+          <span class="label">System</span>
+        </button>
       </nav>
       <div class="sidebar-footer">
         <div class="sidebar-streak">
@@ -98,8 +105,17 @@ const Sidebar = (() => {
     `;
 
     sidebarEl.querySelectorAll('.nav-item').forEach((link) => {
-      link.addEventListener('click', () => closeMobile());
+      if (link.tagName === 'A') {
+        link.addEventListener('click', () => closeMobile());
+      }
     });
+
+    // Initialize Theme Manager
+    const themeBtn = sidebarEl.querySelector('#themeToggleBtn');
+    if (themeBtn) {
+      themeManager.init(); // Init theme state on load
+      themeManager.registerButton(themeBtn);
+    }
   }
 
   function toggleMobile() {

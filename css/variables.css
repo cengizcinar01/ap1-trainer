@@ -111,3 +111,45 @@
   --z-modal: 300;
   --z-toast: 400;
 }
+
+/* --- Light Mode Overrides --- */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f5;
+  --bg-elevated: #ffffff;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-inverse: #ffffff;
+
+  /* Card / Surface */
+  --card-bg: #ffffff;
+  --card-bg-hover: #f9fafb;
+  --card-border: #e5e7eb;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --card-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Flashcard */
+  --flashcard-front: #ffffff;
+  --flashcard-back: #f9fafb;
+  --flashcard-border: #e5e7eb;
+
+  /* Borders */
+  --border-color: #e5e7eb;
+  --border-light: #f3f4f6;
+
+  /* Code */
+  --code-bg: #f3f4f6;
+  --code-border: #e5e7eb;
+  --code-text: #1f2937;
+
+  /* Semantic Colors (adjusted for light mode contrast) */
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --danger-bg: rgba(239, 68, 68, 0.1);
+  --info-bg: rgba(59, 130, 246, 0.1);
+}
