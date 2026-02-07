@@ -34,7 +34,7 @@ const StatsChart = (() => {
           stroke-width="${strokeWidth}"
           stroke-dasharray="${renderLength} ${circumference - renderLength}"
           stroke-dashoffset="${-offset * circumference}"
-          stroke-linecap="round"
+          stroke-linecap="butt"
         />
       `;
         offset += pct;
@@ -88,9 +88,9 @@ const StatsChart = (() => {
     return `
       <div class="activity-chart-container">
         ${days
-        .map((day) => {
-          const height = Math.max(5, (day.value / maxVal) * 100);
-          return `
+          .map((day) => {
+            const height = Math.max(5, (day.value / maxVal) * 100);
+            return `
               <div class="activity-col">
                 <div class="activity-bar-track">
                   <span class="activity-value" style="bottom: ${height}%">${day.value}</span>
@@ -102,8 +102,8 @@ const StatsChart = (() => {
                 <span class="activity-label ${day.isToday ? 'today' : ''}">${day.label}</span>
               </div>
             `;
-        })
-        .join('')}
+          })
+          .join('')}
       </div>
     `;
   }

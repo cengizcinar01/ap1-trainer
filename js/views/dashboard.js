@@ -1,10 +1,11 @@
 // ============================================================
-// dashboard.js — Home/Dashboard view
+// dashboard.js — Home/Dashboard view with integrated statistics
 // ============================================================
 
 import DataLoader from '../data/dataLoader.js';
 import StorageManager from '../data/storageManager.js';
 import ProgressBar from '../components/progressBar.js';
+import StatsChart from '../components/statsChart.js';
 
 const DashboardView = (() => {
   function render(container) {
@@ -15,92 +16,181 @@ const DashboardView = (() => {
 
     container.innerHTML = `
       <div class="view-enter">
+        <!-- Header -->
         <div class="page-header">
           <h1 class="page-title">Dashboard</h1>
-          <p class="page-subtitle">${allCards.length} Karten · ${stats.reviewedCards} bearbeitet · ${stats.totalReviews} Wiederholungen</p>
+          <p class="page-subtitle">Übersicht über deinen Lernfortschritt</p>
         </div>
 
-        <!-- Overall Progress -->
-        <div class="card mb-6">
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-sm font-semibold">Gesamtfortschritt</span>
-            <span class="text-xs text-tertiary">${overallProgress}%</span>
+        <!-- Quick Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-value">${allCards.length}</div>
+            <div class="stat-card-label">Karten gesamt</div>
           </div>
-          ${ProgressBar.createMulti(
-      {
-        knew: stats.knewCards,
-        partial: stats.partialCards,
-        forgot: stats.forgotCards,
-      },
-      allCards.length,
-      'progress-bar-lg',
-    )}
-          <div class="grid-2 grid-4-md gap-4 mt-4">
-            <div class="flex items-center gap-2">
-              <span class="legend-dot" style="background:var(--success)"></span>
-              <span class="text-xs text-secondary">Gewusst ${stats.knewCards}</span>
+          <div class="stat-card">
+            <div class="stat-card-value">${stats.reviewedCards}</div>
+            <div class="stat-card-label">Bearbeitet</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value">${stats.totalReviews}</div>
+            <div class="stat-card-label">Wiederholungen</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value">${overallProgress}%</div>
+            <div class="stat-card-label">Fortschritt</div>
+          </div>
+        </div>
+
+        <!-- Distribution Chart -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3 class="card-title">Karten-Verteilung</h3>
+          </div>
+          <div class="donut-layout">
+            <div class="donut-wrapper">
+              ${StatsChart.donutChart(
+                [
+                  {
+                    value: stats.knewCards,
+                    color: 'var(--success)',
+                    label: 'Gewusst',
+                  },
+                  {
+                    value: stats.partialCards,
+                    color: 'var(--warning)',
+                    label: 'Unsicher',
+                  },
+                  {
+                    value: stats.forgotCards,
+                    color: 'var(--danger)',
+                    label: 'Nicht gewusst',
+                  },
+                  {
+                    value: stats.newCards,
+                    color: 'var(--bg-tertiary)',
+                    label: 'Neu',
+                  },
+                ],
+                allCards.length,
+                `${stats.knewCards}`,
+                'Gewusst',
+              )}
             </div>
-            <div class="flex items-center gap-2">
-              <span class="legend-dot" style="background:var(--warning)"></span>
-              <span class="text-xs text-secondary">Unsicher ${stats.partialCards}</span>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="legend-dot" style="background: var(--success);"></div>
+                <div class="legend-info">
+                  <span class="legend-val">${stats.knewCards}</span>
+                  <span class="legend-label">Gewusst</span>
+                </div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background: var(--warning);"></div>
+                <div class="legend-info">
+                  <span class="legend-val">${stats.partialCards}</span>
+                  <span class="legend-label">Unsicher</span>
+                </div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background: var(--danger);"></div>
+                <div class="legend-info">
+                  <span class="legend-val">${stats.forgotCards}</span>
+                  <span class="legend-label">Nicht gewusst</span>
+                </div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background: var(--bg-tertiary);"></div>
+                <div class="legend-info">
+                  <span class="legend-val">${stats.newCards}</span>
+                  <span class="legend-label">Neu</span>
+                </div>
+              </div>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="legend-dot" style="background:var(--danger)"></span>
-              <span class="text-xs text-secondary">Nicht gewusst ${stats.forgotCards}</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="legend-dot" style="background:var(--bg-tertiary)"></span>
-              <span class="text-xs text-secondary">Offen ${stats.newCards}</span>
-            </div>
+          </div>
+        </div>
+
+        <!-- Activity Chart -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3 class="card-title">Aktivität</h3>
+            <span class="text-xs text-secondary font-medium">Letzte 7 Tage</span>
+          </div>
+          ${StatsChart.activityChart(stats.dailyReviews)}
+        </div>
+
+        <!-- Topics Progress -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3 class="card-title">Fortschritt nach Thema</h3>
+          </div>
+          <div class="topic-progress-list">
+            ${topics.map((topic) => renderTopicProgress(topic, stats)).join('')}
           </div>
         </div>
 
         <!-- Review CTA -->
-        <a href="#/review" class="review-cta mb-6">
-          <div>
-            <span class="font-semibold">Alle Karten lernen</span>
-            <span class="text-xs text-secondary" style="display:block; margin-top:2px;">${allCards.length} Karten</span>
+        <a href="#/review" class="review-cta">
+          <div class="review-cta-content">
+            <span class="review-cta-title">Alle Karten lernen</span>
+            <span class="review-cta-subtitle">${allCards.length} Karten verfügbar</span>
           </div>
-          <span class="review-cta-arrow">&rarr;</span>
+          <span class="review-cta-arrow">→</span>
         </a>
+
+        <!-- Reset Section -->
+        <div class="reset-section">
+          <div class="reset-content">
+            <h3 class="reset-title">Fortschritt zurücksetzen</h3>
+            <p class="reset-text">Setze alle Lernfortschritte zurück. Diese Aktion kann nicht rückgängig gemacht werden.</p>
+          </div>
+          <button class="btn btn-danger btn-sm" id="resetBtn">Zurücksetzen</button>
+        </div>
       </div>
     `;
+
+    // Bind reset button
+    container.querySelector('#resetBtn').addEventListener('click', () => {
+      if (confirm('Bist du sicher? Alle Lernfortschritte werden gelöscht.')) {
+        StorageManager.resetProgress();
+        render(container);
+      }
+    });
   }
 
-  function renderTopicCard(topic, stats) {
-    const progress = StorageManager.getProgress(topic.cards);
+  function renderTopicProgress(topic, stats) {
     const topicStat = stats.topicStats[topic.name] || {
       knew: 0,
       partial: 0,
       forgot: 0,
     };
+    const progress = StorageManager.getProgress(topic.cards);
     const topicParam = encodeURIComponent(topic.name);
     const topicNum = topic.name.match(/^(\d+)/)?.[1] || '?';
 
     return `
-      <a href="#/learn/${topicParam}" class="topic-card">
-        <div class="topic-card-num">${topicNum}</div>
-        <div class="topic-card-name">${topic.name.replace(/^\d+\.\s*/, '')}</div>
-        <div class="topic-card-count">${topic.cardCount} Karten</div>
-        <div class="topic-card-progress">
-          ${ProgressBar.createMulti(
-      {
-        knew: topicStat.knew,
-        partial: topicStat.partial,
-        forgot: topicStat.forgot,
-      },
-      topic.cardCount,
-      'progress-bar-sm',
-    )}
+      <a href="#/learn/${topicParam}" class="topic-progress-item">
+        <div class="topic-progress-header">
+          <div class="topic-progress-info">
+            <span class="topic-progress-num">${topicNum}</span>
+            <span class="topic-progress-name">${topic.name.replace(/^\d+\.\s*/, '')}</span>
+          </div>
+          <span class="topic-progress-pct">${progress}%</span>
         </div>
-        <div class="topic-card-footer">
-          <span class="topic-card-percentage">${progress}%</span>
-        </div>
+        ${ProgressBar.createMulti(
+          {
+            knew: topicStat.knew,
+            partial: topicStat.partial,
+            forgot: topicStat.forgot,
+          },
+          topic.cardCount,
+          'progress-bar-sm',
+        )}
       </a>
     `;
   }
 
-  return { render };
+  return {render};
 })();
 
 export default DashboardView;

@@ -89,10 +89,6 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.review}</span>
           Alle Karten
         </a>
-        <a href="#/statistics" class="nav-item ${currentRoute === '/statistics' ? 'active' : ''}" data-route="/statistics">
-          <span class="nav-item-icon">${ICONS.statistics}</span>
-          Statistiken
-        </a>
       </nav>
 `;
 

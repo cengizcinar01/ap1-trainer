@@ -10,7 +10,6 @@ import DashboardView from './views/dashboard.js';
 import CategoriesView from './views/categories.js';
 import FlashcardView from './views/flashcard.js';
 import ReviewView from './views/review.js';
-import StatisticsView from './views/statistics.js';
 
 const App = (() => {
   let contentEl = null;
@@ -97,9 +96,8 @@ const App = (() => {
     });
 
     Router.on('/statistics', () => {
-      cleanupCurrentView();
-      StatisticsView.render(contentEl);
-      Sidebar.updateActive();
+      // Redirect to dashboard (statistics are now integrated there)
+      window.location.hash = '#/';
     });
 
     Router.onNotFound(() => {
