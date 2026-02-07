@@ -10,6 +10,8 @@ import DashboardView from './views/dashboard.js';
 import CategoriesView from './views/categories.js';
 import FlashcardView from './views/flashcard.js';
 import ReviewView from './views/review.js';
+import SubnettingView from './modules/subnetting.js';
+import NetzplanView from './modules/netzplan.js';
 
 const App = (() => {
   let contentEl = null;
@@ -92,6 +94,20 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = ReviewView.cleanup;
       ReviewView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/subnetting', () => {
+      cleanupCurrentView();
+      currentCleanup = SubnettingView.cleanup;
+      SubnettingView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/netzplan', () => {
+      cleanupCurrentView();
+      currentCleanup = NetzplanView.cleanup;
+      NetzplanView.render(contentEl);
       Sidebar.updateActive();
     });
 

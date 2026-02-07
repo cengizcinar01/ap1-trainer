@@ -12,6 +12,8 @@ const Sidebar = (() => {
     dashboard: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`,
     categories: `<svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`,
     review: `<svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`,
+    subnetting: `<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>`,
+    netzplan: `<svg viewBox="0 0 24 24"><rect x="2" y="3" width="7" height="5" rx="1"/><rect x="15" y="3" width="7" height="5" rx="1"/><rect x="8" y="16" width="7" height="5" rx="1"/><line x1="9" y1="5.5" x2="15" y2="5.5"/><line x1="5.5" y1="8" x2="11.5" y2="16"/><line x1="18.5" y1="8" x2="12.5" y2="16"/></svg>`,
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
   };
 
@@ -85,6 +87,15 @@ const Sidebar = (() => {
         <a href="#/review" class="nav-item ${currentRoute.startsWith('/review') ? 'active' : ''}" data-route="/review">
           <span class="nav-item-icon">${ICONS.review}</span>
           Alle Karten
+        </a>
+        <div class="sidebar-section-label">Module</div>
+        <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
+          <span class="nav-item-icon">${ICONS.subnetting}</span>
+          Subnetting
+        </a>
+        <a href="#/modules/netzplan" class="nav-item ${currentRoute.startsWith('/modules/netzplan') ? 'active' : ''}" data-route="/modules/netzplan">
+          <span class="nav-item-icon">${ICONS.netzplan}</span>
+          Netzplantechnik
         </a>
       </nav>
 `;
