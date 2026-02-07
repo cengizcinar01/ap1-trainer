@@ -35,25 +35,9 @@ const ProgressBar = (() => {
     `;
   }
 
-  /**
-   * Create a labeled progress bar with percentage text.
-   */
-  function createLabeled(percentage, label, colorClass = 'accent') {
-    return `
-      <div>
-        <div class="flex justify-between items-center mb-2">
-          <span class="text-sm font-medium">${label}</span>
-          <span class="text-sm text-secondary">${Math.round(percentage)}%</span>
-        </div>
-        ${create(percentage, colorClass)}
-      </div>
-    `;
-  }
-
   return {
     create,
     createMulti,
-    createLabeled,
   };
 })();
 

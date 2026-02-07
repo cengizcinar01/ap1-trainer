@@ -151,7 +151,7 @@
 }
 
 .flashcard-answer .answer-section::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 6px;
   height: 6px;

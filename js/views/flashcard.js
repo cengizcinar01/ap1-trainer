@@ -15,7 +15,7 @@ const FlashcardView = (() => {
   let sessionCards = [];
   let currentIndex = 0;
   let isFlipped = false;
-  let sessionResults = { knew: 0, partial: 0, forgot: 0, total: 0 };
+  let sessionResults = {knew: 0, partial: 0, forgot: 0, total: 0};
   let keyHandler = null;
   let sessionTitle = '';
 
@@ -61,7 +61,7 @@ const FlashcardView = (() => {
     sessionCards = StorageManager.getSessionCards(cards);
     currentIndex = 0;
     isFlipped = false;
-    sessionResults = { knew: 0, partial: 0, forgot: 0, total: 0 };
+    sessionResults = {knew: 0, partial: 0, forgot: 0, total: 0};
 
     renderCurrentCard(container);
     setupKeyboardShortcuts(container);
@@ -73,7 +73,7 @@ const FlashcardView = (() => {
       return;
     }
 
-    const { card } = sessionCards[currentIndex];
+    const {card} = sessionCards[currentIndex];
     isFlipped = false;
 
     const backUrl = buildBackUrl();
@@ -132,7 +132,7 @@ const FlashcardView = (() => {
   function handleRating(container, rating) {
     if (!isFlipped) return;
 
-    const { card } = sessionCards[currentIndex];
+    const {card} = sessionCards[currentIndex];
     StorageManager.updateCardProgress(card.id, rating);
 
     if (rating === 1) sessionResults.forgot++;
@@ -210,10 +210,6 @@ const FlashcardView = (() => {
     const learnAgainBtn = container.querySelector('#learnAgainBtn');
     if (learnAgainBtn) {
       learnAgainBtn.addEventListener('click', () => {
-        console.log('Nochmal lernen clicked, navigating to:', learnAgainUrl);
-        // Force navigation by first going to a dummy hash, then the real one
-        window.location.hash = '/';
-        // Force navigation by going to a different hash first
         window.location.hash = '/';
         window.location.hash = learnAgainUrl.slice(1);
       });
@@ -264,7 +260,7 @@ const FlashcardView = (() => {
     return query ? `#/categories?${query}` : '#/categories';
   }
 
-  return { render, cleanup };
+  return {render, cleanup};
 })();
 
 export default FlashcardView;

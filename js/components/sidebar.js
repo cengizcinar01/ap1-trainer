@@ -2,8 +2,8 @@
 // sidebar.js — Sidebar navigation component (minimalist)
 // ============================================================
 
-import StorageManager from '../data/storageManager.js';
 import DataLoader from '../data/dataLoader.js';
+import StorageManager from '../data/storageManager.js';
 import Router from '../router.js';
 import ThemeManager from './themeManager.js';
 
@@ -12,9 +12,7 @@ const Sidebar = (() => {
     dashboard: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`,
     categories: `<svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`,
     review: `<svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`,
-    statistics: `<svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
-    reviews: `<svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>`,
   };
 
   let sidebarEl = null;
@@ -22,8 +20,7 @@ const Sidebar = (() => {
   const themeManager = new ThemeManager();
 
   function render() {
-    const allCards = DataLoader.getAllCards();
-    const stats = StorageManager.getStatistics(allCards);
+    DataLoader.getAllCards(); // Ensure data is loaded
 
     // Mobile header
     const mobileHeader = document.querySelector('.mobile-header');

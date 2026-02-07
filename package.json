@@ -1,0 +1,27 @@
+{
+  "name": "ap1-trainer",
+  "version": "1.0.0",
+  "description": "Interaktive Lernkarten-App zur Vorbereitung auf die IHK-Abschlussprüfung Teil 1 für Fachinformatiker",
+  "scripts": {
+    "format": "biome format --write",
+    "lint": "biome lint",
+    "check": "biome check",
+    "check:fix": "biome check --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cengizcinar01/ap1-trainer.git"
+  },
+  "keywords": [
+    "ihk",
+    "ap1",
+    "fachinformatiker",
+    "lernkarten",
+    "prüfungsvorbereitung"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.14"
+  }
+}

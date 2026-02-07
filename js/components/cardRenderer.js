@@ -14,7 +14,7 @@ const CardRenderer = (() => {
    */
   function renderCard(card, showMeta = true) {
     const difficultyDots = Array.from(
-      { length: 3 },
+      {length: 3},
       (_, i) =>
         `<span class="flashcard-difficulty-dot ${i < card.difficulty ? 'active' : ''}"></span>`,
     ).join('');
@@ -29,42 +29,45 @@ const CardRenderer = (() => {
             <div class="flashcard-front-content">
               <div class="flashcard-question">${escapeHtml(card.question)}</div>
             </div>
-            ${showMeta
-        ? `
+            ${
+              showMeta
+                ? `
               <div class="flashcard-meta">
                 <span class="flashcard-topic-badge">${escapeHtml(card.subtopic)}</span>
                 <div class="flashcard-difficulty">${difficultyDots}</div>
               </div>
             `
-        : ''
-      }
+                : ''
+            }
           </div>
           <div class="flashcard-face flashcard-back">
             <div class="flashcard-back-content">
               <div class="flashcard-answer-label">Antwort</div>
               <div class="flashcard-answer">${formatAnswer(card.answer)}</div>
-              ${imagePath
-        ? `
+              ${
+                imagePath
+                  ? `
                 <div class="flashcard-image">
                   <img src="${escapeHtml(imagePath)}" alt="Illustration zu: ${escapeHtml(card.question)}" loading="lazy" />
                 </div>
               `
-        : `
+                  : `
                 <div class="flashcard-image flashcard-image-placeholder" data-card-id="${card.id}" style="display:none;">
                   <img src="" alt="" loading="lazy" />
                 </div>
               `
-      }
+              }
             </div>
-            ${showMeta
-        ? `
+            ${
+              showMeta
+                ? `
               <div class="flashcard-meta">
                 <span class="flashcard-topic-badge">${escapeHtml(card.subtopic)}</span>
                 <div class="flashcard-difficulty">${difficultyDots}</div>
               </div>
             `
-        : ''
-      }
+                : ''
+            }
           </div>
         </div>
       </div>
@@ -167,28 +170,39 @@ const CardRenderer = (() => {
     // We do this first to avoid messing up with other replacements
     html = html.replace(/((?:^|\n).*\|.*(?:\n.*\|.*)*)/g, (match) => {
       const rows = match.trim().split('\n');
-      const tableRows = rows.map((row) => {
-        const cells = row.split('|').map((cell) => cell.trim());
-        const cellHtml = cells
-          .map((cell, i) =>
-            i === 0
-              ? `<div class="font-bold">${cell}</div>`
-              : `<div>${cell}</div>`,
-          )
-          .join('');
-        return `<div class="answer-row">${cellHtml}</div>`;
-      }).join('');
+      const tableRows = rows
+        .map((row) => {
+          const cells = row.split('|').map((cell) => cell.trim());
+          const cellHtml = cells
+            .map((cell, i) =>
+              i === 0
+                ? `<div class="font-bold">${cell}</div>`
+                : `<div>${cell}</div>`,
+            )
+            .join('');
+          return `<div class="answer-row">${cellHtml}</div>`;
+        })
+        .join('');
       return `</p><div class="answer-table mb-4 border border-border-light rounded-md overflow-hidden">${tableRows}</div><p>`;
     });
 
     // 2. Convert section headers (lines ending with colon)
-    html = html.replace(/^([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm, '<div class="answer-section">$1</div>');
-    html = html.replace(/\n([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm, '</p>\n<div class="answer-section">$1</div>\n<p>');
+    html = html.replace(
+      /^([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm,
+      '<div class="answer-section">$1</div>',
+    );
+    html = html.replace(
+      /\n([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm,
+      '</p>\n<div class="answer-section">$1</div>\n<p>',
+    );
 
     // 3. Convert formulas and code
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
     // Simple math expressions detection
-    html = html.replace(/(\d+\s*[×xX+\-÷=]\s*\d+[\s=\d×xX+\-÷]*)/g, '<span class="formula">$1</span>');
+    html = html.replace(
+      /(\d+\s*[×xX+\-÷=]\s*\d+[\s=\d×xX+\-÷]*)/g,
+      '<span class="formula">$1</span>',
+    );
 
     // 4. Highlight numbers with units
     html = html.replace(
@@ -197,30 +211,47 @@ const CardRenderer = (() => {
     );
 
     // 5. Highlight technical terms in parentheses
-    html = html.replace(/\(([A-Z]{2,}[^)]*)\)/g, '(<span class="highlight">$1</span>)');
+    html = html.replace(
+      /\(([A-Z]{2,}[^)]*)\)/g,
+      '(<span class="highlight">$1</span>)',
+    );
 
     // 6. Bullet points -> List
-    html = html.replace(/((?:^|\n)[•\-] [^\n]+(?:\n[•\-] [^\n]+)*)/g, (match) => {
-      const items = match
-        .split('\n')
-        .filter((line) => line.trim().length > 0)
-        .map((line) => {
-          const content = line.replace(/^[•\-]\s*/, '');
-          // Identify Pro/Con in list items
-          if (content.startsWith('+')) return `<li class="pro">${content}</li>`;
-          if (content.startsWith('−') || content.startsWith('-')) return `<li class="con">${content}</li>`;
-          return `<li>${content}</li>`;
-        })
-        .join('\n');
-      return `</p><ul>${items}</ul><p>`;
-    });
+    html = html.replace(
+      /((?:^|\n)[•\-] [^\n]+(?:\n[•\-] [^\n]+)*)/g,
+      (match) => {
+        const items = match
+          .split('\n')
+          .filter((line) => line.trim().length > 0)
+          .map((line) => {
+            const content = line.replace(/^[•\-]\s*/, '');
+            // Identify Pro/Con in list items
+            if (content.startsWith('+'))
+              return `<li class="pro">${content}</li>`;
+            if (content.startsWith('−') || content.startsWith('-'))
+              return `<li class="con">${content}</li>`;
+            return `<li>${content}</li>`;
+          })
+          .join('\n');
+        return `</p><ul>${items}</ul><p>`;
+      },
+    );
 
     // 7. Explicit Pro/Con lines (outside lists)
-    html = html.replace(/^\+ ([^\n]+)/gm, '<span class="pro block mb-1">+ $1</span>');
-    html = html.replace(/^[−-] ([^\n]+)/gm, '<span class="con block mb-1">− $1</span>');
+    html = html.replace(
+      /^\+ ([^\n]+)/gm,
+      '<span class="pro block mb-1">+ $1</span>',
+    );
+    html = html.replace(
+      /^[−-] ([^\n]+)/gm,
+      '<span class="con block mb-1">− $1</span>',
+    );
 
     // 8. Numbered lists (1. 2. 3.)
-    html = html.replace(/(?:^|\n)(\d+)\.\s+([^\n]+)/g, '<div class="mb-2"><span class="font-bold text-accent mr-2">$1.</span>$2</div>');
+    html = html.replace(
+      /(?:^|\n)(\d+)\.\s+([^\n]+)/g,
+      '<div class="mb-2"><span class="font-bold text-accent mr-2">$1.</span>$2</div>',
+    );
 
     // 9. Paragraph handling
     html = html.replace(/\n\n/g, '</p><p>');
@@ -251,7 +282,6 @@ const CardRenderer = (() => {
     renderSessionComplete,
     tryLoadImage,
     escapeHtml,
-    formatAnswer,
   };
 })();
 
