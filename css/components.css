@@ -385,6 +385,8 @@
   overflow: hidden;
   margin-bottom: var(--space-2);
   max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .accordion-header {
@@ -398,6 +400,7 @@
   gap: var(--space-2);
   max-width: 100%;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .accordion-header:hover {
@@ -413,7 +416,7 @@
   overflow: hidden;
 }
 
-.accordion-header-left>div {
+.accordion-header-left > div {
   min-width: 0;
   overflow: hidden;
 }
@@ -484,6 +487,8 @@
 
 .accordion-body-inner {
   padding: var(--space-2) var(--space-4) var(--space-4);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* --- Subtopic Item --- */
@@ -511,7 +516,7 @@
   overflow: hidden;
 }
 
-.subtopic-item-left>div {
+.subtopic-item-left > div {
   min-width: 0;
   overflow: hidden;
 }
@@ -744,6 +749,8 @@
   border-radius: var(--radius-md);
   margin-bottom: var(--space-2);
   overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .subtopic-header {
@@ -754,6 +761,8 @@
   background: var(--card-bg);
   cursor: pointer;
   transition: background var(--transition-fast);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .subtopic-header:hover {
@@ -792,6 +801,8 @@
 
 .subtopic-body-inner {
   padding: var(--space-3);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* --- Card Preview List --- */

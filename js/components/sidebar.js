@@ -94,14 +94,6 @@ const Sidebar = (() => {
           Statistiken
         </a>
       </nav>
-      <div class="sidebar-footer">
-        <div class="sidebar-streak">
-          <div class="sidebar-streak-info">
-            <span class="sidebar-streak-count">${stats.totalReviews} Wiederholungen</span>
-            <span class="sidebar-streak-label">${stats.todayReviews} heute</span>
-          </div>
-        </div>
-      </div>
 `;
 
     sidebarEl.querySelectorAll('.nav-item').forEach((link) => {
@@ -157,7 +149,7 @@ const Sidebar = (() => {
     if (streakLabel) streakLabel.textContent = `${stats.todayReviews} heute`;
   }
 
-  return { render, updateActive, closeMobile };
+  return {render, updateActive, closeMobile};
 })();
 
 export default Sidebar;
