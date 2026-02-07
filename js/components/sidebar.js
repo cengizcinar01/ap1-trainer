@@ -34,13 +34,17 @@ const Sidebar = (() => {
         <button class="mobile-menu-btn" id="mobileMenuBtn">
           <span class="nav-item-icon">${ICONS.menu}</span>
         </button>
-        <span class="mobile-logo">AP1 Trainer</span>
-        <div style="width: 40px;"></div>
+
       `;
       document.body.prepend(header);
       header
         .querySelector('#mobileMenuBtn')
         .addEventListener('click', toggleMobile);
+
+      const headerThemeBtn = header.querySelector('#headerThemeBtn');
+      if (headerThemeBtn) {
+        themeManager.registerButton(headerThemeBtn);
+      }
     }
 
     // Overlay
@@ -61,14 +65,16 @@ const Sidebar = (() => {
     const currentRoute = Router.getCurrentRoute();
 
     sidebarEl.innerHTML = `
-      <div class="sidebar-header">
+      <div class="sidebar-header" style="display: flex; align-items: center; justify-content: space-between;">
         <div class="sidebar-logo">
-          <div class="sidebar-logo-icon">AP1</div>
           <div class="sidebar-logo-text">
             <span class="sidebar-logo-title">AP1 Trainer</span>
             <span class="sidebar-logo-subtitle">Prüfungsvorbereitung</span>
           </div>
         </div>
+        <button class="mobile-menu-btn" id="desktopThemeBtn" style="width: 32px; height: 32px;">
+           <span class="icon"></span>
+        </button>
       </div>
       <nav class="sidebar-nav">
         <a href="#/" class="nav-item ${currentRoute === '/' ? 'active' : ''}" data-route="/">
@@ -87,11 +93,6 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.statistics}</span>
           Statistiken
         </a>
-        <div class="nav-divider"></div>
-        <button class="nav-item" id="themeToggleBtn">
-          <span class="nav-item-icon icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
-          <span class="label">System</span>
-        </button>
       </nav>
       <div class="sidebar-footer">
         <div class="sidebar-streak">
@@ -102,7 +103,7 @@ const Sidebar = (() => {
           </div>
         </div>
       </div>
-    `;
+`;
 
     sidebarEl.querySelectorAll('.nav-item').forEach((link) => {
       if (link.tagName === 'A') {
@@ -111,10 +112,10 @@ const Sidebar = (() => {
     });
 
     // Initialize Theme Manager
-    const themeBtn = sidebarEl.querySelector('#themeToggleBtn');
-    if (themeBtn) {
+    const headerThemeBtn = sidebarEl.querySelector('#desktopThemeBtn');
+    if (headerThemeBtn) {
       themeManager.init(); // Init theme state on load
-      themeManager.registerButton(themeBtn);
+      themeManager.registerButton(headerThemeBtn);
     }
   }
 
