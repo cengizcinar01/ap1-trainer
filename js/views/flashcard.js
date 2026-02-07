@@ -5,17 +5,17 @@
 // Each card is rated once, progress saved immediately.
 // ============================================================
 
-import DataLoader from '../data/dataLoader.js';
-import StorageManager from '../data/storageManager.js';
 import CardRenderer from '../components/cardRenderer.js';
 import ProgressBar from '../components/progressBar.js';
 import Sidebar from '../components/sidebar.js';
+import DataLoader from '../data/dataLoader.js';
+import StorageManager from '../data/storageManager.js';
 
 const FlashcardView = (() => {
   let sessionCards = [];
   let currentIndex = 0;
   let isFlipped = false;
-  let sessionResults = {knew: 0, partial: 0, forgot: 0, total: 0};
+  let sessionResults = { knew: 0, partial: 0, forgot: 0, total: 0 };
   let keyHandler = null;
   let sessionTitle = '';
 
@@ -61,7 +61,7 @@ const FlashcardView = (() => {
     sessionCards = StorageManager.getSessionCards(cards);
     currentIndex = 0;
     isFlipped = false;
-    sessionResults = {knew: 0, partial: 0, forgot: 0, total: 0};
+    sessionResults = { knew: 0, partial: 0, forgot: 0, total: 0 };
 
     renderCurrentCard(container);
     setupKeyboardShortcuts(container);
@@ -73,7 +73,7 @@ const FlashcardView = (() => {
       return;
     }
 
-    const {card} = sessionCards[currentIndex];
+    const { card } = sessionCards[currentIndex];
     isFlipped = false;
 
     const backUrl = buildBackUrl();
@@ -110,7 +110,7 @@ const FlashcardView = (() => {
 
     container.querySelectorAll('.rating-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const rating = parseInt(btn.dataset.rating);
+        const rating = parseInt(btn.dataset.rating, 10);
         handleRating(container, rating);
       });
     });
@@ -132,7 +132,7 @@ const FlashcardView = (() => {
   function handleRating(container, rating) {
     if (!isFlipped) return;
 
-    const {card} = sessionCards[currentIndex];
+    const { card } = sessionCards[currentIndex];
     StorageManager.updateCardProgress(card.id, rating);
 
     if (rating === 1) sessionResults.forgot++;
@@ -141,14 +141,14 @@ const FlashcardView = (() => {
     sessionResults.total++;
 
     const pressedBtn = container.querySelector(
-      `.rating-btn[data-rating="${rating}"]`,
+      `.rating-btn[data-rating="${rating}"]`
     );
     if (pressedBtn) pressedBtn.classList.add('rating-pressed');
 
     const flashcardEl = container.querySelector('#flashcard');
     if (flashcardEl) {
       flashcardEl.classList.add(
-        rating === 3 ? 'card-exit-right' : 'card-exit-left',
+        rating === 3 ? 'card-exit-right' : 'card-exit-left'
       );
     }
 
@@ -260,7 +260,7 @@ const FlashcardView = (() => {
     return query ? `#/categories?${query}` : '#/categories';
   }
 
-  return {render, cleanup};
+  return { render, cleanup };
 })();
 
 export default FlashcardView;

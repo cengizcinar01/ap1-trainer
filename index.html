@@ -47,7 +47,7 @@
 
     <!-- Theme initialization (prevents flash of wrong theme) -->
     <script>
-      (function () {
+      (() => {
         const storedTheme =
           localStorage.getItem('theme-preference') || 'system';
         let effectiveTheme = storedTheme;

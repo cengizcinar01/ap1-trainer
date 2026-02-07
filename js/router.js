@@ -23,7 +23,7 @@ const Router = (() => {
 
     routes.push({
       pattern,
-      regex: new RegExp('^' + regexStr + '$'),
+      regex: new RegExp(`^${regexStr}$`),
       paramNames,
       handler,
     });

@@ -27,7 +27,7 @@ const StorageManager = (() => {
       if (raw) {
         _data = JSON.parse(raw);
         if (!_data.version || _data.version < STORAGE_VERSION) {
-          _data = {..._defaultData(), ..._data, version: STORAGE_VERSION};
+          _data = { ..._defaultData(), ..._data, version: STORAGE_VERSION };
           if (!_data.dailyReviews) _data.dailyReviews = {};
         }
       } else {
@@ -191,7 +191,7 @@ const StorageManager = (() => {
     try {
       const imported = JSON.parse(jsonString);
       if (imported.cards && typeof imported.cards === 'object') {
-        _data = {..._defaultData(), ...imported};
+        _data = { ..._defaultData(), ...imported };
         _data.version = STORAGE_VERSION;
         _save();
         return true;

@@ -12,7 +12,11 @@ const SubnettingView = (() => {
   // ---- IPv4 Utility Functions ----
 
   function ipToInt(ip) {
-    return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet), 0) >>> 0;
+    return (
+      ip
+        .split('.')
+        .reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0) >>> 0
+    );
   }
 
   function intToIp(int) {
@@ -26,14 +30,14 @@ const SubnettingView = (() => {
 
   function cidrToMask(cidr) {
     if (cidr === 0) return 0;
-    return (0xFFFFFFFF << (32 - cidr)) >>> 0;
+    return (0xffffffff << (32 - cidr)) >>> 0;
   }
 
   function maskToIp(mask) {
     return intToIp(mask);
   }
 
-  function maskToCidr(maskInt) {
+  function _maskToCidr(maskInt) {
     let cidr = 0;
     let m = maskInt;
     while (m & 0x80000000) {
@@ -61,25 +65,33 @@ const SubnettingView = (() => {
 
   function getHostCount(cidr) {
     if (cidr >= 31) return cidr === 31 ? 2 : 1;
-    return Math.pow(2, 32 - cidr) - 2;
+    return 2 ** (32 - cidr) - 2;
   }
 
   function isPrivateIp(ipInt) {
     // 10.0.0.0/8
-    if ((ipInt & 0xFF000000) === 0x0A000000) return { private: true, range: '10.0.0.0/8 (Klasse A)' };
+    if ((ipInt & 0xff000000) === 0x0a000000)
+      return { private: true, range: '10.0.0.0/8 (Klasse A)' };
     // 172.16.0.0/12
-    if ((ipInt & 0xFFF00000) === 0xAC100000) return { private: true, range: '172.16.0.0/12 (Klasse B)' };
+    if ((ipInt & 0xfff00000) === 0xac100000)
+      return { private: true, range: '172.16.0.0/12 (Klasse B)' };
     // 192.168.0.0/16
-    if ((ipInt & 0xFFFF0000) === 0xC0A80000) return { private: true, range: '192.168.0.0/16 (Klasse C)' };
+    if ((ipInt & 0xffff0000) === 0xc0a80000)
+      return { private: true, range: '192.168.0.0/16 (Klasse C)' };
     // 127.0.0.0/8
-    if ((ipInt & 0xFF000000) === 0x7F000000) return { private: true, range: '127.0.0.0/8 (Loopback)' };
+    if ((ipInt & 0xff000000) === 0x7f000000)
+      return { private: true, range: '127.0.0.0/8 (Loopback)' };
     // 169.254.0.0/16
-    if ((ipInt & 0xFFFF0000) === 0xA9FE0000) return { private: true, range: '169.254.0.0/16 (APIPA/Link-Local)' };
+    if ((ipInt & 0xffff0000) === 0xa9fe0000)
+      return { private: true, range: '169.254.0.0/16 (APIPA/Link-Local)' };
     return { private: false, range: 'Oeffentliche IP-Adresse' };
   }
 
   function ipToBinary(ip) {
-    return ip.split('.').map(o => parseInt(o).toString(2).padStart(8, '0')).join('.');
+    return ip
+      .split('.')
+      .map((o) => parseInt(o, 10).toString(2).padStart(8, '0'))
+      .join('.');
   }
 
   // ---- Random Exercise Generators ----
@@ -147,11 +159,25 @@ const SubnettingView = (() => {
         hostCount: getHostCount(cidr),
         cidrNotation: `${intToIp(networkInt)}/${cidr}`,
       },
-      steps: generateSubnettingSteps(ip, cidr, ipInt, maskInt, networkInt, broadcastInt),
+      steps: generateSubnettingSteps(
+        ip,
+        cidr,
+        ipInt,
+        maskInt,
+        networkInt,
+        broadcastInt
+      ),
     };
   }
 
-  function generateSubnettingSteps(ip, cidr, ipInt, maskInt, networkInt, broadcastInt) {
+  function generateSubnettingSteps(
+    ip,
+    cidr,
+    _ipInt,
+    maskInt,
+    networkInt,
+    broadcastInt
+  ) {
     const ipBin = ipToBinary(ip);
     const maskBin = ipToBinary(maskToIp(maskInt));
     const netBin = ipToBinary(intToIp(networkInt));
@@ -207,7 +233,7 @@ const SubnettingView = (() => {
     const newCidr = baseCidr + bitsNeeded;
     const baseInt = ipToInt(baseIp);
     const newMask = cidrToMask(newCidr);
-    const subnetSize = Math.pow(2, 32 - newCidr);
+    const subnetSize = 2 ** (32 - newCidr);
 
     const subnets = [];
     for (let i = 0; i < numSubnets; i++) {
@@ -236,7 +262,7 @@ const SubnettingView = (() => {
       steps: [
         {
           title: 'Schritt 1: Benoetigte Bits berechnen',
-          text: `Fuer ${numSubnets} Subnetze brauchen wir ${bitsNeeded} zusaetzliche Bits (2^${bitsNeeded} = ${Math.pow(2, bitsNeeded)}).`,
+          text: `Fuer ${numSubnets} Subnetze brauchen wir ${bitsNeeded} zusaetzliche Bits (2^${bitsNeeded} = ${2 ** bitsNeeded}).`,
           detail: `Neue Praefix-Laenge: /${baseCidr} + ${bitsNeeded} = /${newCidr}`,
         },
         {
@@ -247,9 +273,12 @@ const SubnettingView = (() => {
         {
           title: 'Schritt 3: Subnetze berechnen',
           text: `Jedes Subnetz hat ${subnetSize} Adressen (inkl. Netz + Broadcast).`,
-          detail: subnets.map((s, i) =>
-            `Subnetz ${i + 1}: ${s.network}/${newCidr}\n  Bereich: ${s.firstHost} - ${s.lastHost}\n  Broadcast: ${s.broadcast}`
-          ).join('\n\n'),
+          detail: subnets
+            .map(
+              (s, i) =>
+                `Subnetz ${i + 1}: ${s.network}/${newCidr}\n  Bereich: ${s.firstHost} - ${s.lastHost}\n  Broadcast: ${s.broadcast}`
+            )
+            .join('\n\n'),
         },
       ],
     };
@@ -260,17 +289,24 @@ const SubnettingView = (() => {
     // Ensure mix of public and private
     const privateRanges = [
       () => `10.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
-      () => `172.${randomInt(16, 31)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
+      () =>
+        `172.${randomInt(16, 31)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
       () => `192.168.${randomInt(0, 255)}.${randomInt(1, 254)}`,
-      () => `127.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
+      () =>
+        `127.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
       () => `169.254.${randomInt(0, 255)}.${randomInt(1, 254)}`,
     ];
     const publicRanges = [
-      () => `${randomInt(1, 9)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
-      () => `${randomInt(11, 126)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
-      () => `${randomInt(128, 171)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
-      () => `${randomInt(173, 191)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
-      () => `${randomInt(193, 223)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
+      () =>
+        `${randomInt(1, 9)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
+      () =>
+        `${randomInt(11, 126)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
+      () =>
+        `${randomInt(128, 171)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
+      () =>
+        `${randomInt(173, 191)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
+      () =>
+        `${randomInt(193, 223)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`,
     ];
 
     // 3 private + 3 public, shuffled
@@ -291,7 +327,7 @@ const SubnettingView = (() => {
 
     return {
       type: 'iprecognition',
-      ips: ips.map(ip => ({
+      ips: ips.map((ip) => ({
         ip,
         ...isPrivateIp(ipToInt(ip)),
       })),
@@ -309,7 +345,7 @@ const SubnettingView = (() => {
         groups.push('0000');
       } else {
         // Some groups with leading zeros
-        const val = randomInt(0, 0xFFFF);
+        const val = randomInt(0, 0xffff);
         groups.push(val.toString(16).padStart(4, '0'));
       }
     }
@@ -317,10 +353,13 @@ const SubnettingView = (() => {
     const fullAddress = groups.join(':');
 
     // Calculate short form
-    const shortGroups = groups.map(g => g.replace(/^0+/, '') || '0');
+    const shortGroups = groups.map((g) => g.replace(/^0+/, '') || '0');
 
     // Find longest run of consecutive '0' groups for :: replacement
-    let bestStart = -1, bestLen = 0, curStart = -1, curLen = 0;
+    let bestStart = -1,
+      bestLen = 0,
+      curStart = -1,
+      curLen = 0;
     for (let i = 0; i < 8; i++) {
       if (shortGroups[i] === '0') {
         if (curStart === -1) curStart = i;
@@ -341,10 +380,10 @@ const SubnettingView = (() => {
       const after = shortGroups.slice(bestStart + bestLen).join(':');
       shortAddress = `${before}::${after}`;
       if (shortAddress.startsWith('::') && before === '') {
-        shortAddress = '::' + after;
+        shortAddress = `::${after}`;
       }
       if (shortAddress.endsWith('::') && after === '') {
-        shortAddress = before + '::';
+        shortAddress = `${before}::`;
       }
     } else {
       shortAddress = shortGroups.join(':');
@@ -365,9 +404,10 @@ const SubnettingView = (() => {
         },
         {
           title: 'Schritt 2: Laengste Nullgruppe mit :: ersetzen',
-          text: bestLen >= 2
-            ? `Die laengste zusammenhaengende Folge von Null-Gruppen (${bestLen} Gruppen ab Position ${bestStart + 1}) wird durch :: ersetzt.`
-            : 'Keine zusammenhaengende Null-Gruppe mit 2+ Gruppen vorhanden, :: wird nicht verwendet.',
+          text:
+            bestLen >= 2
+              ? `Die laengste zusammenhaengende Folge von Null-Gruppen (${bestLen} Gruppen ab Position ${bestStart + 1}) wird durch :: ersetzt.`
+              : 'Keine zusammenhaengende Null-Gruppe mit 2+ Gruppen vorhanden, :: wird nicht verwendet.',
           detail: `Ergebnis: ${shortAddress}`,
         },
       ],
@@ -412,7 +452,7 @@ const SubnettingView = (() => {
       </div>
     `;
 
-    container.querySelectorAll('.module-tab').forEach(tab => {
+    container.querySelectorAll('.module-tab').forEach((tab) => {
       tab.addEventListener('click', () => {
         currentTab = tab.dataset.tab;
         renderView(container);
@@ -421,10 +461,18 @@ const SubnettingView = (() => {
 
     const content = container.querySelector('#moduleContent');
     switch (currentTab) {
-      case 'subnetting': renderSubnettingTab(content); break;
-      case 'split': renderSplitTab(content); break;
-      case 'iprecognition': renderIpRecognitionTab(content); break;
-      case 'ipv6': renderIpv6Tab(content); break;
+      case 'subnetting':
+        renderSubnettingTab(content);
+        break;
+      case 'split':
+        renderSplitTab(content);
+        break;
+      case 'iprecognition':
+        renderIpRecognitionTab(content);
+        break;
+      case 'ipv6':
+        renderIpv6Tab(content);
+        break;
     }
   }
 
@@ -440,11 +488,13 @@ const SubnettingView = (() => {
   }
 
   function bindDifficultyButtons(container, callback) {
-    container.querySelectorAll('.module-diff-btn').forEach(btn => {
+    container.querySelectorAll('.module-diff-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        container.querySelectorAll('.module-diff-btn').forEach(b => b.classList.remove('active'));
+        container.querySelectorAll('.module-diff-btn').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
-        callback(parseInt(btn.dataset.diff));
+        callback(parseInt(btn.dataset.diff, 10));
       });
     });
   }
@@ -511,17 +561,21 @@ const SubnettingView = (() => {
         renderExercise();
       });
 
-      container.querySelector('#checkBtn').addEventListener('click', () => checkSubnetting(container));
+      container
+        .querySelector('#checkBtn')
+        .addEventListener('click', () => checkSubnetting(container));
       container.querySelector('#newBtn').addEventListener('click', () => {
         currentExercise = generateSubnettingExercise(difficulty);
         renderExercise();
       });
-      container.querySelector('#showSolutionBtn').addEventListener('click', () => {
-        showSolution(container, currentExercise);
-      });
+      container
+        .querySelector('#showSolutionBtn')
+        .addEventListener('click', () => {
+          showSolution(container, currentExercise);
+        });
 
       // Enter key to check
-      container.querySelectorAll('.module-input').forEach(input => {
+      container.querySelectorAll('.module-input').forEach((input) => {
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') checkSubnetting(container);
         });
@@ -540,24 +594,34 @@ const SubnettingView = (() => {
 
     const fields = [
       { id: 'answerMask', correct: sol.subnetMask, label: 'Subnetzmaske' },
-      { id: 'answerNetwork', correct: sol.networkAddress, label: 'Netzadresse' },
+      {
+        id: 'answerNetwork',
+        correct: sol.networkAddress,
+        label: 'Netzadresse',
+      },
       { id: 'answerBroadcast', correct: sol.broadcast, label: 'Broadcast' },
       { id: 'answerFirstHost', correct: sol.firstHost, label: 'Erster Host' },
       { id: 'answerLastHost', correct: sol.lastHost, label: 'Letzter Host' },
-      { id: 'answerHostCount', correct: String(sol.hostCount), label: 'Anzahl Hosts' },
+      {
+        id: 'answerHostCount',
+        correct: String(sol.hostCount),
+        label: 'Anzahl Hosts',
+      },
     ];
 
     let allCorrect = true;
     const results = [];
 
-    fields.forEach(f => {
+    fields.forEach((f) => {
       const input = container.querySelector(`#${f.id}`);
       const userVal = input.value.trim();
       const isCorrect = userVal === f.correct;
 
       input.classList.remove('module-input-correct', 'module-input-wrong');
       if (userVal) {
-        input.classList.add(isCorrect ? 'module-input-correct' : 'module-input-wrong');
+        input.classList.add(
+          isCorrect ? 'module-input-correct' : 'module-input-wrong'
+        );
       }
 
       if (!isCorrect) allCorrect = false;
@@ -572,11 +636,11 @@ const SubnettingView = (() => {
         </div>
       `;
     } else {
-      const wrongOnes = results.filter(r => !r.isCorrect);
+      const wrongOnes = results.filter((r) => !r.isCorrect);
       feedbackEl.innerHTML = `
         <div class="module-feedback module-feedback-error">
           ${wrongOnes.length} von ${fields.length} Feldern falsch oder leer.
-          ${wrongOnes.map(r => `<br><strong>${r.label}:</strong> ${r.userVal ? `Deine Antwort: ${escapeHtml(r.userVal)}` : 'Nicht ausgefuellt'} &rarr; Richtig: ${r.correct}`).join('')}
+          ${wrongOnes.map((r) => `<br><strong>${r.label}:</strong> ${r.userVal ? `Deine Antwort: ${escapeHtml(r.userVal)}` : 'Nicht ausgefuellt'} &rarr; Richtig: ${r.correct}`).join('')}
         </div>
       `;
     }
@@ -619,12 +683,16 @@ const SubnettingView = (() => {
 
           <p class="module-exercise-sublabel">Trage die Netzadressen der ${ex.numSubnets} Subnetze ein:</p>
           <div class="module-input-grid">
-            ${ex.solution.subnets.map((s, i) => `
+            ${ex.solution.subnets
+              .map(
+                (s, i) => `
               <div class="module-input-group">
                 <label class="module-label">Subnetz ${i + 1} — Netzadresse</label>
                 <input type="text" class="module-input subnet-answer" data-index="${i}" placeholder="z.B. ${i === 0 ? s.network : '...'}" autocomplete="off" spellcheck="false">
               </div>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
 
           <div class="module-actions">
@@ -644,16 +712,20 @@ const SubnettingView = (() => {
         renderExercise();
       });
 
-      container.querySelector('#checkBtn').addEventListener('click', () => checkSplit(container));
+      container
+        .querySelector('#checkBtn')
+        .addEventListener('click', () => checkSplit(container));
       container.querySelector('#newBtn').addEventListener('click', () => {
         currentExercise = generateSplitExercise(difficulty);
         renderExercise();
       });
-      container.querySelector('#showSolutionBtn').addEventListener('click', () => {
-        showSolution(container, currentExercise);
-      });
+      container
+        .querySelector('#showSolutionBtn')
+        .addEventListener('click', () => {
+          showSolution(container, currentExercise);
+        });
 
-      container.querySelectorAll('.module-input').forEach(input => {
+      container.querySelectorAll('.module-input').forEach((input) => {
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') checkSplit(container);
         });
@@ -677,33 +749,65 @@ const SubnettingView = (() => {
     const cidrVal = cidrInput.value.trim().replace(/^\//, '');
     const cidrCorrect = cidrVal === String(sol.newCidr);
     cidrInput.classList.remove('module-input-correct', 'module-input-wrong');
-    if (cidrVal) cidrInput.classList.add(cidrCorrect ? 'module-input-correct' : 'module-input-wrong');
-    if (!cidrCorrect) { allCorrect = false; errors.push(`Praefix-Laenge: /${cidrVal || '?'} &rarr; Richtig: /${sol.newCidr}`); }
+    if (cidrVal)
+      cidrInput.classList.add(
+        cidrCorrect ? 'module-input-correct' : 'module-input-wrong'
+      );
+    if (!cidrCorrect) {
+      allCorrect = false;
+      errors.push(
+        `Praefix-Laenge: /${cidrVal || '?'} &rarr; Richtig: /${sol.newCidr}`
+      );
+    }
 
     // Check mask
     const maskInput = container.querySelector('#answerNewMask');
     const maskVal = maskInput.value.trim();
     const maskCorrect = maskVal === sol.newMask;
     maskInput.classList.remove('module-input-correct', 'module-input-wrong');
-    if (maskVal) maskInput.classList.add(maskCorrect ? 'module-input-correct' : 'module-input-wrong');
-    if (!maskCorrect) { allCorrect = false; errors.push(`Subnetzmaske: ${maskVal || '?'} &rarr; Richtig: ${sol.newMask}`); }
+    if (maskVal)
+      maskInput.classList.add(
+        maskCorrect ? 'module-input-correct' : 'module-input-wrong'
+      );
+    if (!maskCorrect) {
+      allCorrect = false;
+      errors.push(
+        `Subnetzmaske: ${maskVal || '?'} &rarr; Richtig: ${sol.newMask}`
+      );
+    }
 
     // Check hosts
     const hostsInput = container.querySelector('#answerHostsPerSubnet');
     const hostsVal = hostsInput.value.trim();
     const hostsCorrect = hostsVal === String(sol.subnets[0].hosts);
     hostsInput.classList.remove('module-input-correct', 'module-input-wrong');
-    if (hostsVal) hostsInput.classList.add(hostsCorrect ? 'module-input-correct' : 'module-input-wrong');
-    if (!hostsCorrect) { allCorrect = false; errors.push(`Hosts pro Subnetz: ${hostsVal || '?'} &rarr; Richtig: ${sol.subnets[0].hosts}`); }
+    if (hostsVal)
+      hostsInput.classList.add(
+        hostsCorrect ? 'module-input-correct' : 'module-input-wrong'
+      );
+    if (!hostsCorrect) {
+      allCorrect = false;
+      errors.push(
+        `Hosts pro Subnetz: ${hostsVal || '?'} &rarr; Richtig: ${sol.subnets[0].hosts}`
+      );
+    }
 
     // Check subnet addresses
-    container.querySelectorAll('.subnet-answer').forEach(input => {
-      const idx = parseInt(input.dataset.index);
+    container.querySelectorAll('.subnet-answer').forEach((input) => {
+      const idx = parseInt(input.dataset.index, 10);
       const val = input.value.trim();
       const correct = val === sol.subnets[idx].network;
       input.classList.remove('module-input-correct', 'module-input-wrong');
-      if (val) input.classList.add(correct ? 'module-input-correct' : 'module-input-wrong');
-      if (!correct) { allCorrect = false; errors.push(`Subnetz ${idx + 1}: ${val || '?'} &rarr; Richtig: ${sol.subnets[idx].network}`); }
+      if (val)
+        input.classList.add(
+          correct ? 'module-input-correct' : 'module-input-wrong'
+        );
+      if (!correct) {
+        allCorrect = false;
+        errors.push(
+          `Subnetz ${idx + 1}: ${val || '?'} &rarr; Richtig: ${sol.subnets[idx].network}`
+        );
+      }
     });
 
     const feedbackEl = container.querySelector('#feedback');
@@ -712,7 +816,7 @@ const SubnettingView = (() => {
     } else {
       feedbackEl.innerHTML = `
         <div class="module-feedback module-feedback-error">
-          ${errors.length} Fehler:<br>${errors.map(e => `<strong>${e}</strong>`).join('<br>')}
+          ${errors.length} Fehler:<br>${errors.map((e) => `<strong>${e}</strong>`).join('<br>')}
         </div>
       `;
     }
@@ -737,7 +841,9 @@ const SubnettingView = (() => {
           </p>
 
           <div class="module-ip-list">
-            ${ex.ips.map((item, i) => `
+            ${ex.ips
+              .map(
+                (item, i) => `
               <div class="module-ip-row" data-index="${i}">
                 <code class="module-ip-addr">${item.ip}</code>
                 <div class="module-ip-btns">
@@ -746,7 +852,9 @@ const SubnettingView = (() => {
                 </div>
                 <span class="module-ip-result" id="ipResult${i}"></span>
               </div>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
 
           <div class="module-actions">
@@ -759,15 +867,19 @@ const SubnettingView = (() => {
       `;
 
       // Toggle selection
-      container.querySelectorAll('.module-ip-btn').forEach(btn => {
+      container.querySelectorAll('.module-ip-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
           const row = btn.closest('.module-ip-row');
-          row.querySelectorAll('.module-ip-btn').forEach(b => b.classList.remove('selected'));
+          row.querySelectorAll('.module-ip-btn').forEach((b) => {
+            b.classList.remove('selected');
+          });
           btn.classList.add('selected');
         });
       });
 
-      container.querySelector('#checkBtn').addEventListener('click', () => checkIpRecognition(container));
+      container
+        .querySelector('#checkBtn')
+        .addEventListener('click', () => checkIpRecognition(container));
       container.querySelector('#newBtn').addEventListener('click', () => {
         currentExercise = generateIpRecognitionExercise();
         renderExercise();
@@ -804,7 +916,7 @@ const SubnettingView = (() => {
         resultEl.className = 'module-ip-result module-ip-result-wrong';
       }
 
-      row.querySelectorAll('.module-ip-btn').forEach(b => {
+      row.querySelectorAll('.module-ip-btn').forEach((b) => {
         b.disabled = true;
         const choice = b.dataset.choice;
         if ((choice === 'private') === item.private) {
@@ -858,18 +970,24 @@ const SubnettingView = (() => {
         </div>
       `;
 
-      container.querySelector('#checkBtn').addEventListener('click', () => checkIpv6(container));
+      container
+        .querySelector('#checkBtn')
+        .addEventListener('click', () => checkIpv6(container));
       container.querySelector('#newBtn').addEventListener('click', () => {
         currentExercise = generateIpv6Exercise();
         renderExercise();
       });
-      container.querySelector('#showSolutionBtn').addEventListener('click', () => {
-        showSolution(container, currentExercise);
-      });
+      container
+        .querySelector('#showSolutionBtn')
+        .addEventListener('click', () => {
+          showSolution(container, currentExercise);
+        });
 
-      container.querySelector('#answerIpv6')?.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') checkIpv6(container);
-      });
+      container
+        .querySelector('#answerIpv6')
+        ?.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') checkIpv6(container);
+        });
 
       container.querySelector('#answerIpv6')?.focus();
     }
@@ -887,7 +1005,9 @@ const SubnettingView = (() => {
     const isCorrect = normalizeIpv6(userVal) === normalizeIpv6(correctVal);
 
     input.classList.remove('module-input-correct', 'module-input-wrong');
-    input.classList.add(isCorrect ? 'module-input-correct' : 'module-input-wrong');
+    input.classList.add(
+      isCorrect ? 'module-input-correct' : 'module-input-wrong'
+    );
 
     const feedbackEl = container.querySelector('#feedback');
     if (isCorrect) {
@@ -905,7 +1025,7 @@ const SubnettingView = (() => {
 
   function normalizeIpv6(addr) {
     // Expand :: to full form for comparison
-    let parts = addr.split('::');
+    const parts = addr.split('::');
     let groups;
     if (parts.length === 2) {
       const left = parts[0] ? parts[0].split(':') : [];
@@ -915,7 +1035,7 @@ const SubnettingView = (() => {
     } else {
       groups = addr.split(':');
     }
-    return groups.map(g => parseInt(g || '0', 16).toString(16)).join(':');
+    return groups.map((g) => parseInt(g || '0', 16).toString(16)).join(':');
   }
 
   // ---- Shared UI Functions ----
@@ -927,13 +1047,17 @@ const SubnettingView = (() => {
     stepsEl.innerHTML = `
       <div class="module-steps">
         <h3 class="module-steps-title">Loesungsweg</h3>
-        ${steps.map(s => `
+        ${steps
+          .map(
+            (s) => `
           <div class="module-step">
             <div class="module-step-title">${s.title}</div>
             <div class="module-step-text">${s.text}</div>
             ${s.detail ? `<pre class="module-step-detail">${escapeHtml(s.detail)}</pre>` : ''}
           </div>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
     `;
   }
@@ -959,13 +1083,22 @@ const SubnettingView = (() => {
     } else if (exercise.type === 'split') {
       const sol = exercise.solution;
       const cidrInput = container.querySelector('#answerNewCidr');
-      if (cidrInput) { cidrInput.value = `/${sol.newCidr}`; cidrInput.classList.add('module-input-correct'); }
+      if (cidrInput) {
+        cidrInput.value = `/${sol.newCidr}`;
+        cidrInput.classList.add('module-input-correct');
+      }
       const maskInput = container.querySelector('#answerNewMask');
-      if (maskInput) { maskInput.value = sol.newMask; maskInput.classList.add('module-input-correct'); }
+      if (maskInput) {
+        maskInput.value = sol.newMask;
+        maskInput.classList.add('module-input-correct');
+      }
       const hostsInput = container.querySelector('#answerHostsPerSubnet');
-      if (hostsInput) { hostsInput.value = String(sol.subnets[0].hosts); hostsInput.classList.add('module-input-correct'); }
-      container.querySelectorAll('.subnet-answer').forEach(input => {
-        const idx = parseInt(input.dataset.index);
+      if (hostsInput) {
+        hostsInput.value = String(sol.subnets[0].hosts);
+        hostsInput.classList.add('module-input-correct');
+      }
+      container.querySelectorAll('.subnet-answer').forEach((input) => {
+        const idx = parseInt(input.dataset.index, 10);
         input.value = sol.subnets[idx].network;
         input.classList.add('module-input-correct');
       });
@@ -986,9 +1119,9 @@ const SubnettingView = (() => {
     return div.innerHTML;
   }
 
-  function setupKeyboard(container) {
+  function setupKeyboard(_container) {
     cleanup();
-    keyHandler = (e) => {
+    keyHandler = (_e) => {
       // No global shortcuts needed for this module (inputs handle Enter)
     };
   }

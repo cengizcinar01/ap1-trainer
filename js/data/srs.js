@@ -29,7 +29,7 @@ const SRS = (() => {
    * Calculate the next state based on current state and user rating.
    */
   function calculateNext(currentState, rating) {
-    const state = {...currentState};
+    const state = { ...currentState };
 
     if (![RATING.FORGOT, RATING.PARTIAL, RATING.KNEW].includes(rating)) {
       throw new Error(`Invalid rating: ${rating}. Must be 1, 2, or 3.`);

@@ -2,15 +2,15 @@
 // categories.js — Topic/subtopic browser view with card preview
 // ============================================================
 
+import CardRenderer from '../components/cardRenderer.js';
+import ProgressBar from '../components/progressBar.js';
 import DataLoader from '../data/dataLoader.js';
 import StorageManager from '../data/storageManager.js';
-import ProgressBar from '../components/progressBar.js';
-import CardRenderer from '../components/cardRenderer.js';
 
 const CategoriesView = (() => {
   let activeCardPreview = null; // Track currently shown card preview
   let keyHandler = null;
-  let clickHandler = null; // Track the click handler to properly remove it
+  let _clickHandler = null; // Track the click handler to properly remove it
 
   function render(container) {
     cleanup();
@@ -85,7 +85,9 @@ const CategoriesView = (() => {
 
     // Highlight the previously clicked subtopic
     if (highlightSubtopic) {
-      const subtopicEl = container.querySelector(`[data-subtopic="${CSS.escape(highlightSubtopic)}"]`);
+      const subtopicEl = container.querySelector(
+        `[data-subtopic="${CSS.escape(highlightSubtopic)}"]`
+      );
       if (subtopicEl) {
         subtopicEl.classList.add('subtopic-highlight');
         subtopicEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -136,14 +138,14 @@ const CategoriesView = (() => {
           <div class="accordion-body-inner">
             <div class="mb-4">
               ${ProgressBar.createMulti(
-      {
-        knew: topicStat.knew,
-        partial: topicStat.partial,
-        forgot: topicStat.forgot,
-      },
-      topic.cardCount,
-      'progress-bar-sm',
-    )}
+                {
+                  knew: topicStat.knew,
+                  partial: topicStat.partial,
+                  forgot: topicStat.forgot,
+                },
+                topic.cardCount,
+                'progress-bar-sm'
+              )}
             </div>
             <div class="mb-4">
               <a href="#/learn/${topicParam}" class="btn btn-primary btn-sm">Lernen</a>
@@ -157,8 +159,8 @@ const CategoriesView = (() => {
 
   function renderSubtopicAccordion(subtopic) {
     const progress = StorageManager.getProgress(subtopic.cards);
-    const subtopicParam = encodeURIComponent(subtopic.name);
-    const topicParam = encodeURIComponent(subtopic.topic);
+    const _subtopicParam = encodeURIComponent(subtopic.name);
+    const _topicParam = encodeURIComponent(subtopic.topic);
     const cards = subtopic.cards || [];
 
     return `
@@ -189,9 +191,10 @@ const CategoriesView = (() => {
   }
 
   function renderCardPreviewItem(card, index) {
-    const questionPreview = card.question.length > 60
-      ? card.question.substring(0, 60) + '...'
-      : card.question;
+    const questionPreview =
+      card.question.length > 60
+        ? `${card.question.substring(0, 60)}...`
+        : card.question;
 
     return `
       <div class="card-preview-item" data-card-id="${card.id}">
@@ -202,7 +205,7 @@ const CategoriesView = (() => {
     `;
   }
 
-  function showCardPreview(container, cardId) {
+  function showCardPreview(_container, cardId) {
     const card = DataLoader.getCardById(parseInt(cardId, 10));
     if (!card) {
       console.error('Card not found for id:', cardId);
@@ -283,7 +286,7 @@ const CategoriesView = (() => {
     closeCardPreview();
     // Note: clickHandler is attached to container which gets replaced,
     // so it's automatically cleaned up when container.innerHTML is set
-    clickHandler = null;
+    _clickHandler = null;
   }
 
   return { render, cleanup };

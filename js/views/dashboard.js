@@ -2,10 +2,10 @@
 // dashboard.js — Home/Dashboard view with integrated statistics
 // ============================================================
 
-import DataLoader from '../data/dataLoader.js';
-import StorageManager from '../data/storageManager.js';
 import ProgressBar from '../components/progressBar.js';
 import StatsChart from '../components/statsChart.js';
+import DataLoader from '../data/dataLoader.js';
+import StorageManager from '../data/storageManager.js';
 
 const DashboardView = (() => {
   function render(container) {
@@ -74,7 +74,7 @@ const DashboardView = (() => {
                 ],
                 allCards.length,
                 `${stats.knewCards}`,
-                'Gewusst',
+                'Gewusst'
               )}
             </div>
             <div class="chart-legend">
@@ -175,13 +175,13 @@ const DashboardView = (() => {
             forgot: topicStat.forgot,
           },
           topic.cardCount,
-          'progress-bar-sm',
+          'progress-bar-sm'
         )}
       </a>
     `;
   }
 
-  return {render};
+  return { render };
 })();
 
 export default DashboardView;

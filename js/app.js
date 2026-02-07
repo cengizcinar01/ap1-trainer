@@ -2,16 +2,15 @@
 // app.js — Application initialization and route setup
 // ============================================================
 
-import Router from './router.js';
+import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
 import StorageManager from './data/storageManager.js';
-import Sidebar from './components/sidebar.js';
-import DashboardView from './views/dashboard.js';
+import SubnettingView from './modules/subnetting.js';
+import Router from './router.js';
 import CategoriesView from './views/categories.js';
+import DashboardView from './views/dashboard.js';
 import FlashcardView from './views/flashcard.js';
 import ReviewView from './views/review.js';
-import SubnettingView from './modules/subnetting.js';
-import NetzplanView from './modules/netzplan.js';
 
 const App = (() => {
   let contentEl = null;
@@ -104,13 +103,6 @@ const App = (() => {
       Sidebar.updateActive();
     });
 
-    Router.on('/modules/netzplan', () => {
-      cleanupCurrentView();
-      currentCleanup = NetzplanView.cleanup;
-      NetzplanView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
     Router.on('/statistics', () => {
       // Redirect to dashboard (statistics are now integrated there)
       window.location.hash = '#/';
@@ -141,7 +133,7 @@ const App = (() => {
     window.scrollTo(0, 0);
   }
 
-  return {init};
+  return { init };
 })();
 
 // Start the app when DOM is ready

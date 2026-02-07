@@ -4,11 +4,11 @@
 // Each card rated once, progress saved immediately.
 // ============================================================
 
-import DataLoader from '../data/dataLoader.js';
-import StorageManager from '../data/storageManager.js';
 import CardRenderer from '../components/cardRenderer.js';
 import ProgressBar from '../components/progressBar.js';
 import Sidebar from '../components/sidebar.js';
+import DataLoader from '../data/dataLoader.js';
+import StorageManager from '../data/storageManager.js';
 
 const ReviewView = (() => {
   let sessionCards = [];
@@ -84,7 +84,7 @@ const ReviewView = (() => {
 
     container.querySelectorAll('.rating-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        handleRating(container, parseInt(btn.dataset.rating));
+        handleRating(container, parseInt(btn.dataset.rating, 10));
       });
     });
   }
@@ -109,14 +109,14 @@ const ReviewView = (() => {
     sessionResults.total++;
 
     const pressedBtn = container.querySelector(
-      `.rating-btn[data-rating="${rating}"]`,
+      `.rating-btn[data-rating="${rating}"]`
     );
     if (pressedBtn) pressedBtn.classList.add('rating-pressed');
 
     const flashcardEl = container.querySelector('#flashcard');
     if (flashcardEl)
       flashcardEl.classList.add(
-        rating === 3 ? 'card-exit-right' : 'card-exit-left',
+        rating === 3 ? 'card-exit-right' : 'card-exit-left'
       );
 
     // Go directly to next card without animation delay
