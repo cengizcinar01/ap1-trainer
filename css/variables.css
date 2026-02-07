@@ -147,9 +147,35 @@
   --code-border: #e5e7eb;
   --code-text: #1f2937;
 
-  /* Semantic Colors (adjusted for light mode contrast) */
-  --success-bg: rgba(16, 185, 129, 0.1);
-  --warning-bg: rgba(245, 158, 11, 0.1);
-  --danger-bg: rgba(239, 68, 68, 0.1);
-  --info-bg: rgba(59, 130, 246, 0.1);
+  /* Semantic Colors (adjusted for light mode - softer/less neon) */
+  /* Semantic Colors (Soft UI / Tinted) */
+  /* Text/Icon colors (darker/saturated) */
+  --success: #059669;
+  /* Emerald 600 */
+  --warning: #d97706;
+  /* Amber 600 */
+  --danger: #dc2626;
+  /* Red 600 */
+  --info: #2563eb;
+  /* Blue 600 */
+
+  /* Background colors (soft/pastel) */
+  --success-bg: #d1fae5;
+  /* Emerald 100 */
+  --warning-bg: #fef3c7;
+  /* Amber 100 */
+  --danger-bg: #fee2e2;
+  /* Red 100 */
+  --info-bg: #dbeafe;
+  /* Blue 100 */
+
+  --success-hover: #10b981;
+  --warning-hover: #f59e0b;
+  --danger-hover: #ef4444;
+
+
+
+  /* Text colors on light bg needs to be darker */
+  --text-tertiary: #6b7280;
+  --text-secondary: #4b5563;
 }

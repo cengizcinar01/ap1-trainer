@@ -14,10 +14,7 @@
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-  height: 100%;
-  overscroll-behavior: none;
-  /* Prevent bounce/pull-to-refresh */
+  /* Removed fixed positioning to restore native scrolling */
 }
 
 body {
@@ -28,14 +25,9 @@ body {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  height: 100%;
-  overscroll-behavior: none;
-  /* Prevent bounce */
+  /* Removed fixed positioning to restore native scrolling */
   -webkit-tap-highlight-color: transparent;
-  /* Remove grey tap box */
   touch-action: manipulation;
-  /* Faster clicks */
 }
 
 h1,

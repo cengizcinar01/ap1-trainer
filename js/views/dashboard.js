@@ -63,7 +63,7 @@ const DashboardView = (() => {
       allCards.length,
       'progress-bar-lg',
     )}
-          <div class="flex gap-6 mt-4">
+          <div class="grid-2 grid-4-md gap-4 mt-4">
             <div class="flex items-center gap-2">
               <span class="legend-dot" style="background:var(--success)"></span>
               <span class="text-xs text-secondary">Gewusst ${stats.knewCards}</span>
@@ -74,7 +74,7 @@ const DashboardView = (() => {
             </div>
             <div class="flex items-center gap-2">
               <span class="legend-dot" style="background:var(--danger)"></span>
-              <span class="text-xs text-secondary">Nicht gewusst ${stats.forgotCards}</span>
+              <span class="text-xs text-secondary">N. gewusst ${stats.forgotCards}</span>
             </div>
             <div class="flex items-center gap-2">
               <span class="legend-dot" style="background:var(--bg-tertiary)"></span>

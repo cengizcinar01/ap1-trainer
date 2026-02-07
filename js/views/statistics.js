@@ -56,32 +56,66 @@ const StatisticsView = (() => {
               <h3 class="card-title">Kartenstatus</h3>
             </div>
             <div class="card-body">
-              ${StatsChart.donutChart(
-                [
-                  {
-                    value: stats.knewCards,
-                    color: 'var(--success)',
-                    label: 'Gewusst',
-                  },
-                  {
-                    value: stats.partialCards,
-                    color: 'var(--warning)',
-                    label: 'Unsicher',
-                  },
-                  {
-                    value: stats.forgotCards,
-                    color: 'var(--danger)',
-                    label: 'Nicht gewusst',
-                  },
-                  {
-                    value: stats.newCards,
-                    color: 'var(--bg-tertiary)',
-                    label: 'Neu',
-                  },
-                ],
-                allCards.length,
-                `${overallProgress}%`,
-              )}
+              <div class="donut-chart mb-6">
+                ${StatsChart.donutChart(
+      [
+        {
+          value: stats.knewCards,
+          color: 'var(--success)',
+          label: 'Gewusst',
+        },
+        {
+          value: stats.partialCards,
+          color: 'var(--warning)',
+          label: 'Unsicher',
+        },
+        {
+          value: stats.forgotCards,
+          color: 'var(--danger)',
+          label: 'Nicht gewusst',
+        },
+        {
+          value: stats.newCards,
+          color: 'var(--bg-tertiary)',
+          label: 'Neu',
+        },
+      ],
+      allCards.length,
+      `${overallProgress}%`,
+    )}
+              </div>
+
+              <!-- New Grid Legend -->
+              <div class="grid-2">
+                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
+                  <div class="w-3 h-3 rounded-full" style="background: var(--success);"></div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-tertiary">Gewusst</span>
+                    <span class="text-sm font-bold text-primary">${stats.knewCards}</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
+                  <div class="w-3 h-3 rounded-full" style="background: var(--warning);"></div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-tertiary">Unsicher</span>
+                    <span class="text-sm font-bold text-primary">${stats.partialCards}</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
+                  <div class="w-3 h-3 rounded-full" style="background: var(--danger);"></div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-tertiary">Nicht gewusst</span>
+                    <span class="text-sm font-bold text-primary">${stats.forgotCards}</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--bg-tertiary);">
+                  <div class="w-3 h-3 rounded-full" style="background: var(--text-tertiary);"></div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-tertiary">Neu</span>
+                    <span class="text-sm font-bold text-primary">${stats.newCards}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -153,19 +187,19 @@ const StatisticsView = (() => {
           <span class="text-xs font-semibold text-secondary">${progress}%</span>
         </div>
         ${ProgressBar.createMulti(
-          {
-            knew: topicStat.knew,
-            partial: topicStat.partial,
-            forgot: topicStat.forgot,
-          },
-          topic.cardCount,
-          'progress-bar-sm',
-        )}
+      {
+        knew: topicStat.knew,
+        partial: topicStat.partial,
+        forgot: topicStat.forgot,
+      },
+      topic.cardCount,
+      'progress-bar-sm',
+    )}
       </div>
     `;
   }
 
-  return {render};
+  return { render };
 })();
 
 export default StatisticsView;

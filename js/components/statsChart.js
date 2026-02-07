@@ -17,9 +17,9 @@ const StatsChart = (() => {
     return `
       <div class="bar-chart">
         ${data
-          .map((item) => {
-            const pct = (item.value / maxVal) * 100;
-            return `
+        .map((item) => {
+          const pct = (item.value / maxVal) * 100;
+          return `
             <div class="bar-chart-row">
               <span class="bar-chart-label">${item.label}</span>
               <div class="bar-chart-bar-wrapper">
@@ -28,8 +28,8 @@ const StatsChart = (() => {
               <span class="bar-chart-value">${item.value}</span>
             </div>
           `;
-          })
-          .join('')}
+        })
+        .join('')}
       </div>
     `;
   }
@@ -88,16 +88,16 @@ const StatsChart = (() => {
         </div>
         <div class="donut-chart-legend">
           ${segments
-            .map(
-              (seg) => `
+        .map(
+          (seg) => `
             <div class="donut-chart-legend-item">
               <span class="donut-chart-legend-dot" style="background: ${seg.color}"></span>
               <span class="donut-chart-legend-label">${seg.label}</span>
               <span class="donut-chart-legend-value">${seg.value}</span>
             </div>
           `,
-            )
-            .join('')}
+        )
+        .join('')}
         </div>
       </div>
     `;
@@ -130,9 +130,9 @@ const StatsChart = (() => {
       <div class="activity-chart">
         <div class="activity-chart-bars">
           ${days
-            .map((day) => {
-              const height = Math.max(4, (day.value / maxVal) * 100);
-              return `
+        .map((day) => {
+          const height = Math.max(4, (day.value / maxVal) * 100);
+          return `
               <div class="activity-chart-col">
                 <div class="activity-chart-bar-wrapper">
                   <div class="activity-chart-bar ${day.isToday ? 'today' : ''}"
@@ -144,8 +144,8 @@ const StatsChart = (() => {
                 <span class="activity-chart-count">${day.value}</span>
               </div>
             `;
-            })
-            .join('')}
+        })
+        .join('')}
         </div>
       </div>
     `;

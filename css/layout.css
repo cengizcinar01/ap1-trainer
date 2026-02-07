@@ -5,7 +5,10 @@
 /* --- App Layout --- */
 .app {
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
+  /* Use dynamic viewport height */
+  width: 100%;
+  /* overflow: hidden; Removed to allow body scroll backup */
 }
 
 /* --- Sidebar --- */
@@ -14,7 +17,7 @@
   top: 0;
   left: 0;
   width: var(--sidebar-width);
-  height: 100vh;
+  height: 100%;
   background: var(--bg-secondary);
   border-right: 1px solid var(--border-color);
   display: flex;
@@ -182,8 +185,11 @@
   flex: 1;
   margin-left: var(--sidebar-width);
   min-height: 100vh;
+  /* Ensure full height background */
   display: flex;
   flex-direction: column;
+  /* Removed overflow/height/scroll properties to allow native window scrolling */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .page-content {
@@ -331,15 +337,29 @@
     display: block;
   }
 
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 769px) {
+  .grid-4-md {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
   .main-content {
     margin-left: 0;
     padding-top: 52px;
-    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+    /* No position/height hacks needed for window scroll */
+    z-index: 1;
   }
 
   .page-content {
     padding: var(--space-4);
-    overflow-x: hidden;
+    /* Allow page-content to scroll if main-content scrolls */
   }
 
   .page-title {

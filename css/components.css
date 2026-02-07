@@ -33,30 +33,34 @@
 }
 
 .btn-success {
-  background: var(--success);
-  color: white;
+  background: var(--success-bg);
+  color: var(--success);
 }
 
 .btn-success:hover {
-  background: var(--success-hover);
+  background: var(--success-bg);
+  filter: brightness(0.95);
 }
 
 .btn-warning {
-  background: var(--warning);
-  color: var(--text-inverse);
+  background: var(--warning-bg);
+  color: var(--warning);
+  /* Ensure text color matches variable */
 }
 
 .btn-warning:hover {
-  background: var(--warning-hover);
+  background: var(--warning-bg);
+  filter: brightness(0.95);
 }
 
 .btn-danger {
-  background: var(--danger);
-  color: white;
+  background: var(--danger-bg);
+  color: var(--danger);
 }
 
 .btn-danger:hover {
-  background: var(--danger-hover);
+  background: var(--danger-bg);
+  filter: brightness(0.95);
 }
 
 .btn-ghost {
