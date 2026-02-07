@@ -506,12 +506,23 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.subtopic-item-left>div {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .subtopic-item-name {
   font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .subtopic-item-count {

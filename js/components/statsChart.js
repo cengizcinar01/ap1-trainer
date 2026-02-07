@@ -4,47 +4,17 @@
 
 const StatsChart = (() => {
   /**
-   * Render a simple horizontal bar chart.
-   *
-   * @param {Array} data — [{ label, value, maxValue, color }]
-   * @returns {string}
-   */
-  function barChart(data) {
-    if (!data || data.length === 0) return '';
-
-    const maxVal = Math.max(...data.map((d) => d.maxValue || d.value), 1);
-
-    return `
-      <div class="bar-chart">
-        ${data
-        .map((item) => {
-          const pct = (item.value / maxVal) * 100;
-          return `
-            <div class="bar-chart-row">
-              <span class="bar-chart-label">${item.label}</span>
-              <div class="bar-chart-bar-wrapper">
-                <div class="bar-chart-bar" style="width: ${pct}%; background: ${item.color || 'var(--accent-primary)'}"></div>
-              </div>
-              <span class="bar-chart-value">${item.value}</span>
-            </div>
-          `;
-        })
-        .join('')}
-      </div>
-    `;
-  }
-
-  /**
    * Render a donut/ring chart using SVG.
    *
    * @param {Array} segments — [{ value, color, label }]
    * @param {number} total
    * @param {string} centerText
+   * @param {string} centerLabel
    * @returns {string}
    */
-  function donutChart(segments, total, centerText) {
-    const size = 160;
-    const strokeWidth = 18;
+  function donutChart(segments, total, centerText, centerLabel = 'Gesamt') {
+    const size = 200;
+    const strokeWidth = 20;
     const radius = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * radius;
     let offset = 0;
@@ -53,18 +23,18 @@ const StatsChart = (() => {
       .map((seg) => {
         const pct = total > 0 ? seg.value / total : 0;
         const dashLength = circumference * pct;
-        const dashOffset = circumference * (1 - pct) + offset * circumference;
+        // Ensure small segments are visible
+        const renderLength = dashLength > 0 && dashLength < 1 ? 1 : dashLength;
+
         const path = `
         <circle
           cx="${size / 2}" cy="${size / 2}" r="${radius}"
           fill="none"
           stroke="${seg.color}"
           stroke-width="${strokeWidth}"
-          stroke-dasharray="${dashLength} ${circumference - dashLength}"
+          stroke-dasharray="${renderLength} ${circumference - renderLength}"
           stroke-dashoffset="${-offset * circumference}"
-          stroke-linecap="butt"
-          transform="rotate(-90 ${size / 2} ${size / 2})"
-          style="transition: stroke-dasharray 0.6s ease, stroke-dashoffset 0.6s ease;"
+          stroke-linecap="round"
         />
       `;
         offset += pct;
@@ -74,17 +44,19 @@ const StatsChart = (() => {
 
     return `
       <div class="donut-chart">
-        <svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
+        <svg viewBox="0 0 ${size} ${size}">
           <circle
             cx="${size / 2}" cy="${size / 2}" r="${radius}"
             fill="none"
             stroke="var(--bg-tertiary)"
             stroke-width="${strokeWidth}"
+            opacity="0.3"
           />
           ${paths}
         </svg>
-        <div class="donut-chart-center">
-          <div class="donut-chart-value">${centerText}</div>
+        <div class="donut-center">
+          <div class="donut-center-val">${centerText}</div>
+          <div class="donut-chart-label" style="font-size: 10px; color: var(--text-tertiary); text-transform: uppercase;">${centerLabel}</div>
         </div>
       </div>
     `;
@@ -111,35 +83,32 @@ const StatsChart = (() => {
       });
     }
 
-    const maxVal = Math.max(...days.map((d) => d.value), 1);
+    const maxVal = Math.max(...days.map((d) => d.value), 5); // Min maxVal 5 for scale
 
     return `
-      <div class="activity-chart">
-        <div class="activity-chart-bars">
-          ${days
+      <div class="activity-chart-container">
+        ${days
         .map((day) => {
-          const height = Math.max(4, (day.value / maxVal) * 100);
+          const height = Math.max(5, (day.value / maxVal) * 100);
           return `
-              <div class="activity-chart-col">
-                <div class="activity-chart-bar-wrapper">
-                  <div class="activity-chart-bar ${day.isToday ? 'today' : ''}"
+              <div class="activity-col">
+                <div class="activity-bar-track">
+                  <span class="activity-value" style="bottom: ${height}%">${day.value}</span>
+                  <div class="activity-bar ${day.isToday ? 'today' : ''}"
                        style="height: ${height}%"
                        title="${day.value} Karten">
                   </div>
                 </div>
-                <span class="activity-chart-label ${day.isToday ? 'today' : ''}">${day.label}</span>
-                <span class="activity-chart-count">${day.value}</span>
+                <span class="activity-label ${day.isToday ? 'today' : ''}">${day.label}</span>
               </div>
             `;
         })
         .join('')}
-        </div>
       </div>
     `;
   }
 
   return {
-    barChart,
     donutChart,
     activityChart,
   };

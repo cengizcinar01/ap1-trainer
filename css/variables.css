@@ -22,18 +22,25 @@
   --accent-primary-light: rgba(79, 125, 245, 0.1);
   --accent-secondary: #6c5ce7;
 
-  /* Semantic colors — muted, not screaming */
-  --success: #34d399;
-  --success-bg: rgba(52, 211, 153, 0.08);
-  --success-hover: #2cc08a;
-  --warning: #fbbf24;
-  --warning-bg: rgba(251, 191, 36, 0.08);
-  --warning-hover: #e5ac1c;
-  --danger: #f87171;
-  --danger-bg: rgba(248, 113, 113, 0.08);
-  --danger-hover: #ef4444;
-  --info: #60a5fa;
-  --info-bg: rgba(96, 165, 250, 0.08);
+  /* Semantic colors — vibrant, premium constrast */
+  --success: #10b981;
+  /* Emerald 500 */
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --success-hover: #059669;
+
+  --warning: #f59e0b;
+  /* Amber 500 */
+  --warning-bg: rgba(245, 158, 11, 0.15);
+  --warning-hover: #d97706;
+
+  --danger: #ef4444;
+  /* Red 500 */
+  --danger-bg: rgba(239, 68, 68, 0.15);
+  --danger-hover: #dc2626;
+
+  --info: #3b82f6;
+  /* Blue 500 */
+  --info-bg: rgba(59, 130, 246, 0.15);
 
   /* Card / Surface */
   --card-bg: #18191d;

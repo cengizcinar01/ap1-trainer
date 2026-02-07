@@ -20,34 +20,6 @@ const DashboardView = (() => {
           <p class="page-subtitle">${allCards.length} Karten · ${stats.reviewedCards} bearbeitet · ${stats.totalReviews} Wiederholungen</p>
         </div>
 
-        <!-- Quick Stats -->
-        <div class="grid-4 mb-8">
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value success">${stats.knewCards}</span>
-              <span class="stat-card-label">Gewusst</span>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value warning">${stats.partialCards}</span>
-              <span class="stat-card-label">Unsicher</span>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value danger">${stats.forgotCards}</span>
-              <span class="stat-card-label">Nicht gewusst</span>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value">${stats.newCards}</span>
-              <span class="stat-card-label">Neu</span>
-            </div>
-          </div>
-        </div>
-
         <!-- Overall Progress -->
         <div class="card mb-6">
           <div class="flex items-center justify-between mb-4">
@@ -78,7 +50,7 @@ const DashboardView = (() => {
             </div>
             <div class="flex items-center gap-2">
               <span class="legend-dot" style="background:var(--bg-tertiary)"></span>
-              <span class="text-xs text-secondary">Neu ${stats.newCards}</span>
+              <span class="text-xs text-secondary">Offen ${stats.newCards}</span>
             </div>
           </div>
         </div>

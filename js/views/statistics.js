@@ -16,118 +16,64 @@ const StatisticsView = (() => {
 
     container.innerHTML = `
       <div class="view-enter">
-        <div class="page-header">
-          <h1 class="page-title">Statistiken</h1>
-          <p class="page-subtitle">Lernfortschritt im Überblick</p>
+        <div class="stats-header">
+          <h1>Statistiken</h1>
+          <p>Dein Lernfortschritt im Detail</p>
         </div>
 
-        <!-- Quick Stats -->
-        <div class="grid-4 mb-8">
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value">${stats.totalReviews}</span>
-              <span class="stat-card-label">Wiederholungen</span>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value">${overallProgress}%</span>
-              <span class="stat-card-label">Fortschritt</span>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value">${stats.todayReviews}</span>
-              <span class="stat-card-label">Heute gelernt</span>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-content">
-              <span class="stat-card-value">${stats.knewCards}</span>
-              <span class="stat-card-label">Gewusst</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid-2 mb-8">
+        <div class="charts-row">
           <!-- Card Status Distribution -->
-          <div class="card h-full flex flex-col">
-            <div class="card-header">
-              <h3 class="card-title">Kartenstatus</h3>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Verteilung</h3>
             </div>
-            <div class="card-body flex-1">
-              <div class="stats-container">
-                <!-- Chart Side -->
-                <div class="stats-chart-wrapper">
-                  ${StatsChart.donutChart(
+            
+            <div class="donut-layout">
+              <div class="donut-wrapper">
+                ${StatsChart.donutChart(
       [
-        {
-          value: stats.knewCards,
-          color: 'var(--success)',
-          label: 'Gewusst',
-        },
-        {
-          value: stats.partialCards,
-          color: 'var(--warning)',
-          label: 'Unsicher',
-        },
-        {
-          value: stats.forgotCards,
-          color: 'var(--danger)',
-          label: 'Nicht gewusst',
-        },
-        {
-          value: stats.newCards,
-          color: 'var(--bg-tertiary)',
-          label: 'Neu',
-        },
+        { value: stats.knewCards, color: 'var(--success)', label: 'Gewusst' },
+        { value: stats.partialCards, color: 'var(--warning)', label: 'Unsicher' },
+        { value: stats.forgotCards, color: 'var(--danger)', label: 'Nicht gewusst' },
+        { value: stats.newCards, color: 'var(--bg-tertiary)', label: 'Neu' },
       ],
       allCards.length,
-      `${overallProgress}%`,
+      `${stats.knewCards}`,
+      'Gewusst'
     )}
+              </div>
+
+              <!-- Manual Legend for Mobile Stacking -->
+              <div class="chart-legend">
+                 <div class="legend-item">
+                  <div class="legend-dot" style="background: var(--success);"></div>
+                  <div class="legend-info">
+                    <span class="legend-val">${stats.knewCards}</span>
+                    <span class="legend-label">Gewusst</span>
+                  </div>
                 </div>
 
-                <!-- Legend Side -->
-                <div class="stats-legend">
-                   <div class="stats-legend-item">
-                    <div class="flex items-center gap-3">
-                      <div class="legend-indicator" style="background: var(--success);"></div>
-                      <span class="text-sm text-secondary">Gewusst</span>
-                    </div>
-                    <div class="text-right">
-                      <div class="text-sm font-bold text-primary">${stats.knewCards}</div>
-                      <!-- Optional: Percentage if desired, or just count -->
-                    </div>
+                <div class="legend-item">
+                  <div class="legend-dot" style="background: var(--warning);"></div>
+                  <div class="legend-info">
+                    <span class="legend-val">${stats.partialCards}</span>
+                    <span class="legend-label">Unsicher</span>
                   </div>
+                </div>
 
-                  <div class="stats-legend-item">
-                    <div class="flex items-center gap-3">
-                      <div class="legend-indicator" style="background: var(--warning);"></div>
-                      <span class="text-sm text-secondary">Unsicher</span>
-                    </div>
-                    <div class="text-right">
-                      <div class="text-sm font-bold text-primary">${stats.partialCards}</div>
-                    </div>
+                <div class="legend-item">
+                  <div class="legend-dot" style="background: var(--danger);"></div>
+                  <div class="legend-info">
+                    <span class="legend-val">${stats.forgotCards}</span>
+                    <span class="legend-label">Nicht gewusst</span>
                   </div>
+                </div>
 
-                  <div class="stats-legend-item">
-                    <div class="flex items-center gap-3">
-                      <div class="legend-indicator" style="background: var(--danger);"></div>
-                      <span class="text-sm text-secondary">Nicht gewusst</span>
-                    </div>
-                    <div class="text-right">
-                      <div class="text-sm font-bold text-primary">${stats.forgotCards}</div>
-                    </div>
-                  </div>
-
-                  <div class="stats-legend-item">
-                    <div class="flex items-center gap-3">
-                      <div class="legend-indicator" style="background: var(--bg-tertiary);"></div>
-                      <span class="text-sm text-secondary">Neu</span>
-                    </div>
-                    <div class="text-right">
-                      <div class="text-sm font-bold text-primary">${stats.newCards}</div>
-                    </div>
+                <div class="legend-item">
+                  <div class="legend-dot" style="background: var(--bg-tertiary);"></div>
+                  <div class="legend-info">
+                    <span class="legend-val">${stats.newCards}</span>
+                    <span class="legend-label">Offen</span>
                   </div>
                 </div>
               </div>
@@ -135,46 +81,36 @@ const StatisticsView = (() => {
           </div>
 
           <!-- Activity -->
-          <div class="card h-full flex flex-col">
-            <div class="card-header">
-              <h3 class="card-title">Letzte 7 Tage</h3>
-              <span class="text-xs text-secondary">${stats.weekReviews} Wiederholungen</span>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Aktivität</h3>
+              <span class="text-xs text-secondary font-medium">Letzte 7 Tage</span>
             </div>
-            <div class="card-body flex-1 flex flex-col justify-end">
-              ${StatsChart.activityChart(stats.dailyReviews)}
-            </div>
+            ${StatsChart.activityChart(stats.dailyReviews)}
           </div>
         </div>
 
-        <!-- Per-Topic -->
-        <div class="card mb-8">
-          <div class="card-header">
-            <h3 class="card-title">Fortschritt nach Thema</h3>
-          </div>
-          <div class="card-body">
+        <!-- Topic List -->
+        <div class="mt-8 mb-6">
+          <h3 class="chart-title mb-4">Fortschritt nach Thema</h3>
+          <div class="topic-list">
             ${topics.map((topic) => renderTopicStat(topic, stats)).join('')}
           </div>
         </div>
 
-        <!-- Reset -->
-        <div class="card" style="border-color: var(--border-light);">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="card-title" style="font-size: var(--font-size-sm);">Fortschritt zurücksetzen</h3>
-              <p class="text-xs text-tertiary mt-2">Alle Lernfortschritte werden unwiderruflich gelöscht.</p>
-            </div>
-            <button class="btn btn-ghost btn-sm" id="resetBtn" style="color: var(--danger); border-color: var(--danger);">Zurücksetzen</button>
+        <!-- Reset Area -->
+        <div class="reset-area">
+          <div class="reset-text">
+            <h3>Fortschritt zurücksetzen</h3>
+            <p>Alle Daten werden unwiderruflich gelöscht.</p>
           </div>
+          <button class="btn-reset" id="resetBtn">Zurücksetzen</button>
         </div>
       </div>
     `;
 
     container.querySelector('#resetBtn').addEventListener('click', () => {
-      if (
-        confirm(
-          'Bist du sicher? Alle Lernfortschritte werden unwiderruflich gelöscht.',
-        )
-      ) {
+      if (confirm('Bist du sicher? Alle Lernfortschritte werden gelöscht.')) {
         StorageManager.resetProgress();
         render(container);
       }
@@ -190,16 +126,19 @@ const StatisticsView = (() => {
       new: 0,
     };
     const progress = StorageManager.getProgress(topic.cards);
-    const topicNum = topic.name.match(/^(\d+)/)?.[1] || '?';
+
+    // Clean topic name (remove numbering 1. etc)
+    const topicNameClean = topic.name.replace(/^\d+\.\s*/, '');
+    const topicNum = topic.name.match(/^(\d+)/)?.[1] || '#';
 
     return `
-      <div style="padding: var(--space-3) 0; border-bottom: 1px solid var(--border-color);">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-3">
-            <span class="topic-num-sm">${topicNum}</span>
-            <span class="text-sm font-medium">${topic.name.replace(/^\d+\.\s*/, '')}</span>
+      <div class="topic-item">
+        <div class="topic-header">
+          <div class="topic-title-group">
+            <span class="topic-badge">${topicNum}</span>
+            <span class="topic-name">${topicNameClean}</span>
           </div>
-          <span class="text-xs font-semibold text-secondary">${progress}%</span>
+          <span class="topic-pct">${progress}%</span>
         </div>
         ${ProgressBar.createMulti(
       {
@@ -208,7 +147,7 @@ const StatisticsView = (() => {
         forgot: topicStat.forgot,
       },
       topic.cardCount,
-      'progress-bar-sm',
+      'progress-bar-sm'
     )}
       </div>
     `;

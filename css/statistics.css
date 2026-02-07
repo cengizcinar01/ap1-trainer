@@ -1,0 +1,414 @@
+/* ============================================================
+   statistics.css — Premium Statistics Styling
+   ============================================================ */
+
+/* --- Page Header --- */
+.stats-header {
+    margin-bottom: var(--space-6);
+    text-align: left;
+}
+
+.stats-header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-1);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.stats-header p {
+    font-size: var(--font-size-sm);
+    color: var(--text-tertiary);
+}
+
+/* --- Quick Stats Grid --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+}
+
+.stat-card-premium {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-primary);
+    opacity: 0.5;
+}
+
+.stat-card-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--accent-primary-light);
+}
+
+.stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Specific accent colors for cards */
+.stat-card-premium:nth-child(1)::before {
+    background: var(--accent-primary);
+}
+
+.stat-card-premium:nth-child(2)::before {
+    background: var(--success);
+}
+
+.stat-card-premium:nth-child(3)::before {
+    background: var(--warning);
+}
+
+.stat-card-premium:nth-child(4)::before {
+    background: var(--info);
+}
+
+
+/* --- Charts Container --- */
+.chart-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    margin-bottom: var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-6);
+}
+
+.chart-title {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Donut Chart Layout */
+.donut-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.donut-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donut-chart svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.donut-center-val {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.donut-center-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.chart-legend {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.legend-val {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.legend-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+}
+
+/* Activity Chart */
+.activity-chart-container {
+    height: 180px;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+    padding-top: var(--space-4);
+}
+
+.activity-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.activity-bar-track {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    align-items: flex-end;
+    border-radius: var(--radius-sm);
+    position: relative;
+}
+
+.activity-bar {
+    width: 100%;
+    background: var(--accent-primary);
+    border-radius: var(--radius-sm);
+    opacity: 0.8;
+    transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    min-height: 4px;
+}
+
+.activity-col:hover .activity-bar {
+    opacity: 1;
+    transform: scaleY(1.05);
+}
+
+.activity-bar.today {
+    background: var(--accent-primary-hover);
+    opacity: 1;
+}
+
+.activity-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.activity-label.today {
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+.activity-value {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    margin-bottom: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    opacity: 0;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.activity-col:hover .activity-value {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-100% - 2px));
+}
+
+/* Force visible for today or if always desired? User said "how much did I do", so maybe hover is enough? 
+   Let's make it always visible if value > 0? No, that might clutter. 
+   Let's stick to hover + always visible for today? 
+   Or just hover. The user asked "where is it".
+   Let's make it visible on hover, but also try to make it visible if there's space.
+   Actually, let's make it always visible.
+*/
+.activity-value {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-100%);
+}
+
+/* --- Topic Progress --- */
+.topic-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.topic-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    transition: border-color var(--transition-fast);
+}
+
+.topic-item:hover {
+    border-color: var(--border-dark);
+}
+
+.topic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.topic-title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.topic-badge {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.topic-name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.topic-pct {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+/* Reset Button Area */
+.reset-area {
+    margin-top: var(--space-8);
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reset-text h3 {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+}
+
+.reset-text p {
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+}
+
+.btn-reset {
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    background: transparent;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    transition: all var(--transition-fast);
+}
+
+.btn-reset:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* --- Desktop Responsive --- */
+@media (min-width: 1160px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .charts-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-6);
+    }
+
+    .donut-layout {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .chart-legend {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .legend-item {
+        background: transparent;
+        padding: var(--space-1) 0;
+    }
+}
