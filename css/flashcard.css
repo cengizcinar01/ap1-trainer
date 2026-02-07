@@ -1,0 +1,375 @@
+/* ============================================================
+   flashcard.css — Flashcard flip, rating, session styles (minimal)
+   ============================================================ */
+
+/* --- Container --- */
+.flashcard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* --- Session counter --- */
+.session-counter {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.session-progress-bar {
+  width: 100%;
+}
+
+/* --- The Flashcard --- */
+.flashcard {
+  width: 100%;
+  height: 380px;
+  perspective: 1200px;
+  cursor: pointer;
+  margin-bottom: var(--space-5);
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--flashcard-border);
+  background: var(--flashcard-front);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* --- Front --- */
+.flashcard-front-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+}
+
+.flashcard-question {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing);
+}
+
+.flashcard-hint {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.flashcard-hint svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* --- Back --- */
+.flashcard-back {
+  background: var(--flashcard-back);
+  transform: rotateY(180deg);
+}
+
+.flashcard-back-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5) var(--space-6);
+  overflow-y: auto;
+}
+
+.flashcard-answer-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  margin-bottom: var(--space-3);
+}
+
+.flashcard-answer {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  line-height: var(--line-height-relaxed);
+  white-space: pre-line;
+}
+
+/* --- Image Support --- */
+.flashcard-image {
+  margin-top: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.flashcard-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Card Meta --- */
+.flashcard-meta {
+  padding: var(--space-2) var(--space-5);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flashcard-topic-badge {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.flashcard-difficulty {
+  display: flex;
+  gap: 3px;
+}
+
+.flashcard-difficulty-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+}
+
+.flashcard-difficulty-dot.active {
+  background: var(--accent-primary);
+}
+
+/* --- Rating Buttons --- */
+.rating-buttons {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.rating-buttons.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.rating-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: var(--card-bg);
+}
+
+.rating-btn:hover {
+  transform: translateY(-2px);
+}
+.rating-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.rating-btn-forgot {
+  border-color: rgba(248, 113, 113, 0.3);
+}
+.rating-btn-forgot:hover {
+  background: var(--danger-bg);
+  border-color: var(--danger);
+}
+
+.rating-btn-partial {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+.rating-btn-partial:hover {
+  background: var(--warning-bg);
+  border-color: var(--warning);
+}
+
+.rating-btn-knew {
+  border-color: rgba(52, 211, 153, 0.3);
+}
+.rating-btn-knew:hover {
+  background: var(--success-bg);
+  border-color: var(--success);
+}
+
+.rating-btn-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.rating-btn-forgot .rating-btn-label {
+  color: var(--danger);
+}
+.rating-btn-partial .rating-btn-label {
+  color: var(--warning);
+}
+.rating-btn-knew .rating-btn-label {
+  color: var(--success);
+}
+
+/* --- Session Complete --- */
+.session-complete {
+  text-align: center;
+  padding: var(--space-12) var(--space-8);
+}
+
+.session-complete-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  letter-spacing: var(--letter-spacing);
+}
+
+.session-complete-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-8);
+}
+
+.session-stats {
+  display: flex;
+  gap: var(--space-8);
+  justify-content: center;
+  margin-bottom: var(--space-8);
+}
+
+.session-stat {
+  text-align: center;
+}
+
+.session-stat-value {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.session-stat-value.success {
+  color: var(--success);
+}
+.session-stat-value.warning {
+  color: var(--warning);
+}
+.session-stat-value.danger {
+  color: var(--danger);
+}
+
+.session-stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-top: var(--space-1);
+}
+
+.session-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+/* --- Keyboard hints --- */
+.keyboard-hints {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+.keyboard-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.keyboard-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .flashcard {
+    height: 320px;
+  }
+  .flashcard-front-content {
+    padding: var(--space-6);
+  }
+  .flashcard-question {
+    font-size: var(--font-size-base);
+  }
+  .flashcard-back-content {
+    padding: var(--space-4);
+  }
+  .rating-buttons {
+    gap: var(--space-1);
+  }
+  .rating-btn {
+    padding: var(--space-2);
+  }
+  .keyboard-hints {
+    display: none;
+  }
+  .session-stats {
+    gap: var(--space-6);
+  }
+  .session-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcard {
+    height: 280px;
+  }
+  .flashcard-question {
+    font-size: var(--font-size-sm);
+  }
+}

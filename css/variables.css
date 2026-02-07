@@ -1,0 +1,107 @@
+/* ============================================================
+   variables.css — Design tokens: colors, typography, spacing
+   ============================================================ */
+
+:root {
+  /* Background colors — neutral, sophisticated */
+  --bg-primary: #101114;
+  --bg-secondary: #18191d;
+  --bg-tertiary: #222328;
+  --bg-elevated: #1c1d22;
+
+  /* Text colors */
+  --text-primary: #e8e8ea;
+  --text-secondary: #8b8d96;
+  --text-tertiary: #575860;
+  --text-inverse: #101114;
+
+  /* Accent — subtle, professional blue */
+  --accent-primary: #4f7df5;
+  --accent-primary-hover: #6b94ff;
+  --accent-primary-light: rgba(79, 125, 245, 0.1);
+  --accent-secondary: #6c5ce7;
+
+  /* Semantic colors — muted, not screaming */
+  --success: #34d399;
+  --success-bg: rgba(52, 211, 153, 0.08);
+  --success-hover: #2cc08a;
+  --warning: #fbbf24;
+  --warning-bg: rgba(251, 191, 36, 0.08);
+  --warning-hover: #e5ac1c;
+  --danger: #f87171;
+  --danger-bg: rgba(248, 113, 113, 0.08);
+  --danger-hover: #ef4444;
+  --info: #60a5fa;
+  --info-bg: rgba(96, 165, 250, 0.08);
+
+  /* Card / Surface */
+  --card-bg: #18191d;
+  --card-bg-hover: #1e1f24;
+  --card-border: #27282e;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --card-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  /* Flashcard */
+  --flashcard-front: #1c1d22;
+  --flashcard-back: #18191d;
+  --flashcard-border: #2d2e34;
+  --flashcard-glow: none;
+
+  /* Borders */
+  --border-color: #27282e;
+  --border-light: #33343a;
+
+  /* Typography */
+  --font-family:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 0.9375rem;
+  --font-size-lg: 1.0625rem;
+  --font-size-xl: 1.1875rem;
+  --font-size-2xl: 1.375rem;
+  --font-size-3xl: 1.625rem;
+  --font-size-4xl: 2rem;
+  --line-height-tight: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+  --letter-spacing: -0.01em;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 120ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 0px;
+  --header-height: 0px;
+  --content-max-width: 960px;
+
+  /* Z-index */
+  --z-sidebar: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}

@@ -1,0 +1,326 @@
+/* ============================================================
+   animations.css — Transitions, keyframes, micro-interactions
+   ============================================================ */
+
+/* --- Page Transitions --- */
+.view-enter {
+  animation: viewEnter 0.3s ease forwards;
+}
+
+@keyframes viewEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Fade In --- */
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Slide Up --- */
+.slide-up {
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Staggered children --- */
+.stagger-children > * {
+  opacity: 0;
+  animation: slideUp 0.4s ease forwards;
+}
+
+.stagger-children > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.stagger-children > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.stagger-children > *:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.stagger-children > *:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.stagger-children > *:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.stagger-children > *:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.stagger-children > *:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.stagger-children > *:nth-child(8) {
+  animation-delay: 0.4s;
+}
+.stagger-children > *:nth-child(9) {
+  animation-delay: 0.45s;
+}
+.stagger-children > *:nth-child(10) {
+  animation-delay: 0.5s;
+}
+.stagger-children > *:nth-child(11) {
+  animation-delay: 0.55s;
+}
+.stagger-children > *:nth-child(n + 12) {
+  animation-delay: 0.6s;
+}
+
+/* --- Pulse --- */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* --- Bounce --- */
+.bounce {
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  60% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --- Spin --- */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Card dealt animation --- */
+.card-dealt {
+  animation: cardDealt 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cardDealt {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* --- Rating button press effect --- */
+.rating-pressed {
+  animation: ratingPress 0.3s ease forwards;
+}
+
+@keyframes ratingPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* --- Card exit animation --- */
+.card-exit-left {
+  animation: cardExitLeft 0.35s ease forwards;
+}
+
+@keyframes cardExitLeft {
+  to {
+    opacity: 0;
+    transform: translateX(-60px) scale(0.95);
+  }
+}
+
+.card-exit-right {
+  animation: cardExitRight 0.35s ease forwards;
+}
+
+@keyframes cardExitRight {
+  to {
+    opacity: 0;
+    transform: translateX(60px) scale(0.95);
+  }
+}
+
+/* --- Progress fill glow --- */
+.progress-bar-fill.accent {
+  position: relative;
+}
+
+.progress-bar-fill.accent::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 6px 2px rgba(99, 102, 241, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.progress-bar:hover .progress-bar-fill.accent::after {
+  opacity: 1;
+}
+
+/* --- Toast notification --- */
+.toast {
+  position: fixed;
+  bottom: var(--space-8);
+  right: var(--space-8);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+  box-shadow: var(--card-shadow-lg);
+  z-index: var(--z-toast);
+  animation: toastIn 0.4s ease forwards;
+}
+
+.toast.toast-out {
+  animation: toastOut 0.3s ease forwards;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
+/* --- Loading spinner --- */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16);
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bg-tertiary);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* --- Confetti-like celebration for streaks --- */
+@keyframes celebrate {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.celebrate {
+  animation: celebrate 0.6s ease;
+}
+
+/* --- Reduce motion for accessibility --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .flashcard-inner {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Subtopic highlight animation (returning from flashcard) --- */
+.subtopic-highlight {
+  animation: subtopicHighlight 1.5s ease-out forwards;
+}
+
+@keyframes subtopicHighlight {
+  0% {
+    background: var(--accent-primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+  }
+  100% {
+    background: var(--bg-secondary);
+    box-shadow: none;
+  }
+}
