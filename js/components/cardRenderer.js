@@ -14,7 +14,7 @@ const CardRenderer = (() => {
    */
   function renderCard(card, showMeta = true) {
     const difficultyDots = Array.from(
-      {length: 3},
+      { length: 3 },
       (_, i) =>
         `<span class="flashcard-difficulty-dot ${i < card.difficulty ? 'active' : ''}"></span>`,
     ).join('');
@@ -28,50 +28,43 @@ const CardRenderer = (() => {
           <div class="flashcard-face flashcard-front">
             <div class="flashcard-front-content">
               <div class="flashcard-question">${escapeHtml(card.question)}</div>
-              <div class="flashcard-hint">
-                <svg viewBox="0 0 24 24" width="14" height="14"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                Klicke zum Aufdecken
-              </div>
             </div>
-            ${
-              showMeta
-                ? `
+            ${showMeta
+        ? `
               <div class="flashcard-meta">
                 <span class="flashcard-topic-badge">${escapeHtml(card.subtopic)}</span>
                 <div class="flashcard-difficulty">${difficultyDots}</div>
               </div>
             `
-                : ''
-            }
+        : ''
+      }
           </div>
           <div class="flashcard-face flashcard-back">
             <div class="flashcard-back-content">
               <div class="flashcard-answer-label">Antwort</div>
               <div class="flashcard-answer">${formatAnswer(card.answer)}</div>
-              ${
-                imagePath
-                  ? `
+              ${imagePath
+        ? `
                 <div class="flashcard-image">
                   <img src="${escapeHtml(imagePath)}" alt="Illustration zu: ${escapeHtml(card.question)}" loading="lazy" />
                 </div>
               `
-                  : `
+        : `
                 <div class="flashcard-image flashcard-image-placeholder" data-card-id="${card.id}" style="display:none;">
                   <img src="" alt="" loading="lazy" />
                 </div>
               `
-              }
+      }
             </div>
-            ${
-              showMeta
-                ? `
+            ${showMeta
+        ? `
               <div class="flashcard-meta">
                 <span class="flashcard-topic-badge">${escapeHtml(card.subtopic)}</span>
                 <div class="flashcard-difficulty">${difficultyDots}</div>
               </div>
             `
-                : ''
-            }
+        : ''
+      }
           </div>
         </div>
       </div>
@@ -168,10 +161,53 @@ const CardRenderer = (() => {
   }
 
   function formatAnswer(text) {
-    return escapeHtml(text)
-      .replace(/\n\n/g, '</p><p>')
-      .replace(/\n•/g, '<br>•')
-      .replace(/\n/g, '<br>');
+    let html = escapeHtml(text);
+
+    // Convert section headers (lines ending with colon that start a new block)
+    html = html.replace(/^([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm, '<div class="answer-section">$1</div>');
+    html = html.replace(/\n([A-ZÄÖÜa-zäöü][^:•\n]{2,}):$/gm, '</p>\n<div class="answer-section">$1</div>\n<p>');
+
+    // Convert formulas and code (text between backticks or mathematical expressions)
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/(\d+\s*[×xX+\-÷=]\s*\d+[\s=\d×xX+\-÷]*)/g, '<code>$1</code>');
+
+    // Highlight important numbers with units
+    html = html.replace(/(\d+(?:[,.]\d+)?)\s*(MB\/s|GB\/s|MHz|GHz|GB|MB|KB|TB|Bit|Byte|ms|%|€|V|A|W)/g, '<span class="highlight">$1 $2</span>');
+
+    // Highlight keywords in parentheses (often technical terms)
+    html = html.replace(/\(([A-Z]{2,}[^)]*)\)/g, '(<span class="highlight">$1</span>)');
+
+    // Convert bullet points to proper list items
+    // First, wrap consecutive bullet lines in a <ul>
+    html = html.replace(/((?:^|\n)• [^\n]+(?:\n• [^\n]+)*)/g, (match) => {
+      const items = match.split('\n')
+        .filter(line => line.startsWith('•'))
+        .map(line => `<li>${line.substring(2)}</li>`)
+        .join('\n');
+      return `</p>\n<ul>${items}</ul>\n<p>`;
+    });
+
+    // Handle "+" advantages and "-" disadvantages  
+    html = html.replace(/\+ ([^\n|]+)/g, '<span class="pro">+ $1</span>');
+    html = html.replace(/- ([^\n|]+)(?=\n|$|<)/g, '<span class="con">− $1</span>');
+
+    // Handle numbered lists (1., 2., etc.)
+    html = html.replace(/(\d+)\.\s+([^\n]+)/g, '<strong>$1.</strong> $2');
+
+    // Double newlines = new paragraph
+    html = html.replace(/\n\n/g, '</p>\n<p>');
+
+    // Single newlines = line break
+    html = html.replace(/\n/g, '<br>');
+
+    // Wrap in paragraph
+    html = '<p>' + html + '</p>';
+
+    // Clean up empty paragraphs
+    html = html.replace(/<p>\s*<\/p>/g, '');
+    html = html.replace(/<p>\s*<br>\s*<\/p>/g, '');
+
+    return html;
   }
 
   function escapeHtml(str) {

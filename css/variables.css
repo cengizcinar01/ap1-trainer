@@ -17,6 +17,7 @@
 
   /* Accent — subtle, professional blue */
   --accent-primary: #4f7df5;
+  --accent-primary-rgb: 79, 125, 245;
   --accent-primary-hover: #6b94ff;
   --accent-primary-light: rgba(79, 125, 245, 0.1);
   --accent-secondary: #6c5ce7;

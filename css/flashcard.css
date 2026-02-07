@@ -117,8 +117,93 @@
 .flashcard-answer {
   font-size: var(--font-size-sm);
   color: var(--text-primary);
-  line-height: var(--line-height-relaxed);
-  white-space: pre-line;
+  line-height: 1.7;
+}
+
+/* Answer paragraph styling */
+.flashcard-answer p {
+  margin-bottom: 0.75em;
+}
+
+.flashcard-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Section headers within answers */
+.flashcard-answer .answer-section {
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.flashcard-answer .answer-section:first-child {
+  margin-top: 0;
+}
+
+/* Bullet points styling */
+.flashcard-answer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0;
+}
+
+.flashcard-answer li {
+  position: relative;
+  padding-left: 1.25em;
+  margin-bottom: 0.35em;
+}
+
+.flashcard-answer li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+/* Highlighted keywords */
+.flashcard-answer .highlight {
+  background: linear-gradient(120deg, rgba(var(--accent-primary-rgb), 0.15) 0%, rgba(var(--accent-primary-rgb), 0.1) 100%);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Formula/code blocks */
+.flashcard-answer code,
+.flashcard-answer .formula {
+  font-family: var(--font-mono);
+  background: var(--bg-tertiary);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--accent-primary);
+  border: 1px solid var(--border-color);
+}
+
+/* Compact table-like rows (e.g., for comparisons) */
+.flashcard-answer .answer-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.flashcard-answer .answer-row:last-child {
+  border-bottom: none;
+}
+
+/* Pro/Con styling */
+.flashcard-answer .pro {
+  color: var(--success);
+}
+
+.flashcard-answer .con {
+  color: var(--danger);
 }
 
 /* --- Image Support --- */
@@ -198,6 +283,7 @@
 .rating-btn:hover {
   transform: translateY(-2px);
 }
+
 .rating-btn:active {
   transform: translateY(0) scale(0.97);
 }
@@ -205,6 +291,7 @@
 .rating-btn-forgot {
   border-color: rgba(248, 113, 113, 0.3);
 }
+
 .rating-btn-forgot:hover {
   background: var(--danger-bg);
   border-color: var(--danger);
@@ -213,6 +300,7 @@
 .rating-btn-partial {
   border-color: rgba(251, 191, 36, 0.3);
 }
+
 .rating-btn-partial:hover {
   background: var(--warning-bg);
   border-color: var(--warning);
@@ -221,6 +309,7 @@
 .rating-btn-knew {
   border-color: rgba(52, 211, 153, 0.3);
 }
+
 .rating-btn-knew:hover {
   background: var(--success-bg);
   border-color: var(--success);
@@ -235,9 +324,11 @@
 .rating-btn-forgot .rating-btn-label {
   color: var(--danger);
 }
+
 .rating-btn-partial .rating-btn-label {
   color: var(--warning);
 }
+
 .rating-btn-knew .rating-btn-label {
   color: var(--success);
 }
@@ -282,9 +373,11 @@
 .session-stat-value.success {
   color: var(--success);
 }
+
 .session-stat-value.warning {
   color: var(--warning);
 }
+
 .session-stat-value.danger {
   color: var(--danger);
 }
@@ -338,27 +431,35 @@
   .flashcard {
     height: 320px;
   }
+
   .flashcard-front-content {
     padding: var(--space-6);
   }
+
   .flashcard-question {
     font-size: var(--font-size-base);
   }
+
   .flashcard-back-content {
     padding: var(--space-4);
   }
+
   .rating-buttons {
     gap: var(--space-1);
   }
+
   .rating-btn {
     padding: var(--space-2);
   }
+
   .keyboard-hints {
     display: none;
   }
+
   .session-stats {
     gap: var(--space-6);
   }
+
   .session-actions {
     flex-direction: column;
     align-items: stretch;
@@ -369,6 +470,7 @@
   .flashcard {
     height: 280px;
   }
+
   .flashcard-question {
     font-size: var(--font-size-sm);
   }
