@@ -96,7 +96,6 @@ const Sidebar = (() => {
       </nav>
       <div class="sidebar-footer">
         <div class="sidebar-streak">
-          <span class="nav-item-icon" style="color: var(--accent-primary);">${ICONS.reviews}</span>
           <div class="sidebar-streak-info">
             <span class="sidebar-streak-count">${stats.totalReviews} Wiederholungen</span>
             <span class="sidebar-streak-label">${stats.todayReviews} heute</span>
