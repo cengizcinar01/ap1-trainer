@@ -95,7 +95,7 @@ const ReviewView = (() => {
     const flashcardEl = container.querySelector('#flashcard');
     const ratingBtns = container.querySelector('#ratingButtons');
     if (flashcardEl) flashcardEl.classList.add('flipped');
-    if (ratingBtns) setTimeout(() => ratingBtns.classList.add('visible'), 300);
+    if (ratingBtns) ratingBtns.classList.add('visible');
   }
 
   function handleRating(container, rating) {
@@ -119,11 +119,10 @@ const ReviewView = (() => {
         rating === 3 ? 'card-exit-right' : 'card-exit-left',
       );
 
-    setTimeout(() => {
-      currentIndex++;
-      renderCurrentCard(container);
-      Sidebar.updateActive();
-    }, 300);
+    // Go directly to next card without animation delay
+    currentIndex++;
+    renderCurrentCard(container);
+    Sidebar.updateActive();
   }
 
   function renderComplete(container) {

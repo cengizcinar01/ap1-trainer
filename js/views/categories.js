@@ -10,6 +10,7 @@ import CardRenderer from '../components/cardRenderer.js';
 const CategoriesView = (() => {
   let activeCardPreview = null; // Track currently shown card preview
   let keyHandler = null;
+  let clickHandler = null; // Track the click handler to properly remove it
 
   function render(container) {
     cleanup();
@@ -38,35 +39,49 @@ const CategoriesView = (() => {
       </div>
     `;
 
-    // Use event delegation for all click handlers
-    container.addEventListener('click', (e) => {
-      // Topic accordion
-      const accordionHeader = e.target.closest('.accordion-header');
-      if (accordionHeader) {
-        const item = accordionHeader.closest('.accordion-item');
-        item.classList.toggle('open');
-        return;
-      }
+    // Bind click handlers directly to each element (more reliable than delegation)
 
-      // Subtopic accordion
-      const subtopicHeader = e.target.closest('.subtopic-header');
-      if (subtopicHeader) {
+    // Topic accordion headers
+    container.querySelectorAll('.accordion-header').forEach((header) => {
+      header.onclick = (e) => {
+        if (e.target.closest('a')) return; // Allow links
         e.preventDefault();
-        const item = subtopicHeader.closest('.subtopic-accordion');
-        item.classList.toggle('open');
-        return;
-      }
-
-      // Card preview
-      const cardPreviewItem = e.target.closest('.card-preview-item');
-      if (cardPreviewItem) {
-        e.preventDefault();
-        const cardId = cardPreviewItem.dataset.cardId;
-        console.log('Card preview clicked, cardId:', cardId);
-        showCardPreview(container, cardId);
-        return;
-      }
+        e.stopPropagation();
+        header.closest('.accordion-item').classList.toggle('open');
+      };
     });
+
+    // Subtopic accordion headers
+    container.querySelectorAll('.subtopic-header').forEach((header) => {
+      header.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        header.closest('.subtopic-accordion').classList.toggle('open');
+      };
+    });
+
+    // Card preview items
+    container.querySelectorAll('.card-preview-item').forEach((item) => {
+      item.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        showCardPreview(container, item.dataset.cardId);
+      };
+    });
+
+    // Highlight the previously clicked topic
+    if (openTopicName) {
+      const topicEl = container.querySelector(`.accordion-item.open`);
+      if (topicEl) {
+        topicEl.classList.add('accordion-highlight');
+        topicEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Remove highlight after animation
+        setTimeout(() => {
+          topicEl.classList.remove('accordion-highlight');
+        }, 1500);
+      }
+    }
 
     // Highlight the previously clicked subtopic
     if (highlightSubtopic) {
@@ -266,6 +281,9 @@ const CategoriesView = (() => {
 
   function cleanup() {
     closeCardPreview();
+    // Note: clickHandler is attached to container which gets replaced,
+    // so it's automatically cleaned up when container.innerHTML is set
+    clickHandler = null;
   }
 
   return { render, cleanup };

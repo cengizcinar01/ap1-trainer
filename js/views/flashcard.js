@@ -125,7 +125,7 @@ const FlashcardView = (() => {
 
     if (flashcardEl) flashcardEl.classList.add('flipped');
     if (ratingBtns) {
-      setTimeout(() => ratingBtns.classList.add('visible'), 300);
+      ratingBtns.classList.add('visible');
     }
   }
 
@@ -152,11 +152,10 @@ const FlashcardView = (() => {
       );
     }
 
-    setTimeout(() => {
-      currentIndex++;
-      renderCurrentCard(container);
-      Sidebar.updateActive();
-    }, 300);
+    // Go directly to next card without animation delay
+    currentIndex++;
+    renderCurrentCard(container);
+    Sidebar.updateActive();
   }
 
   function renderComplete(container) {
@@ -214,9 +213,9 @@ const FlashcardView = (() => {
         console.log('Nochmal lernen clicked, navigating to:', learnAgainUrl);
         // Force navigation by first going to a dummy hash, then the real one
         window.location.hash = '/';
-        setTimeout(() => {
-          window.location.hash = learnAgainUrl.slice(1); // remove the # prefix
-        }, 10);
+        // Force navigation by going to a different hash first
+        window.location.hash = '/';
+        window.location.hash = learnAgainUrl.slice(1);
       });
     }
   }
