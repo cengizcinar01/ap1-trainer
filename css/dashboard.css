@@ -244,46 +244,6 @@
   color: var(--accent-primary);
 }
 
-/* --- Review CTA --- */
-.review-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-5);
-  background: var(--accent-primary);
-  color: white;
-  border-radius: var(--radius-lg);
-  text-decoration: none;
-  margin-bottom: var(--space-6);
-  transition: all var(--transition-fast);
-}
-
-.review-cta:hover {
-  background: var(--accent-primary-hover);
-  transform: translateY(-1px);
-}
-
-.review-cta-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.review-cta-title {
-  font-size: var(--font-size-base);
-  font-weight: 600;
-}
-
-.review-cta-subtitle {
-  font-size: var(--font-size-xs);
-  opacity: 0.8;
-  margin-top: 2px;
-}
-
-.review-cta-arrow {
-  font-size: var(--font-size-xl);
-  opacity: 0.8;
-}
-
 /* --- Reset Section --- */
 .reset-section {
   margin-top: var(--space-8);

@@ -15,32 +15,32 @@
   --text-tertiary: #575860;
   --text-inverse: #101114;
 
-  /* Accent — subtle, professional blue */
-  --accent-primary: #4f7df5;
-  --accent-primary-rgb: 79, 125, 245;
-  --accent-primary-hover: #6b94ff;
-  --accent-primary-light: rgba(79, 125, 245, 0.1);
-  --accent-secondary: #6c5ce7;
+  /* Accent — subtle, muted blue-gray */
+  --accent-primary: #5a7a96;
+  --accent-primary-rgb: 90, 122, 150;
+  --accent-primary-hover: #4a6a86;
+  --accent-primary-light: rgba(90, 122, 150, 0.1);
+  --accent-secondary: #6b7b8c;
 
-  /* Semantic colors — vibrant, premium constrast */
-  --success: #10b981;
-  /* Emerald 500 */
-  --success-bg: rgba(16, 185, 129, 0.15);
-  --success-hover: #059669;
+  /* Semantic colors — muted, sophisticated tones */
+  --success: #5a9e7c;
+  /* Muted sage green */
+  --success-bg: rgba(90, 158, 124, 0.12);
+  --success-hover: #4a8a6a;
 
-  --warning: #f59e0b;
-  /* Amber 500 */
-  --warning-bg: rgba(245, 158, 11, 0.15);
-  --warning-hover: #d97706;
+  --warning: #c4a35a;
+  /* Muted gold/ochre */
+  --warning-bg: rgba(196, 163, 90, 0.12);
+  --warning-hover: #b08d45;
 
-  --danger: #ef4444;
-  /* Red 500 */
-  --danger-bg: rgba(239, 68, 68, 0.15);
-  --danger-hover: #dc2626;
+  --danger: #b57373;
+  /* Muted rose */
+  --danger-bg: rgba(181, 115, 115, 0.12);
+  --danger-hover: #a05f5f;
 
-  --info: #3b82f6;
-  /* Blue 500 */
-  --info-bg: rgba(59, 130, 246, 0.15);
+  --info: #6b8cae;
+  /* Muted slate blue */
+  --info-bg: rgba(107, 140, 174, 0.12);
 
   /* Card / Surface */
   --card-bg: #18191d;
@@ -120,7 +120,7 @@
 }
 
 /* --- Light Mode Overrides --- */
-[data-theme="light"] {
+[data-theme='light'] {
   /* Backgrounds */
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
@@ -154,35 +154,36 @@
   --code-border: #e5e7eb;
   --code-text: #1f2937;
 
-  /* Semantic Colors (adjusted for light mode - softer/less neon) */
-  /* Semantic Colors (Soft UI / Tinted) */
-  /* Text/Icon colors (darker/saturated) */
-  --success: #059669;
-  /* Emerald 600 */
-  --warning: #d97706;
-  /* Amber 600 */
-  --danger: #dc2626;
-  /* Red 600 */
-  --info: #2563eb;
-  /* Blue 600 */
+  /* Semantic Colors — muted, sophisticated for light mode */
+  --success: #4a7c59;
+  /* Forest green */
+  --warning: #8b7355;
+  /* Warm brown */
+  --danger: #9e5a5a;
+  /* Brick red */
+  --info: #4a6fa5;
+  /* Steel blue */
 
   /* Background colors (soft/pastel) */
-  --success-bg: #d1fae5;
-  /* Emerald 100 */
-  --warning-bg: #fef3c7;
-  /* Amber 100 */
-  --danger-bg: #fee2e2;
-  /* Red 100 */
-  --info-bg: #dbeafe;
-  /* Blue 100 */
+  --success-bg: #e8f5e9;
+  /* Soft mint */
+  --warning-bg: #f5f0e1;
+  /* Soft cream */
+  --danger-bg: #f5e8e8;
+  /* Soft blush */
+  --info-bg: #e8f0f8;
+  /* Soft ice blue */
 
-  --success-hover: #10b981;
-  --warning-hover: #f59e0b;
+  --success-hover: #3d6b4a;
+  --warning-hover: #7a6248;
   --danger-hover: #ef4444;
-
-
 
   /* Text colors on light bg needs to be darker */
   --text-tertiary: #6b7280;
   --text-secondary: #4b5563;
+
+  /* Muted accent for light mode */
+  --accent-primary: #5a6b7c;
+  --accent-primary-hover: #4a5b6c;
+  --accent-primary-light: rgba(90, 107, 124, 0.1);
 }

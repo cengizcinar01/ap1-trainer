@@ -26,7 +26,7 @@ const DashboardView = (() => {
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-card-value">${allCards.length}</div>
-            <div class="stat-card-label">Karten gesamt</div>
+            <div class="stat-card-label">Karten</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-value">${stats.reviewedCards}</div>
@@ -103,7 +103,7 @@ const DashboardView = (() => {
                 <div class="legend-dot" style="background: var(--bg-tertiary);"></div>
                 <div class="legend-info">
                   <span class="legend-val">${stats.newCards}</span>
-                  <span class="legend-label">Neu</span>
+                  <span class="legend-label">Offen</span>
                 </div>
               </div>
             </div>
@@ -128,15 +128,6 @@ const DashboardView = (() => {
             ${topics.map((topic) => renderTopicProgress(topic, stats)).join('')}
           </div>
         </div>
-
-        <!-- Review CTA -->
-        <a href="#/review" class="review-cta">
-          <div class="review-cta-content">
-            <span class="review-cta-title">Alle Karten lernen</span>
-            <span class="review-cta-subtitle">${allCards.length} Karten verfügbar</span>
-          </div>
-          <span class="review-cta-arrow">→</span>
-        </a>
 
         <!-- Reset Section -->
         <div class="reset-section">
