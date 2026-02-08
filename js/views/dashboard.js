@@ -50,32 +50,32 @@ const DashboardView = (() => {
           <div class="donut-layout">
             <div class="donut-wrapper">
               ${StatsChart.donutChart(
-      [
-        {
-          value: stats.knewCards,
-          color: 'var(--success)',
-          label: 'Gewusst',
-        },
-        {
-          value: stats.partialCards,
-          color: 'var(--warning)',
-          label: 'Unsicher',
-        },
-        {
-          value: stats.forgotCards,
-          color: 'var(--danger)',
-          label: 'Nicht gewusst',
-        },
-        {
-          value: stats.newCards,
-          color: 'var(--neutral)',
-          label: 'Neu',
-        },
-      ],
-      allCards.length,
-      `${stats.knewCards}`,
-      'Gewusst'
-    )}
+                [
+                  {
+                    value: stats.knewCards,
+                    color: 'var(--success)',
+                    label: 'Gewusst',
+                  },
+                  {
+                    value: stats.partialCards,
+                    color: 'var(--warning)',
+                    label: 'Unsicher',
+                  },
+                  {
+                    value: stats.forgotCards,
+                    color: 'var(--danger)',
+                    label: 'Nicht gewusst',
+                  },
+                  {
+                    value: stats.newCards,
+                    color: 'var(--neutral)',
+                    label: 'Neu',
+                  },
+                ],
+                allCards.length,
+                `${stats.knewCards}`,
+                'Gewusst'
+              )}
             </div>
             <div class="chart-legend">
               <div class="legend-item">
@@ -169,14 +169,14 @@ const DashboardView = (() => {
           <span class="topic-progress-pct">${progress}%</span>
         </div>
         ${ProgressBar.createMulti(
-      {
-        knew: topicStat.knew,
-        partial: topicStat.partial,
-        forgot: topicStat.forgot,
-      },
-      topic.cardCount,
-      'progress-bar-sm'
-    )}
+          {
+            knew: topicStat.knew,
+            partial: topicStat.partial,
+            forgot: topicStat.forgot,
+          },
+          topic.cardCount,
+          'progress-bar-sm'
+        )}
       </a>
     `;
   }

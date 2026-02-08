@@ -57,11 +57,13 @@ const CategoriesView = (() => {
             const body = item.querySelector('.accordion-body');
 
             // Also close any open subtopic accordions inside
-            item.querySelectorAll('.subtopic-accordion.open').forEach((subtopic) => {
-              const subtopicBody = subtopic.querySelector('.subtopic-body');
-              subtopicBody.style.maxHeight = '0px';
-              subtopic.classList.remove('open');
-            });
+            item
+              .querySelectorAll('.subtopic-accordion.open')
+              .forEach((subtopic) => {
+                const subtopicBody = subtopic.querySelector('.subtopic-body');
+                subtopicBody.style.maxHeight = '0px';
+                subtopic.classList.remove('open');
+              });
 
             // Set current height explicitly for smooth close animation
             body.style.maxHeight = body.scrollHeight + 'px';
@@ -75,11 +77,13 @@ const CategoriesView = (() => {
 
         if (isOpen) {
           // Also close any open subtopic accordions inside
-          currentAccordion.querySelectorAll('.subtopic-accordion.open').forEach((subtopic) => {
-            const subtopicBody = subtopic.querySelector('.subtopic-body');
-            subtopicBody.style.maxHeight = '0px';
-            subtopic.classList.remove('open');
-          });
+          currentAccordion
+            .querySelectorAll('.subtopic-accordion.open')
+            .forEach((subtopic) => {
+              const subtopicBody = subtopic.querySelector('.subtopic-body');
+              subtopicBody.style.maxHeight = '0px';
+              subtopic.classList.remove('open');
+            });
 
           // Closing: animate from current height to 0
           accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
@@ -227,14 +231,14 @@ const CategoriesView = (() => {
           <div class="accordion-body-inner">
             <div class="mb-4">
               ${ProgressBar.createMulti(
-      {
-        knew: topicStat.knew,
-        partial: topicStat.partial,
-        forgot: topicStat.forgot,
-      },
-      topic.cardCount,
-      'progress-bar-sm'
-    )}
+                {
+                  knew: topicStat.knew,
+                  partial: topicStat.partial,
+                  forgot: topicStat.forgot,
+                },
+                topic.cardCount,
+                'progress-bar-sm'
+              )}
             </div>
             <div class="mb-4">
               <a href="#/learn/${topicParam}" class="btn btn-primary btn-sm">Lernen</a>

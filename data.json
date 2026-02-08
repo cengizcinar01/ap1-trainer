@@ -6,8 +6,12 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist Künstliche Intelligenz (KI)?",
-    "answer": "KI steht für 'Künstliche Intelligenz' und umfasst alles, was Computer und Maschinen befähigt, menschenähnliche Intelligenzleistungen zu erbringen – von der Mustererkennung über das Verarbeiten natürlicher Sprache bis hin zum selbstständigen Lernen und Problemlösen.",
-    "tags": ["KI", "Grundlagen", "Definition"]
+    "answer": "**KI** steht für **Künstliche Intelligenz** und umfasst alles, was Computer und Maschinen befähigt, menschenähnliche Intelligenzleistungen zu erbringen:\n\n- Mustererkennung\n- Verarbeiten natürlicher Sprache\n- Selbstständiges Lernen\n- Problemlösen",
+    "tags": [
+      "KI",
+      "Grundlagen",
+      "Definition"
+    ]
   },
   {
     "id": 2,
@@ -16,8 +20,12 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist ein Neuronales Netzwerk?",
-    "answer": "Ein Neuronales Netzwerk ist ein Algorithmus, welcher Daten verarbeitet – 'nachgebaut' nach dem biologischen Neuronalen Netzwerk (Gehirn).",
-    "tags": ["KI", "Neuronales Netzwerk", "Grundlagen"]
+    "answer": "Ein **Neuronales Netzwerk** ist ein Algorithmus, welcher Daten verarbeitet – *nachgebaut* nach dem biologischen Neuronalen Netzwerk (Gehirn).",
+    "tags": [
+      "KI",
+      "Neuronales Netzwerk",
+      "Grundlagen"
+    ]
   },
   {
     "id": 3,
@@ -26,7 +34,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Was ist der Unterschied zwischen überwachtem (Supervised) und unüberwachtem (Unsupervised) Lernverhalten?",
-    "answer": "Überwachtes Lernen (Supervised Learning): Die Trainingsdaten werden vor dem Trainieren beschriftet/klassifiziert. Das Netzwerk lernt aufgrund dieser gelabelten Daten. Benötigt mehr Vorarbeit, erzielt aber bessere Ergebnisse.\n\nUnüberwachtes Lernen (Unsupervised Learning): Die Trainingsdaten werden NICHT klassifiziert vor dem Trainieren. Das Netzwerk lernt dadurch z.B. die Daten nur zu clustern, also in Gruppen zusammenzufassen.",
+    "answer": "### Überwachtes Lernen (Supervised Learning)\n\nDie Trainingsdaten werden **vor dem Trainieren beschriftet/klassifiziert**. Das Netzwerk lernt aufgrund dieser gelabelten Daten.\n\n✅ Benötigt mehr Vorarbeit, erzielt aber bessere Ergebnisse\n\n---\n\n### Unüberwachtes Lernen (Unsupervised Learning)\n\nDie Trainingsdaten werden **NICHT klassifiziert** vor dem Trainieren. Das Netzwerk lernt dadurch z.B. die Daten nur zu *clustern*, also in Gruppen zusammenzufassen.",
     "tags": [
       "KI",
       "Machine Learning",
@@ -42,8 +50,13 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Overfitting bei Neuronalen Netzwerken?",
-    "answer": "Von Overfitting spricht man, wenn ein Neuronales Netzwerk zu gut auf die Trainingsdaten trainiert wurde und somit NUR auf die Trainingsdaten angewendet werden kann. Es kann nicht auf neue, unbekannte Daten generalisieren.",
-    "tags": ["KI", "Neuronales Netzwerk", "Overfitting", "Grundlagen"]
+    "answer": "Von **Overfitting** spricht man, wenn ein Neuronales Netzwerk *zu gut* auf die Trainingsdaten trainiert wurde und somit **NUR** auf die Trainingsdaten angewendet werden kann.\n\n⚠️ Es kann nicht auf neue, unbekannte Daten generalisieren.",
+    "tags": [
+      "KI",
+      "Neuronales Netzwerk",
+      "Overfitting",
+      "Grundlagen"
+    ]
   },
   {
     "id": 5,
@@ -52,8 +65,12 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist Maschinelles Lernen?",
-    "answer": "Maschinelles Lernen ist ein Teilbereich der KI.",
-    "tags": ["KI", "Machine Learning", "Grundlagen"]
+    "answer": "**Maschinelles Lernen** (Machine Learning) ist ein Teilbereich der KI.",
+    "tags": [
+      "KI",
+      "Machine Learning",
+      "Grundlagen"
+    ]
   },
   {
     "id": 6,
@@ -62,8 +79,13 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Deep Learning / Deep Neural Network?",
-    "answer": "Ein Deep Neural Network ist ein Neuronales Netzwerk mit vielen Hidden/Zwischen-Layern.",
-    "tags": ["KI", "Deep Learning", "Neuronales Netzwerk", "Grundlagen"]
+    "answer": "Ein **Deep Neural Network** ist ein Neuronales Netzwerk mit vielen *Hidden/Zwischen-Layern*.",
+    "tags": [
+      "KI",
+      "Deep Learning",
+      "Neuronales Netzwerk",
+      "Grundlagen"
+    ]
   },
   {
     "id": 7,
@@ -72,8 +94,13 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen schwacher und starker KI?",
-    "answer": "Schwache KI: Eine Künstliche Intelligenz, welche nicht selbstständig handeln kann und Eingabe eines Menschen braucht.\n\nStarke KI: Eine selbst handelnde KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist.",
-    "tags": ["KI", "Schwache KI", "Starke KI", "Grundlagen"]
+    "answer": "### Schwache KI\n\nEine Künstliche Intelligenz, welche **nicht selbstständig** handeln kann und Eingabe eines Menschen braucht.\n\n---\n\n### Starke KI\n\nEine **selbst handelnde** KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist.",
+    "tags": [
+      "KI",
+      "Schwache KI",
+      "Starke KI",
+      "Grundlagen"
+    ]
   },
   {
     "id": 8,
@@ -82,8 +109,12 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist Generative AI?",
-    "answer": "Eine Generative KI ist eine KI, welche kunstvolle Sachen generieren kann (Text, Bild, Ton, etc.).",
-    "tags": ["KI", "Generative AI", "Grundlagen"]
+    "answer": "Eine **Generative KI** ist eine KI, welche kunstvolle Sachen generieren kann:\n\n- 📝 Text\n- 🖼️ Bild\n- 🎵 Ton\n- 🎬 Video",
+    "tags": [
+      "KI",
+      "Generative AI",
+      "Grundlagen"
+    ]
   },
   {
     "id": 9,
@@ -92,8 +123,13 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist ein Deep Fake?",
-    "answer": "Ein Deep Fake ist ein durch KI bearbeitetes Video/Bild. Meistens wird das Gesicht und die Stimme einer anderen Person ersetzt.",
-    "tags": ["KI", "Deep Fake", "Sicherheit", "Grundlagen"]
+    "answer": "Ein **Deep Fake** ist ein durch KI bearbeitetes Video/Bild.\n\n⚠️ Meistens wird das Gesicht und die Stimme einer anderen Person ersetzt.",
+    "tags": [
+      "KI",
+      "Deep Fake",
+      "Sicherheit",
+      "Grundlagen"
+    ]
   },
   {
     "id": 10,
@@ -102,8 +138,14 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Nenne Beispiele für KI-Software im Alltag und in der Entwicklung.",
-    "answer": "Alltag:\n• DeepL – Einer der präzisesten KI-Übersetzer mit natürlich klingenden Übersetzungen und Dokumentenverarbeitung\n• Grammarly – Prüft Rechtschreibung und Grammatik mit KI und gibt Verbesserungsvorschläge\n• Google Lens – Erkennt Objekte, Text und Landmarken in Bildern\n• Google Fotos – Kategorisiert automatisch Bilder und erkennt Gesichter\n\nEntwicklung:\n• GitHub Copilot – Unterstützt bei der Code-Entwicklung durch KI-gestützte Vorschläge\n• ChatGPT – Hilft bei Code-Erklärungen, Debugging und Programmierkonzepten",
-    "tags": ["KI", "Software", "Alltag", "Entwicklung", "Grundlagen"]
+    "answer": "### 🏠 Alltag\n\n| Tool | Beschreibung |\n|------|-------------|\n| **DeepL** | Präziser KI-Übersetzer mit natürlichen Übersetzungen |\n| **Grammarly** | Prüft Rechtschreibung und Grammatik |\n| **Google Lens** | Erkennt Objekte, Text und Landmarken |\n| **Google Fotos** | Kategorisiert Bilder und erkennt Gesichter |\n\n### 💻 Entwicklung\n\n| Tool | Beschreibung |\n|------|-------------|\n| **GitHub Copilot** | KI-gestützte Code-Vorschläge |\n| **ChatGPT** | Code-Erklärungen, Debugging, Programmierkonzepte |",
+    "tags": [
+      "KI",
+      "Software",
+      "Alltag",
+      "Entwicklung",
+      "Grundlagen"
+    ]
   },
   {
     "id": 11,
@@ -112,8 +154,13 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind Bits und Bytes?",
-    "answer": "Bits und Bytes sind die grundlegenden Maßeinheiten für digitale Daten. Ein Bit (b) ist die kleinste Informationseinheit und kann zwei Zustände annehmen: 0 oder 1. Acht Bits ergeben ein Byte (B).",
-    "tags": ["Bits", "Bytes", "Grundlagen", "Speicher"]
+    "answer": "**Bits und Bytes** sind die grundlegenden Maßeinheiten für digitale Daten.\n\n- **Bit (b)** – kleinste Informationseinheit: `0` oder `1`\n- **Byte (B)** – 8 Bits ergeben 1 Byte\n\n```\n8 Bit = 1 Byte\n```",
+    "tags": [
+      "Bits",
+      "Bytes",
+      "Grundlagen",
+      "Speicher"
+    ]
   },
   {
     "id": 12,
@@ -122,8 +169,15 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen dem dezimalen (SI) und binären (IEC) System bei Speichergrößen?",
-    "answer": "Dezimales System (SI) – Basis 10 (Vielfache von 1.000):\n• 1 Kilobyte (KB) = 1.000 Byte\n• 1 Megabyte (MB) = 1.000 KB = 1.000.000 Byte\n• 1 Gigabyte (GB) = 1.000 MB = 1.000.000.000 Byte\n• 1 Terabyte (TB) = 1.000 GB = 1.000.000.000.000 Byte\n\nBinäres System (IEC) – Basis 2 (Vielfache von 1.024):\n• 1 Kibibyte (KiB) = 1.024 Byte\n• 1 Mebibyte (MiB) = 1.024 KiB = 1.048.576 Byte\n• 1 Gibibyte (GiB) = 1.024 MiB = 1.073.741.824 Byte\n• 1 Tebibyte (TiB) = 1.024 GiB = 1.099.511.627.776 Byte",
-    "tags": ["Bits", "Bytes", "SI", "IEC", "Speicher", "Grundlagen"]
+    "answer": "### Dezimales System (SI) – Basis 10\n\n| Einheit | Wert |\n|---------|------|\n| 1 KB | 1.000 Byte |\n| 1 MB | 1.000.000 Byte |\n| 1 GB | 1.000.000.000 Byte |\n| 1 TB | 1.000.000.000.000 Byte |\n\n---\n\n### Binäres System (IEC) – Basis 2\n\n| Einheit | Wert |\n|---------|------|\n| 1 KiB | 1.024 Byte |\n| 1 MiB | 1.048.576 Byte |\n| 1 GiB | 1.073.741.824 Byte |\n| 1 TiB | 1.099.511.627.776 Byte |",
+    "tags": [
+      "Bits",
+      "Bytes",
+      "SI",
+      "IEC",
+      "Speicher",
+      "Grundlagen"
+    ]
   },
   {
     "id": 13,
@@ -132,8 +186,12 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind Zahlensysteme und welche grundlegenden Zahlenformen gibt es?",
-    "answer": "Zahlensysteme sind Methoden zur Darstellung von Zahlen.\n\nGrundlegende Zahlenformen:\n• Ganzzahlen: z.B. -3, 0, 42. Ganze Zahlen ohne Bruchteil.\n• Festkommazahlen: z.B. 3.14, -0.001. Zahlen mit einer festen Anzahl von Dezimalstellen.\n• Gleitkommazahlen: z.B. 1.23e4 (= 12300). Zahlen mit variabler Anzahl von Dezimalstellen.\n• Buchstaben: z.B. A, b. Zeichen, die in manchen Zahlensystemen verwendet werden.",
-    "tags": ["Zahlensysteme", "Grundlagen", "Mathematik"]
+    "answer": "**Zahlensysteme** sind Methoden zur Darstellung von Zahlen.\n\n### Grundlegende Zahlenformen\n\n| Typ | Beispiel | Beschreibung |\n|-----|----------|--------------|\n| **Ganzzahlen** | `-3`, `0`, `42` | Ganze Zahlen ohne Bruchteil |\n| **Festkommazahlen** | `3.14`, `-0.001` | Feste Anzahl Dezimalstellen |\n| **Gleitkommazahlen** | `1.23e4` | Variable Dezimalstellen |\n| **Buchstaben** | `A`, `F` | In Hex-System verwendet |",
+    "tags": [
+      "Zahlensysteme",
+      "Grundlagen",
+      "Mathematik"
+    ]
   },
   {
     "id": 14,
@@ -142,7 +200,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche wichtigen Zahlensysteme gibt es und wie viele Zeichen verwenden sie?",
-    "answer": "• Dezimalsystem: 10 Zeichen (0-9), Grundlage: 10 Finger.\n• Binärsystem: 2 Zeichen (0, 1), Verwendung in Computertechnik für digitale Zustände (An/Aus).\n• Oktalsystem: 8 Zeichen (0-7), eine Oktalstelle umfasst genau 3 Bit.\n• Hexadezimalsystem: 16 Zeichen (0-9, A-F), eine Hexadezimalstelle umfasst genau 4 Bit.",
+    "answer": "| System | Zeichen | Basis | Verwendung |\n|--------|---------|-------|------------|\n| **Dezimal** | 0-9 | 10 | Alltag (10 Finger) |\n| **Binär** | 0, 1 | 2 | Computertechnik (An/Aus) |\n| **Oktal** | 0-7 | 8 | 1 Stelle = 3 Bit |\n| **Hexadezimal** | 0-9, A-F | 16 | 1 Stelle = 4 Bit |",
     "tags": [
       "Zahlensysteme",
       "Binär",
@@ -159,7 +217,7 @@
     "type": "praxis",
     "difficulty": 3,
     "question": "Wie lauten die Dezimalzahlen 0-16 in Binär, Hexadezimal und Oktal?",
-    "answer": "Dez | Binär  | Hex | Okt\n0   | 0000   | 0   | 0\n1   | 0001   | 1   | 1\n2   | 0010   | 2   | 2\n3   | 0011   | 3   | 3\n4   | 0100   | 4   | 4\n5   | 0101   | 5   | 5\n6   | 0110   | 6   | 6\n7   | 0111   | 7   | 7\n8   | 1000   | 8   | 10\n9   | 1001   | 9   | 11\n10  | 1010   | A   | 12\n11  | 1011   | B   | 13\n12  | 1100   | C   | 14\n13  | 1101   | D   | 15\n14  | 1110   | E   | 16\n15  | 1111   | F   | 17\n16  | 10000  | 10  | 20",
+    "answer": "| Dez | Binär | Hex | Okt |\n|-----|-------|-----|-----|\n| 0 | `0000` | 0 | 0 |\n| 1 | `0001` | 1 | 1 |\n| 2 | `0010` | 2 | 2 |\n| 3 | `0011` | 3 | 3 |\n| 4 | `0100` | 4 | 4 |\n| 5 | `0101` | 5 | 5 |\n| 6 | `0110` | 6 | 6 |\n| 7 | `0111` | 7 | 7 |\n| 8 | `1000` | 8 | 10 |\n| 9 | `1001` | 9 | 11 |\n| 10 | `1010` | A | 12 |\n| 11 | `1011` | B | 13 |\n| 12 | `1100` | C | 14 |\n| 13 | `1101` | D | 15 |\n| 14 | `1110` | E | 16 |\n| 15 | `1111` | F | 17 |\n| 16 | `10000` | 10 | 20 |",
     "image_ref": "zahlensysteme_umrechnungstabelle.png",
     "tags": [
       "Zahlensysteme",
@@ -177,7 +235,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Wertebereiche haben Ganzzahlen in verschiedenen Darstellungen?",
-    "answer": "• Dezimal: 0 bis n\n• Binär (1 Byte): 0 bis 255\n• Binär (2 Bytes): 0 bis 65.535\n• Binär (4 Bytes): 0 bis ca. 4 Milliarden (Unsigned Integer)\n• Binary Coded Decimal (BCD): z.B. 77 = 0111 0111",
+    "answer": "| Darstellung | Wertebereich |\n|-------------|--------------|\n| Dezimal | 0 bis n |\n| Binär (1 Byte) | `0` bis `255` |\n| Binär (2 Bytes) | `0` bis `65.535` |\n| Binär (4 Bytes) | `0` bis ~4 Milliarden |\n| BCD | z.B. `77` = `0111 0111` |",
     "tags": [
       "Zahlensysteme",
       "Ganzzahlen",
@@ -193,8 +251,13 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen ASCII und Unicode?",
-    "answer": "ASCII: Standardisierte Codierung für lateinische Buchstaben und Zeichen (begrenzt auf 128/256 Zeichen).\n\nUnicode: Umfassende Codierung für Schriftzeichen vieler Sprachen und Symbole weltweit.",
-    "tags": ["Zeichencodierung", "ASCII", "Unicode", "Grundlagen"]
+    "answer": "### ASCII\n\nStandardisierte Codierung für lateinische Buchstaben und Zeichen.\n\n⚠️ Begrenzt auf **128/256 Zeichen**\n\n---\n\n### Unicode\n\nUmfassende Codierung für Schriftzeichen vieler Sprachen und Symbole weltweit.\n\n✅ Unterstützt **alle Sprachen** und Emojis",
+    "tags": [
+      "Zeichencodierung",
+      "ASCII",
+      "Unicode",
+      "Grundlagen"
+    ]
   },
   {
     "id": 18,
@@ -204,7 +267,11 @@
     "difficulty": 1,
     "question": "Was ist eine CPU?",
     "answer": "Die CPU (Central Processing Unit) ist das Hauptrechenwerk eines Computers und führt Befehle aus. Sie bestimmt maßgeblich die Geschwindigkeit und Leistungsfähigkeit eines Systems.",
-    "tags": ["Hardware", "CPU", "Prozessor"]
+    "tags": [
+      "Hardware",
+      "CPU",
+      "Prozessor"
+    ]
   },
   {
     "id": 19,
@@ -214,7 +281,13 @@
     "difficulty": 3,
     "question": "Welche Funktionsblöcke hat die Harvard-Architektur?",
     "answer": "1. Rechenwerk (ALU – Arithmetical Logical Unit): Führt arithmetische und logische Operationen durch.\n2. Leit- & Steuerwerk (CU – Control Unit): Kontrolliert den Ablauf der Befehle.\n3. Speicherwerk: Getrennte Speicher für Daten (Daten-Speicher) und Programme (Programm-Speicher).\n4. Ein-/Ausgabewerk (IO Unit): Zuständig für die Ein- und Ausgabe von Daten und die Interaktion mit dem Benutzer.\n\nDie Harvard-Architektur verwendet getrennte Verbindungswege (Busse) für Daten und Programme, was zu einer erhöhten Verarbeitungsgeschwindigkeit führen kann.",
-    "tags": ["Hardware", "CPU", "Harvard-Architektur", "ALU", "Steuerwerk"]
+    "tags": [
+      "Hardware",
+      "CPU",
+      "Harvard-Architektur",
+      "ALU",
+      "Steuerwerk"
+    ]
   },
   {
     "id": 20,
@@ -225,7 +298,11 @@
     "question": "Was sind die Vor- und Nachteile der Harvard-Architektur?",
     "answer": "Vorteile:\n• Höhere Geschwindigkeit\n• Weniger Zugriffskonflikte\n• Bessere Sicherheit\n\nNachteile:\n• Komplexere Struktur\n• Höherer Hardwareaufwand\n• Geringere Flexibilität\n\nAnwendungsbereiche: Häufig in eingebetteten Systemen und Mikrocontrollern, wo Effizienz und Geschwindigkeit entscheidend sind.",
     "image_ref": "harvard_architektur_vorteile_nachteile.png",
-    "tags": ["Hardware", "CPU", "Harvard-Architektur"]
+    "tags": [
+      "Hardware",
+      "CPU",
+      "Harvard-Architektur"
+    ]
   },
   {
     "id": 21,
@@ -236,7 +313,13 @@
     "question": "Welche Funktionsblöcke und Busse hat die Von-Neumann-Architektur?",
     "answer": "Funktionsblöcke:\n1. Rechenwerk (ALU): Führt arithmetische und logische Operationen durch.\n2. Leit- & Steuerwerk (CU): Kontrolliert den Ablauf der Befehle.\n3. Speicherwerk (Memory – RAM): Speichert sowohl Daten als auch Programme (gemeinsam!).\n4. Ein-/Ausgabewerk (IO Unit): Ein-/Ausgabe von Daten.\n\nVerbindungen (Busse):\n1. Kontrollbus / Steuerbus: Übermittelt Steuersignale zwischen den Funktionsblöcken.\n2. Datenbus: Transportiert Daten zwischen den Funktionsblöcken.\n3. Adressbus: Übermittelt die Adressen von Speicherzellen, auf die zugegriffen wird.",
     "image_ref": "von_neumann_architektur.png",
-    "tags": ["Hardware", "CPU", "Von-Neumann-Architektur", "Busse", "ALU"]
+    "tags": [
+      "Hardware",
+      "CPU",
+      "Von-Neumann-Architektur",
+      "Busse",
+      "ALU"
+    ]
   },
   {
     "id": 22,
@@ -246,7 +329,13 @@
     "difficulty": 3,
     "question": "Was ist der Unterschied zwischen CISC und RISC Prozessorarchitekturen?",
     "answer": "CISC (Complex Instruction Set Computing):\n• Viele komplexe und spezialisierte Befehle direkt in Hardware implementiert\n• Ein einziger Maschinenbefehl kann komplexe Operationen ausführen\n• Vereinfacht die Programmierung, führt aber zu einer komplexeren und langsameren CPU-Architektur\n\nRISC (Reduced Instruction Set Computing):\n• Minimaler Satz einfacher Befehle\n• Befehle werden in genau einem Taktzyklus ausgeführt\n• CPU ist schneller und energieeffizienter\n• Programme benötigen mehr einzelne Befehle",
-    "tags": ["Hardware", "CPU", "CISC", "RISC", "Prozessorarchitektur"]
+    "tags": [
+      "Hardware",
+      "CPU",
+      "CISC",
+      "RISC",
+      "Prozessorarchitektur"
+    ]
   },
   {
     "id": 23,
@@ -256,7 +345,14 @@
     "difficulty": 2,
     "question": "Was ist ein Bus in der CPU und welche Busarten gibt es?",
     "answer": "Der Bus ist das System zur Datenübertragung innerhalb der CPU und zwischen Komponenten.\n\n• Datenbus: Transportiert Daten zwischen CPU, RAM und anderen Komponenten\n• Adressbus: Bestimmt Speicheradressen für Lese- und Schreibzugriffe\n• Steuerbus: Überträgt Steuerbefehle zur Synchronisation",
-    "tags": ["Hardware", "CPU", "Bus", "Datenbus", "Adressbus", "Steuerbus"]
+    "tags": [
+      "Hardware",
+      "CPU",
+      "Bus",
+      "Datenbus",
+      "Adressbus",
+      "Steuerbus"
+    ]
   },
   {
     "id": 24,
@@ -266,7 +362,14 @@
     "difficulty": 2,
     "question": "Was ist RAM und welche Arten gibt es?",
     "answer": "Der Arbeitsspeicher (RAM – Random Access Memory) dient als kurzfristiger Speicher für laufende Prozesse und Programme. Er ist schneller als Festplattenspeicher, verliert aber seinen Inhalt beim Ausschalten (flüchtig).\n\nArten:\n• SRAM (Static RAM): Schnell, aber teuer (z.B. Cache-Speicher)\n• DRAM (Dynamic RAM): Günstiger, aber langsamer (z.B. Hauptspeicher)\n• DDR (Double Data Rate): Aktuelle Versionen sind DDR4 und DDR5, unterscheiden sich in Geschwindigkeit und Energieeffizienz\n\nMerkmale:\n• Kapazität: Bestimmt, wie viele Programme gleichzeitig laufen können\n• Taktfrequenz: Misst die Geschwindigkeit der Datenübertragung (z.B. 3200 MHz)\n• Latenz (CL – CAS Latency): Verzögerung bei Speicherzugriffen",
-    "tags": ["Hardware", "RAM", "Speicher", "SRAM", "DRAM", "DDR"]
+    "tags": [
+      "Hardware",
+      "RAM",
+      "Speicher",
+      "SRAM",
+      "DRAM",
+      "DDR"
+    ]
   },
   {
     "id": 25,
@@ -276,7 +379,13 @@
     "difficulty": 4,
     "question": "Wie rechnet man die Datenrate von DDR-RAM um? Berechne die Datenrate von DDR4-3200.",
     "answer": "DDR-RAM überträgt pro Takt zwei Datenpakete (Double Data Rate). Typische Busbreite: 64 Bit = 8 Byte.\n\nTaktfrequenz → Datenrate:\nDatenrate (MB/s) = Taktfrequenz (MHz) × 2 × Busbreite (Byte)\n\nBeispiel DDR4-3200:\n3200 × 2 × 8 = 51.200 MB/s (= 51,2 GB/s)\n\nDatenrate → Taktfrequenz:\nTaktfrequenz (MHz) = Datenrate (MB/s) / (2 × Busbreite (Byte))",
-    "tags": ["Hardware", "RAM", "DDR", "Berechnung", "Datenrate"]
+    "tags": [
+      "Hardware",
+      "RAM",
+      "DDR",
+      "Berechnung",
+      "Datenrate"
+    ]
   },
   {
     "id": 26,
@@ -286,7 +395,12 @@
     "difficulty": 2,
     "question": "Was sind die Unterschiede zwischen HDD und SSD?",
     "answer": "HDD (Hard Disk Drive):\n• Mechanische Festplatte mit magnetischen Platten\n• Vorteile: Günstig, hohe Speicherkapazität\n• Nachteile: Langsam, empfindlich gegen Erschütterungen\n\nSSD (Solid State Drive):\n• Speicherchips ohne bewegliche Teile\n• Vorteile: Schnell, robust, leise\n• Nachteile: Teurer als HDD, begrenzte Schreibzyklen",
-    "tags": ["Hardware", "Datenspeicher", "HDD", "SSD"]
+    "tags": [
+      "Hardware",
+      "Datenspeicher",
+      "HDD",
+      "SSD"
+    ]
   },
   {
     "id": 27,
@@ -296,7 +410,13 @@
     "difficulty": 2,
     "question": "Was ist Flash-Speicher und welche Arten gibt es?",
     "answer": "Flash-Speicher ist die Speichertechnologie für SSDs, USB-Sticks und SD-Karten.\n\nArten:\n• NAND-Flash: Günstig, langlebig\n• NOR-Flash: Schnell, für Firmware",
-    "tags": ["Hardware", "Datenspeicher", "Flash", "NAND", "NOR"]
+    "tags": [
+      "Hardware",
+      "Datenspeicher",
+      "Flash",
+      "NAND",
+      "NOR"
+    ]
   },
   {
     "id": 28,
@@ -324,7 +444,14 @@
     "difficulty": 1,
     "question": "Was sind die wichtigsten Netzwerk-Hardwarekomponenten?",
     "answer": "• RJ45: Standardstecker für Ethernet-Kabel (LAN), unterstützt 100 Mbit/s, 1 Gbit/s, 10 Gbit/s\n• LWL (Lichtwellenleiter): Glasfasertechnik, hohe Bandbreite, geringe Latenz, störungsfrei, aber teurer und empfindlicher\n• Netzwerkkarte: Hardware-Schnittstelle für Ethernet (kabelgebunden) oder WLAN (kabellos)\n• WLAN: Kabellose Netzwerktechnologie (IEEE 802.11), z.B. Wi-Fi 5, Wi-Fi 6\n• LAN: Lokales Netzwerk innerhalb eines Hauses oder Unternehmens",
-    "tags": ["Hardware", "Netzwerk", "RJ45", "LWL", "WLAN", "LAN"]
+    "tags": [
+      "Hardware",
+      "Netzwerk",
+      "RJ45",
+      "LWL",
+      "WLAN",
+      "LAN"
+    ]
   },
   {
     "id": 30,
@@ -351,7 +478,12 @@
     "difficulty": 2,
     "question": "Was ist DHCP?",
     "answer": "DHCP (Dynamic Host Configuration Protocol) ermöglicht die automatische Vergabe von IP-Adressen innerhalb eines Netzwerks. Es erleichtert die Netzwerkkonfiguration, da Geräte keine feste IP-Adresse benötigen.",
-    "tags": ["Netzwerk", "DHCP", "IP-Adresse", "Protokoll"]
+    "tags": [
+      "Netzwerk",
+      "DHCP",
+      "IP-Adresse",
+      "Protokoll"
+    ]
   },
   {
     "id": 32,
@@ -361,7 +493,14 @@
     "difficulty": 3,
     "question": "Was ist NAT und welche Arten gibt es?",
     "answer": "NAT (Network Address Translation) übersetzt private IP-Adressen in eine öffentliche IP-Adresse für den Internetzugriff.\n\n• SNAT (Source NAT): Private → Öffentliche IP\n• DNAT (Destination NAT): Öffentliche → Private IP\n• PAT (Port Address Translation): Mehrere private Adressen teilen eine öffentliche IP",
-    "tags": ["Netzwerk", "NAT", "SNAT", "DNAT", "PAT", "IP-Adresse"]
+    "tags": [
+      "Netzwerk",
+      "NAT",
+      "SNAT",
+      "DNAT",
+      "PAT",
+      "IP-Adresse"
+    ]
   },
   {
     "id": 33,
@@ -371,7 +510,12 @@
     "difficulty": 2,
     "question": "Was ist IPv4 und wie ist eine IPv4-Adresse aufgebaut?",
     "answer": "IPv4 (Internet Protocol Version 4) ist ein verbindungsloses, paketvermitteltes Protokoll zur Adressierung von Netzwerkteilnehmern. Es verwendet 32-Bit-Adressen, aufgeteilt in vier Oktette (z.B. 192.168.1.1), begrenzt auf ca. 4,3 Milliarden Adressen.\n\nAufbau einer IPv4-Adresse:\n• Netzwerkanteil: Identifiziert das Netzwerk\n• Hostanteil: Identifiziert das Gerät innerhalb des Netzwerks",
-    "tags": ["Netzwerk", "IPv4", "IP-Adresse", "Protokoll"]
+    "tags": [
+      "Netzwerk",
+      "IPv4",
+      "IP-Adresse",
+      "Protokoll"
+    ]
   },
   {
     "id": 34,
@@ -381,7 +525,13 @@
     "difficulty": 4,
     "question": "Wie funktioniert Subnetting bei IPv4? Erläutere anhand eines Beispiels.",
     "answer": "Subnetting unterteilt ein Netzwerk in kleinere Teilnetze.\n\nSubnetzmaske-Beispiele:\n• /8 = 255.0.0.0\n• /16 = 255.255.0.0\n• /24 = 255.255.255.0\n\nBerechnung:\n1. Anzahl der Subnetze: 2^n (n = zusätzliche Subnetz-Bits)\n2. Anzahl der Hosts pro Subnetz: 2^h - 2 (h = verbleibende Host-Bits)\n3. Subnetzgröße: 256 - letzter Wert der Subnetzmaske\n\nBeispiel: Netzwerk 192.168.1.0/24 → /26 (255.255.255.192):\n• 4 Subnetze (2^2 = 4)\n• 62 Hosts pro Subnetz (2^6 - 2 = 62)",
-    "tags": ["Netzwerk", "IPv4", "Subnetting", "Subnetzmaske", "Berechnung"]
+    "tags": [
+      "Netzwerk",
+      "IPv4",
+      "Subnetting",
+      "Subnetzmaske",
+      "Berechnung"
+    ]
   },
   {
     "id": 35,
@@ -391,7 +541,12 @@
     "difficulty": 2,
     "question": "Welche privaten IPv4-Adressbereiche gibt es?",
     "answer": "Private IPv4-Adressen sind nicht im Internet routbar und werden in privaten Netzwerken genutzt.\n\n• Klasse A: 10.0.0.0 – 10.255.255.255\n• Klasse B: 172.16.0.0 – 172.31.255.255\n• Klasse C: 192.168.0.0 – 192.168.255.255",
-    "tags": ["Netzwerk", "IPv4", "Private IP", "Adressklassen"]
+    "tags": [
+      "Netzwerk",
+      "IPv4",
+      "Private IP",
+      "Adressklassen"
+    ]
   },
   {
     "id": 36,
@@ -418,7 +573,12 @@
     "difficulty": 3,
     "question": "Was ist IPv6 und wie ist eine IPv6-Adresse aufgebaut?",
     "answer": "IPv6 ist der Nachfolger von IPv4 mit 128-Bit-Adressen in acht Gruppen zu je vier Hex-Ziffern (z.B. 2001:0db8:85a3:0000:0000:8a2e:0370:7334).\n\nAufbau:\n• Netzwerkpräfix: Identifiziert das Netzwerk (meist 64 Bit)\n• Interface Identifier: Identifiziert das Gerät (meist 64 Bit)\n\nVerkürzte Schreibweise: Führende Nullen können weggelassen werden, eine Folge von Nullgruppen kann durch :: ersetzt werden.\nBeispiel: 2001:db8:85a3::8a2e:370:7334",
-    "tags": ["Netzwerk", "IPv6", "IP-Adresse", "Protokoll"]
+    "tags": [
+      "Netzwerk",
+      "IPv6",
+      "IP-Adresse",
+      "Protokoll"
+    ]
   },
   {
     "id": 38,
@@ -428,7 +588,13 @@
     "difficulty": 3,
     "question": "Welche IPv6-Adresstypen gibt es?",
     "answer": "• Unicast: Kommunikation mit einem einzigen Empfänger\n  – Global Unicast (GUAs): Öffentlich routbar (2000::/3)\n  – Link-Local: Nur im lokalen Netzwerk gültig (FE80::/10)\n  – Unique Local (ULA): Private IPv6-Adressen (FC00::/7)\n• Multicast: Kommunikation mit mehreren Empfängern (FF00::/8)\n• Anycast: Mehrere Geräte teilen sich eine Adresse, das nächstgelegene antwortet",
-    "tags": ["Netzwerk", "IPv6", "Unicast", "Multicast", "Anycast"]
+    "tags": [
+      "Netzwerk",
+      "IPv6",
+      "Unicast",
+      "Multicast",
+      "Anycast"
+    ]
   },
   {
     "id": 39,
@@ -438,7 +604,13 @@
     "difficulty": 3,
     "question": "Welche IPv6-Adresszuweisungsmethoden gibt es?",
     "answer": "1. Statische Zuweisung: Manuelle Vergabe einer IPv6-Adresse\n2. DHCPv6: Automatische Vergabe durch einen DHCPv6-Server\n3. SLAAC (Stateless Address Autoconfiguration): Selbstkonfiguration der IP-Adresse anhand des Netzpräfixes und der MAC-Adresse\n\nIPv6-Präfixe:\n• /64 → Standard für Netzwerke (Heim- und Firmennetze)\n• /48 → Zuweisung für Unternehmen\n• /32 → ISPs erhalten oft ein /32-Netz\n\nWichtige Sonderadressen:\n• Loopback: ::1\n• Unspecified: ::\n• All Nodes Multicast: FF02::1\n• All Routers Multicast: FF02::2",
-    "tags": ["Netzwerk", "IPv6", "SLAAC", "DHCPv6", "Sonderadressen"]
+    "tags": [
+      "Netzwerk",
+      "IPv6",
+      "SLAAC",
+      "DHCPv6",
+      "Sonderadressen"
+    ]
   },
   {
     "id": 40,
@@ -448,7 +620,13 @@
     "difficulty": 2,
     "question": "Was ist eine Grafikkarte und welche Arten gibt es?",
     "answer": "Die Grafikkarte (GPU – Graphics Processing Unit) ist für die Bildberechnung und Darstellung verantwortlich.\n\nArten:\n• Integrierte GPU: In der CPU enthalten, energiesparend (z.B. Intel UHD, AMD Vega)\n• Dedizierte GPU: Eigenständige Karte für hohe Leistung (z.B. NVIDIA GeForce, AMD Radeon)\n\nWichtige Merkmale:\n• VRAM (Videospeicher): Speichert Texturen und Bilddaten (z.B. 8 GB GDDR6)\n• CUDA / OpenCL: Technologien für parallele Berechnungen\n• Raytracing: Echtzeit-Lichtsimulation für realistische Grafiken\n\nAnwendungsbereiche: Gaming, 3D-Modellierung, Künstliche Intelligenz (Deep Learning)",
-    "tags": ["Hardware", "Grafikkarte", "GPU", "VRAM", "CUDA"]
+    "tags": [
+      "Hardware",
+      "Grafikkarte",
+      "GPU",
+      "VRAM",
+      "CUDA"
+    ]
   },
   {
     "id": 41,
@@ -483,7 +661,12 @@
     "question": "Beschreibe die 7 Schichten des OSI-Modells.",
     "answer": "1. Bitübertragungsschicht (Physical Layer): Überträgt rohe Bitströme über physikalische Medien. Beispiel: Ethernet, WLAN, Glasfaser.\n2. Sicherungsschicht (Data Link Layer): Fehlerfreie Übertragung zwischen direkt verbundenen Geräten. MAC-Adressen, Switches. Beispiel: Ethernet (802.3), WLAN (802.11).\n3. Vermittlungsschicht (Network Layer): Logische Adressierung und Routing. IP-Adressen, Router. Beispiel: IPv4, IPv6, ICMP.\n4. Transportschicht (Transport Layer): Zuverlässige/unzuverlässige Übertragung. Protokolle: TCP (zuverlässig), UDP (schnell).\n5. Sitzungsschicht (Session Layer): Steuert Sitzungen zwischen Anwendungen. Beispiel: NetBIOS, RPC.\n6. Darstellungsschicht (Presentation Layer): Datenformatumwandlung, Verschlüsselung, Komprimierung. Beispiel: TLS/SSL, JPEG, ASCII.\n7. Anwendungsschicht (Application Layer): Netzwerkdienste für Anwendungen. Beispiel: HTTP, FTP, SMTP, DNS.",
     "image_ref": "osi_modell_7_schichten.png",
-    "tags": ["Netzwerk", "OSI-Modell", "Schichtenmodell", "Protokolle"]
+    "tags": [
+      "Netzwerk",
+      "OSI-Modell",
+      "Schichtenmodell",
+      "Protokolle"
+    ]
   },
   {
     "id": 43,
@@ -510,7 +693,14 @@
     "difficulty": 3,
     "question": "Welche USV-Arten gibt es und worin unterscheiden sie sich?",
     "answer": "1. Offline-USV (VFD): Umschaltzeit ca. 10 ms, keine aktive Spannungsregelung. Für einfache Geräte (PCs, kleine Router).\n2. Line-Interactive-USV (VI): Mit Spannungsregler (AVR), reduziert Netzschwankungen ohne Batterieumschaltung. Für Server, Netzwerktechnik.\n3. Online-USV (VFI / Doppelwandler): Wandelt Netz- in Gleich- und zurück in Wechselspannung. Keine Umschaltzeit! Für kritische IT-Systeme, Rechenzentren.\n4. Hybrid-USV (Dynamische USV): Kombination aus Online-USV und rotierendem Schwungrad. Höhere Effizienz. Für große Rechenzentren.\n\nFunktionen: Schutz vor Stromausfällen/Spannungsspitzen, Überbrückung von Netzausfällen, geordnetes Herunterfahren, Filterung von Netzstörungen.",
-    "tags": ["Hardware", "USV", "Stromversorgung", "VFD", "VFI", "Sicherheit"]
+    "tags": [
+      "Hardware",
+      "USV",
+      "Stromversorgung",
+      "VFD",
+      "VFI",
+      "Sicherheit"
+    ]
   },
   {
     "id": 45,
@@ -538,7 +728,13 @@
     "difficulty": 1,
     "question": "Welche IT-Geräteklassen gibt es?",
     "answer": "• Desktops: Stationäre PCs ohne Mobilitätsfokus\n• Notebooks: Mobile Laptops mit integrierter Hardware\n• All-in-One: Integrierte Systeme mit Monitor und PC in einem Gehäuse\n• Thin Clients: Schlanke Clients, die auf zentrale Server zugreifen\n• Tablets: Touch-basierte mobile Geräte\n• Smartphones: Kompakte mobile Endgeräte mit Kommunikationsfunktion",
-    "tags": ["Hardware", "Geräteklassen", "Desktop", "Notebook", "Thin Client"]
+    "tags": [
+      "Hardware",
+      "Geräteklassen",
+      "Desktop",
+      "Notebook",
+      "Thin Client"
+    ]
   },
   {
     "id": 47,
@@ -548,7 +744,12 @@
     "difficulty": 1,
     "question": "Was bedeutet Barrierefreiheit in der IT und welche Hardware kann helfen?",
     "answer": "Barrierefreiheit bezeichnet Maßnahmen zur Ermöglichung der Nutzung von IT-Systemen für Menschen mit Einschränkungen.\n\nBeispiele für unterstützende Hardware:\n• Größerer Monitor – Erleichtert das Lesen für Menschen mit Sehschwäche\n• Breitere Tastatur – Hilft Menschen mit motorischen Einschränkungen durch größere Tastenabstände\n• Lautsprecher/Mikrofon – Unterstützt Sprachsteuerung und Sprachausgabe für Personen mit Seh- oder Mobilitätseinschränkungen",
-    "tags": ["Hardware", "Barrierefreiheit", "Accessibility", "Ergonomie"]
+    "tags": [
+      "Hardware",
+      "Barrierefreiheit",
+      "Accessibility",
+      "Ergonomie"
+    ]
   },
   {
     "id": 48,
@@ -574,7 +775,11 @@
     "difficulty": 1,
     "question": "Welche Beurteilungskriterien gibt es für Software?",
     "answer": "• Benutzerfreundlichkeit\n• Stabilität/Zuverlässigkeit\n• Support/Updates\n• Kosten\n• Systemanforderungen\n• Kompatibilität",
-    "tags": ["Software", "Beurteilung", "Kriterien"]
+    "tags": [
+      "Software",
+      "Beurteilung",
+      "Kriterien"
+    ]
   },
   {
     "id": 50,
@@ -584,7 +789,13 @@
     "difficulty": 2,
     "question": "Was ist das BIOS und wie unterscheidet es sich von UEFI?",
     "answer": "Das BIOS (Basic Input/Output System) ist die Firmware eines Computers, die beim Start die Hardware initialisiert und das Betriebssystem lädt.\n\nFunktionen: POST (Power-On Self-Test), CMOS-Konfiguration, Bootloader, Hardware-Steuerung.\n\nBIOS vs. UEFI:\n• Speicherort: BIOS = ROM/EEPROM/Flash | UEFI = Flash-Speicher\n• Boot-Modus: BIOS = MBR (max. 2 TB) | UEFI = GPT (größere Laufwerke)\n• Oberfläche: BIOS = Textbasiert | UEFI = Grafisch, Maus-Support\n• Sicherheit: BIOS = Keine Secure Boot | UEFI = Secure Boot, TPM-Unterstützung\n\nWichtige Tasten: DEL/F2 (BIOS-Setup), F12/ESC (Boot-Menü).",
-    "tags": ["Software", "BIOS", "UEFI", "Firmware", "Boot"]
+    "tags": [
+      "Software",
+      "BIOS",
+      "UEFI",
+      "Firmware",
+      "Boot"
+    ]
   },
   {
     "id": 51,
@@ -611,7 +822,12 @@
     "difficulty": 2,
     "question": "Was ist eine IDE und ein Debugger?",
     "answer": "IDE (Integrated Development Environment): Eine Software für Programmierer, die alles für die Softwareentwicklung enthält: Editor, Compiler, Debugger, etc. Beispiele: Visual Studio, Eclipse, IntelliJ.\n\nDebugger: Unterstützt Entwickler während des Entwicklungsprozesses. Bietet detaillierte Analysen des laufenden Programms – z.B. Laufzeitvariablen auslesen oder Programm während der Ausführung unterbrechen/fortsetzen (Breakpoints).",
-    "tags": ["Software", "Entwicklung", "IDE", "Debugger"]
+    "tags": [
+      "Software",
+      "Entwicklung",
+      "IDE",
+      "Debugger"
+    ]
   },
   {
     "id": 53,
@@ -621,7 +837,14 @@
     "difficulty": 2,
     "question": "Welche Cloud-Service-Modelle gibt es?",
     "answer": "• SaaS (Software as a Service): Nutzung von Anwendungen über das Internet ohne lokale Installation. Beispiel: Online-Office, CRM-Systeme.\n• DaaS (Desktop as a Service): Bereitstellung virtueller Desktop-Umgebungen. Zugriff auf kompletten Desktop über verschiedene Endgeräte.\n• IaaS (Infrastructure as a Service): Bereitstellung von IT-Infrastruktur (VMs, Speicher, Netzwerke). Hohe Flexibilität, keine eigene physische Hardware nötig.\n• PaaS (Platform as a Service): Bereitstellung von Entwicklungsplattformen. Beschleunigte Entwicklung, integrierte Laufzeitumgebungen.",
-    "tags": ["Software", "Cloud", "SaaS", "IaaS", "PaaS", "DaaS"]
+    "tags": [
+      "Software",
+      "Cloud",
+      "SaaS",
+      "IaaS",
+      "PaaS",
+      "DaaS"
+    ]
   },
   {
     "id": 54,
@@ -631,7 +854,11 @@
     "difficulty": 1,
     "question": "Was sind virtuelle Desktops?",
     "answer": "Virtuelle Desktops ermöglichen das gleichzeitige Arbeiten mit mehreren separaten Desktop-Umgebungen auf einem einzigen physischen Bildschirm.\n\nVorteile: Bessere Organisation, erhöhte Produktivität, reduzierte Ablenkung.\n\nBeispiele:\n• Windows: 'Task View' (Win + Tab)\n• macOS: 'Spaces' (Mission Control)\n• Linux: Mehrere Workspaces je nach Distribution",
-    "tags": ["Software", "Virtuelle Desktops", "Produktivität"]
+    "tags": [
+      "Software",
+      "Virtuelle Desktops",
+      "Produktivität"
+    ]
   },
   {
     "id": 55,
@@ -641,7 +868,13 @@
     "difficulty": 2,
     "question": "Welche funktionalen, ökonomischen und ökologischen Aspekte werden bei IT-Systemen bewertet?",
     "answer": "Funktionale Aspekte:\n• Ergonomie (Benutzerfreundlichkeit, intuitive Bedienung)\n• Leistungsparameter (Geschwindigkeit, Skalierbarkeit)\n\nÖkonomische Aspekte:\n• Einmalige Kosten (Anschaffung)\n• Laufende Kosten (Betrieb, Wartung, Lizenzen)\n• Nutzungsdauer (Lebensdauer, Abschreibung)\n\nÖkologische Aspekte:\n• Energieverbrauch (Effizienz)\n• Recyclingfähigkeit (CO₂-Fußabdruck)\n\nHinweis: Alle drei Aspekte stehen oft in Konflikt (z.B. hohe Leistung vs. hoher Energieverbrauch).",
-    "tags": ["Software", "Bewertung", "Ökonomie", "Ökologie", "Ergonomie"]
+    "tags": [
+      "Software",
+      "Bewertung",
+      "Ökonomie",
+      "Ökologie",
+      "Ergonomie"
+    ]
   },
   {
     "id": 56,
@@ -651,7 +884,11 @@
     "difficulty": 1,
     "question": "Welche Kommunikationssysteme nutzen moderne Unternehmen?",
     "answer": "Videokonferenzsysteme (Teams, Zoom) für ortsunabhängige Meetings, Social-Media-Systeme für Kundenkommunikation und Marketing, sowie Messaging-Dienste für schnelle interne Abstimmungen.",
-    "tags": ["Software", "Kommunikation", "Videokonferenz"]
+    "tags": [
+      "Software",
+      "Kommunikation",
+      "Videokonferenz"
+    ]
   },
   {
     "id": 57,
@@ -661,7 +898,12 @@
     "difficulty": 2,
     "question": "Was ist ein Client-Server-System?",
     "answer": "Ein zentraler Server stellt Dienste für mehrere Clients bereit. Die Clients greifen über das Netzwerk auf diese Dienste zu.\n\nTypische Beispiele:\n• Dateiserver: Zentrale Datenspeicherung\n• Mailserver: E-Mail-Verwaltung\n• Datenbankserver: Zentrale Datenhaltung\n• Webserver: Bereitstellung von Webseiten",
-    "tags": ["Software", "Client-Server", "Netzwerk", "Server"]
+    "tags": [
+      "Software",
+      "Client-Server",
+      "Netzwerk",
+      "Server"
+    ]
   },
   {
     "id": 58,
@@ -671,7 +913,12 @@
     "difficulty": 2,
     "question": "Was ist eine Domäne in der Netzwerkverwaltung?",
     "answer": "Die Domäne ist ein zentrales Verwaltungskonzept für Netzwerke. Ein Domänencontroller verwaltet:\n• Benutzerkonten und Berechtigungen\n• Gruppenrichtlinien\n• Gemeinsame Ressourcen\n• Zentrale Authentifizierung",
-    "tags": ["Software", "Domäne", "Netzwerk", "Active Directory"]
+    "tags": [
+      "Software",
+      "Domäne",
+      "Netzwerk",
+      "Active Directory"
+    ]
   },
   {
     "id": 59,
@@ -681,7 +928,11 @@
     "difficulty": 1,
     "question": "Welche Schritte umfasst die Hardware-Installation und -Konfiguration?",
     "answer": "Physische Installation:\n• Einbau von Komponenten (CPU, RAM, Festplatten, Grafikkarten)\n• Anschluss von Peripheriegeräten (Monitor, Tastatur, Maus, Drucker)\n• Verkabelung und Stromversorgung prüfen\n\nHardware-Konfiguration:\n• BIOS/UEFI-Einstellungen anpassen (Boot-Reihenfolge, Sicherheitsoptionen)\n• Hardware-Diagnose (Fehlersuche bei nicht erkannten Komponenten)\n• Firmware-Updates durchführen",
-    "tags": ["Installation", "Hardware", "Konfiguration"]
+    "tags": [
+      "Installation",
+      "Hardware",
+      "Konfiguration"
+    ]
   },
   {
     "id": 60,
@@ -691,7 +942,11 @@
     "difficulty": 2,
     "question": "Welche Schritte umfasst die Installation und Konfiguration eines Betriebssystems?",
     "answer": "Installation:\n• Auswahl des Installationsmediums (DVD, USB-Stick, Netzwerkinstallation)\n• Partitionierung der Festplatte\n• Auswahl und Installation von Treibern\n\nKonfiguration:\n• Lokale und Netzwerkeinstellungen (Zeit, Sprache, Benutzerkonten)\n• Installation von Sicherheitsupdates und Patches\n• Einrichtung von automatischen Update-Prozessen",
-    "tags": ["Installation", "Betriebssystem", "Konfiguration"]
+    "tags": [
+      "Installation",
+      "Betriebssystem",
+      "Konfiguration"
+    ]
   },
   {
     "id": 61,
@@ -701,7 +956,13 @@
     "difficulty": 2,
     "question": "Was sind die Grundlagen der Kommandozeile?",
     "answer": "Shells/Terminals: cmd, PowerShell, Bash\nAufbau: Befehl, Parameter, Optionen, Argumente\n\nPraktische Anwendung:\n• Navigation: cd, pwd\n• Dateien/Verzeichnisse erstellen/löschen: mkdir, del, rm\n• Dateien anzeigen: dir (Windows), ls (Linux/Mac)\n• Parameter zur Anpassung: z.B. -l, /w\n• Aliase: z.B. alias ll='ls -la' in Bash",
-    "tags": ["Installation", "Kommandozeile", "Shell", "Bash", "CMD"]
+    "tags": [
+      "Installation",
+      "Kommandozeile",
+      "Shell",
+      "Bash",
+      "CMD"
+    ]
   },
   {
     "id": 145,
@@ -744,7 +1005,13 @@
     "difficulty": 2,
     "question": "Welche wichtigen Konsolenbefehle gibt es für Windows und Linux?",
     "answer": "Dateioperationen:\nWindows: dir (Verzeichnis anzeigen), copy (Kopieren), del (Löschen)\nLinux/Mac: ls (anzeigen), cp (kopieren), rm (löschen), mkdir (Verzeichnis erstellen), chmod (Berechtigungen ändern)\n\nNetzwerk:\n• ipconfig (Windows) / ifconfig, ip (Linux): Netzwerkschnittstellen\n• ping: Verbindung testen\n• traceroute / tracert: Netzwerkrouten verfolgen\n• nslookup: Namensauflösung prüfen\n• arp: ARP-Tabelle verwalten",
-    "tags": ["Konsolenbefehle", "Windows", "Linux", "Netzwerk", "Dateisystem"]
+    "tags": [
+      "Konsolenbefehle",
+      "Windows",
+      "Linux",
+      "Netzwerk",
+      "Dateisystem"
+    ]
   },
   {
     "id": 64,
@@ -754,7 +1021,13 @@
     "difficulty": 2,
     "question": "Was sind die Grundlagen des Urheberschutzes?",
     "answer": "Gesetzliche Grundlage: Urheberrechtsgesetz (UrhG) in Deutschland.\nGeschützte Werke: Texte, Musik, Bilder, Software, Filme, wissenschaftliche Werke.\nEntstehung: Automatisch mit der Schöpfung – keine Registrierung erforderlich.\nDauer: 70 Jahre nach dem Tod des Urhebers.\n\nRechte des Urhebers:\n• Urheberpersönlichkeitsrechte (Schutz vor Entstellung, Namensnennung)\n• Verwertungsrechte (Vervielfältigung, Verbreitung, öffentliche Wiedergabe)\n• Nutzungsrechte (durch Lizenzen einräumbar)\n\nEinschränkungen: Privatkopie, Zitate (mit Quellenangabe), Schrankenregelungen.\n\nVerstöße können Abmahnungen, Schadensersatz oder strafrechtliche Folgen nach sich ziehen.",
-    "tags": ["Lizenzen", "Urheberrecht", "UrhG", "Recht", "Wiso"]
+    "tags": [
+      "Lizenzen",
+      "Urheberrecht",
+      "UrhG",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 65,
@@ -764,7 +1037,13 @@
     "difficulty": 2,
     "question": "Welche Creative-Commons-Lizenzen gibt es?",
     "answer": "Creative Commons (CC) ermöglicht Urhebern, ihre Werke unter bestimmten Bedingungen frei zu geben.\n\n• Attribution (BY): Verwendung erlaubt, solange Urheber genannt wird.\n• ShareAlike (SA): Neue Arbeit muss unter denselben Bedingungen lizenziert werden.\n• NoDerivatives (ND): Keine Veränderung oder Bearbeitung erlaubt.\n• NonCommercial (NC): Keine kommerzielle Nutzung erlaubt.\n• Zero (CC0): Vollständig gemeinfrei, keine Einschränkungen.\n\nKombinationsbeispiel: CC BY-SA = Verwendung/Veränderung erlaubt bei Namensnennung und gleicher Lizenz.",
-    "tags": ["Lizenzen", "Creative Commons", "CC", "Open Source", "Recht"]
+    "tags": [
+      "Lizenzen",
+      "Creative Commons",
+      "CC",
+      "Open Source",
+      "Recht"
+    ]
   },
   {
     "id": 66,
@@ -790,7 +1069,13 @@
     "difficulty": 2,
     "question": "Welche Kostenarten gibt es?",
     "answer": "Anschaffungskosten (einmalig): Kaufpreis, Transport, Installation, Schulung.\n\nBetriebskosten (laufend): Strom/Wasser/Heizung, Wartung/Reparaturen, Lizenzen/Abonnements, Personalkosten.\n\nVariable Kosten: Abhängig von Nutzung/Produktion (z.B. Material, Strom).\nFixe Kosten: Unabhängig von Nutzung (z.B. Miete, Gehälter, Versicherungen).\n\nFinanzierungskosten: Zinsen, Gebühren für Finanzierungsmodelle, Kosten für Bürgschaften.",
-    "tags": ["Wirtschaft", "Kosten", "Fixkosten", "Variable Kosten", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Kosten",
+      "Fixkosten",
+      "Variable Kosten",
+      "Wiso"
+    ]
   },
   {
     "id": 68,
@@ -884,7 +1169,12 @@
     "difficulty": 2,
     "question": "Wie beurteilt man den Einfluss von Stakeholdern?",
     "answer": "Stakeholder sind alle Personen oder Gruppen mit Interesse am Projekt: Auftraggeber, Kunden, Projektteam, Lieferanten, Behörden.\n\nBeurteilung durch:\n• Stakeholder-Analyse (Identifikation und Priorisierung)\n• Kommunikationsstrategie zur Einbindung relevanter Akteure\n• Konfliktmanagement zur Minimierung negativer Einflüsse",
-    "tags": ["Wirtschaft", "Stakeholder", "Projektmanagement", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Stakeholder",
+      "Projektmanagement",
+      "Wiso"
+    ]
   },
   {
     "id": 72,
@@ -894,7 +1184,12 @@
     "difficulty": 3,
     "question": "Wie wird eine Risikoanalyse durchgeführt?",
     "answer": "1. Definition und Identifikation von Risiken:\n   • Technische Risiken (unvorhergesehene Herausforderungen)\n   • Wirtschaftliche Risiken (Budgetüberschreitungen, Marktveränderungen)\n   • Organisatorische Risiken (Ressourcenknappheit, Zeitverzögerungen)\n2. Bewertung hinsichtlich Eintrittswahrscheinlichkeit und Auswirkung\n3. Entwicklung von Maßnahmen zur Risikovermeidung, -minimierung oder -akzeptanz\n4. Kontinuierliche Überwachung und Anpassung während des Projektverlaufs",
-    "tags": ["Wirtschaft", "Risikoanalyse", "Projektmanagement", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Risikoanalyse",
+      "Projektmanagement",
+      "Wiso"
+    ]
   },
   {
     "id": 73,
@@ -921,7 +1216,12 @@
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen direktem und indirektem Vertrieb?",
     "answer": "Direkter Vertrieb: Hersteller verkauft direkt an den Endkunden, ohne Zwischenhändler.\n\nIndirekter Vertrieb: Das Produkt wird erst an einen oder mehrere Zwischenhändler vertrieben und kommt erst nach verschiedenen Zwischenstopps beim Endkunden an.",
-    "tags": ["Wirtschaft", "Vertrieb", "Direktvertrieb", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Vertrieb",
+      "Direktvertrieb",
+      "Wiso"
+    ]
   },
   {
     "id": 148,
@@ -931,7 +1231,13 @@
     "difficulty": 2,
     "question": "Was ist eine Zielgruppendefinition und welche Kriterien werden verwendet?",
     "answer": "Eine Zielgruppe ist eine Gruppe von Personen oder Unternehmen, die ein Produkt oder eine Dienstleistung ansprechen soll.\n\nKriterien der Zielgruppensegmentierung:\n\nDemografisch:\n• Alter, Geschlecht, Familienstand\n• Einkommen, Bildung, Beruf\n\nGeografisch:\n• Region, Stadt/Land, Klima\n\nPsychografisch:\n• Lebensstil, Werte, Interessen\n• Persönlichkeit, Einstellungen\n\nVerhaltensorientiert:\n• Kaufverhalten, Markentreue\n• Nutzungsintensität, Preissensibilität\n\nB2B-Kriterien:\n• Branche, Unternehmensgröße\n• Position im Einkaufsprozess\n\nMethoden: Umfragen, Marktforschung, Datenanalyse, Personas erstellen.",
-    "tags": ["Wirtschaft", "Marketing", "Zielgruppe", "Segmentierung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Marketing",
+      "Zielgruppe",
+      "Segmentierung",
+      "Wiso"
+    ]
   },
   {
     "id": 75,
@@ -959,7 +1265,13 @@
     "difficulty": 2,
     "question": "Was sind die wesentlichen Vertragsbestandteile?",
     "answer": "• Leistungsbeschreibung: Detaillierte Beschreibung der geschuldeten Leistung\n• Termine: Festlegung von Fristen und Lieferzeiten\n• Entgelte: Vereinbarte Vergütung\n• Sanktionen/Konventionalstrafen: Vertragsstrafen bei Nichterfüllung oder Verzug",
-    "tags": ["Wirtschaft", "Verträge", "Vertragsbestandteile", "Recht", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Verträge",
+      "Vertragsbestandteile",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 77,
@@ -969,7 +1281,12 @@
     "difficulty": 2,
     "question": "Welche Arten von Vertragsstörungen gibt es?",
     "answer": "• Leistungsverzug: Verspätete Erfüllung der vertraglichen Leistung\n• Schlechtleistung: Erfüllung der Leistung mit Mängeln\n• Nichterfüllung: Vollständiges Ausbleiben der Leistung\n• Störung der Geschäftsgrundlage: Unerwartete Änderungen der Rahmenbedingungen",
-    "tags": ["Wirtschaft", "Vertragsstörungen", "Recht", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Vertragsstörungen",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 78,
@@ -979,7 +1296,13 @@
     "difficulty": 1,
     "question": "Welche Zielsetzungen können Verträge haben?",
     "answer": "• Ökonomisch: Wirtschaftliche Vorteile, Kostenoptimierung, Gewinnmaximierung\n• Ökologisch: Nachhaltigkeit, Ressourcenschonung, Umweltfreundlichkeit\n• Sozial: Arbeitnehmerrechte, Fairness, gesellschaftliche Verantwortung",
-    "tags": ["Wirtschaft", "Zielsetzungen", "Ökonomie", "Ökologie", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Zielsetzungen",
+      "Ökonomie",
+      "Ökologie",
+      "Wiso"
+    ]
   },
   {
     "id": 79,
@@ -1022,7 +1345,11 @@
     "difficulty": 1,
     "question": "Was sind die Merkmale eines Projekts?",
     "answer": "• Einmaligkeit\n• Zielgerichtet\n• Zeitlich begrenzt\n• Begrenzte Ressourcen\n• Komplexität",
-    "tags": ["Projektmanagement", "Merkmale", "Projekt"]
+    "tags": [
+      "Projektmanagement",
+      "Merkmale",
+      "Projekt"
+    ]
   },
   {
     "id": 82,
@@ -1050,7 +1377,12 @@
     "question": "Was ist eine Ereignisgesteuerte Prozesskette (EPK)?",
     "answer": "Die EPK ist eine grafische Modellierungssprache zur Darstellung von Geschäftsprozessen.\n\nGrundelemente: Ereignisse, Funktionen, Verknüpfungsoperatoren (AND, OR, XOR)\n\nZentrale Regeln:\n• Ereignisse und Funktionen wechseln sich immer ab\n• Startet mit einem Ereignis und endet mit einem Ereignis\n• Kanten zeigen die Flussrichtung\n• Verknüpfungsoperatoren steuern den Prozessfluss\n\nWeitere Elemente: Organisationseinheit, Objekt, Kontrollfluss, Informationsfluss, Material-/Ressourcenfluss, Zuordnung\n\nKonnektoren:\n• UND: Alle Bedingungen/Funktionen müssen erfüllt sein\n• XOR (Exklusives Oder): Genau eine Bedingung/Funktion\n• OR (Offenes Oder): Mindestens eine Bedingung/Funktion",
     "image_ref": "epk_symbole_und_beispiel.png",
-    "tags": ["Projektmanagement", "EPK", "Geschäftsprozess", "Modellierung"]
+    "tags": [
+      "Projektmanagement",
+      "EPK",
+      "Geschäftsprozess",
+      "Modellierung"
+    ]
   },
   {
     "id": 84,
@@ -1060,7 +1392,11 @@
     "difficulty": 1,
     "question": "Wofür steht das SMART-Prinzip?",
     "answer": "Das SMART-Prinzip überprüft Ziele auf klare und konkrete Formulierungen:\n\n• S – Spezifisch\n• M – Messbar\n• A – Attraktiv (oder Achievable)\n• R – Realistisch\n• T – Terminiert",
-    "tags": ["Projektmanagement", "SMART", "Ziele"]
+    "tags": [
+      "Projektmanagement",
+      "SMART",
+      "Ziele"
+    ]
   },
   {
     "id": 85,
@@ -1070,7 +1406,11 @@
     "difficulty": 2,
     "question": "Welche groben Projektphasen gibt es und was ist das Wasserfallmodell?",
     "answer": "Grobe Projektphasen:\n1. Projektdefinition\n2. Projektplanung\n3. Projektrealisierung\n4. Projektabschluss\n\nWasserfallmodell (lineares Vorgehensmodell):\n1. Analyse\n2. Design\n3. Implementierung\n4. Test\n5. Betrieb\n\nJede Phase wird theoretisch nur einmal durchlaufen. In der Praxis gibt es oft Sprünge zurück, von dort aus muss man wieder linear durchlaufen.",
-    "tags": ["Projektmanagement", "Projektphasen", "Wasserfallmodell"]
+    "tags": [
+      "Projektmanagement",
+      "Projektphasen",
+      "Wasserfallmodell"
+    ]
   },
   {
     "id": 86,
@@ -1114,7 +1454,12 @@
     "difficulty": 1,
     "question": "Was sind Lessons Learned und Feedback-Kultur?",
     "answer": "Lessons Learned: Nachträgliche Analyse des Projektes, um aus Erfahrungen und Ereignissen systematisch zu lernen und Erkenntnisse für zukünftige Projekte nutzbar zu machen.\n\nFeedback-Kultur: Rückmeldungen werden regelmäßig und offen gegeben. Das Feedback soll ehrlich, respektvoll und hilfreich sein. So können Teams aus Fehlern lernen und besser zusammenarbeiten.",
-    "tags": ["Projektmanagement", "Lessons Learned", "Feedback", "Reflexion"]
+    "tags": [
+      "Projektmanagement",
+      "Lessons Learned",
+      "Feedback",
+      "Reflexion"
+    ]
   },
   {
     "id": 149,
@@ -1141,7 +1486,12 @@
     "difficulty": 2,
     "question": "Was ist eine Bedarfsanalyse und wie wird sie durchgeführt?",
     "answer": "Die Bedarfsanalyse ermittelt systematisch den Bedarf an Ressourcen, Systemen oder Funktionen für ein Projekt.\n\nPhasen der Bedarfsanalyse:\n1. Ist-Analyse: Dokumentation des aktuellen Zustands\n2. Schwachstellenanalyse: Identifikation von Problemen und Verbesserungspotenzial\n3. Soll-Konzept: Definition der gewünschten Zielzustände\n4. Gap-Analyse: Vergleich Ist vs. Soll\n\nMethoden:\n• Interviews mit Stakeholdern\n• Fragebogen und Umfragen\n• Beobachtung/Prozessanalyse\n• Dokumentenanalyse\n• Workshops\n\nErgebnis: Anforderungskatalog mit:\n• Funktionalen Anforderungen (Was soll das System können?)\n• Nicht-funktionalen Anforderungen (Performance, Sicherheit, Skalierbarkeit)",
-    "tags": ["Projektmanagement", "Bedarfsanalyse", "Anforderungen", "Ist-Soll"]
+    "tags": [
+      "Projektmanagement",
+      "Bedarfsanalyse",
+      "Anforderungen",
+      "Ist-Soll"
+    ]
   },
   {
     "id": 89,
@@ -1166,7 +1516,11 @@
     "difficulty": 2,
     "question": "Welche Arten von Kundenvorgaben gibt es?",
     "answer": "• Funktionale Anforderungen: Gewünschte Funktionen und Eigenschaften\n• Nicht-funktionale Anforderungen: Qualitätsmerkmale (Leistung, Sicherheit, Skalierbarkeit)\n• Technische Vorgaben: Hardware, Software, Schnittstellen\n• Rechtliche & regulatorische Vorgaben: Compliance, Datenschutz (DSGVO), Zertifizierungen\n• Budget- und Zeitvorgaben: Kostenrahmen und Liefertermine",
-    "tags": ["Projektmanagement", "Kundenvorgaben", "Anforderungen"]
+    "tags": [
+      "Projektmanagement",
+      "Kundenvorgaben",
+      "Anforderungen"
+    ]
   },
   {
     "id": 151,
@@ -1176,7 +1530,12 @@
     "difficulty": 2,
     "question": "Welche technischen Voraussetzungen müssen für IT-Projekte geprüft werden?",
     "answer": "Technische Voraussetzungen sind Hardware-, Software- und Infrastrukturanforderungen für Projekte.\n\nPrüfungsbereiche:\n\nHardware:\n• Serverkapazitäten (CPU, RAM, Storage)\n• Client-Anforderungen (Arbeitsplatz-PCs)\n• Netzwerkinfrastruktur (Bandbreite, Router, Switches)\n\nSoftware:\n• Betriebssysteme und Versionen\n• Middleware und Frameworks\n• Lizenzen und Kompatibilität\n\nNetzwerk:\n• Verfügbare Bandbreite\n• Firewall-Regeln und Ports\n• VPN-Zugänge\n\nSicherheit:\n• Berechtigungskonzepte\n• Verschlüsselungsanforderungen\n• Datenschutzkonformität\n\nDokumentation: Erstellen eines Pflichtenhefts mit allen technischen Spezifikationen.",
-    "tags": ["Projektmanagement", "Technik", "Infrastruktur", "Pflichtenheft"]
+    "tags": [
+      "Projektmanagement",
+      "Technik",
+      "Infrastruktur",
+      "Pflichtenheft"
+    ]
   },
   {
     "id": 152,
@@ -1186,7 +1545,13 @@
     "difficulty": 3,
     "question": "Wie stellt man die Einhaltung des Budgets in IT-Projekten sicher?",
     "answer": "Budgetmanagement umfasst Planung, Überwachung und Steuerung der Projektkosten.\n\nKostenarten:\n• Personalkosten (intern/extern)\n• Hardware- und Softwarekosten\n• Lizenzkosten\n• Schulungskosten\n• Betriebskosten\n\nMethoden zur Budgetkontrolle:\n1. Earned Value Management (EVM):\n   • Planwert (PV): Geplante Kosten\n   • Istwert (AC): Tatsächliche Kosten\n   • Fertigstellungswert (EV): Wert der geleisteten Arbeit\n   • Kostenabweichung (CV) = EV - AC\n   • Terminabweichung (SV) = EV - PV\n\n2. Kostenkontroll-Maßnahmen:\n   • Regelmäßige Soll-Ist-Vergleiche\n   • Kostenstellen-Reporting\n   • Änderungsmanagement (Change Requests)\n   • Pufferreserven einplanen",
-    "tags": ["Projektmanagement", "Budget", "Kosten", "Earned Value", "Wiso"]
+    "tags": [
+      "Projektmanagement",
+      "Budget",
+      "Kosten",
+      "Earned Value",
+      "Wiso"
+    ]
   },
   {
     "id": 91,
@@ -1307,7 +1672,11 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Bibliotheken und Frameworks?",
     "answer": "Bibliothek: Sammlung vordefinierter Funktionen und Klassen. Übernimmt wiederkehrende Aufgaben.\n\nFramework: Umfassende Sammlung von Bibliotheken, Tools und Konventionen. Bietet eine Struktur für die Anwendungsentwicklung.\n\nVorteile beider:\n• Erleichtern die Entwicklung\n• Reduzieren die Entwicklungszeit\n• Erhöhen die Wiederverwendbarkeit\n• Bieten umfassende Funktionalität",
-    "tags": ["Softwareentwicklung", "Bibliothek", "Framework"]
+    "tags": [
+      "Softwareentwicklung",
+      "Bibliothek",
+      "Framework"
+    ]
   },
   {
     "id": 99,
@@ -1317,7 +1686,12 @@
     "difficulty": 2,
     "question": "Was sind Skriptsprachen und Shellscripts?",
     "answer": "Skriptsprachen sind interpretierte Sprachen, die meist auf gewisse Sprachelemente (z.B. Variablendeklaration) verzichten. Hauptsächlich für kleine Programme und Algorithmen.\n\nShellscript: Vom Shell-Interpreter ausgeführt. Erste Zeile deklariert den Interpreter (z.B. #!/bin/sh). Dateiendung: .sh\n\nBeispiele:\n#!/bin/sh\necho \"Hallo Welt!\"\n\n#!/bin/sh\nls -l",
-    "tags": ["Softwareentwicklung", "Skriptsprachen", "Shell", "Bash"]
+    "tags": [
+      "Softwareentwicklung",
+      "Skriptsprachen",
+      "Shell",
+      "Bash"
+    ]
   },
   {
     "id": 100,
@@ -1327,7 +1701,11 @@
     "difficulty": 2,
     "question": "Wie sehen Verzweigungen und Schleifen in Pseudocode aus?",
     "answer": "Verzweigungen:\nIF Bedingung THEN ... END IF\nIF Bedingung THEN ... ELSE ... END IF\nIF Bed1 THEN ... ELSE IF Bed2 THEN ... ELSE ... END IF\nSWITCH Variable CASE Wert1: ... BREAK DEFAULT: ... END SWITCH\n\nSchleifen:\nWHILE Bedingung DO ... END WHILE\nREPEAT ... UNTIL Bedingung\nFOR Variable = Startwert TO Endwert DO ... END FOR",
-    "tags": ["Softwareentwicklung", "Pseudocode", "Kontrollstrukturen"]
+    "tags": [
+      "Softwareentwicklung",
+      "Pseudocode",
+      "Kontrollstrukturen"
+    ]
   },
   {
     "id": 101,
@@ -1338,7 +1716,12 @@
     "question": "Was ist ein UML-Aktivitätsdiagramm?",
     "answer": "Ein Aktivitätsdiagramm veranschaulicht den Ablauf von Aktivitäten und Aktionen innerhalb eines Systems (Workflow-Modellierung).\n\nWichtige Symbole:\n• Start-/Anfangsknoten (ausgefüllter Kreis)\n• Aktivität/Aktionsstatus (abgerundetes Rechteck)\n• Kontrollfluss/Kante (Pfeil)\n• Aktivität-Endknoten (Kreis mit innerem Punkt)\n• Entscheidungs-Knotenpunkt (Raute)\n• Gabel (Parallelisierung)\n• Zusammenführen (Synchronisation)\n• Senden/Empfangen von Signalen",
     "image_ref": "uml_aktivitaetsdiagramm_symbole.png",
-    "tags": ["Softwareentwicklung", "UML", "Aktivitätsdiagramm", "Modellierung"]
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Aktivitätsdiagramm",
+      "Modellierung"
+    ]
   },
   {
     "id": 102,
@@ -1349,7 +1732,12 @@
     "question": "Was ist ein UML-Anwendungsfalldiagramm (Use Case)?",
     "answer": "Ein Anwendungsfalldiagramm zeigt die Interaktionen zwischen System und Benutzern.\n\nSymbole:\n• Anwendungsfall (Ellipse): Funktion/Prozess des Systems\n• Akteur (Strichmännchen): Person oder System, das Use Case auslöst\n• Beziehung Akteur↔Use Case (Linie)\n• «extend»-Beziehung: Erweitert unter bestimmten Bedingungen (Pfeil zum erweiterten UC)\n• «include»-Beziehung: Fester Bestandteil (Pfeil zum enthaltenen UC)\n• Generalisierung: Spezialisierung (Pfeil zum übergeordneten Element)\n• Notiz: Zusatzinformationen",
     "image_ref": "uml_anwendungsfalldiagramm_beispiel.png",
-    "tags": ["Softwareentwicklung", "UML", "Anwendungsfalldiagramm", "Use Case"]
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Anwendungsfalldiagramm",
+      "Use Case"
+    ]
   },
   {
     "id": 103,
@@ -1360,7 +1748,12 @@
     "question": "Was ist ein UML-Klassendiagramm?",
     "answer": "Ein Klassendiagramm zeigt die Struktur eines Systems durch Klassen, Attribute und Beziehungen.\n\nSymbole:\n• Klasse (Rechteck mit 3 Bereichen: Name, Attribute, Methoden)\n• Schnittstelle/Interface\n• Assoziation (Linie)\n• Vererbung (Pfeil mit leerem Dreieck)\n• Implementation (gestrichelter Pfeil mit leerem Dreieck)\n• Abhängigkeit (gestrichelter Pfeil)\n• Aggregation (Linie mit leerer Raute)\n• Komposition (Linie mit gefüllter Raute)",
     "image_ref": "uml_klassendiagramm_beispiel.png",
-    "tags": ["Softwareentwicklung", "UML", "Klassendiagramm", "OOP"]
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Klassendiagramm",
+      "OOP"
+    ]
   },
   {
     "id": 104,
@@ -1451,7 +1844,12 @@
     "difficulty": 2,
     "question": "Welche Kommunikationsarten und -modelle gibt es im IT-Support?",
     "answer": "Kommunikationsarten:\n• Verbale Kommunikation: Direkte Kommunikation über gesprochene oder geschriebene Wörter\n• Paraverbale Kommunikation: Tonfall, Lautstärke, Sprechgeschwindigkeit\n• Nonverbale Kommunikation: Körpersprache, Gestik und Mimik\n\nKommunikationsmodelle:\n• 4-Ohren-Modell: Jede Nachricht enthält vier Ebenen – Appell, Beziehung, Sachinhalt, Selbstoffenbarung\n• Sender-Empfänger-Modell: Sender, Codierung, Kanal, Empfänger, Störungen\n• Eisbergmodell: Sichtbare Sachebene und unsichtbare Beziehungsebene",
-    "tags": ["Support", "Kommunikation", "4-Ohren-Modell", "Eisbergmodell"]
+    "tags": [
+      "Support",
+      "Kommunikation",
+      "4-Ohren-Modell",
+      "Eisbergmodell"
+    ]
   },
   {
     "id": 110,
@@ -1461,7 +1859,12 @@
     "difficulty": 2,
     "question": "Wie deeskaliert man ein Konfliktgespräch im IT-Support?",
     "answer": "• Ruhige Kommunikation\n• Empathie zeigen\n• Konkrete Hilfen und Lösungsansätze finden\n• Schuldzuweisung vermeiden\n• Sachlich bleiben\n• Trennung von sachlicher und persönlicher Ebene\n• Weitere Gespräche anbieten mit dem Ziel, eine Lösung zu finden",
-    "tags": ["Support", "Kommunikation", "Deeskalation", "Konflikt"]
+    "tags": [
+      "Support",
+      "Kommunikation",
+      "Deeskalation",
+      "Konflikt"
+    ]
   },
   {
     "id": 111,
@@ -1503,7 +1906,12 @@
     "difficulty": 1,
     "question": "Was ist ein Ticketsystem?",
     "answer": "Ein Ticket-System ist eine Software zur strukturierten Bearbeitung von Anfragen und Problemen.\n\n• Issue-Tracking-System: Verfolgung & Verwaltung von Fehlern\n• Helpdesk-System: Erfassung von Kundenanfragen",
-    "tags": ["Support", "Ticketsystem", "Helpdesk", "Issue-Tracking"]
+    "tags": [
+      "Support",
+      "Ticketsystem",
+      "Helpdesk",
+      "Issue-Tracking"
+    ]
   },
   {
     "id": 114,
@@ -1530,7 +1938,12 @@
     "difficulty": 2,
     "question": "Was ist ein Service Level Agreement (SLA)?",
     "answer": "Service Level: Gibt an, welche Qualitätsstufe ein Produkt/Service haben soll.\n\nService Level Requirement: Beschreibt die Anforderungen an einen IT-Service aus Kundensicht.\n\nService Level Agreement (SLA): Ein Vertrag zwischen IT-Service und Kunden, der das gewünschte Service Level definiert. Enthält u.a.:\n• Leistungsbeschreibung\n• Verfügbarkeitszeiten\n• Reaktionszeiten bei Störungen\n• Supportzeiten\n• Strafen bei Vertragsbruch\n\nDer Kunde hat eine Mitwirkungspflicht: Er muss z.B. rechtzeitig auf Probleme aufmerksam machen und Zugriff auf relevante Systeme gewähren.",
-    "tags": ["Support", "SLA", "Service Level", "Vertrag"]
+    "tags": [
+      "Support",
+      "SLA",
+      "Service Level",
+      "Vertrag"
+    ]
   },
   {
     "id": 116,
@@ -1540,7 +1953,12 @@
     "difficulty": 2,
     "question": "Was sind Qualitätsmanagementsysteme und QS-Normen?",
     "answer": "Qualitätsmanagementsysteme (QMS) sind strukturierte Ansätze zur Sicherstellung der Qualität in Unternehmen. Sie umfassen Prozesse, Richtlinien und Verantwortlichkeiten zur kontinuierlichen Verbesserung.\n\nWichtige QS-Normen:\n• ISO 9001 – Qualitätsmanagementsysteme\n• ISO 27001 – Informationssicherheitsmanagement",
-    "tags": ["Qualitätsmanagement", "QMS", "ISO 9001", "ISO 27001"]
+    "tags": [
+      "Qualitätsmanagement",
+      "QMS",
+      "ISO 9001",
+      "ISO 27001"
+    ]
   },
   {
     "id": 153,
@@ -1550,7 +1968,13 @@
     "difficulty": 2,
     "question": "Welche wichtigen QS-Normen gibt es in der IT?",
     "answer": "Qualitätssicherungs-Normen definieren Standards für Prozesse, Produkte und Dienstleistungen.\n\nWichtige Normen:\n\nISO 9001:\n• Allgemeines Qualitätsmanagementsystem\n• Prozessorientierter Ansatz, kontinuierliche Verbesserung (PDCA)\n• Zertifizierung durch externe Auditoren\n\nISO/IEC 25010:\n• Qualitätsmodell für Softwareprodukte\n• 8 Qualitätsmerkmale: Funktionalität, Zuverlässigkeit, Benutzbarkeit, Effizienz, Wartbarkeit, Portabilität, Sicherheit, Kompatibilität\n\nISO/IEC 27001:\n• Informationssicherheits-Managementsystem (ISMS)\n• Risikobasierter Ansatz\n\nITIL:\n• Framework für IT-Service-Management\n• Best Practices für IT-Betrieb\n\nCMMI:\n• Reifegradmodell für Softwareentwicklung (5 Stufen)",
-    "tags": ["Qualitätsmanagement", "ISO", "Normen", "ITIL", "CMMI"]
+    "tags": [
+      "Qualitätsmanagement",
+      "ISO",
+      "Normen",
+      "ITIL",
+      "CMMI"
+    ]
   },
   {
     "id": 117,
@@ -1560,7 +1984,12 @@
     "difficulty": 2,
     "question": "Was ist eine Zertifizierung und wie läuft sie ab?",
     "answer": "Eine Zertifizierung ist ein formaler Nachweis, dass ein Unternehmen oder Produkt festgelegte Standards erfüllt. Sie wird durch externe Prüfstellen (z.B. TÜV, DEKRA) durchgeführt.\n\nAblauf:\n1. Vorbereitung (Selbstevaluierung, Dokumentation)\n2. Audit durch eine Zertifizierungsstelle\n3. Ausstellung des Zertifikats bei Erfolg\n4. Regelmäßige Überwachungsaudits\n\nBeispiele: ISO-Zertifikate, CE-Kennzeichnung, ITIL-Zertifizierung",
-    "tags": ["Qualitätsmanagement", "Zertifizierung", "Audit", "ISO"]
+    "tags": [
+      "Qualitätsmanagement",
+      "Zertifizierung",
+      "Audit",
+      "ISO"
+    ]
   },
   {
     "id": 118,
@@ -1570,7 +1999,11 @@
     "difficulty": 2,
     "question": "Was umfasst Qualitätsplanung und Qualitätslenkung?",
     "answer": "Qualitätsplanung:\n1. Ist-Zustand ermitteln (Analyse bestehender Prozesse, Fehlerquellen erfassen)\n2. Ziel-Zustand festlegen (Qualitätsstandards definieren, messbare Ziele)\n\nBeispiele für Qualitätsziele: Fehlerquote um 10% reduzieren, Kundenzufriedenheit auf 90% verbessern.\n\nQualitätslenkung – Methoden:\n• Präventiv: Fehlervermeidung durch Standards und Schulungen\n• Korrektiv: Maßnahmen zur Behebung erkannter Mängel\n• Feedback-basiert: Kontinuierliche Anpassung durch Kunden- und Mitarbeiterfeedback\n\nWerkzeuge: Prozesskontrollen, Qualitätsprüfungen, Fehleranalyse",
-    "tags": ["Qualitätsmanagement", "Qualitätsplanung", "Qualitätslenkung"]
+    "tags": [
+      "Qualitätsmanagement",
+      "Qualitätsplanung",
+      "Qualitätslenkung"
+    ]
   },
   {
     "id": 154,
@@ -1595,7 +2028,11 @@
     "difficulty": 2,
     "question": "Was ist der PDCA-Zyklus?",
     "answer": "Der PDCA-Zyklus ist eine iterative Methode zur kontinuierlichen Verbesserung.\n\n• Plan (Planen): Ziele und Maßnahmen festlegen\n• Do (Umsetzen): Maßnahmen durchführen\n• Check (Überprüfen): Ergebnisse mit Zielen vergleichen\n• Act (Handeln): Erkenntnisse umsetzen, Verbesserungen standardisieren\n\nDer Zyklus wird kontinuierlich wiederholt, um stetige Verbesserung zu erreichen.",
-    "tags": ["Qualitätsmanagement", "PDCA", "Kontinuierliche Verbesserung"]
+    "tags": [
+      "Qualitätsmanagement",
+      "PDCA",
+      "Kontinuierliche Verbesserung"
+    ]
   },
   {
     "id": 120,
@@ -1605,7 +2042,11 @@
     "difficulty": 2,
     "question": "Was ist ein Testprotokoll und wie ist es aufgebaut?",
     "answer": "Ein Testprotokoll dokumentiert die Prüfungen und Ergebnisse beim Einrichten eines Arbeitsplatzes.\n\nTypischer Aufbau:\n• Allgemeine Daten: Datum, Prüfer, Arbeitsplatz-ID\n• Prüfpunkte: Hardware, Software, Netzwerkverbindung, Sicherheitsrichtlinien\n• Ergebnisse: Bestanden/Nicht bestanden, Abweichungen\n• Maßnahmen: Fehlerbehebung, Nachkontrolle",
-    "tags": ["Qualitätsmanagement", "Testprotokoll", "Dokumentation"]
+    "tags": [
+      "Qualitätsmanagement",
+      "Testprotokoll",
+      "Dokumentation"
+    ]
   },
   {
     "id": 121,
@@ -1647,7 +2088,12 @@
     "difficulty": 2,
     "question": "Was sind die Aufgaben eines IT-Sicherheitsbeauftragten?",
     "answer": "Der IT-Sicherheitsbeauftragte (ITSB) ist für Planung, Umsetzung und Überwachung der IT-Sicherheitsmaßnahmen verantwortlich.\n\nAufgaben:\n• Entwicklung und Umsetzung von Sicherheitsrichtlinien\n• Überwachung der Einhaltung von IT-Sicherheitsstandards (z.B. ISO 27001, BSI-Grundschutz)\n• Durchführung von Risikoanalysen und Schwachstellenbewertungen\n• Koordination von Maßnahmen (Firewalls, Verschlüsselung, Zugriffskontrollen)\n• Schulung und Sensibilisierung der Mitarbeiter\n• Reaktion auf Sicherheitsvorfälle und Notfallmanagement",
-    "tags": ["IT-Sicherheit", "ITSB", "Sicherheitsbeauftragter", "Aufgaben"]
+    "tags": [
+      "IT-Sicherheit",
+      "ITSB",
+      "Sicherheitsbeauftragter",
+      "Aufgaben"
+    ]
   },
   {
     "id": 124,
@@ -1657,7 +2103,12 @@
     "difficulty": 2,
     "question": "Was sind die Aufgaben eines Datenschutzbeauftragten?",
     "answer": "Der Datenschutzbeauftragte (DSB) überwacht die Einhaltung des Datenschutzes gemäß DSGVO (Art. 37–39).\n\nAufgaben:\n• Überwachung der Einhaltung der DSGVO und des BDSG\n• Beratung der Geschäftsleitung und Mitarbeiter zu Datenschutzfragen\n• Erstellung und Pflege von Datenschutzrichtlinien und -konzepten\n• Durchführung von Datenschutz-Folgenabschätzungen (DPIA)\n• Schulung und Sensibilisierung der Mitarbeiter\n• Zusammenarbeit mit der Aufsichtsbehörde\n• Kontrolle der Technisch-organisatorischen Maßnahmen (TOM)",
-    "tags": ["IT-Sicherheit", "Datenschutz", "DSB", "DSGVO"]
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "DSB",
+      "DSGVO"
+    ]
   },
   {
     "id": 125,
@@ -1697,7 +2148,12 @@
     "difficulty": 3,
     "question": "Was ist das BSI IT-Grundschutz-Kompendium?",
     "answer": "Das BSI IT-Grundschutz-Kompendium ist ein Standardwerk des Bundesamts für Sicherheit in der Informationstechnik (BSI) zur Umsetzung von IT-Sicherheitsmaßnahmen.\n\nIT-Grundschutz-Bausteine:\n• ORP: Organisation und Personal (Sicherheitsrichtlinien, Schulungen)\n• INF: Infrastruktur (Rechenzentren, Verkabelung)\n• NET: Netzwerke (WLAN-Sicherheit, Firewalls)\n• SYS: IT-Systeme (Server, Clients, Virtualisierung)\n• APP: Anwendungen (Webanwendungen, Datenbanken)\n\nSchutzmaßnahmen:\n• Technisch: Firewalls, Verschlüsselung, Zugriffskontrollen\n• Organisatorisch: Sicherheitsrichtlinien, Notfallpläne\n• Personell: Sensibilisierung, Schulungen\n• Physisch: Zutrittskontrollen, Schutz von Rechenzentren",
-    "tags": ["IT-Sicherheit", "BSI", "IT-Grundschutz", "Bausteine"]
+    "tags": [
+      "IT-Sicherheit",
+      "BSI",
+      "IT-Grundschutz",
+      "Bausteine"
+    ]
   },
   {
     "id": 128,
@@ -1707,7 +2163,13 @@
     "difficulty": 3,
     "question": "Welche Datenschutzgesetze gibt es und welche Prüfpunkte sind relevant?",
     "answer": "Wichtige Gesetze: DSGVO (EU-weit), BDSG (Deutschland)\n\nWichtige Prüfpunkte:\n• Transparenz: Werden Betroffene über die Datenverarbeitung informiert? (Art. 13, 14 DSGVO)\n• Betroffenenrechte: Können Personen Auskunft, Berichtigung oder Löschung verlangen?\n• TOM: Sind angemessene technisch-organisatorische Maßnahmen implementiert?\n• Meldepflicht: Sind Prozesse zur Meldung von Datenschutzverletzungen vorhanden? (Art. 33 DSGVO)\n• DPIA: Wurden für risikobehaftete Verarbeitungen Folgenabschätzungen durchgeführt? (Art. 35 DSGVO)\n• Verarbeitungsverzeichnis: Dokumentation aller Datenverarbeitungen (Art. 30 DSGVO)\n• Auftragsverarbeitung: Sind Verträge mit externen Dienstleistern datenschutzkonform? (Art. 28 DSGVO)",
-    "tags": ["IT-Sicherheit", "Datenschutz", "DSGVO", "BDSG", "Recht"]
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "DSGVO",
+      "BDSG",
+      "Recht"
+    ]
   },
   {
     "id": 129,
@@ -1717,7 +2179,12 @@
     "difficulty": 2,
     "question": "Was sind personenbezogene Daten und welche besonderen Kategorien gibt es?",
     "answer": "Direkte Identifikation: Name, Adresse, Telefonnummer, E-Mail-Adresse\n\nIndirekte Identifikation: IP-Adresse, Kundennummer, Standortdaten, Cookie-IDs\n\nBesondere Kategorien personenbezogener Daten (Art. 9 DSGVO):\n• Gesundheitsdaten\n• Biometrische Daten (Fingerabdruck, Gesichtserkennung)\n• Politische Meinungen\n• Religiöse Überzeugungen\n\nDiese besonderen Kategorien unterliegen einem erhöhten Schutz.",
-    "tags": ["IT-Sicherheit", "Datenschutz", "Personenbezogene Daten", "DSGVO"]
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "Personenbezogene Daten",
+      "DSGVO"
+    ]
   },
   {
     "id": 130,
@@ -1743,7 +2210,13 @@
     "difficulty": 3,
     "question": "Was sind die Voraussetzungen einer gültigen Einwilligung nach DSGVO?",
     "answer": "Die Einwilligung ist eine freiwillige, informierte und unmissverständliche Zustimmung zur Datenverarbeitung.\n\nVoraussetzungen:\n• Freiwilligkeit: Keine Zwangslage oder Nachteile bei Verweigerung\n• Informiertheit: Klare Erklärung zu Zweck, Art und Umfang\n• Eindeutige Handlung: Opt-in-Verfahren, keine vorausgewählten Checkboxen\n• Widerrufbarkeit: Jederzeit ohne Nachteile widerrufbar\n\nUngültige Einwilligung wenn: nicht ausreichend informiert, nicht aktiv zugestimmt (z.B. vorangekreuzte Felder), nicht freiwillig gegeben.\n\nKonsequenzen bei fehlender/unwirksamer Einwilligung:\n• Verarbeitung ist rechtswidrig → Bußgelder nach Art. 83 DSGVO\n• Betroffene können Beschwerde einlegen und Schadensersatz fordern",
-    "tags": ["IT-Sicherheit", "Datenschutz", "Einwilligung", "DSGVO", "Recht"]
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "Einwilligung",
+      "DSGVO",
+      "Recht"
+    ]
   },
   {
     "id": 132,
@@ -1786,7 +2259,12 @@
     "difficulty": 3,
     "question": "Wie wird eine Schutzbedarfsanalyse durchgeführt?",
     "answer": "Die Schutzbedarfsanalyse bewertet die Sicherheitsanforderungen von Daten, IT-Systemen und Infrastruktur.\n\nDurchführung:\n1. Identifikation der Schutzobjekte: Daten, Anwendungen, IT-Systeme, Räume, Kommunikationsverbindungen\n2. Bewertung des Schutzbedarfs: Auswirkungen von Datenverlust, Ausfall oder Manipulation. Einteilung in niedrig, mittel und hoch.\n3. Ableitung von Schutzmaßnahmen: Verschlüsselung, Firewalls, Zugriffskontrollen\n4. Dokumentation\n\nSchutzobjekte:\n• IT-Systeme: Backup-Strategien, Firewalls, Zugriffskontrollen\n• Räume/Infrastruktur: Zutrittskontrollen, Videoüberwachung, Brandschutz\n• Kommunikationsverbindungen: Ende-zu-Ende-Verschlüsselung, Firewalls, IDS/IPS",
-    "tags": ["IT-Sicherheit", "Schutzbedarfsanalyse", "BSI", "Risikobewertung"]
+    "tags": [
+      "IT-Sicherheit",
+      "Schutzbedarfsanalyse",
+      "BSI",
+      "Risikobewertung"
+    ]
   },
   {
     "id": 134,
@@ -1811,7 +2289,12 @@
     "difficulty": 3,
     "question": "Was ist ein ISMS (Information Security Management System)?",
     "answer": "Ein ISMS ist ein systematischer Ansatz zur Planung, Umsetzung, Überwachung und Verbesserung der Informationssicherheit.\n\nBestandteile:\n• Sicherheitsrichtlinien: Vorgaben zur IT-Sicherheit und Datenschutz\n• Risikomanagement: Identifikation, Bewertung und Behandlung von Sicherheitsrisiken\n• Technische & organisatorische Maßnahmen: Firewalls, Verschlüsselung, Schulungen\n• Überwachung & Audits: Regelmäßige Prüfungen zur Einhaltung\n\nVorteile:\n• Erhöhung des Sicherheitsbewusstseins durch klare Prozesse und Schulungen\n• Verbesserung der Geschäftskontinuität durch systematisches Risikomanagement",
-    "tags": ["IT-Sicherheit", "ISMS", "ISO 27001", "Risikomanagement"]
+    "tags": [
+      "IT-Sicherheit",
+      "ISMS",
+      "ISO 27001",
+      "Risikomanagement"
+    ]
   },
   {
     "id": 136,
@@ -1853,7 +2336,12 @@
     "difficulty": 3,
     "question": "Was umfasst die Härtung eines Betriebssystems (OS Hardening)?",
     "answer": "Maßnahmen zur Reduzierung von Sicherheitsrisiken:\n\nMinimierung der Angriffsfläche:\n• Nicht benötigte Dienste und Ports deaktivieren\n• Überflüssige Benutzerkonten entfernen oder sperren\n• Unnötige Software deinstallieren\n\nStarke Zugriffskontrollen:\n• Least Privilege Principle umsetzen\n• Passwort-Richtlinien durchsetzen (Mindestlänge, Ablaufdatum)\n• Multi-Faktor-Authentifizierung (MFA) aktivieren\n\nAutomatisierte Härtung:\n• Security Baselines verwenden (CIS Benchmarks, BSI IT-Grundschutz)\n• Härtungsskripte und Tools nutzen (Microsoft Security Compliance Toolkit, Lynis für Linux)\n\nVorteile: Schutz vor Cyberangriffen, reduzierte Angriffsfläche, Erfüllung von Compliance-Anforderungen.",
-    "tags": ["IT-Sicherheit", "OS Hardening", "Härtung", "Betriebssystem"]
+    "tags": [
+      "IT-Sicherheit",
+      "OS Hardening",
+      "Härtung",
+      "Betriebssystem"
+    ]
   },
   {
     "id": 138,
@@ -1863,7 +2351,12 @@
     "difficulty": 3,
     "question": "Welche Backup-Arten und -Strategien gibt es?",
     "answer": "Backup-Arten:\n• Voll-Backup: Komplette Kopie aller Daten. + Schnelle Wiederherstellung | - Hoher Speicherbedarf\n• Inkrementelles Backup: Nur Änderungen seit letztem Backup. + Wenig Speicher | - Langsame Wiederherstellung\n• Differentielles Backup: Änderungen seit letztem Voll-Backup. + Schnellere Wiederherstellung als inkrementell | - Mehr Speicher als inkrementell\n• Spiegelung (Mirroring): Echtzeit-Kopie. + Sofortige Verfügbarkeit | - Kein Schutz vor logischen Fehlern/Malware\n\nBackup-Strategien:\n• 3-2-1-Regel: 3 Kopien, 2 verschiedene Medien, 1 Kopie extern\n• Cold Backup: Offline, manuell. Warm Backup: Schnell aktivierbar. Hot Backup: Live-Kopie\n• Air-Gapped Backup: Nicht mit Netzwerk verbunden (Schutz vor Ransomware)\n\nSpeicherorte: Lokale Backups, Cloud-Backups, Bandlaufwerke",
-    "tags": ["IT-Sicherheit", "Backup", "Datensicherung", "3-2-1-Regel"]
+    "tags": [
+      "IT-Sicherheit",
+      "Backup",
+      "Datensicherung",
+      "3-2-1-Regel"
+    ]
   },
   {
     "id": 139,
@@ -1891,7 +2384,12 @@
     "difficulty": 3,
     "question": "Was sind Hashverfahren und welche Eigenschaften haben sie?",
     "answer": "Hashverfahren erzeugen aus beliebigen Eingabedaten einen festen Hashwert (Fingerabdruck).\n\nEigenschaften:\n• Einwegfunktion: Nicht umkehrbar\n• Kollisionsresistenz: Unterschiedliche Daten erzeugen unterschiedliche Hashwerte\n• Deterministisch: Gleiche Eingabe → gleicher Hashwert\n\nGängige Algorithmen:\n• Sicher: SHA-256, SHA-3, Argon2 (für Passwörter)\n• Veraltet: MD5, SHA-1 (anfällig für Kollisionen)",
-    "tags": ["IT-Sicherheit", "Hash", "SHA-256", "Kryptografie"]
+    "tags": [
+      "IT-Sicherheit",
+      "Hash",
+      "SHA-256",
+      "Kryptografie"
+    ]
   },
   {
     "id": 141,
@@ -1901,7 +2399,13 @@
     "difficulty": 3,
     "question": "Was sind digitale Zertifikate und wie funktioniert die PKI?",
     "answer": "Ein Zertifikat ist eine digitale Bescheinigung, die die Echtheit einer Identität bestätigt, ausgestellt von einer Zertifizierungsstelle (CA).\n\nBestandteile: Öffentlicher Schlüssel, Name des Inhabers, Name der CA, Gültigkeitsdauer, Digitale Signatur der CA.\n\nArten:\n• TLS/SSL-Zertifikate: Sicherung von Webseiten (HTTPS)\n• Code-Signing-Zertifikate: Verifizierung von Software\n• E-Mail-Zertifikate (S/MIME): Signierung und Verschlüsselung von E-Mails\n• Client-/Benutzerzertifikate: Authentifizierung von Nutzern\n\nPublic Key Infrastructure (PKI):\n1. Root-CA (höchste Vertrauensinstanz)\n2. Intermediate-CA (stellt Zertifikate für Endnutzer aus)\n3. Endnutzer-Zertifikat (z.B. für eine Webseite)",
-    "tags": ["IT-Sicherheit", "Zertifikate", "PKI", "CA", "TLS"]
+    "tags": [
+      "IT-Sicherheit",
+      "Zertifikate",
+      "PKI",
+      "CA",
+      "TLS"
+    ]
   },
   {
     "id": 142,
@@ -1911,7 +2415,12 @@
     "difficulty": 3,
     "question": "Was sind digitale Signaturen und wie funktionieren sie?",
     "answer": "Eine digitale Signatur stellt Echtheit und Integrität digitaler Daten sicher. Sie basiert auf asymmetrischer Kryptografie.\n\nFunktionsweise:\n1. Hash-Wert berechnen: Inhalt wird gehasht (z.B. SHA-256)\n2. Verschlüsselung mit privatem Schlüssel: Hash wird mit privatem Schlüssel des Signierenden verschlüsselt\n3. Verifikation mit öffentlichem Schlüssel: Empfänger entschlüsselt die Signatur\n\nEigenschaften:\n• Authentizität: Prüft die Identität des Absenders\n• Integrität: Erkennt Manipulationen\n• Nichtabstreitbarkeit: Absender kann Unterschrift nicht leugnen\n\nAnwendungen: E-Mail-Signaturen (S/MIME, PGP), signierte Software (Code-Signing), digitale Dokumente (PDF-Signaturen), Blockchain & Kryptowährungen",
-    "tags": ["IT-Sicherheit", "Digitale Signaturen", "Kryptografie", "Hash"]
+    "tags": [
+      "IT-Sicherheit",
+      "Digitale Signaturen",
+      "Kryptografie",
+      "Hash"
+    ]
   },
   {
     "id": 143,
@@ -1921,7 +2430,12 @@
     "difficulty": 2,
     "question": "Was ist Zwei-Faktor-Authentifizierung (2FA) und was ist eine Passwort-Policy?",
     "answer": "Authentifizierung ist der Prozess der Überprüfung einer Identität.\n\nZwei-Faktor-Authentifizierung (2FA) kombiniert zwei verschiedene Faktoren:\n1. Wissen (z.B. Passwort, PIN)\n2. Besitz (z.B. Smartphone, Token)\n3. Biometrie (z.B. Fingerabdruck, Gesichtserkennung)\n\nBeispiele: SMS-TAN, Authenticator-App, Smartcard, Hardware-Token.\nVorteile: Erhöhte Sicherheit, Schutz gegen Phishing und Passwortdiebstahl.\n\nPasswort-Policy – Best Practices:\n• Mindestlänge: 12–16 Zeichen\n• Komplexität: Groß-/Kleinbuchstaben, Zahlen, Sonderzeichen\n• Kein Wiederverwenden alter Passwörter\n• Kein Teilen oder unsicheres Speichern\n• Passwort-Manager nutzen",
-    "tags": ["IT-Sicherheit", "Authentifizierung", "2FA", "Passwort-Policy"]
+    "tags": [
+      "IT-Sicherheit",
+      "Authentifizierung",
+      "2FA",
+      "Passwort-Policy"
+    ]
   },
   {
     "id": 144,
@@ -1978,7 +2492,13 @@
     "difficulty": 2,
     "question": "Was ist der ROI (Return on Investment) und wie wird er berechnet?",
     "answer": "Der ROI misst die Rendite einer Investition im Verhältnis zu den eingesetzten Kosten.\n\nFormel:\nROI = (Gewinn / eingesetztes Kapital) × 100\n\nAlternativ (DuPont-Formel):\nROI = Umsatzrentabilität × Kapitalumschlag\n= (Gewinn / Umsatz) × (Umsatz / Gesamtkapital)\n\nBeispiel: Investition 50.000 €, Gewinn 10.000 €\n→ ROI = (10.000 / 50.000) × 100 = 20%\n\nEin positiver ROI bedeutet, dass die Investition profitabel war.",
-    "tags": ["Wirtschaft", "ROI", "Investitionsrechnung", "Berechnung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "ROI",
+      "Investitionsrechnung",
+      "Berechnung",
+      "Wiso"
+    ]
   },
   {
     "id": 160,
@@ -2004,7 +2524,12 @@
     "difficulty": 2,
     "question": "Was ist eine Make-or-Buy-Entscheidung?",
     "answer": "Make-or-Buy ist die Entscheidung, ob ein Produkt/eine Dienstleistung selbst erstellt (Make) oder extern eingekauft (Buy) wird.\n\nMake (Eigenfertigung):\n+ Volle Kontrolle über Qualität und Prozesse\n+ Know-how bleibt im Unternehmen\n+ Unabhängigkeit von Lieferanten\n- Hohe Anfangsinvestition\n- Bindung von Ressourcen\n\nBuy (Fremdbezug):\n+ Geringere Fixkosten\n+ Zugang zu Spezialwissen\n+ Flexibilität\n- Abhängigkeit vom Lieferanten\n- Qualitätskontrolle schwieriger\n\nEntscheidungskriterien: Kosten, Qualität, Kernkompetenz, Kapazität, Risiko.",
-    "tags": ["Wirtschaft", "Make or Buy", "Outsourcing", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Make or Buy",
+      "Outsourcing",
+      "Wiso"
+    ]
   },
   {
     "id": 162,
@@ -2046,7 +2571,12 @@
     "difficulty": 1,
     "question": "Welche Wirtschaftssektoren gibt es?",
     "answer": "Primärsektor (Urproduktion): Gewinnung von Rohstoffen (Landwirtschaft, Forstwirtschaft, Bergbau, Fischerei).\n\nSekundärsektor (Industrieller Sektor): Verarbeitung von Rohstoffen zu Produkten (Industrie, Handwerk, Energieversorgung, Baugewerbe).\n\nTertiärsektor (Dienstleistungssektor): Erbringung von Dienstleistungen (Handel, Banken, Versicherungen, IT-Dienstleistungen, Gesundheitswesen).\n\nIT-Unternehmen gehören zum Tertiärsektor. In Deutschland arbeiten ca. 70% der Beschäftigten im Tertiärsektor.",
-    "tags": ["Wirtschaft", "Wirtschaftssektoren", "Grundlagen", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Wirtschaftssektoren",
+      "Grundlagen",
+      "Wiso"
+    ]
   },
   {
     "id": 165,
@@ -2056,7 +2586,12 @@
     "difficulty": 1,
     "question": "Was ist die Win-Win-Strategie?",
     "answer": "Die Win-Win-Strategie ist ein Verhandlungsansatz, bei dem beide Parteien einen Vorteil aus der Einigung ziehen.\n\nMerkmale:\n- Kooperativer statt kompetitiver Ansatz\n- Fokus auf gemeinsame Interessen\n- Langfristige Geschäftsbeziehungen werden gefördert\n- Vertrauen wird aufgebaut\n\nGegensatz: Win-Lose (eine Seite gewinnt, andere verliert) oder Lose-Lose (beide verlieren).\n\nIn der IT z.B.: Kunde bekommt maßgeschneiderte Lösung, Dienstleister bekommt fairen Preis und Folgeaufträge.",
-    "tags": ["Wirtschaft", "Win-Win", "Verhandlung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Win-Win",
+      "Verhandlung",
+      "Wiso"
+    ]
   },
   {
     "id": 166,
@@ -2066,7 +2601,12 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen agilem und klassischem Projektmanagement?",
     "answer": "Klassisches PM (z.B. Wasserfall, V-Modell):\n- Lineare, sequenzielle Phasen\n- Anforderungen werden zu Beginn festgelegt\n- Änderungen sind schwierig/teuer\n- Gut für klar definierte Projekte\n- Umfangreiche Dokumentation\n\nAgiles PM (z.B. Scrum, Kanban):\n- Iterative, inkrementelle Vorgehensweise\n- Anforderungen können sich ändern\n- Regelmäßiges Feedback durch Kunden\n- Gut für Projekte mit unklaren Anforderungen\n- Funktionierende Software über Dokumentation\n\nAgiles PM basiert auf dem Agilen Manifest (2001) mit 4 Werten und 12 Prinzipien.",
-    "tags": ["Projektmanagement", "Agil", "Klassisch", "Vergleich"]
+    "tags": [
+      "Projektmanagement",
+      "Agil",
+      "Klassisch",
+      "Vergleich"
+    ]
   },
   {
     "id": 167,
@@ -2076,7 +2616,13 @@
     "difficulty": 2,
     "question": "Was ist Scrum und welche Rollen, Artefakte und Events gibt es?",
     "answer": "Scrum ist ein agiles Framework für iterative Produktentwicklung.\n\nRollen:\n- Product Owner: Verantwortlich für Product Backlog, priorisiert Anforderungen\n- Scrum Master: Sorgt für Einhaltung der Scrum-Regeln, beseitigt Hindernisse\n- Entwicklungsteam: Selbstorganisiert, setzt Sprint-Ziele um (3-9 Personen)\n\nArtefakte:\n- Product Backlog: Priorisierte Anforderungsliste\n- Sprint Backlog: Aufgaben für den aktuellen Sprint\n- Increment: Fertiges, potenziell auslieferbares Produktinkrement\n\nEvents:\n- Sprint: Feste Zeitbox (1-4 Wochen)\n- Sprint Planning: Auswahl der Aufgaben für den Sprint\n- Daily Scrum: Tägliches 15-Min-Standup\n- Sprint Review: Ergebnispräsentation\n- Sprint Retrospektive: Prozessverbesserung",
-    "tags": ["Projektmanagement", "Scrum", "Agil", "Sprint", "Rollen"]
+    "tags": [
+      "Projektmanagement",
+      "Scrum",
+      "Agil",
+      "Sprint",
+      "Rollen"
+    ]
   },
   {
     "id": 168,
@@ -2086,7 +2632,12 @@
     "difficulty": 1,
     "question": "Was ist Kanban?",
     "answer": "Kanban ist eine agile Methode zur Steuerung von Arbeitsprozessen mithilfe eines visuellen Boards.\n\nPrinzipien:\n- Visualisierung des Workflows (Kanban-Board mit Spalten: To Do, In Progress, Done)\n- Begrenzung der gleichzeitigen Arbeit (WIP-Limit = Work in Progress Limit)\n- Kontinuierlicher Fluss statt feste Iterationen\n- Pull-Prinzip: Neue Aufgaben erst, wenn Kapazität frei ist\n\nVorteile:\n- Einfach einzuführen\n- Flexibel, keine festen Rollen oder Zeitboxen\n- Engpässe werden schnell sichtbar\n- Geeignet für Support/Betrieb und Wartung\n\nUnterschied zu Scrum: Kein fester Sprint-Rhythmus, keine festgelegten Rollen.",
-    "tags": ["Projektmanagement", "Kanban", "Agil", "Board"]
+    "tags": [
+      "Projektmanagement",
+      "Kanban",
+      "Agil",
+      "Board"
+    ]
   },
   {
     "id": 169,
@@ -2143,7 +2694,12 @@
     "difficulty": 1,
     "question": "Was ist ein Gantt-Diagramm?",
     "answer": "Ein Gantt-Diagramm ist ein Balkendiagramm zur Visualisierung von Projektabläufen über die Zeit.\n\nAufbau:\n- X-Achse: Zeitachse (Tage, Wochen, Monate)\n- Y-Achse: Arbeitspakete/Aufgaben\n- Balken: Dauer der einzelnen Aufgaben\n- Abhängigkeiten zwischen Aufgaben werden durch Pfeile dargestellt\n- Meilensteine als Rauten markiert\n\nVorteile:\n- Übersichtliche Darstellung des Projektzeitplans\n- Parallelitäten und Abhängigkeiten sichtbar\n- Fortschritt leicht nachvollziehbar\n\nUnterschied zum Netzplan: Gantt zeigt Zeit visuell, Netzplan berechnet kritische Pfade.",
-    "tags": ["Projektmanagement", "Gantt", "Zeitplanung", "Diagramm"]
+    "tags": [
+      "Projektmanagement",
+      "Gantt",
+      "Zeitplanung",
+      "Diagramm"
+    ]
   },
   {
     "id": 173,
@@ -2168,7 +2724,11 @@
     "difficulty": 1,
     "question": "Was sind Meilensteine im Projektmanagement?",
     "answer": "Meilensteine sind definierte Ereignisse/Zeitpunkte, die einen wichtigen Fortschritt oder Abschluss einer Projektphase markieren.\n\nEigenschaften:\n- Haben keine Dauer (Zeitpunkt, kein Zeitraum)\n- Markieren Entscheidungspunkte (Go/No-Go)\n- Dienen der Fortschrittskontrolle\n- Werden im Gantt-Diagramm als Rauten dargestellt\n\nBeispiele in IT-Projekten:\n- Lastenheft abgenommen\n- Pflichtenheft fertiggestellt\n- Prototyp vorgestellt\n- Testphase abgeschlossen\n- Go-Live / Produktivstart\n\nMeilensteine helfen, den Projektstatus für Stakeholder transparent zu machen.",
-    "tags": ["Projektmanagement", "Meilensteine", "Planung"]
+    "tags": [
+      "Projektmanagement",
+      "Meilensteine",
+      "Planung"
+    ]
   },
   {
     "id": 175,
@@ -2225,7 +2785,12 @@
     "difficulty": 2,
     "question": "Was ist Social Engineering?",
     "answer": "Social Engineering bezeichnet die Manipulation von Menschen, um an vertrauliche Informationen zu gelangen.\n\nMethoden:\n- Phishing: Gefälschte E-Mails mit Links/Anhängen\n- Spear Phishing: Gezieltes Phishing auf bestimmte Personen\n- Pretexting: Erfundene Identität/Geschichte als Vorwand\n- Baiting: Infizierte USB-Sticks werden 'zufällig' platziert\n- Tailgating: Unbefugtes Betreten gesicherter Bereiche durch Mitlaufen\n- Shoulder Surfing: Abschauen von Passwörtern/PINs\n- CEO-Fraud: Täter gibt sich als Vorgesetzter aus\n\nSchutzmaßnahmen:\n- Security-Awareness-Schulungen\n- Identitätsprüfung bei Anfragen\n- Clean Desk Policy\n- Vier-Augen-Prinzip bei kritischen Aktionen",
-    "tags": ["IT-Sicherheit", "Social Engineering", "Phishing", "Manipulation"]
+    "tags": [
+      "IT-Sicherheit",
+      "Social Engineering",
+      "Phishing",
+      "Manipulation"
+    ]
   },
   {
     "id": 179,
@@ -2253,7 +2818,13 @@
     "difficulty": 2,
     "question": "Was ist ein VLAN (Virtual Local Area Network)?",
     "answer": "Ein VLAN ist ein logisches Teilnetzwerk innerhalb eines physischen Netzwerks. Es ermöglicht die Segmentierung des Netzwerks unabhängig von der physischen Verkabelung.\n\nVorteile:\n- Sicherheit: Trennung von Datenverkehr (z.B. Buchhaltung von Entwicklung)\n- Performance: Reduzierung von Broadcast-Domänen\n- Flexibilität: Geräte können unabhängig vom Standort gruppiert werden\n- Kostenersparnis: Keine separate physische Infrastruktur nötig\n\nArten:\n- Port-basiertes VLAN: Zuordnung über Switch-Ports\n- Tag-basiertes VLAN (802.1Q): VLAN-Tag im Ethernet-Frame\n\nTrunk: Verbindung zwischen Switches, die mehrere VLANs transportiert.\nInter-VLAN-Routing: Router oder Layer-3-Switch verbindet VLANs.",
-    "tags": ["Hardware", "Netzwerk", "VLAN", "Segmentierung", "Switch"]
+    "tags": [
+      "Hardware",
+      "Netzwerk",
+      "VLAN",
+      "Segmentierung",
+      "Switch"
+    ]
   },
   {
     "id": 181,
@@ -2263,7 +2834,14 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen SAN, NAS und DAS?",
     "answer": "DAS (Direct Attached Storage):\n- Direkt am Server angeschlossen (USB, SATA, SAS)\n- Einfach und günstig\n- Kein Netzwerkzugriff, nur vom angeschlossenen Server nutzbar\n\nNAS (Network Attached Storage):\n- Netzwerkspeicher, über LAN erreichbar\n- Dateibasierter Zugriff (SMB/CIFS, NFS)\n- Eigenes Betriebssystem\n- Einfach einzurichten, gut für Dateifreigabe\n\nSAN (Storage Area Network):\n- Eigenes Hochgeschwindigkeitsnetzwerk für Storage\n- Blockbasierter Zugriff (wie lokale Festplatte)\n- Fibre Channel oder iSCSI\n- Hohe Performance, teuer\n- Für Datenbanken und Virtualisierung\n\nFaustregel: DAS = lokal, NAS = Dateien im Netzwerk, SAN = Blöcke im eigenen Netzwerk.",
-    "tags": ["Hardware", "Storage", "SAN", "NAS", "DAS", "Speicher"]
+    "tags": [
+      "Hardware",
+      "Storage",
+      "SAN",
+      "NAS",
+      "DAS",
+      "Speicher"
+    ]
   },
   {
     "id": 182,
@@ -2273,7 +2851,12 @@
     "difficulty": 1,
     "question": "Was sind Thin Clients und welche Arten gibt es?",
     "answer": "Ein Thin Client ist ein minimaler Computer, der die meiste Verarbeitung auf einem zentralen Server durchführt.\n\nArten:\n- All-in-One Thin Client: Kompaktes Gerät mit Monitor, Tastatur, Maus. Hat ein minimales OS.\n- Zero Client: Noch minimaler, kein lokales OS. Verbindet sich direkt mit der Serverinfrastruktur.\n\nVorteile:\n- Geringe Kosten pro Arbeitsplatz\n- Zentrale Verwaltung und Updates\n- Hohe Sicherheit (keine lokalen Daten)\n- Niedriger Energieverbrauch\n- Längere Lebensdauer\n\nNachteile:\n- Abhängig von Netzwerk und Server\n- Eingeschränkte lokale Funktionalität\n- Nicht für grafikintensive Anwendungen geeignet",
-    "tags": ["Hardware", "Thin Client", "Zero Client", "Desktop"]
+    "tags": [
+      "Hardware",
+      "Thin Client",
+      "Zero Client",
+      "Desktop"
+    ]
   },
   {
     "id": 183,
@@ -2300,7 +2883,15 @@
     "difficulty": 1,
     "question": "Was sind die Unterschiede zwischen ADSL, VDSL und SDSL?",
     "answer": "ADSL (Asymmetric DSL):\n- Asymmetrisch: Download schneller als Upload\n- Download bis ca. 16 Mbit/s\n- Typisch für Privathaushalte\n- Über Telefonleitung (Kupfer)\n\nVDSL (Very High Speed DSL):\n- Asymmetrisch, aber deutlich schneller\n- Download bis 250 Mbit/s (VDSL2 Vectoring)\n- Kombiniert Glasfaser bis zum Verteiler + Kupfer zum Haus\n- Für Streaming und Homeoffice geeignet\n\nSDSL (Symmetric DSL):\n- Symmetrisch: Upload = Download\n- Bis ca. 20 Mbit/s\n- Typisch für Geschäftskunden (Server, VPN, VoIP)\n- Teurer als ADSL/VDSL\n\nFaustregel: ADSL = günstig, VDSL = schnell, SDSL = symmetrisch für Firmen.",
-    "tags": ["Hardware", "Netzwerk", "DSL", "ADSL", "VDSL", "SDSL", "Internet"]
+    "tags": [
+      "Hardware",
+      "Netzwerk",
+      "DSL",
+      "ADSL",
+      "VDSL",
+      "SDSL",
+      "Internet"
+    ]
   },
   {
     "id": 185,
@@ -2310,7 +2901,14 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen VDI und DaaS?",
     "answer": "VDI (Virtual Desktop Infrastructure):\n- Virtuelle Desktops laufen auf firmeneigenen Servern\n- Unternehmen verwaltet Hardware und Software selbst\n- Hohe Anfangsinvestition (Server, Lizenzen)\n- Volle Kontrolle über Daten und Infrastruktur\n- On-Premises\n\nDaaS (Desktop as a Service):\n- Virtuelle Desktops als Cloud-Service von Drittanbieter\n- Provider verwaltet Infrastruktur\n- Pay-per-Use-Modell, geringe Anfangsinvestition\n- Schnelle Skalierbarkeit\n- Weniger Kontrolle über Infrastruktur\n\nGemeinsamkeit: Beide ermöglichen zentralisierte Desktop-Bereitstellung und Zugriff von überall.\n\nVDI = Eigenes Rechenzentrum, DaaS = Cloud-Lösung.",
-    "tags": ["Software", "VDI", "DaaS", "Virtualisierung", "Cloud", "Desktop"]
+    "tags": [
+      "Software",
+      "VDI",
+      "DaaS",
+      "Virtualisierung",
+      "Cloud",
+      "Desktop"
+    ]
   },
   {
     "id": 186,
@@ -2320,7 +2918,13 @@
     "difficulty": 2,
     "question": "Welche grundlegenden SQL-Befehle sollte man für die AP1 kennen?",
     "answer": "DML (Data Manipulation Language):\n- SELECT: Daten abfragen\n  SELECT spalte FROM tabelle WHERE bedingung ORDER BY spalte;\n- INSERT: Daten einfügen\n  INSERT INTO tabelle (spalte1, spalte2) VALUES (wert1, wert2);\n- UPDATE: Daten ändern\n  UPDATE tabelle SET spalte = wert WHERE bedingung;\n- DELETE: Daten löschen\n  DELETE FROM tabelle WHERE bedingung;\n\nDDL (Data Definition Language):\n- CREATE TABLE: Tabelle erstellen\n- ALTER TABLE: Tabelle ändern\n- DROP TABLE: Tabelle löschen\n\nWichtige Klauseln:\n- JOIN (INNER, LEFT, RIGHT): Tabellen verknüpfen\n- GROUP BY + HAVING: Gruppieren und filtern\n- DISTINCT: Duplikate entfernen\n- LIKE, IN, BETWEEN: Filterbedingungen\n- COUNT, SUM, AVG, MIN, MAX: Aggregatfunktionen",
-    "tags": ["Software-Entwicklung", "SQL", "Datenbank", "SELECT", "JOIN"]
+    "tags": [
+      "Software-Entwicklung",
+      "SQL",
+      "Datenbank",
+      "SELECT",
+      "JOIN"
+    ]
   },
   {
     "id": 187,
@@ -2347,7 +2951,13 @@
     "difficulty": 2,
     "question": "Was sind die wichtigsten RAID-Level?",
     "answer": "RAID 0 (Striping):\n- Daten auf mind. 2 Platten verteilt\n- Hohe Geschwindigkeit\n- KEINE Redundanz! Ein Ausfall = Datenverlust\n\nRAID 1 (Mirroring):\n- Daten werden gespiegelt (mind. 2 Platten)\n- Volle Redundanz, Ausfall einer Platte kein Problem\n- Nutzbare Kapazität: 50%\n\nRAID 5 (Striping mit Parität):\n- Mind. 3 Platten, Paritätsdaten verteilt\n- Eine Platte darf ausfallen\n- Nutzbar: (n-1) Platten\n- Guter Kompromiss aus Geschwindigkeit, Redundanz, Kapazität\n\nRAID 6:\n- Wie RAID 5, aber mit doppelter Parität\n- Zwei Platten dürfen gleichzeitig ausfallen\n- Mind. 4 Platten\n\nRAID 10 (1+0):\n- Kombination aus RAID 1 und RAID 0\n- Gespiegelt UND gestriped\n- Hohe Performance und Redundanz, teuer",
-    "tags": ["Hardware", "RAID", "Speicher", "Redundanz", "Datensicherheit"]
+    "tags": [
+      "Hardware",
+      "RAID",
+      "Speicher",
+      "Redundanz",
+      "Datensicherheit"
+    ]
   },
   {
     "id": 189,
@@ -2390,7 +3000,13 @@
     "difficulty": 2,
     "question": "Was sind ASCII, Unicode und UTF-8?",
     "answer": "ASCII (American Standard Code for Information Interchange):\n- 7 Bit → 128 Zeichen (0-127)\n- Nur lateinische Buchstaben, Ziffern, Sonderzeichen\n- Erweitert (8 Bit): 256 Zeichen (z.B. ISO 8859-1 für Umlaute)\n\nUnicode:\n- Universeller Zeichensatz für ALLE Schriftsysteme weltweit\n- Über 140.000 Zeichen definiert\n- Ordnet jedem Zeichen einen eindeutigen Codepoint zu (z.B. U+0041 = 'A')\n\nUTF-8 (Unicode Transformation Format):\n- Kodierung von Unicode-Zeichen in 1-4 Bytes\n- Variable Länge: ASCII-Zeichen = 1 Byte, Umlaute = 2 Bytes, Emojis = 4 Bytes\n- Rückwärtskompatibel zu ASCII\n- Standard im Internet (>95% aller Websites)\n\nUTF-16: 2 oder 4 Bytes pro Zeichen (z.B. in Java, Windows intern)\nUTF-32: Immer 4 Bytes pro Zeichen (einfach, aber speicherintensiv)",
-    "tags": ["Multimedia", "ASCII", "Unicode", "UTF-8", "Zeichensatz"]
+    "tags": [
+      "Multimedia",
+      "ASCII",
+      "Unicode",
+      "UTF-8",
+      "Zeichensatz"
+    ]
   },
   {
     "id": 192,
@@ -2435,7 +3051,14 @@
     "difficulty": 3,
     "question": "Wie berechnet man Dateigrößen von Bildern, Audio und Video?",
     "answer": "BILD (unkomprimiert):\nDateigröße = Breite × Höhe × Farbtiefe (in Byte)\nFarbtiefe: 1 Bit = S/W, 8 Bit = 256 Farben, 24 Bit = 16,7 Mio. (True Color), 32 Bit = True Color + Alpha\n\nBeispiel: 1920×1080, 24 Bit Farbtiefe\n= 1920 × 1080 × 3 Byte = 6.220.800 Byte ≈ 5,93 MiB\n\nAUDIO (unkomprimiert/PCM):\nDateigröße = Abtastrate × Bittiefe × Kanäle × Dauer (s) / 8\n\nBeispiel: CD-Qualität (44.100 Hz, 16 Bit, Stereo), 3 Minuten\n= 44.100 × 16 × 2 × 180 / 8 = 31.752.000 Byte ≈ 30,3 MiB\n\nVIDEO (unkomprimiert):\nDateigröße = Breite × Höhe × Farbtiefe × FPS × Dauer (s)\n\nBeispiel: 1920×1080, 24 Bit, 30 FPS, 10 Sekunden\n= 1920 × 1080 × 3 × 30 × 10 = 1.866.240.000 Byte ≈ 1,74 GiB",
-    "tags": ["Multimedia", "Berechnung", "Dateigröße", "Bild", "Audio", "Video"]
+    "tags": [
+      "Multimedia",
+      "Berechnung",
+      "Dateigröße",
+      "Bild",
+      "Audio",
+      "Video"
+    ]
   },
   {
     "id": 195,
@@ -2462,7 +3085,13 @@
     "difficulty": 2,
     "question": "Was ist Sampling und wie funktioniert die Digitalisierung von Audio?",
     "answer": "Sampling (Abtastung): Umwandlung eines analogen Signals in digitale Werte.\n\nWichtige Parameter:\n- Abtastrate (Sample Rate): Wie oft pro Sekunde gemessen wird (in Hz)\n  CD: 44.100 Hz, DVD: 48.000 Hz, Hi-Res: 96.000 Hz\n- Abtasttiefe (Bit Depth): Genauigkeit jeder Messung\n  CD: 16 Bit (65.536 Stufen), Studio: 24 Bit (16,7 Mio. Stufen)\n- Kanäle: Mono (1), Stereo (2), 5.1 Surround (6)\n\nNyquist-Theorem: Abtastrate muss mindestens doppelt so hoch sein wie die höchste zu erfassende Frequenz. Mensch hört bis 20.000 Hz → mind. 40.000 Hz nötig (daher 44.100 Hz bei CD).\n\nFormate:\n- WAV/PCM: Unkomprimiert, höchste Qualität\n- MP3: Verlustbehaftet, psychoakustisches Modell\n- FLAC: Verlustfrei komprimiert\n- AAC: Verlustbehaftet, besser als MP3 bei gleicher Bitrate",
-    "tags": ["Multimedia", "Audio", "Sampling", "Abtastrate", "MP3"]
+    "tags": [
+      "Multimedia",
+      "Audio",
+      "Sampling",
+      "Abtastrate",
+      "MP3"
+    ]
   },
   {
     "id": 197,
@@ -2472,7 +3101,14 @@
     "difficulty": 1,
     "question": "Welche Videoauflösungen und Codecs gibt es?",
     "answer": "Gängige Auflösungen:\n- SD (Standard Definition): 720×576 (PAL)\n- HD (720p): 1280×720\n- Full HD (1080p): 1920×1080\n- WQHD (1440p): 2560×1440\n- 4K/UHD: 3840×2160\n- 8K: 7680×4320\n\np = progressive (Vollbilder), i = interlaced (Halbbilder)\n\nWichtige Codecs:\n- H.264 (AVC): Weitverbreitet, gute Kompression\n- H.265 (HEVC): ~50% bessere Kompression als H.264\n- VP9: Google, YouTube\n- AV1: Open Source, Nachfolger von VP9\n\nContainer-Formate (enthalten Video + Audio + Untertitel):\n- MP4 (.mp4): Universell\n- MKV (.mkv): Flexibel, viele Streams\n- AVI (.avi): Veraltet\n- WebM: Für Web optimiert\n\nFPS (Frames per Second): 24 (Kino), 30 (Standard), 60 (Gaming/Sport)",
-    "tags": ["Multimedia", "Video", "Auflösung", "HD", "4K", "Codec"]
+    "tags": [
+      "Multimedia",
+      "Video",
+      "Auflösung",
+      "HD",
+      "4K",
+      "Codec"
+    ]
   },
   {
     "id": 198,
@@ -2498,7 +3134,13 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen TCP und UDP?",
     "answer": "TCP (Transmission Control Protocol):\n- Verbindungsorientiert (3-Way-Handshake)\n- Zuverlässig: Reihenfolge garantiert, Fehlerkorrektur\n- Flusskontrolle und Staukontrolle\n- Langsamer durch Overhead\n- Einsatz: HTTP/S, FTP, SMTP, SSH, Datenbanken\n\nUDP (User Datagram Protocol):\n- Verbindungslos (kein Handshake)\n- Unzuverlässig: Keine Garantie für Reihenfolge oder Zustellung\n- Kein Overhead → schneller\n- Einsatz: DNS, DHCP, VoIP, Streaming, Gaming, NTP\n\nTCP 3-Way-Handshake:\n1. SYN → Client sendet Verbindungsanfrage\n2. SYN-ACK ← Server bestätigt und antwortet\n3. ACK → Client bestätigt\n→ Verbindung ist aufgebaut\n\nVerbindungsabbau: 4-Way-Handshake (FIN → ACK → FIN → ACK)",
-    "tags": ["Netzwerk", "TCP", "UDP", "3-Way-Handshake", "Protokoll"]
+    "tags": [
+      "Netzwerk",
+      "TCP",
+      "UDP",
+      "3-Way-Handshake",
+      "Protokoll"
+    ]
   },
   {
     "id": 200,
@@ -2508,7 +3150,14 @@
     "difficulty": 2,
     "question": "Wie funktioniert DNS und welche DNS-Einträge gibt es?",
     "answer": "DNS (Domain Name System): Übersetzt Domainnamen in IP-Adressen ('Telefonbuch des Internets').\n\nAuflösungsprozess:\n1. Browser prüft lokalen Cache\n2. Anfrage an lokalen DNS-Resolver (z.B. Router/ISP)\n3. Anfrage an Root-Server → TLD-Server → Autoritativer Server\n4. IP-Adresse wird zurückgegeben und gecacht\n\nWichtige DNS-Einträge (Resource Records):\n- A: Domain → IPv4-Adresse\n- AAAA: Domain → IPv6-Adresse\n- CNAME: Alias auf eine andere Domain\n- MX: Mail-Exchange-Server für die Domain\n- NS: Zuständiger Nameserver\n- PTR: Reverse-Lookup (IP → Domain)\n- SOA: Start of Authority (Zoneninfo, Seriennummer, TTL)\n- TXT: Freitext (oft für SPF, DKIM, DMARC)\n- SRV: Dienst-Lokalisierung (z.B. SIP, LDAP)\n\nDatei /etc/hosts (Linux) bzw. C:\\Windows\\System32\\drivers\\etc\\hosts (Windows): Lokale Namensauflösung.",
-    "tags": ["Netzwerk", "DNS", "Namensauflösung", "A-Record", "MX", "CNAME"]
+    "tags": [
+      "Netzwerk",
+      "DNS",
+      "Namensauflösung",
+      "A-Record",
+      "MX",
+      "CNAME"
+    ]
   },
   {
     "id": 201,
@@ -2535,7 +3184,13 @@
     "difficulty": 2,
     "question": "Was ist ein VPN und welche Arten gibt es?",
     "answer": "VPN (Virtual Private Network): Verschlüsselte Verbindung über ein öffentliches Netzwerk (Internet).\n\nArten:\n1. Site-to-Site VPN:\n   - Verbindet zwei Netzwerke (z.B. Standorte)\n   - Router/Firewall baut Tunnel auf\n   - Transparent für Endgeräte\n\n2. End-to-Site VPN (Remote Access):\n   - Einzelner Client verbindet sich mit Firmennetz\n   - Typisch für Homeoffice\n   - VPN-Client-Software nötig\n\n3. End-to-End VPN:\n   - Direkte Verbindung zwischen zwei Endgeräten\n   - z.B. SSH-Tunnel\n\nProtokolle:\n- IPsec: Standard für Site-to-Site, Schicht 3, sehr sicher\n- L2TP/IPsec: Kombination, häufig für Remote Access\n- OpenVPN: Open Source, SSL/TLS-basiert, flexibel\n- WireGuard: Modern, schnell, einfach\n- SSL-VPN: Über Browser nutzbar (HTTPS)\n\nVorteile: Verschlüsselung, Standortunabhängigkeit, Kostenersparnis ggü. Standleitungen",
-    "tags": ["Netzwerk", "VPN", "IPsec", "Tunnel", "Remote Access"]
+    "tags": [
+      "Netzwerk",
+      "VPN",
+      "IPsec",
+      "Tunnel",
+      "Remote Access"
+    ]
   },
   {
     "id": 203,
@@ -2563,7 +3218,13 @@
     "difficulty": 2,
     "question": "Was sind QoS und VoIP?",
     "answer": "QoS (Quality of Service):\n- Priorisierung von Netzwerkverkehr nach Wichtigkeit\n- Sichert Bandbreite, minimiert Latenz und Jitter\n- Wichtig für: VoIP, Videokonferenzen, Echtzeitanwendungen\n- Methoden: Traffic Shaping, Traffic Policing, Priorisierung (DSCP)\n- Beispiel: VoIP-Pakete werden vor Download-Paketen bevorzugt\n\nVoIP (Voice over IP):\n- Telefonie über das Internet/IP-Netzwerk\n- Protokoll: SIP (Session Initiation Protocol) für Verbindungsaufbau\n- Codec wandelt Sprache in digitale Pakete um\n- Vorteile: Kostengünstig, flexibel, Integration mit IT\n- Nachteile: Abhängig von Netzwerkqualität und Strom\n- Anforderungen: Geringe Latenz (<150ms), geringer Jitter, QoS\n\nSIP (Session Initiation Protocol):\n- Signalisierungsprotokoll für VoIP\n- Port 5060 (unverschlüsselt), 5061 (TLS)\n- Aufgaben: Verbindungsaufbau, -abbau, Rufumleitung",
-    "tags": ["Netzwerk", "QoS", "VoIP", "SIP", "Priorisierung"]
+    "tags": [
+      "Netzwerk",
+      "QoS",
+      "VoIP",
+      "SIP",
+      "Priorisierung"
+    ]
   },
   {
     "id": 205,
@@ -2605,7 +3266,13 @@
     "difficulty": 2,
     "question": "Was ist Zahlungsverzug und welche Konsequenzen hat er?",
     "answer": "Zahlungsverzug tritt ein, wenn:\n- Eine fällige Zahlung nicht geleistet wird UND\n- Der Schuldner gemahnt wurde ODER\n- Ein Zahlungstermin kalendermäßig bestimmt war ODER\n- 30 Tage nach Fälligkeit und Zugang der Rechnung (bei Unternehmen, §286 BGB)\n\nMahnverfahren:\n1. Zahlungserinnerung (freundlich, optional)\n2. 1. Mahnung (Fristsetzung)\n3. 2. Mahnung (mit Androhung rechtlicher Schritte)\n4. 3. Mahnung / Letzte Mahnung\n5. Gerichtliches Mahnverfahren / Inkasso\n\nKonsequenzen für den Schuldner:\n- Verzugszinsen (gesetzlich: 5% über Basiszinssatz bei Verbrauchern, 9% bei Unternehmen)\n- Mahnkosten\n- Schadensersatz\n- Gerichtliche Durchsetzung\n\nUmgang mit Liquiditätsengpässen: Ratenzahlung vereinbaren, Zahlungsaufschub, Factoring",
-    "tags": ["Wirtschaft", "Zahlungsverzug", "Mahnung", "Recht", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Zahlungsverzug",
+      "Mahnung",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 208,
@@ -2668,7 +3335,13 @@
     "difficulty": 2,
     "question": "Was ist TCO (Total Cost of Ownership)?",
     "answer": "TCO (Total Cost of Ownership) = Gesamtkosten des Besitzes über die gesamte Nutzungsdauer.\n\nDirekte Kosten:\n- Anschaffungskosten (Hardware, Software, Lizenzen)\n- Installationskosten\n- Schulungskosten\n- Wartung und Support\n- Upgrades und Erweiterungen\n- Energiekosten\n- Entsorgungskosten\n\nIndirekte Kosten:\n- Ausfallzeiten (Produktivitätsverlust)\n- Selbsthilfe der Nutzer (statt Arbeit)\n- Einarbeitungszeit\n- Opportunitätskosten\n\nBeispiel Server:\nKauf: 5.000 € + Strom: 500 €/Jahr × 5 Jahre + Wartung: 1.000 €/Jahr × 5 Jahre + Einrichtung: 2.000 €\n= 5.000 + 2.500 + 5.000 + 2.000 = 14.500 € TCO\n\nTCO ist wichtig, weil die Anschaffungskosten oft nur 20-30% der Gesamtkosten ausmachen!",
-    "tags": ["Wirtschaft", "TCO", "Gesamtkosten", "Investition", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "TCO",
+      "Gesamtkosten",
+      "Investition",
+      "Wiso"
+    ]
   },
   {
     "id": 212,
@@ -2711,7 +3384,13 @@
     "difficulty": 2,
     "question": "Was ist die ABC-Analyse?",
     "answer": "Die ABC-Analyse ist ein Verfahren zur Klassifizierung von Objekten (Kunden, Produkte, Lieferanten) nach ihrer wirtschaftlichen Bedeutung.\n\nKlassen:\n- A (sehr wichtig): ~20% der Positionen = ~80% des Werts\n- B (wichtig): ~30% der Positionen = ~15% des Werts\n- C (weniger wichtig): ~50% der Positionen = ~5% des Werts\n\nBasiert auf dem Pareto-Prinzip (80/20-Regel).\n\nAnwendung in der IT:\n- Kundenbewertung: A-Kunden = Top-Kunden mit höchstem Umsatz → intensive Betreuung\n- Lagerhaltung: A-Teile = geringe Lagermenge, häufige Bestellung\n- Projektpriorisierung: A-Projekte = höchste Priorität\n\nVorgehen:\n1. Werte erfassen (z.B. Umsatz pro Kunde)\n2. Absteigend sortieren\n3. Kumulierte Prozente berechnen\n4. A/B/C-Grenzen festlegen",
-    "tags": ["Wirtschaft", "ABC-Analyse", "Pareto", "Marketing", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "ABC-Analyse",
+      "Pareto",
+      "Marketing",
+      "Wiso"
+    ]
   },
   {
     "id": 215,
@@ -2721,7 +3400,13 @@
     "difficulty": 1,
     "question": "Was ist das AIDA-Modell?",
     "answer": "AIDA ist ein Stufenmodell der Werbewirkung:\n\nA - Attention (Aufmerksamkeit):\n→ Aufmerksamkeit des potenziellen Kunden erregen\n→ z.B. auffälliges Design, Slogan, Bild\n\nI - Interest (Interesse):\n→ Interesse am Produkt/der Dienstleistung wecken\n→ z.B. Produktvorteile hervorheben\n\nD - Desire (Verlangen):\n→ Wunsch nach dem Produkt erzeugen\n→ z.B. emotionale Ansprache, Testimonials\n\nA - Action (Handlung):\n→ Kaufhandlung auslösen\n→ z.B. Call-to-Action, Sonderangebot, zeitliche Begrenzung\n\nAnwendung in der IT:\n- Website-Gestaltung: Banner → Produktinfo → Vorteile → 'Jetzt kaufen'-Button\n- Angebotspräsentation: Einstieg → Problemdarstellung → Lösung → Auftrag",
-    "tags": ["Wirtschaft", "AIDA", "Marketing", "Werbung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "AIDA",
+      "Marketing",
+      "Werbung",
+      "Wiso"
+    ]
   },
   {
     "id": 216,
@@ -2748,7 +3433,13 @@
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen Outsourcing und Offshoring?",
     "answer": "Outsourcing (organisatorisch):\n- Auslagerung von Aufgaben an externe Dienstleister\n- Kann im selben Land stattfinden\n- Beispiel: IT-Support an externes Unternehmen vergeben\n\nOffshoring (geografisch):\n- Verlagerung von Aufgaben ins Ausland (Niedriglohnland)\n- Kann intern (eigene Niederlassung) oder extern sein\n- Beispiel: Softwareentwicklung nach Indien verlagern\n\nNearshoring: Verlagerung in nahes Ausland (z.B. Osteuropa)\n\nVorteile Outsourcing:\n- Kostensenkung\n- Fokus auf Kernkompetenzen\n- Zugang zu Spezialwissen\n- Flexibilität\n\nNachteile:\n- Abhängigkeit vom Dienstleister\n- Kontrollverlust\n- Datenschutzrisiken\n- Kommunikationsprobleme (bei Offshoring: Zeitzonen, Sprache, Kultur)",
-    "tags": ["Wirtschaft", "Outsourcing", "Offshoring", "Nearshoring", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Outsourcing",
+      "Offshoring",
+      "Nearshoring",
+      "Wiso"
+    ]
   },
   {
     "id": 218,
@@ -2758,7 +3449,15 @@
     "difficulty": 2,
     "question": "Wie läuft der Bootvorgang eines Computers ab?",
     "answer": "1. Einschalten → Strom fließt\n2. POST (Power-On Self-Test):\n   - BIOS/UEFI prüft Hardware (CPU, RAM, Grafik, Laufwerke)\n   - Fehlermeldung durch Pieptöne (Beep Codes) bei Problemen\n   - Erfolgreich → weiter zum Boot Loader\n\n3. BIOS/UEFI sucht Boot-Medium:\n   - Reihenfolge in BIOS/UEFI eingestellt (Boot Order)\n   - Liest MBR (Master Boot Record) oder GPT (GUID Partition Table)\n\n4. Boot Loader wird geladen:\n   - Windows: Windows Boot Manager (bootmgr)\n   - Linux: GRUB (Grand Unified Bootloader)\n   - Lädt den Betriebssystem-Kernel\n\n5. Betriebssystem startet:\n   - Kernel wird geladen und initialisiert Hardware-Treiber\n   - Systemdienste/Daemons starten\n   - Benutzeranmeldung\n\nS.M.A.R.T. (Self-Monitoring, Analysis and Reporting Technology):\n- Überwachung der Festplattengesundheit\n- Warnt vor drohenden Ausfällen\n- Parameter: Temperatur, Betriebsstunden, Fehlerrate",
-    "tags": ["Hardware", "Bootvorgang", "POST", "BIOS", "UEFI", "GRUB", "SMART"]
+    "tags": [
+      "Hardware",
+      "Bootvorgang",
+      "POST",
+      "BIOS",
+      "UEFI",
+      "GRUB",
+      "SMART"
+    ]
   },
   {
     "id": 219,
@@ -2786,7 +3485,15 @@
     "difficulty": 2,
     "question": "Welche SSD-Formfaktoren gibt es und was ist Hot Swap vs. Hot Spare?",
     "answer": "SSD-Formfaktoren:\n- 2,5 Zoll: SATA-Anschluss, passt in HDD-Schächte, bis ~550 MB/s\n- M.2: Kompakte Steckkarte, direkt auf Mainboard\n  - M.2 SATA: Bis 550 MB/s (wie 2,5\")\n  - M.2 NVMe (PCIe): Bis 7.000+ MB/s, deutlich schneller!\n- mSATA: Veraltet, kleiner Formfaktor für Laptops\n- U.2: Server/Enterprise, 2,5\" mit NVMe-Anschluss\n\nSchnittstellen:\n- SATA III: 6 Gbit/s (effektiv ~550 MB/s)\n- PCIe NVMe (Gen 3): ~3.500 MB/s\n- PCIe NVMe (Gen 4): ~7.000 MB/s\n- PCIe NVMe (Gen 5): ~12.000 MB/s\n\nHot Swap:\n- Austausch eines Geräts (z.B. Festplatte) im laufenden Betrieb\n- Kein Herunterfahren nötig\n- Typisch bei RAID-Systemen, Servern\n\nHot Spare:\n- Reservegerät, das bereitsteht und bei Ausfall automatisch einspringt\n- Festplatte im RAID-Array, die leer mitläuft\n- Bei Ausfall einer Platte: Automatic Rebuild auf Hot Spare",
-    "tags": ["Hardware", "SSD", "NVMe", "M.2", "Hot Swap", "Hot Spare", "SATA"]
+    "tags": [
+      "Hardware",
+      "SSD",
+      "NVMe",
+      "M.2",
+      "Hot Swap",
+      "Hot Spare",
+      "SATA"
+    ]
   },
   {
     "id": 221,
@@ -2796,7 +3503,14 @@
     "difficulty": 1,
     "question": "Was sind PoE, RFID und Barcodes?",
     "answer": "PoE (Power over Ethernet):\n- Stromversorgung über das Netzwerkkabel (Cat5e/Cat6)\n- Kein separates Netzteil nötig\n- IEEE 802.3af (bis 15,4W), 802.3at (bis 25,5W), 802.3bt (bis 90W)\n- Einsatz: IP-Kameras, Access Points, VoIP-Telefone\n\nRFID (Radio Frequency Identification):\n- Kontaktlose Identifikation per Funk\n- Bestandteile: Tag (Transponder) + Lesegerät\n- Passiv (ohne Batterie, kurze Reichweite) vs. Aktiv (mit Batterie, bis 100m)\n- Einsatz: Zugangskontrolle, Lagerverwaltung, Logistik, Reisepass\n\nBarcodes:\n- 1D-Barcode (Strichcode): z.B. EAN (European Article Number)\n  - Nur in einer Richtung lesbar\n  - Begrenzte Datenmenge\n- 2D-Code (QR-Code, DataMatrix):\n  - In zwei Richtungen lesbar\n  - Mehr Daten, Fehlerkorrektur\n  - QR-Code: bis 4.296 Zeichen\n\nAsset Tag: Inventarnummer zur Vermögensverwaltung\nService Tag: Herstellerspezifische Seriennummer für Support",
-    "tags": ["Hardware", "PoE", "RFID", "Barcode", "QR-Code", "Netzwerk"]
+    "tags": [
+      "Hardware",
+      "PoE",
+      "RFID",
+      "Barcode",
+      "QR-Code",
+      "Netzwerk"
+    ]
   },
   {
     "id": 222,
@@ -2822,7 +3536,14 @@
     "difficulty": 1,
     "question": "Was sind ERP, CRM, DMS und andere Branchensoftware-Typen?",
     "answer": "ERP (Enterprise Resource Planning):\n- Zentrale Steuerung aller Geschäftsprozesse (z.B. SAP, Microsoft Dynamics)\n- Module: Finanzen, Personal, Produktion, Vertrieb, Lager\n\nCRM (Customer Relationship Management):\n- Verwaltung von Kundenbeziehungen (z.B. Salesforce)\n- Kontakte, Vertrieb, Marketing, Service\n\nDMS (Dokumentenmanagementsystem):\n- Digitale Verwaltung von Dokumenten\n- Versionierung, Archivierung, Suche\n\nCMS (Content Management System):\n- Verwaltung von Website-Inhalten (z.B. WordPress, Typo3)\n\nCAD (Computer-Aided Design):\n- Technisches Zeichnen und Konstruktion\n\nECM (Enterprise Content Management):\n- Übergeordnet zu DMS, alle Unternehmensinhalte\n\nSCM (Supply Chain Management):\n- Steuerung der Lieferkette\n\nStandard- vs. Individualsoftware:\n- Standard: Günstig, bewährt, wenig anpassbar\n- Individual: Maßgeschneidert, teuer, Wartung aufwändig",
-    "tags": ["Software", "ERP", "CRM", "DMS", "CMS", "Branchensoftware"]
+    "tags": [
+      "Software",
+      "ERP",
+      "CRM",
+      "DMS",
+      "CMS",
+      "Branchensoftware"
+    ]
   },
   {
     "id": 224,
@@ -2849,7 +3570,14 @@
     "difficulty": 2,
     "question": "Was ist ITIL und welche Grundbegriffe gibt es?",
     "answer": "ITIL (Information Technology Infrastructure Library):\n- Best-Practice-Framework für IT-Service-Management (ITSM)\n- Beschreibt Prozesse, Funktionen und Rollen für IT-Services\n\nWichtige Begriffe:\n- Service: Mehrwert für den Kunden ohne Besitz von Risiken/Kosten\n- SLA (Service Level Agreement): Vereinbarte Servicequalität\n- Incident: Ungeplante Unterbrechung eines IT-Services\n- Problem: Ursache für einen oder mehrere Incidents\n- Change: Änderung an der IT-Infrastruktur\n- CMDB: Configuration Management Database (alle IT-Assets)\n\nWichtige Prozesse:\n- Incident Management: Schnelle Wiederherstellung des Services\n- Problem Management: Ursachenanalyse (Root Cause)\n- Change Management: Kontrollierte Änderungen\n- Service Level Management: SLAs verwalten\n\nWeitere Frameworks:\n- CobiT: Governance und Management von Unternehmens-IT\n- MOF (Microsoft Operations Framework): Microsoft-Variante\n- ISO 20000: Internationaler Standard für ITSM",
-    "tags": ["Software", "ITIL", "ITSM", "Incident", "Change", "SLA"]
+    "tags": [
+      "Software",
+      "ITIL",
+      "ITSM",
+      "Incident",
+      "Change",
+      "SLA"
+    ]
   },
   {
     "id": 226,
@@ -2859,7 +3587,13 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Prozess, Thread und Task sowie kooperativem und präemptivem Multitasking?",
     "answer": "Prozess:\n- Laufendes Programm mit eigenem Speicherbereich\n- Hat eigene Ressourcen (Speicher, Dateien)\n- Wird vom Betriebssystem verwaltet\n\nThread (Leichtgewichtiger Prozess):\n- Ausführungsstrang INNERHALB eines Prozesses\n- Teilt sich Speicher mit anderen Threads des Prozesses\n- Schnellerer Kontextwechsel als zwischen Prozessen\n\nTask:\n- Allgemeiner Begriff für eine auszuführende Aufgabe\n- Kann Prozess oder Thread sein\n\nKooperatives Multitasking:\n- Prozess gibt CPU freiwillig ab\n- Wenn ein Prozess hängt → gesamtes System blockiert\n- Veraltet (Windows 3.x, Mac OS Classic)\n\nPräemptives Multitasking:\n- Betriebssystem entzieht Prozessen die CPU nach Zeitscheiben (Time Slicing)\n- Kein Prozess kann System blockieren\n- Standard bei modernen OS (Windows, Linux, macOS)\n\nScheduler: Teil des OS, der CPU-Zeit auf Prozesse verteilt.",
-    "tags": ["Betriebssystem", "Prozess", "Thread", "Multitasking", "Scheduler"]
+    "tags": [
+      "Betriebssystem",
+      "Prozess",
+      "Thread",
+      "Multitasking",
+      "Scheduler"
+    ]
   },
   {
     "id": 227,
@@ -2886,7 +3620,15 @@
     "difficulty": 2,
     "question": "Wie ist eine URL aufgebaut und welche Web-Grundlagen gibt es?",
     "answer": "URL-Aufbau (Uniform Resource Locator):\nhttps://benutzer:passwort@www.example.com:443/pfad/seite.html?key=value#anker\n\n- Schema/Protokoll: https://\n- Authentifizierung: benutzer:passwort@ (optional, selten)\n- Subdomain: www.\n- Domain: example.com\n- Port: :443 (Standard wird weggelassen)\n- Pfad: /pfad/seite.html\n- Query/Parameter: ?key=value\n- Fragment/Anker: #anker\n\nURI vs. URL vs. URN:\n- URI: Oberbegriff (Identifikator)\n- URL: URI mit Zugriffsmechanismus (Ort)\n- URN: URI als dauerhafter Name (z.B. ISBN)\n\nHTML/CSS/JavaScript:\n- HTML: Struktur/Inhalt (Markup)\n- CSS: Design/Layout (Styling)\n- JavaScript: Interaktivität (clientseitig)\n- PHP: Serverseitige Scriptsprache\n\nResponsive Webdesign: Passt sich automatisch an Bildschirmgröße an (Media Queries in CSS3).\n\nCMS (Content Management System): WordPress, Typo3, Joomla – Inhalte ohne Programmierung verwalten.\n\nImpressumspflicht (§5 TMG): Name, Anschrift, Kontakt, Handelsregister, USt-IdNr.",
-    "tags": ["Internet", "URL", "HTML", "CSS", "Responsive", "CMS", "Impressum"]
+    "tags": [
+      "Internet",
+      "URL",
+      "HTML",
+      "CSS",
+      "Responsive",
+      "CMS",
+      "Impressum"
+    ]
   },
   {
     "id": 229,

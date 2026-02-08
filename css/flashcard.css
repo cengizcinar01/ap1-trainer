@@ -400,6 +400,86 @@
   color: var(--accent-primary);
 }
 
+/* --- Markdown Styles (via marked.js) --- */
+
+/* Headings */
+.flashcard-answer h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin: 1em 0 0.5em 0;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.flashcard-answer h3:first-child {
+  margin-top: 0;
+}
+
+/* Horizontal Rule - Section Divider */
+.flashcard-answer hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 1em 0;
+}
+
+/* Markdown Tables */
+.flashcard-answer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75em 0;
+  font-size: 0.85rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.flashcard-answer thead {
+  background: var(--bg-tertiary);
+}
+
+.flashcard-answer th {
+  padding: 0.5em 0.75em;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.8rem;
+}
+
+.flashcard-answer td {
+  padding: 0.4em 0.75em;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.flashcard-answer tr:last-child td {
+  border-bottom: none;
+}
+
+.flashcard-answer tr:hover {
+  background: var(--bg-tertiary);
+}
+
+/* Code Blocks (multi-line) */
+.flashcard-answer pre {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-md);
+  padding: 0.75em 1em;
+  margin: 0.75em 0;
+  overflow-x: auto;
+}
+
+.flashcard-answer pre code {
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 /* --- Image Support --- */
 .flashcard-image {
   margin-top: var(--space-4);

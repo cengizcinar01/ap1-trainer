@@ -164,187 +164,21 @@ const CardRenderer = (() => {
   }
 
   /**
-   * Format answer text with proper HTML markup.
-   * Uses a line-by-line parser for better control over structure.
+   * Format answer text using marked.js for Markdown rendering.
+   * Answers in data.json should now use proper Markdown syntax.
    */
   function formatAnswer(text) {
-    const lines = text.split('\n');
-    const result = [];
-    let inList = false;
-    let listItems = [];
-    let inTable = false;
-    let tableRows = [];
-
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      const trimmed = line.trim();
-
-      // Skip empty lines but preserve spacing
-      if (trimmed === '') {
-        if (inList) {
-          result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
-          listItems = [];
-          inList = false;
-        }
-        if (inTable) {
-          result.push(
-            `<div class="answer-table mb-4">${tableRows.join('')}</div>`
-          );
-          tableRows = [];
-          inTable = false;
-        }
-        continue;
-      }
-
-      // Check for table rows (lines containing |)
-      // Skip if it looks like a Pro/Con comparison with + and -
-      if (
-        trimmed.includes('|') &&
-        !(/\+\s+/.test(trimmed) && /-\s+/.test(trimmed))
-      ) {
-        if (!inTable) inTable = true;
-        const cells = trimmed
-          .split('|')
-          .map((c) => c.trim())
-          .filter((c) => c);
-        const cellHtml = cells
-          .map((cell, idx) =>
-            idx === 0
-              ? `<div class="font-bold">${cell}</div>`
-              : `<div>${cell}</div>`
-          )
-          .join('');
-        tableRows.push(`<div class="answer-row">${cellHtml}</div>`);
-        continue;
-      }
-
-      // End table if we were in one
-      if (inTable) {
-        result.push(
-          `<div class="answer-table mb-4">${tableRows.join('')}</div>`
-        );
-        tableRows = [];
-        inTable = false;
-      }
-
-      // Check for section headers (lines ending with colon, not bullet points)
-      if (/^[A-ZÄÖÜa-zäöü][^:]{2,50}:$/.test(trimmed)) {
-        if (inList) {
-          result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
-          listItems = [];
-          inList = false;
-        }
-        result.push(
-          `<div class="answer-section">${trimmed.slice(0, -1)}</div>`
-        );
-        continue;
-      }
-
-      // Check for bullet points
-      if (/^[•-]\s+/.test(trimmed)) {
-        if (!inList) inList = true;
-        let content = trimmed.replace(/^[•-]\s+/, '');
-        // Apply inline formatting to content
-        content = formatInline(content);
-        if (content.startsWith('+')) {
-          listItems.push(`<li class="pro">${content}</li>`);
-        } else if (content.startsWith('−') || content.startsWith('- ')) {
-          listItems.push(`<li class="con">${content}</li>`);
-        } else {
-          listItems.push(`<li>${content}</li>`);
-        }
-        continue;
-      }
-
-      // End list if we were in one
-      if (inList) {
-        result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
-        listItems = [];
-        inList = false;
-      }
-
-      // Check for numbered lists (1. 2. 3. etc. at start of line)
-      const numberedMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
-      if (numberedMatch) {
-        const num = numberedMatch[1];
-        let content = numberedMatch[2];
-        // Apply inline formatting
-        content = formatInline(content);
-        result.push(
-          `<div class="mb-2"><span class="font-bold text-accent mr-2">${num}.</span>${content}</div>`
-        );
-        continue;
-      }
-
-      // Regular paragraph line - apply inline formatting
-      result.push(`<p>${formatInline(trimmed)}</p>`);
+    // Check if marked is available (loaded via CDN)
+    if (typeof marked !== 'undefined') {
+      // Configure marked for our use case
+      marked.setOptions({
+        breaks: true, // Convert line breaks to <br>
+        gfm: true, // GitHub Flavored Markdown
+      });
+      return marked.parse(text);
     }
-
-    // Flush any remaining list or table
-    if (inList) {
-      result.push(`<ul class="answer-list">${listItems.join('')}</ul>`);
-    }
-    if (inTable) {
-      result.push(`<div class="answer-table mb-4">${tableRows.join('')}</div>`);
-    }
-
-    return result.join('\n');
-  }
-
-  /**
-   * Apply inline formatting to a line of text.
-   * Handles code, abbreviations, units, equations, etc.
-   */
-  function formatInline(text) {
-    // Code/inline formulas with backticks
-    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-    // Technical abbreviations in parentheses (2-4 uppercase letters)
-    text = text.replace(
-      /\(([A-Z]{2,4})\)/g,
-      '(<span class="tech-abbr">$1</span>)'
-    );
-
-    // Simple math expressions WITHOUT units - must come before units replacement
-    // Match: 3200 × 2, 8 + 4, etc. but NOT 51.200 MB/s or 3.14 GHz
-    text = text.replace(
-      /(\d[\d\s.,]*\s*[×xX+\-÷]\s*[\d\s.,]+)(?!\s*(?:MB\/s|GB\/s|Mbit\/s|Gbit\/s|MHz|GHz|GB|MB|KB|KiB|MiB|GiB|TiB|TB|Bit|Byte|ms|%|€|V|A|W|Bit))/g,
-      '<span class="formula">$1</span>'
-    );
-
-    // Numbers with units
-    text = text.replace(
-      /(\d{1,3}(?:[.,]\d{3})*(?:[.,]\d+)?|\d+(?:[.,]\d+)?)\s*(MB\/s|GB\/s|Mbit\/s|Gbit\/s|MHz|GHz|GB|MB|KB|KiB|MiB|GiB|TiB|TB|Bit|Byte|ms|%|€|V|A|W)(?!\w)/g,
-      '<span class="highlight">$1 $2</span>'
-    );
-
-    // Pro/Con indicators (+ and -) in text
-    // After | symbol
-    text = text.replace(
-      /\|\s*\+\s+/g,
-      '| <span class="pro-indicator">+</span> '
-    );
-    text = text.replace(
-      /\|\s*-\s+/g,
-      '| <span class="con-indicator">-</span> '
-    );
-    // After : symbol
-    text = text.replace(
-      /:\s*\+\s+/g,
-      ': <span class="pro-indicator">+</span> '
-    );
-    text = text.replace(/:\s*-\s+/g, ': <span class="con-indicator">-</span> ');
-    // After . (period) - for cases like "...Vorgesetzten. + Klare..."
-    text = text.replace(
-      /\.\s*\+\s+/g,
-      '. <span class="pro-indicator">+</span> '
-    );
-    text = text.replace(
-      /\.\s*-\s+/g,
-      '. <span class="con-indicator">-</span> '
-    );
-
-    return text;
+    // Fallback if marked is not loaded
+    return text.replace(/\n/g, '<br>');
   }
 
   function escapeHtml(str) {
@@ -361,7 +195,6 @@ const CardRenderer = (() => {
     tryLoadImage,
     escapeHtml,
     formatAnswer,
-    formatInline,
   };
 })();
 

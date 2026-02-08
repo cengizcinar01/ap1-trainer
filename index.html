@@ -1,83 +1,70 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta
-      name="description"
-      content="Interaktive Lernkarten-App zur Vorbereitung auf die IHK-Abschlussprüfung Teil 1 für Fachinformatiker"
-    />
-    <meta name="theme-color" content="#0f172a" />
-    <title>AP1 Trainer — IHK Prüfungsvorbereitung</title>
 
-    <!-- Preconnect to external domains -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description"
+    content="Interaktive Lernkarten-App zur Vorbereitung auf die IHK-Abschlussprüfung Teil 1 für Fachinformatiker" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>AP1 Trainer — IHK Prüfungsvorbereitung</title>
 
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Preconnect to external domains -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/flashcard.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-    <link rel="stylesheet" href="css/dashboard.css" />
-    <link rel="stylesheet" href="css/modules.css" />
-    <link rel="stylesheet" href="css/wiki.css" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%235a7a96'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='50' font-weight='bold' fill='white' text-anchor='middle'%3EAP%3C/text%3E%3C/svg%3E"
-    />
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/flashcard.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/modules.css" />
+  <link rel="stylesheet" href="css/wiki.css" />
 
-    <!-- Theme initialization (prevents flash of wrong theme) -->
-    <script>
-      (() => {
-        const storedTheme =
-          localStorage.getItem('theme-preference') || 'system';
-        let effectiveTheme = storedTheme;
-        if (storedTheme === 'system') {
-          effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)')
-            .matches
-            ? 'dark'
-            : 'light';
-        }
-        if (effectiveTheme === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-      })();
-    </script>
-  </head>
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%235a7a96'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='50' font-weight='bold' fill='white' text-anchor='middle'%3EAP%3C/text%3E%3C/svg%3E" />
 
-  <body>
-    <div id="app">
-      <!-- App content will be rendered here by JavaScript -->
-      <div class="loader" style="height: 100vh">
-        <div class="loader-spinner"></div>
-      </div>
+  <!-- Theme initialization (prevents flash of wrong theme) -->
+  <script>
+    (() => {
+      const storedTheme =
+        localStorage.getItem('theme-preference') || 'system';
+      let effectiveTheme = storedTheme;
+      if (storedTheme === 'system') {
+        effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)')
+          .matches
+          ? 'dark'
+          : 'light';
+      }
+      if (effectiveTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- App content will be rendered here by JavaScript -->
+    <div class="loader" style="height: 100vh">
+      <div class="loader-spinner"></div>
     </div>
+  </div>
 
-    <noscript>
-      <div
-        style="
+  <noscript>
+    <div style="
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -89,17 +76,20 @@
             system-ui,
             -apple-system,
             sans-serif;
-        "
-      >
-        <h1 style="margin-bottom: 1rem">JavaScript erforderlich</h1>
-        <p style="color: #666">
-          Diese Anwendung benötigt JavaScript. Bitte aktiviere JavaScript in
-          deinem Browser.
-        </p>
-      </div>
-    </noscript>
+        ">
+      <h1 style="margin-bottom: 1rem">JavaScript erforderlich</h1>
+      <p style="color: #666">
+        Diese Anwendung benötigt JavaScript. Bitte aktiviere JavaScript in
+        deinem Browser.
+      </p>
+    </div>
+  </noscript>
 
-    <!-- App Entry Point -->
-    <script type="module" src="js/app.js"></script>
-  </body>
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- App Entry Point -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
 </html>
