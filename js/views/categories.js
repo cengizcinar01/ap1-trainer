@@ -55,6 +55,14 @@ const CategoriesView = (() => {
         container.querySelectorAll('.accordion-item.open').forEach((item) => {
           if (item !== currentAccordion) {
             const body = item.querySelector('.accordion-body');
+
+            // Also close any open subtopic accordions inside
+            item.querySelectorAll('.subtopic-accordion.open').forEach((subtopic) => {
+              const subtopicBody = subtopic.querySelector('.subtopic-body');
+              subtopicBody.style.maxHeight = '0px';
+              subtopic.classList.remove('open');
+            });
+
             // Set current height explicitly for smooth close animation
             body.style.maxHeight = body.scrollHeight + 'px';
             // Force reflow
@@ -66,6 +74,13 @@ const CategoriesView = (() => {
         });
 
         if (isOpen) {
+          // Also close any open subtopic accordions inside
+          currentAccordion.querySelectorAll('.subtopic-accordion.open').forEach((subtopic) => {
+            const subtopicBody = subtopic.querySelector('.subtopic-body');
+            subtopicBody.style.maxHeight = '0px';
+            subtopic.classList.remove('open');
+          });
+
           // Closing: animate from current height to 0
           accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
           // Force reflow
@@ -74,28 +89,34 @@ const CategoriesView = (() => {
           accordionBody.style.maxHeight = '0px';
           currentAccordion.classList.remove('open');
         } else {
-          // Opening: animate from 0 to actual height
-          currentAccordion.classList.add('open');
-          accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
+          // First scroll to top of page
+          window.scrollTo({ top: 0, behavior: 'smooth' });
 
-          // After animation completes, remove inline style for responsiveness
+          // Then after a short delay, open accordion and scroll to it
           setTimeout(() => {
-            accordionBody.style.maxHeight = '';
-          }, 800);
+            // Opening: animate from 0 to actual height
+            currentAccordion.classList.add('open');
+            accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
 
-          // Add highlight animation
-          currentAccordion.classList.add('accordion-highlight');
-          setTimeout(() => {
-            currentAccordion.classList.remove('accordion-highlight');
-          }, 1500);
+            // After animation completes, remove inline style for responsiveness
+            setTimeout(() => {
+              accordionBody.style.maxHeight = '';
+            }, 800);
 
-          // Scroll after animation starts
-          setTimeout(() => {
-            const headerRect = currentAccordion.getBoundingClientRect();
-            const offset = 60; // Account for mobile header (52px) + some padding
-            const targetY = window.scrollY + headerRect.top - offset;
-            window.scrollTo({ top: targetY, behavior: 'smooth' });
-          }, 850); // Wait for CSS transition (800ms) to complete
+            // Add highlight animation
+            currentAccordion.classList.add('accordion-highlight');
+            setTimeout(() => {
+              currentAccordion.classList.remove('accordion-highlight');
+            }, 1500);
+
+            // Scroll to the accordion after it opens
+            setTimeout(() => {
+              const headerRect = currentAccordion.getBoundingClientRect();
+              const offset = 60; // Account for mobile header (52px) + some padding
+              const targetY = window.scrollY + headerRect.top - offset;
+              window.scrollTo({ top: targetY, behavior: 'smooth' });
+            }, 850); // Wait for accordion animation (800ms) to complete
+          }, 300); // Wait for scroll to top
         }
       };
     });
