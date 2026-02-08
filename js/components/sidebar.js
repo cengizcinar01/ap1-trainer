@@ -16,6 +16,7 @@ const Sidebar = (() => {
     osimodel: `<svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="3" rx="1"/><rect x="3" y="6" width="18" height="3" rx="1"/><rect x="3" y="10" width="18" height="3" rx="1"/><rect x="3" y="14" width="18" height="3" rx="1"/><rect x="3" y="18" width="18" height="3" rx="1"/></svg>`,
     networkplan: `<svg viewBox="0 0 24 24"><rect x="1" y="4" width="7" height="6" rx="1.5"/><rect x="8.5" y="14" width="7" height="6" rx="1.5"/><rect x="16" y="4" width="7" height="6" rx="1.5"/><line x1="8" y1="8" x2="11" y2="14"/><line x1="16" y1="8" x2="13" y2="14"/></svg>`,
     nwa: `<svg viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/><polyline points="5 10 12 5 19 2" fill="none" stroke-width="2"/></svg>`,
+    numbersystems: `<svg viewBox="0 0 24 24"><text x="3" y="11" font-size="8" font-weight="bold" fill="currentColor" font-family="monospace">01</text><text x="3" y="21" font-size="8" font-weight="bold" fill="currentColor" font-family="monospace">FF</text><line x1="16" y1="4" x2="16" y2="20" stroke="currentColor" stroke-width="1.5"/><polyline points="13 7 16 4 19 7" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="13 17 16 20 19 17" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`,
     wiki: `<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
   };
@@ -112,6 +113,10 @@ const Sidebar = (() => {
         <a href="#/modules/nwa" class="nav-item ${currentRoute.startsWith('/modules/nwa') ? 'active' : ''}" data-route="/modules/nwa">
           <span class="nav-item-icon">${ICONS.nwa}</span>
           Nutzwertanalyse
+        </a>
+        <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
+          <span class="nav-item-icon">${ICONS.numbersystems}</span>
+          Zahlensysteme
         </a>
       </nav>
 `;

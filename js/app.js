@@ -3,6 +3,7 @@
 // ============================================================
 
 import NetworkPlanView from '../modules/networkplan.js';
+import NumberSystemsView from '../modules/numbersystems.js';
 import NWAView from '../modules/nwa.js';
 import OSIModelView from '../modules/osimodel.js';
 import SubnettingView from '../modules/subnetting.js';
@@ -125,6 +126,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = NWAView.cleanup;
       NWAView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/numbersystems', () => {
+      cleanupCurrentView();
+      currentCleanup = NumberSystemsView.cleanup;
+      NumberSystemsView.render(contentEl);
       Sidebar.updateActive();
     });
 
