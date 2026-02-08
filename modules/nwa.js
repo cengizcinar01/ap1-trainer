@@ -576,11 +576,11 @@ const NWAView = (() => {
       <div class="nwa-exercise-nav">
         ${EXERCISES.map(
           (e, i) => `
-          <button class="nwa-exercise-btn ${i === currentExercise ? 'active' : ''} ${progress.exercises.includes(e.id) ? 'completed' : ''}"
+          <button class="nwa-exercise-btn ${i === currentExercise ? 'active' : ''}"
                   data-idx="${i}">
             <span class="nwa-exercise-btn-num">${i + 1}</span>
             <span class="nwa-exercise-btn-title">${e.title}</span>
-            ${progress.exercises.includes(e.id) ? '<span class="nwa-exercise-check">&#x2713;</span>' : ''}
+
           </button>
         `
         ).join('')}

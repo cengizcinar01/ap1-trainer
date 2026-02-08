@@ -635,23 +635,7 @@ const OSIModelView = (() => {
           </div>
         </div>
 
-        <div class="osi-scoreboard">
-          <div class="osi-scoreboard-item">
-            <span class="osi-scoreboard-value">${progress.points}</span>
-            <span class="osi-scoreboard-label">Punkte</span>
-          </div>
-          <div class="osi-scoreboard-item">
-            <span class="osi-scoreboard-value">${progress.bestStreak}</span>
-            <span class="osi-scoreboard-label">Beste Serie</span>
-          </div>
-          <div class="osi-scoreboard-item">
-            <span class="osi-scoreboard-value">${progress.sectionsCompleted.length}/6</span>
-            <span class="osi-scoreboard-label">Abschnitte</span>
-          </div>
-          <div class="osi-scoreboard-progress">
-            <div class="osi-scoreboard-progress-bar" style="width: ${(progress.sectionsCompleted.length / 6) * 100}%"></div>
-          </div>
-        </div>
+
 
         <div class="module-tabs">
           ${tabs
@@ -1409,14 +1393,12 @@ const OSIModelView = (() => {
   function renderQuizTab(container) {
     const questions = shuffle(QUIZ_POOL).slice(0, 10);
     let qIndex = 0;
-    let score = 0;
-    let streak = 0;
-    let bestStreak = 0;
+    let correctCount = 0;
     let answered = false;
 
     function renderQuestion() {
       if (qIndex >= questions.length) {
-        renderQuizSummary(container, score, bestStreak, questions.length);
+        renderQuizSummary(container, correctCount, questions.length);
         return;
       }
 
@@ -1430,8 +1412,7 @@ const OSIModelView = (() => {
               <div class="osi-quiz-progress-fill" style="width: ${(qIndex / questions.length) * 100}%"></div>
             </div>
             <span class="osi-quiz-progress-text">${qIndex + 1}/${questions.length}</span>
-            <span class="osi-scoreboard-value" style="font-size: var(--font-size-base)">${score} Pkt</span>
-            ${streak >= 3 ? `<span class="osi-scoreboard-streak">${streak >= 5 ? '\u{1F525}' : '\u26A1'} ${streak}x</span>` : ''}
+
           </div>
 
           <div class="osi-quiz-question">${escapeHtml(q.question)}</div>
@@ -1461,20 +1442,13 @@ const OSIModelView = (() => {
       answered = true;
 
       if (isCorrect) {
-        streak++;
-        if (streak > bestStreak) bestStreak = streak;
-        const bonus = Math.max(0, (streak - 1) * 2);
-        const pts = 10 + bonus;
-        score += pts;
-        if (streak >= 3) showCelebration();
-      } else {
-        streak = 0;
+        correctCount++;
       }
 
       const fb = container.querySelector('#quizFeedback');
       if (fb) {
         fb.innerHTML = `<div class="module-feedback ${isCorrect ? 'module-feedback-success' : 'module-feedback-error'}">
-          ${isCorrect ? 'Richtig!' : 'Falsch!'} ${streak >= 3 ? `\u26A1 ${streak}x Streak!` : ''}
+          ${isCorrect ? 'Richtig!' : 'Falsch!'}
         </div>`;
       }
 
@@ -1583,43 +1557,35 @@ const OSIModelView = (() => {
       });
     }
 
-    function renderQuizSummary(cont, finalScore, finalBestStreak, total) {
-      const accuracy = Math.round((finalScore / (total * 10)) * 100);
+    function renderQuizSummary(cont, correct, total) {
+      const accuracy = Math.round((correct / total) * 100);
+      const passed = accuracy >= 50;
 
-      if (finalScore > progress.quizHighScore) {
-        progress.quizHighScore = finalScore;
+      // Mark section as completed if passed, but don't track points
+      if (passed) {
+        completeSection('quiz');
+        saveProgress();
       }
-      if (finalBestStreak > progress.bestStreak) {
-        progress.bestStreak = finalBestStreak;
-      }
-      addPoints(finalScore);
-      completeSection('quiz');
-      saveProgress();
 
       if (accuracy >= 80) showCelebration();
 
       cont.innerHTML = `
-        <div class="module-exercise-card">
-          <div class="osi-quiz-summary">
-            <div class="osi-quiz-summary-score">${finalScore}</div>
-            <div class="osi-quiz-summary-label">Punkte erreicht</div>
-
-            <div class="osi-quiz-summary-stats">
+        <div class="module-content">
+          <div class="module-card">
+            <div class="osi-intro-icon">${passed ? '🎉' : '📚'}</div>
+            <h2>${passed ? 'Gut gemacht!' : 'Übung macht den Meister!'}</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+              Du hast <strong style="color: var(--accent-primary)">${correct}</strong> von <strong>${total}</strong> Fragen richtig beantwortet.
+            </p>
+            
+            <div class="osi-quiz-summary-stats" style="justify-content: center;">
               <div class="osi-quiz-summary-stat">
                 <span class="osi-quiz-summary-stat-value">${accuracy}%</span>
                 <span class="osi-quiz-summary-stat-label">Genauigkeit</span>
               </div>
-              <div class="osi-quiz-summary-stat">
-                <span class="osi-quiz-summary-stat-value">${finalBestStreak}x</span>
-                <span class="osi-quiz-summary-stat-label">Beste Serie</span>
-              </div>
-              <div class="osi-quiz-summary-stat">
-                <span class="osi-quiz-summary-stat-value">${progress.quizHighScore}</span>
-                <span class="osi-quiz-summary-stat-label">Highscore</span>
-              </div>
             </div>
 
-            <button class="btn btn-primary" id="quizRetry">Nochmal spielen</button>
+            <button class="btn btn-primary" id="quizRetry" style="margin-top: 2rem; width: 100%;">Nochmal spielen</button>
           </div>
         </div>
       `;
