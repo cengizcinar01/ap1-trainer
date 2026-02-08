@@ -5,6 +5,7 @@
 import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
 import StorageManager from './data/storageManager.js';
+import OSIModelView from './modules/osimodel.js';
 import SubnettingView from './modules/subnetting.js';
 import Router from './router.js';
 import CategoriesView from './views/categories.js';
@@ -101,6 +102,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = SubnettingView.cleanup;
       SubnettingView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/osimodel', () => {
+      cleanupCurrentView();
+      currentCleanup = OSIModelView.cleanup;
+      OSIModelView.render(contentEl);
       Sidebar.updateActive();
     });
 
