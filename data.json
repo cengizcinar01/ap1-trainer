@@ -758,7 +758,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Softwarearten gibt es?",
-    "answer": "• Anwendungssoftware: Programme für bestimmte Anwendungsbereiche (Office, Browser, Grafikprogramme, Spiele)\n• Standardsoftware: Fertige Programme für die breite Masse (z.B. Word, Excel)\n• Branchensoftware: Speziell für eine gewisse Branche entwickelt\n• Individualsoftware: Speziell für einen Kunden entwickelt\n• Proprietäre Software: Closed Source, beschränkte Nutzungsrechte, oft kostenpflichtig (z.B. Windows, Adobe Suite)\n• Open Source Software: Quellcode öffentlich zugänglich und einsehbar\n• Betriebssysteme: Grundsoftware, verwaltet Hardware und Programme (Windows, Linux, macOS)\n• Treiber: Spezielles Programm als Übersetzer zwischen Hardware und Betriebssystem",
+    "answer": "| Art | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **Anwendungssoftware** | Für bestimmte Anwendungsbereiche | Office, Browser, Spiele |\n| **Standardsoftware** | Fertigprodukte für die Masse | Word, Excel |\n| **Branchensoftware** | Speziell für eine Branche | Arztpraxis-Software |\n| **Individualsoftware** | Maßgeschneidert für Kunden | Interne Firmen-Tools |\n| **Proprietär** | Closed Source, kostenpflichtig | Windows, Adobe |\n| **Open Source** | Quellcode öffentlich | Linux, Firefox |\n| **Betriebssystem** | Verwaltet Hardware & Programme | Windows, macOS |\n| **Treiber** | Übersetzer Hardware ↔ OS | Grafiktreiber |",
     "tags": [
       "Software",
       "Softwarearten",
@@ -774,7 +774,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche Beurteilungskriterien gibt es für Software?",
-    "answer": "• Benutzerfreundlichkeit\n• Stabilität/Zuverlässigkeit\n• Support/Updates\n• Kosten\n• Systemanforderungen\n• Kompatibilität",
+    "answer": "### Wichtige Kriterien\n\n- **Benutzerfreundlichkeit** (Usability)\n- **Stabilität/Zuverlässigkeit**\n- **Support/Updates**\n- **Kosten** (Lizenzen, Wartung)\n- **Systemanforderungen**\n- **Kompatibilität** (Schnittstellen)",
     "tags": [
       "Software",
       "Beurteilung",
@@ -788,7 +788,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist das BIOS und wie unterscheidet es sich von UEFI?",
-    "answer": "Das BIOS (Basic Input/Output System) ist die Firmware eines Computers, die beim Start die Hardware initialisiert und das Betriebssystem lädt.\n\nFunktionen: POST (Power-On Self-Test), CMOS-Konfiguration, Bootloader, Hardware-Steuerung.\n\nBIOS vs. UEFI:\n• Speicherort: BIOS = ROM/EEPROM/Flash | UEFI = Flash-Speicher\n• Boot-Modus: BIOS = MBR (max. 2 TB) | UEFI = GPT (größere Laufwerke)\n• Oberfläche: BIOS = Textbasiert | UEFI = Grafisch, Maus-Support\n• Sicherheit: BIOS = Keine Secure Boot | UEFI = Secure Boot, TPM-Unterstützung\n\nWichtige Tasten: DEL/F2 (BIOS-Setup), F12/ESC (Boot-Menü).",
+    "answer": "Das **BIOS** (Basic Input/Output System) ist die Firmware, die Hardware initialisiert.\n\n### BIOS vs. UEFI\n\n| Merkmal | BIOS | UEFI |\n|---------|------|------|\n| **Speicherort** | ROM/EEPROM | Flash-Speicher |\n| **Boot-Modus** | MBR (max. 2 TB) | GPT (unbegrenzt) |\n| **Oberfläche** | Textbasiert | Grafisch + Maus |\n| **Sicherheit** | Keine | Secure Boot, TPM |\n\n⌨️ **Tasten:** `DEL`/`F2` (Setup), `F12`/`ESC` (Boot-Menü)",
     "tags": [
       "Software",
       "BIOS",
@@ -804,7 +804,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Was ist der Unterschied zwischen Compiler, Interpreter und Hybrid-Modellen?",
-    "answer": "Compiler: Übersetzt Quellcode komplett in Maschinencode. Wird nur einmal während der Kompilierungsphase aufgerufen. Erstellt ein Objektmodul.\n\nLinker: Fügt mehrere Objektmodule zu einem ausführbaren Programm zusammen und löst externe Verweise (Libraries) auf.\n\nInterpreter: Führt Quellcode direkt zeilenweise aus, ohne vorherige Übersetzung. Beispiele: Python, JavaScript, Ruby.\n\nHybrid-Modelle: Quellcode wird zunächst in Zwischencode (Bytecode) kompiliert, dann von einer virtuellen Maschine (JVM, CLR) interpretiert. Beispiele: Java, C#. Ermöglicht Plattformunabhängigkeit.",
+    "answer": "### Compiler\nÜbersetzt Quellcode **komplett** in Maschinencode (vor Ausführung).\n- *Beispiel:* C++, Go\n\n### Interpreter\nFührt Quellcode **zeilenweise** direkt aus (zur Laufzeit).\n- *Beispiel:* Python, JavaScript\n\n### Hybrid-Modelle\nKompilierung in **Bytecode** → Ausführung durch **Virtual Machine** (VM).\n- *Beispiel:* Java (JVM), C# (.NET)\n- ✅ Plattformunabhängig",
     "tags": [
       "Software",
       "Entwicklung",
@@ -821,7 +821,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine IDE und ein Debugger?",
-    "answer": "IDE (Integrated Development Environment): Eine Software für Programmierer, die alles für die Softwareentwicklung enthält: Editor, Compiler, Debugger, etc. Beispiele: Visual Studio, Eclipse, IntelliJ.\n\nDebugger: Unterstützt Entwickler während des Entwicklungsprozesses. Bietet detaillierte Analysen des laufenden Programms – z.B. Laufzeitvariablen auslesen oder Programm während der Ausführung unterbrechen/fortsetzen (Breakpoints).",
+    "answer": "### IDE (Integrated Development Environment)\nKomplettpaket für Entwickler: **Editor + Compiler + Debugger**.\n- *Beispiele:* IntelliJ, VS Code, Visual Studio\n\n### Debugger\nWerkzeug zur **Fehlersuche**:\n- 🐞 Laufzeitvariablen prüfen\n- 🛑 Breakpoints setzen (Programm anhalten)\n- 👣 Code schrittweise ausführen (Stepping)",
     "tags": [
       "Software",
       "Entwicklung",
@@ -836,7 +836,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche Cloud-Service-Modelle gibt es?",
-    "answer": "• SaaS (Software as a Service): Nutzung von Anwendungen über das Internet ohne lokale Installation. Beispiel: Online-Office, CRM-Systeme.\n• DaaS (Desktop as a Service): Bereitstellung virtueller Desktop-Umgebungen. Zugriff auf kompletten Desktop über verschiedene Endgeräte.\n• IaaS (Infrastructure as a Service): Bereitstellung von IT-Infrastruktur (VMs, Speicher, Netzwerke). Hohe Flexibilität, keine eigene physische Hardware nötig.\n• PaaS (Platform as a Service): Bereitstellung von Entwicklungsplattformen. Beschleunigte Entwicklung, integrierte Laufzeitumgebungen.",
+    "answer": "| Modell | Beschreibung | Beispiel |\n|--------|--------------|----------|\n| **SaaS** | Software über Internet nutzen | Office 365, Salesforce |\n| **PaaS** | Plattform für Entwickler | Google App Engine |\n| **IaaS** | Infrastruktur mieten (VMs, Netz) | AWS EC2 |\n| **DaaS** | Virtueller Desktop | Citrix, Azure Virtual Desktop |",
     "tags": [
       "Software",
       "Cloud",
@@ -853,7 +853,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind virtuelle Desktops?",
-    "answer": "Virtuelle Desktops ermöglichen das gleichzeitige Arbeiten mit mehreren separaten Desktop-Umgebungen auf einem einzigen physischen Bildschirm.\n\nVorteile: Bessere Organisation, erhöhte Produktivität, reduzierte Ablenkung.\n\nBeispiele:\n• Windows: 'Task View' (Win + Tab)\n• macOS: 'Spaces' (Mission Control)\n• Linux: Mehrere Workspaces je nach Distribution",
+    "answer": "**Virtuelle Desktops** ermöglichen mehrere Desktop-Oberflächen auf einem Bildschirm.\n\n✅ Bessere Organisation\n✅ Erhöhte Produktivität\n\n### Beispiele\n- **Windows:** Task View (`Win + Tab`)\n- **macOS:** Spaces (Mission Control)\n- **Linux:** Workspaces",
     "tags": [
       "Software",
       "Virtuelle Desktops",
@@ -867,7 +867,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche funktionalen, ökonomischen und ökologischen Aspekte werden bei IT-Systemen bewertet?",
-    "answer": "Funktionale Aspekte:\n• Ergonomie (Benutzerfreundlichkeit, intuitive Bedienung)\n• Leistungsparameter (Geschwindigkeit, Skalierbarkeit)\n\nÖkonomische Aspekte:\n• Einmalige Kosten (Anschaffung)\n• Laufende Kosten (Betrieb, Wartung, Lizenzen)\n• Nutzungsdauer (Lebensdauer, Abschreibung)\n\nÖkologische Aspekte:\n• Energieverbrauch (Effizienz)\n• Recyclingfähigkeit (CO₂-Fußabdruck)\n\nHinweis: Alle drei Aspekte stehen oft in Konflikt (z.B. hohe Leistung vs. hoher Energieverbrauch).",
+    "answer": "### 1. Funktional (Nutzen)\n- **Ergonomie** (Bedienbarkeit)\n- **Leistung** (Speed, Skalierbarkeit)\n\n### 2. Ökonomisch (Kosten)\n- **TCO** (Total Cost of Ownership)\n- Anschaffung vs. Betriebskosten\n- ROI (Return on Investment)\n\n### 3. Ökologisch (Umwelt)\n- **Energieeffizienz** (Green IT)\n- **Ressourcenverbrauch** & Entsorgung",
     "tags": [
       "Software",
       "Bewertung",
@@ -883,7 +883,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche Kommunikationssysteme nutzen moderne Unternehmen?",
-    "answer": "Videokonferenzsysteme (Teams, Zoom) für ortsunabhängige Meetings, Social-Media-Systeme für Kundenkommunikation und Marketing, sowie Messaging-Dienste für schnelle interne Abstimmungen.",
+    "answer": "- **Videokonferenzen:** Teams, Zoom (Ortsunabhängigkeit)\n- **Messenger:** Slack, Teams (Schnelle Abstimmung)\n- **Social Media:** LinkedIn, X, Insta (Marketing/Support)\n- **Kollaboration:** SharePoint, Confluence (Wissensmanagement)",
     "tags": [
       "Software",
       "Kommunikation",
@@ -897,7 +897,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist ein Client-Server-System?",
-    "answer": "Ein zentraler Server stellt Dienste für mehrere Clients bereit. Die Clients greifen über das Netzwerk auf diese Dienste zu.\n\nTypische Beispiele:\n• Dateiserver: Zentrale Datenspeicherung\n• Mailserver: E-Mail-Verwaltung\n• Datenbankserver: Zentrale Datenhaltung\n• Webserver: Bereitstellung von Webseiten",
+    "answer": "Ein zentraler **Server** stellt Dienste für mehrere **Clients** bereit.\n\n### Typische Server\n| Servertyp | Funktion |\n|-----------|----------|\n| **Dateiserver** | Zentrale Ablage (NAS) |\n| **Mailserver** | E-Mail-Verwaltung (Exchange) |\n| **Datenbank** | SQL-Server, Oracle |\n| **Webserver** | Hosting von Websites (Apache, IIS) |",
     "tags": [
       "Software",
       "Client-Server",
@@ -912,7 +912,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine Domäne in der Netzwerkverwaltung?",
-    "answer": "Die Domäne ist ein zentrales Verwaltungskonzept für Netzwerke. Ein Domänencontroller verwaltet:\n• Benutzerkonten und Berechtigungen\n• Gruppenrichtlinien\n• Gemeinsame Ressourcen\n• Zentrale Authentifizierung",
+    "answer": "Eine **Domäne** ist ein zentraler Verwaltungsbereich für Netzwerke (z.B. Windows Active Directory).\n\n### Funktionen des Domain Controllers (DC)\n- 🔐 **Zentrale Authentifizierung** (Single Sign-On)\n- 👥 **Benutzerverwaltung** & Rechte\n- 📜 **Gruppenrichtlinien** (Policies)\n- 📂 **Ressourcenfreigabe** (Drucker, Laufwerke)",
     "tags": [
       "Software",
       "Domäne",
@@ -2900,7 +2900,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen VDI und DaaS?",
-    "answer": "VDI (Virtual Desktop Infrastructure):\n- Virtuelle Desktops laufen auf firmeneigenen Servern\n- Unternehmen verwaltet Hardware und Software selbst\n- Hohe Anfangsinvestition (Server, Lizenzen)\n- Volle Kontrolle über Daten und Infrastruktur\n- On-Premises\n\nDaaS (Desktop as a Service):\n- Virtuelle Desktops als Cloud-Service von Drittanbieter\n- Provider verwaltet Infrastruktur\n- Pay-per-Use-Modell, geringe Anfangsinvestition\n- Schnelle Skalierbarkeit\n- Weniger Kontrolle über Infrastruktur\n\nGemeinsamkeit: Beide ermöglichen zentralisierte Desktop-Bereitstellung und Zugriff von überall.\n\nVDI = Eigenes Rechenzentrum, DaaS = Cloud-Lösung.",
+    "answer": "### VDI (Virtual Desktop Infrastructure)\n- **Eigenes Rechenzentrum** (On-Premises)\n- Volle Kontrolle über Daten & Hardware\n- Hohe Anfangsinvestition (Server, Lizenzen)\n\n### DaaS (Desktop as a Service)\n- **Cloud-Service** (Drittanbieter)\n- Provider verwaltet Infrastruktur\n- Pay-per-Use (keine hohen Startkosten)\n\n✅ **Gemeinsamkeit:** Zentralisierter Zugriff von überall.",
     "tags": [
       "Software",
       "VDI",
@@ -3535,7 +3535,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind ERP, CRM, DMS und andere Branchensoftware-Typen?",
-    "answer": "ERP (Enterprise Resource Planning):\n- Zentrale Steuerung aller Geschäftsprozesse (z.B. SAP, Microsoft Dynamics)\n- Module: Finanzen, Personal, Produktion, Vertrieb, Lager\n\nCRM (Customer Relationship Management):\n- Verwaltung von Kundenbeziehungen (z.B. Salesforce)\n- Kontakte, Vertrieb, Marketing, Service\n\nDMS (Dokumentenmanagementsystem):\n- Digitale Verwaltung von Dokumenten\n- Versionierung, Archivierung, Suche\n\nCMS (Content Management System):\n- Verwaltung von Website-Inhalten (z.B. WordPress, Typo3)\n\nCAD (Computer-Aided Design):\n- Technisches Zeichnen und Konstruktion\n\nECM (Enterprise Content Management):\n- Übergeordnet zu DMS, alle Unternehmensinhalte\n\nSCM (Supply Chain Management):\n- Steuerung der Lieferkette\n\nStandard- vs. Individualsoftware:\n- Standard: Günstig, bewährt, wenig anpassbar\n- Individual: Maßgeschneidert, teuer, Wartung aufwändig",
+    "answer": "| Kürzel | Name | Funktion |\n|--------|------|----------|\n| **ERP** | Enterprise Resource Planning | Zentrale Steuerung (Finanzen, Personal, Lager) - z.B. SAP |\n| **CRM** | Customer Relationship Mgmt | Kundenbeziehungen (Vertrieb, Marketing) - z.B. Salesforce |\n| **DMS** | Dokumenten-Mgmt | Digitale Archivierung & Suche |\n| **CMS** | Content Management | Website-Inhalte - z.B. WordPress |\n| **CAD** | Computer-Aided Design | Technisches Zeichnen |\n| **SCM** | Supply Chain Mgmt | Lieferkette steuern |",
     "tags": [
       "Software",
       "ERP",
@@ -3552,7 +3552,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Virtualisierung und Containern?",
-    "answer": "Virtualisierung:\n- Emulation einer kompletten Hardware-Umgebung\n- Jede VM hat eigenes Betriebssystem\n- Hypervisor verwaltet die VMs\n\nHypervisor Typ 1 (Bare-Metal):\n- Läuft direkt auf Hardware (ohne Host-OS)\n- z.B. VMware ESXi, Microsoft Hyper-V, Citrix XenServer\n- Performance-nah, für Server/Rechenzentren\n\nHypervisor Typ 2 (Hosted):\n- Läuft auf einem Host-Betriebssystem\n- z.B. VirtualBox, VMware Workstation\n- Einfacher, für Entwicklung/Tests\n\nContainer (z.B. Docker):\n- Teilen sich den Kernel des Host-OS\n- Kein eigenes OS → leichtgewichtiger und schneller\n- Schnelleres Starten (Sekunden vs. Minuten)\n- Weniger Ressourcenverbrauch\n- Image-basiert, portabel\n- Orchestrierung: Kubernetes\n\nVergleich:\n- VM: Schwergewichtig, vollständige Isolation, eigenes OS\n- Container: Leichtgewichtig, Prozess-Isolation, geteilter Kernel\n\nZiel Serverkonsolidierung: Mehrere Dienste auf weniger physischen Servern",
+    "answer": "### Virtualisierung (VMs)\n- Emuliert **komplette Hardware**\n- Jede VM hat **eigenes OS** (Gast-Betriebssystem)\n- 🐢 Schwergewichtig, langsamer Start\n- **Hypervisor:** Verwaltet VMs (Typ 1: ESXi / Typ 2: VirtualBox)\n\n### Container (z.B. Docker)\n- Teilen sich den **Kernel des Host-OS**\n- **Kein eigenes OS** → leichtgewichtig\n- 🐇 Start in Sekunden\n- **Portabel** (laufen überall gleich)\n\n⚠️ **Ziel:** Mehrere Dienste effizient auf einem Server betreiben.",
     "tags": [
       "Software",
       "Virtualisierung",
@@ -3569,7 +3569,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist ITIL und welche Grundbegriffe gibt es?",
-    "answer": "ITIL (Information Technology Infrastructure Library):\n- Best-Practice-Framework für IT-Service-Management (ITSM)\n- Beschreibt Prozesse, Funktionen und Rollen für IT-Services\n\nWichtige Begriffe:\n- Service: Mehrwert für den Kunden ohne Besitz von Risiken/Kosten\n- SLA (Service Level Agreement): Vereinbarte Servicequalität\n- Incident: Ungeplante Unterbrechung eines IT-Services\n- Problem: Ursache für einen oder mehrere Incidents\n- Change: Änderung an der IT-Infrastruktur\n- CMDB: Configuration Management Database (alle IT-Assets)\n\nWichtige Prozesse:\n- Incident Management: Schnelle Wiederherstellung des Services\n- Problem Management: Ursachenanalyse (Root Cause)\n- Change Management: Kontrollierte Änderungen\n- Service Level Management: SLAs verwalten\n\nWeitere Frameworks:\n- CobiT: Governance und Management von Unternehmens-IT\n- MOF (Microsoft Operations Framework): Microsoft-Variante\n- ISO 20000: Internationaler Standard für ITSM",
+    "answer": "**ITIL** (IT Infrastructure Library) ist ein Framework für **IT-Service-Management (ITSM)**.\n\n### Wichtige Begriffe\n- **Service:** Mehrwert für Kunden ohne Risikobesitz\n- **SLA:** Vereinbarte Servicequalität\n- **Incident:** Störung (ungeplant)\n- **Problem:** Ursache von Störungen\n- **Change:** Kontrollierte Änderung\n\n### Prozess-Beispiele\n1. **Incident Mgmt:** Störung beheben (schnell)\n2. **Problem Mgmt:** Ursache finden (nachhaltig)\n3. **Change Mgmt:** Änderungen risikoarm durchführen",
     "tags": [
       "Software",
       "ITIL",
