@@ -2,6 +2,7 @@
 // app.js — Application initialization and route setup
 // ============================================================
 
+import EPKView from '../modules/epk.js';
 import NetworkPlanView from '../modules/networkplan.js';
 import NumberSystemsView from '../modules/numbersystems.js';
 import NWAView from '../modules/nwa.js';
@@ -133,6 +134,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = NumberSystemsView.cleanup;
       NumberSystemsView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/epk', () => {
+      cleanupCurrentView();
+      currentCleanup = EPKView.cleanup;
+      EPKView.render(contentEl);
       Sidebar.updateActive();
     });
 

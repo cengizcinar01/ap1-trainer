@@ -25,6 +25,8 @@ const Sidebar = (() => {
     nwa: `<svg viewBox="0 0 24 24"><rect x="3" y="13" width="5" height="8" rx="1"/><rect x="9.5" y="8" width="5" height="13" rx="1"/><rect x="16" y="3" width="5" height="18" rx="1"/><polyline points="5 11 10.5 6 18 3" fill="none" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="3" r="1.5"/></svg>`,
     // Zahlensysteme: Binär-Code Darstellung (Kreise und Striche)
     numbersystems: `<svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><rect x="10" y="4" width="4" height="4" rx="0.5"/><circle cx="19" cy="6" r="2"/><rect x="3" y="10" width="4" height="4" rx="0.5"/><circle cx="12" cy="12" r="2"/><rect x="17" y="10" width="4" height="4" rx="0.5"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><rect x="17" y="16" width="4" height="4" rx="0.5"/></svg>`,
+    // EPK: Hexagon (Ereignis) + abgerundetes Rechteck (Funktion)
+    epk: `<svg viewBox="0 0 24 24"><polygon points="12,1 18,4.5 18,11.5 12,15 6,11.5 6,4.5" fill="none" stroke-width="1.5"/><rect x="7" y="17" width="10" height="5" rx="2.5" fill="none" stroke-width="1.5"/><line x1="12" y1="15" x2="12" y2="17" stroke-width="1.5"/></svg>`,
     // Wiki: Offenes Buch
     wiki: `<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
     // Menü: Hamburger
@@ -127,6 +129,10 @@ const Sidebar = (() => {
         <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
           <span class="nav-item-icon">${ICONS.numbersystems}</span>
           Zahlensysteme
+        </a>
+        <a href="#/modules/epk" class="nav-item ${currentRoute.startsWith('/modules/epk') ? 'active' : ''}" data-route="/modules/epk">
+          <span class="nav-item-icon">${ICONS.epk}</span>
+          EPK-Builder
         </a>
       </nav>
 `;
