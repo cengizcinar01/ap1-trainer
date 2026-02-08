@@ -414,18 +414,22 @@ const OSIModelView = (() => {
       question: 'Welches Geraet arbeitet auf Schicht 2 des OSI-Modells?',
       options: ['Hub', 'Switch', 'Router', 'Repeater'],
       answer: 1,
+      explanation: 'Switches nutzen MAC-Adressen zur Weiterleitung.',
     },
     {
       type: 'choice',
       question: 'Welche PDU verwendet die Transportschicht?',
       options: ['Frame', 'Paket', 'Segment', 'Bits'],
       answer: 2,
+      explanation: 'Auf Schicht 4 werden Daten in Segmente zerteilt.',
     },
     {
       type: 'choice',
       question: 'Welches Protokoll gehoert zur Vermittlungsschicht?',
       options: ['TCP', 'HTTP', 'IP', 'Ethernet'],
       answer: 2,
+      explanation:
+        'IP ist fuer die logische Adressierung und das Routing zustaendig.',
     },
     {
       type: 'choice',
@@ -437,12 +441,15 @@ const OSIModelView = (() => {
         'UDP hat groessere Header',
       ],
       answer: 2,
+      explanation:
+        'TCP nutzt Handshakes und ACKs, um Daten sicher zu uebertragen.',
     },
     {
       type: 'choice',
       question: 'Welche Schicht ist fuer das Routing zustaendig?',
       options: ['Schicht 2', 'Schicht 3', 'Schicht 4', 'Schicht 5'],
       answer: 1,
+      explanation: 'Routing findet auf Schicht 3 (Vermittlungsschicht) statt.',
     },
     {
       type: 'choice',
@@ -454,72 +461,99 @@ const OSIModelView = (() => {
         'SYN, FIN, ACK',
       ],
       answer: 1,
+      explanation:
+        'Der Handshake baut eine synchrone Verbindung auf: SYN -> SYN-ACK -> ACK.',
     },
     {
       type: 'choice',
       question: 'Welche Adressierung verwendet Schicht 2?',
       options: ['IP-Adressen', 'MAC-Adressen', 'Portnummern', 'Hostnamen'],
       answer: 1,
+      explanation: 'MAC-Adressen sind physische Adressen der Schicht 2.',
     },
     {
       type: 'choice',
       question: 'Welche Schicht kuemmert sich um Verschluesselung?',
       options: ['Schicht 7', 'Schicht 6', 'Schicht 4', 'Schicht 3'],
       answer: 1,
+      explanation:
+        'Schicht 6 (Darstellungsschicht) uebernimmt Formatierung und Verschluesselung.',
     },
     {
-      type: 'fillin',
+      type: 'choice',
       question: 'Wie heisst die Schicht 4 des OSI-Modells auf Deutsch?',
-      answer: 'Transportschicht',
-      accept: ['transportschicht', 'transport'],
+      options: [
+        'Transportschicht',
+        'Vermittlungsschicht',
+        'Sicherungsschicht',
+        'Bituebertragungsschicht',
+      ],
+      answer: 0,
+      explanation: 'Schicht 4 ist die Transportschicht (Transport Layer).',
     },
     {
-      type: 'fillin',
+      type: 'choice',
       question: 'Welches Protokoll loest Domainnamen in IP-Adressen auf?',
-      answer: 'DNS',
-      accept: ['dns'],
+      options: ['DNS', 'DHCP', 'ARP', 'HTTP'],
+      answer: 0,
+      explanation:
+        'DNS (Domain Name System) ist wie ein Telefonbuch fuer das Internet.',
     },
     {
-      type: 'fillin',
+      type: 'choice',
       question: 'Wie heisst die Pruefsumme am Ende eines Ethernet-Frames?',
-      answer: 'FCS',
-      accept: ['fcs', 'frame check sequence', 'crc'],
+      options: [
+        'FCS (Frame Check Sequence)',
+        'CRC (Cyclic Redundancy Check)',
+        'TTL (Time To Live)',
+        'Checksum',
+      ],
+      answer: 0,
+      explanation: 'Die Frame Check Sequence (FCS) dient der Fehlererkennung.',
     },
     {
-      type: 'fillin',
+      type: 'choice',
       question: 'Welches Geraet sendet eingehende Signale an alle Ports?',
-      answer: 'Hub',
-      accept: ['hub'],
+      options: ['Hub', 'Switch', 'Router', 'Bridge'],
+      answer: 0,
+      explanation: 'Ein Hub "brüllt" dumm an alle (Broadcast).',
     },
     {
       type: 'layer',
       question: 'Auf welcher Schicht arbeitet ein Router?',
       answer: 3,
+      explanation: 'Router arbeiten mit IP-Adressen auf Schicht 3.',
     },
     {
       type: 'layer',
       question: 'Auf welcher Schicht arbeitet ein Switch?',
       answer: 2,
+      explanation: 'Switches arbeiten mit MAC-Adressen auf Schicht 2.',
     },
     {
       type: 'layer',
       question: 'Auf welcher Schicht arbeitet das Protokoll TCP?',
       answer: 4,
+      explanation: 'TCP ist ein Protokoll der Transportschicht (Layer 4).',
     },
     {
       type: 'layer',
       question: 'Auf welcher Schicht arbeitet HTTP?',
       answer: 7,
+      explanation: 'HTTP ist ein Anwendungsprotokoll der Schicht 7.',
     },
     {
       type: 'layer',
       question: 'Auf welcher Schicht werden MAC-Adressen verwendet?',
       answer: 2,
+      explanation:
+        'MAC-Adressen dienen der physischen Adressierung auf Schicht 2.',
     },
     {
       type: 'layer',
       question: 'Auf welcher Schicht findet die Bituebertragung statt?',
       answer: 1,
+      explanation: 'Schicht 1 uebertraegt rohe Bits ueber das Medium.',
     },
     {
       type: 'choice',
@@ -531,6 +565,8 @@ const OSIModelView = (() => {
         'Verschluesselt Daten',
       ],
       answer: 1,
+      explanation:
+        'ARP (Address Resolution Protocol) findet die MAC zu einer IP.',
     },
     {
       type: 'choice',
@@ -538,6 +574,8 @@ const OSIModelView = (() => {
         'Welche Schicht fuegt beim Senden als letzte einen Header hinzu?',
       options: ['Schicht 7', 'Schicht 4', 'Schicht 2', 'Schicht 1'],
       answer: 2,
+      explanation:
+        'Schicht 2 verpackt das IP-Paket in einen Frame mit Header und Trailer.',
     },
   ];
 
@@ -775,21 +813,24 @@ const OSIModelView = (() => {
     const layerNums = mode === 'protocols' ? [7, 6, 4, 3, 2, 1] : [7, 3, 2, 1];
 
     const shuffled = shuffle(items);
-    const placed = {}; // chipId -> zoneLayer
-    const zoneContents = {}; // layer -> [chipId]
-    layerNums.forEach((l) => {
-      zoneContents[l] = [];
-    });
+    const state = {
+      placed: {}, // chipId -> zoneLayer
+      zoneContents: {}, // layer -> [chipId]
+      checked: false,
+      results: {}, // chipId -> 'correct' | 'wrong'
+      selectedChipId: null,
+    };
 
-    const checked = false;
-    const results = {}; // chipId -> 'correct' | 'wrong'
+    layerNums.forEach((l) => {
+      state.zoneContents[l] = [];
+    });
 
     function getLayerInfo(num) {
       return OSI_LAYERS.find((l) => l.number === num);
     }
 
     function renderDnd() {
-      const availableChips = shuffled.filter((_, i) => !placed[i]);
+      const availableChips = shuffled.filter((_, i) => !state.placed[i]);
 
       container.innerHTML = `
         <div class="module-exercise-card">
@@ -818,14 +859,16 @@ const OSIModelView = (() => {
               ${layerNums
                 .map((num) => {
                   const info = getLayerInfo(num);
-                  const chips = zoneContents[num] || [];
+                  const chips = state.zoneContents[num] || [];
                   return `
                   <div class="osi-drop-zone" data-layer="${num}" style="border-left: 4px solid ${info.color}">
                     <span class="osi-drop-zone-label" style="color: ${info.color}">Schicht ${num}</span>
                     ${chips
                       .map((chipId) => {
                         const item = shuffled[chipId];
-                        const cls = checked ? results[chipId] || '' : 'placed';
+                        const cls = state.checked
+                          ? state.results[chipId] || ''
+                          : 'placed';
                         return `<div class="osi-chip ${cls}" data-chip-id="${chipId}" data-in-zone="true" title="${escapeHtml(item.description)}">${escapeHtml(item.name)}</div>`;
                       })
                       .join('')}
@@ -837,23 +880,46 @@ const OSIModelView = (() => {
           </div>
 
           <div class="module-actions">
-            <button class="btn btn-primary" id="dndCheckBtn" ${checked ? 'disabled' : ''}>Pruefen</button>
+            <button class="btn btn-primary" id="dndCheckBtn" ${state.checked ? 'disabled' : ''}>Pruefen</button>
             <button class="btn btn-ghost" id="dndResetBtn">Zuruecksetzen</button>
             <button class="btn btn-ghost" id="dndShowBtn">Loesung zeigen</button>
           </div>
 
-          <div id="dndFeedback"></div>
+          <div id="dndFeedback">
+            ${
+              state.checked
+                ? (
+                    () => {
+                      let correct = 0;
+                      shuffled.forEach((item, idx) => {
+                        if (
+                          state.placed[idx] !== undefined &&
+                          state.placed[idx] === item.layer
+                        ) {
+                          correct++;
+                        }
+                      });
+                      const placed_count = Object.keys(state.placed).length;
+                      const total = shuffled.length;
+
+                      if (correct === total) {
+                        return `<div class="module-feedback module-feedback-success">Perfekt! Alle ${total} richtig zugeordnet!</div>`;
+                      } else {
+                        return `<div class="module-feedback module-feedback-error">${correct} von ${placed_count} platzierten richtig. ${total - placed_count > 0 ? `${total - placed_count} noch nicht zugeordnet.` : ''}</div>`;
+                      }
+                    }
+                  )()
+                : ''
+            }
+          </div>
         </div>
       `;
 
       setupDndEvents(
         container,
         shuffled,
-        placed,
-        zoneContents,
+        state,
         layerNums,
-        checked,
-        results,
         renderDnd,
         mode,
         sectionKey
@@ -866,11 +932,8 @@ const OSIModelView = (() => {
   function setupDndEvents(
     container,
     shuffled,
-    placed,
-    zoneContents,
+    state,
     layerNums,
-    checked,
-    results,
     rerenderFn,
     _mode,
     sectionKey
@@ -898,17 +961,25 @@ const OSIModelView = (() => {
     container
       .querySelectorAll('.osi-chip[data-in-zone="true"]')
       .forEach((chip) => {
-        if (checked) return;
-        chip.addEventListener('click', () => {
+        chip.addEventListener('click', (e) => {
+          e.stopPropagation();
           const chipId = parseInt(chip.dataset.chipId, 10);
           const layer = parseInt(
             chip.closest('.osi-drop-zone').dataset.layer,
             10
           );
-          zoneContents[layer] = zoneContents[layer].filter(
+          state.zoneContents[layer] = state.zoneContents[layer].filter(
             (id) => id !== chipId
           );
-          delete placed[chipId];
+          delete state.placed[chipId];
+          state.selectedChipId = null; // Deselect if removed
+
+          // Reset checked state on modification
+          if (state.checked) {
+            state.checked = false;
+            state.results = {};
+          }
+
           rerenderFn();
         });
       });
@@ -926,100 +997,87 @@ const OSIModelView = (() => {
         e.preventDefault();
         zone.classList.remove('drag-over');
         const chipId = parseInt(e.dataTransfer.getData('text/plain'), 10);
-        if (Number.isNaN(chipId) || placed[chipId] !== undefined) return;
+        if (Number.isNaN(chipId) || state.placed[chipId] !== undefined) return;
         const layer = parseInt(zone.dataset.layer, 10);
-        placed[chipId] = layer;
-        zoneContents[layer].push(chipId);
+        state.placed[chipId] = layer;
+        state.zoneContents[layer].push(chipId);
+
+        // Reset checked state on modification
+        if (state.checked) {
+          state.checked = false;
+          state.results = {};
+        }
+
         rerenderFn();
       });
     });
 
     // Touch support
-    setupTouchDnd(
-      container,
-      shuffled,
-      placed,
-      zoneContents,
-      rerenderFn,
-      checked
-    );
+    setupTouchDnd(container, shuffled, state, rerenderFn);
 
     // Buttons
     container.querySelector('#dndCheckBtn')?.addEventListener('click', () => {
-      checked = true;
+      state.checked = true;
       let correct = 0;
       shuffled.forEach((item, idx) => {
-        if (placed[idx] !== undefined) {
-          if (placed[idx] === item.layer) {
-            results[idx] = 'correct';
+        if (state.placed[idx] !== undefined) {
+          if (state.placed[idx] === item.layer) {
+            state.results[idx] = 'correct';
             correct++;
           } else {
-            results[idx] = 'wrong';
+            state.results[idx] = 'wrong';
           }
         }
       });
 
       const total = shuffled.length;
-      const feedbackEl = container.querySelector('#dndFeedback');
+
       if (correct === total) {
-        feedbackEl.innerHTML = `<div class="module-feedback module-feedback-success">Perfekt! Alle ${total} richtig zugeordnet!</div>`;
         completeSection(sectionKey);
-        addPoints(total * 10);
         showCelebration();
-      } else {
-        const placed_count = Object.keys(placed).length;
-        feedbackEl.innerHTML = `<div class="module-feedback module-feedback-error">${correct} von ${placed_count} platzierten richtig. ${total - placed_count > 0 ? `${total - placed_count} noch nicht zugeordnet.` : ''}</div>`;
-        addPoints(correct * 10);
       }
+
       rerenderFn();
     });
 
     container.querySelector('#dndResetBtn')?.addEventListener('click', () => {
-      Object.keys(placed).forEach((k) => {
-        delete placed[k];
+      Object.keys(state.placed).forEach((k) => {
+        delete state.placed[k];
       });
-      Object.keys(results).forEach((k) => {
-        delete results[k];
+      Object.keys(state.results).forEach((k) => {
+        delete state.results[k];
       });
       layerNums.forEach((l) => {
-        zoneContents[l] = [];
+        state.zoneContents[l] = [];
       });
-      checked = false;
+      state.checked = false;
       rerenderFn();
     });
 
     container.querySelector('#dndShowBtn')?.addEventListener('click', () => {
-      Object.keys(placed).forEach((k) => {
-        delete placed[k];
+      Object.keys(state.placed).forEach((k) => {
+        delete state.placed[k];
       });
-      Object.keys(results).forEach((k) => {
-        delete results[k];
+      Object.keys(state.results).forEach((k) => {
+        delete state.results[k];
       });
       layerNums.forEach((l) => {
-        zoneContents[l] = [];
+        state.zoneContents[l] = [];
       });
 
       shuffled.forEach((item, idx) => {
         if (layerNums.includes(item.layer)) {
-          placed[idx] = item.layer;
-          zoneContents[item.layer].push(idx);
-          results[idx] = 'correct';
+          state.placed[idx] = item.layer;
+          state.zoneContents[item.layer].push(idx);
+          state.results[idx] = 'correct';
         }
       });
-      checked = true;
+      state.checked = true;
       rerenderFn();
     });
   }
 
-  function setupTouchDnd(
-    container,
-    _shuffled,
-    placed,
-    zoneContents,
-    rerenderFn,
-    checked
-  ) {
-    if (checked) return;
+  function setupTouchDnd(container, _shuffled, state, rerenderFn) {
     const chips = container.querySelectorAll('.osi-chip[draggable="true"]');
     let ghost = null;
     let dragChipId = null;
@@ -1028,6 +1086,7 @@ const OSIModelView = (() => {
       e.preventDefault();
       const chip = e.currentTarget;
       dragChipId = parseInt(chip.dataset.chipId, 10);
+      state.selectedChipId = dragChipId;
       ghost = chip.cloneNode(true);
       ghost.className = 'osi-chip osi-touch-ghost';
       document.body.appendChild(ghost);
@@ -1067,13 +1126,25 @@ const OSIModelView = (() => {
       const touch = e.changedTouches[0];
       const el = document.elementFromPoint(touch.clientX, touch.clientY);
       const zone = el?.closest?.('.osi-drop-zone');
-      if (zone && dragChipId !== null && placed[dragChipId] === undefined) {
+      if (
+        zone &&
+        dragChipId !== null &&
+        state.placed[dragChipId] === undefined
+      ) {
         const layer = parseInt(zone.dataset.layer, 10);
-        placed[dragChipId] = layer;
-        zoneContents[layer].push(dragChipId);
+        state.placed[dragChipId] = layer;
+        state.zoneContents[layer].push(dragChipId);
+
+        // Reset checked state on modification
+        if (state.checked) {
+          state.checked = false;
+          state.results = {};
+        }
+
         rerenderFn();
       }
       dragChipId = null;
+      state.selectedChipId = null;
     }
 
     function positionGhost(touch) {
@@ -1086,6 +1157,41 @@ const OSIModelView = (() => {
       chip.addEventListener('touchstart', onTouchStart, { passive: false });
       chip.addEventListener('touchmove', onTouchMove, { passive: false });
       chip.addEventListener('touchend', onTouchEnd);
+    });
+
+    // Click on chip in source to select it for touch placement
+    container.querySelectorAll('.osi-dnd-source .osi-chip').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        // Allow selection even if checked (will reset on placement)
+        const chipId = parseInt(chip.dataset.chipId, 10);
+        if (state.placed[chipId] === undefined) {
+          state.selectedChipId = chipId;
+          container.querySelectorAll('.osi-chip').forEach((c) => {
+            c.classList.remove('selected');
+          });
+          chip.classList.add('selected');
+        }
+      });
+    });
+
+    // Click on zone to place selected chip
+    container.querySelectorAll('.osi-drop-zone').forEach((zone) => {
+      zone.addEventListener('click', () => {
+        if (state.selectedChipId !== null) {
+          const layer = parseInt(zone.dataset.layer, 10);
+          state.placed[state.selectedChipId] = layer;
+          state.zoneContents[layer].push(state.selectedChipId);
+          state.selectedChipId = null;
+
+          // Reset checked state on modification
+          if (state.checked) {
+            state.checked = false;
+            state.results = {};
+          }
+
+          rerenderFn();
+        }
+      });
     });
   }
 
@@ -1364,6 +1470,7 @@ const OSIModelView = (() => {
           <button class="osi-tcpudp-btn" data-answer="UDP">UDP</button>
         </div>
         <div class="osi-tcpudp-feedback" id="tcpudpFb"></div>
+        <button class="btn btn-primary" id="tcpudpNextBtn" style="display: none; margin-top: 1rem;">Weiter</button>
       </div>
     `;
 
@@ -1383,7 +1490,20 @@ const OSIModelView = (() => {
         const fb = container.querySelector('#tcpudpFb');
         fb.textContent = `${isCorrect ? 'Richtig!' : 'Falsch!'} ${scenario.explanation}`;
 
-        setTimeout(() => onNext(index + 1, newCorrect), 1500);
+        // Show Next button instead of auto-advance
+        const nextBtn = container.querySelector('#tcpudpNextBtn');
+        if (nextBtn) {
+          nextBtn.style.display = 'block';
+          // Remove old listeners to avoid stacking if re-rendered?
+          // Actually, we re-render the whole question each time, so it's fine.
+          nextBtn.addEventListener(
+            'click',
+            () => {
+              onNext(index + 1, newCorrect);
+            },
+            { once: true }
+          );
+        }
       });
     });
   }
@@ -1419,18 +1539,29 @@ const OSIModelView = (() => {
 
           <div id="quizAnswerArea"></div>
           <div id="quizFeedback"></div>
+          <button class="btn btn-primary" id="quizNextBtn" style="display: none; margin-top: 1rem;">Weiter</button>
         </div>
       `;
 
       const area = container.querySelector('#quizAnswerArea');
+      const nextBtn = container.querySelector('#quizNextBtn');
+
+      if (nextBtn) {
+        nextBtn.addEventListener(
+          'click',
+          () => {
+            qIndex++;
+            renderQuestion();
+          },
+          { once: true }
+        );
+      }
 
       switch (q.type) {
         case 'choice':
           renderChoiceQuestion(area, q);
           break;
-        case 'fillin':
-          renderFillInQuestion(area, q);
-          break;
+
         case 'layer':
           renderLayerQuestion(area, q);
           break;
@@ -1447,15 +1578,29 @@ const OSIModelView = (() => {
 
       const fb = container.querySelector('#quizFeedback');
       if (fb) {
+        let feedbackText = isCorrect ? 'Richtig!' : 'Falsch!';
+        if (!isCorrect) {
+          if (questions[qIndex].type === 'choice') {
+            feedbackText += ` Die richtige Antwort ist: ${questions[qIndex].options[questions[qIndex].answer]}`;
+          } else if (questions[qIndex].type === 'layer') {
+            feedbackText += ` Die richtige Antwort ist: Schicht ${questions[qIndex].answer}`;
+          }
+        }
+
+        if (questions[qIndex].explanation) {
+          feedbackText += `<br><br><strong>Erklaerung:</strong> ${questions[qIndex].explanation}`;
+        }
+
         fb.innerHTML = `<div class="module-feedback ${isCorrect ? 'module-feedback-success' : 'module-feedback-error'}">
-          ${isCorrect ? 'Richtig!' : 'Falsch!'}
+          ${escapeHtml(feedbackText)
+            .replace(/&lt;br&gt;/g, '<br>')
+            .replace(/&lt;strong&gt;/g, '<strong>')
+            .replace(/&lt;\/strong&gt;/g, '</strong>')}
         </div>`;
       }
 
-      setTimeout(() => {
-        qIndex++;
-        renderQuestion();
-      }, 1200);
+      const nextBtn = container.querySelector('#quizNextBtn');
+      if (nextBtn) nextBtn.style.display = 'block';
     }
 
     function renderChoiceQuestion(area, q) {
@@ -1489,38 +1634,6 @@ const OSIModelView = (() => {
 
           handleAnswer(isCorrect);
         });
-      });
-    }
-
-    function renderFillInQuestion(area, q) {
-      area.innerHTML = `
-        <input type="text" class="osi-quiz-fill-input" id="fillInput" placeholder="Antwort eingeben..." autocomplete="off" spellcheck="false">
-        <div class="module-actions">
-          <button class="btn btn-primary" id="fillCheck">Pruefen</button>
-        </div>
-      `;
-
-      const input = area.querySelector('#fillInput');
-      input.focus();
-
-      function check() {
-        if (answered) return;
-        const val = input.value.trim().toLowerCase();
-        const isCorrect = q.accept.some((a) => val === a.toLowerCase());
-
-        input.classList.add(isCorrect ? 'correct' : 'wrong');
-        if (!isCorrect) {
-          const fb = container.querySelector('#quizFeedback');
-          if (fb)
-            fb.innerHTML = `<div class="module-feedback module-feedback-error">Richtige Antwort: ${escapeHtml(q.answer)}</div>`;
-        }
-        input.disabled = true;
-        handleAnswer(isCorrect);
-      }
-
-      area.querySelector('#fillCheck')?.addEventListener('click', check);
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') check();
       });
     }
 
