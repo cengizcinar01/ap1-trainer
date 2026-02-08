@@ -11,6 +11,7 @@ import CategoriesView from './views/categories.js';
 import DashboardView from './views/dashboard.js';
 import FlashcardView from './views/flashcard.js';
 import ReviewView from './views/review.js';
+import WikiView from './views/wiki.js';
 
 const App = (() => {
   let contentEl = null;
@@ -100,6 +101,27 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = SubnettingView.cleanup;
       SubnettingView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/wiki', () => {
+      cleanupCurrentView();
+      currentCleanup = WikiView.cleanup;
+      WikiView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/wiki/:topic', (params) => {
+      cleanupCurrentView();
+      currentCleanup = WikiView.cleanup;
+      WikiView.render(contentEl, params);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/wiki/:topic/:subtopic', (params) => {
+      cleanupCurrentView();
+      currentCleanup = WikiView.cleanup;
+      WikiView.render(contentEl, params);
       Sidebar.updateActive();
     });
 

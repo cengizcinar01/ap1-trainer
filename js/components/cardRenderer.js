@@ -360,6 +360,8 @@ const CardRenderer = (() => {
     renderSessionComplete,
     tryLoadImage,
     escapeHtml,
+    formatAnswer,
+    formatInline,
   };
 })();
 
