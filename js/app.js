@@ -2,6 +2,7 @@
 // app.js — Application initialization and route setup
 // ============================================================
 
+import NetworkPlanView from '../modules/networkplan.js';
 import OSIModelView from '../modules/osimodel.js';
 import SubnettingView from '../modules/subnetting.js';
 import Sidebar from './components/sidebar.js';
@@ -109,6 +110,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = OSIModelView.cleanup;
       OSIModelView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/networkplan', () => {
+      cleanupCurrentView();
+      currentCleanup = NetworkPlanView.cleanup;
+      NetworkPlanView.render(contentEl);
       Sidebar.updateActive();
     });
 
