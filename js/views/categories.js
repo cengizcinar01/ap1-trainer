@@ -66,7 +66,7 @@ const CategoriesView = (() => {
               });
 
             // Set current height explicitly for smooth close animation
-            body.style.maxHeight = body.scrollHeight + 'px';
+            body.style.maxHeight = `${body.scrollHeight}px`;
             // Force reflow
             body.offsetHeight;
             // Animate to 0
@@ -86,7 +86,7 @@ const CategoriesView = (() => {
             });
 
           // Closing: animate from current height to 0
-          accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
+          accordionBody.style.maxHeight = `${accordionBody.scrollHeight}px`;
           // Force reflow
           accordionBody.offsetHeight;
           // Animate to 0
@@ -100,7 +100,7 @@ const CategoriesView = (() => {
           setTimeout(() => {
             // Opening: animate from 0 to actual height
             currentAccordion.classList.add('open');
-            accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
+            accordionBody.style.maxHeight = `${accordionBody.scrollHeight}px`;
 
             // After animation completes, remove inline style for responsiveness
             setTimeout(() => {
@@ -136,14 +136,14 @@ const CategoriesView = (() => {
 
         if (isOpen) {
           // Closing: animate from current height to 0
-          subtopicBody.style.maxHeight = subtopicBody.scrollHeight + 'px';
+          subtopicBody.style.maxHeight = `${subtopicBody.scrollHeight}px`;
           subtopicBody.offsetHeight; // Force reflow
           subtopicBody.style.maxHeight = '0px';
           subtopicAccordion.classList.remove('open');
         } else {
           // Opening: animate from 0 to actual height
           subtopicAccordion.classList.add('open');
-          subtopicBody.style.maxHeight = subtopicBody.scrollHeight + 'px';
+          subtopicBody.style.maxHeight = `${subtopicBody.scrollHeight}px`;
 
           // After animation completes, remove inline style
           setTimeout(() => {
