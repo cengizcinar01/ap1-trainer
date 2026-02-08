@@ -1464,6 +1464,28 @@ const EPKView = (() => {
   }
 
   function renderFixExercise(contentDiv, container, ex) {
+    // Generate wrong options (distractors) that are NOT real errors
+    const distractors = [
+      'Die EPK enthaelt zu viele Konnektoren',
+      'Die Funktionen sind falsch benannt',
+      'Es fehlt eine Organisationseinheit',
+      'Die Pfeile zeigen in die falsche Richtung',
+      'Es gibt zu viele Ereignisse',
+      'Die Konnektoren haben die falschen Symbole',
+    ];
+
+    // Combine real errors with distractors and shuffle
+    const allOptions = [
+      ...ex.errors.map((err, i) => ({
+        text: err,
+        isError: true,
+        id: `err_${i}`,
+      })),
+      ...distractors
+        .slice(0, Math.min(3, distractors.length))
+        .map((d, i) => ({ text: d, isError: false, id: `dist_${i}` })),
+    ].sort(() => Math.random() - 0.5);
+
     contentDiv.innerHTML = `
       <div class="epk-readonly-canvas-wrapper">
         <div class="epk-readonly-canvas" id="epkFixCanvas">
@@ -1478,9 +1500,19 @@ const EPKView = (() => {
         </div>
       </div>
       <div class="epk-fix-input">
-        <label class="epk-fix-label">Beschreibe die gefundenen Fehler:</label>
-        <textarea class="module-input epk-fix-textarea" id="epkFixAnswer" rows="5"
-          placeholder="z.B.: 1. Die EPK beginnt nicht mit einem Ereignis..."></textarea>
+        <label class="epk-fix-label">Welche Fehler sind in dieser EPK enthalten? (Mehrfachauswahl)</label>
+        <div class="epk-fix-options" id="epkFixOptions">
+          ${allOptions
+            .map(
+              (opt) => `
+            <label class="epk-fix-option">
+              <input type="checkbox" name="epkFixError" value="${opt.id}" data-is-error="${opt.isError}">
+              <span class="epk-fix-option-text">${opt.text}</span>
+            </label>
+          `
+            )
+            .join('')}
+        </div>
       </div>
       <div class="epk-exercise-actions">
         <button class="btn btn-primary" id="epkCheckFix">Pruefen</button>
@@ -1509,54 +1541,46 @@ const EPKView = (() => {
 
     // Check button
     container.querySelector('#epkCheckFix').addEventListener('click', () => {
-      const answer = container.querySelector('#epkFixAnswer').value.trim();
+      const checkboxes = container.querySelectorAll(
+        'input[name="epkFixError"]'
+      );
       const feedback = container.querySelector('#epkExFeedback');
 
-      if (answer.length < 20) {
-        feedback.innerHTML = `
-          <div class="module-feedback module-feedback-error">
-            Beschreibe die Fehler ausfuehrlicher!
-          </div>
-        `;
-        return;
-      }
+      let correctCount = 0;
+      let wrongCount = 0;
+      const totalErrors = ex.errors.length;
 
-      // Simple keyword matching
-      let foundErrors = 0;
-      const lowerAnswer = answer.toLowerCase();
-      if (
-        lowerAnswer.includes('beginnt') ||
-        lowerAnswer.includes('start') ||
-        lowerAnswer.includes('funktion statt')
-      )
-        foundErrors++;
-      if (
-        lowerAnswer.includes('zwei ereignis') ||
-        lowerAnswer.includes('aufeinander') ||
-        lowerAnswer.includes('direkt')
-      )
-        foundErrors++;
-      if (
-        lowerAnswer.includes('endet nicht') ||
-        lowerAnswer.includes('endereignis') ||
-        lowerAnswer.includes('ende fehlt')
-      )
-        foundErrors++;
-      if (
-        lowerAnswer.includes('join') ||
-        lowerAnswer.includes('zusammenfuehr') ||
-        lowerAnswer.includes('zusammenf')
-      )
-        foundErrors++;
+      checkboxes.forEach((cb) => {
+        const isError = cb.dataset.isError === 'true';
+        const isChecked = cb.checked;
+        const label = cb.closest('.epk-fix-option');
 
-      const maxErrors = ex.errors.length;
-      const percentage = Math.round((foundErrors / maxErrors) * 100);
+        // Reset styling
+        label.classList.remove(
+          'epk-fix-option-correct',
+          'epk-fix-option-wrong'
+        );
+
+        if (isChecked && isError) {
+          correctCount++;
+          label.classList.add('epk-fix-option-correct');
+        } else if (isChecked && !isError) {
+          wrongCount++;
+          label.classList.add('epk-fix-option-wrong');
+        } else if (!isChecked && isError) {
+          // Missed error - show as wrong
+          label.classList.add('epk-fix-option-wrong');
+        }
+      });
+
+      const _score = Math.max(0, correctCount - wrongCount);
+      const isSuccess = correctCount === totalErrors && wrongCount === 0;
 
       feedback.innerHTML = `
-        <div class="module-feedback ${foundErrors >= maxErrors - 1 ? 'module-feedback-success' : 'module-feedback-error'}">
-          <strong>${foundErrors >= maxErrors - 1 ? 'Gut erkannt!' : 'Noch nicht alles gefunden.'}</strong>
-          Du hast ca. ${foundErrors} von ${maxErrors} Fehlern erkannt (${percentage}%).
-          ${foundErrors < maxErrors ? 'Schau dir die Loesung an fuer alle Fehler.' : ''}
+        <div class="module-feedback ${isSuccess ? 'module-feedback-success' : 'module-feedback-error'}">
+          <strong>${isSuccess ? 'Perfekt!' : correctCount >= totalErrors - 1 && wrongCount === 0 ? 'Fast!' : 'Nicht ganz richtig.'}</strong>
+          Du hast ${correctCount} von ${totalErrors} Fehlern erkannt${wrongCount > 0 ? ` (${wrongCount} falsche Auswahl)` : ''}.
+          ${!isSuccess ? 'Die richtigen Antworten sind jetzt markiert.' : ''}
         </div>
       `;
     });
@@ -1565,10 +1589,31 @@ const EPKView = (() => {
     container
       .querySelector('#epkShowFixSolution')
       .addEventListener('click', () => {
+        const checkboxes = container.querySelectorAll(
+          'input[name="epkFixError"]'
+        );
+
+        checkboxes.forEach((cb) => {
+          const isError = cb.dataset.isError === 'true';
+          const label = cb.closest('.epk-fix-option');
+
+          label.classList.remove(
+            'epk-fix-option-correct',
+            'epk-fix-option-wrong'
+          );
+
+          if (isError) {
+            cb.checked = true;
+            label.classList.add('epk-fix-option-correct');
+          } else {
+            cb.checked = false;
+          }
+        });
+
         const feedback = container.querySelector('#epkExFeedback');
         feedback.innerHTML = `
         <div class="module-steps">
-          <div class="module-steps-title">Gefundene Fehler</div>
+          <div class="module-steps-title">Alle Fehler in dieser EPK</div>
           ${ex.errors
             .map(
               (err, i) => `

@@ -831,11 +831,55 @@
   margin-bottom: var(--space-2);
 }
 
-.epk-fix-textarea {
-  min-height: 100px;
-  resize: vertical;
-  font-family: var(--font-family);
+.epk-fix-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.epk-fix-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.epk-fix-option:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  background: var(--accent-primary-light);
+}
+
+.epk-fix-option input[type="checkbox"] {
+  accent-color: var(--accent-primary);
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.epk-fix-option-text {
+  flex: 1;
   line-height: var(--line-height-relaxed);
+}
+
+.epk-fix-option-correct {
+  border-color: var(--success) !important;
+  background: var(--success-bg) !important;
+  color: var(--success) !important;
+}
+
+.epk-fix-option-wrong {
+  border-color: var(--danger) !important;
+  background: var(--danger-bg) !important;
+  color: var(--danger) !important;
 }
 
 /* --- Quiz --- */
