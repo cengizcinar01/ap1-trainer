@@ -34,7 +34,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Was ist der Unterschied zwischen überwachtem (Supervised) und unüberwachtem (Unsupervised) Lernverhalten?",
-    "answer": "### Überwachtes Lernen (Supervised Learning)\n\nDie Trainingsdaten werden **vor dem Trainieren beschriftet/klassifiziert**. Das Netzwerk lernt aufgrund dieser gelabelten Daten.\n\n✅ Benötigt mehr Vorarbeit, erzielt aber bessere Ergebnisse\n\n---\n\n### Unüberwachtes Lernen (Unsupervised Learning)\n\nDie Trainingsdaten werden **NICHT klassifiziert** vor dem Trainieren. Das Netzwerk lernt dadurch z.B. die Daten nur zu *clustern*, also in Gruppen zusammenzufassen.",
+    "answer": "### Überwachtes Lernen (Supervised Learning)\n\nDie Trainingsdaten werden **vor dem Trainieren beschriftet/klassifiziert**. Das Netzwerk lernt aufgrund dieser gelabelten Daten.\n\n✅ Benötigt mehr Vorarbeit, erzielt aber bessere Ergebnisse\n\n### Unüberwachtes Lernen (Unsupervised Learning)\n\nDie Trainingsdaten werden **NICHT klassifiziert** vor dem Trainieren. Das Netzwerk lernt dadurch z.B. die Daten nur zu *clustern*, also in Gruppen zusammenzufassen.",
     "tags": [
       "KI",
       "Machine Learning",
@@ -94,7 +94,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen schwacher und starker KI?",
-    "answer": "### Schwache KI\n\nEine Künstliche Intelligenz, welche **nicht selbstständig** handeln kann und Eingabe eines Menschen braucht.\n\n---\n\n### Starke KI\n\nEine **selbst handelnde** KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist.",
+    "answer": "### Schwache KI\n\nEine Künstliche Intelligenz, welche **nicht selbstständig** handeln kann und Eingabe eines Menschen braucht.\n\n### Starke KI\n\nEine **selbst handelnde** KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist.",
     "tags": [
       "KI",
       "Schwache KI",
@@ -169,7 +169,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen dem dezimalen (SI) und binären (IEC) System bei Speichergrößen?",
-    "answer": "### Dezimales System (SI) – Basis 10\n\n| Einheit | Wert |\n|---------|------|\n| 1 KB | 1.000 Byte |\n| 1 MB | 1.000.000 Byte |\n| 1 GB | 1.000.000.000 Byte |\n| 1 TB | 1.000.000.000.000 Byte |\n\n---\n\n### Binäres System (IEC) – Basis 2\n\n| Einheit | Wert |\n|---------|------|\n| 1 KiB | 1.024 Byte |\n| 1 MiB | 1.048.576 Byte |\n| 1 GiB | 1.073.741.824 Byte |\n| 1 TiB | 1.099.511.627.776 Byte |",
+    "answer": "### Dezimales System (SI) – Basis 10\n\n| Einheit | Wert |\n|---------|------|\n| 1 KB | 1.000 Byte |\n| 1 MB | 1.000.000 Byte |\n| 1 GB | 1.000.000.000 Byte |\n| 1 TB | 1.000.000.000.000 Byte |\n\n### Binäres System (IEC) – Basis 2\n\n| Einheit | Wert |\n|---------|------|\n| 1 KiB | 1.024 Byte |\n| 1 MiB | 1.048.576 Byte |\n| 1 GiB | 1.073.741.824 Byte |\n| 1 TiB | 1.099.511.627.776 Byte |",
     "tags": [
       "Bits",
       "Bytes",
@@ -251,7 +251,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen ASCII und Unicode?",
-    "answer": "### ASCII\n\nStandardisierte Codierung für lateinische Buchstaben und Zeichen.\n\n⚠️ Begrenzt auf **128/256 Zeichen**\n\n---\n\n### Unicode\n\nUmfassende Codierung für Schriftzeichen vieler Sprachen und Symbole weltweit.\n\n✅ Unterstützt **alle Sprachen** und Emojis",
+    "answer": "### ASCII\n\nStandardisierte Codierung für lateinische Buchstaben und Zeichen.\n\n⚠️ Begrenzt auf **128/256 Zeichen**\n\n### Unicode\n\nUmfassende Codierung für Schriftzeichen vieler Sprachen und Symbole weltweit.\n\n✅ Unterstützt **alle Sprachen** und Emojis",
     "tags": [
       "Zeichencodierung",
       "ASCII",
