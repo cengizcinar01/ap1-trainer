@@ -1344,7 +1344,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind die Merkmale eines Projekts?",
-    "answer": "• Einmaligkeit\n• Zielgerichtet\n• Zeitlich begrenzt\n• Begrenzte Ressourcen\n• Komplexität",
+    "answer": "### Merkmale\n- **Einmaligkeit** (Keine Routine)\n- **Zielvorgabe** (Definiertes Ergebnis)\n- **Zeitbegrenzung** (Start & Ende)\n- **Begrenzte Ressourcen** (Budget, Personal)\n- **Komplexität** (Neu, risikobehaftet)",
     "tags": [
       "Projektmanagement",
       "Merkmale",
@@ -1358,7 +1358,7 @@
     "type": "praxis",
     "difficulty": 4,
     "question": "Was ist ein Netzplan und welche Elemente hat er?",
-    "answer": "Der Netzplan ist eine grafische Methode zur Darstellung von Projektabläufen und deren zeitlichen Abhängigkeiten.\n\nElemente: Vorgänge, Pfeile/Kanten (Abhängigkeiten), Knoten (Ereignisse)\n\nKürzel:\n• FAZ: Frühester Anfangszeitpunkt\n• FEZ: Frühester Endzeitpunkt\n• SAZ: Spätester Anfangszeitpunkt\n• SEZ: Spätester Endzeitpunkt\n• GP: Gesamtpuffer = SAZ - FAZ oder SEZ - FEZ\n• FP: Freier Puffer = FAZ(Nachfolger) - FEZ(Vorgang)\n\nDer kritische Weg ist der längste Pfad durch den Netzplan (= minimale Projektdauer) – der Weg ohne Puffer.",
+    "answer": "Grafische Darstellung von Ablauf und Abhängigkeiten.\n\n### Begriffe\n- **FAZ / FEZ:** Frühester Anfang / Ende\n- **SAZ / SEZ:** Spätester Anfang / Ende\n- **GP:** Gesamtpuffer (SAZ - FAZ)\n- **FP:** Freier Puffer\n\n⚠️ **Kritischer Weg:** Weg ohne Puffer (bestimmt Projektdauer).",
     "image_ref": "netzplan_beispiel.png",
     "tags": [
       "Projektmanagement",
@@ -1375,7 +1375,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was ist eine Ereignisgesteuerte Prozesskette (EPK)?",
-    "answer": "Die EPK ist eine grafische Modellierungssprache zur Darstellung von Geschäftsprozessen.\n\nGrundelemente: Ereignisse, Funktionen, Verknüpfungsoperatoren (AND, OR, XOR)\n\nZentrale Regeln:\n• Ereignisse und Funktionen wechseln sich immer ab\n• Startet mit einem Ereignis und endet mit einem Ereignis\n• Kanten zeigen die Flussrichtung\n• Verknüpfungsoperatoren steuern den Prozessfluss\n\nWeitere Elemente: Organisationseinheit, Objekt, Kontrollfluss, Informationsfluss, Material-/Ressourcenfluss, Zuordnung\n\nKonnektoren:\n• UND: Alle Bedingungen/Funktionen müssen erfüllt sein\n• XOR (Exklusives Oder): Genau eine Bedingung/Funktion\n• OR (Offenes Oder): Mindestens eine Bedingung/Funktion",
+    "answer": "Grafische Modellierung von Geschäftsprozessen.\n\n### Regeln\n- **Ereignis** → **Funktion** → **Ereignis** (immer im Wechsel)\n- Start & Ende sind immer Ereignisse\n\n### Konnektoren\n| Symbol | Bedeutung |\n|--------|-----------|\n| **UND** (`∧`) | Alle Pfade müssen folgen |\n| **ODER** (`∨`) | Einer oder alle Pfade |\n| **XOR** (`X`) | Exklusiv (genau einer) |",
     "image_ref": "epk_symbole_und_beispiel.png",
     "tags": [
       "Projektmanagement",
@@ -1391,7 +1391,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Wofür steht das SMART-Prinzip?",
-    "answer": "Das SMART-Prinzip überprüft Ziele auf klare und konkrete Formulierungen:\n\n• S – Spezifisch\n• M – Messbar\n• A – Attraktiv (oder Achievable)\n• R – Realistisch\n• T – Terminiert",
+    "answer": "Ziele müssen **SMART** sein:\n\n- **S**pezifisch (Eindeutig)\n- **M**essbar (Zahlen/Kriterien)\n- **A**ttraktiv (Akzeptiert/Motivierend)\n- **R**ealistisch (Machbar)\n- **T**erminiert (Zeitpunkt)",
     "tags": [
       "Projektmanagement",
       "SMART",
@@ -1405,7 +1405,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche groben Projektphasen gibt es und was ist das Wasserfallmodell?",
-    "answer": "Grobe Projektphasen:\n1. Projektdefinition\n2. Projektplanung\n3. Projektrealisierung\n4. Projektabschluss\n\nWasserfallmodell (lineares Vorgehensmodell):\n1. Analyse\n2. Design\n3. Implementierung\n4. Test\n5. Betrieb\n\nJede Phase wird theoretisch nur einmal durchlaufen. In der Praxis gibt es oft Sprünge zurück, von dort aus muss man wieder linear durchlaufen.",
+    "answer": "### Standard-Phasen\n1. **Definition**\n2. **Planung**\n3. **Realisierung**\n4. **Abschluss**\n\n### Wasserfallmodell (Linear)\nAnalyse → Design → Implementierung → Test → Betrieb\n\n⚠️ **Nachteil:** Rücksprünge schwierig, starr.",
     "tags": [
       "Projektmanagement",
       "Projektphasen",
@@ -1419,7 +1419,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was ist SCRUM und welche Elemente hat es?",
-    "answer": "SCRUM ist ein agiles Vorgehensmodell mit iterativer und inkrementeller Entwicklung.\n\nSprints: Kurze, fest definierte Arbeitszyklen (2–4 Wochen).\n\nRollen:\n1. Product Owner: Legt Produktvision fest, priorisiert Anforderungen\n2. Scrum Master: Unterstützt Team, beseitigt Hindernisse, sorgt für SCRUM-Regeleinhaltung\n3. Entwicklungsteam: Setzt Aufgaben selbstorganisiert um\n\nMeetings:\n• Sprint Planning: Planung des kommenden Sprints\n• Daily Stand-up: Kurzes tägliches Meeting zum Informationsaustausch\n• Sprint Review: Vorstellung der Arbeitsergebnisse am Sprint-Ende\n• Sprint Retrospective: Rückblick und kontinuierliche Verbesserung",
+    "answer": "Agiles Framework (iterativ).\n\n### Rollen\n- **Product Owner:** Fachliche Vision, Backlog\n- **Scrum Master:** Prozesshüter, Problemlöser\n- **Team:** Umsetzung (selbstorganisiert)\n\n### Events\n- **Sprint:** Zyklus (2-4 Wochen)\n- **Daily:** 15 Min Abstimmung\n- **Review:** Produktvorstellung\n- **Retrospektive:** Team-Optimierung",
     "tags": [
       "Projektmanagement",
       "SCRUM",
@@ -1436,7 +1436,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Teambildungs-Phasen gibt es?",
-    "answer": "1. Forming: Kennenlernen und erste Orientierung\n2. Storming: Erste Konflikte und Auseinandersetzungen (Rollen/Verantwortlichkeiten werden geklärt)\n3. Norming: Entwicklung gemeinsamer Regeln und Normen\n4. Performing: Effektive, zielgerichtete Zusammenarbeit",
+    "answer": "Phasen nach Tuckman:\n\n1. **Forming:** Beschnuppern, höflich\n2. **Storming:** Konflikte, Rollenkampf\n3. **Norming:** Regeln finden, Wogen glätten\n4. **Performing:** Leistung bringen, Flow\n5. **Adjourning:** Auflösung (bei temporären Teams)",
     "tags": [
       "Projektmanagement",
       "Teambildung",
@@ -1453,7 +1453,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind Lessons Learned und Feedback-Kultur?",
-    "answer": "Lessons Learned: Nachträgliche Analyse des Projektes, um aus Erfahrungen und Ereignissen systematisch zu lernen und Erkenntnisse für zukünftige Projekte nutzbar zu machen.\n\nFeedback-Kultur: Rückmeldungen werden regelmäßig und offen gegeben. Das Feedback soll ehrlich, respektvoll und hilfreich sein. So können Teams aus Fehlern lernen und besser zusammenarbeiten.",
+    "answer": "### Methoden\n- **Lessons Learned:** Systematische Analyse am Projektende (Was lief gut? Was nicht?)\n- **Feedback-Kultur:** Offene, zeitnahe, konstruktive Rückmeldung\n\n🎯 **Ziel:** Fehler in Zukunft vermeiden, Prozesse optimieren.",
     "tags": [
       "Projektmanagement",
       "Lessons Learned",
@@ -1468,7 +1468,7 @@
     "type": "praxis",
     "difficulty": 4,
     "question": "Wie funktioniert die Netzplantechnik und welche Berechnungen sind wichtig?",
-    "answer": "Die Netzplantechnik visualisiert Projektabläufe und berechnet kritische Termine.\n\nBegriffe im Netzplanknoten:\n• FAZ = Frühester Anfangszeitpunkt\n• FEZ = Frühester Endzeitpunkt (FAZ + Dauer)\n• SAZ = Spätester Anfangszeitpunkt (SEZ - Dauer)\n• SEZ = Spätester Endzeitpunkt\n• GP = Gesamtpuffer (SAZ - FAZ oder SEZ - FEZ)\n• FP = Freier Puffer\n\nBerechnungsschritte:\n1. Vorwärtsrechnung: FAZ → FEZ (Start bei 0)\n2. Rückwärtsrechnung: SEZ → SAZ (vom Projektende)\n3. Pufferberechnung: GP = SAZ - FAZ\n\nKritischer Pfad:\nAlle Vorgänge mit GP = 0. Verzögerungen hier verzögern das gesamte Projekt!\n\nBeispiel: Vorgang mit FAZ=5, Dauer=3 → FEZ=8",
+    "answer": "Berechnung von Terminen & Puffern.\n\n### Formeln\n- **FEZ** = FAZ + Dauer\n- **SAZ** = SEZ - Dauer\n- **GP** (Gesamtpuffer) = SAZ - FAZ\n- **FP** (Freier Puffer) = FAZ(Nachfolger) - FEZ\n\n🔴 **Kritischer Pfad:** GP = 0 (Kein Puffer, bestimmt Projektende).",
     "tags": [
       "Projektmanagement",
       "Netzplan",
@@ -1485,7 +1485,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine Bedarfsanalyse und wie wird sie durchgeführt?",
-    "answer": "Die Bedarfsanalyse ermittelt systematisch den Bedarf an Ressourcen, Systemen oder Funktionen für ein Projekt.\n\nPhasen der Bedarfsanalyse:\n1. Ist-Analyse: Dokumentation des aktuellen Zustands\n2. Schwachstellenanalyse: Identifikation von Problemen und Verbesserungspotenzial\n3. Soll-Konzept: Definition der gewünschten Zielzustände\n4. Gap-Analyse: Vergleich Ist vs. Soll\n\nMethoden:\n• Interviews mit Stakeholdern\n• Fragebogen und Umfragen\n• Beobachtung/Prozessanalyse\n• Dokumentenanalyse\n• Workshops\n\nErgebnis: Anforderungskatalog mit:\n• Funktionalen Anforderungen (Was soll das System können?)\n• Nicht-funktionalen Anforderungen (Performance, Sicherheit, Skalierbarkeit)",
+    "answer": "Ermittlung der Anforderungen (Requirements).\n\n### Ablauf\n1. **Ist-Analyse:** Status Quo erfassen\n2. **Schwachstellen:** Probleme finden\n3. **Soll-Konzept:** Zielszenario entwerfen\n4. **Gap-Analyse:** Lücke definieren\n\n📋 **Methoden:** Interviews, Workshops, Beobachtung.",
     "tags": [
       "Projektmanagement",
       "Bedarfsanalyse",
@@ -1500,7 +1500,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Was ist der Unterschied zwischen Lastenheft und Pflichtenheft?",
-    "answer": "Lastenheft:\n• Dokument des Auftraggebers (allein oder mit Auftragnehmer erstellt)\n• Stellt Anforderungen und Wünsche des Kunden dar\n• Enthält technische und nicht-technische Bestandteile aus Kundensicht\n• Oft Grundlage eines Werkvertrags\n\nPflichtenheft:\n• Dokument des Auftragnehmers (aufgrund des Lastenhefts erstellt)\n• Stellt die konkrete technische Lösung dar\n• Enthält detaillierte technische Spezifikationen",
+    "answer": "| Dokument | Autor | Inhalt | Frage |\n|----------|-------|--------|-------|\n| **Lastenheft** | Auftraggeber (Kunde) | Anforderungen, Wünsche, grobe Ziele | **Was** und **Wofür**? |\n| **Pflichtenheft** | Auftragnehmer (IT) | Konkrete Umsetzung, technisches Konzept | **Wie** und **Womit**? |",
     "tags": [
       "Projektmanagement",
       "Lastenheft",
@@ -1515,7 +1515,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Arten von Kundenvorgaben gibt es?",
-    "answer": "• Funktionale Anforderungen: Gewünschte Funktionen und Eigenschaften\n• Nicht-funktionale Anforderungen: Qualitätsmerkmale (Leistung, Sicherheit, Skalierbarkeit)\n• Technische Vorgaben: Hardware, Software, Schnittstellen\n• Rechtliche & regulatorische Vorgaben: Compliance, Datenschutz (DSGVO), Zertifizierungen\n• Budget- und Zeitvorgaben: Kostenrahmen und Liefertermine",
+    "answer": "### Typen\n- **Funktional:** Was muss das System *können*? (z.B. Login, Drucken)\n- **Nicht-funktional:** Wie gut? (Performance, Sicherheit, Usability)\n- **Rahmenbedingungen:** Budget, Zeit, Gesetze (DSGVO)\n- **Technisch:** OS, Schnittstellen, Hardware",
     "tags": [
       "Projektmanagement",
       "Kundenvorgaben",
@@ -1529,7 +1529,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche technischen Voraussetzungen müssen für IT-Projekte geprüft werden?",
-    "answer": "Technische Voraussetzungen sind Hardware-, Software- und Infrastrukturanforderungen für Projekte.\n\nPrüfungsbereiche:\n\nHardware:\n• Serverkapazitäten (CPU, RAM, Storage)\n• Client-Anforderungen (Arbeitsplatz-PCs)\n• Netzwerkinfrastruktur (Bandbreite, Router, Switches)\n\nSoftware:\n• Betriebssysteme und Versionen\n• Middleware und Frameworks\n• Lizenzen und Kompatibilität\n\nNetzwerk:\n• Verfügbare Bandbreite\n• Firewall-Regeln und Ports\n• VPN-Zugänge\n\nSicherheit:\n• Berechtigungskonzepte\n• Verschlüsselungsanforderungen\n• Datenschutzkonformität\n\nDokumentation: Erstellen eines Pflichtenhefts mit allen technischen Spezifikationen.",
+    "answer": "Prüfung der Machbarkeit.\n\n### Bereiche\n- **Hardware:** Server, Clients, Storage\n- **Software:** OS, Lizenzen, Kompatibilität\n- **Netzwerk:** Bandbreite, VPN, Firewall\n- **Security:** Datenschutz, Zugriffsrechte\n\n📝 **Ergebnis:** Fließt ins Pflichtenheft ein.",
     "tags": [
       "Projektmanagement",
       "Technik",
@@ -1544,7 +1544,7 @@
     "type": "praxis",
     "difficulty": 3,
     "question": "Wie stellt man die Einhaltung des Budgets in IT-Projekten sicher?",
-    "answer": "Budgetmanagement umfasst Planung, Überwachung und Steuerung der Projektkosten.\n\nKostenarten:\n• Personalkosten (intern/extern)\n• Hardware- und Softwarekosten\n• Lizenzkosten\n• Schulungskosten\n• Betriebskosten\n\nMethoden zur Budgetkontrolle:\n1. Earned Value Management (EVM):\n   • Planwert (PV): Geplante Kosten\n   • Istwert (AC): Tatsächliche Kosten\n   • Fertigstellungswert (EV): Wert der geleisteten Arbeit\n   • Kostenabweichung (CV) = EV - AC\n   • Terminabweichung (SV) = EV - PV\n\n2. Kostenkontroll-Maßnahmen:\n   • Regelmäßige Soll-Ist-Vergleiche\n   • Kostenstellen-Reporting\n   • Änderungsmanagement (Change Requests)\n   • Pufferreserven einplanen",
+    "answer": "Planung & Steuerung der Kosten.\n\n### Methoden\n1. **Earned Value Analysis:** Vergleich von Plan- (PV), Ist- (AC) und Fertigstellungswert (EV).\n2. **Kosten-Controlling:** Soll-Ist-Vergleiche, Change-Requests überwachen.\n3. **Puffer:** Reserven für Unvorhergesehenes.\n\n💰 **Ziel:** Budget am Projektende nicht überschreiten.",
     "tags": [
       "Projektmanagement",
       "Budget",
@@ -1560,7 +1560,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche Mitarbeitertypen gibt es im Change Management?",
-    "answer": "• Promoter: Unterstützen aktiv den Wandel. → Als Change-Agents einsetzen.\n• Bremser: Verzögern bewusst oder unbewusst. → Ursachen analysieren, gezielt einbinden.\n• Skeptiker: Zweifeln, aber offen für Argumente. → Transparenz schaffen, rationale Argumente liefern.\n• Widerständler: Lehnen aktiv ab, arbeiten dagegen. → Offenes Gespräch, Ängste adressieren.\n\nUrsachen von Widerständen: Angst vor dem Unbekannten, Verlustängste, fehlende Kommunikation, schlechte Erfahrungen, Angst vor Mehrbelastung.",
+    "answer": "| Typ | Verhalten | Umgang |\n|-----|-----------|--------|\n| **Promoter** | Unterstützen aktiv | Als Multiplikatoren nutzen |\n| **Skeptiker** | Zweifeln sachlich | Mit Fakten überzeugen |\n| **Bremser** | Verzögern passiv | Ursachen klären, einbinden |\n| **Widerständler** | Blockieren aktiv | Gespräche führen, Grenzen setzen |",
     "tags": [
       "Projektmanagement",
       "Change Management",
@@ -1575,7 +1575,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was gehört zur Leistungsübergabe und welche Mängelarten gibt es?",
-    "answer": "Abnahmeprotokoll enthält: Projekt-/Liefergegenstand, Prüfkriterien, Mängelliste (falls vorhanden), Unterschriften. Es ist ein rechtlich relevantes Dokument.\n\nMängelarten:\n• Sachmangel: Physische oder funktionale Defekte\n• Rechtsmangel: Dritte haben Ansprüche (z.B. Patentrechte)\n• Offene Mängel: Sofort erkennbar bei Abnahme\n• Versteckte Mängel: Erst später entdeckt\n\nWeitere Störungen:\n• Schlechtleistung: Leistung erbracht, aber nicht vertragsgemäß\n• Falschlieferung: Anderes Produkt als bestellt\n• Minderlieferung: Gelieferte Menge geringer als bestellt",
+    "answer": "Formale Abnahme (**Rechtsfolge:** Beweislastumkehr).\n\n### Mängelarten\n- **Sachmangel:** Defekt, falsche Funktion\n- **Rechtsmangel:** Lizenzprobleme (Urheberrecht)\n- **Offen:** Sofort erkennbar\n- **Versteckt:** Erst später sichtbar\n\n⚠️ **Protokoll:** Enthält Mängelliste & Unterschriften.",
     "tags": [
       "Projektmanagement",
       "Leistungsübergabe",
@@ -1591,7 +1591,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist ein Soll-Ist-Vergleich und eine Abweichungsanalyse?",
-    "answer": "Soll-Ist-Vergleich: Vergleich der tatsächlichen Leistung mit den Planvorgaben.\n• Soll-Werte: Geplante Kosten, Zeitaufwand, Qualität\n• Ist-Werte: Tatsächlich aufgewendete Mittel\n• Abweichungen werden analysiert\n\nAbweichungsanalyse:\n• Identifikation der Ursachen (unerwartete Kosten, Verzögerungen, Planungsfehler)\n• Bewertung der Auswirkungen auf das Gesamtprojekt\n• Maßnahmen zur Korrektur (Ressourcen, Budget, Zeitplan anpassen)\n\nNachkalkulation: Überprüfung der tatsächlichen Kosten nach Projektabschluss, Analyse von Kostentreibern und Optimierung für zukünftige Projekte.",
+    "answer": "Vergleich Plan (Soll) vs. Realität (Ist).\n\n### Abweichungsanalyse\n1. **Identifizieren:** Wo weichen wir ab? (Zeit, Kosten, qualität)\n2. **Ursachen:** Warum? (Planungsfehler, Krankheit, Technik)\n3. **Maßnahmen:** Gegensteuern (Ressourcen aufstocken, Scope reduzieren)\n\n🔄 **Nachkalkulation:** Learning für nächste Projekte.",
     "tags": [
       "Projektmanagement",
       "Soll-Ist-Vergleich",
@@ -2600,7 +2600,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen agilem und klassischem Projektmanagement?",
-    "answer": "Klassisches PM (z.B. Wasserfall, V-Modell):\n- Lineare, sequenzielle Phasen\n- Anforderungen werden zu Beginn festgelegt\n- Änderungen sind schwierig/teuer\n- Gut für klar definierte Projekte\n- Umfangreiche Dokumentation\n\nAgiles PM (z.B. Scrum, Kanban):\n- Iterative, inkrementelle Vorgehensweise\n- Anforderungen können sich ändern\n- Regelmäßiges Feedback durch Kunden\n- Gut für Projekte mit unklaren Anforderungen\n- Funktionierende Software über Dokumentation\n\nAgiles PM basiert auf dem Agilen Manifest (2001) mit 4 Werten und 12 Prinzipien.",
+    "answer": "| Merkmal | Klassisch (Wasserfall) | Agil (Scrum) |\n|---------|------------------------|--------------|\n| **Ablauf** | Linear (Phasen) | Zyklisch (Sprints) |\n| **Anforderungen** | Fest definiert (Lastenheft) | Flexibel (Backlog) |\n| **Änderungen** | Teuer / Schwierig | Willkommen |\n| **Doku** | Ausführlich | \"Working Software\" > Doku |\n\n✅ **Wahl:** Klassisch für stabile Ziele, Agil für komplexe/neue Ziele.",
     "tags": [
       "Projektmanagement",
       "Agil",
@@ -2615,7 +2615,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Scrum und welche Rollen, Artefakte und Events gibt es?",
-    "answer": "Scrum ist ein agiles Framework für iterative Produktentwicklung.\n\nRollen:\n- Product Owner: Verantwortlich für Product Backlog, priorisiert Anforderungen\n- Scrum Master: Sorgt für Einhaltung der Scrum-Regeln, beseitigt Hindernisse\n- Entwicklungsteam: Selbstorganisiert, setzt Sprint-Ziele um (3-9 Personen)\n\nArtefakte:\n- Product Backlog: Priorisierte Anforderungsliste\n- Sprint Backlog: Aufgaben für den aktuellen Sprint\n- Increment: Fertiges, potenziell auslieferbares Produktinkrement\n\nEvents:\n- Sprint: Feste Zeitbox (1-4 Wochen)\n- Sprint Planning: Auswahl der Aufgaben für den Sprint\n- Daily Scrum: Tägliches 15-Min-Standup\n- Sprint Review: Ergebnispräsentation\n- Sprint Retrospektive: Prozessverbesserung",
+    "answer": "### Rollen (3)\n- **Product Owner:** Was? (Backlog, Priorität)\n- **Scrum Master:** Prozess & Hindernisse\n- **Dev Team:** Wie? (Umsetzung)\n\n### Artefakte (3)\n- **Product Backlog** (Alle Wünsche)\n- **Sprint Backlog** (Plan für 1 Sprint)\n- **Increment** (Fertiges Teilprodukt)\n\n### Events (5)\n- Sprint, Planning, Daily, Review, Retro",
     "tags": [
       "Projektmanagement",
       "Scrum",
@@ -2631,7 +2631,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist Kanban?",
-    "answer": "Kanban ist eine agile Methode zur Steuerung von Arbeitsprozessen mithilfe eines visuellen Boards.\n\nPrinzipien:\n- Visualisierung des Workflows (Kanban-Board mit Spalten: To Do, In Progress, Done)\n- Begrenzung der gleichzeitigen Arbeit (WIP-Limit = Work in Progress Limit)\n- Kontinuierlicher Fluss statt feste Iterationen\n- Pull-Prinzip: Neue Aufgaben erst, wenn Kapazität frei ist\n\nVorteile:\n- Einfach einzuführen\n- Flexibel, keine festen Rollen oder Zeitboxen\n- Engpässe werden schnell sichtbar\n- Geeignet für Support/Betrieb und Wartung\n\nUnterschied zu Scrum: Kein fester Sprint-Rhythmus, keine festgelegten Rollen.",
+    "answer": "Visuelle Prozesssteuerung (Board).\n\n### Prinzipien\n- **Visualisieren:** Spalten (To Do, Doing, Done)\n- **Limitieren:** WIP-Limit (Work in Progress) begrenzen\n- **Flow:** Stetiger Fluss (keine festen Sprints)\n- **Pull-System:** Neue Aufgabe erst, wenn Kapazität frei\n\n📌 **Vorteil:** Flexibel, Engpässe sofort sichtbar.",
     "tags": [
       "Projektmanagement",
       "Kanban",
@@ -2646,7 +2646,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist das Wasserfallmodell?",
-    "answer": "Das Wasserfallmodell ist ein lineares, sequenzielles Vorgehensmodell in der Softwareentwicklung.\n\nPhasen:\n1. Anforderungsanalyse\n2. Entwurf (Design)\n3. Implementierung\n4. Test\n5. Auslieferung/Deployment\n6. Wartung\n\nVorteile:\n- Klare Struktur und Meilensteine\n- Einfach zu verstehen und zu verwalten\n- Gut dokumentiert\n- Geeignet bei stabilen, klar definierten Anforderungen\n\nNachteile:\n- Kein Rücksprung zu früheren Phasen vorgesehen\n- Fehler werden spät erkannt\n- Keine Flexibilität bei Änderungen\n- Kunde sieht Ergebnis erst am Ende",
+    "answer": "Lineares Vorgehensmodell.\n\n1. **Analyse**\n2. **Design**\n3. **Implementierung**\n4. **Test**\n5. **Deployment**\n\n⬇️ **Prinzip:** Phase N muss fertig sein, bevor N+1 beginnt.\n⚠️ **Nachteil:** Fehlererkennung spät, unflexibel.",
     "tags": [
       "Projektmanagement",
       "Wasserfallmodell",
@@ -2661,7 +2661,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist das V-Modell?",
-    "answer": "Das V-Modell ist ein Vorgehensmodell, das die Entwicklungsphasen (links) den Testphasen (rechts) in V-Form gegenüberstellt.\n\nLinke Seite (Spezifikation):\n1. Anforderungsdefinition\n2. Funktionaler Systementwurf\n3. Technischer Systementwurf\n4. Komponentenspezifikation\n5. Programmierung\n\nRechte Seite (Tests):\n5→ Komponententest (Unit Test)\n4→ Integrationstest\n3→ Systemtest\n2→ Abnahmetest\n\nJede Entwicklungsphase hat eine korrespondierende Testphase. Testfälle werden bereits während der Spezifikation geplant.\n\nVorteil: Qualitätssicherung ist von Anfang an integriert.\nNachteil: Wenig flexibel, ähnlich wie Wasserfall.",
+    "answer": "Erweiterung des Wasserfallmodells (Test-Fokus).\n\n### Aufbau (V-Form)\n- **Links:** Spezifikation & Entwurf (Grob → Fein)\n- **Rechts:** Tests (Komponente → System → Abnahme)\n\n✅ **Vorteil:** Jeder Ebene steht eine Testphase gegenüber.\n❌ **Nachteil:** Starr, hoher Doku-Aufwand.",
     "tags": [
       "Projektmanagement",
       "V-Modell",
@@ -2677,7 +2677,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist das Spiralmodell?",
-    "answer": "Das Spiralmodell (Boehm, 1986) ist ein risikogetriebenes, iteratives Vorgehensmodell.\n\nJede Iteration durchläuft 4 Quadranten:\n1. Ziele festlegen und Alternativen identifizieren\n2. Risikoanalyse und Bewertung der Alternativen\n3. Entwicklung und Verifikation (Prototyp bauen)\n4. Planung der nächsten Iteration\n\nVorteile:\n- Risikoanalyse in jeder Iteration\n- Frühzeitige Prototypen\n- Flexibel bei sich ändernden Anforderungen\n- Gut für große, komplexe Projekte\n\nNachteile:\n- Hoher Managementaufwand\n- Risikoanalyse erfordert Erfahrung\n- Teuer für kleinere Projekte",
+    "answer": "Risikogetriebenes Modell (iterativ).\n\n### 4 Quadranten pro Umgang\n1. **Ziele** festlegen\n2. **Risikoanalyse** & Evaluation\n3. **Entwicklung** & Test (Prototyp)\n4. **Planung** der nächsten Phase\n\n🔄 **Wiederholung** bis Produkt fertig ist.",
     "tags": [
       "Projektmanagement",
       "Spiralmodell",
@@ -2693,7 +2693,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist ein Gantt-Diagramm?",
-    "answer": "Ein Gantt-Diagramm ist ein Balkendiagramm zur Visualisierung von Projektabläufen über die Zeit.\n\nAufbau:\n- X-Achse: Zeitachse (Tage, Wochen, Monate)\n- Y-Achse: Arbeitspakete/Aufgaben\n- Balken: Dauer der einzelnen Aufgaben\n- Abhängigkeiten zwischen Aufgaben werden durch Pfeile dargestellt\n- Meilensteine als Rauten markiert\n\nVorteile:\n- Übersichtliche Darstellung des Projektzeitplans\n- Parallelitäten und Abhängigkeiten sichtbar\n- Fortschritt leicht nachvollziehbar\n\nUnterschied zum Netzplan: Gantt zeigt Zeit visuell, Netzplan berechnet kritische Pfade.",
+    "answer": "Balkendiagramm für den Zeitplan.\n\n- **X-Achse:** Zeit (Tage/Wochen)\n- **Y-Achse:** Aufgaben\n- **Balken:** Dauer der Aufgabe\n- **Pfeile:** Abhängigkeiten\n- **Raute:** Meilensteine\n\n📅 Standard-Tool für Projektplanung.",
     "tags": [
       "Projektmanagement",
       "Gantt",
@@ -2708,7 +2708,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist das Magische Dreieck im Projektmanagement?",
-    "answer": "Das Magische Dreieck (auch Projektdreieck) beschreibt die drei Zielgrößen, die in jedem Projekt in Konkurrenz zueinander stehen:\n\n1. Zeit (Termine/Dauer)\n2. Kosten (Budget/Ressourcen)\n3. Qualität (Leistung/Umfang)\n\nZusammenhang: Verändert man eine Größe, sind die anderen betroffen.\n\nBeispiele:\n- Schnellere Fertigstellung → mehr Kosten oder weniger Qualität\n- Geringeres Budget → mehr Zeit oder weniger Qualität\n- Höhere Qualität → mehr Zeit oder mehr Kosten\n\nDer Projektmanager muss diese drei Größen in Balance halten.",
+    "answer": "Ziele stehen in Konkurrenz zueinander.\n\n1. **Zeit** (Termin)\n2. **Kosten** (Budget)\n3. **Qualität** (Ergebnis)\n\n⚖️ **Regel:** Veränderung an einer Ecke beeinflusst die anderen (z.B. schneller = teurer oder schlechter).",
     "tags": [
       "Projektmanagement",
       "Magisches Dreieck",
@@ -2723,7 +2723,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind Meilensteine im Projektmanagement?",
-    "answer": "Meilensteine sind definierte Ereignisse/Zeitpunkte, die einen wichtigen Fortschritt oder Abschluss einer Projektphase markieren.\n\nEigenschaften:\n- Haben keine Dauer (Zeitpunkt, kein Zeitraum)\n- Markieren Entscheidungspunkte (Go/No-Go)\n- Dienen der Fortschrittskontrolle\n- Werden im Gantt-Diagramm als Rauten dargestellt\n\nBeispiele in IT-Projekten:\n- Lastenheft abgenommen\n- Pflichtenheft fertiggestellt\n- Prototyp vorgestellt\n- Testphase abgeschlossen\n- Go-Live / Produktivstart\n\nMeilensteine helfen, den Projektstatus für Stakeholder transparent zu machen.",
+    "answer": "Wichtige **Zwischenziele** ohne Dauer.\n\n- Markieren **Prüfpunkte** (Abnahmen, Decisions)\n- Dienen der **Fortschrittskontrolle**\n- Symbol im Gantt: **Raute** ♦️\n\nBeispiel: \"Lastenheft abgenommen\", \"Prototyp fertig\".",
     "tags": [
       "Projektmanagement",
       "Meilensteine",
@@ -2737,7 +2737,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine Risikoanalyse im Projektmanagement?",
-    "answer": "Die Risikoanalyse identifiziert und bewertet potenzielle Risiken eines Projekts.\n\nSchritte:\n1. Risikoidentifikation: Welche Risiken könnten auftreten? (z.B. Brainstorming, Checklisten)\n2. Risikobewertung: Eintrittswahrscheinlichkeit × Schadenshöhe = Risikowert\n3. Risikomaßnahmen planen:\n   - Vermeiden: Risiko ausschließen\n   - Vermindern: Wahrscheinlichkeit oder Auswirkung reduzieren\n   - Übertragen: z.B. an Versicherung oder Dienstleister\n   - Akzeptieren: Risiko bewusst in Kauf nehmen\n4. Überwachen und steuern\n\nDarstellung oft als Risikomatrix (Eintrittswahrscheinlichkeit × Auswirkung).",
+    "answer": "Umgang mit Gefahren für das Projekt.\n\n### Prozess\n1. **Identifizieren:** Was kann passieren?\n2. **Bewerten:** Wahrscheinlichkeit × Schaden = **Risikowert**\n3. **Maßnahmen:**\n   - Vermeiden\n   - Vermindern\n   - Überwälzen (Versicherung)\n   - Akzeptieren",
     "tags": [
       "Projektmanagement",
       "Risikoanalyse",
@@ -2752,7 +2752,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Extreme Programming (XP)?",
-    "answer": "Extreme Programming (XP) ist eine agile Entwicklungsmethode mit Fokus auf technische Exzellenz.\n\nWichtige Praktiken:\n- Pair Programming: Zwei Entwickler arbeiten am selben Rechner\n- Test-Driven Development (TDD): Tests vor dem Code schreiben\n- Continuous Integration (CI): Code mehrmals täglich integrieren und testen\n- Refactoring: Code kontinuierlich verbessern\n- Kurze Iterationen (1-2 Wochen)\n- Einfaches Design: Nur das Nötigste implementieren\n- Collective Code Ownership: Jeder darf jeden Code ändern\n\nWerte: Kommunikation, Einfachheit, Feedback, Mut, Respekt.",
+    "answer": "Agile Methode (radikal), Fokus: Code-Qualität.\n\n### Praktiken\n- **Pair Programming** (4 Augen Prinzip)\n- **TDD** (Test-Driven Development)\n- **Continuous Integration**\n- **Refactoring** (Ständige Verbesserung)\n- **KISS** (Keep It Simple, Stupid)\n\n🚀 \"Mut zur Änderung.\"",
     "tags": [
       "Projektmanagement",
       "XP",
@@ -3701,7 +3701,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind das Lewin-Modell und Kaizen im Change Management?",
-    "answer": "Lewin-Modell (3-Phasen-Modell):\n\n1. Unfreeze (Auftauen):\n   - Erkenntnis, dass Veränderung nötig ist\n   - Widerstände identifizieren\n   - Bereitschaft für Wandel schaffen\n   - Kommunikation und Information\n\n2. Change (Verändern):\n   - Umsetzung der Veränderung\n   - Neue Prozesse, Strukturen, Verhaltensweisen einführen\n   - Schulungen und Unterstützung\n   - Unsicherheit und Widerstand überwinden\n\n3. Refreeze (Einfrieren):\n   - Neue Situation stabilisieren\n   - Veränderungen in Alltag integrieren\n   - Erfolge sichern und feiern\n   - Rückfall verhindern\n\nKaizen (Continuous Improvement):\n- Japanisch: 'Veränderung zum Besseren'\n- Kontinuierliche, kleine Verbesserungen statt großer Umbrüche\n- Alle Mitarbeiter einbeziehen\n- Eng verwandt mit PDCA-Zyklus\n\nMitarbeiterqualifizierung:\n- Blended Learning: Kombination aus Präsenz und E-Learning\n- Multiplikatoren: Geschulte Mitarbeiter schulen Kollegen\n- Train-the-Trainer-Konzept",
+    "answer": "### Lewin (3 Phasen)\n1. **Unfreeze:** Auftauen (Vorbereiten)\n2. **Change:** Verändern (Umsetzen)\n3. **Refreeze:** Einfrieren (Stabilisieren)\n\n### Kaizen (KVP)\n- \"Veränderung zum Besseren\"\n- **Ständige kleine Verbesserungen** statt großer Bruch\n- Alle machen mit!",
     "tags": [
       "Projektmanagement",
       "Change Management",
@@ -3717,7 +3717,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist ein Projektstrukturplan (PSP) und welche Erstellungsmethoden gibt es?",
-    "answer": "Projektstrukturplan (PSP / WBS – Work Breakdown Structure):\n- Hierarchische Zerlegung des Gesamtprojekts in Teilaufgaben und Arbeitspakete\n- Statische Sicht (keine zeitliche Reihenfolge!)\n- Vollständige Erfassung aller Tätigkeiten\n- Basis für Aufwandschätzung und Ressourcenplanung\n\nGliederungsarten:\n- Funktionsorientiert: Nach Tätigkeiten (Analyse, Design, Test)\n- Objektorientiert: Nach Ergebnissen (Module, Komponenten)\n- Zeitorientiert: Nach Projektphasen\n\nErstellungsmethoden:\n- Top-Down (deduktiv): Vom Gesamtprojekt zu Teilaufgaben → gut bei bekannten Projekten\n- Bottom-Up (induktiv): Von Einzelaufgaben zum Gesamtprojekt → gut bei neuen Projekten\n- Yo-Yo / Gegenstromverfahren: Kombination → Top-Down beginnen, Bottom-Up verfeinern\n\nArbeitspaket (AP):\n- Kleinstes Element im PSP\n- Klar definierter Inhalt, Verantwortlicher, Aufwand\n- Nicht weiter zerlegbar im PSP",
+    "answer": "Zerlegung des Projekts in Arbeitspakete (AP).\n\n### Gliederung\n- **Funktionsorientiert:** Nach Tätigkeit (Planung, Entwicklung)\n- **Objektorientiert:** Nach Bauteil (Motor, Karosserie)\n- **Phasenorientiert:** Nach Zeit (Phase 1, Phase 2)\n\n### Erstellung\n- **Top-Down:** Vom Großen ins Kleine\n- **Bottom-Up:** Vom Detail zum Ganzen",
     "tags": [
       "Projektmanagement",
       "PSP",
@@ -3734,7 +3734,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist ein Kick-Off-Meeting und welche Dokumentationen gehören zum Projektmanagement?",
-    "answer": "Kick-Off-Meeting:\n- Offizieller Projektstart nach abgeschlossener Planung\n- Vor Beginn der Durchführungsphase\n- Teilnehmer: Projektleiter, Team, ggf. Auftraggeber/Stakeholder\n\nInhalte:\n- Vorstellung des Projekts und der Ziele\n- Rollen und Verantwortlichkeiten klären\n- Zeitplan und Meilensteine vorstellen\n- Kommunikationswege festlegen\n- Fragen klären, Motivation schaffen\n\nWichtige Projektdokumente:\n- Projektauftrag: Formale Beauftragung\n- Lastenheft: Anforderungen des Auftraggebers (WAS/WOFÜR)\n- Pflichtenheft: Lösungsbeschreibung des Auftragnehmers (WIE/WOMIT)\n- Projektstrukturplan: Aufgabenzerlegung\n- Projektplan: Zeitplan (Gantt/Netzplan)\n- Statusberichte: Fortschritt, Probleme, nächste Schritte\n- Abnahmeprotokoll: Bestätigung der Leistung\n- Projektabschlussbericht: Lessons Learned, Soll-Ist-Vergleich",
+    "answer": "Startschuss nach der Planung.\n\n### Inhalte Kick-Off\n- Ziele & Zeitplan vorstellen\n- Rollen klären\n- Motivation wecken\n\n### Wichtige Dokumente\n- **Projektauftrag** (Start)\n- **Lasten-/Pflichtenheft** (Anforderungen)\n- **PSP & Netzplan** (Planung)\n- **Statusberichte** (Laufend)\n- **Abnahmeprotokoll** (Ende)",
     "tags": [
       "Projektmanagement",
       "Kick-Off",
