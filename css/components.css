@@ -400,7 +400,7 @@
 }
 
 .accordion-item.open .accordion-body {
-  max-height: 1000px;
+  max-height: 10000px;
 }
 
 .accordion-body-inner {
@@ -536,7 +536,7 @@
 }
 
 .subtopic-accordion.open .subtopic-body {
-  max-height: 2000px;
+  max-height: 5000px;
 }
 
 .subtopic-body-inner {

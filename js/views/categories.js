@@ -47,7 +47,28 @@ const CategoriesView = (() => {
         if (e.target.closest('a')) return; // Allow links
         e.preventDefault();
         e.stopPropagation();
-        header.closest('.accordion-item').classList.toggle('open');
+        const currentAccordion = header.closest('.accordion-item');
+        const isOpen = currentAccordion.classList.contains('open');
+
+        // Close all other accordions
+        container.querySelectorAll('.accordion-item.open').forEach((item) => {
+          if (item !== currentAccordion) {
+            item.classList.remove('open');
+          }
+        });
+
+        // Toggle current accordion
+        currentAccordion.classList.toggle('open');
+
+        // Scroll to the accordion header if opening
+        if (!isOpen) {
+          setTimeout(() => {
+            const headerRect = currentAccordion.getBoundingClientRect();
+            const offset = 60; // Account for mobile header (52px) + some padding
+            const targetY = window.scrollY + headerRect.top - offset;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+          }, 400); // Wait for CSS transition (350ms) to complete
+        }
       };
     });
 
@@ -138,14 +159,14 @@ const CategoriesView = (() => {
           <div class="accordion-body-inner">
             <div class="mb-4">
               ${ProgressBar.createMulti(
-                {
-                  knew: topicStat.knew,
-                  partial: topicStat.partial,
-                  forgot: topicStat.forgot,
-                },
-                topic.cardCount,
-                'progress-bar-sm'
-              )}
+      {
+        knew: topicStat.knew,
+        partial: topicStat.partial,
+        forgot: topicStat.forgot,
+      },
+      topic.cardCount,
+      'progress-bar-sm'
+    )}
             </div>
             <div class="mb-4">
               <a href="#/learn/${topicParam}" class="btn btn-primary btn-sm">Lernen</a>
