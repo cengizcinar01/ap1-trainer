@@ -48,26 +48,54 @@ const CategoriesView = (() => {
         e.preventDefault();
         e.stopPropagation();
         const currentAccordion = header.closest('.accordion-item');
+        const accordionBody = currentAccordion.querySelector('.accordion-body');
         const isOpen = currentAccordion.classList.contains('open');
 
-        // Close all other accordions
+        // Close all other accordions with animation
         container.querySelectorAll('.accordion-item.open').forEach((item) => {
           if (item !== currentAccordion) {
+            const body = item.querySelector('.accordion-body');
+            // Set current height explicitly for smooth close animation
+            body.style.maxHeight = body.scrollHeight + 'px';
+            // Force reflow
+            body.offsetHeight;
+            // Animate to 0
+            body.style.maxHeight = '0px';
             item.classList.remove('open');
           }
         });
 
-        // Toggle current accordion
-        currentAccordion.classList.toggle('open');
+        if (isOpen) {
+          // Closing: animate from current height to 0
+          accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
+          // Force reflow
+          accordionBody.offsetHeight;
+          // Animate to 0
+          accordionBody.style.maxHeight = '0px';
+          currentAccordion.classList.remove('open');
+        } else {
+          // Opening: animate from 0 to actual height
+          currentAccordion.classList.add('open');
+          accordionBody.style.maxHeight = accordionBody.scrollHeight + 'px';
 
-        // Scroll to the accordion header if opening
-        if (!isOpen) {
+          // After animation completes, remove inline style for responsiveness
+          setTimeout(() => {
+            accordionBody.style.maxHeight = '';
+          }, 800);
+
+          // Add highlight animation
+          currentAccordion.classList.add('accordion-highlight');
+          setTimeout(() => {
+            currentAccordion.classList.remove('accordion-highlight');
+          }, 1500);
+
+          // Scroll after animation starts
           setTimeout(() => {
             const headerRect = currentAccordion.getBoundingClientRect();
             const offset = 60; // Account for mobile header (52px) + some padding
             const targetY = window.scrollY + headerRect.top - offset;
             window.scrollTo({ top: targetY, behavior: 'smooth' });
-          }, 400); // Wait for CSS transition (350ms) to complete
+          }, 850); // Wait for CSS transition (800ms) to complete
         }
       };
     });
@@ -77,7 +105,26 @@ const CategoriesView = (() => {
       header.onclick = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        header.closest('.subtopic-accordion').classList.toggle('open');
+        const subtopicAccordion = header.closest('.subtopic-accordion');
+        const subtopicBody = subtopicAccordion.querySelector('.subtopic-body');
+        const isOpen = subtopicAccordion.classList.contains('open');
+
+        if (isOpen) {
+          // Closing: animate from current height to 0
+          subtopicBody.style.maxHeight = subtopicBody.scrollHeight + 'px';
+          subtopicBody.offsetHeight; // Force reflow
+          subtopicBody.style.maxHeight = '0px';
+          subtopicAccordion.classList.remove('open');
+        } else {
+          // Opening: animate from 0 to actual height
+          subtopicAccordion.classList.add('open');
+          subtopicBody.style.maxHeight = subtopicBody.scrollHeight + 'px';
+
+          // After animation completes, remove inline style
+          setTimeout(() => {
+            subtopicBody.style.maxHeight = '';
+          }, 600);
+        }
       };
     });
 
