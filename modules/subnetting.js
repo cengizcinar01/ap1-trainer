@@ -233,7 +233,10 @@ Netz (Dezimal):  ${intToIp(networkInt)}`,
         title: 'Schritt 3: Broadcast-Adresse berechnen',
         text: `Fuer die Broadcast-Adresse werden alle Host-Bits (die letzten ${32 - cidr} Bits) auf 1 gesetzt.`,
         detail: `Netz (Binaer):   ${formatBin(netBin)}
-Host-Bits auf 1: ${'.'.repeat(Math.floor(cidr / 8)) + ' '.repeat(Math.floor(cidr / 8))}${'1'.repeat(32 - cidr).split('').join('')}
+Host-Bits auf 1: ${'.'.repeat(Math.floor(cidr / 8)) + ' '.repeat(Math.floor(cidr / 8))}${'1'
+          .repeat(32 - cidr)
+          .split('')
+          .join('')}
 --------------------------------------------------- (OR)
 Broadcast (Bin): ${formatBin(bcBin)}
 Broadcast (Dez): ${intToIp(broadcastInt)}`,
@@ -249,7 +252,7 @@ Broadcast:     ${intToIp(broadcastInt)}
 
 Anzahl nutzbarer Hosts: 2^HostBits - 2
 Host-Bits = 32 - ${cidr} = ${32 - cidr}
-Rechnung: 2^${32 - cidr} - 2 = ${Math.pow(2, 32 - cidr)} - 2 = ${hostCount}`,
+Rechnung: 2^${32 - cidr} - 2 = ${2 ** (32 - cidr)} - 2 = ${hostCount}`,
       },
     ];
   }
@@ -325,11 +328,11 @@ Blockgroesse = 2^${32 - newCidr} = ${subnetSize} Adressen pro Subnetz.`,
 | Nr. | Netzadresse      | Erster Host      | Letzter Host     | Broadcast        |
 |-----|------------------|------------------|------------------|------------------|
 ${subnets
-              .map(
-                (s, i) =>
-                  `| ${(i + 1).toString().padEnd(3)} | ${s.network.padEnd(16)} | ${s.firstHost.padEnd(16)} | ${s.lastHost.padEnd(16)} | ${s.broadcast.padEnd(16)} |`
-              )
-              .join('\n')}
+  .map(
+    (s, i) =>
+      `| ${(i + 1).toString().padEnd(3)} | ${s.network.padEnd(16)} | ${s.firstHost.padEnd(16)} | ${s.lastHost.padEnd(16)} | ${s.broadcast.padEnd(16)} |`
+  )
+  .join('\n')}
           `,
         },
       ],
@@ -736,15 +739,15 @@ ${subnets
           <p class="module-exercise-sublabel">Trage die Netzadressen der ${ex.numSubnets} Subnetze ein:</p>
           <div class="module-input-grid">
             ${ex.solution.subnets
-          .map(
-            (s, i) => `
+              .map(
+                (s, i) => `
               <div class="module-input-group">
                 <label class="module-label">Subnetz ${i + 1} — Netzadresse</label>
                 <input type="text" class="module-input subnet-answer" data-index="${i}" placeholder="z.B. ${i === 0 ? s.network : '...'}" autocomplete="off" spellcheck="false">
               </div>
             `
-          )
-          .join('')}
+              )
+              .join('')}
           </div>
 
           <div class="module-actions">
@@ -894,8 +897,8 @@ ${subnets
 
           <div class="module-ip-list">
             ${ex.ips
-          .map(
-            (item, i) => `
+              .map(
+                (item, i) => `
               <div class="module-ip-row" data-index="${i}">
                 <code class="module-ip-addr">${item.ip}</code>
                 <div class="module-ip-btns">
@@ -905,8 +908,8 @@ ${subnets
                 <span class="module-ip-result" id="ipResult${i}"></span>
               </div>
             `
-          )
-          .join('')}
+              )
+              .join('')}
           </div>
 
           <div class="module-actions">
@@ -1100,16 +1103,16 @@ ${subnets
       <div class="module-steps">
         <h3 class="module-steps-title">Loesungsweg</h3>
         ${steps
-        .map(
-          (s) => `
+          .map(
+            (s) => `
           <div class="module-step">
             <div class="module-step-title">${s.title}</div>
             <div class="module-step-text">${s.text}</div>
             ${s.detail ? `<pre class="module-step-detail">${escapeHtml(s.detail)}</pre>` : ''}
           </div>
         `
-        )
-        .join('')}
+          )
+          .join('')}
       </div>
     `;
   }

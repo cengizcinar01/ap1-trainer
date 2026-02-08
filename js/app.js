@@ -2,11 +2,11 @@
 // app.js — Application initialization and route setup
 // ============================================================
 
+import OSIModelView from '../modules/osimodel.js';
+import SubnettingView from '../modules/subnetting.js';
 import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
 import StorageManager from './data/storageManager.js';
-import OSIModelView from './modules/osimodel.js';
-import SubnettingView from './modules/subnetting.js';
 import Router from './router.js';
 import CategoriesView from './views/categories.js';
 import DashboardView from './views/dashboard.js';

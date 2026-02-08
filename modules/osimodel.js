@@ -653,14 +653,14 @@ const OSIModelView = (() => {
 
         <div class="module-tabs">
           ${tabs
-        .map(
-          (t) => `
+            .map(
+              (t) => `
             <button class="module-tab ${currentTab === t.id ? 'active' : ''}" data-tab="${t.id}">
               ${t.label}
             </button>
           `
-        )
-        .join('')}
+            )
+            .join('')}
         </div>
 
         <div id="osiTabContent"></div>
@@ -709,7 +709,7 @@ const OSIModelView = (() => {
         </div>
         <div class="osi-tower">
           ${OSI_LAYERS.map(
-        (layer) => `
+            (layer) => `
             <div class="osi-layer ${openLayers.has(layer.number) ? 'open' : ''}" data-layer="${layer.number}">
               <div class="osi-layer-header">
                 <div class="osi-layer-num" style="background: ${layer.color}">${layer.number}</div>
@@ -725,31 +725,33 @@ const OSIModelView = (() => {
                 <ul class="osi-layer-details-list">
                   ${layer.details.map((d) => `<li>${d}</li>`).join('')}
                 </ul>
-                ${layer.protocols.length
-            ? `
+                ${
+                  layer.protocols.length
+                    ? `
                   <div class="osi-section-subtitle">Protokolle:</div>
                   <div class="osi-layer-protocols">
                     ${layer.protocols.map((p) => `<span class="osi-layer-protocol-tag">${p}</span>`).join('')}
                   </div>
                 `
-            : ''
-          }
-                ${layer.devices?.length
-            ? `
+                    : ''
+                }
+                ${
+                  layer.devices?.length
+                    ? `
                   <div class="osi-section-subtitle">Geraete/Beispiele:</div>
                   <div class="osi-layer-protocols">
                     ${layer.devices.map((d) => `<span class="osi-layer-protocol-tag">${d}</span>`).join('')}
                   </div>
                 `
-            : ''
-          }
+                    : ''
+                }
                 <div class="osi-layer-exam-tip">
                   <strong>Pruefungstipp:</strong> ${layer.examTip}
                 </div>
               </div>
             </div>
           `
-      ).join('')}
+          ).join('')}
         </div>
       `;
 
@@ -817,34 +819,34 @@ const OSIModelView = (() => {
               <div class="osi-dnd-source-title">Verfuegbare ${mode === 'protocols' ? 'Protokolle' : 'Geraete'}</div>
               <div class="osi-dnd-chips" id="dndSourceChips">
                 ${availableChips
-          .map((item) => {
-            const idx = shuffled.indexOf(item);
-            return `<div class="osi-chip" draggable="true" data-chip-id="${idx}" title="${escapeHtml(item.description)}">${escapeHtml(item.name)}</div>`;
-          })
-          .join('')}
+                  .map((item) => {
+                    const idx = shuffled.indexOf(item);
+                    return `<div class="osi-chip" draggable="true" data-chip-id="${idx}" title="${escapeHtml(item.description)}">${escapeHtml(item.name)}</div>`;
+                  })
+                  .join('')}
               </div>
             </div>
 
             <div class="osi-dnd-zones">
               <div class="osi-dnd-zones-title">OSI-Schichten</div>
               ${layerNums
-          .map((num) => {
-            const info = getLayerInfo(num);
-            const chips = zoneContents[num] || [];
-            return `
+                .map((num) => {
+                  const info = getLayerInfo(num);
+                  const chips = zoneContents[num] || [];
+                  return `
                   <div class="osi-drop-zone" data-layer="${num}" style="border-left: 4px solid ${info.color}">
                     <span class="osi-drop-zone-label" style="color: ${info.color}">Schicht ${num}</span>
                     ${chips
-                .map((chipId) => {
-                  const item = shuffled[chipId];
-                  const cls = checked ? results[chipId] || '' : 'placed';
-                  return `<div class="osi-chip ${cls}" data-chip-id="${chipId}" data-in-zone="true" title="${escapeHtml(item.description)}">${escapeHtml(item.name)}</div>`;
-                })
-                .join('')}
+                      .map((chipId) => {
+                        const item = shuffled[chipId];
+                        const cls = checked ? results[chipId] || '' : 'placed';
+                        return `<div class="osi-chip ${cls}" data-chip-id="${chipId}" data-in-zone="true" title="${escapeHtml(item.description)}">${escapeHtml(item.name)}</div>`;
+                      })
+                      .join('')}
                   </div>
                 `;
-          })
-          .join('')}
+                })
+                .join('')}
             </div>
           </div>
 
@@ -987,8 +989,12 @@ const OSIModelView = (() => {
     });
 
     container.querySelector('#dndResetBtn')?.addEventListener('click', () => {
-      Object.keys(placed).forEach((k) => delete placed[k]);
-      Object.keys(results).forEach((k) => delete results[k]);
+      Object.keys(placed).forEach((k) => {
+        delete placed[k];
+      });
+      Object.keys(results).forEach((k) => {
+        delete results[k];
+      });
       layerNums.forEach((l) => {
         zoneContents[l] = [];
       });
@@ -997,8 +1003,12 @@ const OSIModelView = (() => {
     });
 
     container.querySelector('#dndShowBtn')?.addEventListener('click', () => {
-      Object.keys(placed).forEach((k) => delete placed[k]);
-      Object.keys(results).forEach((k) => delete results[k]);
+      Object.keys(placed).forEach((k) => {
+        delete placed[k];
+      });
+      Object.keys(results).forEach((k) => {
+        delete results[k];
+      });
       layerNums.forEach((l) => {
         zoneContents[l] = [];
       });
@@ -1017,7 +1027,7 @@ const OSIModelView = (() => {
 
   function setupTouchDnd(
     container,
-    shuffled,
+    _shuffled,
     placed,
     zoneContents,
     rerenderFn,
@@ -1045,9 +1055,9 @@ const OSIModelView = (() => {
       positionGhost(e.touches[0]);
 
       // Highlight zone under touch
-      container
-        .querySelectorAll('.osi-drop-zone')
-        .forEach((z) => z.classList.remove('drag-over'));
+      container.querySelectorAll('.osi-drop-zone').forEach((z) => {
+        z.classList.remove('drag-over');
+      });
       const el = document.elementFromPoint(
         e.touches[0].clientX,
         e.touches[0].clientY
@@ -1061,12 +1071,12 @@ const OSIModelView = (() => {
       ghost.remove();
       ghost = null;
 
-      container
-        .querySelectorAll('.osi-drop-zone')
-        .forEach((z) => z.classList.remove('drag-over'));
-      container
-        .querySelectorAll('.osi-chip.dragging')
-        .forEach((c) => c.classList.remove('dragging'));
+      container.querySelectorAll('.osi-drop-zone').forEach((z) => {
+        z.classList.remove('drag-over');
+      });
+      container.querySelectorAll('.osi-chip.dragging').forEach((c) => {
+        c.classList.remove('dragging');
+      });
 
       const touch = e.changedTouches[0];
       const el = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -1143,11 +1153,11 @@ const OSIModelView = (() => {
 
           <div class="osi-encap-steps">
             ${ENCAPSULATION_STEPS.map(
-        (s, i) => `
+              (s, i) => `
               <span class="osi-encap-step-indicator ${i === step ? 'active' : i < step ? 'completed' : ''}">${s.name}</span>
               ${i < ENCAPSULATION_STEPS.length - 1 ? '<span class="osi-encap-arrow">\u2192</span>' : ''}
             `
-      ).join('')}
+            ).join('')}
           </div>
 
           <div class="osi-encap-visual">
@@ -1240,16 +1250,16 @@ const OSIModelView = (() => {
             </thead>
             <tbody>
               ${TCP_UDP_COMPARISON.rows
-          .map(
-            (r) => `
+                .map(
+                  (r) => `
                 <tr>
                   <td>${r.category}</td>
                   <td>${r.tcp}</td>
                   <td>${r.udp}</td>
                 </tr>
               `
-          )
-          .join('')}
+                )
+                .join('')}
             </tbody>
           </table>
 
@@ -1262,15 +1272,15 @@ const OSIModelView = (() => {
                 <span class="osi-handshake-party">Server</span>
               </div>
               ${TCP_UDP_COMPARISON.handshakeSteps
-          .map(
-            (s, i) => `
+                .map(
+                  (s, i) => `
                 <div class="osi-handshake-step ${i <= handshakeStep ? (i < handshakeStep ? 'completed' : 'active') : ''}">
                   <span class="osi-handshake-label">${s.label}</span>
                   <div class="osi-handshake-arrow ${s.direction === 'left' ? 'reverse' : ''}"></div>
                 </div>
               `
-          )
-          .join('')}
+                )
+                .join('')}
               <div class="osi-handshake-controls">
                 <button class="btn btn-ghost btn-sm" id="hsPlayBtn">${handshakeTimer ? 'Stopp' : 'Abspielen'}</button>
                 <button class="btn btn-ghost btn-sm" id="hsResetBtn">Reset</button>
@@ -1477,15 +1487,15 @@ const OSIModelView = (() => {
       area.innerHTML = `
         <div class="osi-quiz-options">
           ${q.options
-          .map(
-            (opt, i) => `
+            .map(
+              (opt, i) => `
             <button class="osi-quiz-option" data-index="${i}">
               <span class="osi-quiz-option-letter">${letters[i]}</span>
               ${escapeHtml(opt)}
             </button>
           `
-          )
-          .join('')}
+            )
+            .join('')}
         </div>
       `;
 
@@ -1542,13 +1552,13 @@ const OSIModelView = (() => {
       area.innerHTML = `
         <div class="osi-quiz-layers">
           ${OSI_LAYERS.map(
-        (l) => `
+            (l) => `
             <button class="osi-quiz-layer-btn" data-layer="${l.number}" style="border-left: 4px solid ${l.color}">
               <div class="osi-layer-num" style="background: ${l.color}; width: 24px; height: 24px; font-size: 11px">${l.number}</div>
               ${l.name}
             </button>
           `
-      ).join('')}
+          ).join('')}
         </div>
       `;
 
@@ -1623,7 +1633,9 @@ const OSIModelView = (() => {
   // ---- Cleanup ----
 
   function cleanup() {
-    cleanup_fns.forEach((fn) => fn());
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
   }
 
