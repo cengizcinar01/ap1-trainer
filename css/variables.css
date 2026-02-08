@@ -42,6 +42,10 @@
   /* Muted slate blue */
   --info-bg: rgba(107, 140, 174, 0.12);
 
+  --neutral: #6b7280;
+  /* Neutral gray for unreviewed/open cards */
+  --neutral-bg: rgba(107, 114, 128, 0.12);
+
   /* Card / Surface */
   --card-bg: #18191d;
   --card-bg-hover: #1e1f24;
@@ -173,6 +177,10 @@
   /* Soft blush */
   --info-bg: #e8f0f8;
   /* Soft ice blue */
+
+  --neutral: #9ca3af;
+  /* Lighter neutral gray for light mode */
+  --neutral-bg: #f3f4f6;
 
   --success-hover: #3d6b4a;
   --warning-hover: #7a6248;
