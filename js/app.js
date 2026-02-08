@@ -3,6 +3,7 @@
 // ============================================================
 
 import NetworkPlanView from '../modules/networkplan.js';
+import NWAView from '../modules/nwa.js';
 import OSIModelView from '../modules/osimodel.js';
 import SubnettingView from '../modules/subnetting.js';
 import Sidebar from './components/sidebar.js';
@@ -117,6 +118,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = NetworkPlanView.cleanup;
       NetworkPlanView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/nwa', () => {
+      cleanupCurrentView();
+      currentCleanup = NWAView.cleanup;
+      NWAView.render(contentEl);
       Sidebar.updateActive();
     });
 
