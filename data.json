@@ -2999,7 +2999,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind ASCII, Unicode und UTF-8?",
-    "answer": "ASCII (American Standard Code for Information Interchange):\n- 7 Bit → 128 Zeichen (0-127)\n- Nur lateinische Buchstaben, Ziffern, Sonderzeichen\n- Erweitert (8 Bit): 256 Zeichen (z.B. ISO 8859-1 für Umlaute)\n\nUnicode:\n- Universeller Zeichensatz für ALLE Schriftsysteme weltweit\n- Über 140.000 Zeichen definiert\n- Ordnet jedem Zeichen einen eindeutigen Codepoint zu (z.B. U+0041 = 'A')\n\nUTF-8 (Unicode Transformation Format):\n- Kodierung von Unicode-Zeichen in 1-4 Bytes\n- Variable Länge: ASCII-Zeichen = 1 Byte, Umlaute = 2 Bytes, Emojis = 4 Bytes\n- Rückwärtskompatibel zu ASCII\n- Standard im Internet (>95% aller Websites)\n\nUTF-16: 2 oder 4 Bytes pro Zeichen (z.B. in Java, Windows intern)\nUTF-32: Immer 4 Bytes pro Zeichen (einfach, aber speicherintensiv)",
+    "answer": "### Zeichensätze\n| Standard | Bit/Zeichen | Umfang | Beispiel |\n|---|---|---|---|\n| **ASCII** | 7 Bit | 128 (EN) | `A` (65) |\n| **Unicode** | Flexibel | >140k (Welt) | `😊` (U+1F60A) |\n| **UTF-8** | 1-4 Byte | Unicode-Kodierung | Standard im Web |\n\n💡 **UTF-8** ist abwärtskompatibel zu ASCII.",
     "tags": [
       "Multimedia",
       "ASCII",
@@ -3015,7 +3015,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen verlustbehafteter und verlustfreier Kompression?",
-    "answer": "Verlustfreie Kompression:\n- Originaldaten können exakt wiederhergestellt werden\n- Formate: ZIP, PNG, GIF, FLAC, 7z, RAR\n- Verfahren: Huffman-Codierung, Lempel-Ziv (LZ77/LZ78), Run-Length-Encoding (RLE)\n- Einsatz: Textdateien, Programme, Datenbanken\n- Kompressionsrate: typisch 40-60%\n\nVerlustbehaftete Kompression:\n- Daten werden unwiederbringlich reduziert\n- Nicht wahrnehmbare Details werden entfernt\n- Formate: JPEG, MP3, MP4, AAC, H.264/H.265\n- Einsatz: Bilder, Audio, Video\n- Kompressionsrate: bis 90%+\n\nHuffman-Codierung (verlustfrei):\n- Häufige Zeichen → kurze Bitfolgen\n- Seltene Zeichen → lange Bitfolgen\n- Erzeugt einen binären Baum\n- Präfixfrei: Kein Code ist Anfang eines anderen",
+    "answer": "| Typ | Qualität | Wiederherstellbar? | Formate |\n|---|---|---|---|\n| **Verlustfrei** | Original | ✅ Ja | ZIP, PNG, FLAC |\n| **Verlustbehaftet** | Reduziert | ❌ Nein | MP3, JPG, MP4 |\n\n### Huffman-Codierung (Verlustfrei)\n- Häufige Zeichen = Kurzer Code (`e` -> `01`)\n- Seltene Zeichen = Langer Code (`x` -> `10011`)\n- **Präfixfrei:** Kein Code stört den anderen.",
     "tags": [
       "Multimedia",
       "Kompression",
@@ -3031,7 +3031,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Raster- und Vektorgrafiken und welche Bildformate gibt es?",
-    "answer": "Rastergrafik (Bitmap):\n- Bild aus einzelnen Pixeln aufgebaut\n- Qualitätsverlust beim Vergrößern\n- Formate: JPEG, PNG, GIF, BMP, TIFF\n\nVektorgrafik:\n- Bild aus mathematischen Formen (Linien, Kurven, Polygone)\n- Verlustfrei skalierbar\n- Formate: SVG, EPS, AI, PDF\n- Ideal für Logos, Icons, Schriften\n\nWichtige Formate:\n- JPEG/JPG: Verlustbehaftet, Fotos, 16,7 Mio. Farben, keine Transparenz\n- PNG: Verlustfrei, Transparenz (Alphakanal), ideal für Webgrafiken\n- GIF: Verlustfrei, max. 256 Farben, Animationen möglich, Transparenz (1 Bit)\n- BMP: Unkomprimiert, sehr groß\n- TIFF: Professionell, verlustfrei, für Druck\n- SVG: Vektorformat, XML-basiert, skalierbar, für Web\n- WebP: Modernes Format von Google, verlustfrei und verlustbehaftet",
+    "answer": "### Grafiktypen\n| Typ | Basis | Skalierbar? | Formate | Einsatz |\n|---|---|---|---|---|\n| **Raster** | Pixel | ❌ Nein (Verpixelt) | JPG, PNG, GIF | Fotos |\n| **Vektor** | Formeln | ✅ Ja (Verlustfrei) | SVG, PDF, AI | Logos, Icons |\n\n### Formate\n- **JPG:** Fotos (klein, verlustbehaftet)\n- **PNG:** Web, Transparenz (verlustfrei)\n- **GIF:** Animationen (256 Farben)\n- **SVG:** Skalierbare Vektoren (Web)",
     "tags": [
       "Multimedia",
       "Bildformate",
@@ -3050,7 +3050,7 @@
     "type": "berechnung",
     "difficulty": 3,
     "question": "Wie berechnet man Dateigrößen von Bildern, Audio und Video?",
-    "answer": "BILD (unkomprimiert):\nDateigröße = Breite × Höhe × Farbtiefe (in Byte)\nFarbtiefe: 1 Bit = S/W, 8 Bit = 256 Farben, 24 Bit = 16,7 Mio. (True Color), 32 Bit = True Color + Alpha\n\nBeispiel: 1920×1080, 24 Bit Farbtiefe\n= 1920 × 1080 × 3 Byte = 6.220.800 Byte ≈ 5,93 MiB\n\nAUDIO (unkomprimiert/PCM):\nDateigröße = Abtastrate × Bittiefe × Kanäle × Dauer (s) / 8\n\nBeispiel: CD-Qualität (44.100 Hz, 16 Bit, Stereo), 3 Minuten\n= 44.100 × 16 × 2 × 180 / 8 = 31.752.000 Byte ≈ 30,3 MiB\n\nVIDEO (unkomprimiert):\nDateigröße = Breite × Höhe × Farbtiefe × FPS × Dauer (s)\n\nBeispiel: 1920×1080, 24 Bit, 30 FPS, 10 Sekunden\n= 1920 × 1080 × 3 × 30 × 10 = 1.866.240.000 Byte ≈ 1,74 GiB",
+    "answer": "### Formeln (Unkomprimiert)\n\n🖼 **Bild:** `Breite × Höhe × Farbtiefe`\n- *Bsp:* 1920×1080 × 3 Byte (24 Bit) ≈ 6 MB\n\n🎵 **Audio:** `Abtastrate × Bit × Kanäle × Zeit`\n- *Bsp:* 44.100 Hz × 16 Bit × 2 × 60s ≈ 10 MB/min\n\n🎬 **Video:** `Bildgröße × FPS × Zeit`\n- *Bsp:* 6 MB (Bild) × 30 FPS × 1s ≈ 180 MB/s",
     "tags": [
       "Multimedia",
       "Berechnung",
@@ -3067,7 +3067,7 @@
     "type": "berechnung",
     "difficulty": 2,
     "question": "Wie berechnet man Übertragungszeiten und Datenraten?",
-    "answer": "Grundformel:\nÜbertragungszeit = Datenmenge / Übertragungsrate\n\nACHTUNG auf Einheiten!\n- Datenmengen: Byte (B), KiB, MiB, GiB (binär) oder KB, MB, GB (dezimal)\n- Datenraten: Bit/s (bps), Kbit/s, Mbit/s, Gbit/s\n- 1 Byte = 8 Bit → immer umrechnen!\n\nBeispiel 1: 500 MiB über 100 Mbit/s\n500 MiB = 500 × 1.048.576 × 8 Bit = 4.194.304.000 Bit\n4.194.304.000 / 100.000.000 = 41,94 Sekunden\n\nBeispiel 2: 2 GiB über 50 Mbit/s\n2 GiB = 2 × 1.073.741.824 × 8 Bit = 17.179.869.184 Bit\n17.179.869.184 / 50.000.000 = 343,6 Sekunden ≈ 5,7 Minuten\n\nTipp: Bei Prüfungsaufgaben immer auf Bit vs. Byte und binär (1024) vs. dezimal (1000) achten!",
+    "answer": "### Formel\n\n`Zeit = Datenmenge / Geschwindigkeit`\n\n⚠️ **Achtung Einheit:**\n- Datei oft in **Byte** (MB)\n- Leitung in **Bit** (Mbit/s)\n➡ **Umrechnung:** `Byte × 8 = Bit`\n\n📝 **Beispiel:**\n- Datei: 100 MB (= 800 Mbit)\n- Leitung: 50 Mbit/s\n- Zeit: 800 / 50 = **16 Sekunden**",
     "tags": [
       "Multimedia",
       "Berechnung",
@@ -3084,7 +3084,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Sampling und wie funktioniert die Digitalisierung von Audio?",
-    "answer": "Sampling (Abtastung): Umwandlung eines analogen Signals in digitale Werte.\n\nWichtige Parameter:\n- Abtastrate (Sample Rate): Wie oft pro Sekunde gemessen wird (in Hz)\n  CD: 44.100 Hz, DVD: 48.000 Hz, Hi-Res: 96.000 Hz\n- Abtasttiefe (Bit Depth): Genauigkeit jeder Messung\n  CD: 16 Bit (65.536 Stufen), Studio: 24 Bit (16,7 Mio. Stufen)\n- Kanäle: Mono (1), Stereo (2), 5.1 Surround (6)\n\nNyquist-Theorem: Abtastrate muss mindestens doppelt so hoch sein wie die höchste zu erfassende Frequenz. Mensch hört bis 20.000 Hz → mind. 40.000 Hz nötig (daher 44.100 Hz bei CD).\n\nFormate:\n- WAV/PCM: Unkomprimiert, höchste Qualität\n- MP3: Verlustbehaftet, psychoakustisches Modell\n- FLAC: Verlustfrei komprimiert\n- AAC: Verlustbehaftet, besser als MP3 bei gleicher Bitrate",
+    "answer": "Umwandlung analoger Wellen in digitale Nullen & Einsen.\n\n### Parameter\n- **Abtastrate (Hz):** Messungen pro Sekunde (CD: 44.1 kHz)\n- **Bit-Tiefe:** Genauigkeit pro Messung (CD: 16 Bit)\n- **Kanäle:** Mono, Stereo (2), Surround (5.1)\n\n### Nyquist-Theorem\nAbtastrate muss **doppelt so hoch** sein wie höchste Frequenz.\n(Mensch hört bis 20kHz → Rate > 40kHz)",
     "tags": [
       "Multimedia",
       "Audio",
@@ -3100,7 +3100,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche Videoauflösungen und Codecs gibt es?",
-    "answer": "Gängige Auflösungen:\n- SD (Standard Definition): 720×576 (PAL)\n- HD (720p): 1280×720\n- Full HD (1080p): 1920×1080\n- WQHD (1440p): 2560×1440\n- 4K/UHD: 3840×2160\n- 8K: 7680×4320\n\np = progressive (Vollbilder), i = interlaced (Halbbilder)\n\nWichtige Codecs:\n- H.264 (AVC): Weitverbreitet, gute Kompression\n- H.265 (HEVC): ~50% bessere Kompression als H.264\n- VP9: Google, YouTube\n- AV1: Open Source, Nachfolger von VP9\n\nContainer-Formate (enthalten Video + Audio + Untertitel):\n- MP4 (.mp4): Universell\n- MKV (.mkv): Flexibel, viele Streams\n- AVI (.avi): Veraltet\n- WebM: Für Web optimiert\n\nFPS (Frames per Second): 24 (Kino), 30 (Standard), 60 (Gaming/Sport)",
+    "answer": "### Auflösungen\n- **Full HD:** 1920 × 1080\n- **4K (UHD):** 3840 × 2160\n\n### Codecs (Komprimierung)\n- **H.264:** Standard, hohe Kompatibilität\n- **H.265 (HEVC):** Bessere Kompression, rechenintensiv\n- **AV1:** Neu, offen, effizient\n\n📦 **Container:** MP4, MKV, MOV (Enthalten Video, Audio, Subs)",
     "tags": [
       "Multimedia",
       "Video",
@@ -3117,7 +3117,7 @@
     "type": "berechnung",
     "difficulty": 3,
     "question": "Was sind Prüfziffern und wie funktioniert die Längs-/Querparität?",
-    "answer": "Prüfziffern: Zusätzliche Ziffern zur Fehlererkennung bei der Datenübertragung.\n\nParitätsbit (gerade Parität = even parity):\n- Anzahl der 1-Bits (inkl. Paritätsbit) muss gerade sein\n- Beispiel: Daten 1011001 → 4× '1' → Paritätsbit = 0 → 10110010\n- Beispiel: Daten 1011011 → 5× '1' → Paritätsbit = 1 → 10110111\n\nLängsparität (LRC): Paritätsbit pro Zeile\nQuerparität (VRC): Paritätsbit pro Spalte\nKreuzparität: Kombination aus Längs- und Querparität → kann 1-Bit-Fehler LOKALISIEREN und korrigieren!\n\nBeispiel Kreuzparität (gerade Parität):\n1 0 1 | 0\n1 1 0 | 0\n0 1 1 | 0\n------+--\n0 0 0 | 0\n\nAnwendung: EAN (European Article Number), IBAN, ISBN haben ebenfalls Prüfziffern zur Fehlererkennung.",
+    "answer": "Erkennen von Übertragungsfehlern.\n\n### Paritätsbit (Gerade)\nErgänzt Bitfolge, damit Anzahl der Einsen gerade ist.\n- `1011` (3 Einsen) → Parity `1` → `10111` (4 Einsen)\n\n### Kreuzsicherung\nKombiniert **Längs-** und **Querparität**.\n✅ Kann Fehler nicht nur erkennen, sondern auch **korrigieren** (1-Bit-Fehler).",
     "tags": [
       "Multimedia",
       "Parität",
@@ -3619,7 +3619,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Wie ist eine URL aufgebaut und welche Web-Grundlagen gibt es?",
-    "answer": "URL-Aufbau (Uniform Resource Locator):\nhttps://benutzer:passwort@www.example.com:443/pfad/seite.html?key=value#anker\n\n- Schema/Protokoll: https://\n- Authentifizierung: benutzer:passwort@ (optional, selten)\n- Subdomain: www.\n- Domain: example.com\n- Port: :443 (Standard wird weggelassen)\n- Pfad: /pfad/seite.html\n- Query/Parameter: ?key=value\n- Fragment/Anker: #anker\n\nURI vs. URL vs. URN:\n- URI: Oberbegriff (Identifikator)\n- URL: URI mit Zugriffsmechanismus (Ort)\n- URN: URI als dauerhafter Name (z.B. ISBN)\n\nHTML/CSS/JavaScript:\n- HTML: Struktur/Inhalt (Markup)\n- CSS: Design/Layout (Styling)\n- JavaScript: Interaktivität (clientseitig)\n- PHP: Serverseitige Scriptsprache\n\nResponsive Webdesign: Passt sich automatisch an Bildschirmgröße an (Media Queries in CSS3).\n\nCMS (Content Management System): WordPress, Typo3, Joomla – Inhalte ohne Programmierung verwalten.\n\nImpressumspflicht (§5 TMG): Name, Anschrift, Kontakt, Handelsregister, USt-IdNr.",
+    "answer": "### URL-Aufbau\n`https://www.example.com/pfad?suche=xyz#anker`\n1. **Protokoll:** `https`\n2. **Host:** `www.example.com`\n3. **Pfad:** `/pfad`\n4. **Query:** `?suche=xyz`\n\n### Web-Technologien\n- **HTML:** Struktur (Skelett)\n- **CSS:** Design (Kleidung)\n- **JS:** Funktion (Muskeln)\n- **CMS:** Inhalte verwalten (Wordpress)",
     "tags": [
       "Internet",
       "URL",
