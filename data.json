@@ -2055,7 +2055,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist die CIA-Triade der IT-Sicherheit?",
-    "answer": "Verfügbarkeit (Availability): Daten und Systeme müssen stets zugänglich sein.\nMaßnahmen: Redundanz, Notfallpläne, DDoS-Schutz, Wartung & Updates.\n\nVertraulichkeit (Confidentiality): Zugriff nur für autorisierte Personen.\nMaßnahmen: Verschlüsselung (TLS, AES), Zugriffskontrollen (RBAC, ACLs), 2FA, Datensparsamkeit.\n\nIntegrität (Integrity): Daten dürfen nicht unbemerkt verändert oder manipuliert werden.\nMaßnahmen: Hashwerte, digitale Signaturen, Versionskontrolle.",
+    "answer": "### Die 3 Schutzziele (CIA)\n1. **Verfügbarkeit (Availability):** Systeme laufen, Daten sind da.\n   - *Maßnahme:* Backup, USV, Redundanz\n2. **Vertraulichkeit (Confidentiality):** Nur Berechtigte haben Zugriff.\n   - *Maßnahme:* Verschlüsselung, Rechteverwaltung\n3. **Integrität (Integrity):** Daten sind unverändert.\n   - *Maßnahme:* Checksummen, Signaturen",
     "tags": [
       "IT-Sicherheit",
       "CIA-Triade",
@@ -2071,7 +2071,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche technischen, organisatorischen und personellen Maßnahmen zur Informationssicherheit gibt es?",
-    "answer": "Technische Maßnahmen:\n• Netzwerksicherheit: Firewalls, IDS/IPS\n• Verschlüsselung: TLS, AES, VPNs\n• Zugangskontrollen: Biometrie, 2FA\n• Sicherheitsupdates: Regelmäßige Patches\n• Backups & Redundanz: Regelmäßige Sicherungen, Georedundanz\n\nOrganisatorische Maßnahmen:\n• ISMS: Systematische Verwaltung der Informationssicherheit (z.B. nach ISO 27001)\n• Sicherheitsrichtlinien\n• Notfallpläne\n\nPersonelle Maßnahmen:\n• Schulungen und Sensibilisierung\n• Phishing-Tests\n• Sicherheitsbewusstsein fördern",
+    "answer": "### Technische Maßnahmen (TOMs)\n- **Netzwerk:** Firewall, VPN, VLAN\n- **System:** Updates, Virenscanner\n- **Daten:** Verschlüsselung, Backups\n\n### Organisatorische Maßnahmen\n- **Richtlinien:** Passwort-Policy, Clean Desk\n- **Notfall:** Notfallpläne, Wiederanlauf\n- **Prozesse:** Berechtigungskonzept\n\n### Personelle Maßnahmen\n- **Schulung:** Awareness-Training\n- **Verträge:** Verpflichtung auf Datengeheimnis",
     "tags": [
       "IT-Sicherheit",
       "Maßnahmen",
@@ -2087,7 +2087,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind die Aufgaben eines IT-Sicherheitsbeauftragten?",
-    "answer": "Der IT-Sicherheitsbeauftragte (ITSB) ist für Planung, Umsetzung und Überwachung der IT-Sicherheitsmaßnahmen verantwortlich.\n\nAufgaben:\n• Entwicklung und Umsetzung von Sicherheitsrichtlinien\n• Überwachung der Einhaltung von IT-Sicherheitsstandards (z.B. ISO 27001, BSI-Grundschutz)\n• Durchführung von Risikoanalysen und Schwachstellenbewertungen\n• Koordination von Maßnahmen (Firewalls, Verschlüsselung, Zugriffskontrollen)\n• Schulung und Sensibilisierung der Mitarbeiter\n• Reaktion auf Sicherheitsvorfälle und Notfallmanagement",
+    "answer": "Verantwortlicher für Informationssicherheit (CISO).\n\n### Aufgaben\n- **Erstellen:** Sicherheitskonzepte & Richtlinien\n- **Überwachen:** Einhaltung der Regeln\n- **Schulen:** Mitarbeiter sensibilisieren\n- **Melden:** Bericht an Geschäftsleitung\n- **Analysieren:** Risiken & SChwachstellen bewerten",
     "tags": [
       "IT-Sicherheit",
       "ITSB",
@@ -2102,7 +2102,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind die Aufgaben eines Datenschutzbeauftragten?",
-    "answer": "Der Datenschutzbeauftragte (DSB) überwacht die Einhaltung des Datenschutzes gemäß DSGVO (Art. 37–39).\n\nAufgaben:\n• Überwachung der Einhaltung der DSGVO und des BDSG\n• Beratung der Geschäftsleitung und Mitarbeiter zu Datenschutzfragen\n• Erstellung und Pflege von Datenschutzrichtlinien und -konzepten\n• Durchführung von Datenschutz-Folgenabschätzungen (DPIA)\n• Schulung und Sensibilisierung der Mitarbeiter\n• Zusammenarbeit mit der Aufsichtsbehörde\n• Kontrolle der Technisch-organisatorischen Maßnahmen (TOM)",
+    "answer": "Überwacher des Datenschutzes (DSGVO).\n\n### Aufgaben\n- **Überwachung:** Einhaltung DSGVO/BDSG\n- **Beratung:** Geschäftsleitung & Mitarbeiter\n- **Schulung:** Sensibilisierung\n- **Kontakt:** Ansprechpartner für Behörden & Betroffene\n- **Verzeichnis:** Prüfung des Verarbeitungsverzeichnisses",
     "tags": [
       "IT-Sicherheit",
       "Datenschutz",
@@ -2117,7 +2117,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was enthalten IT-Sicherheitsrichtlinien?",
-    "answer": "IT-Sicherheitsrichtlinien sind verbindliche Vorgaben zur Gewährleistung von Verfügbarkeit, Vertraulichkeit und Integrität.\n\nInhalte:\n1. Zugriffs- und Berechtigungskonzepte: Starke Passwörter, MFA, Least Privilege Principle, Regelungen für Gastzugriffe\n2. Umgang mit Daten und Speichermedien: Verschlüsselung (AES, TLS), Datenklassifizierung, sichere Datenlöschung\n3. Netzwerksicherheit: Einsatz von Firewalls, VPNs, Netzwerksegmentierung\n4. Homeoffice: Vorgaben für sicheres Arbeiten im Homeoffice\n\nZiele: Schutz der IT-Infrastruktur, Einhaltung gesetzlicher Vorgaben (DSGVO, ISO 27001), Minimierung von Risiken.",
+    "answer": "Verbindliche Regeln für Mitarbeiter.\n\n### Typische Inhalte\n1. **Passwörter:** Länge, Wechsel, Komplexität\n2. **Internet/E-Mail:** Private Nutzung erlaubt?\n3. **Geräte:** Nutzung von USB-Sticks, Private Geräte (BYOD)\n4. **Mobiles Arbeiten:** Homeoffice-Regeln\n5. **Meldewege:** Was tun bei Sicherheitsvorfällen?",
     "tags": [
       "IT-Sicherheit",
       "Sicherheitsrichtlinien",
@@ -2132,7 +2132,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche personellen Maßnahmen zur Entwicklung des Sicherheitsbewusstseins gibt es?",
-    "answer": "Schulungen:\n• Regelmäßige IT-Sicherheitsschulungen für alle Mitarbeiter\n• Phishing-Tests zur Sensibilisierung für Social Engineering\n• Workshops zu sicherem Umgang mit Passwörtern & Authentifizierungsmethoden\n\nFörderung der Sicherheitskultur:\n• Mitarbeiter zu Botschaftern der IT-Sicherheit machen\n• Meldesysteme für Sicherheitsvorfälle etablieren (ohne Angst vor Sanktionen)\n• Belohnung sicherheitsbewussten Verhaltens (z.B. Gamification-Ansätze)\n• Dokumentation & Protokollierung von Zugriffen\n\nZiel: Reduzierung von Sicherheitsrisiken durch menschliches Fehlverhalten, langfristige Stärkung der Sicherheitskultur.",
+    "answer": "Die \"Human Firewall\" stärken.\n\n### Maßnahmen\n- **Schulungen:** Regelmäßige Trainings (DSGVO, Sicherheit)\n- **Phishing-Tests:** Simulierte Angriffe\n- **Richtlinien:** Klar kommunizierte Regeln\n- **Onboarding:** Sicherheitseinweisung neuer Mitarbeiter\n- **Kein Blame:** Fehlerkultur (Melden statt vertuschen)",
     "tags": [
       "IT-Sicherheit",
       "Personelle Maßnahmen",
@@ -2147,7 +2147,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was ist das BSI IT-Grundschutz-Kompendium?",
-    "answer": "Das BSI IT-Grundschutz-Kompendium ist ein Standardwerk des Bundesamts für Sicherheit in der Informationstechnik (BSI) zur Umsetzung von IT-Sicherheitsmaßnahmen.\n\nIT-Grundschutz-Bausteine:\n• ORP: Organisation und Personal (Sicherheitsrichtlinien, Schulungen)\n• INF: Infrastruktur (Rechenzentren, Verkabelung)\n• NET: Netzwerke (WLAN-Sicherheit, Firewalls)\n• SYS: IT-Systeme (Server, Clients, Virtualisierung)\n• APP: Anwendungen (Webanwendungen, Datenbanken)\n\nSchutzmaßnahmen:\n• Technisch: Firewalls, Verschlüsselung, Zugriffskontrollen\n• Organisatorisch: Sicherheitsrichtlinien, Notfallpläne\n• Personell: Sensibilisierung, Schulungen\n• Physisch: Zutrittskontrollen, Schutz von Rechenzentren",
+    "answer": "Standardwerk des BSI für IT-Sicherheit.\n\n### Aufbau (Bausteine)\n- **ISMS:** Sicherheitsmanagement\n- **ORP:** Organisation & Personal\n- **CON:** Konzeption & Vorgehensweise\n- **OPS:** Betrieb\n- **DER:** Detektion & Reaktion\n- **APP:** Anwendungen\n- **SYS:** IT-Systeme\n- **NET:** Netze\n- **INF:** Infrastruktur",
     "tags": [
       "IT-Sicherheit",
       "BSI",
@@ -2162,7 +2162,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche Datenschutzgesetze gibt es und welche Prüfpunkte sind relevant?",
-    "answer": "Wichtige Gesetze: DSGVO (EU-weit), BDSG (Deutschland)\n\nWichtige Prüfpunkte:\n• Transparenz: Werden Betroffene über die Datenverarbeitung informiert? (Art. 13, 14 DSGVO)\n• Betroffenenrechte: Können Personen Auskunft, Berichtigung oder Löschung verlangen?\n• TOM: Sind angemessene technisch-organisatorische Maßnahmen implementiert?\n• Meldepflicht: Sind Prozesse zur Meldung von Datenschutzverletzungen vorhanden? (Art. 33 DSGVO)\n• DPIA: Wurden für risikobehaftete Verarbeitungen Folgenabschätzungen durchgeführt? (Art. 35 DSGVO)\n• Verarbeitungsverzeichnis: Dokumentation aller Datenverarbeitungen (Art. 30 DSGVO)\n• Auftragsverarbeitung: Sind Verträge mit externen Dienstleistern datenschutzkonform? (Art. 28 DSGVO)",
+    "answer": "### Gesetze\n- **DSGVO:** EU-weit (einheitlich)\n- **BDSG:** Deutschland (ergänzend)\n\n### Checkliste\n1. **Rechtsgrundlage:** Erlaubnis oder Einwilligung?\n2. **Transparenz:** Info an Betroffene (Art. 13/14)\n3. **Betroffenenrechte:** Auskunft, Löschung etc.\n4. **TOMs:** Sicherheit gewährleistet?\n5. **Meldepflicht:** Panne binnen 72h melden?",
     "tags": [
       "IT-Sicherheit",
       "Datenschutz",
@@ -2178,7 +2178,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind personenbezogene Daten und welche besonderen Kategorien gibt es?",
-    "answer": "Direkte Identifikation: Name, Adresse, Telefonnummer, E-Mail-Adresse\n\nIndirekte Identifikation: IP-Adresse, Kundennummer, Standortdaten, Cookie-IDs\n\nBesondere Kategorien personenbezogener Daten (Art. 9 DSGVO):\n• Gesundheitsdaten\n• Biometrische Daten (Fingerabdruck, Gesichtserkennung)\n• Politische Meinungen\n• Religiöse Überzeugungen\n\nDiese besonderen Kategorien unterliegen einem erhöhten Schutz.",
+    "answer": "Infos über eine identifizierte/identifizierbare Person.\n\n### Beispiele\n- **Direkt:** Name, E-Mail, Telefon\n- **Indirekt:** IP-Adresse, Personalnummer, KFZ-Kennzeichen\n\n### Besondere Kategorien (Art. 9)\n⚠️ **Besonders geschützt:**\n- Gesundheit, Biometrie, Genetik\n- Religion, Politik, Ethnie",
     "tags": [
       "IT-Sicherheit",
       "Datenschutz",
@@ -2193,7 +2193,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche Rechte haben Betroffene nach der DSGVO?",
-    "answer": "• Recht auf Auskunft (Art. 15): Kopie gespeicherter Daten anfordern, Herkunft und Weitergabe erfahren\n• Recht auf Berichtigung (Art. 16): Unrichtige/unvollständige Daten korrigieren lassen\n• Recht auf Löschung / 'Recht auf Vergessenwerden' (Art. 17): Löschung verlangen, wenn Daten nicht mehr benötigt oder Einwilligung widerrufen\n• Recht auf Einschränkung der Verarbeitung (Art. 18): Daten nur noch speichern, nicht verarbeiten\n• Recht auf Datenübertragbarkeit (Art. 20): Daten in maschinenlesbarem Format erhalten oder übertragen\n• Widerspruchsrecht (Art. 21): Verarbeitung aus persönlichen Gründen untersagen\n• Recht auf keine automatisierte Entscheidung (Art. 22): Schutz vor Benachteiligung durch Algorithmen",
+    "answer": "### Die wichtigsten Rechte\n1. **Auskunft (Art. 15):** \"Was speichert ihr über mich?\"\n2. **Berichtigung (Art. 16):** \"Korrigiert das!\"\n3. **Löschung (Art. 17):** \"Recht auf Vergessenwerden\"\n4. **Einschränkung (Art. 18):** \"Nicht verarbeiten, nur speichern\"\n5. **Datenübertragbarkeit (Art. 20):** \"Datenexport für Wechsel\"\n6. **Widerspruch (Art. 21):** \"Ich will das nicht mehr\"",
     "tags": [
       "IT-Sicherheit",
       "Datenschutz",
@@ -2209,7 +2209,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was sind die Voraussetzungen einer gültigen Einwilligung nach DSGVO?",
-    "answer": "Die Einwilligung ist eine freiwillige, informierte und unmissverständliche Zustimmung zur Datenverarbeitung.\n\nVoraussetzungen:\n• Freiwilligkeit: Keine Zwangslage oder Nachteile bei Verweigerung\n• Informiertheit: Klare Erklärung zu Zweck, Art und Umfang\n• Eindeutige Handlung: Opt-in-Verfahren, keine vorausgewählten Checkboxen\n• Widerrufbarkeit: Jederzeit ohne Nachteile widerrufbar\n\nUngültige Einwilligung wenn: nicht ausreichend informiert, nicht aktiv zugestimmt (z.B. vorangekreuzte Felder), nicht freiwillig gegeben.\n\nKonsequenzen bei fehlender/unwirksamer Einwilligung:\n• Verarbeitung ist rechtswidrig → Bußgelder nach Art. 83 DSGVO\n• Betroffene können Beschwerde einlegen und Schadensersatz fordern",
+    "answer": "Erlaubnis zur Verarbeitung.\n\n### Anforderungen (Kopplungsverbot!)\n1. **Freiwillig:** Kein Zwang\n2. **Informiert:** Zweck muss klar sein\n3. **Unmissverständlich:** Aktive Handlung (Opt-In)\n4. **Widerrufbar:** Jederzeit stoppen\n\n❌ **Folgen bei Fehler:** Verarbeitung illegal → Bußgeld!",
     "tags": [
       "IT-Sicherheit",
       "Datenschutz",
@@ -2225,7 +2225,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Anonymisierung und Pseudonymisierung?",
-    "answer": "Anonymisierung: Unwiderrufliche Entfernung des Personenbezugs. Daten unterliegen NICHT mehr der DSGVO.\nMethoden: Datenaggregation, Maskierung, Rauschen (Noise Addition), Generalization, k-Anonymität.\n\nPseudonymisierung: Personenbezogene Daten werden so verändert, dass sie OHNE zusätzliche Informationen nicht mehr einer Person zugeordnet werden können. Zuordnung kann jedoch mit separatem Schlüssel wiederhergestellt werden.\nMethoden: Tokenisierung, Verschlüsselung.\n\nWichtiger Unterschied: Anonymisierte Daten sind dauerhaft nicht rückführbar. Pseudonymisierte Daten können re-identifiziert werden und unterliegen weiterhin der DSGVO.",
+    "answer": "| Methode | Rückkehr zur Person? | DSGVO? |\n|---|---|---|\n| **Anonymisierung** | ❌ Nie mehr möglich | Nein (Daten sind frei) |\n| **Pseudonymisierung** | ✅ Mit Schlüssel möglich | Ja (Personenbezug existiert noch) |\n\n💡 **Beispiel:**\n- *Pseudonym:* \"Kunde 1234\"\n- *Anonym:* \"Ein Kunde aus Berlin\"",
     "tags": [
       "IT-Sicherheit",
       "Datenschutz",
@@ -2241,7 +2241,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Pseudonymisierung und wie unterscheidet sie sich von Anonymisierung?",
-    "answer": "Pseudonymisierung ersetzt personenbezogene Daten durch Kennzeichen, sodass die Zuordnung zur Person nur mit Zusatzinformationen möglich ist (Art. 4 Nr. 5 DSGVO).\n\nBeispiel: Max Müller → ID-47829\n\nVorteile:\n• Reduziertes Risiko bei Datenschutzverletzungen\n• Daten bleiben für Analyse nutzbar\n• Empfohlen durch DSGVO (Privacy by Design)\n\nMethoden:\n• Tokenisierung (Kennzeichen statt Daten)\n• Verschlüsselung mit separatem Schlüssel\n• Hashing mit Salt\n\nAnonymisierung vs. Pseudonymisierung:\n• Anonymisierung: Keine Rückführung zur Person möglich → DSGVO nicht mehr anwendbar\n• Pseudonymisierung: Rückführung weiterhin möglich → DSGVO weiterhin anwendbar\n\nWichtig: DSGVO-Klassiker in der Prüfung! Pseudonymisierte Daten bleiben personenbezogene Daten.",
+    "answer": "Ersetzen des Namens durch ein Kennzeichen (Pseudonym).\n\n### Zweck\n- Schutz der Daten bei Verlust (Dieb kann nichts damit anfangen)\n- Ermöglicht dennoch Zuordnung durch Berechtigte (Schlüsselbesitzer)\n- **Wichtig:** Gilt laut DSGVO weiter als personenbezogen!",
     "tags": [
       "IT-Sicherheit",
       "Datenschutz",
@@ -2258,7 +2258,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Wie wird eine Schutzbedarfsanalyse durchgeführt?",
-    "answer": "Die Schutzbedarfsanalyse bewertet die Sicherheitsanforderungen von Daten, IT-Systemen und Infrastruktur.\n\nDurchführung:\n1. Identifikation der Schutzobjekte: Daten, Anwendungen, IT-Systeme, Räume, Kommunikationsverbindungen\n2. Bewertung des Schutzbedarfs: Auswirkungen von Datenverlust, Ausfall oder Manipulation. Einteilung in niedrig, mittel und hoch.\n3. Ableitung von Schutzmaßnahmen: Verschlüsselung, Firewalls, Zugriffskontrollen\n4. Dokumentation\n\nSchutzobjekte:\n• IT-Systeme: Backup-Strategien, Firewalls, Zugriffskontrollen\n• Räume/Infrastruktur: Zutrittskontrollen, Videoüberwachung, Brandschutz\n• Kommunikationsverbindungen: Ende-zu-Ende-Verschlüsselung, Firewalls, IDS/IPS",
+    "answer": "Ermittlung: Welche Daten brauchen wie viel Schutz?\n\n### Schutzklassen (BSI)\n1. **Normal:** Auswirkung begrenzt (z.B. Telefonliste)\n2. **Hoch:** Auswirkung beträchtlich (z.B. Verträge, Krankheitstage)\n3. **Sehr hoch:** Existenzbedrohend (z.B. Geschäftsgeheimnisse, Patientendaten)\n\n📌 Bestimmt die **Härte** der Sicherungsmaßnahmen.",
     "tags": [
       "IT-Sicherheit",
       "Schutzbedarfsanalyse",
@@ -2273,7 +2273,7 @@
     "type": "praxis",
     "difficulty": 3,
     "question": "Was umfasst ein arbeitsplatzbezogenes Sicherheitskonzept?",
-    "answer": "Ein arbeitsplatzbezogenes Sicherheitskonzept definiert Maßnahmen zum Schutz von IT-Arbeitsplätzen gegen technische, organisatorische und menschliche Risiken.\n\nSchutzbedarfskategorien:\n• Normal: Keine gravierenden Folgen, Standardmaßnahmen ausreichend\n• Hoch: Betrifft vertrauliche Daten, erweiterte Maßnahmen nötig\n• Sehr hoch: Kritische Systeme, maximale Sicherheit erforderlich\n\nBeispiele:\n• Gering: Kein Zugriff auf interne Systeme → Standard-Passwortschutz\n• Mittel: Zugriff auf Kundendaten → 2FA, Verschlüsselung\n• Hoch: Verarbeitung sensibler Daten → Härtung, Netzwerksegmentierung, Monitoring",
+    "answer": "Schutzkonzept für einen konkreten PC/Arbeitsplatz.\n\n### Inhalte\n- **Zutritt:** Wer darf in den Raum?\n- **Zugang:** Passwortschutz, Bildschirmsperre\n- **Zugriff:** Welche Daten darf der User sehen?\n- **Datensicherung:** Wohin wird gespeichert?\n- **Viren:** Scanner aktiv & aktuell?",
     "tags": [
       "IT-Sicherheit",
       "Sicherheitskonzept",
@@ -2288,7 +2288,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was ist ein ISMS (Information Security Management System)?",
-    "answer": "Ein ISMS ist ein systematischer Ansatz zur Planung, Umsetzung, Überwachung und Verbesserung der Informationssicherheit.\n\nBestandteile:\n• Sicherheitsrichtlinien: Vorgaben zur IT-Sicherheit und Datenschutz\n• Risikomanagement: Identifikation, Bewertung und Behandlung von Sicherheitsrisiken\n• Technische & organisatorische Maßnahmen: Firewalls, Verschlüsselung, Schulungen\n• Überwachung & Audits: Regelmäßige Prüfungen zur Einhaltung\n\nVorteile:\n• Erhöhung des Sicherheitsbewusstseins durch klare Prozesse und Schulungen\n• Verbesserung der Geschäftskontinuität durch systematisches Risikomanagement",
+    "answer": "**Information Security Management System** (nach ISO 27001).\n\n- Systematischer Ansatz (Plan-Do-Check-Act)\n- Ziel: Sicherheit dauerhaft gewährleisten\n- Beinhaltet Riisikoanalysen, Audits & Maßnahmen\n- Management-Aufgabe (Chefsache!)",
     "tags": [
       "IT-Sicherheit",
       "ISMS",
@@ -2303,7 +2303,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Security by Design und Security by Default?",
-    "answer": "Security by Design: IT-Systeme werden VON ANFANG AN mit Sicherheitsmechanismen ausgestattet.\nPrinzipien: Minimaler Zugriff (Least Privilege), standardmäßig sicher (Secure Defaults), Fehlertoleranz (Fail-Secure).\n\nSecurity by Default: IT-Systeme werden STANDARDMÄSSIG mit sicheren Einstellungen ausgeliefert.\nPrinzipien: Sichere Voreinstellungen, minimaler Zugriff, Deaktivierung unsicherer Funktionen, starke Authentifizierung.\n\nGemeinsames Ziel: Proaktive Minimierung von Sicherheitsrisiken, Schutz vor Datenlecks und Cyberangriffen, Erfüllung von Compliance-Vorgaben (DSGVO, ISO 27001).",
+    "answer": "### Design (Konzept)\nSicherheit wird **bei der Entwicklung** eingeplant (kein nachträgliches Add-on).\n\n### Default (Standard)\nSicherste Einstellung ist **Voreinstellung**.\n- Nutzer muss *aktiv* unsicherer machen (wenn gewollt)\n- Beispiel: Kamera in App standardmäßig *aus*.",
     "tags": [
       "IT-Sicherheit",
       "Security by Design",
@@ -2318,7 +2318,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was bedeuten Security by Design und Security by Default?",
-    "answer": "Beide Prinzipien sind in der DSGVO (Art. 25) verankert und fordern den Einbau von Sicherheit von Anfang an.\n\nSecurity by Design:\n• Sicherheitsanforderungen bereits in der Entwurfsphase berücksichtigen\n• Sichere Architektur von Beginn an\n• Threat Modeling während der Planung\n• Beispiel: Verschlüsselung als Kernkomponente, nicht als Zusatz\n\nSecurity by Default:\n• Sicherste Konfiguration als Standardeinstellung\n• Opt-in statt Opt-out für Datenfreigabe\n• Minimale Berechtigungen (Least Privilege)\n• Beispiele:\n  - Firewall standardmäßig aktiviert\n  - 2FA standardmäßig aktiv\n  - Nur notwendige Dienste aktiviert\n  - Datenschutzfreundliche Voreinstellungen\n\nZiel: Benutzer müssen nichts tun, um geschützt zu sein.",
+    "answer": "### Default (Einstellung)\n- **Standard:** Sicherste Option (z.B. Ports zu)\n- **Nutzer:** Muss aktiv freischalten\n- **Ziel:** Schutz für Laien\n\n### Design (Architektur)\n- **Planung:** Sicherheit von Anfang an dabei\n- **Beispiele:** Verschlüsselung, Trennung von Rechten\n- **Gegenteil:** \"Security through Obscurity\"",
     "tags": [
       "IT-Sicherheit",
       "DSGVO",
@@ -2335,7 +2335,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was umfasst die Härtung eines Betriebssystems (OS Hardening)?",
-    "answer": "Maßnahmen zur Reduzierung von Sicherheitsrisiken:\n\nMinimierung der Angriffsfläche:\n• Nicht benötigte Dienste und Ports deaktivieren\n• Überflüssige Benutzerkonten entfernen oder sperren\n• Unnötige Software deinstallieren\n\nStarke Zugriffskontrollen:\n• Least Privilege Principle umsetzen\n• Passwort-Richtlinien durchsetzen (Mindestlänge, Ablaufdatum)\n• Multi-Faktor-Authentifizierung (MFA) aktivieren\n\nAutomatisierte Härtung:\n• Security Baselines verwenden (CIS Benchmarks, BSI IT-Grundschutz)\n• Härtungsskripte und Tools nutzen (Microsoft Security Compliance Toolkit, Lynis für Linux)\n\nVorteile: Schutz vor Cyberangriffen, reduzierte Angriffsfläche, Erfüllung von Compliance-Anforderungen.",
+    "answer": "System sicher machen (\"abhärten\").\n\n### Maßnahmen\n- **Dienste:** Unnötiges abschalten\n- **User:** Gast-Account deaktivieren\n- **Updates:** Immer aktuell halten\n- **Firewall:** Aktivieren & konfigurieren\n- **Passwörter:** Komplexität erzwingen",
     "tags": [
       "IT-Sicherheit",
       "OS Hardening",
@@ -2350,7 +2350,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Welche Backup-Arten und -Strategien gibt es?",
-    "answer": "Backup-Arten:\n• Voll-Backup: Komplette Kopie aller Daten. + Schnelle Wiederherstellung | - Hoher Speicherbedarf\n• Inkrementelles Backup: Nur Änderungen seit letztem Backup. + Wenig Speicher | - Langsame Wiederherstellung\n• Differentielles Backup: Änderungen seit letztem Voll-Backup. + Schnellere Wiederherstellung als inkrementell | - Mehr Speicher als inkrementell\n• Spiegelung (Mirroring): Echtzeit-Kopie. + Sofortige Verfügbarkeit | - Kein Schutz vor logischen Fehlern/Malware\n\nBackup-Strategien:\n• 3-2-1-Regel: 3 Kopien, 2 verschiedene Medien, 1 Kopie extern\n• Cold Backup: Offline, manuell. Warm Backup: Schnell aktivierbar. Hot Backup: Live-Kopie\n• Air-Gapped Backup: Nicht mit Netzwerk verbunden (Schutz vor Ransomware)\n\nSpeicherorte: Lokale Backups, Cloud-Backups, Bandlaufwerke",
+    "answer": "### Backup-Arten\n| Art | Was? | Restore? | Platz? |\n|---|---|---|---|\n| **Voll** | Alles | Schnell | Hoch |\n| **Inkrementell** | Seit letztem (irgendeinem) Backup | Langsam (Kette) | Niedrig |\n| **Differenziell** | Seit letztem Voll-Backup | Mittel | Mittel |\n\n### Strategie: 3-2-1\n- **3** Kopien\n- **2** Medien (HDD, Cloud)\n- **1** Extern (Offsite)",
     "tags": [
       "IT-Sicherheit",
       "Backup",
@@ -2365,7 +2365,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Welche Verschlüsselungstechniken gibt es?",
-    "answer": "Symmetrische Verschlüsselung: Ein Schlüssel für Ver- und Entschlüsselung.\nBeispiele: AES, DES (veraltet).\n+ Schnell und effizient | - Schlüsselverteilung problematisch\n\nAsymmetrische Verschlüsselung: Zwei Schlüssel (öffentlich zum Verschlüsseln, privat zum Entschlüsseln).\nBeispiele: RSA, ECC.\n+ Sichere Kommunikation ohne Schlüsselaustausch, digitale Signaturen | - Langsamer, hoher Rechenaufwand\n\nHybride Verschlüsselung: Kombination beider Verfahren.\n1. Asymmetrisch: Einmaligen symmetrischen Schlüssel sicher übertragen (z.B. RSA)\n2. Symmetrisch: Daten verschlüsseln (z.B. AES)\nBeispiele: TLS (HTTPS), PGP (E-Mail)",
+    "answer": "### Verfahren\n| Typ | Schlüssel | Beispiel |\n|---|---|---|\n| **Symmetrisch** | 1 (Geheim) | AES (WLAN, ZIP) |\n| **Asymmetrisch** | 2 (Privat/Öffentlich) | RSA, ECC |\n| **Hybrid** | Kombi | HTTPS (TLS) |\n\n🔑 **Asymmetrisch** für Schlüsseltausch,\n🔒 **Symmetrisch** für Datenübertragung.",
     "tags": [
       "IT-Sicherheit",
       "Verschlüsselung",
@@ -2383,7 +2383,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was sind Hashverfahren und welche Eigenschaften haben sie?",
-    "answer": "Hashverfahren erzeugen aus beliebigen Eingabedaten einen festen Hashwert (Fingerabdruck).\n\nEigenschaften:\n• Einwegfunktion: Nicht umkehrbar\n• Kollisionsresistenz: Unterschiedliche Daten erzeugen unterschiedliche Hashwerte\n• Deterministisch: Gleiche Eingabe → gleicher Hashwert\n\nGängige Algorithmen:\n• Sicher: SHA-256, SHA-3, Argon2 (für Passwörter)\n• Veraltet: MD5, SHA-1 (anfällig für Kollisionen)",
+    "answer": "Ein \"digitaler Fingerabdruck\".\n\n### Eigenschaften\n- **Einweg:** Nicht rückrechenbar\n- **Kollisionsfrei:** Kein Hash doppelt\n- **Feste Länge:** Immer gleich lang\n\n### Nutzung\n- Passwörter speichern (nie Klartext!)\n- Datei-Integrität prüfen (Checksum)",
     "tags": [
       "IT-Sicherheit",
       "Hash",
@@ -2398,7 +2398,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was sind digitale Zertifikate und wie funktioniert die PKI?",
-    "answer": "Ein Zertifikat ist eine digitale Bescheinigung, die die Echtheit einer Identität bestätigt, ausgestellt von einer Zertifizierungsstelle (CA).\n\nBestandteile: Öffentlicher Schlüssel, Name des Inhabers, Name der CA, Gültigkeitsdauer, Digitale Signatur der CA.\n\nArten:\n• TLS/SSL-Zertifikate: Sicherung von Webseiten (HTTPS)\n• Code-Signing-Zertifikate: Verifizierung von Software\n• E-Mail-Zertifikate (S/MIME): Signierung und Verschlüsselung von E-Mails\n• Client-/Benutzerzertifikate: Authentifizierung von Nutzern\n\nPublic Key Infrastructure (PKI):\n1. Root-CA (höchste Vertrauensinstanz)\n2. Intermediate-CA (stellt Zertifikate für Endnutzer aus)\n3. Endnutzer-Zertifikat (z.B. für eine Webseite)",
+    "answer": "Elektronischer Identitätsnachweis (z.B. für HTTPS).\n\n### Inhalt\n- Inhaber (Wer?)\n- Öffentlicher Schlüssel (Key)\n- Aussteller (CA)\n- Gültigkeit (Bis wann?)\n- Signatur der CA\n\n🏗 **PKI:** System zur Verwaltung von Zertifikaten.",
     "tags": [
       "IT-Sicherheit",
       "Zertifikate",
@@ -2414,7 +2414,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was sind digitale Signaturen und wie funktionieren sie?",
-    "answer": "Eine digitale Signatur stellt Echtheit und Integrität digitaler Daten sicher. Sie basiert auf asymmetrischer Kryptografie.\n\nFunktionsweise:\n1. Hash-Wert berechnen: Inhalt wird gehasht (z.B. SHA-256)\n2. Verschlüsselung mit privatem Schlüssel: Hash wird mit privatem Schlüssel des Signierenden verschlüsselt\n3. Verifikation mit öffentlichem Schlüssel: Empfänger entschlüsselt die Signatur\n\nEigenschaften:\n• Authentizität: Prüft die Identität des Absenders\n• Integrität: Erkennt Manipulationen\n• Nichtabstreitbarkeit: Absender kann Unterschrift nicht leugnen\n\nAnwendungen: E-Mail-Signaturen (S/MIME, PGP), signierte Software (Code-Signing), digitale Dokumente (PDF-Signaturen), Blockchain & Kryptowährungen",
+    "answer": "Gewährleisten **Echtheit** und **Integrität**.\n\n### Ablauf\n1. **Hash** der Nachricht erstellen\n2. Hash mit **Privatem Schlüssel** verschlüsseln (=Signatur)\n3. Empfänger entschlüsselt mit **Öffentlichem Schlüssel**\n4. Vergleicht Hashwerte (stimmen überein = echt)\n\n✅ Nutzt asymmetrische Kryptografie.",
     "tags": [
       "IT-Sicherheit",
       "Digitale Signaturen",
@@ -2429,7 +2429,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Zwei-Faktor-Authentifizierung (2FA) und was ist eine Passwort-Policy?",
-    "answer": "Authentifizierung ist der Prozess der Überprüfung einer Identität.\n\nZwei-Faktor-Authentifizierung (2FA) kombiniert zwei verschiedene Faktoren:\n1. Wissen (z.B. Passwort, PIN)\n2. Besitz (z.B. Smartphone, Token)\n3. Biometrie (z.B. Fingerabdruck, Gesichtserkennung)\n\nBeispiele: SMS-TAN, Authenticator-App, Smartcard, Hardware-Token.\nVorteile: Erhöhte Sicherheit, Schutz gegen Phishing und Passwortdiebstahl.\n\nPasswort-Policy – Best Practices:\n• Mindestlänge: 12–16 Zeichen\n• Komplexität: Groß-/Kleinbuchstaben, Zahlen, Sonderzeichen\n• Kein Wiederverwenden alter Passwörter\n• Kein Teilen oder unsicheres Speichern\n• Passwort-Manager nutzen",
+    "answer": "Identitätsnachweis mit 2 Faktoren.\n\n### Faktoren (Wissen, Besitz, Sein)\n1. **Wissen:** Passwort, PIN\n2. **Besitz:** Smartphone, Hardware-Token\n3. **Sein:** Fingerabdruck, FaceID\n\n### Passwort-Policy\n- Mind. 12 Zeichen, Komplexität, kein Re-Use\n- **Besser:** Passphrasen & MFA nutzen!",
     "tags": [
       "IT-Sicherheit",
       "Authentifizierung",
@@ -2444,7 +2444,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine Personal Firewall und welche Funktionen hat sie?",
-    "answer": "Eine Personal Firewall ist eine Software, die den Netzwerkverkehr auf einem einzelnen Gerät überwacht und unerwünschte Verbindungen blockiert.\n\nFunktionen:\n• Paketfilterung: Blockiert unerwünschten ein- und ausgehenden Datenverkehr\n• Anwendungssteuerung: Bestimmt, welche Programme auf das Netzwerk zugreifen dürfen\n• Intrusion Detection/Prevention: Erkennt und verhindert Angriffe in Echtzeit\n\nVorteile:\n• Schutz vor Hackerangriffen und Schadsoftware\n• Kontrolle über Netzwerkaktivitäten installierter Programme\n• Ergänzt Antivirensoftware für besseren Schutz",
+    "answer": "Software-Firewall auf dem Endgerät.\n\n### Funktionen\n- **Paketfilter:** Blockt Traffic (rein/raus)\n- **Anwendungskontrolle:** Welche App darf ins Netz?\n\n🛡 **Ziel:** Schutz vor Zugriffen im öffentlichen WLAN oder LAN.",
     "tags": [
       "IT-Sicherheit",
       "Personal Firewall",
@@ -2768,7 +2768,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Arten von Cyberbedrohungen gibt es?",
-    "answer": "Malware-Arten:\n- Virus: Verbreitet sich durch Anhängen an Programme, benötigt Wirt\n- Wurm: Verbreitet sich selbstständig über Netzwerke\n- Trojaner: Tarnt sich als nützliches Programm\n- Ransomware: Verschlüsselt Daten und fordert Lösegeld\n- Spyware: Spioniert Nutzer aus\n- Adware: Zeigt unerwünschte Werbung\n- Rootkit: Versteckt sich tief im System, verschafft Admin-Zugang\n\nAngriffsmethoden:\n- Phishing: Gefälschte E-Mails/Websites zum Datendiebstahl\n- DDoS: Überlastung eines Systems durch massenhafte Anfragen\n- Man-in-the-Middle: Abfangen der Kommunikation\n- Brute Force: Systematisches Ausprobieren von Passwörtern\n- SQL-Injection: Einschleusen von SQL-Code in Eingabefelder",
+    "answer": "### Malware-Arten\n| Typ | Beschreibung |\n|---|---|\n| **Virus** | Hängt sich an Programm (Wirt) |\n| **Wurm** | Verbreitet sich selbst (Netzwerk) |\n| **Trojaner** | Tarnt sich als nützlich |\n| **Ransomware** | Verschlüsselt Daten (Erpressung) |\n\n### Angriffe\n- **Phishing:** Datenklau per Fake-Mail\n- **DDoS:** Systemüberlastung\n- **Man-in-the-Middle:** Abhören",
     "tags": [
       "IT-Sicherheit",
       "Cyberbedrohungen",
@@ -2784,7 +2784,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Social Engineering?",
-    "answer": "Social Engineering bezeichnet die Manipulation von Menschen, um an vertrauliche Informationen zu gelangen.\n\nMethoden:\n- Phishing: Gefälschte E-Mails mit Links/Anhängen\n- Spear Phishing: Gezieltes Phishing auf bestimmte Personen\n- Pretexting: Erfundene Identität/Geschichte als Vorwand\n- Baiting: Infizierte USB-Sticks werden 'zufällig' platziert\n- Tailgating: Unbefugtes Betreten gesicherter Bereiche durch Mitlaufen\n- Shoulder Surfing: Abschauen von Passwörtern/PINs\n- CEO-Fraud: Täter gibt sich als Vorgesetzter aus\n\nSchutzmaßnahmen:\n- Security-Awareness-Schulungen\n- Identitätsprüfung bei Anfragen\n- Clean Desk Policy\n- Vier-Augen-Prinzip bei kritischen Aktionen",
+    "answer": "Manipulation des Menschen (\"Human Hacking\").\n\n### Methoden\n- **Phishing:** \"Klicken Sie hier\" (Massen-Mail)\n- **Spear Phishing:** Gezielter Angriff auf Person\n- **CEO-Fraud:** \"Chef\" fordert Überweisung\n- **Tailgating:** Unbefugtes Mitgehen durch Tür\n- **Baiting:** USB-Stick als Köder ausgelegt\n\n🛡 **Schutz:** Awareness & \"Gesundes Misstrauen\".",
     "tags": [
       "IT-Sicherheit",
       "Social Engineering",
@@ -2865,7 +2865,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was sind die Unterschiede zwischen Vollbackup, differenziellem und inkrementellem Backup?",
-    "answer": "Vollbackup (Full Backup):\n- Sichert ALLE Daten\n- Größter Speicherbedarf, längste Dauer\n- Einfachste Wiederherstellung\n\nDifferenzielles Backup:\n- Sichert alle Änderungen seit dem LETZTEN VOLLBACKUP\n- Wird mit der Zeit größer\n- Wiederherstellung: Vollbackup + letztes differenzielles Backup\n\nInkrementelles Backup:\n- Sichert nur Änderungen seit dem LETZTEN BACKUP (egal welcher Art)\n- Kleinster Speicherbedarf, schnellste Sicherung\n- Wiederherstellung: Vollbackup + ALLE inkrementellen Backups in Reihenfolge\n\nBeispiel (Mo-Fr nach Vollbackup am So):\n- Differenziell: Mo=1GB, Di=2GB, Mi=3GB, Do=4GB, Fr=5GB\n- Inkrementell: Mo=1GB, Di=1GB, Mi=1GB, Do=1GB, Fr=1GB\n\n3-2-1-Regel: 3 Kopien, 2 verschiedene Medien, 1 offsite.",
+    "answer": "| Typ | Speichert | Restore | Speicher |\n|---|---|---|---|\n| **Voll** | Alles | Schnell (1 Schritt) | Hoch |\n| **Differenziell** | Seit Vollbackup | Mittel (2 Schritte) | Mittel |\n| **Inkrementell** | Seit letztem Backup | Langsam (Alle Schritte) | Niedrig |\n\n💡 **Tipp:** Inkrementell = Kette (fehlt eines, alles kaputt).",
     "tags": [
       "IT-Sicherheit",
       "Backup",
@@ -3637,7 +3637,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Grundsätze der Datenverarbeitung nennt Art. 5 DSGVO?",
-    "answer": "Art. 5 DSGVO – Die 7 Grundsätze:\n\n1. Rechtmäßigkeit, Verarbeitung nach Treu und Glauben, Transparenz:\n   - Gesetzliche Grundlage oder Einwilligung erforderlich\n   - Betroffene müssen informiert werden\n\n2. Zweckbindung:\n   - Daten nur für festgelegte, eindeutige Zwecke erheben\n   - Keine Weiterverwendung für andere Zwecke\n\n3. Datenminimierung:\n   - Nur Daten erheben, die für den Zweck notwendig sind\n\n4. Richtigkeit:\n   - Daten müssen sachlich richtig und aktuell sein\n   - Unrichtige Daten sind zu berichtigen oder zu löschen\n\n5. Speicherbegrenzung:\n   - Daten nur so lange speichern, wie für den Zweck nötig\n   - Löschfristen beachten\n\n6. Integrität und Vertraulichkeit:\n   - Schutz vor unbefugter Verarbeitung, Verlust, Zerstörung\n   - Technische und organisatorische Maßnahmen (TOMs)\n\n7. Rechenschaftspflicht:\n   - Verantwortlicher muss Einhaltung NACHWEISEN können\n   - Dokumentationspflicht",
+    "answer": "### Die 7 Grundsätze\n1. **Rechtmäßigkeit & Transparenz:** Erlaubt & nachvollziehbar\n2. **Zweckbindung:** Nur für definiertes Ziel\n3. **Datenminimierung:** So wenig wie möglich\n4. **Richtigkeit:** Daten müssen aktuell sein\n5. **Speicherbegrenzung:** Löschen, wenn Zweck erfüllt\n6. **Integrität & Vertraulichkeit:** Sicher (TOMs)\n7. **Rechenschaftspflicht:** Nachweispflicht (Doku)",
     "tags": [
       "Datenschutz",
       "DSGVO",
@@ -3654,7 +3654,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche Persönlichkeitsrechte gibt es im Kontext Datenschutz?",
-    "answer": "Allgemeines Persönlichkeitsrecht (Art. 2 Abs. 1 + Art. 1 Abs. 1 GG):\n\n1. Recht auf informationelle Selbstbestimmung:\n   - Jeder bestimmt selbst über Preisgabe und Verwendung seiner Daten\n   - Grundlage des Datenschutzrechts\n\n2. Recht am eigenen Bild (KunstUrhG):\n   - Fotos/Videos nur mit Einwilligung veröffentlichen\n   - Ausnahmen: Zeitgeschichte, Versammlungen, Beiwerk\n\n3. Recht am gesprochenen/geschriebenen Wort:\n   - Keine heimliche Aufnahme von Gesprächen\n   - Vertraulichkeit der Kommunikation\n\n4. Recht auf Schutz vor Imitation:\n   - Keine Identitätstäuschung (z.B. Deep Fakes)\n\n5. Recht auf Schutz der Privat-, Intim- und Geheimsphäre:\n   - Intimsphäre: Absolut geschützt (Sexualität, Gesundheit)\n   - Privatsphäre: Hohes Schutzniveau (Familie, Wohnung)\n   - Sozialsphäre: Niedrigstes Niveau (Beruf, öffentliches Auftreten)",
+    "answer": "Basierend auf Art. 2 Abs. 1 GG (Freie Entfaltung).\n\n1. **Informationelle Selbstbestimmung:** Herrschaft über eigene Daten\n2. **Recht am eigenen Bild:** Nur mit Einwilligung (KUG)\n3. **Vertraulichkeit des Wortes:** Keine heimlichen Aufnahmen\n4. **Schutz der Sphären:** Interimsphäre (Tabu) > Privatsphäre > Sozialsphäre",
     "tags": [
       "Datenschutz",
       "Persönlichkeitsrechte",
@@ -3803,7 +3803,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Endpoint Security und wie funktionieren Virenscanner?",
-    "answer": "Endpoint Security: Schutz von Endgeräten (PCs, Laptops, Smartphones) vor Bedrohungen.\n\nKomponenten:\n- Virenscanner / Antivirus\n- Personal Firewall\n- Application Control (Whitelist/Blacklist)\n- Datenträgerverschlüsselung (z.B. BitLocker, LUKS)\n- Intrusion Detection/Prevention (IDS/IPS)\n\nWie erkennt ein Virenscanner Malware?\n\n1. Signaturbasiert:\n   - Bekannte Malware-Muster in Datenbank vergleichen\n   - Schnell, erkennt aber nur bekannte Malware\n\n2. Heuristisch:\n   - Analyse verdächtiger Code-Muster und Verhaltensweisen\n   - Kann unbekannte Malware erkennen\n   - Höhere False-Positive-Rate\n\n3. Verhaltensbasiert (Behavioral):\n   - Überwacht Programmaktivitäten zur Laufzeit\n   - Erkennt z.B. Massenverschlüsselung (Ransomware)\n   - Ressourcenintensiv\n\n4. Sandbox:\n   - Verdächtige Dateien in isolierter Umgebung ausführen\n   - Sicher, aber langsam\n\n5. Cloud-basiert:\n   - Prüfung gegen Online-Datenbanken\n   - Schnelle Updates, benötigt Internetverbindung\n\nWichtig: Kein Virenscanner bietet 100% Schutz! Mehrschichtiger Ansatz (Defense in Depth) nötig.",
+    "answer": "Schutz von Endgeräten.\n\n### Erkennungsmethoden\n1. **Signatur:** Vergleicht mit bekannter Malware (Datenbank)\n2. **Heuristik:** Sucht nach verdächtigen Mustern (ungenau)\n3. **Verhalten:** Überwacht Aktionen (z.B. Crypto-Aktivität)\n4. **Sandbox:** Testet Datei in isolierter Umgebung\n5. **Cloud:** Prüft Hash online",
     "tags": [
       "IT-Sicherheit",
       "Endpoint Security",
