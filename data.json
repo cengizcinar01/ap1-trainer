@@ -1068,7 +1068,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Kostenarten gibt es?",
-    "answer": "Anschaffungskosten (einmalig): Kaufpreis, Transport, Installation, Schulung.\n\nBetriebskosten (laufend): Strom/Wasser/Heizung, Wartung/Reparaturen, Lizenzen/Abonnements, Personalkosten.\n\nVariable Kosten: Abhängig von Nutzung/Produktion (z.B. Material, Strom).\nFixe Kosten: Unabhängig von Nutzung (z.B. Miete, Gehälter, Versicherungen).\n\nFinanzierungskosten: Zinsen, Gebühren für Finanzierungsmodelle, Kosten für Bürgschaften.",
+    "answer": "### Kostenarten\n\n| Art | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **Anschaffung** | Einmalig (Investition) | Kaufpreis, Installation |\n| **Betrieb** | Laufend (OpEx) | Strom, Wartung, Personal |\n| **Herausgabekosten** | Vertrieb/Marketing | Werbung, Verpackung |\n\n### Weitere Unterscheidung\n- **Fixkosten:** Unabhängig von Auslastung (Miete, Gehälter)\n- **Variable Kosten:** Abhängig von Menge (Material, Strom)\n- **Finanzierung:** Zinsen, Gebühren",
     "tags": [
       "Wirtschaft",
       "Kosten",
@@ -1084,7 +1084,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Vergleiche die Finanzierungsmodelle: Leasing, Kauf, Finanzierung und Pay-per-Use.",
-    "answer": "Leasing: + Planbare Raten, keine hohe Anfangsinvestition | - Keine Eigentumsrechte, langfristige Kosten\n\nKauf: + Eigentum, keine laufenden Verpflichtungen | - Hohe Anfangsinvestition, Wertverlust\n\nFinanzierung: + Eigentum nach Abzahlung, flexiblere Zahlung | - Zinsen und Gebühren, Kreditabhängigkeit\n\nPay-per-Use: + Kosten nur bei tatsächlicher Nutzung | - Unvorhersehbare Kosten, langfristig teurer",
+    "answer": "| Modell | Vorteile ✅ | Nachteile ❌ |\n|--------|-----------|------------|\n| **Kauf** | Eigentum, keine lfd. Rate | Hohe Startkosten, Wertverlust |\n| **Leasing** | Planbar, keine hohen Startkosten | Kein Eigentum, teurer als Kauf |\n| **Finanzierung** | Eigentum nach Tilgung | Zinsen, Kreditabhängigkeit |\n| **Pay-per-Use** | Kosten nur bei Nutzung | Schwer kalkulierbar, langfristig teuer |",
     "tags": [
       "Wirtschaft",
       "Kosten",
@@ -1101,7 +1101,7 @@
     "type": "praxis",
     "difficulty": 3,
     "question": "Wie führt man einen qualitativen und quantitativen Angebotsvergleich durch?",
-    "answer": "Quantitativer Angebotsvergleich:\nVergleich messbarer Faktoren wie Preis, Lieferzeit oder Garantie.\n\nBezugspreis berechnen:\nListenpreis\n- Rabatt (z.B. 10%)\n= Zieleinkaufspreis\n- Skonto (z.B. 2% bei Zahlung innerhalb 10 Tagen)\n= Bareinkaufspreis\n+ Bezugskosten (Transport, Verpackung, Versicherung)\n= Bezugspreis (tatsächliche Kosten)\n\nQualitativer Angebotsvergleich:\nBewertung nicht messbarer Faktoren:\n• Qualität und Zuverlässigkeit\n• Servicequalität und Support\n• Referenzen und Reputation\n• Umweltfreundlichkeit\n• Innovationsfähigkeit\n\nMethode: Nutzwertanalyse mit gewichteten Kriterien und Punktbewertung.",
+    "answer": "### Quantitativ (Zahlen)\nVergleich von Preis, Lieferzeit, Skonto.\n\n**Bezugspreiskalkulation:**\n```\n  Listenpreis\n- Rabatt\n= Zieleinkaufspreis\n- Skonto\n= Bareinkaufspreis\n+ Bezugskosten\n= Bezugspreis (Einstandspreis)\n```\n\n### Qualitativ (Bewertung)\nNicht messbare Faktoren (Soft Skills):\n- Zuverlässigkeit, Ruf\n- Support-Qualität\n- Innovation\n\n➡️ **Methode:** Nutzwertanalyse",
     "tags": [
       "Wirtschaft",
       "Angebotsvergleich",
@@ -1118,7 +1118,7 @@
     "type": "praxis",
     "difficulty": 4,
     "question": "Was ist eine Nutzwertanalyse und wie wird sie durchgeführt?",
-    "answer": "Die Nutzwertanalyse ist eine Methode zur Entscheidungsfindung, die qualitative und quantitative Faktoren berücksichtigt. Sie wird verwendet, um verschiedene Optionen zu bewerten und die beste Alternative auszuwählen, indem unterschiedliche Kriterien systematisch gewichtet und bewertet werden.\n\nDurchführung:\n1. Kriterien festlegen (z.B. Preis, Leistung, Benutzerfreundlichkeit)\n2. Gewichtung der Kriterien vergeben (z.B. in Prozent, Summe = 100%)\n3. Jede Alternative pro Kriterium bewerten (z.B. 1-10)\n4. Gewichtete Punktzahl berechnen: Gewichtung × Bewertung\n5. Gesamtpunktzahl pro Alternative aufsummieren\n6. Beste Alternative = höchste Gesamtpunktzahl",
+    "answer": "Methode zur Entscheidungsfindung mit **qualitativen** Faktoren.\n\n### Ablauf\n1. **Kriterien** festlegen (z.B. Preis, Support)\n2. **Gewichtung** bestimmen (Summe = 100%)\n3. **Punkte** vergeben (1-10)\n4. **Gewichtete Punkte** berechnen (Punkte × Gewicht)\n5. **Summe** bilden → Höchster Wert gewinnt\n\n✅ Ideal für komplexe Entscheidungen (Softwareauswahl, Lieferanten).",
     "image_ref": "nutzwertanalyse_beispiel.png",
     "tags": [
       "Wirtschaft",
@@ -1135,7 +1135,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Wertschöpfung und wie berechnet man sie?",
-    "answer": "Wertschöpfung ist der Wertzuwachs, den ein Unternehmen durch seine Tätigkeit zu den Vorleistungen hinzufügt.\n\nBerechnung:\nWertschöpfung = Produktionswert - Vorleistungen\n\nBeispiel:\n• Umsatzerlöse + Bestandsveränderungen + andere Erträge = Produktionswert\n• Rohstoffe + Fremdleistungen + sonstige Kosten = Vorleistungen\n\nVerteilung der Wertschöpfung:\n• Löhne und Gehälter (Arbeitnehmer)\n• Zinsen (Kapitalgeber)\n• Mieten/Pachten (Verpächter)\n• Steuern (Staat)\n• Gewinn (Unternehmen)\n\nBedeutung: Messgröße für wirtschaftliche Leistungsfähigkeit, Grundlage für BIP-Berechnung.",
+    "answer": "**Wertschöpfung** = Der Wert, den ein Unternehmen den Vorleistungen hinzufügt.\n\n```\nProduktionswert (Umsatz)\n- Vorleistungen (Material, Fremdleistung)\n= Wertschöpfung\n```\n\n### Verteilung\n- **Arbeitnehmer:** Löhne\n- **Kapitalgeber:** Zinsen\n- **Staat:** Steuern\n- **Unternehmen:** Gewinn",
     "tags": [
       "Wirtschaft",
       "Wertschöpfung",
@@ -1151,7 +1151,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was umfasst eine Machbarkeitsanalyse mit Budgetvorgabe?",
-    "answer": "Machbarkeitsanalyse bewertet, ob ein Projekt umsetzbar ist:\n• Technische Machbarkeit: Verfügbarkeit von Technologien\n• Wirtschaftliche Machbarkeit: Rentabilität und Kosten-Nutzen-Analyse\n• Rechtliche Machbarkeit: Einhaltung gesetzlicher Vorgaben\n\nBudgetvorgabe umfasst: Kosten für Personal, Material und Infrastruktur + Reserve für unvorhergesehene Ausgaben.\n\nVor- und Nachkalkulation:\n• Vorkalkulation: Schätzung der Kosten vor Projektstart (Material, Personal, externe Dienstleistungen!!!)\n• Nachkalkulation: Erfassung der tatsächlichen Kosten nach Projektabschluss, Vergleich mit Vorkalkulation, Ableitung von Optimierungspotenzialen",
+    "answer": "### Machbarkeitsanalyse\nPrüfung vor Projektstart:\n- **Technisch:** Ist es möglich?\n- **Wirtschaftlich:** Lohnt es sich?\n- **Rechtlich:** Ist es erlaubt?\n\n### Kalkulation\n- **Vorkalkulation:** Schätzung (Budgetplanung)\n- **Budget:** Personal + Material + Puffer\n- **Nachkalkulation:** Vergleich Plan vs. Ist (Lessons Learned)",
     "tags": [
       "Wirtschaft",
       "Projekte",
@@ -1168,7 +1168,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Wie beurteilt man den Einfluss von Stakeholdern?",
-    "answer": "Stakeholder sind alle Personen oder Gruppen mit Interesse am Projekt: Auftraggeber, Kunden, Projektteam, Lieferanten, Behörden.\n\nBeurteilung durch:\n• Stakeholder-Analyse (Identifikation und Priorisierung)\n• Kommunikationsstrategie zur Einbindung relevanter Akteure\n• Konfliktmanagement zur Minimierung negativer Einflüsse",
+    "answer": "**Stakeholder** = Interessengruppen am Projekt.\n\n### Analyse\n1. **Identifizieren:** Wer sind sie? (Kunde, Team, Chef, Gesetzgeber)\n2. **Bewerten:** Einfluss & Interesse (Matrix)\n3. **Strategie:**\n   - Hoher Einfluss/Interesse → **Kooperieren**\n   - Niedriger Einfluss → **Informieren**",
     "tags": [
       "Wirtschaft",
       "Stakeholder",
@@ -1183,7 +1183,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Wie wird eine Risikoanalyse durchgeführt?",
-    "answer": "1. Definition und Identifikation von Risiken:\n   • Technische Risiken (unvorhergesehene Herausforderungen)\n   • Wirtschaftliche Risiken (Budgetüberschreitungen, Marktveränderungen)\n   • Organisatorische Risiken (Ressourcenknappheit, Zeitverzögerungen)\n2. Bewertung hinsichtlich Eintrittswahrscheinlichkeit und Auswirkung\n3. Entwicklung von Maßnahmen zur Risikovermeidung, -minimierung oder -akzeptanz\n4. Kontinuierliche Überwachung und Anpassung während des Projektverlaufs",
+    "answer": "1. **Identifikation:** Was kann schiefgehen? (Technik, Budget, Personal)\n2. **Bewertung:**\n   - Eintrittswahrscheinlichkeit (W)\n   - Schadenshöhe (S)\n   - **Risikowert** = W × S\n3. **Maßnahmen:**\n   - Vermeiden\n   - Vermindern\n   - Verlagern (Versicherung)\n   - Akzeptieren\n4. **Überwachung:** Regelmäßiges Controlling",
     "tags": [
       "Wirtschaft",
       "Risikoanalyse",
@@ -1198,7 +1198,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche Marktformen gibt es?",
-    "answer": "Monopol: Nur ein Anbieter, vollständige Marktkontrolle. Beispiel: einziger Stromversorger einer Region.\n\nOligopol: Wenige Anbieter mit starker Marktmacht. Beispiel: Automobilindustrie (VW, Toyota, GM).\n\nPolypol: Viele Anbieter, kein einzelner dominant, Preise durch Marktmechanismus. Beispiel: Lebensmittelmarkt.\n\nKäufermarkt: Nachfrage hoch, Anbieter konkurrieren um Käufer. Beispiel: Wohnungsmarkt in beliebter Stadt.\n\nVerkäufermarkt: Angebot hoch, Käufer konkurrieren um Angebote. Beispiel: Markt für Gebrauchtwagen.",
+    "answer": "| Marktform | Anbieter | Nachfrager | Beispiel |\n|-----------|----------|------------|----------|\n| **Monopol** | Einer | Viele | Bahnnetz, Wasser |\n| **Oligopol** | Wenige | Viele | Mobilfunk, Tankstellen |\n| **Polypol** | Viele | Viele | Supermarkt, Handwerk |\n\n- **Käufermarkt:** Angebot > Nachfrage (Kunde ist König)\n- **Verkäufermarkt:** Nachfrage > Angebot (Verkäufer bestimmt Preis)",
     "tags": [
       "Wirtschaft",
       "Marktformen",
@@ -1215,7 +1215,7 @@
     "type": "vergleich",
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen direktem und indirektem Vertrieb?",
-    "answer": "Direkter Vertrieb: Hersteller verkauft direkt an den Endkunden, ohne Zwischenhändler.\n\nIndirekter Vertrieb: Das Produkt wird erst an einen oder mehrere Zwischenhändler vertrieben und kommt erst nach verschiedenen Zwischenstopps beim Endkunden an.",
+    "answer": "### Direkter Vertrieb\nHersteller verkauft **direkt** an Endkunden.\n- ✅ Höhere Marge, Kundenkontakt\n- ❌ Hoher Aufwand\n- *Bsp:* Apple Store, Dell\n\n### Indirekter Vertrieb\nVerkauf über **Zwischenhändler**.\n- ✅ Breite Marktabdeckung, weniger logistischer Aufwand\n- ❌ Marge wird geteilt, kein direkter Kundenkontakt\n- *Bsp:* Supermarkt, MediaMarkt",
     "tags": [
       "Wirtschaft",
       "Vertrieb",
@@ -1230,7 +1230,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine Zielgruppendefinition und welche Kriterien werden verwendet?",
-    "answer": "Eine Zielgruppe ist eine Gruppe von Personen oder Unternehmen, die ein Produkt oder eine Dienstleistung ansprechen soll.\n\nKriterien der Zielgruppensegmentierung:\n\nDemografisch:\n• Alter, Geschlecht, Familienstand\n• Einkommen, Bildung, Beruf\n\nGeografisch:\n• Region, Stadt/Land, Klima\n\nPsychografisch:\n• Lebensstil, Werte, Interessen\n• Persönlichkeit, Einstellungen\n\nVerhaltensorientiert:\n• Kaufverhalten, Markentreue\n• Nutzungsintensität, Preissensibilität\n\nB2B-Kriterien:\n• Branche, Unternehmensgröße\n• Position im Einkaufsprozess\n\nMethoden: Umfragen, Marktforschung, Datenanalyse, Personas erstellen.",
+    "answer": "**Zielgruppe** = Personenkreis, der angesprochen werden soll.\n\n### Segmentierung\n- **Demografisch:** Alter, Geschlecht, Einkommen\n- **Geografisch:** Region, Stadt/Land\n- **Psychografisch:** Werte, Lebensstil\n- **Verhalten:** Kaufhäufigkeit, Markentreue\n\n🎯 **Methode:** Personas erstellen (fiktive idealisierte Kunden).",
     "tags": [
       "Wirtschaft",
       "Marketing",
@@ -1246,7 +1246,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Welche Vertragsarten gibt es?",
-    "answer": "• Kaufvertrag: Entgeltlicher Erwerb von Waren/Dienstleistungen. Verkäufer liefert mangelfreie Ware, Käufer zahlt.\n• Mietvertrag: Nutzung einer Sache gegen regelmäßige Miete. Vermieter stellt bereit/erhält instand.\n• Leasing: Spezielle Mietform (oft Fahrzeuge/Maschinen). Leasinggeber bleibt Eigentümer.\n• Lizenzvertrag: Nutzung von Rechten (Software, Patente) gegen Gebühr.\n• Werkvertrag: Herstellung eines konkreten Werks. Zahlung nach Abnahme.\n• Werkliefervertrag: Kombination Kauf- und Werkvertrag (z.B. Möbel nach Maß).\n• Dienstvertrag: Erbringung von Dienstleistungen ohne Erfolgsgarantie (z.B. Arbeitsvertrag).\n• Servicevertrag: Regelmäßige Wartung/Supportleistungen.",
+    "answer": "| Vertragstyp | Leistung | Beispiel |\n|-------------|----------|----------|\n| **Kauf** | Ware gegen Geld (Eigentum) | Hardware-Kauf |\n| **Miete** | Nutzung auf Zeit | Büroräume |\n| **Leasing** | Nutzung + Raten (spezielle Miete) | Firmenwagen |\n| **Werk** | Erfolg/Ergebnis geschuldet | Website-Erstellung |\n| **Dienst** | Tätigkeit/Bemühen geschuldet | IT-Beratung, Arbeitsvertrag |\n| **Lizenz** | Nutzungsrecht | Software |",
     "tags": [
       "Wirtschaft",
       "Verträge",
@@ -1264,7 +1264,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind die wesentlichen Vertragsbestandteile?",
-    "answer": "• Leistungsbeschreibung: Detaillierte Beschreibung der geschuldeten Leistung\n• Termine: Festlegung von Fristen und Lieferzeiten\n• Entgelte: Vereinbarte Vergütung\n• Sanktionen/Konventionalstrafen: Vertragsstrafen bei Nichterfüllung oder Verzug",
+    "answer": "1. **Vertragsparteien** (Wer?)\n2. **Leistungsgegenstand** (Was?)\n3. **Vergütung** (Wieviel?)\n4. **Termine/Fristen** (Wann?)\n5. **Sanktionen** (Was wenn nicht? - Pönale)\n6. **Gerichtsstand** & Schlussbestimmungen (Salvatorische Klausel)",
     "tags": [
       "Wirtschaft",
       "Verträge",
@@ -1280,7 +1280,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Arten von Vertragsstörungen gibt es?",
-    "answer": "• Leistungsverzug: Verspätete Erfüllung der vertraglichen Leistung\n• Schlechtleistung: Erfüllung der Leistung mit Mängeln\n• Nichterfüllung: Vollständiges Ausbleiben der Leistung\n• Störung der Geschäftsgrundlage: Unerwartete Änderungen der Rahmenbedingungen",
+    "answer": "### Störungsarten\n- **Leistungsverzug:** Lieferung zu spät (Mahnung nötig)\n- **Zahlungsverzug:** Geld zu spät\n- **Schlechtleistung:** Mangelhafte Ware (Sach-/Rechtsmangel)\n- **Nichterfüllung:** Leistung unmöglich\n- **Annahmeverzug:** Käufer nimmt Ware nicht ab",
     "tags": [
       "Wirtschaft",
       "Vertragsstörungen",
@@ -1295,7 +1295,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche Zielsetzungen können Verträge haben?",
-    "answer": "• Ökonomisch: Wirtschaftliche Vorteile, Kostenoptimierung, Gewinnmaximierung\n• Ökologisch: Nachhaltigkeit, Ressourcenschonung, Umweltfreundlichkeit\n• Sozial: Arbeitnehmerrechte, Fairness, gesellschaftliche Verantwortung",
+    "answer": "| Ziel | Fokus | Beispiel |\n|------|-------|----------|\n| **Ökonomisch** | Profit, Effizienz | Gewinnmaximierung, Kostensenkung |\n| **Ökologisch** | Umwelt | CO2-Reduktion, Recycling |\n| **Sozial** | Menschen | Faire Löhne, Arbeitsschutz |",
     "tags": [
       "Wirtschaft",
       "Zielsetzungen",
@@ -1311,7 +1311,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Welche Organisationsformen gibt es und worin unterscheiden sie sich?",
-    "answer": "Einliniensystem: Jeder Mitarbeiter hat genau einen Vorgesetzten. + Klare Zuständigkeiten | - Lange Entscheidungswege\n\nMehrliniensystem: Mitarbeiter sind mehreren Vorgesetzten unterstellt. + Spezialisierung, kürzere Kommunikation | - Unklare Verantwortlichkeiten\n\nStabliniensystem: Einliniensystem + beratende Stabsstellen ohne Weisungsbefugnis. + Entlastung der Führungskräfte | - Höhere Kosten, Interessenkonflikte\n\nMatrixorganisation: Kombination aus Funktion und Projektzugehörigkeit. + Hohe Flexibilität, bessere Ressourcennutzung | - Hoher Kommunikationsaufwand, Konflikte",
+    "answer": "| System | Merkmale | Vorteil/Nachteil |\n|--------|----------|------------------|\n| **Einlinien** | 1 Chef | ✅ Klarheit ❌ Langer Weg |\n| **Mehrlinien** | Mehrere Chefs | ✅ Fachwissen ❌ Konflikte |\n| **Stablinien** | Einlinien + Berater | ✅ Entlastung ❌ Kosten |\n| **Matrix** | Funktion + Projekt | ✅ Flexibel ❌ Machtkämpfe |",
     "tags": [
       "Wirtschaft",
       "Organisation",
@@ -1327,7 +1327,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Handlungs- und Entscheidungsvollmachten gibt es?",
-    "answer": "• Handlungsvollmacht: Befugnis zur Durchführung bestimmter Geschäfte im Rahmen der Unternehmensrichtlinien\n• Einzelvollmacht: Berechtigung zur Durchführung einer einmaligen Handlung\n• Gesamtvollmacht: Mehrere Personen sind gemeinsam zur Entscheidung befugt\n• Prokura: Umfassende geschäftliche Vertretungsbefugnis für kaufmännische Tätigkeiten",
+    "answer": "### Vollmachten\n- **Handlungsvollmacht (i.V.):** Alltägliche Geschäfte\n  - *Artvollmacht:* Bestimmte Art von Geschäften\n- **Prokura (ppa.):** Fast alle Geschäfte (außer Bilanz, Grundstücke)\n  - *Einzelprokura:* Allein vertretungsberechtigt\n  - *Gesamtprokura:* Nur mit anderem Prokuristen",
     "tags": [
       "Wirtschaft",
       "Vollmachten",
@@ -2459,7 +2459,7 @@
     "type": "berechnung",
     "difficulty": 2,
     "question": "Was ist die Amortisationsrechnung und wie wird sie berechnet?",
-    "answer": "Die Amortisationsrechnung ermittelt, nach welchem Zeitraum sich eine Investition durch die erzielten Rückflüsse bezahlt gemacht hat.\n\nFormel:\nAmortisationsdauer = Anschaffungskosten / jährlicher Rückfluss\n\nBeispiel: Server kostet 12.000 €, jährliche Einsparung 4.000 €\n→ 12.000 / 4.000 = 3 Jahre Amortisationsdauer\n\nJe kürzer die Amortisationsdauer, desto besser die Investition.",
+    "answer": "**Amortisation** = Wann hat sich die Investition bezahlt gemacht?\n\nFormel:\n```\nAmortisationsdauer = Anschaffungskosten / jährlicher Rückfluss\n```\n\n### Beispiel\n- **Kosten:** 12.000 €\n- **Ersparnis:** 4.000 €/Jahr\n- **Dauer:** 12.000 / 4.000 = **3 Jahre**\n\n✅ Ziel: Je kürzer, desto besser.",
     "tags": [
       "Wirtschaft",
       "Amortisation",
@@ -2475,7 +2475,7 @@
     "type": "berechnung",
     "difficulty": 2,
     "question": "Was ist die Bezugskalkulation und wie ist der Rechenweg?",
-    "answer": "Die Bezugskalkulation ermittelt den tatsächlichen Einkaufspreis (Bezugspreis/Einstandspreis) einer Ware unter Berücksichtigung aller Zu- und Abschläge.\n\nRechenweg:\nListeneinkaufspreis\n- Lieferantenrabatt\n= Zieleinkaufspreis\n- Lieferantenskonto\n= Bareinkaufspreis\n+ Bezugskosten (Transport, Versicherung, Zoll)\n= Bezugspreis (Einstandspreis)\n\nDer Bezugspreis ist die Grundlage für die Verkaufskalkulation.",
+    "answer": "Ermittlung des **Bezugspreises** (Einstandspreis).\n\n### Schema\n```\n  Listeneinkaufspreis (netto)\n- Lieferantenrabatt\n= Zieleinkaufspreis\n- Lieferantenskonto\n= Bareinkaufspreis\n+ Bezugskosten (Fracht, Zoll)\n= Bezugspreis\n```\n\n📌 Basis für die Verkaufskalkulation.",
     "tags": [
       "Wirtschaft",
       "Bezugskalkulation",
@@ -2491,7 +2491,7 @@
     "type": "berechnung",
     "difficulty": 2,
     "question": "Was ist der ROI (Return on Investment) und wie wird er berechnet?",
-    "answer": "Der ROI misst die Rendite einer Investition im Verhältnis zu den eingesetzten Kosten.\n\nFormel:\nROI = (Gewinn / eingesetztes Kapital) × 100\n\nAlternativ (DuPont-Formel):\nROI = Umsatzrentabilität × Kapitalumschlag\n= (Gewinn / Umsatz) × (Umsatz / Gesamtkapital)\n\nBeispiel: Investition 50.000 €, Gewinn 10.000 €\n→ ROI = (10.000 / 50.000) × 100 = 20%\n\nEin positiver ROI bedeutet, dass die Investition profitabel war.",
+    "answer": "**ROI** = Kapitalrendite (Wie viel Gewinn bringt das investierte Kapital?)\n\nFormel:\n```\nROI = (Gewinn / Kapital) × 100\n```\n\n### Beispiel\n- **Invest:** 50.000 €\n- **Gewinn:** 10.000 €\n- **ROI:** (10.000 / 50.000) × 100 = **20%**\n\n✅ Positiver ROI = Gewinn.",
     "tags": [
       "Wirtschaft",
       "ROI",
@@ -2507,7 +2507,7 @@
     "type": "berechnung",
     "difficulty": 2,
     "question": "Was ist die Rentabilitätsrechnung?",
-    "answer": "Die Rentabilitätsrechnung bewertet, wie viel Gewinn eine Investition im Verhältnis zum eingesetzten Kapital erwirtschaftet.\n\nFormel:\nRentabilität = (durchschnittlicher Gewinn / durchschnittlich eingesetztes Kapital) × 100\n\nDurchschnittlich eingesetztes Kapital = (Anschaffungskosten + Restwert) / 2\n\nBeispiel: Gewinn 6.000 €/Jahr, Anschaffung 40.000 €, Restwert 0 €\n→ Kapital = (40.000 + 0) / 2 = 20.000 €\n→ Rentabilität = (6.000 / 20.000) × 100 = 30%",
+    "answer": "Verzinsung des eingesetzten Kapitals.\n\nFormel:\n```\nRentabilität = (Gewinn / Ø Kapital) × 100\n```\n\n*Ø Kapital = (Anschaffung + Restwert) / 2*\n\n### Bsp\n- **Gewinn:** 6.000 €\n- **Kapital:** 20.000 € (Ø)\n- **Rentabilität:** 30%",
     "tags": [
       "Wirtschaft",
       "Rentabilität",
@@ -2523,7 +2523,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist eine Make-or-Buy-Entscheidung?",
-    "answer": "Make-or-Buy ist die Entscheidung, ob ein Produkt/eine Dienstleistung selbst erstellt (Make) oder extern eingekauft (Buy) wird.\n\nMake (Eigenfertigung):\n+ Volle Kontrolle über Qualität und Prozesse\n+ Know-how bleibt im Unternehmen\n+ Unabhängigkeit von Lieferanten\n- Hohe Anfangsinvestition\n- Bindung von Ressourcen\n\nBuy (Fremdbezug):\n+ Geringere Fixkosten\n+ Zugang zu Spezialwissen\n+ Flexibilität\n- Abhängigkeit vom Lieferanten\n- Qualitätskontrolle schwieriger\n\nEntscheidungskriterien: Kosten, Qualität, Kernkompetenz, Kapazität, Risiko.",
+    "answer": "**Eigenfertigung** (Make) oder **Fremdbezug** (Buy)?\n\n| Option | Vorteile | Nachteile |\n|--------|----------|-----------|\n| **Make** | Kontrolle, Know-how bleibt, Unabhängig | Hohe Fixkosten, Ressourceneinsatz |\n| **Buy** | Günstiger, Flexibel, Spezialwissen | Abhängigkeit, Qualitätsrisiko |\n\n⚠️ **Kriterien:** Kosten, Kapazität, Kompetenz.",
     "tags": [
       "Wirtschaft",
       "Make or Buy",
@@ -2538,7 +2538,7 @@
     "type": "berechnung",
     "difficulty": 2,
     "question": "Was ist ein Ratendarlehen und wie berechnet man es?",
-    "answer": "Beim Ratendarlehen (Tilgungsdarlehen) bleibt die Tilgungsrate konstant, während der Zinsanteil mit sinkender Restschuld abnimmt.\n\nBerechnung:\nTilgungsrate = Darlehenssumme / Anzahl Raten\nZinsen = Restschuld × Zinssatz\nAnnuität (Rate) = Tilgung + Zinsen\n\nBeispiel: 12.000 € Darlehen, 4 Jahre, 5% Zinsen\nTilgung/Jahr: 12.000 / 4 = 3.000 €\nJahr 1: 3.000 + (12.000 × 0,05) = 3.600 €\nJahr 2: 3.000 + (9.000 × 0,05) = 3.450 €\nJahr 3: 3.000 + (6.000 × 0,05) = 3.300 €\nJahr 4: 3.000 + (3.000 × 0,05) = 3.150 €\n\nDie Gesamtbelastung sinkt mit jeder Rate.",
+    "answer": "Konstante **Abzahlung (Tilgung)** + sinkende **Zinsen**.\n\n### Merkmale\n- **Rate:** Sinkt jährlich (da Zinsen auf Restschuld weniger werden)\n- **Tilgung:** Bleibt gleich\n\n### Beispiel (12.000 €, 4 Jahre, 5%)\n1. Jahr: 3000 Tilgung + 600 Zins = **3600 €**\n2. Jahr: 3000 Tilgung + 450 Zins = **3450 €**",
     "tags": [
       "Wirtschaft",
       "Ratendarlehen",
@@ -2554,7 +2554,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist das Harvard-Konzept und welche Prinzipien hat es?",
-    "answer": "Das Harvard-Konzept ist eine Methode für sachgerechtes Verhandeln mit dem Ziel einer Win-Win-Lösung.\n\n5 Prinzipien:\n1. Menschen und Probleme getrennt behandeln – Sachlich bleiben, nicht persönlich\n2. Auf Interessen konzentrieren, nicht auf Positionen – Was will die Gegenseite wirklich?\n3. Entscheidungsoptionen (Alternativen) entwickeln – Kreative Lösungen suchen\n4. Auf objektive Kriterien bestehen – Neutrale Bewertungsmaßstäbe nutzen\n5. BATNA (Best Alternative to a Negotiated Agreement) kennen – Was ist die beste Alternative, wenn keine Einigung erzielt wird?\n\nNachteil: Funktioniert schlecht bei unkooperativen Verhandlungspartnern.",
+    "answer": "Methode für sachgerechtes Verhandeln (**Win-Win**).\n\n### 4 Prinzipien\n1. **Menschen & Probleme** trennen (Hart in der Sache, weich zum Menschen)\n2. **Interessen** statt Positionen (Warum will er das?)\n3. **Optionen** entwickeln (Alternativen suchen)\n4. **Objektive Kriterien** nutzen (Marktpreise, Gesetze)\n\n📌 **BATNA:** Beste Alternative, falls keine Einigung.",
     "tags": [
       "Wirtschaft",
       "Harvard-Konzept",
@@ -2570,7 +2570,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche Wirtschaftssektoren gibt es?",
-    "answer": "Primärsektor (Urproduktion): Gewinnung von Rohstoffen (Landwirtschaft, Forstwirtschaft, Bergbau, Fischerei).\n\nSekundärsektor (Industrieller Sektor): Verarbeitung von Rohstoffen zu Produkten (Industrie, Handwerk, Energieversorgung, Baugewerbe).\n\nTertiärsektor (Dienstleistungssektor): Erbringung von Dienstleistungen (Handel, Banken, Versicherungen, IT-Dienstleistungen, Gesundheitswesen).\n\nIT-Unternehmen gehören zum Tertiärsektor. In Deutschland arbeiten ca. 70% der Beschäftigten im Tertiärsektor.",
+    "answer": "| Sektor | Beschreibung | Beispiel |\n|--------|--------------|----------|\n| **Primär** | Urproduktion | Bergbau, Landwirtschaft |\n| **Sekundär** | Industrie/Handwerk | Autobau, Baugewerbe |\n| **Tertiär** | Dienstleistung | **IT, Handel, Banken** |\n\nℹ️ Deutschland ist eine Dienstleistungsgesellschaft (~70% im Tertiärsektor).",
     "tags": [
       "Wirtschaft",
       "Wirtschaftssektoren",
@@ -2585,7 +2585,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist die Win-Win-Strategie?",
-    "answer": "Die Win-Win-Strategie ist ein Verhandlungsansatz, bei dem beide Parteien einen Vorteil aus der Einigung ziehen.\n\nMerkmale:\n- Kooperativer statt kompetitiver Ansatz\n- Fokus auf gemeinsame Interessen\n- Langfristige Geschäftsbeziehungen werden gefördert\n- Vertrauen wird aufgebaut\n\nGegensatz: Win-Lose (eine Seite gewinnt, andere verliert) oder Lose-Lose (beide verlieren).\n\nIn der IT z.B.: Kunde bekommt maßgeschneiderte Lösung, Dienstleister bekommt fairen Preis und Folgeaufträge.",
+    "answer": "Beide Parteien profitieren vom Ergebnis.\n\n**Gegensätze:**\n- **Win-Lose:** Einer gewinnt auf Kosten des anderen (kurzfristig)\n- **Lose-Lose:** Beide verlieren (Streit, Klage)\n\n✅ **Vorteil:** Langfristige Geschäftsbeziehung & Vertrauen.",
     "tags": [
       "Wirtschaft",
       "Win-Win",
@@ -2983,7 +2983,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine Kosten-Nutzen-Analyse?",
-    "answer": "Die Kosten-Nutzen-Analyse vergleicht die Gesamtkosten einer Maßnahme mit dem erwarteten Nutzen.\n\nKosten:\n- Direkte Kosten: Anschaffung, Lizenzen, Personal\n- Indirekte Kosten: Schulung, Ausfallzeiten, Migration\n- Laufende Kosten: Wartung, Support, Betrieb\n\nNutzen:\n- Quantitativer Nutzen: Messbar in Geld (z.B. Einsparungen, Umsatzsteigerung)\n- Qualitativer Nutzen: Nicht direkt messbar (z.B. Kundenzufriedenheit, Image)\n\nVorgehen:\n1. Alternativen identifizieren\n2. Kosten und Nutzen für jede Alternative ermitteln\n3. Gegenüberstellen und bewerten\n4. Entscheidung treffen\n\nWenn Nutzen > Kosten → Investition lohnt sich.\nOft kombiniert mit Nutzwertanalyse für qualitative Aspekte.",
+    "answer": "**Kosten** vs. **Nutzen** einer Investition.\n\n### Faktoren\n- **Kosten:** Anschaffung, Betrieb, Schulung\n- **Nutzen:** Geld (Umsatz), Zeit (Effizienz), Qualität (Image)\n\n### Entscheidung\n- **Nutzen > Kosten** → Investieren ✅\n- Oft kombiniert mit *Nutzwertanalyse* (für qualitative Faktoren).",
     "tags": [
       "Wirtschaft",
       "Kosten-Nutzen",
@@ -3233,7 +3233,7 @@
     "type": "berechnung",
     "difficulty": 2,
     "question": "Was sind Deckungsbeitrag und Break-Even-Point?",
-    "answer": "Deckungsbeitrag (DB):\nDer Betrag, der nach Abzug der variablen Kosten zur Deckung der Fixkosten beiträgt.\n\nDB pro Stück = Verkaufspreis - variable Stückkosten\nDB gesamt = Umsatz - variable Gesamtkosten\nGewinn = DB gesamt - Fixkosten\n\nBeispiel: Preis 50 €, variable Kosten 30 €\n→ DB = 50 - 30 = 20 € pro Stück\n\nBreak-Even-Point (Gewinnschwelle):\nAb welcher Menge werden die Fixkosten gedeckt?\n\nBEP (Menge) = Fixkosten / DB pro Stück\n\nBeispiel: Fixkosten 10.000 €, DB 20 € pro Stück\n→ BEP = 10.000 / 20 = 500 Stück\n→ Ab 501 Stück wird Gewinn erzielt\n\nBEP (Umsatz) = Fixkosten / (DB / Verkaufspreis)\n= 10.000 / (20/50) = 25.000 €",
+    "answer": "### Deckungsbeitrag (DB)\nBetrag zur Deckung der Fixkosten.\n```\nDB pro Stück = Preis - var. Kosten\nDB gesamt = Umsatz - var. Gesamtkosten\nGewinn = DB gesamt - Fixkosten\n```\n\n### Break-Even-Point (BEP)\nGewinnschwelle (Kosten = Umsatz).\n```\nBEP (Menge) = Fixkosten / DB pro Stück\n```\n\n📌 **Beispiel:**\n- Fix: 10.000 €\n- DB: 20 €/Stk\n- **BEP:** 500 Stück",
     "tags": [
       "Wirtschaft",
       "Deckungsbeitrag",
@@ -3249,7 +3249,7 @@
     "type": "berechnung",
     "difficulty": 3,
     "question": "Wie funktioniert die Handelskalkulation (Vorwärts)?",
-    "answer": "Vorwärtskalkulation (vom Einkauf zum Verkauf):\n\nListeneinkaufspreis (LEP)\n- Lieferantenrabatt\n= Zieleinkaufspreis (ZEP)\n- Lieferantenskonto\n= Bareinkaufspreis (BEP)\n+ Bezugskosten (Transport, Versicherung)\n= Bezugspreis / Einstandspreis\n+ Handlungskosten (Lager, Personal, Verwaltung)\n= Selbstkosten\n+ Gewinnzuschlag\n= Barverkaufspreis\n+ Kundenskonto\n= Zielverkaufspreis (ZVP)\n+ Kundenrabatt\n= Listenverkaufspreis (LVP)\n\nZuschlagskalkulation:\nMaterialeinzelkosten + Materialgemeinkosten\n+ Fertigungseinzelkosten + Fertigungsgemeinkosten\n= Herstellkosten\n+ Verwaltungsgemeinkosten + Vertriebsgemeinkosten\n= Selbstkosten\n+ Gewinn = Angebotspreis",
+    "answer": "### Vorwärtskalkulation (Schema)\n```\n  Listeneinkaufspreis (LEP)\n- Lieferantenrabatt\n= Zieleinkaufspreis (ZEP)\n- Skonto\n= Bareinkaufspreis\n+ Bezugskosten\n= Bezugspreis\n+ Handlungskosten (Gemeinkosten)\n= Selbstkosten\n+ Gewinn\n= Barverkaufspreis\n+ Kundenskonto\n+ Kundenrabatt\n= Listenverkaufspreis (LVP)\n```",
     "tags": [
       "Wirtschaft",
       "Handelskalkulation",
@@ -3265,7 +3265,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Zahlungsverzug und welche Konsequenzen hat er?",
-    "answer": "Zahlungsverzug tritt ein, wenn:\n- Eine fällige Zahlung nicht geleistet wird UND\n- Der Schuldner gemahnt wurde ODER\n- Ein Zahlungstermin kalendermäßig bestimmt war ODER\n- 30 Tage nach Fälligkeit und Zugang der Rechnung (bei Unternehmen, §286 BGB)\n\nMahnverfahren:\n1. Zahlungserinnerung (freundlich, optional)\n2. 1. Mahnung (Fristsetzung)\n3. 2. Mahnung (mit Androhung rechtlicher Schritte)\n4. 3. Mahnung / Letzte Mahnung\n5. Gerichtliches Mahnverfahren / Inkasso\n\nKonsequenzen für den Schuldner:\n- Verzugszinsen (gesetzlich: 5% über Basiszinssatz bei Verbrauchern, 9% bei Unternehmen)\n- Mahnkosten\n- Schadensersatz\n- Gerichtliche Durchsetzung\n\nUmgang mit Liquiditätsengpässen: Ratenzahlung vereinbaren, Zahlungsaufschub, Factoring",
+    "answer": "Schuldner zahlt nicht rechtzeitig.\n\n### Voraussetzungen (§286 BGB)\n- Fälligkeit + Mahnung **ODER**\n- Fälligkeit nach Kalenderdatum **ODER**\n- 30 Tage nach Rechnung (bei Unternehmen automatisch)\n\n### Folgen\n- **Verzugszinsen** (5% Privat / 9% Business über Basiszinssatz)\n- **Schadensersatz** (Mahnkosten, Inkasso)",
     "tags": [
       "Wirtschaft",
       "Zahlungsverzug",
@@ -3281,7 +3281,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Gewährleistung und Garantie?",
-    "answer": "Gewährleistung (Mängelhaftung):\n- Gesetzlich vorgeschrieben (§437 BGB)\n- Verkäufer haftet für Mängel, die bei Übergabe bestanden\n- Frist: 2 Jahre ab Übergabe (bei Neuwaren)\n- Beweislastumkehr in den ersten 12 Monaten (Verkäufer muss beweisen, dass Mangel nicht vorlag)\n- Rechte: Nacherfüllung → Rücktritt/Minderung → Schadensersatz\n- Nacherfüllung = Reparatur oder Ersatzlieferung (Wahl des Käufers)\n\nGarantie:\n- Freiwillige Zusatzleistung des Herstellers/Händlers\n- Dauer und Umfang frei bestimmbar\n- Oft an Bedingungen geknüpft\n- Ergänzt die Gewährleistung, ersetzt sie nicht\n\nWichtig für die Prüfung:\n- Mängelrüge bei Handelskauf (zweiseitiger): Unverzügliche Rüge nötig (§377 HGB)\n- Mängelarten: Sachmangel, Rechtsmangel\n- Schlechtleistung, Falschlieferung, Minderlieferung",
+    "answer": "| Merkmal | Gewährleistung | Garantie |\n|---------|----------------|----------|\n| **Recht** | Gestzlich (§437 BGB) | Freiwillig |\n| **Inhalt** | Mängelfreiheit bei **Übergabe** | Funktionsfähigkeit auf **Zeit** |\n| **Frist** | 2 Jahre (Beweislastumkehr nach 12 Mon.) | Beliebig (Hersteller) |\n| **Anspruch** | Gegen **Händler** | Gegen **Hersteller** |\n\n⚠️ **Rechte:** Nacherfüllung → Rücktritt/Minderung → Schadensersatz.",
     "tags": [
       "Wirtschaft",
       "Gewährleistung",
@@ -3298,7 +3298,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Unternehmens- und Gesellschaftsformen gibt es?",
-    "answer": "Einzelunternehmen:\n- e.Kfm. (eingetragener Kaufmann): Volle Haftung, alleiniger Inhaber\n\nPersonengesellschaften (natürliche Personen, unbeschränkte Haftung):\n- GbR: Mind. 2 Personen, kein Mindestkapital, alle haften voll\n- OHG: Wie GbR, aber für Kaufleute, Handelsregistereintrag\n- KG: Komplementär (voll haftend) + Kommanditist (nur Einlage)\n\nKapitalgesellschaften (juristische Personen, beschränkte Haftung):\n- GmbH: Mind. 25.000 € Stammkapital, Organe: Geschäftsführer, Gesellschafterversammlung\n- UG: Ab 1 € Stammkapital ('Mini-GmbH'), Rücklagenpflicht\n- AG: Mind. 50.000 € Grundkapital, Organe: Vorstand, Aufsichtsrat, Hauptversammlung\n- SE: Europäische Aktiengesellschaft\n\nSonstige:\n- e.G. (Genossenschaft): Förderung der Mitglieder\n- e.V. (Verein): Nicht gewinnorientiert\n- GmbH & Co. KG: Komplementär = GmbH → beschränkte Haftung\n\nKriterien: Haftung, Mindestkapital, Organe, Gewinnverteilung, Eintragungspflicht",
+    "answer": "### Personengesellschaften (Haftung: voll)\n- **GbR:** Einfachste Form, mind. 2 Gründer\n- **OHG:** Wie GbR, aber für Kaufleute\n- **KG:** Komplementär (voll) + Kommanditist (Teilhaftung)\n\n### Kapitalgesellschaften (Haftung: beschränkt)\n- **GmbH:** Mind. 25k € Stammkapital\n- **UG:** Mini-GmbH (ab 1 €)\n- **AG:** Mind. 50k €, Aktien\n\n📌 **Wahlkriterien:** Haftung, Kapital, Steuer, Image.",
     "tags": [
       "Wirtschaft",
       "Unternehmensformen",
@@ -3317,7 +3317,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen Bedürfnis, Bedarf und Nachfrage?",
-    "answer": "Bedürfnis:\n- Empfinden eines Mangels mit dem Wunsch, ihn zu beheben\n- Unbegrenzt, subjektiv\n- Beispiel: 'Ich möchte mobil im Internet surfen'\n\nBedarf:\n- Bedürfnis + Kaufkraft (Geld vorhanden)\n- Konkreter Wunsch nach einem bestimmten Gut\n- Beispiel: 'Ich möchte ein Smartphone kaufen und kann es mir leisten'\n\nNachfrage:\n- Bedarf, der am Markt wirksam wird (tatsächlicher Kauf)\n- Beispiel: 'Ich gehe ins Geschäft und kaufe das Smartphone'\n\nZusammenhang:\nBedürfnis → + Kaufkraft → Bedarf → + Kaufhandlung → Nachfrage\n\nBedürfnisarten:\n- Existenzbedürfnisse (Nahrung, Wohnung)\n- Grundbedürfnisse (Kleidung, Bildung)\n- Luxusbedürfnisse (Schmuck, Sportwagen)\n- Individuelle vs. kollektive Bedürfnisse",
+    "answer": "1. **Bedürfnis:** Wunsch (Mangelgefühl) *\"Ich will Handy\"*\n2. **Bedarf:** Bedürfnis + Kaufkraft *\"Ich hab Geld dafür\"*\n3. **Nachfrage:** Kauf am Markt *\"Ich kaufe es\"*\n\n➡️ **Reihenfolge:** Bedürfnis → Bedarf → Nachfrage.",
     "tags": [
       "Wirtschaft",
       "Bedürfnis",
@@ -3334,7 +3334,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist TCO (Total Cost of Ownership)?",
-    "answer": "TCO (Total Cost of Ownership) = Gesamtkosten des Besitzes über die gesamte Nutzungsdauer.\n\nDirekte Kosten:\n- Anschaffungskosten (Hardware, Software, Lizenzen)\n- Installationskosten\n- Schulungskosten\n- Wartung und Support\n- Upgrades und Erweiterungen\n- Energiekosten\n- Entsorgungskosten\n\nIndirekte Kosten:\n- Ausfallzeiten (Produktivitätsverlust)\n- Selbsthilfe der Nutzer (statt Arbeit)\n- Einarbeitungszeit\n- Opportunitätskosten\n\nBeispiel Server:\nKauf: 5.000 € + Strom: 500 €/Jahr × 5 Jahre + Wartung: 1.000 €/Jahr × 5 Jahre + Einrichtung: 2.000 €\n= 5.000 + 2.500 + 5.000 + 2.000 = 14.500 € TCO\n\nTCO ist wichtig, weil die Anschaffungskosten oft nur 20-30% der Gesamtkosten ausmachen!",
+    "answer": "**TCO** = Gesamtkosten über die komplette Lebensdauer.\n\n### Zusammensetzung\n- **Direkt (Hard):** Anschaffung, Lizenzen, Wartung\n- **Indirekt (Soft):** Ausfallzeiten, Supportaufwand, Schulung\n\n⚠️ **Wichtig:** Anschaffung ist oft nur die Spitze des Eisbergs (20%).",
     "tags": [
       "Wirtschaft",
       "TCO",
@@ -3350,7 +3350,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Eigen- und Fremdfinanzierung?",
-    "answer": "Eigenfinanzierung (Eigenkapital):\n- Selbstfinanzierung aus Gewinnen (Thesaurierung)\n- Einlagen der Gesellschafter\n- Beteiligungsfinanzierung (neue Gesellschafter)\n- Keine Rückzahlungspflicht, keine Zinsen\n- Unternehmer behält Kontrolle (außer bei neuen Gesellschaftern)\n\nFremdfinanzierung (Fremdkapital):\n- Bankkredit / Darlehen\n- Leasing\n- Lieferantenkredit (Zahlungsziel)\n- Anleihen\n- Rückzahlungspflicht + Zinsen\n- Steuerlich absetzbar\n\nVergleich Kauf / Leasing / Miete:\n- Kauf: Eigentum, hohe Anfangsinvestition, Abschreibung\n- Leasing: Nutzungsrecht, monatliche Raten, kein Eigentum, steuerlich absetzbar\n- Miete: Kurzfristig flexibel, kein Eigentum, jederzeit kündbar\n- Pay-per-Use: Zahlung nach tatsächlicher Nutzung (z.B. Cloud)",
+    "answer": "| Art | Quelle | Merkmale |\n|-----|--------|----------|\n| **Eigen** | Eigentümer/Gewinn | Keine Zinsen, Mitspracherecht, sicher |\n| **Fremd** | Bank/Kredit | Zinsen, Tilgungspflicht, steuerlich absetzbar |\n\n- **Leasing:** Miete statt Kauf (Objektfinanzierung, bilanzneutral).",
     "tags": [
       "Wirtschaft",
       "Eigenfinanzierung",
@@ -3366,7 +3366,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind die betrieblichen Grundfunktionen?",
-    "answer": "Die vier betrieblichen Grundfunktionen:\n\n1. Beschaffung:\n   - Einkauf von Material, Waren, Dienstleistungen\n   - Lieferantenauswahl, Angebotsvergleich\n   - Lagerhaltung\n\n2. Produktion / Leistungserstellung:\n   - Herstellung von Gütern oder Erbringung von Dienstleistungen\n   - In der IT: Softwareentwicklung, Systemintegration\n\n3. Vertrieb / Absatz:\n   - Verkauf der Produkte/Dienstleistungen\n   - Marketing, Kundenbetreuung\n   - Direkter und indirekter Vertrieb\n\n4. Finanzierung:\n   - Bereitstellung der finanziellen Mittel\n   - Eigen- und Fremdfinanzierung\n   - Liquiditätsplanung\n\nUnterstützende Funktionen:\n- Personalwesen (HR)\n- Rechnungswesen (Buchhaltung)\n- Verwaltung / Organisation\n- IT-Abteilung",
+    "answer": "1. **Beschaffung:** Einkauf (Material, Personal)\n2. **Produktion:** Erstellung (Software, Dienstleistung)\n3. **Absatz:** Verkauf (Marketing, Vertrieb)\n4. **Finanzierung:** Geld bereitstellen + verwalten (Buchhaltung)\n\n🔄 **Kreislauf:** Geld → Ware → Produktion → Ware → Geld.",
     "tags": [
       "Wirtschaft",
       "Grundfunktionen",
@@ -3383,7 +3383,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist die ABC-Analyse?",
-    "answer": "Die ABC-Analyse ist ein Verfahren zur Klassifizierung von Objekten (Kunden, Produkte, Lieferanten) nach ihrer wirtschaftlichen Bedeutung.\n\nKlassen:\n- A (sehr wichtig): ~20% der Positionen = ~80% des Werts\n- B (wichtig): ~30% der Positionen = ~15% des Werts\n- C (weniger wichtig): ~50% der Positionen = ~5% des Werts\n\nBasiert auf dem Pareto-Prinzip (80/20-Regel).\n\nAnwendung in der IT:\n- Kundenbewertung: A-Kunden = Top-Kunden mit höchstem Umsatz → intensive Betreuung\n- Lagerhaltung: A-Teile = geringe Lagermenge, häufige Bestellung\n- Projektpriorisierung: A-Projekte = höchste Priorität\n\nVorgehen:\n1. Werte erfassen (z.B. Umsatz pro Kunde)\n2. Absteigend sortieren\n3. Kumulierte Prozente berechnen\n4. A/B/C-Grenzen festlegen",
+    "answer": "Klassifizierung nach Wichtigkeit (Pareto 80/20).\n\n| Klasse | Wertanteil | Menge | Strategie |\n|--------|------------|-------|-----------|\n| **A** | Hoch (~80%) | Gering | Genau planen, pflegen |\n| **B** | Mittel (~15%) | Mittel | Standardisieren |\n| **C** | Niedrig (~5%) | Hoch | Minimieren, automatisieren |\n\n📌 Bsp: Kundenumsatz, Lagerteile.",
     "tags": [
       "Wirtschaft",
       "ABC-Analyse",
@@ -3399,7 +3399,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist das AIDA-Modell?",
-    "answer": "AIDA ist ein Stufenmodell der Werbewirkung:\n\nA - Attention (Aufmerksamkeit):\n→ Aufmerksamkeit des potenziellen Kunden erregen\n→ z.B. auffälliges Design, Slogan, Bild\n\nI - Interest (Interesse):\n→ Interesse am Produkt/der Dienstleistung wecken\n→ z.B. Produktvorteile hervorheben\n\nD - Desire (Verlangen):\n→ Wunsch nach dem Produkt erzeugen\n→ z.B. emotionale Ansprache, Testimonials\n\nA - Action (Handlung):\n→ Kaufhandlung auslösen\n→ z.B. Call-to-Action, Sonderangebot, zeitliche Begrenzung\n\nAnwendung in der IT:\n- Website-Gestaltung: Banner → Produktinfo → Vorteile → 'Jetzt kaufen'-Button\n- Angebotspräsentation: Einstieg → Problemdarstellung → Lösung → Auftrag",
+    "answer": "Werbewirkungs-Modell:\n\n1. **A**ttention (Aufmerksamkeit)\n2. **I**nterest (Interesse wecken)\n3. **D**esire (Verlangen/Wunsch)\n4. **A**ction (Kaufhandlung)\n\n📌 Basis für Marketing-Kampagnen.",
     "tags": [
       "Wirtschaft",
       "AIDA",
@@ -3415,7 +3415,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Phasen hat der Produktlebenszyklus?",
-    "answer": "Der Produktlebenszyklus beschreibt die Marktentwicklung eines Produkts über die Zeit:\n\n1. Einführung: Markteinführung, hohe Kosten, wenig Umsatz, Werbung nötig\n2. Wachstum: Steigende Umsätze, erste Gewinne, Wettbewerber treten ein\n3. Reife: Höchster Umsatz, sinkende Wachstumsraten, starker Wettbewerb\n4. Sättigung: Umsatz stagniert/sinkt, Markt gesättigt, Preiskampf\n5. Rückgang/Degeneration: Umsatz sinkt stark, Produkt wird vom Markt genommen\n6. End-of-Life: Einstellung des Produkts/Supports\n\nTechnologieadoption (nach Rogers):\n1. Innovators (2,5%): Technik-Enthusiasten\n2. Early Adopters (13,5%): Visionäre\n3. Early Majority (34%): Pragmatiker\n4. Late Majority (34%): Konservative\n5. Laggards (16%): Skeptiker\n\nB2B = Business to Business\nB2C = Business to Consumer\nB2G = Business to Government",
+    "answer": "Marktentwicklung eines Produkts:\n1. **Einführung** (Kosten hoch, Umsatz niedrig)\n2. **Wachstum** (Gewinnzone erreicht)\n3. **Reife** (Gewinnmaximum, Sättigung beginnt)\n4. **Sättigung** (Umsatz stabil, Preise fallen)\n5. **Degeneration** (Rückgang, Produkt stirbt)\n\n🔄 **Relaunch:** Versuch, Zyklus zu verlängern.",
     "tags": [
       "Wirtschaft",
       "Produktlebenszyklus",
@@ -3432,7 +3432,7 @@
     "type": "vergleich",
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen Outsourcing und Offshoring?",
-    "answer": "Outsourcing (organisatorisch):\n- Auslagerung von Aufgaben an externe Dienstleister\n- Kann im selben Land stattfinden\n- Beispiel: IT-Support an externes Unternehmen vergeben\n\nOffshoring (geografisch):\n- Verlagerung von Aufgaben ins Ausland (Niedriglohnland)\n- Kann intern (eigene Niederlassung) oder extern sein\n- Beispiel: Softwareentwicklung nach Indien verlagern\n\nNearshoring: Verlagerung in nahes Ausland (z.B. Osteuropa)\n\nVorteile Outsourcing:\n- Kostensenkung\n- Fokus auf Kernkompetenzen\n- Zugang zu Spezialwissen\n- Flexibilität\n\nNachteile:\n- Abhängigkeit vom Dienstleister\n- Kontrollverlust\n- Datenschutzrisiken\n- Kommunikationsprobleme (bei Offshoring: Zeitzonen, Sprache, Kultur)",
+    "answer": "| Begriff | Bedeutung |\n|---------|-----------|\n| **Outsourcing** | Aufgaben an Fremdfirma geben (organisatorisch) |\n| **Offshoring** | Verlagerung ins Ausland (geografisch) |\n| **Nearshoring** | Verlagerung in nahes Ausland (z.B. Osteuropa) |\n\n✅ **Vorteil:** Kosten, Fokus. ❌ **Nachteil:** Abhängigkeit.",
     "tags": [
       "Wirtschaft",
       "Outsourcing",
@@ -3669,7 +3669,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Werkvertrag und Dienstvertrag?",
-    "answer": "Werkvertrag (§631 BGB):\n- Geschuldet wird ein ERFOLG/ERGEBNIS\n- Bezahlung für fertiges Werk\n- Abnahme durch Auftraggeber\n- Gewährleistung bei Mängeln\n- Beispiel: Erstellung einer Website, Softwareentwicklung, Installation eines Systems\n\nDienstvertrag (§611 BGB):\n- Geschuldet wird die TÄTIGKEIT/BEMÜHUNG\n- Bezahlung für geleistete Arbeit (z.B. pro Stunde)\n- Kein bestimmtes Ergebnis geschuldet\n- Keine Gewährleistung\n- Beispiel: IT-Beratung, Schulung, Support, Arbeitsvertrag\n\nWichtiger Unterschied für die IT:\n- Festpreisprojekt (z.B. App-Entwicklung) → Werkvertrag\n- Beratung auf Stundenbasis → Dienstvertrag\n- Managed Service (SLA-basiert) → meist Dienstvertrag\n\nArbeitsvertrag: Sonderform des Dienstvertrags\n- Weisungsgebunden, sozialversicherungspflichtig\n- Kündigungsschutz, Urlaubsanspruch",
+    "answer": "| Vertrag | Schuldet... | Vergütung für... | Beispiel |\n|---------|-------------|------------------|----------|\n| **Werk** | Erfolg (Ergebnis) | Abnahme | Webseite bauen |\n| **Dienst** | Tätigkeit (Bemühen) | Zeit/Arbeit | Support, Arzt |\n\n⚠️ **Wichtig:** Beim Dienstvertrag kein Erfolgsgarantie!",
     "tags": [
       "Wirtschaft",
       "Werkvertrag",
@@ -3685,7 +3685,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind Fernabsatzverträge und was gehört in einen Arbeitsvertrag?",
-    "answer": "Fernabsatzvertrag (§312c BGB):\n- Vertrag über Fernkommunikationsmittel (Online-Shop, Telefon, Brief)\n- Widerrufsrecht: 14 Tage ohne Angabe von Gründen\n- Informationspflichten des Händlers (Preis, Lieferbedingungen, Widerrufsbelehrung)\n- Ausnahmen vom Widerruf: versiegelte Software nach Entsiegelung, individuell gefertigte Waren\n\nArbeitsvertrag – Wesentliche Inhalte:\n- Vertragsparteien (Arbeitgeber, Arbeitnehmer)\n- Beginn und ggf. Befristung\n- Arbeitsort und Tätigkeitsbeschreibung\n- Arbeitszeit (Wochenstunden)\n- Vergütung (Gehalt/Lohn)\n- Urlaubsanspruch (mind. 24 Werktage bei 6-Tage-Woche)\n- Kündigungsfristen (gesetzlich: 4 Wochen zum 15. oder Monatsende)\n- Probezeit (max. 6 Monate)\n- Verweis auf Tarifverträge/Betriebsvereinbarungen\n\nKollektives Arbeitsrecht: Betriebsrat, Tarifvertrag, Betriebsvereinbarung\nBetriebsrat: Mitbestimmung bei sozialen, personellen und wirtschaftlichen Angelegenheiten (ab 5 Mitarbeitern möglich)",
+    "answer": "**Fernabsatz (§312c BGB):**\n- Verträge über Internet/Telefon\n- **14 Tage Widerrufsrecht** (bei Privatkunden)\n\n**Arbeitsvertrag (Inhalte):**\n- Parteien, Beginn, Dauer\n- Tätigkeit, Arbeitsort\n- Gehalt, Urlaub (mind. 24 Werktage/Jahr)\n- Kündigungsfrist\n- Probezeit (max. 6 Monate)",
     "tags": [
       "Wirtschaft",
       "Fernabsatzvertrag",
@@ -3786,7 +3786,7 @@
     "type": "vergleich",
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen Primär- und Sekundärforschung?",
-    "answer": "Primärforschung (Feldforschung):\n- Eigene, neue Datenerhebung für den konkreten Zweck\n- Methoden: Befragung, Beobachtung, Experiment, Testmarkt\n- Vorteile: Aktuell, maßgeschneidert, genau\n- Nachteile: Teuer, zeitaufwändig\n- Beispiel: Kundenbefragung zu neuer Software\n\nSekundärforschung (Schreibtischforschung):\n- Auswertung bereits vorhandener Daten\n- Quellen: Statistiken, Studien, Geschäftsberichte, Internet\n- Vorteile: Günstig, schnell verfügbar\n- Nachteile: Evtl. veraltet, nicht passgenau\n- Beispiel: Branchenstudien zum IT-Markt analysieren\n\nErhebungsmethoden der Primärforschung:\n- Befragung: Schriftlich, mündlich, online, telefonisch\n  → Offene Fragen (Freitext) vs. Geschlossene Fragen (Auswahl)\n- Beobachtung: Verhalten beobachten (z.B. Usability-Test)\n- Experiment: Kontrollierte Tests (z.B. A/B-Test)\n- Panel: Wiederholte Befragung derselben Gruppe\n\nData Mining: Automatische Mustererkennung in großen Datenbeständen",
+    "answer": "| Methode | Beschreibung | Merkmal |\n|---------|--------------|---------|\n| **Primär** | Feldforschung (neu) | Teuer, genau, aktuell |\n| **Sekundär** | Schreibtisch (vorhanden) | Günstig, evtl. veraltet |\n\n**Beispiel:**\n- Primär: Eigene Umfrage starten\n- Sekundär: Statista-Daten nutzen",
     "tags": [
       "Wirtschaft",
       "Marktforschung",
