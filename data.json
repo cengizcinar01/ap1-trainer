@@ -266,7 +266,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist eine CPU?",
-    "answer": "Die CPU (Central Processing Unit) ist das Hauptrechenwerk eines Computers und führt Befehle aus. Sie bestimmt maßgeblich die Geschwindigkeit und Leistungsfähigkeit eines Systems.",
+    "answer": "Die **CPU** (Central Processing Unit) ist das Hauptrechenwerk eines Computers und führt Befehle aus.\n\n➡️ Sie bestimmt maßgeblich die **Geschwindigkeit** und **Leistungsfähigkeit** eines Systems.",
     "tags": [
       "Hardware",
       "CPU",
@@ -280,7 +280,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche Funktionsblöcke hat die Harvard-Architektur?",
-    "answer": "1. Rechenwerk (ALU – Arithmetical Logical Unit): Führt arithmetische und logische Operationen durch.\n2. Leit- & Steuerwerk (CU – Control Unit): Kontrolliert den Ablauf der Befehle.\n3. Speicherwerk: Getrennte Speicher für Daten (Daten-Speicher) und Programme (Programm-Speicher).\n4. Ein-/Ausgabewerk (IO Unit): Zuständig für die Ein- und Ausgabe von Daten und die Interaktion mit dem Benutzer.\n\nDie Harvard-Architektur verwendet getrennte Verbindungswege (Busse) für Daten und Programme, was zu einer erhöhten Verarbeitungsgeschwindigkeit führen kann.",
+    "answer": "| Block | Funktion |\n|-------|----------|\n| **Rechenwerk (ALU)** | Führt arithmetische und logische Operationen durch |\n| **Leit- & Steuerwerk (CU)** | Kontrolliert den Ablauf der Befehle |\n| **Speicherwerk** | Getrennte Speicher für Daten und Programme |\n| **Ein-/Ausgabewerk (IO)** | Ein- und Ausgabe von Daten |\n\n✅ Die Harvard-Architektur verwendet **getrennte Busse** für Daten und Programme → höhere Verarbeitungsgeschwindigkeit.",
     "tags": [
       "Hardware",
       "CPU",
@@ -296,7 +296,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Was sind die Vor- und Nachteile der Harvard-Architektur?",
-    "answer": "Vorteile:\n• Höhere Geschwindigkeit\n• Weniger Zugriffskonflikte\n• Bessere Sicherheit\n\nNachteile:\n• Komplexere Struktur\n• Höherer Hardwareaufwand\n• Geringere Flexibilität\n\nAnwendungsbereiche: Häufig in eingebetteten Systemen und Mikrocontrollern, wo Effizienz und Geschwindigkeit entscheidend sind.",
+    "answer": "### ✅ Vorteile\n\n- Höhere Geschwindigkeit\n- Weniger Zugriffskonflikte\n- Bessere Sicherheit\n\n### ❌ Nachteile\n\n- Komplexere Struktur\n- Höherer Hardwareaufwand\n- Geringere Flexibilität\n\n📍 **Anwendungsbereiche:** Eingebettete Systeme, Mikrocontroller",
     "image_ref": "harvard_architektur_vorteile_nachteile.png",
     "tags": [
       "Hardware",
@@ -311,7 +311,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche Funktionsblöcke und Busse hat die Von-Neumann-Architektur?",
-    "answer": "Funktionsblöcke:\n1. Rechenwerk (ALU): Führt arithmetische und logische Operationen durch.\n2. Leit- & Steuerwerk (CU): Kontrolliert den Ablauf der Befehle.\n3. Speicherwerk (Memory – RAM): Speichert sowohl Daten als auch Programme (gemeinsam!).\n4. Ein-/Ausgabewerk (IO Unit): Ein-/Ausgabe von Daten.\n\nVerbindungen (Busse):\n1. Kontrollbus / Steuerbus: Übermittelt Steuersignale zwischen den Funktionsblöcken.\n2. Datenbus: Transportiert Daten zwischen den Funktionsblöcken.\n3. Adressbus: Übermittelt die Adressen von Speicherzellen, auf die zugegriffen wird.",
+    "answer": "### Funktionsblöcke\n\n| Block | Funktion |\n|-------|----------|\n| **Rechenwerk (ALU)** | Arithmetische und logische Operationen |\n| **Leit- & Steuerwerk (CU)** | Kontrolliert Befehlsablauf |\n| **Speicherwerk (RAM)** | Speichert Daten **und** Programme gemeinsam |\n| **Ein-/Ausgabewerk (IO)** | Ein-/Ausgabe von Daten |\n\n### Busse\n\n| Bus | Funktion |\n|-----|----------|\n| **Kontrollbus** | Übermittelt Steuersignale |\n| **Datenbus** | Transportiert Daten |\n| **Adressbus** | Übermittelt Speicheradressen |",
     "image_ref": "von_neumann_architektur.png",
     "tags": [
       "Hardware",
@@ -328,7 +328,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Was ist der Unterschied zwischen CISC und RISC Prozessorarchitekturen?",
-    "answer": "CISC (Complex Instruction Set Computing):\n• Viele komplexe und spezialisierte Befehle direkt in Hardware implementiert\n• Ein einziger Maschinenbefehl kann komplexe Operationen ausführen\n• Vereinfacht die Programmierung, führt aber zu einer komplexeren und langsameren CPU-Architektur\n\nRISC (Reduced Instruction Set Computing):\n• Minimaler Satz einfacher Befehle\n• Befehle werden in genau einem Taktzyklus ausgeführt\n• CPU ist schneller und energieeffizienter\n• Programme benötigen mehr einzelne Befehle",
+    "answer": "### CISC (Complex Instruction Set Computing)\n\n- Viele **komplexe** Befehle in Hardware\n- Ein Befehl kann komplexe Operationen ausführen\n- Einfachere Programmierung, aber **langsamere** CPU\n\n### RISC (Reduced Instruction Set Computing)\n\n- **Minimaler** Satz einfacher Befehle\n- Befehle in genau **einem Taktzyklus**\n- CPU ist **schneller** und energieeffizienter\n- Programme benötigen mehr Befehle",
     "tags": [
       "Hardware",
       "CPU",
@@ -344,7 +344,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist ein Bus in der CPU und welche Busarten gibt es?",
-    "answer": "Der Bus ist das System zur Datenübertragung innerhalb der CPU und zwischen Komponenten.\n\n• Datenbus: Transportiert Daten zwischen CPU, RAM und anderen Komponenten\n• Adressbus: Bestimmt Speicheradressen für Lese- und Schreibzugriffe\n• Steuerbus: Überträgt Steuerbefehle zur Synchronisation",
+    "answer": "Der **Bus** ist das System zur Datenübertragung innerhalb der CPU und zwischen Komponenten.\n\n| Busart | Funktion |\n|--------|----------|\n| **Datenbus** | Transportiert Daten zwischen CPU, RAM etc. |\n| **Adressbus** | Bestimmt Speicheradressen für Zugriffe |\n| **Steuerbus** | Überträgt Steuerbefehle zur Synchronisation |",
     "tags": [
       "Hardware",
       "CPU",
@@ -361,7 +361,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist RAM und welche Arten gibt es?",
-    "answer": "Der Arbeitsspeicher (RAM – Random Access Memory) dient als kurzfristiger Speicher für laufende Prozesse und Programme. Er ist schneller als Festplattenspeicher, verliert aber seinen Inhalt beim Ausschalten (flüchtig).\n\nArten:\n• SRAM (Static RAM): Schnell, aber teuer (z.B. Cache-Speicher)\n• DRAM (Dynamic RAM): Günstiger, aber langsamer (z.B. Hauptspeicher)\n• DDR (Double Data Rate): Aktuelle Versionen sind DDR4 und DDR5, unterscheiden sich in Geschwindigkeit und Energieeffizienz\n\nMerkmale:\n• Kapazität: Bestimmt, wie viele Programme gleichzeitig laufen können\n• Taktfrequenz: Misst die Geschwindigkeit der Datenübertragung (z.B. 3200 MHz)\n• Latenz (CL – CAS Latency): Verzögerung bei Speicherzugriffen",
+    "answer": "Der **Arbeitsspeicher** (RAM – Random Access Memory) dient als kurzfristiger Speicher für laufende Prozesse.\n\n⚠️ **Flüchtig** – verliert Inhalt beim Ausschalten\n\n### Arten\n\n| Typ | Eigenschaft | Verwendung |\n|-----|-------------|------------|\n| **SRAM** | Schnell, teuer | Cache-Speicher |\n| **DRAM** | Günstiger, langsamer | Hauptspeicher |\n| **DDR4/DDR5** | Aktuelle Standards | Desktop/Laptop |\n\n### Merkmale\n\n- **Kapazität:** Wie viele Programme gleichzeitig laufen\n- **Taktfrequenz:** Geschwindigkeit (z.B. `3200 MHz`)\n- **Latenz (CL):** Verzögerung bei Zugriffen",
     "tags": [
       "Hardware",
       "RAM",
@@ -378,7 +378,7 @@
     "type": "praxis",
     "difficulty": 4,
     "question": "Wie rechnet man die Datenrate von DDR-RAM um? Berechne die Datenrate von DDR4-3200.",
-    "answer": "DDR-RAM überträgt pro Takt zwei Datenpakete (Double Data Rate). Typische Busbreite: 64 Bit = 8 Byte.\n\nTaktfrequenz → Datenrate:\nDatenrate (MB/s) = Taktfrequenz (MHz) × 2 × Busbreite (Byte)\n\nBeispiel DDR4-3200:\n3200 × 2 × 8 = 51.200 MB/s (= 51,2 GB/s)\n\nDatenrate → Taktfrequenz:\nTaktfrequenz (MHz) = Datenrate (MB/s) / (2 × Busbreite (Byte))",
+    "answer": "DDR-RAM überträgt pro Takt **zwei Datenpakete** (Double Data Rate).\n\nTypische Busbreite: `64 Bit = 8 Byte`\n\n### Formeln\n\n**Taktfrequenz → Datenrate:**\n```\nDatenrate (MB/s) = Taktfrequenz (MHz) × 2 × 8\n```\n\n**Beispiel DDR4-3200:**\n```\n3200 × 2 × 8 = 51.200 MB/s = 51,2 GB/s\n```\n\n**Datenrate → Taktfrequenz:**\n```\nTaktfrequenz (MHz) = Datenrate (MB/s) / 16\n```",
     "tags": [
       "Hardware",
       "RAM",
@@ -394,7 +394,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was sind die Unterschiede zwischen HDD und SSD?",
-    "answer": "HDD (Hard Disk Drive):\n• Mechanische Festplatte mit magnetischen Platten\n• Vorteile: Günstig, hohe Speicherkapazität\n• Nachteile: Langsam, empfindlich gegen Erschütterungen\n\nSSD (Solid State Drive):\n• Speicherchips ohne bewegliche Teile\n• Vorteile: Schnell, robust, leise\n• Nachteile: Teurer als HDD, begrenzte Schreibzyklen",
+    "answer": "### HDD (Hard Disk Drive)\n\nMechanische Festplatte mit magnetischen Platten\n\n| | |\n|---|---|\n| ✅ Vorteile | Günstig, hohe Speicherkapazität |\n| ❌ Nachteile | Langsam, empfindlich gegen Erschütterungen |\n\n### SSD (Solid State Drive)\n\nSpeicherchips ohne bewegliche Teile\n\n| | |\n|---|---|\n| ✅ Vorteile | Schnell, robust, leise |\n| ❌ Nachteile | Teurer, begrenzte Schreibzyklen |",
     "tags": [
       "Hardware",
       "Datenspeicher",
@@ -409,7 +409,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist Flash-Speicher und welche Arten gibt es?",
-    "answer": "Flash-Speicher ist die Speichertechnologie für SSDs, USB-Sticks und SD-Karten.\n\nArten:\n• NAND-Flash: Günstig, langlebig\n• NOR-Flash: Schnell, für Firmware",
+    "answer": "**Flash-Speicher** ist die Speichertechnologie für SSDs, USB-Sticks und SD-Karten.\n\n| Typ | Eigenschaft | Verwendung |\n|-----|-------------|------------|\n| **NAND-Flash** | Günstig, langlebig | SSDs, USB-Sticks |\n| **NOR-Flash** | Schnell | Firmware |",
     "tags": [
       "Hardware",
       "Datenspeicher",
@@ -425,7 +425,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche Dateisysteme gibt es und worin unterscheiden sie sich?",
-    "answer": "• FAT32: Kompatibel, aber auf 4 GB Dateigröße begrenzt\n• NTFS: Windows-Standard, unterstützt große Dateien\n• exFAT: Optimiert für externe Speichergeräte\n• EXT4: Standard für Linux-Systeme",
+    "answer": "| Dateisystem | Eigenschaft |\n|-------------|-------------|\n| **FAT32** | Kompatibel, max. 4 GB Dateigröße |\n| **NTFS** | Windows-Standard, große Dateien |\n| **exFAT** | Optimiert für externe Geräte |\n| **EXT4** | Standard für Linux |",
     "tags": [
       "Hardware",
       "Datenspeicher",
@@ -443,7 +443,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was sind die wichtigsten Netzwerk-Hardwarekomponenten?",
-    "answer": "• RJ45: Standardstecker für Ethernet-Kabel (LAN), unterstützt 100 Mbit/s, 1 Gbit/s, 10 Gbit/s\n• LWL (Lichtwellenleiter): Glasfasertechnik, hohe Bandbreite, geringe Latenz, störungsfrei, aber teurer und empfindlicher\n• Netzwerkkarte: Hardware-Schnittstelle für Ethernet (kabelgebunden) oder WLAN (kabellos)\n• WLAN: Kabellose Netzwerktechnologie (IEEE 802.11), z.B. Wi-Fi 5, Wi-Fi 6\n• LAN: Lokales Netzwerk innerhalb eines Hauses oder Unternehmens",
+    "answer": "| Komponente | Beschreibung |\n|------------|--------------|\n| **RJ45** | Ethernet-Stecker (100 Mbit/s bis 10 Gbit/s) |\n| **LWL** | Glasfaser, hohe Bandbreite, geringe Latenz |\n| **Netzwerkkarte** | Hardware für Ethernet/WLAN |\n| **WLAN** | Kabellos (IEEE 802.11), z.B. Wi-Fi 6 |\n| **LAN** | Lokales Netzwerk (Haus/Firma) |",
     "tags": [
       "Hardware",
       "Netzwerk",
@@ -460,7 +460,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Router, Switch und Access Point?",
-    "answer": "Router/Gateway:\n• Verbindet verschiedene Netzwerke (z.B. Heimnetz mit Internet)\n• Gateway vermittelt zwischen verschiedenen Protokollen oder Netzwerken\n\nSwitch:\n• Verteilt Netzwerkverkehr innerhalb eines LANs\n• Arbeitet auf Schicht 2 (Data Link Layer) des OSI-Modells\n\nAccess Point:\n• Erweitert WLAN-Abdeckung in einem Netzwerk\n• Oft in Router integriert oder als eigenständiges Gerät",
+    "answer": "### Router/Gateway\n\nVerbindet verschiedene Netzwerke (z.B. Heimnetz ↔ Internet)\n\n### Switch\n\nVerteilt Netzwerkverkehr innerhalb eines LANs (OSI Schicht 2)\n\n### Access Point\n\nErweitert WLAN-Abdeckung, oft in Router integriert",
     "tags": [
       "Hardware",
       "Netzwerk",
@@ -477,7 +477,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist DHCP?",
-    "answer": "DHCP (Dynamic Host Configuration Protocol) ermöglicht die automatische Vergabe von IP-Adressen innerhalb eines Netzwerks. Es erleichtert die Netzwerkkonfiguration, da Geräte keine feste IP-Adresse benötigen.",
+    "answer": "**DHCP** (Dynamic Host Configuration Protocol) ermöglicht die **automatische Vergabe** von IP-Adressen innerhalb eines Netzwerks.\n\n✅ Geräte benötigen keine feste IP-Adresse\n✅ Vereinfacht die Netzwerkkonfiguration",
     "tags": [
       "Netzwerk",
       "DHCP",
@@ -492,7 +492,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was ist NAT und welche Arten gibt es?",
-    "answer": "NAT (Network Address Translation) übersetzt private IP-Adressen in eine öffentliche IP-Adresse für den Internetzugriff.\n\n• SNAT (Source NAT): Private → Öffentliche IP\n• DNAT (Destination NAT): Öffentliche → Private IP\n• PAT (Port Address Translation): Mehrere private Adressen teilen eine öffentliche IP",
+    "answer": "**NAT** (Network Address Translation) übersetzt private IP-Adressen in öffentliche für den Internetzugriff.\n\n| Typ | Funktion |\n|-----|----------|\n| **SNAT** | Private → Öffentliche IP |\n| **DNAT** | Öffentliche → Private IP |\n| **PAT** | Mehrere private IPs teilen eine öffentliche |",
     "tags": [
       "Netzwerk",
       "NAT",
@@ -509,7 +509,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist IPv4 und wie ist eine IPv4-Adresse aufgebaut?",
-    "answer": "IPv4 (Internet Protocol Version 4) ist ein verbindungsloses, paketvermitteltes Protokoll zur Adressierung von Netzwerkteilnehmern. Es verwendet 32-Bit-Adressen, aufgeteilt in vier Oktette (z.B. 192.168.1.1), begrenzt auf ca. 4,3 Milliarden Adressen.\n\nAufbau einer IPv4-Adresse:\n• Netzwerkanteil: Identifiziert das Netzwerk\n• Hostanteil: Identifiziert das Gerät innerhalb des Netzwerks",
+    "answer": "**IPv4** (Internet Protocol Version 4) ist ein verbindungsloses, paketvermitteltes Protokoll.\n\n`32-Bit-Adressen` in vier Oktetten, z.B. `192.168.1.1`\n\n⚠️ Begrenzt auf ca. **4,3 Milliarden** Adressen\n\n### Aufbau\n\n| Teil | Funktion |\n|------|----------|\n| **Netzwerkanteil** | Identifiziert das Netzwerk |\n| **Hostanteil** | Identifiziert das Gerät |",
     "tags": [
       "Netzwerk",
       "IPv4",
@@ -524,7 +524,7 @@
     "type": "praxis",
     "difficulty": 4,
     "question": "Wie funktioniert Subnetting bei IPv4? Erläutere anhand eines Beispiels.",
-    "answer": "Subnetting unterteilt ein Netzwerk in kleinere Teilnetze.\n\nSubnetzmaske-Beispiele:\n• /8 = 255.0.0.0\n• /16 = 255.255.0.0\n• /24 = 255.255.255.0\n\nBerechnung:\n1. Anzahl der Subnetze: 2^n (n = zusätzliche Subnetz-Bits)\n2. Anzahl der Hosts pro Subnetz: 2^h - 2 (h = verbleibende Host-Bits)\n3. Subnetzgröße: 256 - letzter Wert der Subnetzmaske\n\nBeispiel: Netzwerk 192.168.1.0/24 → /26 (255.255.255.192):\n• 4 Subnetze (2^2 = 4)\n• 62 Hosts pro Subnetz (2^6 - 2 = 62)",
+    "answer": "**Subnetting** unterteilt ein Netzwerk in kleinere Teilnetze.\n\n### Subnetzmasken\n\n| Notation | Maske |\n|----------|-------|\n| `/8` | 255.0.0.0 |\n| `/16` | 255.255.0.0 |\n| `/24` | 255.255.255.0 |\n\n### Berechnung\n\n```\n1. Subnetze: 2^n (n = zusätzliche Bits)\n2. Hosts/Subnetz: 2^h - 2 (h = Host-Bits)\n3. Subnetzgröße: 256 - letzte Maske\n```\n\n### Beispiel\n\n`192.168.1.0/24` → `/26` (255.255.255.192):\n- **4 Subnetze** (2² = 4)\n- **62 Hosts** pro Subnetz (2⁶ - 2 = 62)",
     "tags": [
       "Netzwerk",
       "IPv4",
@@ -540,7 +540,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche privaten IPv4-Adressbereiche gibt es?",
-    "answer": "Private IPv4-Adressen sind nicht im Internet routbar und werden in privaten Netzwerken genutzt.\n\n• Klasse A: 10.0.0.0 – 10.255.255.255\n• Klasse B: 172.16.0.0 – 172.31.255.255\n• Klasse C: 192.168.0.0 – 192.168.255.255",
+    "answer": "Private IPv4-Adressen sind **nicht im Internet routbar** und werden in privaten Netzwerken genutzt.\n\n| Klasse | Adressbereich |\n|--------|---------------|\n| **A** | `10.0.0.0` – `10.255.255.255` |\n| **B** | `172.16.0.0` – `172.31.255.255` |\n| **C** | `192.168.0.0` – `192.168.255.255` |",
     "tags": [
       "Netzwerk",
       "IPv4",
@@ -555,7 +555,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche wichtigen IPv4-Sonderadressen gibt es?",
-    "answer": "• Netzwerkadresse: Erste Adresse eines Subnetzes (z.B. 192.168.1.0)\n• Broadcast-Adresse: Letzte Adresse eines Subnetzes (z.B. 192.168.1.255)\n• Loopback-Adresse: 127.0.0.1 für lokale Tests\n• APIPA: 169.254.0.0/16 (wird automatisch zugewiesen, wenn kein DHCP verfügbar ist)",
+    "answer": "| Adresse | Funktion | Beispiel |\n|---------|----------|----------|\n| **Netzwerkadresse** | Erste Adresse im Subnetz | `192.168.1.0` |\n| **Broadcast** | Letzte Adresse im Subnetz | `192.168.1.255` |\n| **Loopback** | Lokale Tests | `127.0.0.1` |\n| **APIPA** | Automatisch wenn kein DHCP | `169.254.x.x` |",
     "tags": [
       "Netzwerk",
       "IPv4",
@@ -572,7 +572,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Was ist IPv6 und wie ist eine IPv6-Adresse aufgebaut?",
-    "answer": "IPv6 ist der Nachfolger von IPv4 mit 128-Bit-Adressen in acht Gruppen zu je vier Hex-Ziffern (z.B. 2001:0db8:85a3:0000:0000:8a2e:0370:7334).\n\nAufbau:\n• Netzwerkpräfix: Identifiziert das Netzwerk (meist 64 Bit)\n• Interface Identifier: Identifiziert das Gerät (meist 64 Bit)\n\nVerkürzte Schreibweise: Führende Nullen können weggelassen werden, eine Folge von Nullgruppen kann durch :: ersetzt werden.\nBeispiel: 2001:db8:85a3::8a2e:370:7334",
+    "answer": "**IPv6** ist der Nachfolger von IPv4 mit `128-Bit-Adressen`.\n\nAcht Gruppen à vier Hex-Ziffern:\n`2001:0db8:85a3:0000:0000:8a2e:0370:7334`\n\n### Aufbau\n\n| Teil | Beschreibung |\n|------|--------------|\n| **Netzwerkpräfix** | Identifiziert Netzwerk (meist 64 Bit) |\n| **Interface ID** | Identifiziert Gerät (meist 64 Bit) |\n\n### Verkürzte Schreibweise\n\nFührende Nullen weglassen, Nullgruppen durch `::` ersetzen:\n`2001:db8:85a3::8a2e:370:7334`",
     "tags": [
       "Netzwerk",
       "IPv6",
@@ -587,7 +587,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche IPv6-Adresstypen gibt es?",
-    "answer": "• Unicast: Kommunikation mit einem einzigen Empfänger\n  – Global Unicast (GUAs): Öffentlich routbar (2000::/3)\n  – Link-Local: Nur im lokalen Netzwerk gültig (FE80::/10)\n  – Unique Local (ULA): Private IPv6-Adressen (FC00::/7)\n• Multicast: Kommunikation mit mehreren Empfängern (FF00::/8)\n• Anycast: Mehrere Geräte teilen sich eine Adresse, das nächstgelegene antwortet",
+    "answer": "### Unicast\n\nKommunikation mit **einem** Empfänger\n\n| Typ | Bereich |\n|-----|---------|\n| **Global Unicast** | Öffentlich routbar (`2000::/3`) |\n| **Link-Local** | Nur lokales Netz (`FE80::/10`) |\n| **Unique Local** | Private IPv6 (`FC00::/7`) |\n\n### Multicast\n\nKommunikation mit **mehreren** Empfängern (`FF00::/8`)\n\n### Anycast\n\nMehrere Geräte teilen eine Adresse, das **nächstgelegene** antwortet",
     "tags": [
       "Netzwerk",
       "IPv6",
@@ -603,7 +603,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche IPv6-Adresszuweisungsmethoden gibt es?",
-    "answer": "1. Statische Zuweisung: Manuelle Vergabe einer IPv6-Adresse\n2. DHCPv6: Automatische Vergabe durch einen DHCPv6-Server\n3. SLAAC (Stateless Address Autoconfiguration): Selbstkonfiguration der IP-Adresse anhand des Netzpräfixes und der MAC-Adresse\n\nIPv6-Präfixe:\n• /64 → Standard für Netzwerke (Heim- und Firmennetze)\n• /48 → Zuweisung für Unternehmen\n• /32 → ISPs erhalten oft ein /32-Netz\n\nWichtige Sonderadressen:\n• Loopback: ::1\n• Unspecified: ::\n• All Nodes Multicast: FF02::1\n• All Routers Multicast: FF02::2",
+    "answer": "### Zuweisungsmethoden\n\n| Methode | Beschreibung |\n|---------|--------------|\n| **Statisch** | Manuelle Vergabe |\n| **DHCPv6** | Automatisch via Server |\n| **SLAAC** | Selbstkonfiguration (Präfix + MAC) |\n\n### Präfixe\n\n| Präfix | Verwendung |\n|--------|------------|\n| `/64` | Standard für Netzwerke |\n| `/48` | Unternehmen |\n| `/32` | ISPs |\n\n### Sonderadressen\n\n- **Loopback:** `::1`\n- **All Nodes:** `FF02::1`\n- **All Routers:** `FF02::2`",
     "tags": [
       "Netzwerk",
       "IPv6",
@@ -619,7 +619,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist eine Grafikkarte und welche Arten gibt es?",
-    "answer": "Die Grafikkarte (GPU – Graphics Processing Unit) ist für die Bildberechnung und Darstellung verantwortlich.\n\nArten:\n• Integrierte GPU: In der CPU enthalten, energiesparend (z.B. Intel UHD, AMD Vega)\n• Dedizierte GPU: Eigenständige Karte für hohe Leistung (z.B. NVIDIA GeForce, AMD Radeon)\n\nWichtige Merkmale:\n• VRAM (Videospeicher): Speichert Texturen und Bilddaten (z.B. 8 GB GDDR6)\n• CUDA / OpenCL: Technologien für parallele Berechnungen\n• Raytracing: Echtzeit-Lichtsimulation für realistische Grafiken\n\nAnwendungsbereiche: Gaming, 3D-Modellierung, Künstliche Intelligenz (Deep Learning)",
+    "answer": "Die **Grafikkarte** (GPU – Graphics Processing Unit) ist für Bildberechnung und Darstellung verantwortlich.\n\n### Arten\n\n| Typ | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **Integriert** | In CPU, energiesparend | Intel UHD, AMD Vega |\n| **Dediziert** | Eigenständig, hohe Leistung | NVIDIA GeForce, AMD Radeon |\n\n### Merkmale\n\n- **VRAM:** Speichert Texturen (z.B. `8 GB GDDR6`)\n- **CUDA / OpenCL:** Parallele Berechnungen\n- **Raytracing:** Echtzeit-Lichtsimulation\n\n🎮 **Anwendung:** Gaming, 3D-Modellierung, Deep Learning",
     "tags": [
       "Hardware",
       "Grafikkarte",
@@ -635,7 +635,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche wichtigen Netzwerkprotokolle gibt es und auf welchen Ports arbeiten sie?",
-    "answer": "• TCP [Port: je nach Dienst] – Zuverlässige, verbindungsorientierte Übertragung mit Fehlerkorrektur\n• UDP [Port: je nach Dienst] – Verbindungsloses, schnelles Protokoll ohne Fehlerkorrektur (Streaming, VoIP)\n• IP [Kein Port, Layer 3] – Adressierung und Weiterleitung von Datenpaketen\n• HTTP [Port 80] – Übertragung von Webseiten\n• HTTPS [Port 443] – Verschlüsselte Version von HTTP mit TLS/SSL\n• FTP [Ports 20/21] – Dateiübertragung (20: Daten, 21: Steuerung)\n• SFTP [Port 22] – Sichere Dateiübertragung via SSH\n• DNS [Port 53] – Namensauflösung (Domain → IP)\n• SMTP [Port 25/465/587] – E-Mail-Versand\n• IMAP [Port 143/993] – Serverbasierter E-Mail-Abruf (Sync auf mehreren Geräten)\n• POP3 [Port 110/995] – E-Mail-Abruf (nach Download standardmäßig vom Server gelöscht)\n• DHCP [Port 67/68] – Automatische IP-Vergabe",
+    "answer": "| Protokoll | Port | Funktion |\n|-----------|------|----------|\n| **TCP** | variabel | Zuverlässige Übertragung mit Fehlerkorrektur |\n| **UDP** | variabel | Schnell, ohne Fehlerkorrektur |\n| **HTTP** | 80 | Webübertragung |\n| **HTTPS** | 443 | Verschlüsselt (TLS/SSL) |\n| **FTP** | 20/21 | Dateiübertragung |\n| **SFTP** | 22 | Sichere Dateiübertragung |\n| **DNS** | 53 | Domain → IP |\n| **SMTP** | 25/465/587 | E-Mail-Versand |\n| **IMAP** | 143/993 | E-Mail-Abruf (Sync) |\n| **POP3** | 110/995 | E-Mail-Download |\n| **DHCP** | 67/68 | IP-Vergabe |",
     "tags": [
       "Netzwerk",
       "Protokolle",
@@ -659,7 +659,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Beschreibe die 7 Schichten des OSI-Modells.",
-    "answer": "1. Bitübertragungsschicht (Physical Layer): Überträgt rohe Bitströme über physikalische Medien. Beispiel: Ethernet, WLAN, Glasfaser.\n2. Sicherungsschicht (Data Link Layer): Fehlerfreie Übertragung zwischen direkt verbundenen Geräten. MAC-Adressen, Switches. Beispiel: Ethernet (802.3), WLAN (802.11).\n3. Vermittlungsschicht (Network Layer): Logische Adressierung und Routing. IP-Adressen, Router. Beispiel: IPv4, IPv6, ICMP.\n4. Transportschicht (Transport Layer): Zuverlässige/unzuverlässige Übertragung. Protokolle: TCP (zuverlässig), UDP (schnell).\n5. Sitzungsschicht (Session Layer): Steuert Sitzungen zwischen Anwendungen. Beispiel: NetBIOS, RPC.\n6. Darstellungsschicht (Presentation Layer): Datenformatumwandlung, Verschlüsselung, Komprimierung. Beispiel: TLS/SSL, JPEG, ASCII.\n7. Anwendungsschicht (Application Layer): Netzwerkdienste für Anwendungen. Beispiel: HTTP, FTP, SMTP, DNS.",
+    "answer": "| Schicht | Name | Funktion | Beispiel |\n|---------|------|----------|----------|\n| **7** | Anwendung | Netzwerkdienste | HTTP, FTP, DNS |\n| **6** | Darstellung | Formatierung, Verschlüsselung | TLS, JPEG |\n| **5** | Sitzung | Sitzungssteuerung | NetBIOS, RPC |\n| **4** | Transport | Zuverlässige Übertragung | TCP, UDP |\n| **3** | Vermittlung | Routing, IP-Adressen | IPv4, IPv6 |\n| **2** | Sicherung | MAC-Adressen, Switches | Ethernet |\n| **1** | Bitübertragung | Physikalische Medien | WLAN, Glasfaser |\n\n📝 **Merkspruch:** *All People Seem To Need Data Processing*",
     "image_ref": "osi_modell_7_schichten.png",
     "tags": [
       "Netzwerk",
@@ -675,7 +675,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist strukturierte Verkabelung und welche Bereiche gibt es?",
-    "answer": "Strukturierte Verkabelung ist ein standardisiertes Verkabelungssystem für Netzwerke – modular, hierarchisch, technologieunabhängig.\n\nBestandteile:\n1. Primärbereich (Campus-Verkabelung): Verbindet verschiedene Gebäude, nutzt Glasfaser oder Kupfer.\n2. Sekundärbereich (Gebäude-Verkabelung): Verbindet Etagen mit dem Hauptverteiler, oft Glasfaser oder Cat 6/7.\n3. Tertiärbereich (Etagen-Verkabelung): Verbindet Etagenverteiler mit Netzwerkdosen, meist Twisted-Pair (Cat 6a, Cat 7).\n\nVorteile: Zukunftssicherheit, Flexibilität, einfache Wartung, höhere Übertragungsgeschwindigkeiten.",
+    "answer": "**Strukturierte Verkabelung** ist ein standardisiertes, modulares Verkabelungssystem.\n\n| Bereich | Verbindet | Technologie |\n|---------|-----------|-------------|\n| **Primär** (Campus) | Gebäude untereinander | Glasfaser/Kupfer |\n| **Sekundär** (Gebäude) | Etagen mit Hauptverteiler | Glasfaser/Cat 6 |\n| **Tertiär** (Etage) | Etagenverteiler mit Dosen | Cat 6a/7 |\n\n✅ **Vorteile:** Zukunftssicher, flexibel, einfache Wartung",
     "tags": [
       "Netzwerk",
       "Verkabelung",
@@ -692,7 +692,7 @@
     "type": "vergleich",
     "difficulty": 3,
     "question": "Welche USV-Arten gibt es und worin unterscheiden sie sich?",
-    "answer": "1. Offline-USV (VFD): Umschaltzeit ca. 10 ms, keine aktive Spannungsregelung. Für einfache Geräte (PCs, kleine Router).\n2. Line-Interactive-USV (VI): Mit Spannungsregler (AVR), reduziert Netzschwankungen ohne Batterieumschaltung. Für Server, Netzwerktechnik.\n3. Online-USV (VFI / Doppelwandler): Wandelt Netz- in Gleich- und zurück in Wechselspannung. Keine Umschaltzeit! Für kritische IT-Systeme, Rechenzentren.\n4. Hybrid-USV (Dynamische USV): Kombination aus Online-USV und rotierendem Schwungrad. Höhere Effizienz. Für große Rechenzentren.\n\nFunktionen: Schutz vor Stromausfällen/Spannungsspitzen, Überbrückung von Netzausfällen, geordnetes Herunterfahren, Filterung von Netzstörungen.",
+    "answer": "| Typ | Eigenschaft | Anwendung |\n|-----|-------------|-----------|\n| **Offline (VFD)** | ~10ms Umschaltzeit | PCs, kleine Router |\n| **Line-Interactive** | Mit Spannungsregler (AVR) | Server, Netzwerk |\n| **Online (VFI)** | Keine Umschaltzeit! | Rechenzentren |\n| **Hybrid** | Mit Schwungrad, effizient | Große Rechenzentren |\n\n### Funktionen\n\n- Schutz vor Stromausfällen/Spannungsspitzen\n- Überbrückung von Netzausfällen\n- Geordnetes Herunterfahren\n- Filterung von Netzstörungen",
     "tags": [
       "Hardware",
       "USV",
@@ -709,7 +709,7 @@
     "type": "praxis",
     "difficulty": 3,
     "question": "Welche elektrischen Grundgrößen gibt es und wie berechnet man Leistung und Wirkungsgrad?",
-    "answer": "Stromstärke (I): Einheit Ampere (A). Formel: I = U/R bzw. I = P/U\nSpannung (U): Einheit Volt (V). Typisch: 230V (Haushalt), 12V/5V (IT). Formel: U = P/I\nLeistung (P): Einheit Watt (W). Formel: P = U × I\n\nWirkungsgrad (η):\nη = (Pab / Pzu) × 100%\n\nBeispiel: Netzteil mit 80 Plus Gold hat ca. 90% Wirkungsgrad.\nHohe Wirkungsgrade reduzieren Energieverluste und Betriebskosten.",
+    "answer": "### Grundgrößen\n\n| Größe | Einheit | Formel |\n|-------|---------|--------|\n| **Stromstärke (I)** | Ampere (A) | `I = U/R` oder `I = P/U` |\n| **Spannung (U)** | Volt (V) | `U = P/I` |\n| **Leistung (P)** | Watt (W) | `P = U × I` |\n\n### Wirkungsgrad (η)\n\n```\nη = (Pab / Pzu) × 100%\n```\n\n💡 Beispiel: Netzteil mit **80 Plus Gold** ≈ 90% Wirkungsgrad",
     "tags": [
       "Hardware",
       "Energie",
@@ -727,7 +727,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche IT-Geräteklassen gibt es?",
-    "answer": "• Desktops: Stationäre PCs ohne Mobilitätsfokus\n• Notebooks: Mobile Laptops mit integrierter Hardware\n• All-in-One: Integrierte Systeme mit Monitor und PC in einem Gehäuse\n• Thin Clients: Schlanke Clients, die auf zentrale Server zugreifen\n• Tablets: Touch-basierte mobile Geräte\n• Smartphones: Kompakte mobile Endgeräte mit Kommunikationsfunktion",
+    "answer": "| Geräteklasse | Beschreibung |\n|--------------|--------------|\n| **Desktops** | Stationäre PCs |\n| **Notebooks** | Mobile Laptops |\n| **All-in-One** | Monitor + PC in einem Gehäuse |\n| **Thin Clients** | Zugriff auf zentrale Server |\n| **Tablets** | Touch-basierte Geräte |\n| **Smartphones** | Kompakte mobile Endgeräte |",
     "tags": [
       "Hardware",
       "Geräteklassen",
@@ -743,7 +743,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was bedeutet Barrierefreiheit in der IT und welche Hardware kann helfen?",
-    "answer": "Barrierefreiheit bezeichnet Maßnahmen zur Ermöglichung der Nutzung von IT-Systemen für Menschen mit Einschränkungen.\n\nBeispiele für unterstützende Hardware:\n• Größerer Monitor – Erleichtert das Lesen für Menschen mit Sehschwäche\n• Breitere Tastatur – Hilft Menschen mit motorischen Einschränkungen durch größere Tastenabstände\n• Lautsprecher/Mikrofon – Unterstützt Sprachsteuerung und Sprachausgabe für Personen mit Seh- oder Mobilitätseinschränkungen",
+    "answer": "**Barrierefreiheit** bezeichnet Maßnahmen zur Nutzung von IT-Systemen für Menschen mit Einschränkungen.\n\n### Unterstützende Hardware\n\n| Gerät | Hilft bei |\n|-------|-----------|\n| **Größerer Monitor** | Sehschwäche |\n| **Breitere Tastatur** | Motorische Einschränkungen |\n| **Lautsprecher/Mikrofon** | Sprachsteuerung, Sehbehinderung |",
     "tags": [
       "Hardware",
       "Barrierefreiheit",
