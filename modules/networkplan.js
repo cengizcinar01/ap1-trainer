@@ -1930,11 +1930,6 @@ const NetworkPlanView = (() => {
       <div class="view-enter">
         <div class="page-header">
           <div class="page-header-left">
-            <a href="#/" class="btn btn-back" title="Zurueck">
-              <svg viewBox="0 0 24 24" width="20" height="20">
-                <polyline points="15 18 9 12 15 6"/>
-              </svg>
-            </a>
             <div>
               <h1 class="page-title">Netzplantechnik</h1>
               <p class="page-subtitle">Vorwaerts-/Rueckwaertsrechnung, Kritischer Pfad, Pufferzeiten</p>

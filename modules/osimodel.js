@@ -628,8 +628,10 @@ const OSIModelView = (() => {
       <div class="view-enter">
         <div class="page-header">
           <div class="page-header-left">
-            <a href="#/" class="btn btn-ghost btn-sm">&larr; Dashboard</a>
-            <h1 class="page-title">OSI-Modell</h1>
+            <div>
+              <h1 class="page-title">OSI-Modell</h1>
+              <p class="page-subtitle">7 Schichten, Protokolle, Hardware, Kapselung</p>
+            </div>
           </div>
         </div>
 

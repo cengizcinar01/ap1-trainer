@@ -483,8 +483,10 @@ ${subnets
       <div class="view-enter">
         <div class="page-header">
           <div class="page-header-left">
-            <a href="#/" class="btn btn-ghost btn-sm">&larr; Dashboard</a>
-            <h1 class="page-title">IP-Adressen & Subnetting</h1>
+            <div>
+              <h1 class="page-title">IP-Adressen & Subnetting</h1>
+              <p class="page-subtitle">Subnetzmaske, Netzadresse, Broadcast, IPv6</p>
+            </div>
           </div>
         </div>
 
