@@ -110,21 +110,17 @@ const Sidebar = (() => {
           Wiki
         </a>
         <div class="sidebar-section-label">Module</div>
-        <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
-          <span class="nav-item-icon">${ICONS.subnetting}</span>
-          Subnetting
-        </a>
-        <a href="#/modules/osimodel" class="nav-item ${currentRoute.startsWith('/modules/osimodel') ? 'active' : ''}" data-route="/modules/osimodel">
-          <span class="nav-item-icon">${ICONS.osimodel}</span>
-          OSI-Modell
+        <a href="#/modules/nwa" class="nav-item ${currentRoute.startsWith('/modules/nwa') ? 'active' : ''}" data-route="/modules/nwa">
+          <span class="nav-item-icon">${ICONS.nwa}</span>
+          Nutzwertanalyse
         </a>
         <a href="#/modules/networkplan" class="nav-item ${currentRoute.startsWith('/modules/networkplan') ? 'active' : ''}" data-route="/modules/networkplan">
           <span class="nav-item-icon">${ICONS.networkplan}</span>
           Netzplantechnik
         </a>
-        <a href="#/modules/nwa" class="nav-item ${currentRoute.startsWith('/modules/nwa') ? 'active' : ''}" data-route="/modules/nwa">
-          <span class="nav-item-icon">${ICONS.nwa}</span>
-          Nutzwertanalyse
+        <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
+          <span class="nav-item-icon">${ICONS.subnetting}</span>
+          Subnetting
         </a>
         <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
           <span class="nav-item-icon">${ICONS.numbersystems}</span>
@@ -133,6 +129,10 @@ const Sidebar = (() => {
         <a href="#/modules/epk" class="nav-item ${currentRoute.startsWith('/modules/epk') ? 'active' : ''}" data-route="/modules/epk">
           <span class="nav-item-icon">${ICONS.epk}</span>
           EPK-Builder
+        </a>
+        <a href="#/modules/osimodel" class="nav-item ${currentRoute.startsWith('/modules/osimodel') ? 'active' : ''}" data-route="/modules/osimodel">
+          <span class="nav-item-icon">${ICONS.osimodel}</span>
+          OSI-Modell
         </a>
       </nav>
 `;

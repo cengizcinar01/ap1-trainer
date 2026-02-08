@@ -84,7 +84,7 @@ const EPKView = (() => {
         { id: 'e1', type: 'event', name: 'Ware eingetroffen', x: 350, y: 20 },
         { id: 'f1', type: 'function', name: 'Ware pruefen', x: 350, y: 110 },
         { id: 'e2', type: 'event', name: 'Ware geprueft', x: 350, y: 200 },
-        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 380, y: 290 },
+        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 408, y: 290 },
         { id: 'e3', type: 'event', name: 'Ware i.O.', x: 200, y: 370 },
         { id: 'e4', type: 'event', name: 'Ware beschaedigt', x: 500, y: 370 },
         { id: 'f2', type: 'function', name: 'Ware einlagern', x: 200, y: 460 },
@@ -95,7 +95,7 @@ const EPKView = (() => {
           x: 500,
           y: 460,
         },
-        { id: 'x2', type: 'connectorXor', name: 'XOR', x: 380, y: 550 },
+        { id: 'x2', type: 'connectorXor', name: 'XOR', x: 408, y: 550 },
         {
           id: 'f4',
           type: 'function',
@@ -138,7 +138,7 @@ const EPKView = (() => {
         { id: 'e1', type: 'event', name: 'Auftrag angelegt', x: 350, y: 110 },
         { id: 'e2', type: 'event', name: 'Kunde bekannt', x: 350, y: 200 },
         { id: 'f2', type: 'function', name: 'Auftrag pruefen', x: 350, y: 290 },
-        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 380, y: 380 },
+        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 408, y: 380 },
         {
           id: 'f3',
           type: 'function',
@@ -187,7 +187,7 @@ const EPKView = (() => {
           y: 110,
         },
         { id: 'e2', type: 'event', name: 'Auftrag bearbeitet', x: 350, y: 200 },
-        { id: 'a1', type: 'connectorAnd', name: 'UND', x: 380, y: 290 },
+        { id: 'a1', type: 'connectorAnd', name: 'UND', x: 408, y: 290 },
         {
           id: 'f2',
           type: 'function',
@@ -204,7 +204,7 @@ const EPKView = (() => {
         },
         { id: 'e3', type: 'event', name: 'Ware bereit', x: 200, y: 460 },
         { id: 'e4', type: 'event', name: 'Rechnung erstellt', x: 500, y: 460 },
-        { id: 'a2', type: 'connectorAnd', name: 'UND', x: 380, y: 550 },
+        { id: 'a2', type: 'connectorAnd', name: 'UND', x: 408, y: 550 },
         { id: 'f4', type: 'function', name: 'Ware versenden', x: 350, y: 630 },
         { id: 'e5', type: 'event', name: 'Ware versendet', x: 350, y: 720 },
       ],
@@ -250,7 +250,7 @@ const EPKView = (() => {
           x: 350,
           y: 200,
         },
-        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 380, y: 290 },
+        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 408, y: 290 },
         { id: 'e3', type: 'event', name: 'Bewerber geeignet', x: 200, y: 370 },
         {
           id: 'e4',
@@ -338,7 +338,7 @@ const EPKView = (() => {
           y: 110,
         },
         { id: 'e2', type: 'event', name: 'Problem analysiert', x: 350, y: 200 },
-        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 380, y: 290 },
+        { id: 'x1', type: 'connectorXor', name: 'XOR', x: 408, y: 290 },
         { id: 'e3', type: 'event', name: 'Bekanntes Problem', x: 200, y: 370 },
         { id: 'e4', type: 'event', name: 'Neues Problem', x: 500, y: 370 },
         {
@@ -357,7 +357,7 @@ const EPKView = (() => {
         },
         { id: 'e5', type: 'event', name: 'Loesung angewendet', x: 200, y: 550 },
         { id: 'e6', type: 'event', name: 'Problem eskaliert', x: 500, y: 550 },
-        { id: 'x2', type: 'connectorXor', name: 'XOR', x: 380, y: 640 },
+        { id: 'x2', type: 'connectorXor', name: 'XOR', x: 408, y: 640 },
         {
           id: 'f4',
           type: 'function',
@@ -1139,8 +1139,55 @@ const EPKView = (() => {
   // SVG ARROW DRAWING (shared)
   // ============================================================
 
+  // Get the anchor point on the element border for a given direction angle
+  function getAnchorPoint(el, dims, angle) {
+    const cx = el.x + dims.w / 2;
+    const cy = el.y + dims.h / 2;
+    const isConnector = (el.type || '').startsWith('connector');
+    const isEvent = (el.type || '') === 'event';
+
+    // Connectors are circles — use radius
+    if (isConnector) {
+      const r = dims.w / 2 + 2;
+      return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
+    }
+
+    // Events are hexagons — use hexagonal boundary
+    if (isEvent) {
+      const hw = dims.w / 2;
+      const hh = dims.h / 2;
+      // Hexagon: flat sides on top/bottom, pointy sides left/right
+      // Points: left(0,cy), top-left(15%,top), top-right(85%,top),
+      //         right(100%,cy), bottom-right(85%,bottom), bottom-left(15%,bottom)
+      const _a = ((angle % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+      // Simplified: use ellipse approximation for hex
+      const rx = hw * 0.92;
+      const ry = hh + 2;
+      return { x: cx + Math.cos(angle) * rx, y: cy + Math.sin(angle) * ry };
+    }
+
+    // Functions (rounded rect) and others — use rectangle boundary
+    const hw = dims.w / 2 + 3;
+    const hh = dims.h / 2 + 3;
+    const absCos = Math.abs(Math.cos(angle));
+    const absSin = Math.abs(Math.sin(angle));
+
+    let bx, by;
+    if (absCos * hh > absSin * hw) {
+      // Hits left or right side
+      const sign = Math.cos(angle) > 0 ? 1 : -1;
+      bx = cx + sign * hw;
+      by = cy + Math.tan(angle) * sign * hw;
+    } else {
+      // Hits top or bottom side
+      const sign = Math.sin(angle) > 0 ? 1 : -1;
+      bx = cx + (Math.cos(angle) / Math.sin(angle)) * sign * hh;
+      by = cy + sign * hh;
+    }
+    return { x: bx, y: by };
+  }
+
   function computeArrowPath(from, to, fromDims, toDims) {
-    const PAD = 6;
     const fcx = from.x + fromDims.w / 2;
     const fcy = from.y + fromDims.h / 2;
     const tcx = to.x + toDims.w / 2;
@@ -1148,57 +1195,43 @@ const EPKView = (() => {
 
     const dx = tcx - fcx;
     const dy = tcy - fcy;
-    const angle = Math.atan2(dy, dx);
 
-    let x1, y1, x2, y2;
+    // Angle from source center to target center
+    const angleOut = Math.atan2(dy, dx);
+    const angleIn = Math.atan2(-dy, -dx);
 
-    // Exit side of source
-    if (angle > -Math.PI / 4 && angle <= Math.PI / 4) {
-      x1 = from.x + fromDims.w + PAD;
-      y1 = fcy;
-    } else if (angle > Math.PI / 4 && angle <= (3 * Math.PI) / 4) {
-      x1 = fcx;
-      y1 = from.y + fromDims.h + PAD;
-    } else if (angle > (-3 * Math.PI) / 4 && angle <= -Math.PI / 4) {
-      x1 = fcx;
-      y1 = from.y - PAD;
-    } else {
-      x1 = from.x - PAD;
-      y1 = fcy;
-    }
-
-    // Entry side of target
-    const rAngle = Math.atan2(-dy, -dx);
-    if (rAngle > -Math.PI / 4 && rAngle <= Math.PI / 4) {
-      x2 = to.x + toDims.w + PAD;
-      y2 = tcy;
-    } else if (rAngle > Math.PI / 4 && rAngle <= (3 * Math.PI) / 4) {
-      x2 = tcx;
-      y2 = to.y + toDims.h + PAD;
-    } else if (rAngle > (-3 * Math.PI) / 4 && rAngle <= -Math.PI / 4) {
-      x2 = tcx;
-      y2 = to.y - PAD;
-    } else {
-      x2 = to.x - PAD;
-      y2 = tcy;
-    }
+    const p1 = getAnchorPoint(from, fromDims, angleOut);
+    const p2 = getAnchorPoint(to, toDims, angleIn);
 
     const dist = Math.sqrt(dx * dx + dy * dy);
-    const tension = Math.min(dist * 0.35, 100);
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
 
-    const ex = x1 - fcx;
-    const ey = y1 - fcy;
-    const elen = Math.sqrt(ex * ex + ey * ey) || 1;
-    const cx1 = x1 + (ex / elen) * tension;
-    const cy1 = y1 + (ey / elen) * tension;
+    // Mostly vertical (typical EPK flow): use straight line or gentle S-curve
+    if (absDy > absDx * 1.2) {
+      if (absDx < 15) {
+        // Nearly straight vertical — use straight line
+        return `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y}`;
+      }
+      // Vertical with horizontal offset — use smooth S-curve
+      const midY = (p1.y + p2.y) / 2;
+      return `M ${p1.x} ${p1.y} C ${p1.x} ${midY}, ${p2.x} ${midY}, ${p2.x} ${p2.y}`;
+    }
 
-    const ix = x2 - tcx;
-    const iy = y2 - tcy;
-    const ilen = Math.sqrt(ix * ix + iy * iy) || 1;
-    const cx2 = x2 + (ix / ilen) * tension;
-    const cy2 = y2 + (iy / ilen) * tension;
+    // Mostly horizontal
+    if (absDx > absDy * 1.2) {
+      const midX = (p1.x + p2.x) / 2;
+      return `M ${p1.x} ${p1.y} C ${midX} ${p1.y}, ${midX} ${p2.y}, ${p2.x} ${p2.y}`;
+    }
 
-    return `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`;
+    // Diagonal — gentle bezier
+    const tension = Math.min(dist * 0.3, 80);
+    const cx1 = p1.x + Math.cos(angleOut) * tension;
+    const cy1 = p1.y + Math.sin(angleOut) * tension;
+    const cx2 = p2.x + Math.cos(angleIn) * tension;
+    const cy2 = p2.y + Math.sin(angleIn) * tension;
+
+    return `M ${p1.x} ${p1.y} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${p2.x} ${p2.y}`;
   }
 
   function drawSVGConnections(svg, elements, connections) {
@@ -1252,6 +1285,18 @@ const EPKView = (() => {
 
       svg.appendChild(path);
     });
+  }
+
+  function sizeReadOnlyCanvas(canvas, elements) {
+    let maxX = 0;
+    let maxY = 0;
+    elements.forEach((el) => {
+      const dims = getElementDimensions(el.type);
+      maxX = Math.max(maxX, el.x + dims.w);
+      maxY = Math.max(maxY, el.y + dims.h);
+    });
+    canvas.style.minHeight = `${maxY + 40}px`;
+    canvas.style.minWidth = `${maxX + 40}px`;
   }
 
   function drawReadOnlySVGConnections(
@@ -1398,6 +1443,9 @@ const EPKView = (() => {
           solCanvas.appendChild(el);
         });
 
+        // Size canvas to fit all elements
+        sizeReadOnlyCanvas(solCanvas, ex.solution);
+
         // Draw connections
         drawReadOnlySVGConnections(
           solSvg,
@@ -1449,6 +1497,8 @@ const EPKView = (() => {
       el.classList.add('epk-el-readonly');
       fixCanvas.appendChild(el);
     });
+
+    sizeReadOnlyCanvas(fixCanvas, ex.elements);
 
     drawReadOnlySVGConnections(
       fixSvg,
@@ -1588,6 +1638,8 @@ const EPKView = (() => {
       quizCanvas.appendChild(el);
     });
 
+    sizeReadOnlyCanvas(quizCanvas, ex.elements);
+
     drawReadOnlySVGConnections(
       quizSvg,
       ex.elements,
@@ -1654,68 +1706,111 @@ const EPKView = (() => {
   }
 
   // ============================================================
-  // TAB 4: EPK-PUZZLE (Gamification / Drag & Drop)
+  // TAB 4: EPK-PUZZLE (Gamification — Welcher Typ?)
+  // Users see process steps and must assign the correct
+  // EPK element type to each one. Tests real EPK knowledge.
   // ============================================================
 
   let puzzleScore = 0;
   let puzzleRound = 0;
   let puzzleCurrent = null;
-  let puzzlePlaced = {};
+  let puzzleAnswers = {};
+
+  const TYPE_OPTIONS = [
+    { key: 'event', label: 'Ereignis', icon: '\u2B21' },
+    { key: 'function', label: 'Funktion', icon: '\u25A2' },
+    { key: 'connectorXor', label: 'XOR', icon: '\u2295' },
+    { key: 'connectorAnd', label: 'UND', icon: '\u2227' },
+    { key: 'connectorOr', label: 'ODER', icon: '\u2228' },
+  ];
 
   const PUZZLE_SCENARIOS = [
     {
-      description:
-        'Ordne die Elemente in der richtigen Reihenfolge an: Ein Kunde bestellt ein Produkt online.',
-      elements: [
-        { slot: 0, type: 'event', name: 'Bestellung eingegangen' },
-        { slot: 1, type: 'function', name: 'Bestellung pruefen' },
-        { slot: 2, type: 'event', name: 'Bestellung geprueft' },
-        { slot: 3, type: 'function', name: 'Ware versenden' },
-        { slot: 4, type: 'event', name: 'Ware versendet' },
+      title: 'Online-Bestellung',
+      description: 'Bestimme fuer jeden Schritt den richtigen EPK-Element-Typ:',
+      steps: [
+        { name: 'Bestellung eingegangen', correctType: 'event' },
+        { name: 'Bestellung pruefen', correctType: 'function' },
+        { name: 'Bestellung geprueft', correctType: 'event' },
+        { name: 'Ware versenden', correctType: 'function' },
+        { name: 'Ware versendet', correctType: 'event' },
       ],
     },
     {
-      description:
-        'Ordne die Elemente an: Ein Mitarbeiter meldet eine IT-Stoerung. Die Stoerung wird analysiert und behoben.',
-      elements: [
-        { slot: 0, type: 'event', name: 'Stoerung gemeldet' },
-        { slot: 1, type: 'function', name: 'Stoerung analysieren' },
-        { slot: 2, type: 'event', name: 'Stoerung analysiert' },
-        { slot: 3, type: 'function', name: 'Stoerung beheben' },
-        { slot: 4, type: 'event', name: 'Stoerung behoben' },
+      title: 'IT-Stoerung mit Entscheidung',
+      description: 'Welcher Typ gehoert zu welchem Schritt?',
+      steps: [
+        { name: 'Stoerung gemeldet', correctType: 'event' },
+        { name: 'Stoerung analysieren', correctType: 'function' },
+        { name: 'Stoerung analysiert', correctType: 'event' },
+        {
+          name: 'Entweder Hardware- oder Softwareproblem (exklusiv)',
+          correctType: 'connectorXor',
+        },
+        { name: 'Hardware reparieren', correctType: 'function' },
       ],
     },
     {
+      title: 'Parallele Auftragsbearbeitung',
       description:
-        'Ordne die Elemente an: Ein Bewerber schickt seine Bewerbung. Die Bewerbung wird gesichtet. Dann wird entschieden (XOR): Einladung oder Absage.',
-      elements: [
-        { slot: 0, type: 'event', name: 'Bewerbung eingegangen' },
-        { slot: 1, type: 'function', name: 'Bewerbung sichten' },
-        { slot: 2, type: 'event', name: 'Bewerbung gesichtet' },
-        { slot: 3, type: 'connectorXor', name: 'XOR' },
-        { slot: 4, type: 'event', name: 'Bewerber geeignet / ungeeignet' },
+        'Bestimme die Element-Typen fuer diesen Prozess mit Parallelisierung:',
+      steps: [
+        { name: 'Auftrag eingegangen', correctType: 'event' },
+        { name: 'Auftrag bearbeiten', correctType: 'function' },
+        { name: 'Auftrag bearbeitet', correctType: 'event' },
+        {
+          name: 'Gleichzeitig: Ware kommissionieren UND Rechnung erstellen',
+          correctType: 'connectorAnd',
+        },
+        { name: 'Rechnung erstellen', correctType: 'function' },
+        { name: 'Ware versendet', correctType: 'event' },
       ],
     },
     {
-      description:
-        'Welcher Element-Typ gehoert wohin? Ordne den richtigen Typ zu: Zustand, Taetigkeit, Verzweigung.',
-      elements: [
-        { slot: 0, type: 'event', name: 'Rechnung erhalten' },
-        { slot: 1, type: 'function', name: 'Rechnung pruefen' },
-        { slot: 2, type: 'event', name: 'Rechnung geprueft' },
-        { slot: 3, type: 'connectorXor', name: 'XOR' },
-        { slot: 4, type: 'function', name: 'Zahlung anweisen' },
+      title: 'Bewerbungsprozess',
+      description: 'Ordne die korrekten EPK-Typen zu:',
+      steps: [
+        { name: 'Bewerbung eingegangen', correctType: 'event' },
+        { name: 'Bewerbung sichten', correctType: 'function' },
+        { name: 'Bewerbung gesichtet', correctType: 'event' },
+        {
+          name: 'Genau ein Pfad: Einladung oder Absage',
+          correctType: 'connectorXor',
+        },
+        { name: 'Einladung senden', correctType: 'function' },
+        { name: 'Einladung versendet', correctType: 'event' },
       ],
     },
     {
+      title: 'Serverausfall',
       description:
-        'Stelle die richtige Reihenfolge her: Server-Wartung mit parallelen Aufgaben.',
-      elements: [
-        { slot: 0, type: 'event', name: 'Wartung geplant' },
-        { slot: 1, type: 'function', name: 'Wartung starten' },
-        { slot: 2, type: 'event', name: 'Wartung gestartet' },
-        { slot: 3, type: 'connectorAnd', name: 'UND (Split)' },
-        { slot: 4, type: 'function', name: 'Backup / Updates' },
+        'Bestimme die Element-Typen. Achtung: Zwei Aktionen laufen parallel!',
+      steps: [
+        { name: 'Serverausfall erkannt', correctType: 'event' },
+        { name: 'Fehleranalyse durchfuehren', correctType: 'function' },
+        { name: 'Fehler analysiert', correctType: 'event' },
+        {
+          name: 'Parallel: Backup einspielen UND Kunden informieren',
+          correctType: 'connectorAnd',
+        },
+        { name: 'Kunden informieren', correctType: 'function' },
+        { name: 'Kunden informiert', correctType: 'event' },
+        { name: 'Server wieder online', correctType: 'event' },
+      ],
+    },
+    {
+      title: 'Rechnungspruefung',
+      description: 'Ein Prozess mit alternativer Verzweigung:',
+      steps: [
+        { name: 'Rechnung eingegangen', correctType: 'event' },
+        { name: 'Rechnung pruefen', correctType: 'function' },
+        { name: 'Rechnung geprueft', correctType: 'event' },
+        {
+          name: 'Entweder korrekt oder fehlerhaft (exklusiv)',
+          correctType: 'connectorXor',
+        },
+        { name: 'Zahlung freigeben', correctType: 'function' },
+        { name: 'Reklamation schreiben', correctType: 'function' },
       ],
     },
   ];
@@ -1723,14 +1818,14 @@ const EPKView = (() => {
   function renderPuzzle(container) {
     puzzleScore = 0;
     puzzleRound = 0;
-    generatePuzzleRound();
+    nextPuzzleRound();
 
     container.innerHTML = `
       <div class="epk-puzzle">
         <div class="epk-puzzle-header">
           <div class="epk-puzzle-info">
-            <h3>EPK-Puzzle</h3>
-            <p class="epk-text">Ziehe die EPK-Elemente in die richtige Reihenfolge!</p>
+            <h3>EPK-Puzzle — Welcher Typ?</h3>
+            <p class="epk-text">Ordne jedem Prozessschritt den richtigen EPK-Element-Typ zu!</p>
           </div>
           <div class="epk-puzzle-score">
             <span class="epk-puzzle-score-label">Punkte</span>
@@ -1739,11 +1834,7 @@ const EPKView = (() => {
         </div>
 
         <div class="epk-puzzle-context" id="epkPuzzleContext"></div>
-
-        <div class="epk-puzzle-area">
-          <div class="epk-puzzle-chips" id="epkPuzzleChips"></div>
-          <div class="epk-puzzle-slots" id="epkPuzzleSlots"></div>
-        </div>
+        <div class="epk-puzzle-steps" id="epkPuzzleSteps"></div>
 
         <div class="epk-puzzle-actions">
           <button class="btn btn-primary" id="epkPuzzleCheck">Pruefen</button>
@@ -1757,9 +1848,9 @@ const EPKView = (() => {
     setupPuzzleEvents(container);
   }
 
-  function generatePuzzleRound() {
+  function nextPuzzleRound() {
     puzzleRound++;
-    puzzlePlaced = {};
+    puzzleAnswers = {};
     puzzleCurrent =
       PUZZLE_SCENARIOS[(puzzleRound - 1) % PUZZLE_SCENARIOS.length];
   }
@@ -1769,123 +1860,54 @@ const EPKView = (() => {
 
     container.querySelector('#epkPuzzleContext').innerHTML = `
       <div class="epk-puzzle-context-card">
-        <strong>Runde ${puzzleRound}:</strong> ${scenario.description}
+        <strong>Runde ${puzzleRound}: ${scenario.title}</strong><br>
+        ${scenario.description}
       </div>
     `;
 
-    // Create shuffled chips
-    const shuffled = [...scenario.elements];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-
-    const chipsContainer = container.querySelector('#epkPuzzleChips');
-    chipsContainer.innerHTML = shuffled
+    const stepsContainer = container.querySelector('#epkPuzzleSteps');
+    stepsContainer.innerHTML = scenario.steps
       .map(
-        (el) => `
-      <div class="epk-puzzle-chip epk-puzzle-chip-${el.type}" draggable="true" data-slot="${el.slot}" data-name="${el.name}" data-type="${el.type}">
-        <span class="epk-puzzle-chip-type">${ELEMENT_TYPES[el.type]?.label || el.type}</span>
-        <span class="epk-puzzle-chip-name">${el.name}</span>
+        (step, i) => `
+      <div class="epk-puzzle-step" data-step="${i}">
+        <div class="epk-puzzle-step-name">${step.name}</div>
+        <div class="epk-puzzle-step-options">
+          ${TYPE_OPTIONS.map(
+            (opt) => `
+            <button class="epk-puzzle-type-btn" data-step="${i}" data-type="${opt.key}"
+              title="${opt.label}">
+              <span class="epk-puzzle-type-icon">${opt.icon}</span>
+              <span class="epk-puzzle-type-label">${opt.label}</span>
+            </button>
+          `
+          ).join('')}
+        </div>
       </div>
     `
       )
       .join('');
 
-    // Create slots
-    const slotsContainer = container.querySelector('#epkPuzzleSlots');
-    slotsContainer.innerHTML = scenario.elements
-      .map(
-        (_, i) => `
-      <div class="epk-puzzle-slot" data-slot-idx="${i}">
-        <span class="epk-puzzle-slot-num">${i + 1}</span>
-        <span class="epk-puzzle-slot-content">?</span>
-      </div>
-      ${i < scenario.elements.length - 1 ? '<div class="epk-puzzle-arrow-down">\u2193</div>' : ''}
-    `
-      )
-      .join('');
-
-    puzzlePlaced = {};
+    puzzleAnswers = {};
   }
 
   function setupPuzzleEvents(container) {
-    const chipsContainer = container.querySelector('#epkPuzzleChips');
-    const slotsContainer = container.querySelector('#epkPuzzleSlots');
+    // Type selection via click
+    container
+      .querySelector('#epkPuzzleSteps')
+      .addEventListener('click', (e) => {
+        const btn = e.target.closest('.epk-puzzle-type-btn');
+        if (!btn) return;
+        const stepIdx = parseInt(btn.dataset.step, 10);
+        const type = btn.dataset.type;
 
-    // Drag & Drop
-    chipsContainer.addEventListener('dragstart', (e) => {
-      if (e.target.classList.contains('epk-puzzle-chip')) {
-        e.dataTransfer.setData(
-          'text/plain',
-          JSON.stringify({
-            slot: e.target.dataset.slot,
-            name: e.target.dataset.name,
-            type: e.target.dataset.type,
-          })
-        );
-        e.target.classList.add('epk-chip-dragging');
-      }
-    });
-
-    chipsContainer.addEventListener('dragend', (e) => {
-      e.target.classList.remove('epk-chip-dragging');
-    });
-
-    slotsContainer.querySelectorAll('.epk-puzzle-slot').forEach((slot) => {
-      slot.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        slot.classList.add('epk-slot-hover');
+        // Deselect siblings
+        const stepDiv = btn.closest('.epk-puzzle-step');
+        stepDiv.querySelectorAll('.epk-puzzle-type-btn').forEach((b) => {
+          b.classList.remove('epk-puzzle-type-selected');
+        });
+        btn.classList.add('epk-puzzle-type-selected');
+        puzzleAnswers[stepIdx] = type;
       });
-      slot.addEventListener('dragleave', () => {
-        slot.classList.remove('epk-slot-hover');
-      });
-      slot.addEventListener('drop', (e) => {
-        e.preventDefault();
-        slot.classList.remove('epk-slot-hover');
-        const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-        const slotIdx = parseInt(slot.dataset.slotIdx, 10);
-
-        slot.querySelector('.epk-puzzle-slot-content').textContent = data.name;
-        slot.classList.add('epk-slot-filled');
-        puzzlePlaced[slotIdx] = parseInt(data.slot, 10);
-
-        // Hide used chip
-        const chip = chipsContainer.querySelector(
-          `.epk-puzzle-chip[data-slot="${data.slot}"]:not(.epk-chip-used)`
-        );
-        if (chip) chip.classList.add('epk-chip-used');
-      });
-
-      // Touch: click to place selected chip
-      slot.addEventListener('click', () => {
-        const activeChip = chipsContainer.querySelector(
-          '.epk-chip-touch-active'
-        );
-        if (activeChip) {
-          const slotIdx = parseInt(slot.dataset.slotIdx, 10);
-          slot.querySelector('.epk-puzzle-slot-content').textContent =
-            activeChip.dataset.name;
-          slot.classList.add('epk-slot-filled');
-          puzzlePlaced[slotIdx] = parseInt(activeChip.dataset.slot, 10);
-          activeChip.classList.add('epk-chip-used');
-          activeChip.classList.remove('epk-chip-touch-active');
-        }
-      });
-    });
-
-    // Touch: tap chip to select
-    chipsContainer.addEventListener('click', (e) => {
-      const chip = e.target.closest('.epk-puzzle-chip');
-      if (chip && !chip.classList.contains('epk-chip-used')) {
-        chipsContainer
-          .querySelectorAll('.epk-chip-touch-active')
-          .forEach((c) => {
-            c.classList.remove('epk-chip-touch-active');
-          });
-        chip.classList.add('epk-chip-touch-active');
-      }
-    });
 
     // Check
     container.querySelector('#epkPuzzleCheck').addEventListener('click', () => {
@@ -1894,7 +1916,7 @@ const EPKView = (() => {
 
     // Next round
     container.querySelector('#epkPuzzleNext').addEventListener('click', () => {
-      generatePuzzleRound();
+      nextPuzzleRound();
       renderPuzzleRound(container);
       container.querySelector('#epkPuzzleFeedback').innerHTML = '';
     });
@@ -1903,19 +1925,40 @@ const EPKView = (() => {
   function checkPuzzle(container) {
     const scenario = puzzleCurrent;
     let correct = 0;
-    const total = scenario.elements.length;
+    const total = scenario.steps.length;
 
-    container.querySelectorAll('.epk-puzzle-slot').forEach((slot) => {
-      const idx = parseInt(slot.dataset.slotIdx, 10);
-      slot.classList.remove('epk-input-correct', 'epk-input-wrong');
+    container.querySelectorAll('.epk-puzzle-step').forEach((stepDiv) => {
+      const idx = parseInt(stepDiv.dataset.step, 10);
+      const correctType = scenario.steps[idx].correctType;
+      const answer = puzzleAnswers[idx];
 
-      if (puzzlePlaced[idx] === idx) {
-        slot.classList.add('epk-input-correct');
+      // Reset
+      stepDiv.querySelectorAll('.epk-puzzle-type-btn').forEach((btn) => {
+        btn.classList.remove(
+          'epk-puzzle-type-correct',
+          'epk-puzzle-type-wrong'
+        );
+      });
+
+      if (answer === correctType) {
         correct++;
-      } else if (puzzlePlaced[idx] !== undefined) {
-        slot.classList.add('epk-input-wrong');
+        const selectedBtn = stepDiv.querySelector(
+          `.epk-puzzle-type-btn[data-type="${answer}"]`
+        );
+        if (selectedBtn) selectedBtn.classList.add('epk-puzzle-type-correct');
       } else {
-        slot.classList.add('epk-input-wrong');
+        // Mark wrong answer
+        if (answer) {
+          const wrongBtn = stepDiv.querySelector(
+            `.epk-puzzle-type-btn[data-type="${answer}"]`
+          );
+          if (wrongBtn) wrongBtn.classList.add('epk-puzzle-type-wrong');
+        }
+        // Highlight correct answer
+        const correctBtn = stepDiv.querySelector(
+          `.epk-puzzle-type-btn[data-type="${correctType}"]`
+        );
+        if (correctBtn) correctBtn.classList.add('epk-puzzle-type-correct');
       }
     });
 
@@ -1933,8 +1976,8 @@ const EPKView = (() => {
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}">
         ${
           allCorrect
-            ? '<strong>Perfekt!</strong> Alle Elemente in der richtigen Reihenfolge! +10 Punkte!'
-            : `<strong>${correct} von ${total} korrekt.</strong> Die richtige Reihenfolge: ${scenario.elements.map((e) => e.name).join(' → ')}`
+            ? `<strong>Perfekt!</strong> Alle ${total} Typen korrekt zugeordnet! +10 Punkte!`
+            : `<strong>${correct} von ${total} korrekt.</strong> Merke: Ereignisse beschreiben Zustaende (passiv), Funktionen beschreiben Taetigkeiten (aktiv), Konnektoren steuern die Verzweigung.`
         }
       </div>
     `;
