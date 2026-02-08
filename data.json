@@ -927,7 +927,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Welche Schritte umfasst die Hardware-Installation und -Konfiguration?",
-    "answer": "Physische Installation:\n• Einbau von Komponenten (CPU, RAM, Festplatten, Grafikkarten)\n• Anschluss von Peripheriegeräten (Monitor, Tastatur, Maus, Drucker)\n• Verkabelung und Stromversorgung prüfen\n\nHardware-Konfiguration:\n• BIOS/UEFI-Einstellungen anpassen (Boot-Reihenfolge, Sicherheitsoptionen)\n• Hardware-Diagnose (Fehlersuche bei nicht erkannten Komponenten)\n• Firmware-Updates durchführen",
+    "answer": "### 1. Physische Installation\n- **Einbau:** CPU, RAM, Datenträger, GPU\n- **Anschluss:** Peripherie (Maus, Tastatur, Monitor)\n- **Check:** Verkabelung & Strom\n\n### 2. Hardware-Konfiguration\n- **BIOS/UEFI:** Boot-Reihenfolge, Secure Boot, TPM\n- **Diagnose:** Funktionstest (POST)\n- **Firmware:** Updates einspielen",
     "tags": [
       "Installation",
       "Hardware",
@@ -941,7 +941,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Schritte umfasst die Installation und Konfiguration eines Betriebssystems?",
-    "answer": "Installation:\n• Auswahl des Installationsmediums (DVD, USB-Stick, Netzwerkinstallation)\n• Partitionierung der Festplatte\n• Auswahl und Installation von Treibern\n\nKonfiguration:\n• Lokale und Netzwerkeinstellungen (Zeit, Sprache, Benutzerkonten)\n• Installation von Sicherheitsupdates und Patches\n• Einrichtung von automatischen Update-Prozessen",
+    "answer": "### 1. Installation\n- **Medium:** USB-Stick / ISO / PXE\n- **Partitionierung:** Laufwerke einrichten (GPT/MBR)\n- **Treiber:** Systemtreiber laden\n\n### 2. Konfiguration\n- **Basis:** Sprache, Zeit, Region, Tastatur\n- **Benutzer:** Admin-Konto anlegen\n- **Netzwerk:** IP, DNS, Hostname\n- **Updates:** Sicherheitspatches installieren",
     "tags": [
       "Installation",
       "Betriebssystem",
@@ -955,7 +955,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind die Grundlagen der Kommandozeile?",
-    "answer": "Shells/Terminals: cmd, PowerShell, Bash\nAufbau: Befehl, Parameter, Optionen, Argumente\n\nPraktische Anwendung:\n• Navigation: cd, pwd\n• Dateien/Verzeichnisse erstellen/löschen: mkdir, del, rm\n• Dateien anzeigen: dir (Windows), ls (Linux/Mac)\n• Parameter zur Anpassung: z.B. -l, /w\n• Aliase: z.B. alias ll='ls -la' in Bash",
+    "answer": "**Shells:** `cmd` (Windows), `PowerShell`, `Bash` (Linux/Mac)\n\n### Wichtige Befehle\n| Aktion | Windows | Linux/Mac |\n|--------|---------|-----------|\n| **Verzeichnis** | `dir` | `ls` |\n| **Navigieren** | `cd` | `cd` |\n| **Pfad anzeigem** | `cd` | `pwd` |\n| **Erstellen** | `mkdir` | `mkdir` |\n| **Löschen** | `del` | `rm` |\n\n💡 **Tipp:** Mit `Tab` Befehle vervollständigen (Autocomplete).",
     "tags": [
       "Installation",
       "Kommandozeile",
@@ -971,7 +971,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Möglichkeiten gibt es zur Anpassung von Software (Customizing)?",
-    "answer": "Customizing bezeichnet die Anpassung von Software an betriebliche Anforderungen ohne Änderung des Quellcodes.\n\nAnpassungsmöglichkeiten:\n• Konfiguration: Einstellungen über Menüs, Parameter-Dateien (INI, XML, JSON), Registry\n• Parametrisierung: Festlegen von Standardwerten, Benutzerrechten, Workflows\n• Scripting/Makros: Automatisierung wiederkehrender Aufgaben (z.B. VBA in Office)\n• Add-ons/Plugins: Erweiterung des Funktionsumfangs durch Zusatzmodule\n• Schnittstellen: Integration über APIs (REST, SOAP) mit anderen Systemen\n\nVorteile: Geringere Entwicklungskosten, schnellere Implementierung, updatefähig.\nNachteile: Einschränkungen bei Funktionalität, Abhängigkeit vom Hersteller.",
+    "answer": "**Customizing** = Anpassung an Unternehmensbedarf (ohne Code-Änderung).\n\n### Methoden\n| Methode | Beschreibung |\n|---------|--------------|\n| **Konfiguration** | Einstellungen (GUI, JSON, XML, Registry) |\n| **Parametrisierung** | Standardwerte definieren |\n| **Scripting** | Automatisierung (Bash, PowerShell, VBA) |\n| **Plugins** | Module hinzufügen (Extensions) |\n| **Schnittstellen** | APIs anbinden (REST, SOAP) |\n\n✅ **Vorteil:** Günstiger & schneller als Neuentwicklung.",
     "tags": [
       "Installation",
       "Konfiguration",
@@ -987,7 +987,7 @@
     "type": "definition",
     "difficulty": 3,
     "question": "Welche Netzwerk-Diagnosewerkzeuge gibt es?",
-    "answer": "• ping: Prüfen der Erreichbarkeit eines Hosts\n• traceroute / tracert: Ermittlung des Pfades zu einem Ziel\n• nslookup: DNS-Abfragen durchführen\n• arp: Anzeigen und Ändern der ARP-Tabelle\n• ipconfig (Windows) / ifconfig / ip (Linux): Anzeigen und Konfigurieren von Netzwerkschnittstellen\n• iproute2: Erweiterte Netzwerkadministration unter Linux\n• Wireshark: Netzwerküberwachung",
+    "answer": "| Tool | Funktion |\n|------|----------|\n| `ping` | Erreichbarkeit prüfen (ICMP) |\n| `tracert` / `traceroute` | Weg der Pakete verfolgen (Hops) |\n| `nslookup` | DNS-Namen auflösen (IP finden) |\n| `ipconfig` / `ip a` | Eigene IP-Konfiguration anzeigen |\n| `arp` | MAC-Adressen zu IPs anzeigen |\n| **Wireshark** | Paketanalyse (Sniffer) |",
     "tags": [
       "Netzwerk",
       "Troubleshooting",
@@ -1004,7 +1004,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche wichtigen Konsolenbefehle gibt es für Windows und Linux?",
-    "answer": "Dateioperationen:\nWindows: dir (Verzeichnis anzeigen), copy (Kopieren), del (Löschen)\nLinux/Mac: ls (anzeigen), cp (kopieren), rm (löschen), mkdir (Verzeichnis erstellen), chmod (Berechtigungen ändern)\n\nNetzwerk:\n• ipconfig (Windows) / ifconfig, ip (Linux): Netzwerkschnittstellen\n• ping: Verbindung testen\n• traceroute / tracert: Netzwerkrouten verfolgen\n• nslookup: Namensauflösung prüfen\n• arp: ARP-Tabelle verwalten",
+    "answer": "### Datei-Operationen\n| Funktion | Windows (CMD) | Linux (Bash) |\n|----------|---------------|--------------|\n| Anzeigen | `dir` | `ls` (-l) |\n| Kopieren | `copy` / `robocopy` | `cp` |\n| Verschieben | `move` | `mv` |\n| Löschen | `del` | `rm` |\n| Rechte | `icacls` | `chmod` / `chown` |\n\n### Netzwerk\n| Funktion | Windows | Linux |\n|----------|---------|-------|\n| IP-Config | `ipconfig` | `ip a` / `ifconfig` |\n| Verb. testen | `ping` | `ping` |\n| Routing | `tracert` | `traceroute` |\n| DNS | `nslookup` | `dig` / `nslookup` |",
     "tags": [
       "Konsolenbefehle",
       "Windows",
@@ -1020,7 +1020,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind die Grundlagen des Urheberschutzes?",
-    "answer": "Gesetzliche Grundlage: Urheberrechtsgesetz (UrhG) in Deutschland.\nGeschützte Werke: Texte, Musik, Bilder, Software, Filme, wissenschaftliche Werke.\nEntstehung: Automatisch mit der Schöpfung – keine Registrierung erforderlich.\nDauer: 70 Jahre nach dem Tod des Urhebers.\n\nRechte des Urhebers:\n• Urheberpersönlichkeitsrechte (Schutz vor Entstellung, Namensnennung)\n• Verwertungsrechte (Vervielfältigung, Verbreitung, öffentliche Wiedergabe)\n• Nutzungsrechte (durch Lizenzen einräumbar)\n\nEinschränkungen: Privatkopie, Zitate (mit Quellenangabe), Schrankenregelungen.\n\nVerstöße können Abmahnungen, Schadensersatz oder strafrechtliche Folgen nach sich ziehen.",
+    "answer": "Grundlage: **Urheberrechtsgesetz (UrhG)**.\n\n### Werke & Entstehung\n- **Geschützt:** Texte, Musik, Bilder, Software, Filme\n- **Entstehung:** Automatisch mit Schöpfung (keine Registrierung)\n- **Dauer:** 70 Jahre nach Tod des Urhebers\n\n### Rechte des Urhebers\n| Recht | Beispiel |\n|-------|----------|\n| **Persönlich** | Namensnennung, Schutz vor Entstellung |\n| **Verwertung** | Vervielfältigung, Verbreitung |\n| **Nutzung** | Lizenzen erteilen |\n\n⚠️ **Verstöße:** Abmahnung, Schadensersatz, Strafe.",
     "tags": [
       "Lizenzen",
       "Urheberrecht",
@@ -1036,7 +1036,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Creative-Commons-Lizenzen gibt es?",
-    "answer": "Creative Commons (CC) ermöglicht Urhebern, ihre Werke unter bestimmten Bedingungen frei zu geben.\n\n• Attribution (BY): Verwendung erlaubt, solange Urheber genannt wird.\n• ShareAlike (SA): Neue Arbeit muss unter denselben Bedingungen lizenziert werden.\n• NoDerivatives (ND): Keine Veränderung oder Bearbeitung erlaubt.\n• NonCommercial (NC): Keine kommerzielle Nutzung erlaubt.\n• Zero (CC0): Vollständig gemeinfrei, keine Einschränkungen.\n\nKombinationsbeispiel: CC BY-SA = Verwendung/Veränderung erlaubt bei Namensnennung und gleicher Lizenz.",
+    "answer": "**Creative Commons (CC)** erlaubt kostenlose Nutzung unter Bedingungen.\n\n### Module\n| Kürzel | Bedeutung | Symbol |\n|--------|-----------|--------|\n| **BY** | Attribution | Namensnennung |\n| **SA** | ShareAlike | Gleiche Bedingungen |\n| **ND** | NoDerivatives | Keine Bearbeitung |\n| **NC** | NonCommercial | Keine kommerzielle Nutzung |\n\n### Beispiele\n- **CC0:** Gemeinfrei (Alles erlaubt)\n- **CC BY-SA:** Wikipedia-Lizenz (Namen nennen + teilen unter gleichen Bedingungen)",
     "tags": [
       "Lizenzen",
       "Creative Commons",
@@ -1052,7 +1052,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche weiteren Lizenzmodelle gibt es neben Creative Commons?",
-    "answer": "• Nodelocked License: An eine bestimmte Node (Computer/Server) gebunden.\n• Named User License (NUL): Einer bestimmten, namentlich genannten Person zugewiesen, unabhängig vom Gerät.\n• Floating License / Concurrent Use License: Bestimmte Anzahl gleichzeitiger Benutzer, Gesamtzahl nicht beschränkt.\n• Pay per Use (Metered Service): Bezahlung nur für die tatsächliche Nutzung der Software.",
+    "answer": "| Lizenzmodell | Beschreibung |\n|--------------|--------------|\n| **Nodelocked** | An **ein Gerät** gebunden |\n| **Named User** | An **eine Person** gebunden (egal welches Gerät) |\n| **Floating** | Begrenzte **Anzahl gleichzeitiger** Nutzer |\n| **Pay per Use** | Abrechnung nach **Nutzung** (Zeit/Menge) |",
     "tags": [
       "Lizenzen",
       "Nodelocked",
@@ -3586,7 +3586,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Prozess, Thread und Task sowie kooperativem und präemptivem Multitasking?",
-    "answer": "Prozess:\n- Laufendes Programm mit eigenem Speicherbereich\n- Hat eigene Ressourcen (Speicher, Dateien)\n- Wird vom Betriebssystem verwaltet\n\nThread (Leichtgewichtiger Prozess):\n- Ausführungsstrang INNERHALB eines Prozesses\n- Teilt sich Speicher mit anderen Threads des Prozesses\n- Schnellerer Kontextwechsel als zwischen Prozessen\n\nTask:\n- Allgemeiner Begriff für eine auszuführende Aufgabe\n- Kann Prozess oder Thread sein\n\nKooperatives Multitasking:\n- Prozess gibt CPU freiwillig ab\n- Wenn ein Prozess hängt → gesamtes System blockiert\n- Veraltet (Windows 3.x, Mac OS Classic)\n\nPräemptives Multitasking:\n- Betriebssystem entzieht Prozessen die CPU nach Zeitscheiben (Time Slicing)\n- Kein Prozess kann System blockieren\n- Standard bei modernen OS (Windows, Linux, macOS)\n\nScheduler: Teil des OS, der CPU-Zeit auf Prozesse verteilt.",
+    "answer": "### Definitionen\n- **Prozess:** Laufendes Programm, eigener Speicher, vom OS verwaltet.\n- **Thread:** Leichtgewichtiger Teil eines Prozesses, teilt sich Speicher mit anderen Threads.\n- **Task:** Aufgabe (Prozess oder Thread).\n\n### Multitasking-Arten\n| Art | Beschreibung |\n|-----|--------------|\n| **Kooperativ** | Prozesse geben CPU *freiwillig* ab (veraltet, Blockadegefahr) |\n| **Präemptiv** | OS entzieht CPU nach Zeitintervall (*Time Slicing*) – Standard heute (Win, Lin, Mac) |",
     "tags": [
       "Betriebssystem",
       "Prozess",
@@ -3602,7 +3602,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Wie ist das Linux-Dateisystem aufgebaut und wie funktionieren Dateirechte?",
-    "answer": "Wichtige Verzeichnisse:\n- / : Root (Wurzelverzeichnis)\n- /bin : Grundlegende Befehle (ls, cp, mv)\n- /boot : Bootloader, Kernel\n- /dev : Gerätedateien (sda, tty)\n- /etc : Konfigurationsdateien\n- /home : Benutzerverzeichnisse\n- /lib : Bibliotheken\n- /root : Home-Verzeichnis von root\n- /sbin : Systembefehle (nur root)\n- /tmp : Temporäre Dateien\n- /var : Variable Daten (Logs, Mail, Spool)\n- /usr : Benutzerprogramme\n\nDateirechte (chmod):\n- 3 Gruppen: User (u), Group (g), Others (o)\n- 3 Rechte: Read (r=4), Write (w=2), Execute (x=1)\n- Oktalschreibweise: chmod 755 datei\n  → 7 (rwx) für User, 5 (r-x) für Group, 5 (r-x) für Others\n- Symbolisch: chmod u+x datei\n\nchown: Besitzer ändern (chown user:group datei)\n\nDistributionen: Debian, Ubuntu, Red Hat, CentOS, SUSE, Fedora, Arch Linux",
+    "answer": "### Wichtige Verzeichnisse\n| Pfad | Inhalt |\n|------|--------|\n| `/` | **Root** (Wurzel) |\n| `/home` | Benutzerdaten |\n| `/etc` | Konfigurationen |\n| `/var` | Logs, Mail, Datenbanken |\n| `/root` | Admin-Home |\n| `/bin` | Systembefehle |\n\n### Dateirechte (`chmod`)\nRechte: **r**ead (4), **w**rite (2), e**x**ecute (1)\n\nBsp: `chmod 755 datei`\n- **Besitzer (7):** r+w+x (4+2+1)\n- **Gruppe (5):** r+x (4+0+1)\n- **Andere (5):** r+x (4+0+1)\n\n`chown user:group datei` → Besitzer ändern",
     "tags": [
       "Betriebssystem",
       "Linux",
