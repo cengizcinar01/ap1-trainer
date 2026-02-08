@@ -1843,7 +1843,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Welche Kommunikationsarten und -modelle gibt es im IT-Support?",
-    "answer": "Kommunikationsarten:\n• Verbale Kommunikation: Direkte Kommunikation über gesprochene oder geschriebene Wörter\n• Paraverbale Kommunikation: Tonfall, Lautstärke, Sprechgeschwindigkeit\n• Nonverbale Kommunikation: Körpersprache, Gestik und Mimik\n\nKommunikationsmodelle:\n• 4-Ohren-Modell: Jede Nachricht enthält vier Ebenen – Appell, Beziehung, Sachinhalt, Selbstoffenbarung\n• Sender-Empfänger-Modell: Sender, Codierung, Kanal, Empfänger, Störungen\n• Eisbergmodell: Sichtbare Sachebene und unsichtbare Beziehungsebene",
+    "answer": "### Arten\n| Art | Beschreibung |\n|---|---|\n| **Verbal** | Wort & Schrift |\n| **Paraverbal** | Tonfall, Lautstärke |\n| **Nonverbal** | Körpersprache, Gestik |\n\n### Modelle\n- **4-Ohren:** Sache, Appell, Beziehung, Selbstoffenbarung\n- **Sender-Empfänger:** Codierung & Störungen\n- **Eisberg:** 20% Sache (sichtbar), 80% Beziehung (unsichtbar)",
     "tags": [
       "Support",
       "Kommunikation",
@@ -1858,7 +1858,7 @@
     "type": "praxis",
     "difficulty": 2,
     "question": "Wie deeskaliert man ein Konfliktgespräch im IT-Support?",
-    "answer": "• Ruhige Kommunikation\n• Empathie zeigen\n• Konkrete Hilfen und Lösungsansätze finden\n• Schuldzuweisung vermeiden\n• Sachlich bleiben\n• Trennung von sachlicher und persönlicher Ebene\n• Weitere Gespräche anbieten mit dem Ziel, eine Lösung zu finden",
+    "answer": "- **Ruhe bewahren** & ausreden lassen\n- **Empathie** zeigen (\"Ich verstehe Ihren Ärger\")\n- **Versachlichen:** Problem von Person trennen\n- **Lösungsorientiert:** \"Wir finden eine Lösung\"\n- **Keine Schuldzusweisungen**",
     "tags": [
       "Support",
       "Kommunikation",
@@ -1873,7 +1873,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was umfasst das Fehlermanagement im IT-Support?",
-    "answer": "• Problem Control: Identifikation, Dokumentation und Klassifizierung von Problemen\n• Error Control: Überwachung bekannter Fehler, um diese mittels Problemumgehungen zu minimieren\n• Proaktives Problem Management: Probleme finden, bevor Störungen auftreten\n• Workaround: Eine temporäre Lösung, die eingesetzt wird, bis eine permanente Lösung gefunden wurde",
+    "answer": "| Begriff | Bedeutung |\n|---|---|\n| **Problem Control** | Identifizieren & Klassifizieren |\n| **Error Control** | Bekannte Fehler überwachen (Known Errors) |\n| **Proaktiv** | Fehler finden *vor* Störung |\n| **Workaround** | Temporäre Umgehungslösung |",
     "tags": [
       "Support",
       "Fehlermanagement",
@@ -1889,7 +1889,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was sind Urgency und Impact im Incident Management?",
-    "answer": "Urgency (Dringlichkeit): Beschreibt, wie dringend ein Incident behoben werden muss.\n\nImpact (Auswirkung): Beschreibt, welche Auswirkungen ein Incident auf den Geschäftsbetrieb hat.\n\nBeide Werte zusammen bestimmen die Priorität eines Incidents.",
+    "answer": "### Matrix\n- **Urgency (Dringlichkeit):** Wie schnell muss es gelöst werden? (Zeit)\n- **Impact (Auswirkung):** Wie viele sind betroffen? (Schaden)\n\n🔥 **Priorität** = Urgency x Impact",
     "tags": [
       "Support",
       "Störungsmanagement",
@@ -1905,7 +1905,7 @@
     "type": "definition",
     "difficulty": 1,
     "question": "Was ist ein Ticketsystem?",
-    "answer": "Ein Ticket-System ist eine Software zur strukturierten Bearbeitung von Anfragen und Problemen.\n\n• Issue-Tracking-System: Verfolgung & Verwaltung von Fehlern\n• Helpdesk-System: Erfassung von Kundenanfragen",
+    "answer": "Software zur **strukturierten** Bearbeitung von Anfragen.\n\n- **Issue-Tracker:** Fehlerverwaltung (Dev-Fokus)\n- **Helpdesk:** Kundenanfragen (Support-Fokus)",
     "tags": [
       "Support",
       "Ticketsystem",
@@ -1920,7 +1920,7 @@
     "type": "vergleich",
     "difficulty": 2,
     "question": "Welche Support-Level gibt es und welche Anfragetypen werden unterschieden?",
-    "answer": "Support-Level:\n• First-Level-Support: Erste Anlaufstelle für IT-Probleme, meist ohne tiefgehendes Fachwissen\n• Second-Level-Support: Bearbeitung komplexerer Probleme\n• Third-Level-Support: Spezialisierte Problemlösung für hochkomplexe oder kritische Fehler (z.B. Hersteller-Support)\n\nAnfragetypen:\n• Service Request: Anfrage eines Nutzers nach einer Ressource oder Dienstleistung\n• Event (Statusmeldung): Automatisierte/manuelle Meldung über Systemzustand\n• Incident (Störungsfall): Unerwartete Unterbrechung oder Ausfall einer Dienstleistung\n\nSelf Service & Knowledge Base:\n• Self Service: Kunde löst Problem selbst (z.B. Chatbots, FAQ)\n• Knowledge Base: Wiki mit Anleitungen zur Lösungsfindung",
+    "answer": "### Support-Level\n1. **1st Level:** Annahme & einfache Lösungen (User Help Desk)\n2. **2nd Level:** Komplexe Probleme (Admins)\n3. **3rd Level:** Spezialisten / Hersteller\n\n### Anfragetypen (ITIL)\n- **Incident:** Störung (z.B. \"Drucker geht nicht\")\n- **Service Request:** Bestellung (z.B. \"Neuer Laptop\")\n- **Event:** Statusmeldung (z.B. \"Server-Backup fertig\")",
     "tags": [
       "Support",
       "First-Level",
@@ -1937,7 +1937,7 @@
     "type": "definition",
     "difficulty": 2,
     "question": "Was ist ein Service Level Agreement (SLA)?",
-    "answer": "Service Level: Gibt an, welche Qualitätsstufe ein Produkt/Service haben soll.\n\nService Level Requirement: Beschreibt die Anforderungen an einen IT-Service aus Kundensicht.\n\nService Level Agreement (SLA): Ein Vertrag zwischen IT-Service und Kunden, der das gewünschte Service Level definiert. Enthält u.a.:\n• Leistungsbeschreibung\n• Verfügbarkeitszeiten\n• Reaktionszeiten bei Störungen\n• Supportzeiten\n• Strafen bei Vertragsbruch\n\nDer Kunde hat eine Mitwirkungspflicht: Er muss z.B. rechtzeitig auf Probleme aufmerksam machen und Zugriff auf relevante Systeme gewähren.",
+    "answer": "Vertrag zwischen **Kunde** und **Provider**.\n\n### Inhalte\n- **Leistung:** Was wird erbracht?\n- **Verfügbarkeit:** z.B. 99,9% uptime\n- **Reaktionszeit:** Wie schnell muss Support antworten?\n- **Sanktionen:** Vertragsstrafen (Pönale)\n\n📝 **Wichtig:** Kunde hat **Mitwirkungspflicht** (Zugang gewähren).",
     "tags": [
       "Support",
       "SLA",
