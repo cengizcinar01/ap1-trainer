@@ -182,32 +182,74 @@ const SubnettingView = (() => {
     const maskBin = ipToBinary(maskToIp(maskInt));
     const netBin = ipToBinary(intToIp(networkInt));
     const bcBin = ipToBinary(intToIp(broadcastInt));
+    const hostCount = getHostCount(cidr);
+
+    // Hilfsfunktion fuer binaere Darstellung mit Abstaenden
+    const formatBin = (b) => b.split('.').join(' ');
 
     return [
       {
-        title: 'Schritt 1: Subnetzmaske bestimmen',
-        text: `CIDR /${cidr} bedeutet: Die ersten ${cidr} Bits sind 1, die restlichen ${32 - cidr} Bits sind 0.`,
-        detail: `Binaer: ${maskBin}\nDezimal: ${maskToIp(maskInt)}`,
+        title: 'Schritt 1: Subnetzmaske berechnen',
+        text: `CIDR /${cidr} bedeutet, dass die Maske aus ${cidr} Einsen besteht.`,
+        detail: (() => {
+          const fullOctets = Math.floor(cidr / 8);
+          const remBits = cidr % 8;
+
+          let explanation = '';
+
+          if (remBits === 0) {
+            explanation = `/${cidr} sind genau ${fullOctets} volle Oktette (je 8 Bits).\nDas bedeutet ${fullOctets}x 255 und der Rest ist 0.\nDezimal: ${maskToIp(maskInt)}`;
+          } else {
+            const bitValues = [];
+            let currentSum = 0;
+            for (let i = 0; i < remBits; i++) {
+              const val = 128 >>> i;
+              bitValues.push(val);
+              currentSum += val;
+            }
+
+            explanation = `/${cidr} = ${fullOctets * 8} Bits (volle Oktette) + ${remBits} Bits (im ${fullOctets + 1}. Oktett).
+\nVolle Oktette: ${'255.'.repeat(fullOctets).slice(0, -1)}
+Berechnung ${fullOctets + 1}. Oktett (${remBits} Bits gesetzt):
+Bit-Stellen: 128  64  32  16   8   4   2   1
+Binaer:      ${'1    '.repeat(remBits)}${'0    '.repeat(8 - remBits)}
+Rechnung:    ${bitValues.join(' + ')} = ${currentSum}
+\nGesamte Maske: ${maskToIp(maskInt)}`;
+          }
+
+          return explanation;
+        })(),
       },
       {
-        title: 'Schritt 2: IP-Adresse in Binaer',
-        text: `Die IP ${ip} wird in Binaerdarstellung umgewandelt.`,
-        detail: `${ip} = ${ipBin}`,
+        title: 'Schritt 2: Netzadresse berechnen (AND-Verknuepfung)',
+        text: 'Die IP-Adresse wird bitweise mit der Subnetzmaske UND-verknuepft. Nur wo beide Bits 1 sind, bleibt das Ergebnis 1.',
+        detail: `IP (Binaer):     ${formatBin(ipBin)}
+Maske (Binaer):  ${formatBin(maskBin)}
+--------------------------------------------------- (AND)
+Netz (Binaer):   ${formatBin(netBin)}
+Netz (Dezimal):  ${intToIp(networkInt)}`,
       },
       {
-        title: 'Schritt 3: Netzadresse berechnen (IP AND Maske)',
-        text: 'Die Netzadresse ergibt sich durch eine UND-Verkuepfung von IP und Subnetzmaske.',
-        detail: `  ${ipBin}  (IP)\n& ${maskBin}  (Maske)\n= ${netBin}  (Netz)\n\nNetzadresse: ${intToIp(networkInt)}`,
+        title: 'Schritt 3: Broadcast-Adresse berechnen',
+        text: `Fuer die Broadcast-Adresse werden alle Host-Bits (die letzten ${32 - cidr} Bits) auf 1 gesetzt.`,
+        detail: `Netz (Binaer):   ${formatBin(netBin)}
+Host-Bits auf 1: ${'.'.repeat(Math.floor(cidr / 8)) + ' '.repeat(Math.floor(cidr / 8))}${'1'.repeat(32 - cidr).split('').join('')}
+--------------------------------------------------- (OR)
+Broadcast (Bin): ${formatBin(bcBin)}
+Broadcast (Dez): ${intToIp(broadcastInt)}`,
       },
       {
-        title: 'Schritt 4: Broadcast berechnen',
-        text: `Alle Host-Bits (die letzten ${32 - cidr} Bits) werden auf 1 gesetzt.`,
-        detail: `${bcBin}\nBroadcast: ${intToIp(broadcastInt)}`,
-      },
-      {
-        title: 'Schritt 5: Hostbereich bestimmen',
-        text: 'Erster Host = Netzadresse + 1, Letzter Host = Broadcast - 1.',
-        detail: `Erster Host: ${intToIp(getFirstHost(networkInt))}\nLetzter Host: ${intToIp(getLastHost(broadcastInt))}\nAnzahl Hosts: ${getHostCount(cidr)}`,
+        title: 'Schritt 4: Nutzbarer Host-Bereich und Anzahl',
+        text: 'Der erste Host ist "Netzadresse + 1", der letzte Host ist "Broadcast - 1".',
+        detail: `Netzadresse:   ${intToIp(networkInt)}
+Erster Host:   ${intToIp(getFirstHost(networkInt))}
+...
+Letzter Host:  ${intToIp(getLastHost(broadcastInt))}
+Broadcast:     ${intToIp(broadcastInt)}
+
+Anzahl nutzbarer Hosts: 2^HostBits - 2
+Host-Bits = 32 - ${cidr} = ${32 - cidr}
+Rechnung: 2^${32 - cidr} - 2 = ${Math.pow(2, 32 - cidr)} - 2 = ${hostCount}`,
       },
     ];
   }
@@ -261,24 +303,34 @@ const SubnettingView = (() => {
       },
       steps: [
         {
-          title: 'Schritt 1: Benoetigte Bits berechnen',
+          title: 'Schritt 1: Benoetigte Bits und neue Maske',
           text: `Fuer ${numSubnets} Subnetze brauchen wir ${bitsNeeded} zusaetzliche Bits (2^${bitsNeeded} = ${2 ** bitsNeeded}).`,
-          detail: `Neue Praefix-Laenge: /${baseCidr} + ${bitsNeeded} = /${newCidr}`,
+          detail: `Basis-Netz:   /${baseCidr}
+Neue Bits:    +${bitsNeeded}
+Neue CIDR:    /${newCidr}
+Neue Maske:   ${maskToIp(newMask)}`,
         },
         {
-          title: 'Schritt 2: Neue Subnetzmaske',
-          text: `Die neue Subnetzmaske fuer /${newCidr}:`,
-          detail: `Maske: ${maskToIp(newMask)}\nHosts pro Subnetz: ${getHostCount(newCidr)}`,
+          title: 'Schritt 2: Blockgroesse (Magic Number) berechnen',
+          text: 'Die Blockgroesse gibt an, in welchen Schritten die neuen Subnetze beginnen. Sie berechnet sich aus 2 hoch der verbleibenden Host-Bits im interessanten Oktett.',
+          detail: `Verbleibende Host-Bits = 32 - ${newCidr} = ${32 - newCidr}
+(Oder im relevanten Oktett: 8 - (${newCidr} % 8) = ${8 - (newCidr % 8)})
+
+Blockgroesse = 2^${32 - newCidr} = ${subnetSize} Adressen pro Subnetz.`,
         },
         {
-          title: 'Schritt 3: Subnetze berechnen',
-          text: `Jedes Subnetz hat ${subnetSize} Adressen (inkl. Netz + Broadcast).`,
-          detail: subnets
-            .map(
-              (s, i) =>
-                `Subnetz ${i + 1}: ${s.network}/${newCidr}\n  Bereich: ${s.firstHost} - ${s.lastHost}\n  Broadcast: ${s.broadcast}`
-            )
-            .join('\n\n'),
+          title: 'Schritt 3: Subnetze auflisten',
+          text: `Wir starten bei ${baseIp} und addieren jeweils die Blockgroesse von ${subnetSize}.`,
+          detail: `
+| Nr. | Netzadresse      | Erster Host      | Letzter Host     | Broadcast        |
+|-----|------------------|------------------|------------------|------------------|
+${subnets
+              .map(
+                (s, i) =>
+                  `| ${(i + 1).toString().padEnd(3)} | ${s.network.padEnd(16)} | ${s.firstHost.padEnd(16)} | ${s.lastHost.padEnd(16)} | ${s.broadcast.padEnd(16)} |`
+              )
+              .join('\n')}
+          `,
         },
       ],
     };
@@ -684,15 +736,15 @@ const SubnettingView = (() => {
           <p class="module-exercise-sublabel">Trage die Netzadressen der ${ex.numSubnets} Subnetze ein:</p>
           <div class="module-input-grid">
             ${ex.solution.subnets
-              .map(
-                (s, i) => `
+          .map(
+            (s, i) => `
               <div class="module-input-group">
                 <label class="module-label">Subnetz ${i + 1} — Netzadresse</label>
                 <input type="text" class="module-input subnet-answer" data-index="${i}" placeholder="z.B. ${i === 0 ? s.network : '...'}" autocomplete="off" spellcheck="false">
               </div>
             `
-              )
-              .join('')}
+          )
+          .join('')}
           </div>
 
           <div class="module-actions">
@@ -842,8 +894,8 @@ const SubnettingView = (() => {
 
           <div class="module-ip-list">
             ${ex.ips
-              .map(
-                (item, i) => `
+          .map(
+            (item, i) => `
               <div class="module-ip-row" data-index="${i}">
                 <code class="module-ip-addr">${item.ip}</code>
                 <div class="module-ip-btns">
@@ -853,8 +905,8 @@ const SubnettingView = (() => {
                 <span class="module-ip-result" id="ipResult${i}"></span>
               </div>
             `
-              )
-              .join('')}
+          )
+          .join('')}
           </div>
 
           <div class="module-actions">
@@ -1048,16 +1100,16 @@ const SubnettingView = (() => {
       <div class="module-steps">
         <h3 class="module-steps-title">Loesungsweg</h3>
         ${steps
-          .map(
-            (s) => `
+        .map(
+          (s) => `
           <div class="module-step">
             <div class="module-step-title">${s.title}</div>
             <div class="module-step-text">${s.text}</div>
             ${s.detail ? `<pre class="module-step-detail">${escapeHtml(s.detail)}</pre>` : ''}
           </div>
         `
-          )
-          .join('')}
+        )
+        .join('')}
       </div>
     `;
   }
