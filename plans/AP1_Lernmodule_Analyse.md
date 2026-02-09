@@ -312,6 +312,20 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 
 ---
 
+### Modul 21: 🗣️ 4-Ohren-Modell (Kommunikation)
+**Bezug:** Topic 6.12 Kommunikation
+**Prüfungsrelevanz:** ★★★☆☆ (beliebt in Situationsaufgaben)
+
+**Grund:** Kommunikationstheorie nach Schulz von Thun. Aussagen analysieren und Missverständnisse aufklären.
+
+**Features:**
+- 10 Szenarien/Übungen (basierend auf echten Prüfungen, inkl. Drag & Drop)
+- Zuordnung von Aussagen zu den 4 Ohren: Sachebene, Selbstkundgabe, Beziehungshinweis, Appell
+- Visuelle Darstellung (4-Ohren-Quadrat)
+- Feedback-Modus bei falscher Zuordnung
+
+---
+
 ## 📌 Implementierungsstatus
 
 | # | Modul | Status |
@@ -336,8 +350,9 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 | 18 | Organigramm | ❌ Offen |
 | 19 | Vertragsrecht | ❌ Offen |
 | 20 | BPMN-Editor | ❌ Offen |
+| 21 | 4-Ohren-Modell | ✅ Implementiert |
 
-**Implementiert:** 8/20 Module (40%)
+**Implementiert:** 9/21 Module (43%)
 
 ---
 
@@ -350,7 +365,8 @@ Konzentriere dich auf **Tier 1 und Tier 2** — damit deckst du ca. **80% der Pu
 2. ✅ ~~Netzplan~~ (fertig)
 3. ✅ ~~UML-Aktivitätsdiagramm~~ — Der neue Standard für Ablauflogik
 4. ✅ ~~Speicher/Zahlensysteme~~ (fertig)
-5. ❌ **ER-Modell** — Grundlage für Datenbanken
+5. ✅ ~~4-Ohren-Modell~~ (fertig)
+6. ❌ **ER-Modell** — Grundlage für Datenbanken
 
 Tier 3 und 4 machst du nur, wenn noch Zeit ist.
 
@@ -379,7 +395,8 @@ modules/
   ├── requirements.js      (Modul 17)
   ├── orgchart.js          (Modul 18)
   ├── contracts.js         (Modul 19)
-  └── bpmn.js              (Modul 20)
+  ├── bpmn.js              (Modul 20)
+  └── communication.js     (Modul 21)
 ```
 
 ---

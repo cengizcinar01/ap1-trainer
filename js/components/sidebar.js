@@ -31,6 +31,8 @@ const Sidebar = (() => {
     uml: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="2" width="12" height="14" rx="1.5"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="2" y1="11" x2="14" y2="11"/><rect x="14" y="8" width="8" height="14" rx="1.5"/><line x1="14" y1="13" x2="22" y2="13"/><line x1="14" y1="17" x2="22" y2="17"/><line x1="14" y1="12" x2="14" y2="8"/></svg>`,
     // Wiki: Offenes Buch
     wiki: `<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+    // Kommunikation: Sprechblase (4-Ohren-Modell)
+    communication: `<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
     // Menü: Hamburger
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
     // Pseudocode: Code-Klammern mit Zeilen
@@ -129,6 +131,10 @@ const Sidebar = (() => {
         <a href="#/modules/uml" class="nav-item ${currentRoute.startsWith('/modules/uml') ? 'active' : ''}" data-route="/modules/uml">
           <span class="nav-item-icon">${ICONS.uml}</span>
           UML-Werkstatt
+        </a>
+        <a href="#/modules/communication" class="nav-item ${currentRoute.startsWith('/modules/communication') ? 'active' : ''}" data-route="/modules/communication">
+          <span class="nav-item-icon">${ICONS.communication}</span>
+          4-Ohren-Modell
         </a>
         <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
           <span class="nav-item-icon">${ICONS.numbersystems}</span>

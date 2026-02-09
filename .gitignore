@@ -76,3 +76,5 @@ data.json.bak
 tmp/
 temp/
 *.tmp
+
+*ihk

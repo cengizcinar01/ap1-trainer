@@ -2,13 +2,14 @@
 // app.js — Application initialization and route setup
 // ============================================================
 
+import CommunicationView from '../modules/communication.js';
 import EPKView from '../modules/epk.js';
 import NetworkPlanView from '../modules/networkplan.js';
 import NumberSystemsView from '../modules/numbersystems.js';
 import NWAView from '../modules/nwa.js';
 import OSIModelView from '../modules/osimodel.js';
-import SubnettingView from '../modules/subnetting.js';
 import PseudocodeView from '../modules/pseudocode.js';
+import SubnettingView from '../modules/subnetting.js';
 import UMLView from '../modules/uml.js';
 import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
@@ -157,6 +158,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = UMLView.cleanup;
       UMLView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/communication', () => {
+      cleanupCurrentView();
+      currentCleanup = CommunicationView.cleanup;
+      CommunicationView.render(contentEl);
       Sidebar.updateActive();
     });
 

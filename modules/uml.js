@@ -29,7 +29,11 @@ const UMLView = (() => {
   function loadProgress() {
     try {
       const raw = localStorage.getItem('ap1_uml_progress');
-      if (!raw) return { scenarios: [], trainer: { best: 0, cardBest: 0, swimBest: 0 } };
+      if (!raw)
+        return {
+          scenarios: [],
+          trainer: { best: 0, cardBest: 0, swimBest: 0 },
+        };
       const p = JSON.parse(raw);
       // Migrate old format
       if (p.exercises && !p.scenarios) {
@@ -251,7 +255,8 @@ const UMLView = (() => {
     {
       id: 7,
       title: 'Rechnungseingang (H25)',
-      description: 'Prozess der Rechnungspruefung mit Parallelisierung bei Betraegen > 1000\u20AC.',
+      description:
+        'Prozess der Rechnungspruefung mit Parallelisierung bei Betraegen > 1000\u20AC.',
       lanes: ['Wareneingang', 'Buchhaltung', 'Management'],
       actions: [
         { text: 'Rechnung empfangen', lane: 'Buchhaltung' },
@@ -288,12 +293,48 @@ const UMLView = (() => {
         { id: 'a3', name: 'Serviceteam', x: 520, y: 280, given: true },
       ],
       usecases: [
-        { id: 'uc1', name: 'Stoerungsmeldung senden', cx: 200, cy: 70, given: false },
-        { id: 'uc2', name: 'Stoerungsmeldung erfassen', cx: 300, cy: 140, given: true },
-        { id: 'uc3', name: 'Arbeitsplan erstellen', cx: 200, cy: 210, given: false },
-        { id: 'uc4', name: 'Arbeitsauftrag bearbeiten', cx: 300, cy: 290, given: true },
-        { id: 'uc5', name: 'Priorisierung durchfuehren', cx: 200, cy: 360, given: false },
-        { id: 'uc6', name: 'Rueckmeldung senden', cx: 360, cy: 380, given: false },
+        {
+          id: 'uc1',
+          name: 'Stoerungsmeldung senden',
+          cx: 200,
+          cy: 70,
+          given: false,
+        },
+        {
+          id: 'uc2',
+          name: 'Stoerungsmeldung erfassen',
+          cx: 300,
+          cy: 140,
+          given: true,
+        },
+        {
+          id: 'uc3',
+          name: 'Arbeitsplan erstellen',
+          cx: 200,
+          cy: 210,
+          given: false,
+        },
+        {
+          id: 'uc4',
+          name: 'Arbeitsauftrag bearbeiten',
+          cx: 300,
+          cy: 290,
+          given: true,
+        },
+        {
+          id: 'uc5',
+          name: 'Priorisierung durchfuehren',
+          cx: 200,
+          cy: 360,
+          given: false,
+        },
+        {
+          id: 'uc6',
+          name: 'Rueckmeldung senden',
+          cx: 360,
+          cy: 380,
+          given: false,
+        },
       ],
       connections: [
         { from: 'a1', to: 'uc1', type: 'association' },
@@ -330,8 +371,20 @@ const UMLView = (() => {
         { id: 'uc1', name: 'Buch ausleihen', cx: 200, cy: 80, given: true },
         { id: 'uc2', name: 'Buch zurueckgeben', cx: 330, cy: 80, given: false },
         { id: 'uc3', name: 'Ausweis pruefen', cx: 200, cy: 200, given: false },
-        { id: 'uc4', name: 'Verlaengerung beantragen', cx: 330, cy: 200, given: true },
-        { id: 'uc5', name: 'Mahngebuehr berechnen', cx: 270, cy: 330, given: false },
+        {
+          id: 'uc4',
+          name: 'Verlaengerung beantragen',
+          cx: 330,
+          cy: 200,
+          given: true,
+        },
+        {
+          id: 'uc5',
+          name: 'Mahngebuehr berechnen',
+          cx: 270,
+          cy: 330,
+          given: false,
+        },
       ],
       connections: [
         { from: 'a1', to: 'uc1', type: 'association' },
@@ -366,10 +419,34 @@ const UMLView = (() => {
       ],
       usecases: [
         { id: 'uc1', name: 'Produkt suchen', cx: 200, cy: 60, given: true },
-        { id: 'uc2', name: 'Bestellung aufgeben', cx: 300, cy: 140, given: false },
-        { id: 'uc3', name: 'Zahlung durchfuehren', cx: 200, cy: 230, given: false },
-        { id: 'uc4', name: 'Bestellung versenden', cx: 330, cy: 300, given: true },
-        { id: 'uc5', name: 'Gutschein einloesen', cx: 200, cy: 360, given: false },
+        {
+          id: 'uc2',
+          name: 'Bestellung aufgeben',
+          cx: 300,
+          cy: 140,
+          given: false,
+        },
+        {
+          id: 'uc3',
+          name: 'Zahlung durchfuehren',
+          cx: 200,
+          cy: 230,
+          given: false,
+        },
+        {
+          id: 'uc4',
+          name: 'Bestellung versenden',
+          cx: 330,
+          cy: 300,
+          given: true,
+        },
+        {
+          id: 'uc5',
+          name: 'Gutschein einloesen',
+          cx: 200,
+          cy: 360,
+          given: false,
+        },
       ],
       connections: [
         { from: 'a1', to: 'uc1', type: 'association' },
@@ -403,11 +480,41 @@ const UMLView = (() => {
       ],
       usecases: [
         { id: 'uc1', name: 'Termin vereinbaren', cx: 200, cy: 60, given: true },
-        { id: 'uc2', name: 'Patient aufnehmen', cx: 320, cy: 120, given: false },
-        { id: 'uc3', name: 'Untersuchung durchfuehren', cx: 230, cy: 210, given: true },
-        { id: 'uc4', name: 'Rezept ausstellen', cx: 330, cy: 280, given: false },
-        { id: 'uc5', name: 'Versichertenkarte pruefen', cx: 200, cy: 360, given: false },
-        { id: 'uc6', name: 'Ueberweisung ausstellen', cx: 350, cy: 380, given: true },
+        {
+          id: 'uc2',
+          name: 'Patient aufnehmen',
+          cx: 320,
+          cy: 120,
+          given: false,
+        },
+        {
+          id: 'uc3',
+          name: 'Untersuchung durchfuehren',
+          cx: 230,
+          cy: 210,
+          given: true,
+        },
+        {
+          id: 'uc4',
+          name: 'Rezept ausstellen',
+          cx: 330,
+          cy: 280,
+          given: false,
+        },
+        {
+          id: 'uc5',
+          name: 'Versichertenkarte pruefen',
+          cx: 200,
+          cy: 360,
+          given: false,
+        },
+        {
+          id: 'uc6',
+          name: 'Ueberweisung ausstellen',
+          cx: 350,
+          cy: 380,
+          given: true,
+        },
       ],
       connections: [
         { from: 'a1', to: 'uc1', type: 'association' },
@@ -444,11 +551,41 @@ const UMLView = (() => {
       ],
       usecases: [
         { id: 'uc1', name: 'Ticket erstellen', cx: 200, cy: 60, given: true },
-        { id: 'uc2', name: 'Ticket klassifizieren', cx: 320, cy: 120, given: false },
-        { id: 'uc3', name: 'Loesung dokumentieren', cx: 230, cy: 210, given: true },
-        { id: 'uc4', name: 'Ticket eskalieren', cx: 320, cy: 280, given: false },
-        { id: 'uc5', name: 'Prioritaet zuweisen', cx: 200, cy: 360, given: false },
-        { id: 'uc6', name: 'Remote-Zugriff starten', cx: 350, cy: 380, given: true },
+        {
+          id: 'uc2',
+          name: 'Ticket klassifizieren',
+          cx: 320,
+          cy: 120,
+          given: false,
+        },
+        {
+          id: 'uc3',
+          name: 'Loesung dokumentieren',
+          cx: 230,
+          cy: 210,
+          given: true,
+        },
+        {
+          id: 'uc4',
+          name: 'Ticket eskalieren',
+          cx: 320,
+          cy: 280,
+          given: false,
+        },
+        {
+          id: 'uc5',
+          name: 'Prioritaet zuweisen',
+          cx: 200,
+          cy: 360,
+          given: false,
+        },
+        {
+          id: 'uc6',
+          name: 'Remote-Zugriff starten',
+          cx: 350,
+          cy: 380,
+          given: true,
+        },
       ],
       connections: [
         { from: 'a1', to: 'uc1', type: 'association' },
@@ -484,12 +621,48 @@ const UMLView = (() => {
         { id: 'a3', name: 'Fachabteilung', x: 520, y: 280, given: false },
       ],
       usecases: [
-        { id: 'uc1', name: 'Bewerbung einreichen', cx: 200, cy: 60, given: true },
-        { id: 'uc2', name: 'Unterlagen pruefen', cx: 320, cy: 120, given: false },
-        { id: 'uc3', name: 'Vorstellungsgespraech fuehren', cx: 220, cy: 210, given: true },
-        { id: 'uc4', name: 'Zu-/Absage versenden', cx: 330, cy: 280, given: false },
-        { id: 'uc5', name: 'Fachliche Bewertung', cx: 200, cy: 360, given: false },
-        { id: 'uc6', name: 'Assessment-Center durchfuehren', cx: 350, cy: 380, given: true },
+        {
+          id: 'uc1',
+          name: 'Bewerbung einreichen',
+          cx: 200,
+          cy: 60,
+          given: true,
+        },
+        {
+          id: 'uc2',
+          name: 'Unterlagen pruefen',
+          cx: 320,
+          cy: 120,
+          given: false,
+        },
+        {
+          id: 'uc3',
+          name: 'Vorstellungsgespraech fuehren',
+          cx: 220,
+          cy: 210,
+          given: true,
+        },
+        {
+          id: 'uc4',
+          name: 'Zu-/Absage versenden',
+          cx: 330,
+          cy: 280,
+          given: false,
+        },
+        {
+          id: 'uc5',
+          name: 'Fachliche Bewertung',
+          cx: 200,
+          cy: 360,
+          given: false,
+        },
+        {
+          id: 'uc6',
+          name: 'Assessment-Center durchfuehren',
+          cx: 350,
+          cy: 380,
+          given: true,
+        },
       ],
       connections: [
         { from: 'a1', to: 'uc1', type: 'association' },
@@ -558,7 +731,9 @@ const UMLView = (() => {
   }
 
   function renderTab(tabContent) {
-    cleanup_fns.forEach((fn) => fn());
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
     tabContent.innerHTML = '';
     switch (currentTab) {
@@ -575,7 +750,9 @@ const UMLView = (() => {
   }
 
   function cleanup() {
-    cleanup_fns.forEach((fn) => fn());
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
   }
 
@@ -802,10 +979,9 @@ const UMLView = (() => {
     });
 
     // Create chips: blank labels + distractors, shuffled
-    const allChips = [
-      ...blanks.map((b) => b.name),
-      ...sc.distractors,
-    ].sort(() => Math.random() - 0.5);
+    const allChips = [...blanks.map((b) => b.name), ...sc.distractors].sort(
+      () => Math.random() - 0.5
+    );
 
     // Determine diagram dimensions
     const diagramH = 450;
@@ -841,9 +1017,13 @@ const UMLView = (() => {
         </div>
 
         <div class="uml-chips-pool" id="umlScenarioChips">
-          ${allChips.map((label, i) => `
+          ${allChips
+            .map(
+              (label, i) => `
             <div class="uml-chip uml-scenario-chip" draggable="true" data-value="${label}" data-chip-idx="${i}">${label}</div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
 
         <div class="uml-exercise-actions">
@@ -1026,7 +1206,12 @@ const UMLView = (() => {
       zone.addEventListener('click', () => {
         const activeChip = chipsPool.querySelector('.uml-chip-touch-active');
         if (activeChip) {
-          placeScenarioChip(contentEl, zone, activeChip.dataset.value, activeChip.dataset.chipIdx);
+          placeScenarioChip(
+            contentEl,
+            zone,
+            activeChip.dataset.value,
+            activeChip.dataset.chipIdx
+          );
           activeChip.classList.remove('uml-chip-touch-active');
         }
       });
@@ -1046,9 +1231,11 @@ const UMLView = (() => {
     });
 
     // Check button
-    contentEl.querySelector('#umlScenarioCheck').addEventListener('click', () => {
-      checkScenario(contentEl, sc, parentContainer);
-    });
+    contentEl
+      .querySelector('#umlScenarioCheck')
+      .addEventListener('click', () => {
+        checkScenario(contentEl, sc, parentContainer);
+      });
   }
 
   function placeScenarioChip(contentEl, zone, value, chipIdx) {
@@ -1127,9 +1314,10 @@ const UMLView = (() => {
     const feedbackEl = contentEl.querySelector('#umlScenarioFeedback');
     feedbackEl.innerHTML = `
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
-        ${allCorrect
-          ? `<strong>Perfekt!</strong> Alle ${total} Elemente korrekt zugeordnet.`
-          : `<strong>${correct} von ${total} korrekt.</strong>`
+        ${
+          allCorrect
+            ? `<strong>Perfekt!</strong> Alle ${total} Elemente korrekt zugeordnet.`
+            : `<strong>${correct} von ${total} korrekt.</strong>`
         }
         ${allCorrect ? `<p style="margin-top:var(--space-2);">${sc.explanation}</p>` : ''}
       </div>
@@ -1486,9 +1674,10 @@ const UMLView = (() => {
     const feedback = container.querySelector('#umlKardFeedback');
     feedback.innerHTML = `
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
-        ${allCorrect
-          ? '<strong>Perfekt!</strong> Alle Kardinalitaeten korrekt zugeordnet. +10 Punkte!'
-          : `<strong>${correct} von ${total} korrekt.</strong> Loesung: ${solutionText}`
+        ${
+          allCorrect
+            ? '<strong>Perfekt!</strong> Alle Kardinalitaeten korrekt zugeordnet. +10 Punkte!'
+            : `<strong>${correct} von ${total} korrekt.</strong> Loesung: ${solutionText}`
         }
       </div>
     `;
@@ -1726,9 +1915,10 @@ const UMLView = (() => {
     const feedback = container.querySelector('#umlSwimFeedback');
     feedback.innerHTML = `
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
-        ${allCorrect
-          ? '<strong>Perfekt!</strong> Alle Aktionen richtig zugeordnet. +10 Punkte!'
-          : `<strong>${correct} von ${total} korrekt.</strong><br>${solutionText}`
+        ${
+          allCorrect
+            ? '<strong>Perfekt!</strong> Alle Aktionen richtig zugeordnet. +10 Punkte!'
+            : `<strong>${correct} von ${total} korrekt.</strong><br>${solutionText}`
         }
       </div>
     `;
