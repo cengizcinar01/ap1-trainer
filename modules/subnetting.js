@@ -578,7 +578,7 @@ const SubnettingView = (() => {
       const hostBits = 32 - ex.cidr;
       const relevantOctetIdx = Math.floor((ex.cidr - 1) / 8);
       const blockSize = 2 ** (8 - (ex.cidr % 8 || 8));
-      
+
       solEl.innerHTML = `
             <div class="module-steps">
                 <div class="module-step">
@@ -682,7 +682,7 @@ const SubnettingView = (() => {
         }
         const bits = Math.log2(ex.neededSubnets);
         const newBlockSize = 2 ** (32 - ex.sol.newCidr);
-        
+
         solEl.innerHTML = `
             <div class="module-steps">
                 <div class="module-step">
@@ -912,7 +912,9 @@ const SubnettingView = (() => {
                 </div>
                                                                                                                                                 <div class="module-step">
                                                                                                                                                     <div class="module-step-title">3. Interface Identifier ${
-                                                                                                                                                      ex.isEUI64 ? '(Herkunft & EUI-64)' : ''
+                                                                                                                                                      ex.isEUI64
+                                                                                                                                                        ? '(Herkunft & EUI-64)'
+                                                                                                                                                        : ''
                                                                                                                                                     }</div>
                                                                                                                                                     <div class="module-step-text">
                                                                                                                                                         ${
@@ -922,7 +924,8 @@ const SubnettingView = (() => {
                                                                                                                                                         }
                                                                                                                                                     </div>
                                                                                                                                                     ${
-                                                                                                                                                      ex.isEUI64 && ex.mac
+                                                                                                                                                      ex.isEUI64 &&
+                                                                                                                                                      ex.mac
                                                                                                                                                         ? `
                                                                                                                                                     <div class="eui-solution-box" style="margin-top:12px; font-family: monospace; border: 1px solid var(--border-subtle); border-radius: 12px; overflow: hidden;">
                                                                                                                                                         
@@ -952,15 +955,31 @@ const SubnettingView = (() => {
                                                                                                                                                                                                                       <div style="text-align: center;">
                                                                                                                                                                                                                         <div style="font-size: 20px; font-weight: bold; font-family: var(--font-mono);">${ex.mac.substring(0, 2)}</div>
                                                                                                                                                                                                                         <div style="display: flex; justify-content: center; gap: 6px; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
-                                                                                                                                                                                                                          ${parseInt(ex.macBytes[0], 10)
-                                                                                                                                                                                                                            .toString(2)
-                                                                                                                                                                                                                            .padStart(8, '0')
-                                                                                                                                                                                                                            .split('')
+                                                                                                                                                                                                                          ${parseInt(
+                                                                                                                                                                                                                            ex
+                                                                                                                                                                                                                              .macBytes[0],
+                                                                                                                                                                                                                            10
+                                                                                                                                                                                                                          )
+                                                                                                                                                                                                                            .toString(
+                                                                                                                                                                                                                              2
+                                                                                                                                                                                                                            )
+                                                                                                                                                                                                                            .padStart(
+                                                                                                                                                                                                                              8,
+                                                                                                                                                                                                                              '0'
+                                                                                                                                                                                                                            )
+                                                                                                                                                                                                                            .split(
+                                                                                                                                                                                                                              ''
+                                                                                                                                                                                                                            )
                                                                                                                                                                                                                             .map(
-                                                                                                                                                                                                                              (bit, i) =>
+                                                                                                                                                                                                                              (
+                                                                                                                                                                                                                                bit,
+                                                                                                                                                                                                                                i
+                                                                                                                                                                                                                              ) =>
                                                                                                                                                                                                                                 `<span style="${i === 6 ? 'color:var(--danger); font-weight:bold; border-bottom: 2px solid;' : ''}">${bit}</span>`
                                                                                                                                                                                                                             )
-                                                                                                                                                                                                                            .join('')}
+                                                                                                                                                                                                                            .join(
+                                                                                                                                                                                                                              ''
+                                                                                                                                                                                                                            )}
                                                                                                                                                                                                                         </div>
                                                                                                                                                                                                                       </div>
                                                                                                                                                                                           
@@ -970,15 +989,33 @@ const SubnettingView = (() => {
                                                                                                                                                                                                                       <div style="text-align: center;">
                                                                                                                                                                                                                         <div style="font-size: 20px; font-weight: bold; font-family: var(--font-mono); color: var(--brand-primary);">${ex.sol.interfaceId.substring(0, 2)}</div>
                                                                                                                                                                                                                         <div style="display: flex; justify-content: center; gap: 6px; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
-                                                                                                                                                                                                                          ${parseInt(ex.sol.interfaceId.substring(0, 2), 16)
-                                                                                                                                                                                                                            .toString(2)
-                                                                                                                                                                                                                            .padStart(8, '0')
-                                                                                                                                                                                                                            .split('')
+                                                                                                                                                                                                                          ${parseInt(
+                                                                                                                                                                                                                            ex.sol.interfaceId.substring(
+                                                                                                                                                                                                                              0,
+                                                                                                                                                                                                                              2
+                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                            16
+                                                                                                                                                                                                                          )
+                                                                                                                                                                                                                            .toString(
+                                                                                                                                                                                                                              2
+                                                                                                                                                                                                                            )
+                                                                                                                                                                                                                            .padStart(
+                                                                                                                                                                                                                              8,
+                                                                                                                                                                                                                              '0'
+                                                                                                                                                                                                                            )
+                                                                                                                                                                                                                            .split(
+                                                                                                                                                                                                                              ''
+                                                                                                                                                                                                                            )
                                                                                                                                                                                                                             .map(
-                                                                                                                                                                                                                              (bit, i) =>
+                                                                                                                                                                                                                              (
+                                                                                                                                                                                                                                bit,
+                                                                                                                                                                                                                                i
+                                                                                                                                                                                                                              ) =>
                                                                                                                                                                                                                                 `<span style="${i === 6 ? 'color:var(--success); font-weight:bold; border-bottom: 2px solid;' : ''}">${bit}</span>`
                                                                                                                                                                                                                             )
-                                                                                                                                                                                                                            .join('')}
+                                                                                                                                                                                                                            .join(
+                                                                                                                                                                                                                              ''
+                                                                                                                                                                                                                            )}
                                                                                                                                                                                                                         </div>
                                                                                                                                                                                                                       </div>
                                                                                                                                                                                                                     </div>

@@ -9,38 +9,43 @@ const ElectricalView = (() => {
     {
       id: 'psu_sizing',
       title: 'Szenario 1: CAD-PC Konfiguration',
-      description: 'Ein Ingenieurbüro benötigt neue CAD-Rechner. Berechnen Sie die benötigte Netzteil-Leistung basierend auf der Komponentenliste.',
+      description:
+        'Ein Ingenieurbüro benötigt neue CAD-Rechner. Berechnen Sie die benötigte Netzteil-Leistung basierend auf der Komponentenliste.',
       task: 'Ermitteln Sie die Gesamtleistung, addieren Sie den geforderten Puffer und wählen Sie das kleinste passende Netzteil aus dem Lagerbestand (400W bis 1200W in 50W-Schritten).',
-      data: null 
+      data: null,
     },
     {
       id: 'efficiency_costs',
       title: 'Szenario 2: Jährliche Stromkosten',
-      description: 'Ein PC wird für eine bestimmte Anzahl an Arbeitstagen genutzt. Das installierte Netzteil hat einen bekannten Wirkungsgrad und eine durchschnittliche Auslastung.',
+      description:
+        'Ein PC wird für eine bestimmte Anzahl an Arbeitstagen genutzt. Das installierte Netzteil hat einen bekannten Wirkungsgrad und eine durchschnittliche Auslastung.',
       task: 'Berechnen Sie die jährlichen Stromkosten basierend auf der Netzteilleistung, der Auslastung und dem Wirkungsgrad.',
-      data: null
+      data: null,
     },
     {
       id: 'ups_capacity',
       title: 'Szenario 3: USV-Absicherung',
-      description: 'Ein kritischer Datenbank-Server soll über eine USV (Unterbrechungsfreie Stromversorgung) abgesichert werden.',
+      description:
+        'Ein kritischer Datenbank-Server soll über eine USV (Unterbrechungsfreie Stromversorgung) abgesichert werden.',
       task: 'Ermitteln Sie die benötigte Scheinleistung (S) in VA (Volt-Ampere).',
-      data: null
+      data: null,
     },
     {
       id: 'pue_value',
       title: 'Szenario 4: Green IT (PUE-Wert)',
-      description: 'Ein Rechenzentrum verbraucht Energie für IT-Hardware sowie Kühlung und Beleuchtung.',
+      description:
+        'Ein Rechenzentrum verbraucht Energie für IT-Hardware sowie Kühlung und Beleuchtung.',
       task: 'Berechnen Sie den PUE-Wert (Power Usage Effectiveness) und bewerten Sie die Effizienz.',
-      data: null
+      data: null,
     },
     {
       id: 'battery_runtime',
       title: 'Szenario 5: Akkulaufzeit Tablet',
-      description: 'Ein Außendienst-Tablet hat einen Akku mit bestimmter Kapazität (mAh) bei einer Spannung von 3,7 V.',
+      description:
+        'Ein Außendienst-Tablet hat einen Akku mit bestimmter Kapazität (mAh) bei einer Spannung von 3,7 V.',
       task: 'Wie lange kann ein Techniker arbeiten, wenn das Gerät durchschnittlich Last verbraucht?',
-      data: null
-    }
+      data: null,
+    },
   ];
 
   // ============================================================
@@ -58,17 +63,28 @@ const ElectricalView = (() => {
   function generateDataForScenario(scenarioId) {
     if (scenarioId === 'psu_sizing') {
       const cpus = [
-        { name: 'Intel Core i5', w: 65 }, { name: 'Intel Core i7', w: 125 }, { name: 'Intel Core i9', w: 253 },
-        { name: 'AMD Ryzen 5', w: 65 }, { name: 'AMD Ryzen 7', w: 105 }, { name: 'AMD Ryzen 9', w: 170 }
+        { name: 'Intel Core i5', w: 65 },
+        { name: 'Intel Core i7', w: 125 },
+        { name: 'Intel Core i9', w: 253 },
+        { name: 'AMD Ryzen 5', w: 65 },
+        { name: 'AMD Ryzen 7', w: 105 },
+        { name: 'AMD Ryzen 9', w: 170 },
       ];
       const gpus = [
-        { name: 'NVIDIA RTX 4060', w: 115 }, { name: 'NVIDIA RTX 4070', w: 200 }, { name: 'NVIDIA RTX 4080', w: 320 }, { name: 'NVIDIA RTX 4090', w: 450 },
-        { name: 'AMD Radeon RX 7600', w: 165 }, { name: 'AMD Radeon RX 7900 XT', w: 315 }
+        { name: 'NVIDIA RTX 4060', w: 115 },
+        { name: 'NVIDIA RTX 4070', w: 200 },
+        { name: 'NVIDIA RTX 4080', w: 320 },
+        { name: 'NVIDIA RTX 4090', w: 450 },
+        { name: 'AMD Radeon RX 7600', w: 165 },
+        { name: 'AMD Radeon RX 7900 XT', w: 315 },
       ];
       const extras = [
-        { name: '32GB DDR5 RAM (2x)', w: 10 }, { name: '64GB DDR5 RAM (4x)', w: 20 },
-        { name: 'NVMe SSD (1TB)', w: 5 }, { name: 'SATA HDD (4TB)', w: 15 },
-        { name: 'Wasserkühlung (AIO)', w: 35 }, { name: 'Gehäuselüfter (4x)', w: 12 }
+        { name: '32GB DDR5 RAM (2x)', w: 10 },
+        { name: '64GB DDR5 RAM (4x)', w: 20 },
+        { name: 'NVMe SSD (1TB)', w: 5 },
+        { name: 'SATA HDD (4TB)', w: 15 },
+        { name: 'Wasserkühlung (AIO)', w: 35 },
+        { name: 'Gehäuselüfter (4x)', w: 12 },
       ];
 
       const components = [
@@ -77,13 +93,13 @@ const ElectricalView = (() => {
         gpus[randomInt(0, gpus.length - 1)],
         extras[randomInt(0, 1)],
         extras[randomInt(2, 3)],
-        extras[randomInt(4, 5)]
+        extras[randomInt(4, 5)],
       ];
 
       const sum = components.reduce((a, b) => a + b.w, 0);
       const buffer = [10, 20, 25][randomInt(0, 2)];
       const totalNeeded = sum * (1 + buffer / 100);
-      
+
       let target = 400;
       while (target < totalNeeded) target += 50;
 
@@ -92,11 +108,11 @@ const ElectricalView = (() => {
 
     if (scenarioId === 'efficiency_costs') {
       const psuWatt = [500, 600, 750, 850, 1000][randomInt(0, 4)];
-      const efficiency = [80, 85, 90, 92][randomInt(0, 3)]; 
-      const utilization = [40, 50, 60, 75][randomInt(0, 3)]; 
+      const efficiency = [80, 85, 90, 92][randomInt(0, 3)];
+      const utilization = [40, 50, 60, 75][randomInt(0, 3)];
       const hours = [8, 9, 10, 24][randomInt(0, 3)];
       const days = [200, 220, 250, 365][randomInt(0, 3)];
-      const priceKWh = [0.35, 0.40, 0.42, 0.45, 0.50][randomInt(0, 4)];
+      const priceKWh = [0.35, 0.4, 0.42, 0.45, 0.5][randomInt(0, 4)];
 
       return { psuWatt, efficiency, utilization, hours, days, priceKWh };
     }
@@ -112,7 +128,7 @@ const ElectricalView = (() => {
 
     if (scenarioId === 'pue_value') {
       const it = [50000, 100000, 250000, 750000][randomInt(0, 3)];
-      const pueFactor = (Math.random() * (2.0 - 1.1) + 1.1).toFixed(2); 
+      const pueFactor = (Math.random() * (2.0 - 1.1) + 1.1).toFixed(2);
       const total = Math.round(it * pueFactor);
       return { total, it, target: pueFactor };
     }
@@ -140,7 +156,7 @@ const ElectricalView = (() => {
       const total = sum + buffVal;
       return `
 **1. Summe der Einzelkomponenten:**
-${d.components.map(c => `* ${c.name}: ${c.w}W`).join('\n')}
+${d.components.map((c) => `* ${c.name}: ${c.w}W`).join('\n')}
 **Zwischensumme: ${sum} Watt**
 
 **2. Sicherheitsreserve (${d.buffer}%):**
@@ -165,7 +181,7 @@ ${d.psuWatt} W * ${d.utilization / 100} = **${loadPC.toFixed(1)} Watt**
 
 **2. Leistung an der Steckdose berechnen (Primärseite):**
 WICHTIG: Teile durch den Wirkungsgrad!
-Formel: $P_{zu} = P_{ab} / \eta$
+Formel: $P_{zu} = P_{ab} / eta$
 ${loadPC.toFixed(1)} W / ${d.efficiency / 100} = **${p_zu.toFixed(1)} Watt**
 
 **3. Jahresverbrauch (kWh):**
@@ -181,7 +197,7 @@ ${energy.toFixed(2)} kWh * ${d.priceKWh.toFixed(2)} € = **${cost.toFixed(2)} �
       const total = s * (1 + d.reserve / 100);
       return `
 **1. Scheinleistung (S) in VA:**
-Formel: $S = P / \cos \phi$
+Formel: $S = P / cos phi$
 ${d.watt} W / ${d.cosPhi} = **${s.toFixed(1)} VA**
 
 **2. Sicherheitsreserve (${d.reserve}%):**
@@ -218,7 +234,9 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
 
   function render(container) {
     cleanup();
-    SCENARIOS.forEach(sc => { if (!sc.data) sc.data = generateDataForScenario(sc.id); });
+    SCENARIOS.forEach((sc) => {
+      if (!sc.data) sc.data = generateDataForScenario(sc.id);
+    });
 
     container.innerHTML = `
       <div class="view-enter">
@@ -245,7 +263,9 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
     container.querySelectorAll('.module-tab').forEach((btn) => {
       btn.addEventListener('click', () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
         renderCurrentTab();
       });
@@ -266,7 +286,7 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
           <h3 class="comm-section-title">IHK-Kernwissen: Energie</h3>
           <div class="module-steps">
             <div class="module-step">
-              <div class="module-step-title">1. Der Wirkungsgrad-Trick ($\eta$)</div>
+              <div class="module-step-title">1. Der Wirkungsgrad-Trick ($eta$)</div>
               <div class="module-step-text">Das Netzteil liefert Strom an den PC ($P_{ab}$), zieht aber mehr aus der Wand ($P_{zu}$).</div>
               <div class="module-step-detail">P_zu = P_ab / Wirkungsgrad (z.B. 400W / 0,90)</div>
             </div>
@@ -314,38 +334,55 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
     const exContent = container.querySelector('#exerciseSpecificContent');
     renderTaskInputs(exContent, sc);
 
-    container.querySelector('#prevScen').addEventListener('click', () => { currentScenarioIdx--; renderExerciseLayout(container); });
-    container.querySelector('#nextScen').addEventListener('click', () => { currentScenarioIdx++; renderExerciseLayout(container); });
-    container.querySelector('#btnShowSolution').addEventListener('click', () => {
-      const solEl = container.querySelector('#elecSolution');
-      solEl.style.display = 'block';
-      solEl.innerHTML = `<div class="module-step"><div class="module-step-title">Detaillierter Rechenweg</div><div class="module-step-text">${CardRenderer.formatAnswer(getDetailedSolution(sc))}</div></div>`;
-      solEl.scrollIntoView({ behavior: 'smooth' });
+    container.querySelector('#prevScen').addEventListener('click', () => {
+      currentScenarioIdx--;
+      renderExerciseLayout(container);
     });
-    container.querySelector('#btnNextTask').addEventListener('click', () => { sc.data = generateDataForScenario(sc.id); renderExerciseLayout(container); });
+    container.querySelector('#nextScen').addEventListener('click', () => {
+      currentScenarioIdx++;
+      renderExerciseLayout(container);
+    });
+    container
+      .querySelector('#btnShowSolution')
+      .addEventListener('click', () => {
+        const solEl = container.querySelector('#elecSolution');
+        solEl.style.display = 'block';
+        solEl.innerHTML = `<div class="module-step"><div class="module-step-title">Detaillierter Rechenweg</div><div class="module-step-text">${CardRenderer.formatAnswer(getDetailedSolution(sc))}</div></div>`;
+        solEl.scrollIntoView({ behavior: 'smooth' });
+      });
+    container.querySelector('#btnNextTask').addEventListener('click', () => {
+      sc.data = generateDataForScenario(sc.id);
+      renderExerciseLayout(container);
+    });
   }
 
   function renderTaskInputs(container, sc) {
     const d = sc.data;
     if (sc.id === 'psu_sizing') {
-        const rows = d.components.map(c => `<tr><td style="padding:8px;border-bottom:1px solid var(--border-subtle);">${c.name}</td><td style="padding:8px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:var(--font-mono);">${c.w} W</td></tr>`).join('');
-        container.innerHTML = `<table style="width:100%;border-collapse:collapse;margin-bottom:24px;"><thead style="background:var(--surface-submerged);"><th style="text-align:left;padding:8px;">Teil</th><th style="text-align:right;padding:8px;">Watt</th></thead><tbody>${rows}</tbody></table><div class="comm-text mb-4"><strong>Sicherheitsreserve:</strong> ${d.buffer}%</div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Netzteil (Watt)</label><input type="text" class="subnet-input" placeholder="z.B. 600"></div></div>`;
-    } 
-    else if (sc.id === 'efficiency_costs') {
-        container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Netzteil</label><div class="comm-text">${d.psuWatt} Watt</div></div><div class="subnet-input-group"><label class="subnet-label">Auslastung</label><div class="comm-text">${d.utilization} %</div></div><div class="subnet-input-group"><label class="subnet-label">Wirkungsgrad</label><div class="comm-text">${d.efficiency} %</div></div><div class="subnet-input-group"><label class="subnet-label">Zeitraum</label><div class="comm-text">${d.days} d / ${d.hours} h</div></div><div class="subnet-input-group"><label class="subnet-label">Preis</label><div class="comm-text">${d.priceKWh.toFixed(2)} €/kWh</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Jahreskosten (€)</label><input type="text" class="subnet-input" placeholder="0.00"></div></div>`;
-    }
-    else if (sc.id === 'ups_capacity') {
-        container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Last</label><div class="comm-text">${d.watt} W</div></div><div class="subnet-input-group"><label class="subnet-label">cos φ</label><div class="comm-text">${d.cosPhi}</div></div><div class="subnet-input-group"><label class="subnet-label">Reserve</label><div class="comm-text">${d.reserve} %</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Benötigte VA</label><input type="text" class="subnet-input" placeholder="0"></div></div>`;
-    }
-    else if (sc.id === 'pue_value') {
-        container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Gesamt</label><div class="comm-text">${d.total.toLocaleString()} kWh</div></div><div class="subnet-input-group"><label class="subnet-label">IT</label><div class="comm-text">${d.it.toLocaleString()} kWh</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">PUE-Wert</label><input type="text" class="subnet-input" placeholder="1.00"></div></div>`;
-    }
-    else if (sc.id === 'battery_runtime') {
-        container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Kapazität</label><div class="comm-text">${d.mah} mAh</div></div><div class="subnet-input-group"><label class="subnet-label">Spannung</label><div class="comm-text">3.7 V</div></div><div class="subnet-input-group"><label class="subnet-label">Verbrauch</label><div class="comm-text">${d.consumption} W</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Laufzeit (h)</label><input type="text" class="subnet-input" placeholder="0.0"></div></div>`;
+      const rows = d.components
+        .map(
+          (c) =>
+            `<tr><td style="padding:8px;border-bottom:1px solid var(--border-subtle);">${c.name}</td><td style="padding:8px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:var(--font-mono);">${c.w} W</td></tr>`
+        )
+        .join('');
+      container.innerHTML = `<table style="width:100%;border-collapse:collapse;margin-bottom:24px;"><thead style="background:var(--surface-submerged);"><th style="text-align:left;padding:8px;">Teil</th><th style="text-align:right;padding:8px;">Watt</th></thead><tbody>${rows}</tbody></table><div class="comm-text mb-4"><strong>Sicherheitsreserve:</strong> ${d.buffer}%</div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Netzteil (Watt)</label><input type="text" class="subnet-input" placeholder="z.B. 600"></div></div>`;
+    } else if (sc.id === 'efficiency_costs') {
+      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Netzteil</label><div class="comm-text">${d.psuWatt} Watt</div></div><div class="subnet-input-group"><label class="subnet-label">Auslastung</label><div class="comm-text">${d.utilization} %</div></div><div class="subnet-input-group"><label class="subnet-label">Wirkungsgrad</label><div class="comm-text">${d.efficiency} %</div></div><div class="subnet-input-group"><label class="subnet-label">Zeitraum</label><div class="comm-text">${d.days} d / ${d.hours} h</div></div><div class="subnet-input-group"><label class="subnet-label">Preis</label><div class="comm-text">${d.priceKWh.toFixed(2)} €/kWh</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Jahreskosten (€)</label><input type="text" class="subnet-input" placeholder="0.00"></div></div>`;
+    } else if (sc.id === 'ups_capacity') {
+      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Last</label><div class="comm-text">${d.watt} W</div></div><div class="subnet-input-group"><label class="subnet-label">cos φ</label><div class="comm-text">${d.cosPhi}</div></div><div class="subnet-input-group"><label class="subnet-label">Reserve</label><div class="comm-text">${d.reserve} %</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Benötigte VA</label><input type="text" class="subnet-input" placeholder="0"></div></div>`;
+    } else if (sc.id === 'pue_value') {
+      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Gesamt</label><div class="comm-text">${d.total.toLocaleString()} kWh</div></div><div class="subnet-input-group"><label class="subnet-label">IT</label><div class="comm-text">${d.it.toLocaleString()} kWh</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">PUE-Wert</label><input type="text" class="subnet-input" placeholder="1.00"></div></div>`;
+    } else if (sc.id === 'battery_runtime') {
+      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Kapazität</label><div class="comm-text">${d.mah} mAh</div></div><div class="subnet-input-group"><label class="subnet-label">Spannung</label><div class="comm-text">3.7 V</div></div><div class="subnet-input-group"><label class="subnet-label">Verbrauch</label><div class="comm-text">${d.consumption} W</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Laufzeit (h)</label><input type="text" class="subnet-input" placeholder="0.0"></div></div>`;
     }
   }
 
-  function cleanup() { cleanup_fns.forEach(fn => fn()); cleanup_fns = []; }
+  function cleanup() {
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
+    cleanup_fns = [];
+  }
   return { render, cleanup };
 })();
 

@@ -362,12 +362,14 @@ const GanttView = (() => {
         if (isMD) update(cell, sAdd);
         table
           .querySelectorAll(`td[data-day="${day}"], th[data-day="${day}"]`)
-          .forEach((el) => el.classList.add('gantt-day-highlight'));
+          .forEach((el) => {
+            el.classList.add('gantt-day-highlight');
+          });
       });
       cell.addEventListener('mouseleave', () =>
-        table
-          .querySelectorAll(`.gantt-day-highlight`)
-          .forEach((el) => el.classList.remove('gantt-day-highlight'))
+        table.querySelectorAll(`.gantt-day-highlight`).forEach((el) => {
+          el.classList.remove('gantt-day-highlight');
+        })
       );
     });
 
@@ -468,7 +470,9 @@ const GanttView = (() => {
   }
 
   function cleanup() {
-    cleanup_fns.forEach((fn) => fn());
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
   }
   return { render, cleanup };

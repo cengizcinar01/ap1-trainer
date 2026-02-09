@@ -12,6 +12,7 @@ import NWAView from '../modules/nwa.js';
 import OSIModelView from '../modules/osimodel.js';
 import PseudocodeView from '../modules/pseudocode.js';
 import SubnettingView from '../modules/subnetting.js';
+import UMLView from '../modules/uml.js';
 import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
 import StorageManager from './data/storageManager.js';
@@ -145,6 +146,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = ElectricalView.cleanup;
       ElectricalView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/uml', () => {
+      cleanupCurrentView();
+      currentCleanup = UMLView.cleanup;
+      UMLView.render(contentEl);
       Sidebar.updateActive();
     });
 

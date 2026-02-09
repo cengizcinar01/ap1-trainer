@@ -1,0 +1,283 @@
+/* ============================================================
+   uml.css — UML-Werkstatt (Modul 4)
+   Minimalist Design: Clean & Functional
+   ============================================================ */
+
+/* --- Anleitung (Explanation) --- */
+.uml-section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.uml-explanation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.uml-info-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.uml-info-box h3 {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: var(--space-2);
+}
+
+.uml-info-box ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.uml-info-box li strong {
+  color: var(--text-primary);
+}
+
+/* --- Task Box --- */
+.uml-task-box {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info);
+  padding: var(--space-4);
+  margin-top: var(--space-4);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.uml-task-box strong {
+  color: var(--text-primary);
+}
+.uml-task-box p {
+  margin-bottom: 8px;
+}
+
+/* --- Exercise Layout --- */
+.uml-exercise-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.uml-palette-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.uml-drag-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  cursor: grab;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.uml-drag-item:hover {
+  border-color: var(--accent-primary);
+  background: var(--bg-primary);
+}
+.uml-drag-item.used {
+  opacity: 0.3;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+
+/* --- Canvas Area --- */
+.uml-canvas-container {
+  background: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: auto;
+  min-height: 600px;
+}
+
+.uml-canvas-wrapper {
+  position: relative;
+  min-width: 800px;
+  height: 650px;
+  background-size: 20px 20px;
+  background-image:
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+}
+
+/* --- Nodes --- */
+.uml-node-v2 {
+  position: absolute;
+  background: var(--card-bg);
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.node-start {
+  background: var(--text-primary);
+  border-radius: 50%;
+}
+.node-end {
+  border-radius: 50%;
+  border-width: 4px;
+}
+.node-end::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--text-primary);
+  border-radius: 50%;
+}
+.node-action {
+  border-radius: 12px;
+  padding: 8px 16px;
+}
+.node-decision {
+  transform: rotate(45deg);
+  width: 40px;
+  height: 40px;
+}
+.node-use-case-oval {
+  border-radius: 50%;
+  padding: 10px 20px;
+}
+.node-boundary {
+  background: transparent;
+  border-color: var(--text-secondary);
+  z-index: 1;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px;
+}
+.boundary-header {
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.actor-svg {
+  stroke: var(--text-primary);
+  fill: none;
+  stroke-width: 2.5px;
+}
+.actor-label {
+  position: absolute;
+  bottom: -20px;
+  width: 120px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Class Box */
+.node-class-box {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  min-width: 160px;
+  box-shadow: 4px 4px 0px var(--border-color);
+}
+.class-header {
+  padding: 8px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--text-primary);
+}
+.class-section {
+  padding: 6px 10px;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.class-section:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* --- Drop Zones --- */
+.uml-target {
+  background: var(--bg-secondary);
+  border: 2px dashed var(--accent-primary);
+  color: var(--accent-primary);
+  border-radius: 12px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.uml-target.correct {
+  border: 2px solid var(--success);
+  background: var(--success-bg);
+  color: var(--success);
+  border-style: solid;
+}
+.uml-target.wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  animation: shake 0.4s;
+}
+
+.uml-target-inline {
+  display: inline-block;
+  width: 90%;
+  margin: 2px 0;
+  border-radius: 4px;
+  font-size: 10px;
+  min-height: 20px;
+}
+
+.uml-svg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@media (max-width: 900px) {
+  .uml-exercise-layout {
+    grid-template-columns: 1fr;
+  }
+  .uml-palette-container {
+    position: static;
+    order: 2;
+  }
+}

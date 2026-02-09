@@ -309,9 +309,9 @@ ENDE WENN`,
 
       // Mobile click support
       chip.addEventListener('click', () => {
-        document
-          .querySelectorAll('.pseudo-chip')
-          .forEach((c) => (c.style.borderColor = ''));
+        document.querySelectorAll('.pseudo-chip').forEach((c) => {
+          c.style.borderColor = '';
+        });
         chip.style.borderColor = 'var(--accent-primary)';
         window.selectedPseudoChip = chip;
       });
@@ -434,7 +434,9 @@ ENDE WENN`,
   }
 
   function cleanup() {
-    cleanup_fns.forEach((fn) => fn());
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
     window.selectedPseudoChip = null;
   }

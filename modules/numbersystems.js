@@ -11,7 +11,8 @@ const NumberSystemsView = (() => {
     {
       id: 'converter',
       title: 'Zahlensysteme',
-      description: 'Umrechnung in alle Richtungen (Dezimal, Binär, Hexadezimal).',
+      description:
+        'Umrechnung in alle Richtungen (Dezimal, Binär, Hexadezimal).',
     },
     {
       id: 'storage',
@@ -22,8 +23,7 @@ const NumberSystemsView = (() => {
     {
       id: 'transfer',
       title: 'Datenübertragung',
-      description:
-        'Berechnung der Übertragungsdauer bei gegebener Bandbreite.',
+      description: 'Berechnung der Übertragungsdauer bei gegebener Bandbreite.',
     },
   ];
 
@@ -50,34 +50,41 @@ const NumberSystemsView = (() => {
     const givenIdx = randomInt(0, 2);
 
     let steps = `### 📝 Umrechnungsweg erklärt\n\n`;
-    
+
     // --- DEC -> BIN ---
     steps += `**Weg 1: Dezimal &rarr; Binär (Restwertmethode)**\n`;
     let tempDec = dec;
-    let binSteps = [];
+    const binSteps = [];
     while (tempDec > 0) {
-        binSteps.push(`${tempDec} / 2 = ${Math.floor(tempDec / 2)} Rest **${tempDec % 2}**`);
-        tempDec = Math.floor(tempDec / 2);
+      binSteps.push(
+        `${tempDec} / 2 = ${Math.floor(tempDec / 2)} Rest **${tempDec % 2}**`
+      );
+      tempDec = Math.floor(tempDec / 2);
     }
-    steps += (binSteps.length ? binSteps.join('\n') : '0 / 2 = 0 Rest 0') + `\n\n`;
+    steps += `${binSteps.length ? binSteps.join('\n') : '0 / 2 = 0 Rest 0'}\n\n`;
 
     // --- DEC -> HEX ---
     steps += `**Weg 2: Dezimal &rarr; Hexadezimal (Die 16er-Rechnung)**\n`;
     steps += `Hier schauen wir, wie oft die 16 ganz in die Zahl passt und was übrig bleibt (Rest).\n\n`;
-    
+
     tempDec = dec;
-    let hexSteps = [];
+    const hexSteps = [];
     if (tempDec === 0) hexSteps.push('0 / 16 = 0 Rest **0**');
     while (tempDec > 0) {
-        let quotient = Math.floor(tempDec / 16);
-        let rest = tempDec % 16;
-        let calcPath = `${tempDec} - (${quotient} * 16) = ${rest}`;
-        let restDisplay = rest > 9 ? `**${rest}** &rarr; **${String.fromCharCode(55 + rest)}**` : `**${rest}**`;
-        
-        hexSteps.push(`${tempDec} / 16 = **${quotient}** | Rest: ${restDisplay} *(Rechnung: ${calcPath})*`);
-        tempDec = quotient;
+      const quotient = Math.floor(tempDec / 16);
+      const rest = tempDec % 16;
+      const calcPath = `${tempDec} - (${quotient} * 16) = ${rest}`;
+      const restDisplay =
+        rest > 9
+          ? `**${rest}** &rarr; **${String.fromCharCode(55 + rest)}**`
+          : `**${rest}**`;
+
+      hexSteps.push(
+        `${tempDec} / 16 = **${quotient}** | Rest: ${restDisplay} *(Rechnung: ${calcPath})*`
+      );
+      tempDec = quotient;
     }
-    steps += hexSteps.join('\n') + `\n\n**Ergebnis: ${hex}**\n\n---\n\n`;
+    steps += `${hexSteps.join('\n')}\n\n**Ergebnis: ${hex}**\n\n---\n\n`;
 
     // --- BIN <-> HEX ---
     steps += `**Weg 3: IHK-Shortcut (Binär &harr; Hex)**\n`;
@@ -85,15 +92,15 @@ const NumberSystemsView = (() => {
     const paddedBin = bin.padStart(Math.ceil(bin.length / 4) * 4, '0');
     const nibbles = paddedBin.match(/.{1,4}/g) || [];
     steps += `| Binär | Wert | Hex |\n|:---:|:---:|:---:|\n`;
-    nibbles.forEach(n => {
-        const val = parseInt(n, 2);
-        steps += `| ${n} | ${val} | **${val.toString(16).toUpperCase()}** |\n`;
+    nibbles.forEach((n) => {
+      const val = parseInt(n, 2);
+      steps += `| ${n} | ${val} | **${val.toString(16).toUpperCase()}** |\n`;
     });
 
     return { type: 'converter', dec, bin, hex, givenIdx, steps };
   }
 
-  function generateStorageExercise(diff) {
+  function generateStorageExercise(_diff) {
     const types = ['image', 'audio', 'struct'];
     const type = types[randomInt(0, 2)];
 
@@ -110,7 +117,7 @@ const NumberSystemsView = (() => {
         desc: `Ein Bild hat die Auflösung **${width} x ${height}** Pixel und eine Farbtiefe von **${depth} Bit**.`,
         sol: {
           display: `${mib.toFixed(2)} MiB`,
-          steps: `1. **Gesamt-Bits:** ${width} * ${height} * ${depth} = ${totalBits.toLocaleString()} Bit\n2. **Byte:** / 8 = ${totalBytes.toLocaleString()} B\n3. **MiB:** / 1024 / 1024 = **${mib.toFixed(2)} MiB**`
+          steps: `1. **Gesamt-Bits:** ${width} * ${height} * ${depth} = ${totalBits.toLocaleString()} Bit\n2. **Byte:** / 8 = ${totalBytes.toLocaleString()} B\n3. **MiB:** / 1024 / 1024 = **${mib.toFixed(2)} MiB**`,
         },
       };
     } else if (type === 'audio') {
@@ -127,7 +134,7 @@ const NumberSystemsView = (() => {
         desc: `Audio: **${duration} Sek.**, **${freq / 1000} kHz**, **${bitDepth} Bit**, **${channels === 1 ? 'Mono' : 'Stereo'}**.`,
         sol: {
           display: `${mib.toFixed(2)} MiB`,
-          steps: `1. **Formel:** Hz * Bit * Kanäle * Zeit\n2. **Rechnung:** ${freq} * ${bitDepth} * ${channels} * ${duration} = ${totalBits.toLocaleString()} Bit\n3. **Byte:** / 8 = ${totalBytes.toLocaleString()} B\n4. **MiB:** / 1.048.576 = **${mib.toFixed(2)} MiB**`
+          steps: `1. **Formel:** Hz * Bit * Kanäle * Zeit\n2. **Rechnung:** ${freq} * ${bitDepth} * ${channels} * ${duration} = ${totalBits.toLocaleString()} Bit\n3. **Byte:** / 8 = ${totalBytes.toLocaleString()} B\n4. **MiB:** / 1.048.576 = **${mib.toFixed(2)} MiB**`,
         },
       };
     } else {
@@ -140,8 +147,8 @@ const NumberSystemsView = (() => {
         type: 'struct',
         desc: `PLY-Datei: **${points} Punkte**. Jeder Punkt hat x, y, z Koordinaten (je **32-Bit Float**). \n\n**da)** Berechnen Sie den Speicherbedarf der Geometrie in **KiB**.\n**db)** Jeder Punkt erhält zusätzlich RGB-Werte (je 8 Bit). Wie viele Farben lassen sich damit darstellen?\n**dc)** Wie viel **% Speicher** wird pro Punkt zusätzlich benötigt?`,
         sol: {
-          val_a: kibGeo.toFixed(2), 
-          val_b: "16777216",
+          val_a: kibGeo.toFixed(2),
+          val_b: '16777216',
           val_c: increasePercent.toFixed(1),
           steps: `
 **Teil da) Geometrie**
@@ -152,32 +159,34 @@ const NumberSystemsView = (() => {
 
 **Teil db) Farben**
 RGB mit 8 Bit pro Kanal bedeutet 24 Bit Gesamtfarbtiefe ($3 \times 8$).
-Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
+Formel: $2^{Bits} = 2^{24} = mathbf{16.777.216}$ Farben.
 
 **Teil dc) Zuwachs**
 1. Basis: 96 Bit (Geometrie)
 2. Zusatz: 24 Bit (Farbe)
 3. Prozent: (24 / 96) * 100 = **${increasePercent.toFixed(1)} %**
-`
-        }
+`,
+        },
       };
     }
   }
 
-  function generateTransferExercise(diff) {
+  function generateTransferExercise(_diff) {
     const sizeGB = randomInt(1, 20);
     const speedMbit = [50, 100, 250][randomInt(0, 2)];
-    const sizeBits = sizeGB * (1024 ** 3) * 8;
+    const sizeBits = sizeGB * 1024 ** 3 * 8;
     const speedBits = speedMbit * 1000000;
     const seconds = sizeBits / speedBits;
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
-    
+
     return {
       type: 'transfer',
-      sizeGB, speedMbit, seconds: Math.round(seconds),
-      steps: `**1. Menge:** ${sizeGB} GiB * 1024³ * 8 = **${sizeBits.toLocaleString()} Bit**\n**2. Speed:** ${speedMbit} * 10⁶ = **${speedBits.toLocaleString()} Bit/s**\n**3. Zeit:** Menge / Speed = ${seconds.toFixed(1)} s &rarr; **${h}h ${m}m ${s}s**`
+      sizeGB,
+      speedMbit,
+      seconds: Math.round(seconds),
+      steps: `**1. Menge:** ${sizeGB} GiB * 1024³ * 8 = **${sizeBits.toLocaleString()} Bit**\n**2. Speed:** ${speedMbit} * 10⁶ = **${speedBits.toLocaleString()} Bit/s**\n**3. Zeit:** Menge / Speed = ${seconds.toFixed(1)} s &rarr; **${h}h ${m}m ${s}s**`,
     };
   }
 
@@ -212,7 +221,9 @@ Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
     container.querySelectorAll('.module-tab').forEach((btn) => {
       btn.addEventListener('click', () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
         renderCurrentTab();
       });
@@ -314,17 +325,28 @@ Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
       </div>
       <div id="convSol" class="module-steps" style="display:none; margin-top: var(--space-6)"></div>
     `;
-    const inputs = { inpDec: container.querySelector('#inpDec'), inpBin: container.querySelector('#inpBin'), inpHex: container.querySelector('#inpHex') };
+    const inputs = {
+      inpDec: container.querySelector('#inpDec'),
+      inpBin: container.querySelector('#inpBin'),
+      inpHex: container.querySelector('#inpHex'),
+    };
     const fields = ['inpDec', 'inpBin', 'inpHex'];
     const values = [ex.dec, ex.bin, ex.hex];
     inputs[fields[ex.givenIdx]].value = values[ex.givenIdx];
     inputs[fields[ex.givenIdx]].disabled = true;
     inputs[fields[ex.givenIdx]].classList.add('correct');
 
-    container.querySelectorAll('.module-diff-btn').forEach(b => {
-      b.addEventListener('click', () => { difficulty = parseInt(b.dataset.d); currentExercise = null; renderConverter(container); });
+    container.querySelectorAll('.module-diff-btn').forEach((b) => {
+      b.addEventListener('click', () => {
+        difficulty = parseInt(b.dataset.d, 10);
+        currentExercise = null;
+        renderConverter(container);
+      });
     });
-    container.querySelector('#btnNextConv').addEventListener('click', () => { currentExercise = generateConverterExercise(difficulty); renderConverter(container); });
+    container.querySelector('#btnNextConv').addEventListener('click', () => {
+      currentExercise = generateConverterExercise(difficulty);
+      renderConverter(container);
+    });
     container.querySelector('#btnCheckConv').addEventListener('click', () => {
       const uDec = parseInt(inputs.inpDec.value, 10);
       const uBin = inputs.inpBin.value.trim();
@@ -334,15 +356,20 @@ Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
       inputs.inpHex.classList.toggle('correct', uHex === ex.hex);
     });
     container.querySelector('#btnSolveConv').addEventListener('click', () => {
-       const solEl = container.querySelector('#convSol');
-       solEl.style.display = 'block';
-       solEl.innerHTML = CardRenderer.formatAnswer(ex.steps);
-       inputs.inpDec.value = ex.dec; inputs.inpBin.value = ex.bin; inputs.inpHex.value = ex.hex;
+      const solEl = container.querySelector('#convSol');
+      solEl.style.display = 'block';
+      solEl.innerHTML = CardRenderer.formatAnswer(ex.steps);
+      inputs.inpDec.value = ex.dec;
+      inputs.inpBin.value = ex.bin;
+      inputs.inpHex.value = ex.hex;
     });
   }
 
   function renderStorage(container) {
-    if (!currentExercise || !['image', 'audio', 'struct'].includes(currentExercise.type)) {
+    if (
+      !currentExercise ||
+      !['image', 'audio', 'struct'].includes(currentExercise.type)
+    ) {
       currentExercise = generateStorageExercise(difficulty);
     }
     const ex = currentExercise;
@@ -350,11 +377,15 @@ Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
     container.innerHTML = `
       <div class="module-exercise-question">${CardRenderer.formatAnswer(ex.desc)}</div>
       <div class="subnet-grid">
-        ${isStruct ? `
+        ${
+          isStruct
+            ? `
           <div class="subnet-input-group"><label class="subnet-label">da) Geometrie (KiB)</label><input type="text" class="subnet-input" id="inpA"></div>
           <div class="subnet-input-group"><label class="subnet-label">db) Anzahl Farben</label><input type="text" class="subnet-input" id="inpB"></div>
           <div class="subnet-input-group"><label class="subnet-label">dc) Zuwachs (%)</label><input type="text" class="subnet-input" id="inpC"></div>
-        ` : `<div class="subnet-input-group"><label class="subnet-label">Speicher (MiB)</label><input type="text" class="subnet-input" id="inpRes"></div>`}
+        `
+            : `<div class="subnet-input-group"><label class="subnet-label">Speicher (MiB)</label><input type="text" class="subnet-input" id="inpRes"></div>`
+        }
       </div>
       <div class="module-actions">
         <button class="btn btn-primary" id="btnCheckStore">Prüfen</button>
@@ -363,18 +394,40 @@ Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
       </div>
       <div id="storeSol" class="module-steps" style="display:none; margin-top: var(--space-6)"></div>
     `;
-    container.querySelector('#btnNextStore').addEventListener('click', () => { currentExercise = generateStorageExercise(difficulty); renderStorage(container); });
+    container.querySelector('#btnNextStore').addEventListener('click', () => {
+      currentExercise = generateStorageExercise(difficulty);
+      renderStorage(container);
+    });
     container.querySelector('#btnCheckStore').addEventListener('click', () => {
       if (isStruct) {
-        const okA = Math.abs(parseFloat(container.querySelector('#inpA').value.replace(',', '.')) - parseFloat(ex.sol.val_a)) < 1;
-        const okB = container.querySelector('#inpB').value.replace(/\./g, '') === ex.sol.val_b;
-        const okC = Math.abs(parseFloat(container.querySelector('#inpC').value.replace(',', '.')) - parseFloat(ex.sol.val_c)) < 0.5;
+        const okA =
+          Math.abs(
+            parseFloat(
+              container.querySelector('#inpA').value.replace(',', '.')
+            ) - parseFloat(ex.sol.val_a)
+          ) < 1;
+        const okB =
+          container.querySelector('#inpB').value.replace(/\./g, '') ===
+          ex.sol.val_b;
+        const okC =
+          Math.abs(
+            parseFloat(
+              container.querySelector('#inpC').value.replace(',', '.')
+            ) - parseFloat(ex.sol.val_c)
+          ) < 0.5;
         container.querySelector('#inpA').classList.toggle('correct', okA);
         container.querySelector('#inpB').classList.toggle('correct', okB);
         container.querySelector('#inpC').classList.toggle('correct', okC);
       } else {
-        const val = parseFloat(container.querySelector('#inpRes').value.replace(',', '.'));
-        container.querySelector('#inpRes').classList.toggle('correct', Math.abs(val - parseFloat(ex.sol.display)) < 0.1);
+        const val = parseFloat(
+          container.querySelector('#inpRes').value.replace(',', '.')
+        );
+        container
+          .querySelector('#inpRes')
+          .classList.toggle(
+            'correct',
+            Math.abs(val - parseFloat(ex.sol.display)) < 0.1
+          );
       }
     });
     container.querySelector('#btnSolveStore').addEventListener('click', () => {
@@ -403,11 +456,19 @@ Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
       </div>
       <div id="transSol" class="module-steps" style="display:none; margin-top: var(--space-6)"></div>
     `;
-    container.querySelector('#btnNextTrans').addEventListener('click', () => { currentExercise = generateTransferExercise(difficulty); renderTransfer(container); });
+    container.querySelector('#btnNextTrans').addEventListener('click', () => {
+      currentExercise = generateTransferExercise(difficulty);
+      renderTransfer(container);
+    });
     container.querySelector('#btnCheckTrans').addEventListener('click', () => {
-        const userSec = parseInt(container.querySelector('#inpH').value || 0) * 3600 + parseInt(container.querySelector('#inpM').value || 0) * 60 + parseInt(container.querySelector('#inpS').value || 0);
-        const ok = Math.abs(userSec - ex.seconds) <= 2;
-        container.querySelectorAll('.subnet-input').forEach(i => i.classList.toggle('correct', ok));
+      const userSec =
+        parseInt(container.querySelector('#inpH').value || 0, 10) * 3600 +
+        parseInt(container.querySelector('#inpM').value || 0, 10) * 60 +
+        parseInt(container.querySelector('#inpS').value || 0, 10);
+      const ok = Math.abs(userSec - ex.seconds) <= 2;
+      container.querySelectorAll('.subnet-input').forEach((i) => {
+        i.classList.toggle('correct', ok);
+      });
     });
     container.querySelector('#btnSolveTrans').addEventListener('click', () => {
       const solEl = container.querySelector('#transSol');
@@ -416,7 +477,12 @@ Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
     });
   }
 
-  function cleanup() { cleanup_fns.forEach((fn) => fn()); cleanup_fns = []; }
+  function cleanup() {
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
+    cleanup_fns = [];
+  }
   return { render, cleanup };
 })();
 
