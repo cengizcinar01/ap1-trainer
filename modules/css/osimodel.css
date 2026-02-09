@@ -111,8 +111,12 @@
   color: var(--text-secondary);
 }
 
-.osi-badge-protocol { border-left: 2px solid var(--accent-primary); }
-.osi-badge-hardware { border-left: 2px solid var(--warning); }
+.osi-badge-protocol {
+  border-left: 2px solid var(--accent-primary);
+}
+.osi-badge-hardware {
+  border-left: 2px solid var(--warning);
+}
 
 /* --- Puzzle Mode --- */
 .osi-puzzle-container {

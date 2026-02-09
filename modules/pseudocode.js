@@ -5,7 +5,7 @@
 
 const PseudocodeView = (() => {
   let currentScenarioIdx = 0;
-  let score = 0;
+  const _score = 0;
   let cleanup_fns = [];
 
   // ============================================================
@@ -16,7 +16,8 @@ const PseudocodeView = (() => {
     {
       id: 1,
       title: 'EAN-Prüfziffer (Gewichtung)',
-      description: 'Berechne die Prüfziffer für einen 13-stelligen EAN-Code. Die Stellen werden abwechselnd mit 1 und 3 gewichtet.',
+      description:
+        'Berechne die Prüfziffer für einen 13-stelligen EAN-Code. Die Stellen werden abwechselnd mit 1 und 3 gewichtet.',
       code: `summe = 0
 FÜR i VON 0 BIS 11 MACHE
   WENN {{0}} == 0 DANN
@@ -27,12 +28,13 @@ FÜR i VON 0 BIS 11 MACHE
 ENDE FÜR
 pruefziffer = (10 - ({{2}} % 10)) % 10`,
       solution: ['i % 2', '3', 'summe'],
-      pool: ['i % 2', '3', 'summe', 'ean.laenge', '10', 'i / 2']
+      pool: ['i % 2', '3', 'summe', 'ean.laenge', '10', 'i / 2'],
     },
     {
       id: 2,
       title: 'Lineare Suche mit Flag',
-      description: 'Suche eine Artikelnummer im Lager-Array. Setze einen Indikator, wenn der Artikel gefunden wurde.',
+      description:
+        'Suche eine Artikelnummer im Lager-Array. Setze einen Indikator, wenn der Artikel gefunden wurde.',
       code: `gefunden = {{0}}
 i = 0
 SOLANGE {{1}} < lager.laenge UND gefunden == FALSCH MACHE
@@ -43,12 +45,13 @@ SOLANGE {{1}} < lager.laenge UND gefunden == FALSCH MACHE
   i = i + 1
 ENDE SOLANGE`,
       solution: ['FALSCH', 'i', 'suchID'],
-      pool: ['FALSCH', 'i', 'suchID', 'WAHR', '0', 'lager[i]']
+      pool: ['FALSCH', 'i', 'suchID', 'WAHR', '0', 'lager[i]'],
     },
     {
       id: 3,
       title: 'Zweistufige Provision',
-      description: 'Berechne die Provision: Unter 10.000€ Umsatz gibt es 2%, ab 10.000€ gibt es 5% auf den gesamten Umsatz.',
+      description:
+        'Berechne die Provision: Unter 10.000€ Umsatz gibt es 2%, ab 10.000€ gibt es 5% auf den gesamten Umsatz.',
       code: `provision = 0
 WENN umsatz < {{0}} DANN
   provision = umsatz * {{1}}
@@ -57,50 +60,76 @@ WENN umsatz < {{0}} DANN
 ENDE WENN
 AUSGABE provision`,
       solution: ['10000', '0.02', 'SONST'],
-      pool: ['10000', '0.02', 'SONST', 'DANN', '5000', '0.05']
+      pool: ['10000', '0.02', 'SONST', 'DANN', '5000', '0.05'],
     },
     {
       id: 4,
       title: 'Maximum-Suche',
-      description: 'Finde den höchsten Messwert in einer Liste von Temperaturdaten.',
+      description:
+        'Finde den höchsten Messwert in einer Liste von Temperaturdaten.',
       code: `maxTemp = temperaturen[0]
 FÜR i VON 1 BIS {{0}} MACHE
   WENN {{1}} > maxTemp DANN
     maxTemp = {{2}}
   ENDE WENN
 ENDE FÜR`,
-      solution: ['temperaturen.laenge - 1', 'temperaturen[i]', 'temperaturen[i]'],
-      pool: ['temperaturen.laenge - 1', 'temperaturen[i]', 'i', 'maxTemp', 'temperaturen.laenge', '0']
+      solution: [
+        'temperaturen.laenge - 1',
+        'temperaturen[i]',
+        'temperaturen[i]',
+      ],
+      pool: [
+        'temperaturen.laenge - 1',
+        'temperaturen[i]',
+        'i',
+        'maxTemp',
+        'temperaturen.laenge',
+        '0',
+      ],
     },
     {
       id: 5,
       title: 'Bestand & Nachbestellung',
-      description: 'Prüfe den Bestand. Wenn dieser unter den Meldebestand fällt, berechne die Bestellmenge (Soll - Ist).',
+      description:
+        'Prüfe den Bestand. Wenn dieser unter den Meldebestand fällt, berechne die Bestellmenge (Soll - Ist).',
       code: `FÜR JEDEN artikel IN lager MACHE
   WENN artikel.istBestand < {{0}} DANN
     bestellmenge = {{1}} - artikel.istBestand
     {{2}}(artikel.id, bestellmenge)
   ENDE WENN
 ENDE FÜR`,
-      solution: ['artikel.meldebestand', 'artikel.sollBestand', 'nachbestellen'],
-      pool: ['artikel.meldebestand', 'artikel.sollBestand', 'nachbestellen', 'WAHR', 'artikel.id', '0']
+      solution: [
+        'artikel.meldebestand',
+        'artikel.sollBestand',
+        'nachbestellen',
+      ],
+      pool: [
+        'artikel.meldebestand',
+        'artikel.sollBestand',
+        'nachbestellen',
+        'WAHR',
+        'artikel.id',
+        '0',
+      ],
     },
     {
       id: 6,
       title: 'Modulo-Logik (Schaltjahr)',
-      description: 'Ein Jahr ist ein Schaltjahr, wenn es durch 4 teilbar ist, aber nicht durch 100 (außer es ist durch 400 teilbar).',
+      description:
+        'Ein Jahr ist ein Schaltjahr, wenn es durch 4 teilbar ist, aber nicht durch 100 (außer es ist durch 400 teilbar).',
       code: `istSchaltjahr = FALSCH
 WENN (jahr % 4 == 0 UND jahr % 100 != 0) {{0}} (jahr % 400 == 0) DANN
   {{1}} = WAHR
 ENDE WENN
 {{2}} istSchaltjahr`,
       solution: ['ODER', 'istSchaltjahr', 'RÜCKGABE'],
-      pool: ['ODER', 'istSchaltjahr', 'RÜCKGABE', 'UND', 'jahr', 'AUSGABE']
+      pool: ['ODER', 'istSchaltjahr', 'RÜCKGABE', 'UND', 'jahr', 'AUSGABE'],
     },
     {
       id: 7,
       title: 'Mittelwert von Verkäufen',
-      description: 'Berechne den Durchschnittswert aller Verkäufe, die größer als 0 sind.',
+      description:
+        'Berechne den Durchschnittswert aller Verkäufe, die größer als 0 sind.',
       code: `summe = 0
 anzahl = 0
 FÜR i VON 0 BIS verkauf.laenge - 1 MACHE
@@ -111,12 +140,13 @@ FÜR i VON 0 BIS verkauf.laenge - 1 MACHE
 ENDE FÜR
 mittelwert = summe / {{2}}`,
       solution: ['summe', '1', 'anzahl'],
-      pool: ['summe', '1', 'anzahl', 'i', '0', 'verkauf.laenge']
+      pool: ['summe', '1', 'anzahl', 'i', '0', 'verkauf.laenge'],
     },
     {
       id: 8,
       title: 'Matrix-Durchlauf (Sitzplan)',
-      description: 'Zähle alle belegten Sitze (Wert 1) in einem Kinosaal (2D-Array).',
+      description:
+        'Zähle alle belegten Sitze (Wert 1) in einem Kinosaal (2D-Array).',
       code: `belegtCount = 0
 FÜR reihe VON 0 BIS reihenAnzahl - 1 MACHE
   FÜR sitz VON 0 BIS {{0}} MACHE
@@ -126,12 +156,20 @@ FÜR reihe VON 0 BIS reihenAnzahl - 1 MACHE
   ENDE FÜR
 ENDE FÜR`,
       solution: ['sitzeProReihe - 1', 'reihe', 'belegtCount + 1'],
-      pool: ['sitzeProReihe - 1', 'reihe', 'belegtCount + 1', 'sitz', '1', 'belegtCount']
+      pool: [
+        'sitzeProReihe - 1',
+        'reihe',
+        'belegtCount + 1',
+        'sitz',
+        '1',
+        'belegtCount',
+      ],
     },
     {
       id: 9,
       title: 'String-Validierung',
-      description: 'Ein Passwort muss mindestens 8 Zeichen lang sein und das Sonderzeichen "!" enthalten.',
+      description:
+        'Ein Passwort muss mindestens 8 Zeichen lang sein und das Sonderzeichen "!" enthalten.',
       code: `passwortOK = FALSCH
 WENN passwort.laenge >= 8 DANN
   WENN {{0}}(passwort, "!") == WAHR DANN
@@ -140,20 +178,21 @@ WENN passwort.laenge >= 8 DANN
 ENDE WENN
 {{2}} passwortOK`,
       solution: ['enthaelt', 'passwortOK', 'RÜCKGABE'],
-      pool: ['enthaelt', 'passwortOK', 'RÜCKGABE', 'WAHR', '8', 'suche']
+      pool: ['enthaelt', 'passwortOK', 'RÜCKGABE', 'WAHR', '8', 'suche'],
     },
     {
       id: 10,
       title: 'Bubble-Sort Tauschlogik',
-      description: 'Implementiere den Tausch zweier Elemente in einem Array, wenn das linke Element größer als das rechte ist.',
+      description:
+        'Implementiere den Tausch zweier Elemente in einem Array, wenn das linke Element größer als das rechte ist.',
       code: `WENN liste[i] > liste[i+1] DANN
   temp = {{0}}
   liste[i] = {{1}}
   {{2}} = temp
 ENDE WENN`,
       solution: ['liste[i]', 'liste[i+1]', 'liste[i+1]'],
-      pool: ['liste[i]', 'liste[i+1]', 'liste[i+1]', 'liste[i-1]', 'temp', 'i']
-    }
+      pool: ['liste[i]', 'liste[i+1]', 'liste[i+1]', 'liste[i-1]', 'temp', 'i'],
+    },
   ];
 
   // ============================================================
@@ -181,14 +220,17 @@ ENDE WENN`,
 
   function renderScenario(container) {
     const sc = SCENARIOS[currentScenarioIdx];
-    
+
     // Create random pool from scenario pool data
     const shuffledPool = [...sc.pool].sort(() => Math.random() - 0.5);
 
     // Replace placeholders with drop zones
     let codeHtml = sc.code;
     sc.solution.forEach((_, i) => {
-      codeHtml = codeHtml.replace(`{{${i}}}`, `<div class="pseudo-gap" data-index="${i}"></div>`);
+      codeHtml = codeHtml.replace(
+        `{{${i}}}`,
+        `<div class="pseudo-gap" data-index="${i}"></div>`
+      );
     });
 
     // Highlight basic keywords
@@ -216,9 +258,13 @@ ENDE WENN`,
         <div class="pseudo-chip-pool">
           <div class="pseudo-pool-title">Bausteine (Drag & Drop)</div>
           <div class="pseudo-chips-grid" id="chipPool">
-            ${shuffledPool.map((chip, i) => `
+            ${shuffledPool
+              .map(
+                (chip, i) => `
               <div class="pseudo-chip" draggable="true" data-id="chip-${i}">${chip}</div>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
         </div>
 
@@ -250,7 +296,7 @@ ENDE WENN`,
     const gaps = container.querySelectorAll('.pseudo-gap');
     const checkBtn = container.querySelector('#btnCheckPseudo');
 
-    chips.forEach(chip => {
+    chips.forEach((chip) => {
       chip.addEventListener('dragstart', (e) => {
         e.dataTransfer.setData('text/plain', chip.textContent);
         e.dataTransfer.setData('source-id', chip.dataset.id);
@@ -263,13 +309,15 @@ ENDE WENN`,
 
       // Mobile click support
       chip.addEventListener('click', () => {
-        document.querySelectorAll('.pseudo-chip').forEach(c => c.style.borderColor = '');
+        document
+          .querySelectorAll('.pseudo-chip')
+          .forEach((c) => (c.style.borderColor = ''));
         chip.style.borderColor = 'var(--accent-primary)';
         window.selectedPseudoChip = chip;
       });
     });
 
-    gaps.forEach(gap => {
+    gaps.forEach((gap) => {
       gap.addEventListener('dragover', (e) => {
         e.preventDefault();
         gap.classList.add('drag-over');
@@ -310,7 +358,8 @@ ENDE WENN`,
 
     function checkCompletion() {
       const filledGaps = container.querySelectorAll('.pseudo-gap.filled');
-      checkBtn.disabled = filledGaps.length < SCENARIOS[currentScenarioIdx].solution.length;
+      checkBtn.disabled =
+        filledGaps.length < SCENARIOS[currentScenarioIdx].solution.length;
     }
   }
 
@@ -354,9 +403,30 @@ ENDE WENN`,
   }
 
   function highlightKeywords(code) {
-    const keywords = ['WENN', 'DANN', 'SONST', 'ENDE WENN', 'SOLANGE', 'MACHE', 'ENDE SOLANGE', 'FÜR', 'VON', 'BIS', 'FÜR JEDEN', 'IN', 'ENDE FÜR', 'AUSGABE', 'RÜCKGABE', 'WAHR', 'FALSCH', 'UND', 'ODER', 'ABBRECHEN'];
+    const keywords = [
+      'WENN',
+      'DANN',
+      'SONST',
+      'ENDE WENN',
+      'SOLANGE',
+      'MACHE',
+      'ENDE SOLANGE',
+      'FÜR',
+      'VON',
+      'BIS',
+      'FÜR JEDEN',
+      'IN',
+      'ENDE FÜR',
+      'AUSGABE',
+      'RÜCKGABE',
+      'WAHR',
+      'FALSCH',
+      'UND',
+      'ODER',
+      'ABBRECHEN',
+    ];
     let html = code;
-    keywords.forEach(kw => {
+    keywords.forEach((kw) => {
       const reg = new RegExp(`\\b${kw}\\b`, 'g');
       html = html.replace(reg, `<span class="kw">${kw}</span>`);
     });
@@ -364,7 +434,7 @@ ENDE WENN`,
   }
 
   function cleanup() {
-    cleanup_fns.forEach(fn => fn());
+    cleanup_fns.forEach((fn) => fn());
     cleanup_fns = [];
     window.selectedPseudoChip = null;
   }

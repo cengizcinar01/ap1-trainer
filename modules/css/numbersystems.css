@@ -11,7 +11,9 @@
 }
 
 @media (max-width: 768px) {
-  .ns-card-grid { grid-template-columns: 1fr; }
+  .ns-card-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .ns-info-card {
@@ -103,7 +105,8 @@
   font-size: var(--font-size-sm);
 }
 
-.ns-comparison-table th, .ns-comparison-table td {
+.ns-comparison-table th,
+.ns-comparison-table td {
   padding: var(--space-3);
   border: 1px solid var(--border-color);
   text-align: left;
@@ -123,7 +126,9 @@
 }
 
 @media (max-width: 600px) {
-  .ns-calc-grid { grid-template-columns: 1fr; }
+  .ns-calc-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .ns-calc-result-box {
@@ -170,5 +175,13 @@
   background: var(--bg-secondary);
 }
 
-.ns-quiz-option.correct { border-color: var(--success); background: var(--success-bg); color: var(--success); }
-.ns-quiz-option.wrong { border-color: var(--danger); background: var(--danger-bg); color: var(--danger); }
+.ns-quiz-option.correct {
+  border-color: var(--success);
+  background: var(--success-bg);
+  color: var(--success);
+}
+.ns-quiz-option.wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  color: var(--danger);
+}

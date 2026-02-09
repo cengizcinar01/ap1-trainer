@@ -11,19 +11,19 @@ const NumberSystemsView = (() => {
   // DATA STRUCTURES
   // ============================================================
 
-  const UNITS = {
+  const _UNITS = {
     SI: [
       { label: 'KB (Kilobyte)', value: 1000 },
       { label: 'MB (Megabyte)', value: 1000 ** 2 },
       { label: 'GB (Gigabyte)', value: 1000 ** 3 },
-      { label: 'TB (Terabyte)', value: 1000 ** 4 }
+      { label: 'TB (Terabyte)', value: 1000 ** 4 },
     ],
     IEC: [
       { label: 'KiB (Kibibyte)', value: 1024 },
       { label: 'MiB (Mebibyte)', value: 1024 ** 2 },
       { label: 'GiB (Gibibyte)', value: 1024 ** 3 },
-      { label: 'TiB (Tebibyte)', value: 1024 ** 4 }
-    ]
+      { label: 'TiB (Tebibyte)', value: 1024 ** 4 },
+    ],
   };
 
   const QUIZ_QUESTIONS = [
@@ -31,19 +31,19 @@ const NumberSystemsView = (() => {
       q: 'Welcher Divisor wird bei der Umrechnung von Byte in MiB (Mebibyte) verwendet?',
       options: ['1.000.000', '1.024.000', '1.048.576', '1.073.741.824'],
       correct: 2,
-      explain: '1 MiB = 1024 * 1024 Byte = 1.048.576 Byte.'
+      explain: '1 MiB = 1024 * 1024 Byte = 1.048.576 Byte.',
     },
     {
       q: 'Wie viele Bit werden benötigt, um eine Farbtiefe von "True Color" (16,7 Mio. Farben) darzustellen?',
       options: ['8 Bit', '16 Bit', '24 Bit', '32 Bit'],
       correct: 2,
-      explain: '2^24 ergibt ca. 16,7 Millionen Farben (True Color).'
+      explain: '2^24 ergibt ca. 16,7 Millionen Farben (True Color).',
     },
     {
       q: 'Welche Hexadezimal-Zahl entspricht der Dezimalzahl 255?',
       options: ['F0', 'FE', 'FF', '100'],
       correct: 2,
-      explain: 'FF (hex) = 15 * 16^1 + 15 * 16^0 = 240 + 15 = 255.'
+      explain: 'FF (hex) = 15 * 16^1 + 15 * 16^0 = 240 + 15 = 255.',
     },
     {
       q: 'Was ist der Unterschied zwischen SI-Einheiten (MB) und IEC-Einheiten (MiB)?',
@@ -51,11 +51,12 @@ const NumberSystemsView = (() => {
         'Es gibt keinen Unterschied.',
         'SI basiert auf 1000, IEC basiert auf 1024.',
         'SI ist für RAM, IEC für Festplatten.',
-        'SI wird nur in Europa verwendet.'
+        'SI wird nur in Europa verwendet.',
       ],
       correct: 1,
-      explain: 'SI-Präfixe (Kilo, Mega) nutzen die Basis 10 (10^3), IEC-Präfixe (Kibi, Mebi) nutzen die Basis 2 (2^10).'
-    }
+      explain:
+        'SI-Präfixe (Kilo, Mega) nutzen die Basis 10 (10^3), IEC-Präfixe (Kibi, Mebi) nutzen die Basis 2 (2^10).',
+    },
   ];
 
   // ============================================================
@@ -91,10 +92,12 @@ const NumberSystemsView = (() => {
   }
 
   function setupTabEvents(container) {
-    container.querySelectorAll('.module-tab').forEach(btn => {
+    container.querySelectorAll('.module-tab').forEach((btn) => {
       btn.addEventListener('click', () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach(b => b.classList.remove('active'));
+        container
+          .querySelectorAll('.module-tab')
+          .forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         renderCurrentTab();
       });
@@ -106,10 +109,18 @@ const NumberSystemsView = (() => {
     if (!content) return;
 
     switch (currentTab) {
-      case 'explanation': renderExplanation(content); break;
-      case 'converter': renderConverter(content); break;
-      case 'storage': renderStorage(content); break;
-      case 'quiz': renderQuiz(content); break;
+      case 'explanation':
+        renderExplanation(content);
+        break;
+      case 'converter':
+        renderConverter(content);
+        break;
+      case 'storage':
+        renderStorage(content);
+        break;
+      case 'quiz':
+        renderQuiz(content);
+        break;
     }
   }
 
@@ -212,24 +223,25 @@ const NumberSystemsView = (() => {
     const stepsEl = container.querySelector('#nsCalculationSteps');
 
     function updateSteps(decimalValue) {
-      if (isNaN(decimalValue) || decimalValue < 0) {
+      if (Number.isNaN(decimalValue) || decimalValue < 0) {
         stepsEl.innerHTML = '';
         return;
       }
 
-      let html = '<div class="module-steps"><h4 class="module-steps-title">Rechenweg (Manuelle Umrechnung)</h4>';
+      let html =
+        '<div class="module-steps"><h4 class="module-steps-title">Rechenweg (Manuelle Umrechnung)</h4>';
 
       // 1. Dezimal -> Binär (Restwertmethode)
       let tempDec = decimalValue;
-      let binSteps = [];
+      const binSteps = [];
       if (tempDec === 0) binSteps.push('0 / 2 = 0 Rest 0');
       while (tempDec > 0) {
-        let res = Math.floor(tempDec / 2);
-        let rem = tempDec % 2;
+        const res = Math.floor(tempDec / 2);
+        const rem = tempDec % 2;
         binSteps.push(`${tempDec} / 2 = ${res} Rest <strong>${rem}</strong>`);
         tempDec = res;
       }
-      
+
       html += `
         <div class="module-step">
           <div class="module-step-title">Dezimal → Binär (Restwertmethode)</div>
@@ -240,13 +252,15 @@ const NumberSystemsView = (() => {
 
       // 2. Dezimal -> Hexadezimal
       tempDec = decimalValue;
-      let hexSteps = [];
+      const hexSteps = [];
       const hexChars = '0123456789ABCDEF';
       if (tempDec === 0) hexSteps.push('0 / 16 = 0 Rest 0');
       while (tempDec > 0) {
-        let res = Math.floor(tempDec / 16);
-        let rem = tempDec % 16;
-        hexSteps.push(`${tempDec} / 16 = ${res} Rest ${rem} (${hexChars[rem]})`);
+        const res = Math.floor(tempDec / 16);
+        const rem = tempDec % 16;
+        hexSteps.push(
+          `${tempDec} / 16 = ${res} Rest ${rem} (${hexChars[rem]})`
+        );
         tempDec = res;
       }
 
@@ -260,17 +274,17 @@ const NumberSystemsView = (() => {
 
       // 3. Binär -> Dezimal (Stellenwertverfahren)
       const binStr = decimalValue.toString(2);
-      let binToDecSteps = [];
-      let sumParts = [];
+      const binToDecSteps = [];
+      const sumParts = [];
       for (let i = 0; i < binStr.length; i++) {
         const bit = binStr[binStr.length - 1 - i];
-        const val = parseInt(bit) * Math.pow(2, i);
+        const val = parseInt(bit, 10) * 2 ** i;
         if (bit === '1') {
           binToDecSteps.push(`2^${i} = ${val}`);
           sumParts.push(val);
         }
       }
-      
+
       html += `
         <div class="module-step">
           <div class="module-step-title">Binär → Dezimal (Stellenwertverfahren)</div>
@@ -285,7 +299,7 @@ const NumberSystemsView = (() => {
 
     inpDec.addEventListener('input', () => {
       const val = parseInt(inpDec.value, 10);
-      if (!isNaN(val)) {
+      if (!Number.isNaN(val)) {
         inpBin.value = val.toString(2);
         inpHex.value = val.toString(16).toUpperCase();
         updateSteps(val);
@@ -298,7 +312,7 @@ const NumberSystemsView = (() => {
 
     inpBin.addEventListener('input', () => {
       const val = parseInt(inpBin.value, 2);
-      if (!isNaN(val)) {
+      if (!Number.isNaN(val)) {
         inpDec.value = val;
         inpHex.value = val.toString(16).toUpperCase();
         updateSteps(val);
@@ -309,7 +323,7 @@ const NumberSystemsView = (() => {
 
     inpHex.addEventListener('input', () => {
       const val = parseInt(inpHex.value, 16);
-      if (!isNaN(val)) {
+      if (!Number.isNaN(val)) {
         inpDec.value = val;
         inpBin.value = val.toString(2);
         updateSteps(val);
@@ -385,12 +399,16 @@ const NumberSystemsView = (() => {
     const res = container.querySelector('#imgRes');
 
     function calc() {
-      const bytes = (parseInt(w.value, 10) * parseInt(h.value, 10) * parseInt(d.value, 10)) / 8;
+      const bytes =
+        (parseInt(w.value, 10) *
+          parseInt(h.value, 10) *
+          parseInt(d.value, 10)) /
+        8;
       const mib = bytes / (1024 * 1024);
-      res.textContent = mib.toFixed(2) + ' MiB';
+      res.textContent = `${mib.toFixed(2)} MiB`;
     }
 
-    [w, h, d].forEach(el => el.addEventListener('input', calc));
+    [w, h, d].forEach((el) => el.addEventListener('input', calc));
     calc();
   }
 
@@ -409,17 +427,23 @@ const NumberSystemsView = (() => {
           <div class="comm-quiz-score" id="nsQuizScore">Score: 0 / ${QUIZ_QUESTIONS.length}</div>
         </div>
         <div id="nsQuizList">
-          ${QUIZ_QUESTIONS.map((q, i) => `
+          ${QUIZ_QUESTIONS.map(
+            (q, i) => `
             <div class="module-exercise-card ns-quiz-card" style="margin-bottom: var(--space-4)" data-idx="${i}">
               <p class="module-exercise-question"><strong>Frage ${i + 1}:</strong> ${q.q}</p>
               <div class="ns-quiz-options">
-                ${q.options.map((opt, oi) => `
+                ${q.options
+                  .map(
+                    (opt, oi) => `
                   <div class="ns-quiz-option" data-oi="${oi}">${opt}</div>
-                `).join('')}
+                `
+                  )
+                  .join('')}
               </div>
               <div class="quiz-feedback" style="display:none; margin-top: var(--space-4);"></div>
             </div>
-          `).join('')}
+          `
+          ).join('')}
         </div>
         <div id="nsFinalResult"></div>
       </div>
@@ -432,17 +456,17 @@ const NumberSystemsView = (() => {
     const cards = container.querySelectorAll('.ns-quiz-card');
     const progressFill = container.querySelector('.comm-progress-fill');
     const scoreDisplay = container.querySelector('#nsQuizScore');
-    
+
     let answeredCount = 0;
     let correctCount = 0;
 
-    cards.forEach(card => {
+    cards.forEach((card) => {
       const idx = parseInt(card.dataset.idx, 10);
       const question = QUIZ_QUESTIONS[idx];
       const options = card.querySelectorAll('.ns-quiz-option');
       const feedback = card.querySelector('.quiz-feedback');
 
-      options.forEach(opt => {
+      options.forEach((opt) => {
         opt.addEventListener('click', () => {
           if (card.dataset.answered === 'true') return;
           card.dataset.answered = 'true';
@@ -457,7 +481,7 @@ const NumberSystemsView = (() => {
             else if (i === selIdx) o.classList.add('wrong');
           });
 
-          progressFill.style.width = (answeredCount / QUIZ_QUESTIONS.length * 100) + '%';
+          progressFill.style.width = `${(answeredCount / QUIZ_QUESTIONS.length) * 100}%`;
           scoreDisplay.textContent = `Score: ${correctCount} / ${QUIZ_QUESTIONS.length}`;
           feedback.style.display = 'block';
           feedback.innerHTML = `<div class="module-feedback ${isCorrect ? 'module-feedback-success' : 'module-feedback-error'}">
@@ -469,7 +493,7 @@ const NumberSystemsView = (() => {
   }
 
   function cleanup() {
-    cleanup_fns.forEach(fn => fn());
+    cleanup_fns.forEach((fn) => fn());
     cleanup_fns = [];
   }
 

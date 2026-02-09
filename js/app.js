@@ -4,6 +4,7 @@
 
 import CommunicationView from '../modules/communication.js';
 import EPKView from '../modules/epk.js';
+import GanttView from '../modules/gantt.js';
 import NetworkPlanView from '../modules/networkplan.js';
 import NumberSystemsView from '../modules/numbersystems.js';
 import NWAView from '../modules/nwa.js';
@@ -151,6 +152,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = EPKView.cleanup;
       EPKView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/gantt', () => {
+      cleanupCurrentView();
+      currentCleanup = GanttView.cleanup;
+      GanttView.render(contentEl);
       Sidebar.updateActive();
     });
 
