@@ -117,7 +117,10 @@ const OSIModelView = (() => {
       { label: 'Physische Adresse', value: '50-1A-C5-F2-38-B7' },
       { label: 'DHCP aktiviert', value: 'Ja' },
       { label: 'Autokonfiguration aktiviert', value: 'Ja' },
-      { label: 'Verbindungslokale IPv6-Adresse', value: 'fe80::521a:c5ff:fef2:38b7%5' },
+      {
+        label: 'Verbindungslokale IPv6-Adresse',
+        value: 'fe80::521a:c5ff:fef2:38b7%5',
+      },
       { label: 'IPv4-Adresse', value: '192.168.0.52' },
       { label: 'Subnetzmaske', value: '255.255.255.0' },
     ],

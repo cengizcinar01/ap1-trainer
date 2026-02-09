@@ -31,7 +31,7 @@ const SubnettingView = (() => {
       id: 'ipv6',
       title: 'IPv6-Analyse',
       description:
-        'Bestimme Länge, Volldarstellung und Interface-ID einer IPv6-Adresse.',
+        'Bestimme Länge, Volldarstellung und Interface-ID (EUI-64) einer IPv6-Adresse.',
     },
   ];
 
@@ -108,18 +108,19 @@ const SubnettingView = (() => {
     return `${pre}::${post}`;
   }
 
-  function expandIPv6(short) {
-    const parts = short.split('::');
-    let left = parts[0] ? parts[0].split(':') : [];
-    const right = parts[1] ? parts[1].split(':') : [];
-    if (parts.length === 1 && right.length === 0) {
-      // No :: used, but might be just full address
-      left = short.split(':');
-    }
+  function normalizeIPv6(str, expectedGroups = 8) {
+    if (!str) return '';
+    const parts = str.split('::');
+    const left = parts[0] ? parts[0].split(':') : [];
+    const right = parts.length > 1 && parts[1] ? parts[1].split(':') : [];
 
-    const missing = 8 - (left.length + right.length);
-    const groups = [...left, ...Array(missing).fill('0'), ...right];
-    return groups.map((g) => g.padStart(4, '0')).join(':');
+    if (parts.length > 1) {
+      const missing = expectedGroups - (left.length + right.length);
+      const middle = Array(Math.max(0, missing)).fill('0');
+      const groups = [...left, ...middle, ...right];
+      return groups.map((g) => g.padStart(4, '0')).join(':');
+    }
+    return left.map((g) => g.padStart(4, '0')).join(':');
   }
 
   // ============================================================
@@ -205,42 +206,149 @@ const SubnettingView = (() => {
     return { type: 'check', items: picked };
   }
 
-  function generateIPv6Exercise() {
-    // Generate 8 groups of random hex
-    const groups = Array.from({ length: 8 }, () =>
-      randomInt(0, 65535).toString(16)
-    );
-    // Force some zeros for compression potential
-    const zeroStart = randomInt(1, 4);
-    const zeroLen = randomInt(1, 3);
-    for (let i = zeroStart; i < zeroStart + zeroLen; i++) groups[i] = '0';
+      function generateIPv6Exercise() {
 
-    // Prefix: fe80 (Link-Local) or 2001 (Global)
-    const type = Math.random() > 0.5 ? 'fe80' : '2001';
-    groups[0] = type;
+        // 80% Chance für EUI-64 (sehr prüfungsrelevant)
 
-    // Standard Interface ID is usually /64
-    const prefixLen = 64;
+        const isEUI64 = Math.random() < 0.8;
 
-    const short = formatIPv6([...groups]); // Pass copy
-    const full = groups.map((g) => g.padStart(4, '0')).join(':');
-    const interfaceId = groups
-      .slice(4)
-      .map((g) => g.padStart(4, '0'))
-      .join(':');
+        let mac = null;
 
-    return {
-      type: 'ipv6',
-      short,
-      prefixLen,
-      sol: {
-        length: 128,
-        full,
-        prefix: prefixLen,
-        interfaceId,
-      },
-    };
-  }
+        let macBytes = [];
+
+        let groups = [];
+
+    
+
+        if (isEUI64) {
+
+          // Generiere eine realistische MAC
+
+          const firstByteOptions = [0x00, 0x02, 0x50, 0x1a, 0xac]; 
+
+          const b1 = firstByteOptions[randomInt(0, firstByteOptions.length - 1)];
+
+          
+
+          macBytes = [b1, ...Array.from({ length: 5 }, () => randomInt(0, 255))];
+
+    
+
+          mac = macBytes
+
+            .map((b) => b.toString(16).padStart(2, '0'))
+
+            .join(':');
+
+    
+
+          const firstByte = macBytes[0];
+
+          const firstByteModified = firstByte ^ 0x02; // Das berühmte 7. Bit invertieren
+
+    
+
+          const iid = [
+
+            `${firstByteModified.toString(16).padStart(2, '0')}${macBytes[1].toString(16).padStart(2, '0')}`,
+
+            `${macBytes[2].toString(16).padStart(2, '0')}ff`,
+
+            `fe${macBytes[3].toString(16).padStart(2, '0')}`,
+
+            `${macBytes[4].toString(16).padStart(2, '0')}${macBytes[5].toString(16).padStart(2, '0')}`,
+
+          ];
+
+    
+
+          // Prefix: Meist fe80 (Link-Local), manchmal Global (2001)
+
+          const prefix = Math.random() > 0.3 ? 'fe80' : '2001';
+
+          groups = [prefix, '0', '0', '0', ...iid];
+
+        } else {
+
+          // Generiere zufällige Adresse (kein EUI-64)
+
+          groups = Array.from({ length: 8 }, () => randomInt(0, 65535).toString(16));
+
+          // Force some zeros for compression potential
+
+          const zeroStart = randomInt(1, 4);
+
+          const zeroLen = randomInt(1, 3);
+
+          for (let i = zeroStart; i < zeroStart + zeroLen; i++) groups[i] = '0';
+
+    
+
+          const type = Math.random() > 0.5 ? 'fe80' : '2001';
+
+          groups[0] = type;
+
+        }
+
+    
+
+        // Prefix Length: 64 bei EUI-64/Link-Local fast immer Standard
+
+        let prefixLen = 64;
+
+        if (!isEUI64 && groups[0] !== 'fe80') {
+
+          const lengths = [32, 48, 56, 64];
+
+          prefixLen = lengths[randomInt(0, lengths.length - 1)];
+
+        }
+
+    
+
+        const short = formatIPv6([...groups]);
+
+        const full = groups.map((g) => g.padStart(4, '0')).join(':');
+
+        const interfaceId = groups
+
+          .slice(4)
+
+          .map((g) => g.padStart(4, '0'))
+
+          .join(':');
+
+    
+
+        return {
+
+          type: 'ipv6',
+
+          short,
+
+          prefixLen,
+
+          mac,
+
+          macBytes, // Für die detaillierte Erklärung
+
+          isEUI64,
+
+          sol: {
+
+            length: 128,
+
+            full,
+
+            prefix: prefixLen,
+
+            interfaceId,
+
+          },
+
+        };
+
+      }
 
   // ============================================================
   // RENDER LOGIC
@@ -407,13 +515,13 @@ const SubnettingView = (() => {
       <div id="basicSolution" style="display:none; margin-top: var(--space-6)"></div>
     `;
 
-    container.querySelectorAll('.module-diff-btn').forEach((b) =>
+    container.querySelectorAll('.module-diff-btn').forEach((b) => {
       b.addEventListener('click', () => {
         difficulty = parseInt(b.dataset.d, 10);
         currentExercise = null;
         renderBasic(container);
-      })
-    );
+      });
+    });
 
     container.querySelector('#btnNext').addEventListener('click', () => {
       currentExercise = generateBasicExercise(difficulty);
@@ -440,7 +548,7 @@ const SubnettingView = (() => {
         return;
       }
       const hostBits = 32 - ex.cidr;
-      const blockSize = 2 ** (8 - ((ex.cidr % 8) || 8));
+      const blockSize = 2 ** (8 - (ex.cidr % 8 || 8));
       solEl.innerHTML = `
             <div class="module-steps">
                 <div class="module-step"><div class="module-step-title">1. Maske</div><div class="module-step-text">/${ex.cidr} = ${ex.sol.mask}</div></div>
@@ -540,14 +648,14 @@ const SubnettingView = (() => {
     `;
 
     container.querySelectorAll('.subnet-ip-item').forEach((row) => {
-      row.querySelectorAll('.subnet-btn-small').forEach((btn) =>
+      row.querySelectorAll('.subnet-btn-small').forEach((btn) => {
         btn.addEventListener('click', () => {
-          row
-            .querySelectorAll('.subnet-btn-small')
-            .forEach((b) => b.classList.remove('selected'));
+          row.querySelectorAll('.subnet-btn-small').forEach((b) => {
+            b.classList.remove('selected');
+          });
           btn.classList.add('selected');
-        })
-      );
+        });
+      });
     });
     container.querySelector('#btnNextIP').addEventListener('click', () => {
       currentExercise = generateIpCheckExercise();
@@ -591,7 +699,7 @@ const SubnettingView = (() => {
       <div class="subnet-grid">
         <div class="subnet-input-group">
             <label class="subnet-label">Adresslänge (Bits)</label>
-            <input type="text" class="subnet-input" data-key="length" placeholder="z.B. 32">
+            <input type="text" class="subnet-input" data-key="length" placeholder="z.B. 128">
         </div>
         <div class="subnet-input-group">
             <label class="subnet-label">Präfixlänge (Bits)</label>
@@ -602,7 +710,7 @@ const SubnettingView = (() => {
             <input type="text" class="subnet-input" data-key="full" placeholder="0000:0000:...">
         </div>
         <div class="subnet-input-group" style="grid-column: 1 / -1">
-            <label class="subnet-label">Interface-Identifier (Last 64 Bits)</label>
+            <label class="subnet-label">Interface-Identifier (Berechnung via EUI-64)</label>
             <input type="text" class="subnet-input" data-key="interfaceId" placeholder="xxxx:xxxx:xxxx:xxxx">
         </div>
       </div>
@@ -625,16 +733,18 @@ const SubnettingView = (() => {
       const inputs = container.querySelectorAll('.subnet-input');
       inputs.forEach((inp) => {
         const key = inp.dataset.key;
-        let val = inp.value.trim().toLowerCase();
-        let sol = String(ex.sol[key]).toLowerCase();
+        const valRaw = inp.value.trim().toLowerCase();
+        const sol = String(ex.sol[key]).toLowerCase();
 
-        // Allow sloppy input for full address if correct logic
-        if (key === 'full' || key === 'interfaceId') {
-          val = expandIPv6(val); // Normalize user input to expanded
-          sol = expandIPv6(sol); // Should already be expanded but safe
+        let isC = false;
+        if (key === 'full') {
+          isC = normalizeIPv6(valRaw, 8) === normalizeIPv6(sol, 8);
+        } else if (key === 'interfaceId') {
+          isC = normalizeIPv6(valRaw, 4) === normalizeIPv6(sol, 4);
+        } else {
+          isC = valRaw === sol;
         }
 
-        const isC = val === sol;
         inp.classList.toggle('correct', isC);
         inp.classList.toggle('wrong', !isC);
         if (isC) correct++;
@@ -646,22 +756,22 @@ const SubnettingView = (() => {
           : '<span style="color:var(--danger)">Errors detected.</span>';
     });
 
-    container
-      .querySelector('#btnShowSolIPv6')
-      .addEventListener('click', () => {
-        const solEl = container.querySelector('#ipv6Solution');
-        if (solEl.style.display === 'block') {
-          solEl.style.display = 'none';
-          return;
-        }
+    container.querySelector('#btnShowSolIPv6').addEventListener('click', () => {
+      const solEl = container.querySelector('#ipv6Solution');
+      if (solEl.style.display === 'block') {
+        solEl.style.display = 'none';
+        return;
+      }
 
-        solEl.innerHTML = `
+      solEl.innerHTML = `
             <div class="module-steps">
                 <div class="module-step">
                     <div class="module-step-title">1. Länge & Präfix</div>
                     <div class="module-step-text">
                         IPv6-Adressen sind immer <strong>128 Bit</strong> lang.<br>
-                        Das Präfix ist hier angegeben: /${ex.prefixLen} (die ersten ${ex.prefixLen} Bits sind das Netz).
+                        Das Präfix ist hier angegeben: /${
+                          ex.prefixLen
+                        } (die ersten ${ex.prefixLen} Bits sind das Netz).
                     </div>
                 </div>
                 <div class="module-step">
@@ -672,21 +782,84 @@ const SubnettingView = (() => {
                     </div>
                     <div class="module-step-detail">${ex.sol.full}</div>
                 </div>
-                <div class="module-step">
-                    <div class="module-step-title">3. Interface Identifier</div>
-                    <div class="module-step-text">
-                        Der Host-Anteil bei IPv6 (Interface ID) sind meist die letzten 64 Bits (letzte 4 Gruppen).
-                    </div>
-                    <div class="module-step-detail">${ex.sol.interfaceId}</div>
-                </div>
-            </div>
+                                                <div class="module-step">
+                                                    <div class="module-step-title">3. Interface Identifier ${
+                                                      ex.isEUI64 ? '(EUI-64)' : ''
+                                                    }</div>
+                                                    <div class="module-step-text">
+                                                        Der Host-Anteil bei IPv6 (Interface ID) sind die letzten 64 Bits.
+                                                        ${
+                                                          ex.isEUI64
+                                                            ? '<br>Berechnung nach dem <b>EUI-64 Verfahren</b>:'
+                                                            : ''
+                                                        }
+                                                    </div>
+                                                    ${
+                                                      ex.isEUI64 && ex.mac
+                                                        ? `
+                                                    <div class="eui-solution-box" style="margin-top:12px; font-family: monospace; border: 1px solid var(--border-subtle); border-radius: 12px; overflow: hidden;">
+                                                        
+                                                        <!-- Step 1 -->
+                                                        <div style="padding: 12px; background: var(--surface-submerged); border-bottom: 1px solid var(--border-subtle);">
+                                                          <div style="font-size: 10px; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px;">Schritt 1: MAC-Adresse teilen & ff:fe einfügen</div>
+                                                          <div style="display: flex; align-items: center; gap: 8px; font-size: 14px;">
+                                                            <span>${ex.mac.substring(0, 8).replace(/:/g, '')}</span>
+                                                            <span style="color: var(--brand-primary); font-weight: bold; background: rgba(var(--brand-primary-rgb), 0.1); padding: 2px 6px; border-radius: 4px;">fffe</span>
+                                                            <span>${ex.mac.substring(9).replace(/:/g, '')}</span>
+                                                          </div>
+                                                        </div>
+                                
+                                                        <!-- Step 2 -->
+                                                        <div style="padding: 12px;">
+                                                          <div style="font-size: 10px; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px;">Schritt 2: Bit-Flip (7. Bit des 1. Bytes)</div>
+                                                          
+                                                          <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; background: var(--surface-card); padding: 12px; border-radius: 8px; border: 1px dashed var(--border-subtle);">
+                                                            
+                                                            <!-- Before -->
+                                                            <div style="text-align: center;">
+                                                              <div style="font-size: 18px; font-weight: bold;">${ex.mac.substring(0, 2)}</div>
+                                                              <div style="font-size: 11px; letter-spacing: 2px; color: var(--text-secondary);">
+                                                                ${parseInt(ex.macBytes[0], 10).toString(2).padStart(8, '0').substring(0, 6)}<span style="color:var(--danger); font-weight:bold; border-bottom: 2px solid;">${parseInt(ex.macBytes[0], 10).toString(2).padStart(8, '0')[6]}</span>${parseInt(ex.macBytes[0], 10).toString(2).padStart(8, '0')[7]}
+                                                              </div>
+                                                            </div>
+                                
+                                                            <div style="color: var(--text-tertiary); font-size: 20px;">&rarr;</div>
+                                
+                                                            <!-- After -->
+                                                            <div style="text-align: center;">
+                                                              <div style="font-size: 18px; font-weight: bold; color: var(--brand-primary);">${ex.sol.interfaceId.substring(0, 2)}</div>
+                                                              <div style="font-size: 11px; letter-spacing: 2px; color: var(--text-secondary);">
+                                                                ${parseInt(ex.sol.interfaceId.substring(0, 2), 16).toString(2).padStart(8, '0').substring(0, 6)}<span style="color:var(--success); font-weight:bold; border-bottom: 2px solid;">${parseInt(ex.sol.interfaceId.substring(0, 2), 16).toString(2).padStart(8, '0')[6]}</span>${parseInt(ex.sol.interfaceId.substring(0, 2), 16).toString(2).padStart(8, '0')[7]}
+                                                              </div>
+                                                            </div>
+                                
+                                                          </div>
+                                                          
+                                                          <p style="font-size: 11px; color: var(--text-tertiary); margin-top: 10px; line-height: 1.4;">
+                                                            Das 7. Bit (Universal/Local) wurde invertiert. Aus Hex <b>${ex.mac.substring(0, 2)}</b> wird <b>${ex.sol.interfaceId.substring(0, 2)}</b>.
+                                                          </p>
+                                                        </div>
+                                
+                                                        <!-- Result -->
+                                                        <div style="padding: 12px; background: var(--brand-primary); color: white; text-align: center;">
+                                                          <div style="font-size: 9px; text-transform: uppercase; opacity: 0.8;">Interface-ID</div>
+                                                          <div style="font-size: 15px; font-weight: bold; letter-spacing: 1px;">${ex.sol.interfaceId}</div>
+                                                        </div>
+                                
+                                                    </div>
+                                                    `
+                                                        : `<div class="module-step-detail">${ex.sol.interfaceId}</div>`
+                                                    }
+                                                </div>            </div>
         `;
-        solEl.style.display = 'block';
-      });
+      solEl.style.display = 'block';
+    });
   }
 
   function cleanup() {
-    cleanup_fns.forEach((fn) => fn());
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
   }
 
