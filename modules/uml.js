@@ -251,6 +251,20 @@ const UMLView = (() => {
         { text: 'Wiederherstellungstest planen', lane: 'Administrator' },
       ],
     },
+    {
+      id: 7,
+      title: 'Rechnungseingang (H25)',
+      description: 'Prozess der Rechnungsprüfung mit Parallelisierung bei Beträgen > 1000€.',
+      lanes: ['Wareneingang', 'Buchhaltung', 'Management'],
+      actions: [
+        { text: 'Rechnung empfangen', lane: 'Buchhaltung' },
+        { text: 'Bestellung abgleichen', lane: 'Wareneingang' },
+        { text: 'Betrag > 1000€?', lane: 'Buchhaltung' }, // Decision
+        { text: 'Freigabe erteilen', lane: 'Management' },
+        { text: 'Wareneingang prüfen', lane: 'Wareneingang' }, // Parallel 1
+        { text: 'Rechnung buchen', lane: 'Buchhaltung' }, // Parallel 2
+      ]
+    },
   ];
 
   // ============================================================
@@ -776,7 +790,10 @@ const UMLView = (() => {
           <button class="uml-toolbar-btn" data-add="end" title="Endknoten">&#9673; Ende</button>
           <button class="uml-toolbar-btn" data-add="action" title="Aktion">&#9645; Aktion</button>
           <button class="uml-toolbar-btn" data-add="decision" title="Entscheidung">&#9670; Entscheidung</button>
-          <button class="uml-toolbar-btn" data-add="fork" title="Fork/Join">&#9644; Fork/Join</button>
+          <button class="uml-toolbar-btn" data-add="fork-h" title="Gabelung Horizontal">&#9644; Fork (H)</button>
+          <button class="uml-toolbar-btn" data-add="fork-v" title="Gabelung Vertikal">&#10073; Fork (V)</button>
+          <button class="uml-toolbar-btn" data-add="signal-send" title="Signal Senden">&#8680; Senden</button>
+          <button class="uml-toolbar-btn" data-add="signal-recv" title="Signal Empfangen">&#8678; Empfangen</button>
           <div class="uml-toolbar-divider"></div>
           <button class="uml-toolbar-btn" id="umlConnectBtn" title="Verbinden">&#8594; Verbinden</button>
           <button class="uml-toolbar-btn" id="umlAddLane" title="Swimlane hinzufuegen">+ Lane</button>
@@ -1441,21 +1458,21 @@ const UMLView = (() => {
       if (el.type === 'boundary') {
         const div = document.createElement('div');
         div.className = 'uml-uc-boundary';
-        div.dataset.id = el.id;
-        div.style.left = `${el.x}px`;
-        div.style.top = `${el.y}px`;
-        div.style.width = `${el.w || 350}px`;
-        div.style.height = `${el.h || 400}px`;
         div.innerHTML = `<div class="uml-uc-boundary-title">${el.name}</div>`;
         const title = div.querySelector('.uml-uc-boundary-title');
-        title.addEventListener('dblclick', () => {
+        title.addEventListener('dblclick', (e) => {
+          e.stopPropagation(); // Prevent drag start
           title.contentEditable = true;
           title.focus();
         });
+        title.addEventListener('mousedown', (e) => e.stopPropagation()); // Allow text selection
         title.addEventListener('blur', (e) => {
           el.name = e.target.textContent;
           title.contentEditable = false;
         });
+
+        // Common Element Logic
+        setupElement(div, el, container, canvas, svg);
         canvas.appendChild(div);
         return;
       }
@@ -1463,7 +1480,9 @@ const UMLView = (() => {
       const div = document.createElement('div');
       if (el.type === 'actor') {
         div.className = 'uml-uc-actor';
+        // Label first (above head)
         div.innerHTML = `
+          <div class="uml-uc-actor-label">${el.name}</div>
           <svg viewBox="0 0 40 48" fill="none" stroke="var(--uml-actor)" stroke-width="2" stroke-linecap="round">
             <circle cx="20" cy="8" r="6"/>
             <line x1="20" y1="14" x2="20" y2="32"/>
@@ -1471,13 +1490,14 @@ const UMLView = (() => {
             <line x1="20" y1="32" x2="10" y2="46"/>
             <line x1="20" y1="32" x2="30" y2="46"/>
           </svg>
-          <div class="uml-uc-actor-label">${el.name}</div>
         `;
         const label = div.querySelector('.uml-uc-actor-label');
-        label.addEventListener('dblclick', () => {
+        label.addEventListener('dblclick', (e) => {
+          e.stopPropagation();
           label.contentEditable = true;
           label.focus();
         });
+        label.addEventListener('mousedown', (e) => e.stopPropagation());
         label.addEventListener('blur', (e) => {
           el.name = e.target.textContent;
           label.contentEditable = false;
@@ -1486,7 +1506,8 @@ const UMLView = (() => {
         div.className = 'uml-uc-usecase';
         div.textContent = el.name;
         div.contentEditable = false;
-        div.addEventListener('dblclick', () => {
+        div.addEventListener('dblclick', (e) => {
+          e.stopPropagation();
           div.contentEditable = true;
           div.focus();
         });
@@ -1494,65 +1515,98 @@ const UMLView = (() => {
           el.name = div.textContent;
           div.contentEditable = false;
         });
+      } else if (el.type === 'decision') {
+        div.className = 'uml-el uml-el-decision';
+        div.innerHTML = '<span>&#9670;</span>'; // rhomb
+      } else if (el.type === 'fork-h') {
+        div.className = 'uml-el uml-el-fork uml-el-fork-h';
+      } else if (el.type === 'fork-v') {
+        div.className = 'uml-el uml-el-fork uml-el-fork-v';
+      } else if (el.type === 'signal-send') {
+        div.className = 'uml-el uml-el-signal uml-el-signal-send';
+        div.textContent = el.name;
+        div.contentEditable = true;
+        div.addEventListener('blur', () => {
+          el.name = div.textContent;
+        });
+      } else if (el.type === 'signal-recv') {
+        div.className = 'uml-el uml-el-signal uml-el-signal-recv';
+        div.textContent = el.name;
+        div.contentEditable = true;
+        div.addEventListener('blur', () => {
+          el.name = div.textContent;
+        });
       }
 
-      div.dataset.id = el.id;
-      div.style.left = `${el.x}px`;
-      div.style.top = `${el.y}px`;
-
-      if (el.id === freeSelectedElement) div.classList.add('uml-selected');
-
-      div.addEventListener('mousedown', (e) => {
-        if (e.target.isContentEditable) return;
-
-        const connectRel = container._ucGetRel ? container._ucGetRel() : null;
-        if (connectRel) {
-          const source = container._ucGetSource
-            ? container._ucGetSource()
-            : null;
-          if (!source) {
-            container._ucSetSource(el.id);
-          } else if (source !== el.id) {
-            freeConnections.push({
-              from: source,
-              to: el.id,
-              relType: connectRel,
-            });
-            container._ucSetSource(null);
-            renderUcElements(container);
-          }
-          return;
-        }
-
-        freeSelectedElement = el.id;
-        canvas
-          .querySelectorAll('.uml-uc-actor, .uml-uc-usecase')
-          .forEach((b) => {
-            b.classList.remove('uml-selected');
-          });
-        div.classList.add('uml-selected');
-
-        const startX = e.clientX - el.x;
-        const startY = e.clientY - el.y;
-        const onMove = (ev) => {
-          el.x = Math.max(0, ev.clientX - startX);
-          el.y = Math.max(0, ev.clientY - startY);
-          div.style.left = `${el.x}px`;
-          div.style.top = `${el.y}px`;
-          drawUcConnections(svg);
-        };
-        const onUp = () => {
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('mouseup', onUp);
-        };
-        document.addEventListener('mousemove', onMove);
-        document.addEventListener('mouseup', onUp);
-      });
-
+      setupElement(div, el, container, canvas, svg);
       canvas.appendChild(div);
     });
 
     drawUcConnections(svg);
+  }
+
+  function setupElement(div, el, container, canvas, svg) {
+    div.dataset.id = el.id;
+    div.style.left = `${el.x}px`;
+    div.style.top = `${el.y}px`;
+
+    if (el.type === 'boundary') {
+      div.style.width = `${el.w || 350}px`;
+      div.style.height = `${el.h || 400}px`;
+    }
+
+    if (el.id === freeSelectedElement) div.classList.add('uml-selected');
+
+    div.addEventListener('mousedown', (e) => {
+      if (e.target.isContentEditable) return;
+
+      const connectRel = container._ucGetRel ? container._ucGetRel() : null;
+      // Only allow connections for actors and usecases, not boundaries
+      if (connectRel && el.type !== 'boundary') {
+        const source = container._ucGetSource
+          ? container._ucGetSource()
+          : null;
+        if (!source) {
+          container._ucSetSource(el.id);
+        } else if (source !== el.id) {
+          freeConnections.push({
+            from: source,
+            to: el.id,
+            relType: connectRel,
+          });
+          container._ucSetSource(null);
+          renderUcElements(container);
+        }
+        return;
+      }
+
+      freeSelectedElement = el.id;
+      canvas
+        .querySelectorAll('.uml-uc-actor, .uml-uc-usecase, .uml-uc-boundary')
+        .forEach((b) => {
+          b.classList.remove('uml-selected');
+        });
+      div.classList.add('uml-selected');
+
+      const startX = e.clientX - el.x;
+      const startY = e.clientY - el.y;
+
+      const onMove = (ev) => {
+        el.x = Math.max(0, ev.clientX - startX);
+        el.y = Math.max(0, ev.clientY - startY);
+        div.style.left = `${el.x}px`;
+        div.style.top = `${el.y}px`;
+        drawUcConnections(svg);
+      };
+
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+      };
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
   }
 
   function drawUcConnections(svg) {
@@ -1622,7 +1676,7 @@ const UMLView = (() => {
     container.innerHTML = `
       <div class="uml-exercise-nav">
         ${EXERCISES.map(
-          (e, i) => `
+      (e, i) => `
           <button class="uml-exercise-btn ${i === currentExercise ? 'active' : ''} ${progress.exercises.includes(e.id) ? 'completed' : ''}"
                   data-idx="${i}">
             <span class="uml-exercise-btn-num">${i + 1}</span>
@@ -1630,7 +1684,7 @@ const UMLView = (() => {
             ${progress.exercises.includes(e.id) ? '<span class="uml-exercise-check">&#x2713;</span>' : ''}
           </button>
         `
-        ).join('')}
+    ).join('')}
       </div>
       <div id="umlExerciseContent"></div>
     `;
@@ -1668,15 +1722,15 @@ const UMLView = (() => {
 
         <div class="uml-exercise-options" id="umlExOptions">
           ${q.options
-            .map(
-              (opt, i) => `
+        .map(
+          (opt, i) => `
             <div class="uml-exercise-option" data-idx="${i}">
               <div class="uml-exercise-option-marker"></div>
               <span>${opt}</span>
             </div>
           `
-            )
-            .join('')}
+        )
+        .join('')}
         </div>
 
         <div id="umlExFeedback"></div>
@@ -1858,8 +1912,8 @@ const UMLView = (() => {
       pairsEl.innerHTML = `
         <div class="uml-kard-pairs">
           ${scenario.pairs
-            .map(
-              (pair, pi) => `
+          .map(
+            (pair, pi) => `
             <div class="uml-kard-pair" data-pair="${pi}">
               <div class="uml-kard-pair-class">${pair.left}</div>
               <div class="uml-kard-pair-rel">
@@ -1872,8 +1926,8 @@ const UMLView = (() => {
               <div class="uml-kard-pair-class">${pair.right}</div>
             </div>
           `
-            )
-            .join('')}
+          )
+          .join('')}
         </div>
       `;
     }
@@ -2124,11 +2178,10 @@ const UMLView = (() => {
     const feedback = container.querySelector('#umlKardFeedback');
     feedback.innerHTML = `
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
-        ${
-          allCorrect
-            ? '<strong>Perfekt!</strong> Alle Kardinalitaeten korrekt zugeordnet. +10 Punkte!'
-            : `<strong>${correct} von ${total} korrekt.</strong> Loesung: ${solutionText}`
-        }
+        ${allCorrect
+        ? '<strong>Perfekt!</strong> Alle Kardinalitaeten korrekt zugeordnet. +10 Punkte!'
+        : `<strong>${correct} von ${total} korrekt.</strong> Loesung: ${solutionText}`
+      }
       </div>
     `;
   }
@@ -2193,15 +2246,15 @@ const UMLView = (() => {
       lanesEl.innerHTML = `
         <div class="uml-swim-lanes" style="grid-template-columns: repeat(${scenario.lanes.length}, 1fr);">
           ${scenario.lanes
-            .map(
-              (lane) => `
+          .map(
+            (lane) => `
             <div class="uml-swim-lane" data-lane="${lane}">
               <div class="uml-swim-lane-header">${lane}</div>
               <div class="uml-swim-lane-drop" data-lane="${lane}"></div>
             </div>
           `
-            )
-            .join('')}
+          )
+          .join('')}
         </div>
       `;
     }
@@ -2381,11 +2434,10 @@ const UMLView = (() => {
     const feedback = container.querySelector('#umlSwimFeedback');
     feedback.innerHTML = `
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
-        ${
-          allCorrect
-            ? '<strong>Perfekt!</strong> Alle Aktionen richtig zugeordnet. +10 Punkte!'
-            : `<strong>${correct} von ${total} korrekt.</strong><br>${solutionText}`
-        }
+        ${allCorrect
+        ? '<strong>Perfekt!</strong> Alle Aktionen richtig zugeordnet. +10 Punkte!'
+        : `<strong>${correct} von ${total} korrekt.</strong><br>${solutionText}`
+      }
       </div>
     `;
   }

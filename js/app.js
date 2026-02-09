@@ -8,6 +8,7 @@ import NumberSystemsView from '../modules/numbersystems.js';
 import NWAView from '../modules/nwa.js';
 import OSIModelView from '../modules/osimodel.js';
 import SubnettingView from '../modules/subnetting.js';
+import PseudocodeView from '../modules/pseudocode.js';
 import UMLView from '../modules/uml.js';
 import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
@@ -135,6 +136,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = NumberSystemsView.cleanup;
       NumberSystemsView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/pseudocode', () => {
+      cleanupCurrentView();
+      currentCleanup = PseudocodeView.cleanup;
+      PseudocodeView.render(contentEl);
       Sidebar.updateActive();
     });
 

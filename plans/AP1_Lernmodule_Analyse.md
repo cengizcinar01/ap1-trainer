@@ -323,7 +323,7 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 | 5 | ER-Diagramm | ❌ Offen |
 | 6 | Kostenrechnung | ❌ Offen |
 | 7 | Zahlensysteme | ✅ Implementiert |
-| 8 | Pseudocode | ❌ Offen |
+| 8 | Pseudocode | ✅ Implementiert |
 | 9 | IT-Sicherheit | ❌ Offen |
 | 10 | EPK-Builder | ✅ Implementiert |
 | 11 | KI-Grundlagen | ❌ Offen |
@@ -337,7 +337,7 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 | 19 | Vertragsrecht | ❌ Offen |
 | 20 | BPMN-Editor | ❌ Offen |
 
-**Implementiert:** 7/20 Module (35%)
+**Implementiert:** 8/20 Module (40%)
 
 ---
 

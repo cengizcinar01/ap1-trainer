@@ -33,6 +33,8 @@ const Sidebar = (() => {
     wiki: `<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
     // Menü: Hamburger
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
+    // Pseudocode: Code-Klammern mit Zeilen
+    pseudocode: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/><line x1="12" y1="18" x2="12" y2="6" stroke-dasharray="2 2"/></svg>`,
   };
 
   let sidebarEl = null;
@@ -131,6 +133,10 @@ const Sidebar = (() => {
         <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
           <span class="nav-item-icon">${ICONS.numbersystems}</span>
           Zahlensysteme
+        </a>
+        <a href="#/modules/pseudocode" class="nav-item ${currentRoute.startsWith('/modules/pseudocode') ? 'active' : ''}" data-route="/modules/pseudocode">
+          <span class="nav-item-icon">${ICONS.pseudocode}</span>
+          Pseudocode-Trainer
         </a>
         <a href="#/modules/epk" class="nav-item ${currentRoute.startsWith('/modules/epk') ? 'active' : ''}" data-route="/modules/epk">
           <span class="nav-item-icon">${ICONS.epk}</span>

@@ -1,0 +1,233 @@
+/* ============================================================
+   pseudocode.css — Styles for Module 8 (Pseudocode-Trainer)
+   ============================================================ */
+
+/* --- Layout --- */
+.pseudocode-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pseudocode-header {
+    margin-bottom: var(--space-6);
+}
+
+.pseudocode-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.pseudocode-subtitle {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-1);
+}
+
+/* --- Code Container (Shared) --- */
+.code-block {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--code-text);
+    overflow-x: auto;
+    margin-bottom: var(--space-4);
+}
+
+.code-line {
+    display: flex;
+    padding: var(--space-2) var(--space-3);
+    margin-bottom: 2px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: grab;
+    user-select: none;
+    transition: all var(--transition-fast);
+    font-family: var(--font-mono);
+}
+
+.code-line:active {
+    cursor: grabbing;
+}
+
+.code-line.dragging {
+    opacity: 0.5;
+    background: var(--bg-tertiary);
+    border-style: dashed;
+}
+
+.code-line:hover {
+    background: var(--bg-secondary);
+    border-color: var(--accent-primary);
+}
+
+.code-line-content {
+    flex: 1;
+}
+
+.code-line-number {
+    color: var(--text-tertiary);
+    margin-right: var(--space-4);
+    user-select: none;
+    min-width: 24px;
+    text-align: right;
+}
+
+/* --- Drag & Drop Specifics --- */
+.puzzle-container {
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    min-height: 200px;
+}
+
+.puzzle-drop-zone {
+    min-height: 48px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-tertiary);
+    font-size: var(--font-size-sm);
+    background: var(--bg-tertiary);
+    transition: all var(--transition-fast);
+}
+
+.puzzle-drop-zone.drag-over {
+    border-color: var(--accent-primary);
+    background: var(--accent-primary-light);
+    color: var(--accent-primary);
+}
+
+/* --- Error Finder --- */
+.error-finder-line {
+    display: block;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.error-finder-line:hover {
+    background-color: rgba(var(--accent-primary-rgb), 0.1);
+}
+
+.error-finder-line.selected {
+    background-color: rgba(var(--accent-primary-rgb), 0.2);
+    outline: 1px solid var(--accent-primary);
+}
+
+.error-finder-line.correct {
+    background-color: var(--success-bg);
+    outline: 1px solid var(--success);
+    color: var(--success);
+}
+
+.error-finder-line.wrong {
+    background-color: var(--danger-bg);
+    outline: 1px solid var(--danger);
+    color: var(--danger);
+}
+
+/* --- Trace Table --- */
+.trace-table-container {
+    overflow-x: auto;
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.trace-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+}
+
+.trace-table th,
+.trace-table td {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.trace-table th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.trace-table input {
+    width: 100%;
+    min-width: 60px;
+    padding: 4px;
+    border: 1px solid transparent;
+    background: transparent;
+    text-align: center;
+    font-family: inherit;
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+}
+
+.trace-table input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    background: var(--bg-primary);
+}
+
+.trace-table input.correct {
+    background-color: var(--success-bg);
+    color: var(--success);
+    font-weight: bold;
+}
+
+.trace-table input.wrong {
+    background-color: var(--danger-bg);
+    color: var(--danger);
+}
+
+.trace-table tr:nth-child(even) {
+    background: var(--bg-secondary);
+}
+
+/* --- Feedback Popups --- */
+.feedback-popup {
+    position: fixed;
+    bottom: var(--space-6);
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+    max-width: 90%;
+    width: 400px;
+}
+
+.feedback-popup.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.feedback-popup.success {
+    border-left: 4px solid var(--success);
+}
+
+.feedback-popup.error {
+    border-left: 4px solid var(--danger);
+}
