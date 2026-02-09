@@ -1,7 +1,7 @@
 // ============================================================
 // uml.js — UML-Diagramm-Werkstatt (Modul 4)
-// Aktivitaets-, Klassen-, Use-Case-Diagramm: Interactive editor
-// with drag & drop, exam exercises & UML-Trainer.
+// Use-Case-Diagramm-Szenarien (IHK-Stil), Kardinalitaeten-
+// und Swimlane-Trainer.
 // ============================================================
 
 const UMLView = (() => {
@@ -10,7 +10,6 @@ const UMLView = (() => {
   const progress = loadProgress();
 
   // Sub-selectors
-  let freeSubType = 'activity';
   let trainerSubType = 'cardinality';
 
   // Trainer state
@@ -19,18 +18,9 @@ const UMLView = (() => {
   let trainerCurrent = null;
   let trainerPlaced = {};
 
-  // Exercise state
-  let currentExercise = 0;
-  let exerciseState = {};
-
-  // Free mode state
-  let freeElements = [];
-  let freeConnections = [];
-  let freeNextId = 1;
-  let freeSelectedElement = null;
-  let freeConnectMode = false;
-  let freeConnectSource = null;
-  let freeSwimlanes = ['Benutzer', 'System'];
+  // Scenario state
+  let currentScenario = 0;
+  let scenarioPlaced = {};
 
   // ============================================================
   // PERSISTENCE
@@ -39,11 +29,18 @@ const UMLView = (() => {
   function loadProgress() {
     try {
       const raw = localStorage.getItem('ap1_uml_progress');
-      return raw
-        ? JSON.parse(raw)
-        : { exercises: [], trainer: { best: 0, cardBest: 0, swimBest: 0 } };
+      if (!raw) return { scenarios: [], trainer: { best: 0, cardBest: 0, swimBest: 0 } };
+      const p = JSON.parse(raw);
+      // Migrate old format
+      if (p.exercises && !p.scenarios) {
+        p.scenarios = [];
+        delete p.exercises;
+      }
+      if (!p.scenarios) p.scenarios = [];
+      if (!p.trainer) p.trainer = { best: 0, cardBest: 0, swimBest: 0 };
+      return p;
     } catch {
-      return { exercises: [], trainer: { best: 0, cardBest: 0, swimBest: 0 } };
+      return { scenarios: [], trainer: { best: 0, cardBest: 0, swimBest: 0 } };
     }
   }
 
@@ -51,9 +48,9 @@ const UMLView = (() => {
     localStorage.setItem('ap1_uml_progress', JSON.stringify(progress));
   }
 
-  function markExerciseComplete(id) {
-    if (!progress.exercises.includes(id)) {
-      progress.exercises.push(id);
+  function markScenarioComplete(id) {
+    if (!progress.scenarios.includes(id)) {
+      progress.scenarios.push(id);
       saveProgress();
     }
   }
@@ -254,218 +251,260 @@ const UMLView = (() => {
     {
       id: 7,
       title: 'Rechnungseingang (H25)',
-      description: 'Prozess der Rechnungsprüfung mit Parallelisierung bei Beträgen > 1000€.',
+      description: 'Prozess der Rechnungspruefung mit Parallelisierung bei Betraegen > 1000\u20AC.',
       lanes: ['Wareneingang', 'Buchhaltung', 'Management'],
       actions: [
         { text: 'Rechnung empfangen', lane: 'Buchhaltung' },
         { text: 'Bestellung abgleichen', lane: 'Wareneingang' },
-        { text: 'Betrag > 1000€?', lane: 'Buchhaltung' }, // Decision
+        { text: 'Betrag > 1000\u20AC?', lane: 'Buchhaltung' },
         { text: 'Freigabe erteilen', lane: 'Management' },
-        { text: 'Wareneingang prüfen', lane: 'Wareneingang' }, // Parallel 1
-        { text: 'Rechnung buchen', lane: 'Buchhaltung' }, // Parallel 2
-      ]
+        { text: 'Wareneingang pruefen', lane: 'Wareneingang' },
+        { text: 'Rechnung buchen', lane: 'Buchhaltung' },
+      ],
     },
   ];
 
   // ============================================================
-  // DATA: Exercises
+  // DATA: Use-Case Szenarien (IHK-Stil)
   // ============================================================
 
-  const EXERCISES = [
+  const UC_SCENARIOS = [
     {
       id: 1,
-      title: 'Aktivitaetsdiagramm: Online-Bestellung',
-      difficulty: 'Leicht',
-      type: 'quiz',
-      description:
-        'Ein Online-Bestellprozess hat zwei Swimlanes: <strong>Kunde</strong> und <strong>System</strong>. Welche Aussagen sind korrekt?',
-      questions: [
-        {
-          question:
-            'In welcher Swimlane liegt die Aktion "Produkt in Warenkorb legen"?',
-          options: ['Kunde', 'System', 'In beiden', 'In keiner'],
-          correct: 0,
-          explanation:
-            'Der Kunde fuehrt die Aktion aus, sie liegt in seiner Swimlane.',
-        },
-        {
-          question:
-            'Was stellt ein Entscheidungsknoten (Raute) im Aktivitaetsdiagramm dar?',
-          options: [
-            'Eine parallele Verzweigung',
-            'Eine bedingte Verzweigung mit Guard-Conditions',
-            'Das Ende des Prozesses',
-            'Eine Zusammenfuehrung von Swimlanes',
-          ],
-          correct: 1,
-          explanation:
-            'Die Raute ist ein Entscheidungsknoten. Die ausgehenden Kanten tragen Guard-Conditions in eckigen Klammern, z.B. [Zahlung OK].',
-        },
+      title: 'IT-Stoerungsmeldung',
+      difficulty: 'Mittel',
+      points: 6,
+      context:
+        'Die OptiSoft-XXL GmbH moechte ihre Servicequalitaet verbessern. Der bestehende Prozess zeigt Schwachstellen. ' +
+        'Hierzu erhalten Sie von der IT-Abteilung die folgenden Informationen:\n' +
+        '- Kunden senden Stoerungsmeldungen\n' +
+        '- Die Stoerungsmeldungen werden von der IT-Abteilung erfasst\n' +
+        '- Die IT-Abteilung erstellt den Arbeitsplan fuer die kommende Woche/Festtag. Dies beinhaltet auf immer eine Priorisierung\n' +
+        '- Die Arbeitsauftraege werden vom Serviceteam bearbeitet. Dies beinhaltet immer eine Rueckmeldung',
+      systemName: 'Stoerungsmanagement',
+      actors: [
+        { id: 'a1', name: 'Kunde', x: 30, y: 100, given: true },
+        { id: 'a2', name: 'IT-Abteilung', x: 520, y: 60, given: false },
+        { id: 'a3', name: 'Serviceteam', x: 520, y: 280, given: true },
       ],
+      usecases: [
+        { id: 'uc1', name: 'Stoerungsmeldung senden', cx: 200, cy: 70, given: false },
+        { id: 'uc2', name: 'Stoerungsmeldung erfassen', cx: 300, cy: 140, given: true },
+        { id: 'uc3', name: 'Arbeitsplan erstellen', cx: 200, cy: 210, given: false },
+        { id: 'uc4', name: 'Arbeitsauftrag bearbeiten', cx: 300, cy: 290, given: true },
+        { id: 'uc5', name: 'Priorisierung durchfuehren', cx: 200, cy: 360, given: false },
+        { id: 'uc6', name: 'Rueckmeldung senden', cx: 360, cy: 380, given: false },
+      ],
+      connections: [
+        { from: 'a1', to: 'uc1', type: 'association' },
+        { from: 'a2', to: 'uc2', type: 'association' },
+        { from: 'a2', to: 'uc3', type: 'association' },
+        { from: 'a3', to: 'uc4', type: 'association' },
+        { from: 'uc3', to: 'uc5', type: 'include' },
+        { from: 'uc4', to: 'uc6', type: 'include' },
+      ],
+      distractors: ['Datenbank aktualisieren', 'Rechnung erstellen'],
+      explanation:
+        'Der Kunde sendet eine Stoerungsmeldung, die von der IT-Abteilung erfasst wird. ' +
+        'Die IT-Abteilung erstellt den Arbeitsplan (inkl. Priorisierung). Das Serviceteam bearbeitet ' +
+        'die Auftraege (inkl. Rueckmeldung). Include-Beziehungen zeigen zwingend ausgefuehrte Teilprozesse.',
     },
     {
       id: 2,
-      title: 'Klassendiagramm: Beziehungen erkennen',
-      difficulty: 'Mittel',
-      type: 'quiz',
-      description:
-        'Beantworte die Fragen zu Beziehungstypen und Kardinalitaeten im Klassendiagramm.',
-      questions: [
-        {
-          question:
-            'Eine Firma hat Abteilungen. Wird die Firma aufgeloest, existieren die Abteilungen nicht mehr. Welche Beziehung liegt vor?',
-          options: [
-            'Assoziation',
-            'Aggregation (leere Raute)',
-            'Komposition (gefuellte Raute)',
-            'Vererbung',
-          ],
-          correct: 2,
-          explanation:
-            'Komposition = Existenzabhaengigkeit. Die Teile (Abteilungen) koennen ohne das Ganze (Firma) nicht existieren. Symbol: gefuellte Raute.',
-        },
-        {
-          question:
-            'Ein Team besteht aus Mitarbeitern. Mitarbeiter koennen auch ohne Team existieren. Welche Beziehung?',
-          options: ['Komposition', 'Aggregation', 'Vererbung', 'Dependency'],
-          correct: 1,
-          explanation:
-            'Aggregation = "Teil-von"-Beziehung ohne Existenzabhaengigkeit. Symbol: leere Raute am Ganzen.',
-        },
-        {
-          question:
-            'Welche Kardinalitaet bedeutet "mindestens eins, beliebig viele"?',
-          options: ['0..1', '1', '0..*', '1..*'],
-          correct: 3,
-          explanation:
-            '1..* bedeutet: Mindestens ein Element, nach oben offen. Beispiel: Eine Bestellung hat 1..* Positionen.',
-        },
+      title: 'Bibliothekssystem',
+      difficulty: 'Leicht',
+      points: 6,
+      context:
+        'Die Stadtbibliothek digitalisiert ihre Ausleihe. ' +
+        'Folgende Ablaeufe sind vorgesehen:\n' +
+        '- Leser koennen Buecher ausleihen und zurueckgeben\n' +
+        '- Jede Ausleihe erfordert eine Ausweispruefung\n' +
+        '- Leser koennen eine Verlaengerung beantragen\n' +
+        '- Bei verspaeteter Rueckgabe wird optional eine Mahngebuehr berechnet',
+      systemName: 'Bibliothekssystem',
+      actors: [
+        { id: 'a1', name: 'Leser', x: 30, y: 150, given: true },
+        { id: 'a2', name: 'Bibliothekar', x: 520, y: 150, given: false },
       ],
+      usecases: [
+        { id: 'uc1', name: 'Buch ausleihen', cx: 200, cy: 80, given: true },
+        { id: 'uc2', name: 'Buch zurueckgeben', cx: 330, cy: 80, given: false },
+        { id: 'uc3', name: 'Ausweis pruefen', cx: 200, cy: 200, given: false },
+        { id: 'uc4', name: 'Verlaengerung beantragen', cx: 330, cy: 200, given: true },
+        { id: 'uc5', name: 'Mahngebuehr berechnen', cx: 270, cy: 330, given: false },
+      ],
+      connections: [
+        { from: 'a1', to: 'uc1', type: 'association' },
+        { from: 'a1', to: 'uc2', type: 'association' },
+        { from: 'a1', to: 'uc4', type: 'association' },
+        { from: 'a2', to: 'uc1', type: 'association' },
+        { from: 'a2', to: 'uc2', type: 'association' },
+        { from: 'uc1', to: 'uc3', type: 'include' },
+        { from: 'uc2', to: 'uc5', type: 'extend' },
+      ],
+      distractors: ['Buch katalogisieren', 'Mitgliedschaft kuendigen'],
+      explanation:
+        'Leser und Bibliothekar interagieren mit Ausleihe und Rueckgabe. ' +
+        'Die Ausweispruefung ist per <<include>> immer Teil der Ausleihe. ' +
+        'Die Mahngebuehr wird nur bei Verspaetung berechnet (<<extend>>).',
     },
     {
       id: 3,
-      title: 'Aktivitaetsdiagramm: Parallele Ablaeufe',
-      difficulty: 'Mittel',
-      type: 'quiz',
-      description:
-        'Fragen zu Fork, Join und parallelen Ablaeufen im Aktivitaetsdiagramm.',
-      questions: [
-        {
-          question:
-            'Welches Element startet parallele Ablaeufe im Aktivitaetsdiagramm?',
-          options: [
-            'Entscheidungsknoten (Raute)',
-            'Synchronisationsbalken / Fork (dicker Balken)',
-            'Startereignis (schwarzer Kreis)',
-            'Swimlane-Grenze',
-          ],
-          correct: 1,
-          explanation:
-            'Ein Fork (Gabelung) — dargestellt als dicker schwarzer Balken — teilt den Kontrollfluss in parallele Pfade auf.',
-        },
-        {
-          question:
-            'Was ist der Unterschied zwischen Fork/Join und Entscheidung/Merge?',
-          options: [
-            'Kein Unterschied, beide sind austauschbar',
-            'Fork/Join = parallel (UND), Entscheidung/Merge = alternativ (ODER)',
-            'Fork/Join ist nur fuer Swimlanes, Entscheidung fuer alle',
-            'Entscheidung hat Guard-Conditions, Fork/Join nicht',
-          ],
-          correct: 1,
-          explanation:
-            'Fork/Join spaltet/vereint parallele Pfade (alle werden durchlaufen). Entscheidung/Merge waehlt genau einen Pfad basierend auf einer Bedingung.',
-        },
+      title: 'Online-Bestellsystem',
+      difficulty: 'Leicht',
+      points: 6,
+      context:
+        'Die WebShop GmbH modelliert ihren Bestellprozess:\n' +
+        '- Kunden suchen Produkte und geben Bestellungen auf\n' +
+        '- Jede Bestellung erfordert eine Zahlung\n' +
+        '- Optional kann ein Gutschein eingeloest werden\n' +
+        '- Der Lagermitarbeiter versendet die Bestellung',
+      systemName: 'Online-Bestellsystem',
+      actors: [
+        { id: 'a1', name: 'Kunde', x: 30, y: 130, given: true },
+        { id: 'a2', name: 'Lagermitarbeiter', x: 520, y: 200, given: false },
       ],
+      usecases: [
+        { id: 'uc1', name: 'Produkt suchen', cx: 200, cy: 60, given: true },
+        { id: 'uc2', name: 'Bestellung aufgeben', cx: 300, cy: 140, given: false },
+        { id: 'uc3', name: 'Zahlung durchfuehren', cx: 200, cy: 230, given: false },
+        { id: 'uc4', name: 'Bestellung versenden', cx: 330, cy: 300, given: true },
+        { id: 'uc5', name: 'Gutschein einloesen', cx: 200, cy: 360, given: false },
+      ],
+      connections: [
+        { from: 'a1', to: 'uc1', type: 'association' },
+        { from: 'a1', to: 'uc2', type: 'association' },
+        { from: 'a2', to: 'uc4', type: 'association' },
+        { from: 'uc2', to: 'uc3', type: 'include' },
+        { from: 'uc2', to: 'uc5', type: 'extend' },
+      ],
+      distractors: ['Lager auffuellen', 'Kundenbewertung schreiben'],
+      explanation:
+        'Der Kunde sucht Produkte und gibt Bestellungen auf. Die Zahlung ist per <<include>> ' +
+        'zwingend Teil jeder Bestellung. Ein Gutschein kann optional eingeloest werden (<<extend>>). ' +
+        'Der Lagermitarbeiter versendet die Bestellung.',
     },
     {
       id: 4,
-      title: 'Use-Case: Bibliothekssystem',
-      difficulty: 'Leicht',
-      type: 'quiz',
-      description:
-        'Ein Bibliothekssystem hat die Akteure <strong>Leser</strong> und <strong>Bibliothekar</strong>. Beantworte die Fragen zum Use-Case-Diagramm.',
-      questions: [
-        {
-          question: 'Wo werden Use Cases im Diagramm platziert?',
-          options: [
-            'Ausserhalb der Systemgrenze',
-            'Innerhalb der Systemgrenze',
-            'Auf der Systemgrenze',
-            'Ueberall im Diagramm',
-          ],
-          correct: 1,
-          explanation:
-            'Use Cases liegen innerhalb der Systemgrenze (gestricheltes Rechteck). Akteure stehen ausserhalb.',
-        },
-        {
-          question:
-            '"Buch ausleihen" beinhaltet immer "Ausweis pruefen". Welche Beziehung ist das?',
-          options: [
-            '<<extend>>',
-            '<<include>>',
-            'Assoziation',
-            'Generalisierung',
-          ],
-          correct: 1,
-          explanation:
-            '<<include>> bedeutet: Der Basis-Use-Case fuehrt den inkludierten Use Case IMMER aus. Pfeilrichtung: Basis → inkludierter UC.',
-        },
-        {
-          question:
-            '"Buch ausleihen" kann optional zu "Mahngebuehr berechnen" fuehren. Welche Beziehung?',
-          options: ['<<include>>', '<<extend>>', 'Komposition', 'Vererbung'],
-          correct: 1,
-          explanation:
-            '<<extend>> bedeutet: Der erweiternde Use Case wird nur unter bestimmten Bedingungen ausgefuehrt. Pfeilrichtung: Erweiterung → Basis-UC.',
-        },
+      title: 'Arztpraxis-Verwaltung',
+      difficulty: 'Mittel',
+      points: 6,
+      context:
+        'Eine Arztpraxis digitalisiert ihre Terminverwaltung:\n' +
+        '- Patienten vereinbaren Termine\n' +
+        '- Die Sprechstundenhilfe nimmt Patienten auf, dabei wird immer die Versichertenkarte geprueft\n' +
+        '- Der Arzt fuehrt Untersuchungen durch und stellt Rezepte aus\n' +
+        '- Optional wird eine Ueberweisung ausgestellt',
+      systemName: 'Praxisverwaltung',
+      actors: [
+        { id: 'a1', name: 'Patient', x: 30, y: 100, given: true },
+        { id: 'a2', name: 'Sprechstundenhilfe', x: 520, y: 60, given: false },
+        { id: 'a3', name: 'Arzt', x: 520, y: 260, given: false },
       ],
+      usecases: [
+        { id: 'uc1', name: 'Termin vereinbaren', cx: 200, cy: 60, given: true },
+        { id: 'uc2', name: 'Patient aufnehmen', cx: 320, cy: 120, given: false },
+        { id: 'uc3', name: 'Untersuchung durchfuehren', cx: 230, cy: 210, given: true },
+        { id: 'uc4', name: 'Rezept ausstellen', cx: 330, cy: 280, given: false },
+        { id: 'uc5', name: 'Versichertenkarte pruefen', cx: 200, cy: 360, given: false },
+        { id: 'uc6', name: 'Ueberweisung ausstellen', cx: 350, cy: 380, given: true },
+      ],
+      connections: [
+        { from: 'a1', to: 'uc1', type: 'association' },
+        { from: 'a2', to: 'uc1', type: 'association' },
+        { from: 'a2', to: 'uc2', type: 'association' },
+        { from: 'a3', to: 'uc3', type: 'association' },
+        { from: 'a3', to: 'uc4', type: 'association' },
+        { from: 'uc2', to: 'uc5', type: 'include' },
+        { from: 'uc3', to: 'uc6', type: 'extend' },
+      ],
+      distractors: ['Medikament bestellen', 'Laborergebnis auswerten'],
+      explanation:
+        'Patient und Sprechstundenhilfe sind bei der Terminvereinbarung beteiligt. ' +
+        'Die Patientenaufnahme beinhaltet zwingend die Pruefung der Versichertenkarte (<<include>>). ' +
+        'Eine Ueberweisung wird nur bei Bedarf ausgestellt (<<extend>>).',
     },
     {
       id: 5,
-      title: 'Aggregation vs. Komposition',
-      difficulty: 'Schwer',
-      type: 'quiz',
-      description:
-        'Ordne die Szenarien den richtigen Beziehungstypen zu. <strong>Pruefungswissen!</strong>',
-      questions: [
-        {
-          question:
-            'Rechnung und Rechnungspositionen — die Positionen existieren nicht ohne die Rechnung.',
-          options: ['Aggregation', 'Komposition', 'Assoziation', 'Vererbung'],
-          correct: 1,
-          explanation:
-            'Komposition: Rechnungspositionen sind existenzabhaengig von der Rechnung. Loescht man die Rechnung, sind auch die Positionen weg.',
-        },
-        {
-          question: 'Playlist und Songs — Songs existieren auch ohne Playlist.',
-          options: ['Komposition', 'Aggregation', 'Dependency', 'Assoziation'],
-          correct: 1,
-          explanation:
-            'Aggregation: Songs sind Teil der Playlist, koennen aber auch unabhaengig existieren oder in anderen Playlists sein.',
-        },
-        {
-          question:
-            'Haus und Zimmer — Zimmer koennen nicht ohne Haus existieren.',
-          options: ['Aggregation', 'Assoziation', 'Komposition', 'Vererbung'],
-          correct: 2,
-          explanation:
-            'Komposition: Zimmer sind physisch Teil des Hauses und existenzabhaengig. Symbol: gefuellte Raute am Haus.',
-        },
-        {
-          question:
-            'Welches Symbol hat die Aggregation im UML-Klassendiagramm?',
-          options: [
-            'Gefuellte Raute am Ganzen',
-            'Leere Raute am Ganzen',
-            'Leeres Dreieck am Elternteil',
-            'Einfache Linie',
-          ],
-          correct: 1,
-          explanation:
-            'Aggregation = leere (weisse) Raute am "Ganzen". Komposition = gefuellte (schwarze) Raute am "Ganzen".',
-        },
+      title: 'Helpdesk-System',
+      difficulty: 'Mittel',
+      points: 6,
+      context:
+        'Ein IT-Dienstleister modelliert sein Ticket-System:\n' +
+        '- Anwender erstellen Tickets\n' +
+        '- Der 1st-Level-Support klassifiziert Tickets, dabei wird immer eine Prioritaet zugewiesen\n' +
+        '- Der 2nd-Level-Support dokumentiert Loesungen\n' +
+        '- Bei Bedarf werden Tickets eskaliert\n' +
+        '- Optional kann ein Remote-Zugriff gestartet werden',
+      systemName: 'Helpdesk-System',
+      actors: [
+        { id: 'a1', name: 'Anwender', x: 30, y: 120, given: true },
+        { id: 'a2', name: '1st-Level-Support', x: 520, y: 80, given: false },
+        { id: 'a3', name: '2nd-Level-Support', x: 520, y: 300, given: false },
       ],
+      usecases: [
+        { id: 'uc1', name: 'Ticket erstellen', cx: 200, cy: 60, given: true },
+        { id: 'uc2', name: 'Ticket klassifizieren', cx: 320, cy: 120, given: false },
+        { id: 'uc3', name: 'Loesung dokumentieren', cx: 230, cy: 210, given: true },
+        { id: 'uc4', name: 'Ticket eskalieren', cx: 320, cy: 280, given: false },
+        { id: 'uc5', name: 'Prioritaet zuweisen', cx: 200, cy: 360, given: false },
+        { id: 'uc6', name: 'Remote-Zugriff starten', cx: 350, cy: 380, given: true },
+      ],
+      connections: [
+        { from: 'a1', to: 'uc1', type: 'association' },
+        { from: 'a2', to: 'uc2', type: 'association' },
+        { from: 'a2', to: 'uc4', type: 'association' },
+        { from: 'a3', to: 'uc3', type: 'association' },
+        { from: 'a3', to: 'uc4', type: 'association' },
+        { from: 'uc2', to: 'uc5', type: 'include' },
+        { from: 'uc3', to: 'uc6', type: 'extend' },
+      ],
+      distractors: ['Server neustarten', 'Backup erstellen'],
+      explanation:
+        'Anwender erstellen Tickets. Der 1st-Level-Support klassifiziert diese (inkl. Prioritaetszuweisung ' +
+        'per <<include>>). Eskalation erfolgt bei Bedarf an den 2nd-Level-Support. ' +
+        'Remote-Zugriff ist optional bei der Loesungsdokumentation (<<extend>>).',
+    },
+    {
+      id: 6,
+      title: 'Personalverwaltung',
+      difficulty: 'Schwer',
+      points: 6,
+      context:
+        'Der Bewerbungsprozess einer Firma wird modelliert:\n' +
+        '- Bewerber reichen Bewerbungen ein\n' +
+        '- Die Personalabteilung prueft die Unterlagen\n' +
+        '- Vorstellungsgespraeche werden gefuehrt, dabei erfolgt immer eine fachliche Bewertung\n' +
+        '- Die Personalabteilung versendet Zu- oder Absagen\n' +
+        '- Optional wird ein Assessment-Center durchgefuehrt',
+      systemName: 'Personalverwaltung',
+      actors: [
+        { id: 'a1', name: 'Bewerber', x: 30, y: 120, given: true },
+        { id: 'a2', name: 'Personalabteilung', x: 520, y: 60, given: false },
+        { id: 'a3', name: 'Fachabteilung', x: 520, y: 280, given: false },
+      ],
+      usecases: [
+        { id: 'uc1', name: 'Bewerbung einreichen', cx: 200, cy: 60, given: true },
+        { id: 'uc2', name: 'Unterlagen pruefen', cx: 320, cy: 120, given: false },
+        { id: 'uc3', name: 'Vorstellungsgespraech fuehren', cx: 220, cy: 210, given: true },
+        { id: 'uc4', name: 'Zu-/Absage versenden', cx: 330, cy: 280, given: false },
+        { id: 'uc5', name: 'Fachliche Bewertung', cx: 200, cy: 360, given: false },
+        { id: 'uc6', name: 'Assessment-Center durchfuehren', cx: 350, cy: 380, given: true },
+      ],
+      connections: [
+        { from: 'a1', to: 'uc1', type: 'association' },
+        { from: 'a2', to: 'uc2', type: 'association' },
+        { from: 'a2', to: 'uc4', type: 'association' },
+        { from: 'a3', to: 'uc3', type: 'association' },
+        { from: 'a2', to: 'uc3', type: 'association' },
+        { from: 'uc3', to: 'uc5', type: 'include' },
+        { from: 'uc3', to: 'uc6', type: 'extend' },
+      ],
+      distractors: ['Arbeitsvertrag erstellen', 'Gehaltsabrechnung pruefen'],
+      explanation:
+        'Bewerber reichen Bewerbungen ein, die Personalabteilung prueft und versendet Zu-/Absagen. ' +
+        'Beim Vorstellungsgespraech ist die fachliche Bewertung zwingend (<<include>>). ' +
+        'Ein Assessment-Center ist optional (<<extend>>). Die Fachabteilung ist am Gespraech beteiligt.',
     },
   ];
 
@@ -478,8 +517,8 @@ const UMLView = (() => {
     cleanup_fns = [];
     trainerScore = 0;
     trainerRound = 0;
-    currentExercise = 0;
-    exerciseState = {};
+    currentScenario = 0;
+    scenarioPlaced = {};
 
     container.innerHTML = `
       <div class="view-enter">
@@ -487,14 +526,13 @@ const UMLView = (() => {
           <div class="page-header-left">
             <div>
               <h1 class="page-title">UML-Werkstatt</h1>
-              <p class="page-subtitle">Aktivitaets-, Klassen- & Use-Case-Diagramme — Pruefungsrelevant seit 2025</p>
+              <p class="page-subtitle">Use-Case-Diagramme, Kardinalitaeten & Swimlanes — Pruefungsrelevant seit 2025</p>
             </div>
           </div>
         </div>
 
         <div class="module-tabs" id="umlTabs">
           <button class="module-tab active" data-tab="explanation">Erklaerung</button>
-          <button class="module-tab" data-tab="freemode">Freier Modus</button>
           <button class="module-tab" data-tab="exercises">Aufgaben</button>
           <button class="module-tab" data-tab="trainer">UML-Trainer</button>
         </div>
@@ -520,22 +558,15 @@ const UMLView = (() => {
   }
 
   function renderTab(tabContent) {
-    // Clean up previous tab
-    cleanup_fns.forEach((fn) => {
-      fn();
-    });
+    cleanup_fns.forEach((fn) => fn());
     cleanup_fns = [];
-
     tabContent.innerHTML = '';
     switch (currentTab) {
       case 'explanation':
         renderExplanation(tabContent);
         break;
-      case 'freemode':
-        renderFreeMode(tabContent);
-        break;
       case 'exercises':
-        renderExercises(tabContent);
+        renderScenarios(tabContent);
         break;
       case 'trainer':
         renderTrainer(tabContent);
@@ -544,16 +575,8 @@ const UMLView = (() => {
   }
 
   function cleanup() {
-    cleanup_fns.forEach((fn) => {
-      fn();
-    });
+    cleanup_fns.forEach((fn) => fn());
     cleanup_fns = [];
-    freeElements = [];
-    freeConnections = [];
-    freeNextId = 1;
-    freeSelectedElement = null;
-    freeConnectMode = false;
-    freeConnectSource = null;
   }
 
   // ============================================================
@@ -725,1093 +748,456 @@ const UMLView = (() => {
   }
 
   // ============================================================
-  // TAB 2: Freier Modus
+  // TAB 2: Aufgaben (Use-Case Szenarien, IHK-Stil)
   // ============================================================
 
-  function renderFreeMode(container) {
-    freeElements = [];
-    freeConnections = [];
-    freeNextId = 1;
-    freeSelectedElement = null;
-    freeConnectMode = false;
-    freeConnectSource = null;
-    freeSwimlanes = ['Benutzer', 'System'];
-
-    container.innerHTML = `
-      <div class="uml-freemode">
-        <div class="uml-sub-selector" id="umlFreeSub">
-          <button class="uml-sub-btn ${freeSubType === 'activity' ? 'active' : ''}" data-sub="activity">Aktivitaetsdiagramm</button>
-          <button class="uml-sub-btn ${freeSubType === 'classdiagram' ? 'active' : ''}" data-sub="classdiagram">Klassendiagramm</button>
-          <button class="uml-sub-btn ${freeSubType === 'usecase' ? 'active' : ''}" data-sub="usecase">Use-Case-Diagramm</button>
-        </div>
-        <div id="umlFreeCanvas"></div>
-      </div>
-    `;
-
-    container.querySelectorAll('.uml-sub-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        container.querySelectorAll('.uml-sub-btn').forEach((b) => {
-          b.classList.remove('active');
-        });
-        btn.classList.add('active');
-        freeSubType = btn.dataset.sub;
-        freeElements = [];
-        freeConnections = [];
-        freeNextId = 1;
-        freeSelectedElement = null;
-        freeConnectMode = false;
-        renderFreeCanvas(container.querySelector('#umlFreeCanvas'));
-      });
-    });
-
-    renderFreeCanvas(container.querySelector('#umlFreeCanvas'));
-  }
-
-  function renderFreeCanvas(canvasContainer) {
-    switch (freeSubType) {
-      case 'activity':
-        renderActivityCanvas(canvasContainer);
-        break;
-      case 'classdiagram':
-        renderClassCanvas(canvasContainer);
-        break;
-      case 'usecase':
-        renderUseCaseCanvas(canvasContainer);
-        break;
-    }
-  }
-
-  // --- Activity Diagram Canvas ---
-  function renderActivityCanvas(container) {
-    container.innerHTML = `
-      <div class="uml-canvas-wrapper">
-        <div class="uml-toolbar">
-          <button class="uml-toolbar-btn" data-add="start" title="Startknoten">&#9679; Start</button>
-          <button class="uml-toolbar-btn" data-add="end" title="Endknoten">&#9673; Ende</button>
-          <button class="uml-toolbar-btn" data-add="action" title="Aktion">&#9645; Aktion</button>
-          <button class="uml-toolbar-btn" data-add="decision" title="Entscheidung">&#9670; Entscheidung</button>
-          <button class="uml-toolbar-btn" data-add="fork-h" title="Gabelung Horizontal">&#9644; Fork (H)</button>
-          <button class="uml-toolbar-btn" data-add="fork-v" title="Gabelung Vertikal">&#10073; Fork (V)</button>
-          <button class="uml-toolbar-btn" data-add="signal-send" title="Signal Senden">&#8680; Senden</button>
-          <button class="uml-toolbar-btn" data-add="signal-recv" title="Signal Empfangen">&#8678; Empfangen</button>
-          <div class="uml-toolbar-divider"></div>
-          <button class="uml-toolbar-btn" id="umlConnectBtn" title="Verbinden">&#8594; Verbinden</button>
-          <button class="uml-toolbar-btn" id="umlAddLane" title="Swimlane hinzufuegen">+ Lane</button>
-          <div class="uml-toolbar-divider"></div>
-          <button class="uml-toolbar-btn uml-btn-danger" id="umlDeleteBtn" title="Ausgewaehltes loeschen">&#10005; Loeschen</button>
-          <button class="uml-toolbar-btn uml-btn-danger" id="umlClearBtn" title="Alles loeschen">Alles loeschen</button>
-        </div>
-        <div class="uml-canvas" id="umlActivityCanvas" style="height: 500px; position: relative;">
-          <div class="uml-swimlanes" id="umlSwimlanes"></div>
-          <svg id="umlActivitySvg" width="100%" height="100%">
-            <defs>
-              <marker id="umlArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-secondary)"/>
-              </marker>
-            </defs>
-          </svg>
-        </div>
-      </div>
-    `;
-
-    renderSwimlanes(container);
-    setupActivityEvents(container);
-  }
-
-  function renderSwimlanes(container) {
-    const swimContainer = container.querySelector('#umlSwimlanes');
-    if (!swimContainer) return;
-    swimContainer.innerHTML = freeSwimlanes
-      .map(
-        (name, i) => `
-      <div class="uml-swimlane" data-lane="${i}">
-        <div class="uml-swimlane-header">
-          <input type="text" value="${name}" class="uml-swimlane-input"
-            style="background:transparent;border:none;color:var(--text-primary);text-align:center;font-weight:600;font-size:var(--font-size-xs);width:100%;outline:none;"
-            data-lane-idx="${i}">
-        </div>
-      </div>
-    `
-      )
-      .join('');
-
-    swimContainer.querySelectorAll('.uml-swimlane-input').forEach((input) => {
-      input.addEventListener('change', (e) => {
-        const idx = parseInt(e.target.dataset.laneIdx, 10);
-        freeSwimlanes[idx] = e.target.value;
-      });
-    });
-  }
-
-  function setupActivityEvents(container) {
-    const canvas = container.querySelector('#umlActivityCanvas');
-    const svg = container.querySelector('#umlActivitySvg');
-
-    // Add elements
-    container.querySelectorAll('[data-add]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const type = btn.dataset.add;
-        const id = `el_${freeNextId++}`;
-        const name =
-          type === 'action' ? 'Aktion' : type === 'decision' ? '' : '';
-        freeElements.push({
-          id,
-          type,
-          name,
-          x: 100 + Math.random() * 200,
-          y: 60 + Math.random() * 300,
-        });
-        renderFreeElements(canvas, svg);
-      });
-    });
-
-    // Connect mode
-    const connectBtn = container.querySelector('#umlConnectBtn');
-    connectBtn.addEventListener('click', () => {
-      freeConnectMode = !freeConnectMode;
-      freeConnectSource = null;
-      connectBtn.classList.toggle('active', freeConnectMode);
-    });
-
-    // Add swimlane
-    container.querySelector('#umlAddLane').addEventListener('click', () => {
-      freeSwimlanes.push(`Lane ${freeSwimlanes.length + 1}`);
-      renderSwimlanes(container);
-    });
-
-    // Delete selected
-    container.querySelector('#umlDeleteBtn').addEventListener('click', () => {
-      if (freeSelectedElement) {
-        freeElements = freeElements.filter(
-          (el) => el.id !== freeSelectedElement
-        );
-        freeConnections = freeConnections.filter(
-          (c) => c.from !== freeSelectedElement && c.to !== freeSelectedElement
-        );
-        freeSelectedElement = null;
-        renderFreeElements(canvas, svg);
-      }
-    });
-
-    // Clear all
-    container.querySelector('#umlClearBtn').addEventListener('click', () => {
-      freeElements = [];
-      freeConnections = [];
-      freeNextId = 1;
-      freeSelectedElement = null;
-      renderFreeElements(canvas, svg);
-    });
-
-    renderFreeElements(canvas, svg);
-  }
-
-  function renderFreeElements(canvas, svg) {
-    // Remove old elements (keep swimlanes and svg)
-    canvas.querySelectorAll('.uml-el').forEach((el) => {
-      el.remove();
-    });
-
-    freeElements.forEach((el) => {
-      const div = document.createElement('div');
-      div.className = `uml-el uml-el-${el.type}`;
-      div.dataset.id = el.id;
-      div.style.left = `${el.x}px`;
-      div.style.top = `${el.y}px`;
-
-      if (el.type === 'action') {
-        div.textContent = el.name;
-        div.contentEditable = false;
-        div.addEventListener('dblclick', () => {
-          div.contentEditable = true;
-          div.focus();
-        });
-        div.addEventListener('blur', () => {
-          el.name = div.textContent;
-          div.contentEditable = false;
-        });
-      } else if (el.type === 'decision') {
-        div.innerHTML = '<span>?</span>';
-      }
-
-      if (el.id === freeSelectedElement) {
-        div.classList.add('uml-selected');
-      }
-
-      // Click to select or connect
-      div.addEventListener('mousedown', (e) => {
-        if (freeConnectMode) {
-          e.stopPropagation();
-          if (!freeConnectSource) {
-            freeConnectSource = el.id;
-            div.classList.add('uml-selected');
-          } else if (freeConnectSource !== el.id) {
-            freeConnections.push({ from: freeConnectSource, to: el.id });
-            freeConnectSource = null;
-            renderFreeElements(canvas, svg);
-          }
-          return;
-        }
-
-        freeSelectedElement = el.id;
-        canvas.querySelectorAll('.uml-el').forEach((e) => {
-          e.classList.remove('uml-selected');
-        });
-        div.classList.add('uml-selected');
-
-        // Drag
-        const startX = e.clientX - el.x;
-        const startY = e.clientY - el.y;
-
-        const onMove = (ev) => {
-          el.x = Math.max(0, ev.clientX - startX);
-          el.y = Math.max(0, ev.clientY - startY);
-          div.style.left = `${el.x}px`;
-          div.style.top = `${el.y}px`;
-          drawConnections(svg);
-        };
-
-        const onUp = () => {
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('mouseup', onUp);
-        };
-
-        document.addEventListener('mousemove', onMove);
-        document.addEventListener('mouseup', onUp);
-      });
-
-      // Touch drag
-      div.addEventListener(
-        'touchstart',
-        (e) => {
-          if (freeConnectMode) {
-            if (!freeConnectSource) {
-              freeConnectSource = el.id;
-            } else if (freeConnectSource !== el.id) {
-              freeConnections.push({ from: freeConnectSource, to: el.id });
-              freeConnectSource = null;
-              renderFreeElements(canvas, svg);
-            }
-            return;
-          }
-
-          freeSelectedElement = el.id;
-          const touch = e.touches[0];
-          const startX = touch.clientX - el.x;
-          const startY = touch.clientY - el.y;
-
-          const onMove = (ev) => {
-            ev.preventDefault();
-            const t = ev.touches[0];
-            el.x = Math.max(0, t.clientX - startX);
-            el.y = Math.max(0, t.clientY - startY);
-            div.style.left = `${el.x}px`;
-            div.style.top = `${el.y}px`;
-            drawConnections(svg);
-          };
-
-          const onEnd = () => {
-            document.removeEventListener('touchmove', onMove);
-            document.removeEventListener('touchend', onEnd);
-          };
-
-          document.addEventListener('touchmove', onMove, { passive: false });
-          document.addEventListener('touchend', onEnd);
-        },
-        { passive: true }
-      );
-
-      canvas.appendChild(div);
-    });
-
-    drawConnections(svg);
-  }
-
-  function getElementCenter(el) {
-    const w =
-      el.type === 'action'
-        ? 120
-        : el.type === 'fork'
-          ? 120
-          : el.type === 'decision'
-            ? 44
-            : 28;
-    const h =
-      el.type === 'action'
-        ? 32
-        : el.type === 'fork'
-          ? 6
-          : el.type === 'decision'
-            ? 44
-            : 28;
-    return { x: el.x + w / 2, y: el.y + h / 2 };
-  }
-
-  function drawConnections(svg) {
-    // Remove old lines
-    svg.querySelectorAll('line.uml-conn').forEach((l) => {
-      l.remove();
-    });
-
-    freeConnections.forEach((conn) => {
-      const fromEl = freeElements.find((e) => e.id === conn.from);
-      const toEl = freeElements.find((e) => e.id === conn.to);
-      if (!fromEl || !toEl) return;
-
-      const from = getElementCenter(fromEl);
-      const to = getElementCenter(toEl);
-
-      const line = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'line'
-      );
-      line.setAttribute('class', 'uml-conn');
-      line.setAttribute('x1', from.x);
-      line.setAttribute('y1', from.y);
-      line.setAttribute('x2', to.x);
-      line.setAttribute('y2', to.y);
-      line.setAttribute('stroke', 'var(--text-secondary)');
-      line.setAttribute('stroke-width', '2');
-      line.setAttribute('marker-end', 'url(#umlArrow)');
-      svg.appendChild(line);
-    });
-  }
-
-  // --- Class Diagram Canvas ---
-  function renderClassCanvas(container) {
-    container.innerHTML = `
-      <div class="uml-canvas-wrapper">
-        <div class="uml-toolbar">
-          <button class="uml-toolbar-btn" data-add="class" title="Klasse hinzufuegen">+ Klasse</button>
-          <div class="uml-toolbar-divider"></div>
-          <button class="uml-toolbar-btn" id="umlClassConnBtn" data-rel="association" title="Assoziation">&#8212; Assoziation</button>
-          <button class="uml-toolbar-btn" id="umlClassAggBtn" data-rel="aggregation" title="Aggregation">&#9671; Aggregation</button>
-          <button class="uml-toolbar-btn" id="umlClassCompBtn" data-rel="composition" title="Komposition">&#9670; Komposition</button>
-          <button class="uml-toolbar-btn" id="umlClassInhBtn" data-rel="inheritance" title="Vererbung">&#9651; Vererbung</button>
-          <div class="uml-toolbar-divider"></div>
-          <button class="uml-toolbar-btn uml-btn-danger" id="umlClassDelBtn">&#10005; Loeschen</button>
-          <button class="uml-toolbar-btn uml-btn-danger" id="umlClassClearBtn">Alles loeschen</button>
-        </div>
-        <div class="uml-canvas" id="umlClassCanvas" style="height: 500px; position: relative;">
-          <svg id="umlClassSvg" width="100%" height="100%">
-            <defs>
-              <marker id="umlArrowClass" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-secondary)"/>
-              </marker>
-              <marker id="umlEmptyDiamond" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto">
-                <polygon points="0 4, 6 0, 12 4, 6 8" fill="var(--bg-secondary)" stroke="var(--text-secondary)" stroke-width="1.5"/>
-              </marker>
-              <marker id="umlFilledDiamond" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto">
-                <polygon points="0 4, 6 0, 12 4, 6 8" fill="var(--text-secondary)" stroke="var(--text-secondary)" stroke-width="1"/>
-              </marker>
-              <marker id="umlEmptyTriangle" markerWidth="12" markerHeight="10" refX="12" refY="5" orient="auto">
-                <polygon points="0 0, 12 5, 0 10" fill="var(--bg-secondary)" stroke="var(--text-secondary)" stroke-width="1.5"/>
-              </marker>
-            </defs>
-          </svg>
-        </div>
-      </div>
-    `;
-
-    let classConnectRel = null;
-
-    // Add class
-    container
-      .querySelector('[data-add="class"]')
-      .addEventListener('click', () => {
-        const id = `cls_${freeNextId++}`;
-        freeElements.push({
-          id,
-          type: 'class',
-          name: 'NeueKlasse',
-          attrs: '- attribut: String',
-          methods: '+ methode(): void',
-          x: 50 + Math.random() * 300,
-          y: 50 + Math.random() * 300,
-        });
-        renderClassElements(container);
-      });
-
-    // Relationship buttons
-    container.querySelectorAll('[data-rel]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const rel = btn.dataset.rel;
-        if (classConnectRel === rel) {
-          classConnectRel = null;
-          freeConnectSource = null;
-          container.querySelectorAll('[data-rel]').forEach((b) => {
-            b.classList.remove('active');
-          });
-        } else {
-          classConnectRel = rel;
-          freeConnectSource = null;
-          container.querySelectorAll('[data-rel]').forEach((b) => {
-            b.classList.remove('active');
-          });
-          btn.classList.add('active');
-        }
-      });
-    });
-
-    // Delete
-    container.querySelector('#umlClassDelBtn').addEventListener('click', () => {
-      if (freeSelectedElement) {
-        freeElements = freeElements.filter(
-          (el) => el.id !== freeSelectedElement
-        );
-        freeConnections = freeConnections.filter(
-          (c) => c.from !== freeSelectedElement && c.to !== freeSelectedElement
-        );
-        freeSelectedElement = null;
-        renderClassElements(container);
-      }
-    });
-
-    container
-      .querySelector('#umlClassClearBtn')
-      .addEventListener('click', () => {
-        freeElements = [];
-        freeConnections = [];
-        freeNextId = 1;
-        freeSelectedElement = null;
-        renderClassElements(container);
-      });
-
-    // Store classConnectRel in closure for renderClassElements
-    const getConnectRel = () => classConnectRel;
-    const setConnectSource = (id) => {
-      freeConnectSource = id;
-    };
-    const getConnectSource = () => freeConnectSource;
-
-    // Make these accessible
-    container._getConnectRel = getConnectRel;
-    container._setConnectSource = setConnectSource;
-    container._getConnectSource = getConnectSource;
-
-    renderClassElements(container);
-  }
-
-  function renderClassElements(container) {
-    const canvas = container.querySelector('#umlClassCanvas');
-    const svg = container.querySelector('#umlClassSvg');
-
-    canvas.querySelectorAll('.uml-class-box').forEach((el) => {
-      el.remove();
-    });
-
-    freeElements.forEach((el) => {
-      if (el.type !== 'class') return;
-
-      const div = document.createElement('div');
-      div.className = 'uml-class-box';
-      div.dataset.id = el.id;
-      div.style.left = `${el.x}px`;
-      div.style.top = `${el.y}px`;
-
-      if (el.id === freeSelectedElement) div.classList.add('uml-selected');
-
-      div.innerHTML = `
-        <div class="uml-class-name">${el.name}</div>
-        <div class="uml-class-attrs">${el.attrs}</div>
-        <div class="uml-class-methods">${el.methods}</div>
-      `;
-
-      const setupEditable = (selector, key) => {
-        const field = div.querySelector(selector);
-        field.addEventListener('dblclick', () => {
-          field.contentEditable = true;
-          field.focus();
-        });
-        field.addEventListener('blur', (e) => {
-          el[key] = e.target.textContent;
-          field.contentEditable = false;
-        });
-      };
-
-      setupEditable('.uml-class-name', 'name');
-      setupEditable('.uml-class-attrs', 'attrs');
-      setupEditable('.uml-class-methods', 'methods');
-
-      div.addEventListener('mousedown', (e) => {
-        if (e.target.isContentEditable) return;
-
-        const connectRel = container._getConnectRel
-          ? container._getConnectRel()
-          : null;
-        if (connectRel) {
-          const source = container._getConnectSource
-            ? container._getConnectSource()
-            : null;
-          if (!source) {
-            container._setConnectSource(el.id);
-            div.classList.add('uml-selected');
-          } else if (source !== el.id) {
-            freeConnections.push({
-              from: source,
-              to: el.id,
-              relType: connectRel,
-            });
-            container._setConnectSource(null);
-            renderClassElements(container);
-          }
-          return;
-        }
-
-        freeSelectedElement = el.id;
-        canvas.querySelectorAll('.uml-class-box').forEach((b) => {
-          b.classList.remove('uml-selected');
-        });
-        div.classList.add('uml-selected');
-
-        const startX = e.clientX - el.x;
-        const startY = e.clientY - el.y;
-        const onMove = (ev) => {
-          el.x = Math.max(0, ev.clientX - startX);
-          el.y = Math.max(0, ev.clientY - startY);
-          div.style.left = `${el.x}px`;
-          div.style.top = `${el.y}px`;
-          drawClassConnections(svg);
-        };
-        const onUp = () => {
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('mouseup', onUp);
-        };
-        document.addEventListener('mousemove', onMove);
-        document.addEventListener('mouseup', onUp);
-      });
-
-      canvas.appendChild(div);
-    });
-
-    drawClassConnections(svg);
-  }
-
-  function drawClassConnections(svg) {
-    svg.querySelectorAll('line.uml-cls-conn').forEach((l) => {
-      l.remove();
-    });
-
-    freeConnections.forEach((conn) => {
-      const fromEl = freeElements.find((e) => e.id === conn.from);
-      const toEl = freeElements.find((e) => e.id === conn.to);
-      if (!fromEl || !toEl) return;
-
-      const from = { x: fromEl.x + 80, y: fromEl.y + 40 };
-      const to = { x: toEl.x + 80, y: toEl.y + 40 };
-
-      const line = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'line'
-      );
-      line.setAttribute('class', 'uml-cls-conn');
-      line.setAttribute('x1', from.x);
-      line.setAttribute('y1', from.y);
-      line.setAttribute('x2', to.x);
-      line.setAttribute('y2', to.y);
-      line.setAttribute('stroke', 'var(--text-secondary)');
-      line.setAttribute('stroke-width', '2');
-
-      if (conn.relType === 'aggregation') {
-        line.setAttribute('marker-start', 'url(#umlEmptyDiamond)');
-      } else if (conn.relType === 'composition') {
-        line.setAttribute('marker-start', 'url(#umlFilledDiamond)');
-      } else if (conn.relType === 'inheritance') {
-        line.setAttribute('marker-end', 'url(#umlEmptyTriangle)');
-      } else {
-        line.setAttribute('marker-end', 'url(#umlArrowClass)');
-      }
-
-      svg.appendChild(line);
-    });
-  }
-
-  // --- Use-Case Canvas ---
-  function renderUseCaseCanvas(container) {
-    container.innerHTML = `
-      <div class="uml-canvas-wrapper">
-        <div class="uml-toolbar">
-          <button class="uml-toolbar-btn" data-add="actor" title="Akteur">&#9787; Akteur</button>
-          <button class="uml-toolbar-btn" data-add="usecase" title="Use Case">&#9711; Use Case</button>
-          <button class="uml-toolbar-btn" data-add="boundary" title="Systemgrenze">&#9634; Systemgrenze</button>
-          <div class="uml-toolbar-divider"></div>
-          <button class="uml-toolbar-btn" id="umlUcAssocBtn" data-ucrel="association">&#8212; Assoziation</button>
-          <button class="uml-toolbar-btn" id="umlUcIncBtn" data-ucrel="include">&lt;&lt;include&gt;&gt;</button>
-          <button class="uml-toolbar-btn" id="umlUcExtBtn" data-ucrel="extend">&lt;&lt;extend&gt;&gt;</button>
-          <div class="uml-toolbar-divider"></div>
-          <button class="uml-toolbar-btn uml-btn-danger" id="umlUcDelBtn">&#10005; Loeschen</button>
-          <button class="uml-toolbar-btn uml-btn-danger" id="umlUcClearBtn">Alles loeschen</button>
-        </div>
-        <div class="uml-canvas" id="umlUcCanvas" style="height: 500px; position: relative;">
-          <svg id="umlUcSvg" width="100%" height="100%">
-            <defs>
-              <marker id="umlArrowUc" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-secondary)"/>
-              </marker>
-            </defs>
-          </svg>
-        </div>
-      </div>
-    `;
-
-    let ucConnectRel = null;
-    let ucConnectSource = null;
-
-    // Add elements
-    container.querySelectorAll('[data-add]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const type = btn.dataset.add;
-        const id = `uc_${freeNextId++}`;
-        if (type === 'actor') {
-          freeElements.push({
-            id,
-            type: 'actor',
-            name: 'Akteur',
-            x: 20 + Math.random() * 50,
-            y: 80 + Math.random() * 200,
-          });
-        } else if (type === 'usecase') {
-          freeElements.push({
-            id,
-            type: 'usecase',
-            name: 'Use Case',
-            x: 200 + Math.random() * 200,
-            y: 80 + Math.random() * 300,
-          });
-        } else if (type === 'boundary') {
-          freeElements.push({
-            id,
-            type: 'boundary',
-            name: 'System',
-            x: 150,
-            y: 30,
-            w: 350,
-            h: 400,
-          });
-        }
-        renderUcElements(container);
-      });
-    });
-
-    // Relationship buttons
-    container.querySelectorAll('[data-ucrel]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const rel = btn.dataset.ucrel;
-        if (ucConnectRel === rel) {
-          ucConnectRel = null;
-          ucConnectSource = null;
-          container.querySelectorAll('[data-ucrel]').forEach((b) => {
-            b.classList.remove('active');
-          });
-        } else {
-          ucConnectRel = rel;
-          ucConnectSource = null;
-          container.querySelectorAll('[data-ucrel]').forEach((b) => {
-            b.classList.remove('active');
-          });
-          btn.classList.add('active');
-        }
-      });
-    });
-
-    container._ucGetRel = () => ucConnectRel;
-    container._ucGetSource = () => ucConnectSource;
-    container._ucSetSource = (id) => {
-      ucConnectSource = id;
-    };
-
-    // Delete
-    container.querySelector('#umlUcDelBtn').addEventListener('click', () => {
-      if (freeSelectedElement) {
-        freeElements = freeElements.filter(
-          (el) => el.id !== freeSelectedElement
-        );
-        freeConnections = freeConnections.filter(
-          (c) => c.from !== freeSelectedElement && c.to !== freeSelectedElement
-        );
-        freeSelectedElement = null;
-        renderUcElements(container);
-      }
-    });
-
-    container.querySelector('#umlUcClearBtn').addEventListener('click', () => {
-      freeElements = [];
-      freeConnections = [];
-      freeNextId = 1;
-      freeSelectedElement = null;
-      renderUcElements(container);
-    });
-
-    renderUcElements(container);
-  }
-
-  function renderUcElements(container) {
-    const canvas = container.querySelector('#umlUcCanvas');
-    const svg = container.querySelector('#umlUcSvg');
-
-    canvas
-      .querySelectorAll('.uml-uc-actor, .uml-uc-usecase, .uml-uc-boundary')
-      .forEach((el) => {
-        el.remove();
-      });
-
-    freeElements.forEach((el) => {
-      if (el.type === 'boundary') {
-        const div = document.createElement('div');
-        div.className = 'uml-uc-boundary';
-        div.innerHTML = `<div class="uml-uc-boundary-title">${el.name}</div>`;
-        const title = div.querySelector('.uml-uc-boundary-title');
-        title.addEventListener('dblclick', (e) => {
-          e.stopPropagation(); // Prevent drag start
-          title.contentEditable = true;
-          title.focus();
-        });
-        title.addEventListener('mousedown', (e) => e.stopPropagation()); // Allow text selection
-        title.addEventListener('blur', (e) => {
-          el.name = e.target.textContent;
-          title.contentEditable = false;
-        });
-
-        // Common Element Logic
-        setupElement(div, el, container, canvas, svg);
-        canvas.appendChild(div);
-        return;
-      }
-
-      const div = document.createElement('div');
-      if (el.type === 'actor') {
-        div.className = 'uml-uc-actor';
-        // Label first (above head)
-        div.innerHTML = `
-          <div class="uml-uc-actor-label">${el.name}</div>
-          <svg viewBox="0 0 40 48" fill="none" stroke="var(--uml-actor)" stroke-width="2" stroke-linecap="round">
-            <circle cx="20" cy="8" r="6"/>
-            <line x1="20" y1="14" x2="20" y2="32"/>
-            <line x1="8" y1="22" x2="32" y2="22"/>
-            <line x1="20" y1="32" x2="10" y2="46"/>
-            <line x1="20" y1="32" x2="30" y2="46"/>
-          </svg>
-        `;
-        const label = div.querySelector('.uml-uc-actor-label');
-        label.addEventListener('dblclick', (e) => {
-          e.stopPropagation();
-          label.contentEditable = true;
-          label.focus();
-        });
-        label.addEventListener('mousedown', (e) => e.stopPropagation());
-        label.addEventListener('blur', (e) => {
-          el.name = e.target.textContent;
-          label.contentEditable = false;
-        });
-      } else if (el.type === 'usecase') {
-        div.className = 'uml-uc-usecase';
-        div.textContent = el.name;
-        div.contentEditable = false;
-        div.addEventListener('dblclick', (e) => {
-          e.stopPropagation();
-          div.contentEditable = true;
-          div.focus();
-        });
-        div.addEventListener('blur', () => {
-          el.name = div.textContent;
-          div.contentEditable = false;
-        });
-      } else if (el.type === 'decision') {
-        div.className = 'uml-el uml-el-decision';
-        div.innerHTML = '<span>&#9670;</span>'; // rhomb
-      } else if (el.type === 'fork-h') {
-        div.className = 'uml-el uml-el-fork uml-el-fork-h';
-      } else if (el.type === 'fork-v') {
-        div.className = 'uml-el uml-el-fork uml-el-fork-v';
-      } else if (el.type === 'signal-send') {
-        div.className = 'uml-el uml-el-signal uml-el-signal-send';
-        div.textContent = el.name;
-        div.contentEditable = true;
-        div.addEventListener('blur', () => {
-          el.name = div.textContent;
-        });
-      } else if (el.type === 'signal-recv') {
-        div.className = 'uml-el uml-el-signal uml-el-signal-recv';
-        div.textContent = el.name;
-        div.contentEditable = true;
-        div.addEventListener('blur', () => {
-          el.name = div.textContent;
-        });
-      }
-
-      setupElement(div, el, container, canvas, svg);
-      canvas.appendChild(div);
-    });
-
-    drawUcConnections(svg);
-  }
-
-  function setupElement(div, el, container, canvas, svg) {
-    div.dataset.id = el.id;
-    div.style.left = `${el.x}px`;
-    div.style.top = `${el.y}px`;
-
-    if (el.type === 'boundary') {
-      div.style.width = `${el.w || 350}px`;
-      div.style.height = `${el.h || 400}px`;
-    }
-
-    if (el.id === freeSelectedElement) div.classList.add('uml-selected');
-
-    div.addEventListener('mousedown', (e) => {
-      if (e.target.isContentEditable) return;
-
-      const connectRel = container._ucGetRel ? container._ucGetRel() : null;
-      // Only allow connections for actors and usecases, not boundaries
-      if (connectRel && el.type !== 'boundary') {
-        const source = container._ucGetSource
-          ? container._ucGetSource()
-          : null;
-        if (!source) {
-          container._ucSetSource(el.id);
-        } else if (source !== el.id) {
-          freeConnections.push({
-            from: source,
-            to: el.id,
-            relType: connectRel,
-          });
-          container._ucSetSource(null);
-          renderUcElements(container);
-        }
-        return;
-      }
-
-      freeSelectedElement = el.id;
-      canvas
-        .querySelectorAll('.uml-uc-actor, .uml-uc-usecase, .uml-uc-boundary')
-        .forEach((b) => {
-          b.classList.remove('uml-selected');
-        });
-      div.classList.add('uml-selected');
-
-      const startX = e.clientX - el.x;
-      const startY = e.clientY - el.y;
-
-      const onMove = (ev) => {
-        el.x = Math.max(0, ev.clientX - startX);
-        el.y = Math.max(0, ev.clientY - startY);
-        div.style.left = `${el.x}px`;
-        div.style.top = `${el.y}px`;
-        drawUcConnections(svg);
-      };
-
-      const onUp = () => {
-        document.removeEventListener('mousemove', onMove);
-        document.removeEventListener('mouseup', onUp);
-      };
-
-      document.addEventListener('mousemove', onMove);
-      document.addEventListener('mouseup', onUp);
-    });
-  }
-
-  function drawUcConnections(svg) {
-    svg.querySelectorAll('.uml-uc-conn, .uml-uc-label').forEach((el) => {
-      el.remove();
-    });
-
-    freeConnections.forEach((conn) => {
-      const fromEl = freeElements.find((e) => e.id === conn.from);
-      const toEl = freeElements.find((e) => e.id === conn.to);
-      if (!fromEl || !toEl) return;
-
-      const fromCenter = getUcCenter(fromEl);
-      const toCenter = getUcCenter(toEl);
-
-      const line = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'line'
-      );
-      line.setAttribute('class', 'uml-uc-conn');
-      line.setAttribute('x1', fromCenter.x);
-      line.setAttribute('y1', fromCenter.y);
-      line.setAttribute('x2', toCenter.x);
-      line.setAttribute('y2', toCenter.y);
-      line.setAttribute('stroke', 'var(--text-secondary)');
-      line.setAttribute('stroke-width', '1.5');
-
-      if (conn.relType === 'include' || conn.relType === 'extend') {
-        line.setAttribute('stroke-dasharray', '8 4');
-        line.setAttribute('marker-end', 'url(#umlArrowUc)');
-
-        // Label
-        const midX = (fromCenter.x + toCenter.x) / 2;
-        const midY = (fromCenter.y + toCenter.y) / 2;
-        const text = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'text'
-        );
-        text.setAttribute('class', 'uml-uc-label');
-        text.setAttribute('x', midX);
-        text.setAttribute('y', midY - 6);
-        text.setAttribute('text-anchor', 'middle');
-        text.setAttribute('font-size', '10');
-        text.setAttribute('fill', 'var(--text-secondary)');
-        text.textContent = `<<${conn.relType}>>`;
-        svg.appendChild(text);
-      }
-
-      svg.appendChild(line);
-    });
-  }
-
-  function getUcCenter(el) {
-    if (el.type === 'actor') return { x: el.x + 30, y: el.y + 30 };
-    if (el.type === 'usecase') return { x: el.x + 60, y: el.y + 25 };
-    return { x: el.x + 175, y: el.y + 200 };
-  }
-
-  // ============================================================
-  // TAB 3: Aufgaben
-  // ============================================================
-
-  function renderExercises(container) {
-    exerciseState = { currentQ: 0, answers: {}, checked: false };
-    const ex = EXERCISES[currentExercise];
+  function renderScenarios(container) {
+    scenarioPlaced = {};
+    const sc = UC_SCENARIOS[currentScenario];
 
     container.innerHTML = `
       <div class="uml-exercise-nav">
-        ${EXERCISES.map(
-      (e, i) => `
-          <button class="uml-exercise-btn ${i === currentExercise ? 'active' : ''} ${progress.exercises.includes(e.id) ? 'completed' : ''}"
+        ${UC_SCENARIOS.map(
+          (s, i) => `
+          <button class="uml-exercise-btn ${i === currentScenario ? 'active' : ''} ${progress.scenarios.includes(s.id) ? 'completed' : ''}"
                   data-idx="${i}">
             <span class="uml-exercise-btn-num">${i + 1}</span>
-            <span class="uml-exercise-btn-title">${e.title}</span>
-            ${progress.exercises.includes(e.id) ? '<span class="uml-exercise-check">&#x2713;</span>' : ''}
+            <span class="uml-exercise-btn-title">${s.title}</span>
+            ${progress.scenarios.includes(s.id) ? '<span class="uml-exercise-check">&#x2713;</span>' : ''}
           </button>
         `
-    ).join('')}
+        ).join('')}
       </div>
-      <div id="umlExerciseContent"></div>
+      <div id="umlScenarioContent"></div>
     `;
 
     container.querySelectorAll('.uml-exercise-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        currentExercise = parseInt(btn.dataset.idx, 10);
-        renderExercises(container);
+        currentScenario = parseInt(btn.dataset.idx, 10);
+        renderScenarios(container);
       });
     });
 
-    renderExerciseContent(ex, container);
+    renderScenarioContent(sc, container);
   }
 
-  function renderExerciseContent(ex, parentContainer) {
-    const contentEl = parentContainer.querySelector('#umlExerciseContent');
-    const q = ex.questions[exerciseState.currentQ];
+  function renderScenarioContent(sc, parentContainer) {
+    const contentEl = parentContainer.querySelector('#umlScenarioContent');
+    scenarioPlaced = {};
+
     const diffClass =
-      ex.difficulty === 'Leicht'
+      sc.difficulty === 'Leicht'
         ? 'uml-badge-leicht'
-        : ex.difficulty === 'Mittel'
+        : sc.difficulty === 'Mittel'
           ? 'uml-badge-mittel'
           : 'uml-badge-schwer';
 
+    // Collect blank labels (items where given: false)
+    const blanks = [];
+    sc.actors.forEach((a) => {
+      if (!a.given) blanks.push({ id: a.id, name: a.name, type: 'actor' });
+    });
+    sc.usecases.forEach((uc) => {
+      if (!uc.given) blanks.push({ id: uc.id, name: uc.name, type: 'usecase' });
+    });
+
+    // Create chips: blank labels + distractors, shuffled
+    const allChips = [
+      ...blanks.map((b) => b.name),
+      ...sc.distractors,
+    ].sort(() => Math.random() - 0.5);
+
+    // Determine diagram dimensions
+    const diagramH = 450;
+
+    // Build context with line breaks
+    const contextHtml = sc.context
+      .split('\n')
+      .map((line) => {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('- ')) {
+          return `<span style="display:block;padding-left:var(--space-4);">${trimmed}</span>`;
+        }
+        return trimmed;
+      })
+      .join('');
+
     contentEl.innerHTML = `
       <div class="uml-exercise-card">
-        <h3>${ex.title}</h3>
+        <h3>${sc.title}</h3>
         <div class="uml-exercise-meta">
-          <span class="uml-exercise-badge ${diffClass}">${ex.difficulty}</span>
-          <span class="uml-exercise-badge" style="background:var(--info-bg);color:var(--info);">Frage ${exerciseState.currentQ + 1} / ${ex.questions.length}</span>
+          <span class="uml-exercise-badge ${diffClass}">${sc.difficulty}</span>
+          <span class="uml-exercise-badge" style="background:var(--info-bg);color:var(--info);">${sc.points} Punkte</span>
         </div>
-        <p class="uml-exercise-desc">${exerciseState.currentQ === 0 ? ex.description : ''}</p>
+        <p class="uml-exercise-desc">${contextHtml}</p>
 
-        <p class="uml-text" style="margin-bottom:var(--space-3);"><strong>${q.question}</strong></p>
-
-        <div class="uml-exercise-options" id="umlExOptions">
-          ${q.options
-        .map(
-          (opt, i) => `
-            <div class="uml-exercise-option" data-idx="${i}">
-              <div class="uml-exercise-option-marker"></div>
-              <span>${opt}</span>
-            </div>
-          `
-        )
-        .join('')}
+        <div class="uml-hint-box">
+          Ergaenzen Sie das angefangene Use-Case-Diagramm: Ziehen Sie die fehlenden Elemente
+          (Akteure, Anwendungsfaelle) aus dem Pool in die markierten Leerstellen.
         </div>
 
-        <div id="umlExFeedback"></div>
+        <div class="uml-scenario-diagram" style="position:relative;height:${diagramH}px;margin-bottom:var(--space-4);">
+          ${renderUcDiagram(sc, diagramH)}
+        </div>
+
+        <div class="uml-chips-pool" id="umlScenarioChips">
+          ${allChips.map((label, i) => `
+            <div class="uml-chip uml-scenario-chip" draggable="true" data-value="${label}" data-chip-idx="${i}">${label}</div>
+          `).join('')}
+        </div>
 
         <div class="uml-exercise-actions">
-          <button class="btn btn-primary" id="umlExCheck">Pruefen</button>
-          <button class="btn" id="umlExNext" style="display:none;">Naechste Frage</button>
+          <button class="btn btn-primary" id="umlScenarioCheck">Pruefen</button>
+          <button class="btn" id="umlScenarioSolution" style="display:none;">Loesung zeigen</button>
+          <button class="btn" id="umlScenarioNext" style="display:none;">Naechstes Szenario</button>
         </div>
+        <div id="umlScenarioFeedback"></div>
       </div>
     `;
 
-    // Option selection
-    contentEl.querySelectorAll('.uml-exercise-option').forEach((opt) => {
-      opt.addEventListener('click', () => {
-        if (exerciseState.checked) return;
-        contentEl.querySelectorAll('.uml-exercise-option').forEach((o) => {
-          o.classList.remove('selected');
-        });
-        opt.classList.add('selected');
-        exerciseState.answers[exerciseState.currentQ] = parseInt(
-          opt.dataset.idx,
-          10
+    setupScenarioDragDrop(contentEl, sc, parentContainer);
+  }
+
+  function renderUcDiagram(sc, height) {
+    // System boundary
+    const boundaryLeft = 130;
+    const boundaryTop = 20;
+    const boundaryW = 420;
+    const boundaryH = height - 40;
+
+    let html = '';
+
+    // System boundary box
+    html += `<div class="uml-scenario-boundary" style="left:${boundaryLeft}px;top:${boundaryTop}px;width:${boundaryW}px;height:${boundaryH}px;">
+      <div class="uml-scenario-boundary-title">${sc.systemName}</div>
+    </div>`;
+
+    // SVG overlay for connections
+    html += `<svg class="uml-scenario-svg" width="100%" height="100%">
+      <defs>
+        <marker id="umlScArrowInc" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="var(--uml-class)"/>
+        </marker>
+        <marker id="umlScArrowExt" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="var(--uml-decision)"/>
+        </marker>
+      </defs>
+      ${renderConnections(sc)}
+    </svg>`;
+
+    // Actors
+    sc.actors.forEach((actor) => {
+      if (actor.given) {
+        html += renderActorElement(actor, true);
+      } else {
+        html += renderActorDropZone(actor);
+      }
+    });
+
+    // Use Cases
+    sc.usecases.forEach((uc) => {
+      if (uc.given) {
+        html += renderUseCaseElement(uc, true);
+      } else {
+        html += renderUseCaseDropZone(uc);
+      }
+    });
+
+    return html;
+  }
+
+  function renderActorElement(actor, isGiven) {
+    const actorSvg = `<svg viewBox="0 0 40 48" fill="none" stroke="var(--uml-actor)" stroke-width="2" stroke-linecap="round" width="36" height="42">
+      <circle cx="20" cy="8" r="6"/>
+      <line x1="20" y1="14" x2="20" y2="32"/>
+      <line x1="8" y1="22" x2="32" y2="22"/>
+      <line x1="20" y1="32" x2="10" y2="46"/>
+      <line x1="20" y1="32" x2="30" y2="46"/>
+    </svg>`;
+    return `<div class="uml-scenario-actor ${isGiven ? '' : 'uml-scenario-filled'}" style="left:${actor.x}px;top:${actor.y}px;" data-id="${actor.id}">
+      <div class="uml-scenario-actor-label">${actor.name}</div>
+      ${actorSvg}
+    </div>`;
+  }
+
+  function renderActorDropZone(actor) {
+    const actorSvg = `<svg viewBox="0 0 40 48" fill="none" stroke="var(--border-light)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" width="36" height="42">
+      <circle cx="20" cy="8" r="6"/>
+      <line x1="20" y1="14" x2="20" y2="32"/>
+      <line x1="8" y1="22" x2="32" y2="22"/>
+      <line x1="20" y1="32" x2="10" y2="46"/>
+      <line x1="20" y1="32" x2="30" y2="46"/>
+    </svg>`;
+    return `<div class="uml-scenario-actor uml-scenario-drop-zone" style="left:${actor.x}px;top:${actor.y}px;" data-id="${actor.id}" data-type="actor" data-expected="${actor.name}">
+      <div class="uml-scenario-actor-label uml-scenario-blank">?</div>
+      ${actorSvg}
+    </div>`;
+  }
+
+  function renderUseCaseElement(uc, isGiven) {
+    return `<div class="uml-scenario-usecase ${isGiven ? '' : 'uml-scenario-filled'}" style="left:${uc.cx}px;top:${uc.cy}px;" data-id="${uc.id}">
+      ${uc.name}
+    </div>`;
+  }
+
+  function renderUseCaseDropZone(uc) {
+    return `<div class="uml-scenario-usecase uml-scenario-drop-zone uml-scenario-usecase-blank" style="left:${uc.cx}px;top:${uc.cy}px;" data-id="${uc.id}" data-type="usecase" data-expected="${uc.name}">
+      ?
+    </div>`;
+  }
+
+  function renderConnections(sc) {
+    let svg = '';
+
+    sc.connections.forEach((conn) => {
+      const fromActor = sc.actors.find((a) => a.id === conn.from);
+      const fromUc = sc.usecases.find((u) => u.id === conn.from);
+      const toActor = sc.actors.find((a) => a.id === conn.to);
+      const toUc = sc.usecases.find((u) => u.id === conn.to);
+
+      const from = fromActor
+        ? { x: fromActor.x + 35, y: fromActor.y + 30 }
+        : fromUc
+          ? { x: fromUc.cx + 70, y: fromUc.cy + 22 }
+          : null;
+      const to = toActor
+        ? { x: toActor.x + 35, y: toActor.y + 30 }
+        : toUc
+          ? { x: toUc.cx + 70, y: toUc.cy + 22 }
+          : null;
+
+      if (!from || !to) return;
+
+      const isDashed = conn.type === 'include' || conn.type === 'extend';
+      const dashAttr = isDashed ? 'stroke-dasharray="8 4"' : '';
+      const markerAttr = isDashed ? 'marker-end="url(#umlScArrow)"' : '';
+
+      svg += `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}"
+        stroke="var(--text-secondary)" stroke-width="1.5" ${dashAttr} ${markerAttr}/>`;
+
+      if (isDashed) {
+        const midX = (from.x + to.x) / 2;
+        const midY = (from.y + to.y) / 2;
+        svg += `<text x="${midX}" y="${midY - 6}" text-anchor="middle" font-size="10"
+          fill="var(--text-secondary)">&lt;&lt;${conn.type}&gt;&gt;</text>`;
+      }
+    });
+
+    return svg;
+  }
+
+  function setupScenarioDragDrop(contentEl, sc, parentContainer) {
+    const chipsPool = contentEl.querySelector('#umlScenarioChips');
+    const dropZones = contentEl.querySelectorAll('.uml-scenario-drop-zone');
+
+    // HTML5 drag from chips
+    chipsPool.addEventListener('dragstart', (e) => {
+      if (e.target.classList.contains('uml-scenario-chip')) {
+        e.dataTransfer.setData(
+          'text/plain',
+          `${e.target.dataset.value}|${e.target.dataset.chipIdx}`
         );
+        e.target.classList.add('uml-chip-dragging');
+      }
+    });
+
+    chipsPool.addEventListener('dragend', (e) => {
+      e.target.classList.remove('uml-chip-dragging');
+    });
+
+    // Drop zones
+    dropZones.forEach((zone) => {
+      zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        zone.classList.add('uml-scenario-drop-hover');
+      });
+      zone.addEventListener('dragleave', () => {
+        zone.classList.remove('uml-scenario-drop-hover');
+      });
+      zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('uml-scenario-drop-hover');
+        const data = e.dataTransfer.getData('text/plain');
+        const [value, chipIdx] = data.split('|');
+        placeScenarioChip(contentEl, zone, value, chipIdx);
+      });
+
+      // Touch fallback: tap zone after selecting chip
+      zone.addEventListener('click', () => {
+        const activeChip = chipsPool.querySelector('.uml-chip-touch-active');
+        if (activeChip) {
+          placeScenarioChip(contentEl, zone, activeChip.dataset.value, activeChip.dataset.chipIdx);
+          activeChip.classList.remove('uml-chip-touch-active');
+        }
       });
     });
 
-    // Check
-    contentEl.querySelector('#umlExCheck').addEventListener('click', () => {
-      if (exerciseState.checked) return;
-      const answer = exerciseState.answers[exerciseState.currentQ];
-      if (answer === undefined) return;
-
-      exerciseState.checked = true;
-      const isCorrect = answer === q.correct;
-
-      contentEl.querySelectorAll('.uml-exercise-option').forEach((opt) => {
-        const idx = parseInt(opt.dataset.idx, 10);
-        if (idx === q.correct) opt.classList.add('uml-option-correct');
-        if (idx === answer && !isCorrect) opt.classList.add('uml-option-wrong');
-        opt.style.pointerEvents = 'none';
-      });
-
-      const feedbackEl = contentEl.querySelector('#umlExFeedback');
-      feedbackEl.innerHTML = `
-        <div class="module-feedback ${isCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
-          ${isCorrect ? '<strong>Richtig!</strong> ' : '<strong>Leider falsch.</strong> '}${q.explanation}
-        </div>
-      `;
-
-      // Show next button
-      const isLastQ = exerciseState.currentQ >= ex.questions.length - 1;
-      const nextBtn = contentEl.querySelector('#umlExNext');
-
-      if (isLastQ) {
-        // Mark exercise complete
-        markExerciseComplete(ex.id);
-        nextBtn.textContent =
-          currentExercise < EXERCISES.length - 1
-            ? 'Naechste Aufgabe'
-            : 'Fertig';
-        nextBtn.style.display = '';
-        nextBtn.addEventListener('click', () => {
-          if (currentExercise < EXERCISES.length - 1) {
-            currentExercise++;
-            renderExercises(parentContainer);
-          }
+    // Touch fallback: tap chip to select
+    chipsPool.addEventListener('click', (e) => {
+      if (
+        e.target.classList.contains('uml-scenario-chip') &&
+        !e.target.classList.contains('uml-chip-used')
+      ) {
+        chipsPool.querySelectorAll('.uml-chip-touch-active').forEach((c) => {
+          c.classList.remove('uml-chip-touch-active');
         });
-      } else {
-        nextBtn.style.display = '';
-        nextBtn.textContent = 'Naechste Frage';
-        nextBtn.addEventListener('click', () => {
-          exerciseState.currentQ++;
-          exerciseState.checked = false;
-          renderExerciseContent(ex, parentContainer);
-        });
+        e.target.classList.add('uml-chip-touch-active');
       }
+    });
+
+    // Check button
+    contentEl.querySelector('#umlScenarioCheck').addEventListener('click', () => {
+      checkScenario(contentEl, sc, parentContainer);
     });
   }
 
+  function placeScenarioChip(contentEl, zone, value, chipIdx) {
+    const chipsPool = contentEl.querySelector('#umlScenarioChips');
+    const zoneId = zone.dataset.id;
+    const zoneType = zone.dataset.type;
+
+    // If zone already has a value, return old chip to pool
+    if (scenarioPlaced[zoneId]) {
+      const oldChip = chipsPool.querySelector(
+        `.uml-scenario-chip[data-chip-idx="${scenarioPlaced[zoneId].chipIdx}"]`
+      );
+      if (oldChip) {
+        oldChip.classList.remove('uml-chip-used');
+      }
+    }
+
+    // Place value
+    scenarioPlaced[zoneId] = { value, chipIdx };
+
+    // Update zone display
+    if (zoneType === 'actor') {
+      const label = zone.querySelector('.uml-scenario-actor-label');
+      if (label) {
+        label.textContent = value;
+        label.classList.remove('uml-scenario-blank');
+        label.classList.add('uml-scenario-placed');
+      }
+      // Change actor SVG from dashed to solid
+      const svg = zone.querySelector('svg');
+      if (svg) {
+        svg.setAttribute('stroke', 'var(--uml-actor)');
+        svg.removeAttribute('stroke-dasharray');
+      }
+    } else {
+      zone.textContent = value;
+      zone.classList.remove('uml-scenario-usecase-blank');
+      zone.classList.add('uml-scenario-usecase-placed');
+    }
+
+    zone.classList.add('uml-scenario-drop-filled');
+
+    // Mark chip as used
+    const chip = chipsPool.querySelector(
+      `.uml-scenario-chip[data-chip-idx="${chipIdx}"]`
+    );
+    if (chip) chip.classList.add('uml-chip-used');
+  }
+
+  function checkScenario(contentEl, sc, parentContainer) {
+    const dropZones = contentEl.querySelectorAll('.uml-scenario-drop-zone');
+    let correct = 0;
+    let total = 0;
+
+    dropZones.forEach((zone) => {
+      const zoneId = zone.dataset.id;
+      const expected = zone.dataset.expected;
+      total++;
+
+      const placed = scenarioPlaced[zoneId];
+      zone.classList.remove('uml-scenario-correct', 'uml-scenario-wrong');
+
+      if (placed && placed.value === expected) {
+        zone.classList.add('uml-scenario-correct');
+        correct++;
+      } else {
+        zone.classList.add('uml-scenario-wrong');
+      }
+    });
+
+    const allCorrect = correct === total;
+    if (allCorrect) {
+      markScenarioComplete(sc.id);
+    }
+
+    const feedbackEl = contentEl.querySelector('#umlScenarioFeedback');
+    feedbackEl.innerHTML = `
+      <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
+        ${allCorrect
+          ? `<strong>Perfekt!</strong> Alle ${total} Elemente korrekt zugeordnet.`
+          : `<strong>${correct} von ${total} korrekt.</strong>`
+        }
+        ${allCorrect ? `<p style="margin-top:var(--space-2);">${sc.explanation}</p>` : ''}
+      </div>
+    `;
+
+    // Show solution + next buttons
+    if (!allCorrect) {
+      const solBtn = contentEl.querySelector('#umlScenarioSolution');
+      solBtn.style.display = '';
+      solBtn.addEventListener('click', () => {
+        showScenarioSolution(contentEl, sc);
+      });
+    }
+
+    if (currentScenario < UC_SCENARIOS.length - 1) {
+      const nextBtn = contentEl.querySelector('#umlScenarioNext');
+      nextBtn.style.display = '';
+      nextBtn.addEventListener('click', () => {
+        currentScenario++;
+        renderScenarios(parentContainer);
+      });
+    }
+  }
+
+  function showScenarioSolution(contentEl, sc) {
+    const dropZones = contentEl.querySelectorAll('.uml-scenario-drop-zone');
+
+    dropZones.forEach((zone) => {
+      const expected = zone.dataset.expected;
+      const zoneType = zone.dataset.type;
+
+      zone.classList.remove('uml-scenario-wrong', 'uml-scenario-drop-filled');
+      zone.classList.add('uml-scenario-correct');
+
+      if (zoneType === 'actor') {
+        const label = zone.querySelector('.uml-scenario-actor-label');
+        if (label) {
+          label.textContent = expected;
+          label.classList.remove('uml-scenario-blank');
+          label.classList.add('uml-scenario-placed');
+        }
+        const svg = zone.querySelector('svg');
+        if (svg) {
+          svg.setAttribute('stroke', 'var(--success)');
+          svg.removeAttribute('stroke-dasharray');
+        }
+      } else {
+        zone.textContent = expected;
+        zone.classList.remove('uml-scenario-usecase-blank');
+        zone.classList.add('uml-scenario-usecase-placed');
+      }
+    });
+
+    const feedbackEl = contentEl.querySelector('#umlScenarioFeedback');
+    feedbackEl.innerHTML = `
+      <div class="module-feedback module-feedback-success" style="margin-top:var(--space-3);">
+        <strong>Loesung:</strong>
+        <p style="margin-top:var(--space-2);">${sc.explanation}</p>
+      </div>
+    `;
+
+    // Hide solution button
+    const solBtn = contentEl.querySelector('#umlScenarioSolution');
+    if (solBtn) solBtn.style.display = 'none';
+  }
+
   // ============================================================
-  // TAB 4: UML-Trainer
+  // TAB 3: UML-Trainer
   // ============================================================
 
   function renderTrainer(container) {
@@ -1886,7 +1272,6 @@ const UMLView = (() => {
 
   function nextKardRound() {
     trainerRound++;
-    // Cycle through scenarios
     const idx = (trainerRound - 1) % KARD_SCENARIOS.length;
     trainerCurrent = KARD_SCENARIOS[idx];
     trainerPlaced = {};
@@ -1895,7 +1280,6 @@ const UMLView = (() => {
   function renderKardRound(container) {
     const scenario = trainerCurrent;
 
-    // Scenario description
     const scenarioEl = container.querySelector('#umlKardScenario');
     if (scenarioEl) {
       scenarioEl.innerHTML = `
@@ -1906,14 +1290,13 @@ const UMLView = (() => {
       `;
     }
 
-    // Class pairs with drop zones
     const pairsEl = container.querySelector('#umlKardPairs');
     if (pairsEl) {
       pairsEl.innerHTML = `
         <div class="uml-kard-pairs">
           ${scenario.pairs
-          .map(
-            (pair, pi) => `
+            .map(
+              (pair, pi) => `
             <div class="uml-kard-pair" data-pair="${pi}">
               <div class="uml-kard-pair-class">${pair.left}</div>
               <div class="uml-kard-pair-rel">
@@ -1926,20 +1309,18 @@ const UMLView = (() => {
               <div class="uml-kard-pair-class">${pair.right}</div>
             </div>
           `
-          )
-          .join('')}
+            )
+            .join('')}
         </div>
       `;
     }
 
-    // Chips pool — provide duplicate chips so user can place same value twice
     const chipsEl = container.querySelector('#umlKardChips');
     if (chipsEl) {
-      // Build chip list with all needed options
       const chipValues = [];
       KARD_CHIPS.forEach((v) => {
         chipValues.push(v);
-        chipValues.push(v); // Duplicate so both drop zones can be filled
+        chipValues.push(v);
       });
       chipsEl.innerHTML = chipValues
         .map(
@@ -1950,15 +1331,27 @@ const UMLView = (() => {
         .join('');
     }
 
-    // Reset feedback
     const feedback = container.querySelector('#umlKardFeedback');
     if (feedback) feedback.innerHTML = '';
   }
 
   function setupKardEvents(container) {
+    setupKardDragDrop(container);
+
+    container.querySelector('#umlKardCheck').addEventListener('click', () => {
+      checkKardTrainer(container);
+    });
+
+    container.querySelector('#umlKardNext').addEventListener('click', () => {
+      nextKardRound();
+      renderKardRound(container);
+      setupKardDragDrop(container);
+    });
+  }
+
+  function setupKardDragDrop(container) {
     const chipsPool = container.querySelector('#umlKardChips');
 
-    // HTML5 drag from chips
     chipsPool.addEventListener('dragstart', (e) => {
       if (e.target.classList.contains('uml-chip')) {
         e.dataTransfer.setData(
@@ -1973,7 +1366,6 @@ const UMLView = (() => {
       e.target.classList.remove('uml-chip-dragging');
     });
 
-    // Drop on zones
     container.querySelectorAll('.uml-drop-zone').forEach((zone) => {
       zone.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -1988,12 +1380,9 @@ const UMLView = (() => {
         const data = e.dataTransfer.getData('text/plain');
         const [value, chipIdx] = data.split('|');
         const field = zone.dataset.field;
-
         zone.textContent = value;
         zone.classList.add('uml-drop-filled');
         trainerPlaced[field] = value;
-
-        // Mark chip as used
         const chip = chipsPool.querySelector(
           `.uml-chip[data-chip-idx="${chipIdx}"]:not(.uml-chip-used)`
         );
@@ -2001,7 +1390,7 @@ const UMLView = (() => {
       });
     });
 
-    // Touch fallback: tap chip then tap zone
+    // Touch fallback
     chipsPool.addEventListener('click', (e) => {
       if (
         e.target.classList.contains('uml-chip') &&
@@ -2026,86 +1415,6 @@ const UMLView = (() => {
           activeChip.classList.add('uml-chip-used');
           activeChip.classList.remove('uml-chip-touch-active');
         }
-      });
-    });
-
-    // Check
-    container.querySelector('#umlKardCheck').addEventListener('click', () => {
-      checkKardTrainer(container);
-    });
-
-    // Next round
-    container.querySelector('#umlKardNext').addEventListener('click', () => {
-      nextKardRound();
-      renderKardRound(container);
-
-      // Rebind drop events on new zones
-      container.querySelectorAll('.uml-drop-zone').forEach((zone) => {
-        zone.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          zone.classList.add('uml-drop-hover');
-        });
-        zone.addEventListener('dragleave', () => {
-          zone.classList.remove('uml-drop-hover');
-        });
-        zone.addEventListener('drop', (e) => {
-          e.preventDefault();
-          zone.classList.remove('uml-drop-hover');
-          const data = e.dataTransfer.getData('text/plain');
-          const [value, chipIdx] = data.split('|');
-          const field = zone.dataset.field;
-          zone.textContent = value;
-          zone.classList.add('uml-drop-filled');
-          trainerPlaced[field] = value;
-          const newChipsPool = container.querySelector('#umlKardChips');
-          const chip = newChipsPool.querySelector(
-            `.uml-chip[data-chip-idx="${chipIdx}"]:not(.uml-chip-used)`
-          );
-          if (chip) chip.classList.add('uml-chip-used');
-        });
-        zone.addEventListener('click', () => {
-          const newChipsPool = container.querySelector('#umlKardChips');
-          const activeChip = newChipsPool.querySelector(
-            '.uml-chip-touch-active'
-          );
-          if (activeChip) {
-            const value = activeChip.dataset.value;
-            const field = zone.dataset.field;
-            zone.textContent = value;
-            zone.classList.add('uml-drop-filled');
-            trainerPlaced[field] = value;
-            activeChip.classList.add('uml-chip-used');
-            activeChip.classList.remove('uml-chip-touch-active');
-          }
-        });
-      });
-
-      // Rebind chip touch
-      const newChipsPool = container.querySelector('#umlKardChips');
-      newChipsPool.addEventListener('click', (e) => {
-        if (
-          e.target.classList.contains('uml-chip') &&
-          !e.target.classList.contains('uml-chip-used')
-        ) {
-          newChipsPool
-            .querySelectorAll('.uml-chip-touch-active')
-            .forEach((c) => {
-              c.classList.remove('uml-chip-touch-active');
-            });
-          e.target.classList.add('uml-chip-touch-active');
-        }
-      });
-      newChipsPool.addEventListener('dragstart', (e) => {
-        if (e.target.classList.contains('uml-chip')) {
-          e.dataTransfer.setData(
-            'text/plain',
-            `${e.target.dataset.value}|${e.target.dataset.chipIdx}`
-          );
-          e.target.classList.add('uml-chip-dragging');
-        }
-      });
-      newChipsPool.addEventListener('dragend', (e) => {
-        e.target.classList.remove('uml-chip-dragging');
       });
     });
   }
@@ -2159,7 +1468,6 @@ const UMLView = (() => {
       );
     }
 
-    // Update best
     if (trainerScore > progress.trainer.cardBest) {
       progress.trainer.cardBest = trainerScore;
       progress.trainer.best = Math.max(progress.trainer.best, trainerScore);
@@ -2179,9 +1487,9 @@ const UMLView = (() => {
     feedback.innerHTML = `
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
         ${allCorrect
-        ? '<strong>Perfekt!</strong> Alle Kardinalitaeten korrekt zugeordnet. +10 Punkte!'
-        : `<strong>${correct} von ${total} korrekt.</strong> Loesung: ${solutionText}`
-      }
+          ? '<strong>Perfekt!</strong> Alle Kardinalitaeten korrekt zugeordnet. +10 Punkte!'
+          : `<strong>${correct} von ${total} korrekt.</strong> Loesung: ${solutionText}`
+        }
       </div>
     `;
   }
@@ -2224,7 +1532,7 @@ const UMLView = (() => {
     trainerRound++;
     const idx = (trainerRound - 1) % SWIM_SCENARIOS.length;
     trainerCurrent = SWIM_SCENARIOS[idx];
-    trainerPlaced = {}; // lane -> [actionText]
+    trainerPlaced = {};
   }
 
   function renderSwimRound(container) {
@@ -2240,26 +1548,24 @@ const UMLView = (() => {
       `;
     }
 
-    // Lanes as drop zones
     const lanesEl = container.querySelector('#umlSwimLanes');
     if (lanesEl) {
       lanesEl.innerHTML = `
         <div class="uml-swim-lanes" style="grid-template-columns: repeat(${scenario.lanes.length}, 1fr);">
           ${scenario.lanes
-          .map(
-            (lane) => `
+            .map(
+              (lane) => `
             <div class="uml-swim-lane" data-lane="${lane}">
               <div class="uml-swim-lane-header">${lane}</div>
               <div class="uml-swim-lane-drop" data-lane="${lane}"></div>
             </div>
           `
-          )
-          .join('')}
+            )
+            .join('')}
         </div>
       `;
     }
 
-    // Shuffled action chips
     const shuffled = [...scenario.actions].sort(() => Math.random() - 0.5);
     const chipsEl = container.querySelector('#umlSwimChips');
     if (chipsEl) {
@@ -2272,7 +1578,6 @@ const UMLView = (() => {
         .join('');
     }
 
-    // Reset placed
     trainerPlaced = {};
     scenario.lanes.forEach((lane) => {
       trainerPlaced[lane] = [];
@@ -2285,12 +1590,10 @@ const UMLView = (() => {
   function setupSwimEvents(container) {
     bindSwimDragDrop(container);
 
-    // Check
     container.querySelector('#umlSwimCheck').addEventListener('click', () => {
       checkSwimTrainer(container);
     });
 
-    // Next round
     container.querySelector('#umlSwimNext').addEventListener('click', () => {
       nextSwimRound();
       renderSwimRound(container);
@@ -2301,7 +1604,6 @@ const UMLView = (() => {
   function bindSwimDragDrop(container) {
     const chipsPool = container.querySelector('#umlSwimChips');
 
-    // Drag from chips
     chipsPool.addEventListener('dragstart', (e) => {
       const chip = e.target.closest('.uml-swim-action-chip');
       if (chip) {
@@ -2315,7 +1617,6 @@ const UMLView = (() => {
       if (chip) chip.classList.remove('uml-chip-dragging');
     });
 
-    // Drop on lanes
     container.querySelectorAll('.uml-swim-lane-drop').forEach((drop) => {
       drop.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -2329,12 +1630,9 @@ const UMLView = (() => {
         drop.classList.remove('uml-drop-hover');
         const text = e.dataTransfer.getData('text/plain');
         const lane = drop.dataset.lane;
-
-        // Move chip to lane
         placeSwimChip(container, text, lane, drop);
       });
 
-      // Touch fallback: tap zone
       drop.addEventListener('click', () => {
         const activeChip = chipsPool.querySelector('.uml-chip-touch-active');
         if (activeChip) {
@@ -2346,7 +1644,6 @@ const UMLView = (() => {
       });
     });
 
-    // Touch fallback: tap chip to select
     chipsPool.addEventListener('click', (e) => {
       const chip = e.target.closest('.uml-swim-action-chip');
       if (chip) {
@@ -2361,20 +1658,17 @@ const UMLView = (() => {
   function placeSwimChip(container, text, lane, dropZone) {
     const chipsPool = container.querySelector('#umlSwimChips');
 
-    // Remove from pool
     const chip = chipsPool.querySelector(
       `.uml-swim-action-chip[data-text="${text}"]`
     );
     if (chip) chip.remove();
 
-    // Add to lane drop zone
     const placed = document.createElement('div');
     placed.className = 'uml-swim-action-chip';
     placed.textContent = text;
     placed.dataset.text = text;
     dropZone.appendChild(placed);
 
-    // Track placement
     if (!trainerPlaced[lane]) trainerPlaced[lane] = [];
     trainerPlaced[lane].push(text);
   }
@@ -2384,7 +1678,6 @@ const UMLView = (() => {
     let correct = 0;
     const total = scenario.actions.length;
 
-    // Check each placed action
     container.querySelectorAll('.uml-swim-lane-drop').forEach((drop) => {
       const lane = drop.dataset.lane;
       drop.querySelectorAll('.uml-swim-action-chip').forEach((chip) => {
@@ -2400,7 +1693,6 @@ const UMLView = (() => {
       });
     });
 
-    // Count unplaced
     const chipsPool = container.querySelector('#umlSwimChips');
     const unplaced = chipsPool.querySelectorAll('.uml-swim-action-chip').length;
 
@@ -2435,9 +1727,9 @@ const UMLView = (() => {
     feedback.innerHTML = `
       <div class="module-feedback ${allCorrect ? 'module-feedback-success' : 'module-feedback-error'}" style="margin-top:var(--space-3);">
         ${allCorrect
-        ? '<strong>Perfekt!</strong> Alle Aktionen richtig zugeordnet. +10 Punkte!'
-        : `<strong>${correct} von ${total} korrekt.</strong><br>${solutionText}`
-      }
+          ? '<strong>Perfekt!</strong> Alle Aktionen richtig zugeordnet. +10 Punkte!'
+          : `<strong>${correct} von ${total} korrekt.</strong><br>${solutionText}`
+        }
       </div>
     `;
   }

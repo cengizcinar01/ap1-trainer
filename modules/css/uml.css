@@ -203,13 +203,7 @@
   color: var(--uml-usecase);
 }
 
-/* --- Free Mode --- */
-.uml-freemode {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
+/* --- Sub Selector (Trainer) --- */
 .uml-sub-selector {
   display: flex;
   gap: var(--space-2);
@@ -239,329 +233,23 @@
   color: white;
 }
 
-/* --- Canvas Shared --- */
-.uml-canvas-wrapper {
-  position: relative;
+/* --- Scenario Diagram --- */
+.uml-scenario-diagram {
   background: var(--bg-secondary);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  min-height: 500px;
+  overflow-x: auto;
 }
 
-.uml-toolbar {
-  display: flex;
-  gap: var(--space-2);
-  padding: var(--space-3);
-  background: var(--bg-tertiary);
-  border-bottom: 1px solid var(--card-border);
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.uml-toolbar-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-1) var(--space-3);
-  border: 1px solid var(--border-color);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-}
-
-.uml-toolbar-btn:hover {
-  border-color: var(--accent-primary);
-  color: var(--text-primary);
-}
-
-.uml-toolbar-btn.active {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: white;
-}
-
-.uml-toolbar-btn.uml-btn-danger {
-  border-color: var(--danger);
-  color: var(--danger);
-}
-
-.uml-toolbar-btn.uml-btn-danger:hover {
-  background: var(--danger);
-  color: white;
-}
-
-.uml-toolbar-divider {
-  width: 1px;
-  height: 24px;
-  background: var(--border-color);
-  margin: 0 var(--space-1);
-}
-
-.uml-canvas {
-  position: relative;
-  min-height: 460px;
-  overflow: auto;
-}
-
-.uml-canvas svg {
+.uml-scenario-boundary {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.uml-canvas svg line,
-.uml-canvas svg path {
-  pointer-events: stroke;
-}
-
-/* --- Activity Diagram Elements --- */
-.uml-el {
-  position: absolute;
-  cursor: grab;
-  z-index: 2;
-  user-select: none;
-  transition: box-shadow var(--transition-fast);
-}
-
-.uml-el:hover {
-  z-index: 10;
-}
-
-.uml-el.uml-dragging {
-  cursor: grabbing;
-  z-index: 100;
-  opacity: 0.85;
-}
-
-.uml-el.uml-selected {
-  box-shadow: 0 0 0 2px var(--accent-primary);
-}
-
-.uml-el-action {
-  background: var(--uml-action-bg);
-  border: 2px solid var(--uml-action);
+  border: 2px dashed var(--text-tertiary);
   border-radius: var(--radius-xl);
-  padding: var(--space-2) var(--space-4);
-  min-width: 120px;
-  text-align: center;
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  color: var(--text-primary);
+  background: rgba(155, 126, 196, 0.03);
 }
 
-.uml-el-decision {
-  width: 44px;
-  height: 44px;
-  background: var(--uml-decision-bg);
-  border: 2px solid var(--uml-decision);
-  transform: rotate(45deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.uml-el-decision span {
-  transform: rotate(-45deg);
-  font-size: var(--font-size-xs);
-  color: var(--text-primary);
-}
-
-.uml-el-start {
-  width: 28px;
-  height: 28px;
-  background: var(--uml-start);
-  border-radius: 50%;
-}
-
-.uml-el-end {
-  width: 28px;
-  height: 28px;
-  background: transparent;
-  border: 3px solid var(--uml-end);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.uml-el-end::after {
-  content: "";
-  width: 16px;
-  height: 16px;
-  background: var(--uml-end);
-  border-radius: 50%;
-}
-
-.uml-el-fork {
-  background: var(--uml-fork);
-  border-radius: 2px;
-}
-
-.uml-el-fork-h {
-  width: 120px;
-  height: 8px;
-}
-
-.uml-el-fork-v {
-  width: 8px;
-  height: 120px;
-}
-
-.uml-el-signal {
-  background: var(--uml-action-bg);
-  border: 2px solid var(--uml-action);
-  padding: var(--space-2) var(--space-4);
-  min-width: 100px;
-  text-align: center;
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.uml-el-signal-send {
-  /* Convex shape on right */
-  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
-  padding-right: var(--space-6);
-}
-
-.uml-el-signal-recv {
-  /* Concave shape on left */
-  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
-  padding-left: var(--space-6);
-}
-
-/* --- Swimlanes --- */
-.uml-swimlanes {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-}
-
-.uml-swimlane {
-  flex: 1;
-  border-right: 1px dashed var(--border-color);
-  position: relative;
-  min-height: 100%;
-}
-
-.uml-swimlane:last-child {
-  border-right: none;
-}
-
-.uml-swimlane-header {
-  text-align: center;
-  padding: var(--space-2) var(--space-3);
-  background: var(--bg-tertiary);
-  border-bottom: 1px solid var(--card-border);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--text-primary);
-  position: sticky;
-  top: 0;
-  z-index: 5;
-}
-
-.uml-swimlane:nth-child(1) {
-  background: var(--uml-swimlane-1);
-}
-
-.uml-swimlane:nth-child(2) {
-  background: var(--uml-swimlane-2);
-}
-
-.uml-swimlane:nth-child(3) {
-  background: var(--uml-swimlane-3);
-}
-
-.uml-swimlane:nth-child(4) {
-  background: var(--uml-swimlane-4);
-}
-
-/* --- Class Diagram Elements --- */
-.uml-class-box {
-  position: absolute;
-  background: var(--bg-secondary);
-  border: 2px solid var(--uml-class);
-  border-radius: var(--radius-md);
-  min-width: 160px;
-  cursor: grab;
-  z-index: 2;
-  user-select: none;
-  font-size: var(--font-size-xs);
-}
-
-.uml-class-box:hover {
-  z-index: 10;
-}
-
-.uml-class-box.uml-dragging {
-  cursor: grabbing;
-  z-index: 100;
-  opacity: 0.85;
-}
-
-.uml-class-box.uml-selected {
-  box-shadow: 0 0 0 2px var(--accent-primary);
-}
-
-.uml-class-name {
-  text-align: center;
-  font-weight: 700;
-  padding: var(--space-2) var(--space-3);
-  border-bottom: 1px solid var(--uml-class);
-  color: var(--text-primary);
-}
-
-.uml-class-attrs,
-.uml-class-methods {
-  padding: var(--space-2) var(--space-3);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  min-height: 24px;
-}
-
-.uml-class-attrs {
-  border-bottom: 1px solid var(--uml-class);
-}
-
-/* --- Use-Case Diagram Elements --- */
-.uml-uc-boundary {
-  position: absolute;
-  border: 2px dashed var(--text-primary);
-  border-radius: var(--radius-xl);
-  z-index: 0;
-  min-width: 300px;
-  min-height: 200px;
-  background: rgba(125, 125, 125, 0.05);
-  /* Slight tint for visibility */
-  cursor: grab;
-}
-
-.uml-uc-boundary.uml-selected {
-  border-color: var(--accent-primary);
-  border-style: solid;
-  box-shadow: 0 0 0 2px rgba(var(--accent-primary-rgb), 0.2);
-}
-
-.uml-uc-boundary.uml-dragging {
-  cursor: grabbing;
-}
-
-.uml-uc-boundary-title {
+.uml-scenario-boundary-title {
   position: absolute;
   top: -12px;
   left: 50%;
@@ -574,70 +262,66 @@
   white-space: nowrap;
 }
 
-.uml-uc-actor {
+.uml-scenario-svg {
   position: absolute;
-  cursor: grab;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- Scenario Actor --- */
+.uml-scenario-actor {
+  position: absolute;
   z-index: 2;
-  user-select: none;
   text-align: center;
-  width: 60px;
+  width: 70px;
 }
 
-.uml-uc-actor.uml-dragging {
-  cursor: grabbing;
-  z-index: 100;
-  opacity: 0.85;
-}
-
-.uml-uc-actor.uml-selected {
-  outline: none;
-}
-
-.uml-uc-actor.uml-selected svg {
-  stroke: var(--accent-primary);
-  filter: drop-shadow(0 0 2px var(--accent-primary));
-}
-
-.uml-uc-actor svg {
-  width: 40px;
-  height: 48px;
+.uml-scenario-actor svg {
   display: block;
-  margin: 0 auto var(--space-1);
-  transition: stroke 0.2s;
+  margin: 0 auto;
 }
 
-.uml-uc-actor-label {
+.uml-scenario-actor-label {
   font-size: var(--font-size-xs);
-  color: var(--text-primary);
   font-weight: 600;
-  position: absolute;
-  top: -40px;
-  /* Position above head */
-  left: 50%;
-  transform: translateX(-50%);
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--space-1);
   white-space: nowrap;
-  pointer-events: auto;
-  z-index: 10;
-  cursor: text;
-
-  /* Box styling */
   background: var(--bg-secondary);
   border: 1px solid var(--card-border);
   padding: 2px 8px;
   border-radius: var(--radius-sm);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.uml-uc-usecase {
+.uml-scenario-actor-label.uml-scenario-blank {
+  border: 2px dashed var(--border-light);
+  color: var(--text-tertiary);
+  min-width: 60px;
+  background: var(--bg-tertiary);
+}
+
+.uml-scenario-actor-label.uml-scenario-placed {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+/* --- Scenario Use Case --- */
+.uml-scenario-usecase {
   position: absolute;
-  cursor: grab;
   z-index: 2;
-  user-select: none;
   background: var(--uml-usecase-bg);
   border: 2px solid var(--uml-usecase);
   border-radius: 50%;
   padding: var(--space-2) var(--space-4);
-  min-width: 100px;
+  min-width: 120px;
+  min-height: 44px;
   text-align: center;
   font-size: var(--font-size-xs);
   font-weight: 500;
@@ -645,48 +329,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
 }
 
-.uml-uc-usecase.uml-dragging {
-  cursor: grabbing;
-  z-index: 100;
-  opacity: 0.85;
+.uml-scenario-usecase-blank {
+  background: var(--bg-tertiary);
+  border: 2px dashed var(--border-light);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-lg);
+  font-weight: 300;
 }
 
-.uml-uc-usecase.uml-selected {
-  box-shadow: 0 0 0 2px var(--accent-primary);
-}
-
-/* --- Guard Condition Labels --- */
-.uml-guard-label {
-  position: absolute;
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-sm);
-  padding: 1px 6px;
-  font-size: 10px;
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* --- Cardinality Labels --- */
-.uml-card-label {
-  position: absolute;
-  font-size: 10px;
+.uml-scenario-usecase-placed {
+  background: rgba(90, 122, 150, 0.08);
+  border: 2px solid var(--accent-primary);
+  color: var(--accent-primary);
   font-weight: 600;
-  color: var(--text-primary);
-  background: var(--bg-secondary);
-  padding: 0 3px;
-  border-radius: var(--radius-sm);
-  z-index: 3;
-  cursor: pointer;
 }
 
-.uml-card-label:hover {
-  outline: 1px solid var(--accent-primary);
+/* --- Scenario Drop Zone States --- */
+.uml-scenario-drop-zone {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.uml-scenario-drop-hover {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.uml-scenario-drop-hover.uml-scenario-usecase {
+  background: rgba(90, 122, 150, 0.1);
+}
+
+.uml-scenario-correct .uml-scenario-actor-label,
+.uml-scenario-correct.uml-scenario-usecase {
+  border-color: var(--success);
+  color: var(--success);
+  background: var(--success-bg);
+}
+
+.uml-scenario-wrong .uml-scenario-actor-label,
+.uml-scenario-wrong.uml-scenario-usecase {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: var(--danger-bg);
 }
 
 /* --- Trainer Tab --- */
@@ -930,6 +616,12 @@
   transform: translateY(-2px);
 }
 
+/* --- Scenario Chips --- */
+.uml-scenario-chip {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-xs);
+}
+
 /* --- Swimlane Trainer --- */
 .uml-swim-scenario {
   background: var(--bg-secondary);
@@ -1135,75 +827,6 @@
   margin-bottom: var(--space-4);
 }
 
-.uml-exercise-options {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-}
-
-.uml-exercise-option {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  background: var(--bg-tertiary);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-}
-
-.uml-exercise-option:hover {
-  border-color: var(--accent-primary);
-  color: var(--text-primary);
-}
-
-.uml-exercise-option.selected {
-  border-color: var(--accent-primary);
-  background: rgba(90, 122, 150, 0.08);
-  color: var(--text-primary);
-}
-
-.uml-exercise-option.uml-option-correct {
-  border-color: var(--success);
-  background: var(--success-bg);
-  color: var(--success);
-}
-
-.uml-exercise-option.uml-option-wrong {
-  border-color: var(--danger);
-  background: var(--danger-bg);
-  color: var(--danger);
-}
-
-.uml-exercise-option-marker {
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--border-light);
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-}
-
-.uml-exercise-option.selected .uml-exercise-option-marker {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary);
-}
-
-.uml-exercise-option.selected .uml-exercise-option-marker::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-}
-
 .uml-exercise-actions {
   display: flex;
   gap: var(--space-3);
@@ -1220,11 +843,6 @@
   font-size: var(--font-size-xs);
   color: var(--info);
   line-height: var(--line-height-relaxed);
-}
-
-/* --- Solution Steps --- */
-.uml-solution-steps {
-  margin-top: var(--space-4);
 }
 
 /* --- Relationship Type Label --- */
@@ -1308,14 +926,6 @@
     flex-wrap: wrap;
   }
 
-  .uml-canvas-wrapper {
-    min-height: 400px;
-  }
-
-  .uml-toolbar {
-    overflow-x: auto;
-  }
-
   .uml-kard-pair {
     flex-direction: column;
   }
@@ -1326,5 +936,18 @@
 
   .uml-trainer-header {
     flex-direction: column;
+  }
+
+  .uml-scenario-diagram {
+    min-height: 400px;
+  }
+
+  .uml-scenario-usecase {
+    min-width: 90px;
+    font-size: 10px;
+  }
+
+  .uml-exercise-nav {
+    flex-wrap: nowrap;
   }
 }
