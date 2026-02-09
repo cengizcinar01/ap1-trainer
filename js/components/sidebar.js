@@ -113,17 +113,13 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.gantt}</span>
           Gantt-Diagramm
         </a>
-        <a href="#/modules/networkplan" class="nav-item ${currentRoute.startsWith('/modules/networkplan') ? 'active' : ''}" data-route="/modules/networkplan">
-          <span class="nav-item-icon">${ICONS.networkplan}</span>
-          Netzplantechnik
-        </a>
-        <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
-          <span class="nav-item-icon">${ICONS.subnetting}</span>
-          Subnetting
-        </a>
         <a href="#/modules/osimodel" class="nav-item ${currentRoute.startsWith('/modules/osimodel') ? 'active' : ''}" data-route="/modules/osimodel">
           <span class="nav-item-icon">${ICONS.osimodel}</span>
           OSI-Modell
+        </a>
+        <a href="#/modules/networkplan" class="nav-item ${currentRoute.startsWith('/modules/networkplan') ? 'active' : ''}" data-route="/modules/networkplan">
+          <span class="nav-item-icon">${ICONS.networkplan}</span>
+          Netzplantechnik
         </a>
         <a href="#/modules/communication" class="nav-item ${currentRoute.startsWith('/modules/communication') ? 'active' : ''}" data-route="/modules/communication">
           <span class="nav-item-icon">${ICONS.communication}</span>
