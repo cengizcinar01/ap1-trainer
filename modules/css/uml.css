@@ -1,0 +1,1266 @@
+/* ============================================================
+   uml.css — UML-Diagramm-Werkstatt module styles
+   All classes use uml- prefix
+   ============================================================ */
+
+/* --- UML Color Tokens --- */
+:root {
+  --uml-action: #5a9e7c;
+  --uml-action-bg: rgba(90, 158, 124, 0.15);
+  --uml-decision: #c4a35a;
+  --uml-decision-bg: rgba(196, 163, 90, 0.15);
+  --uml-start: #6bae6b;
+  --uml-start-bg: rgba(107, 174, 107, 0.15);
+  --uml-end: #b57373;
+  --uml-end-bg: rgba(181, 115, 115, 0.15);
+  --uml-fork: #8b8d96;
+  --uml-fork-bg: rgba(139, 141, 150, 0.15);
+  --uml-actor: #6b8cae;
+  --uml-actor-bg: rgba(107, 140, 174, 0.15);
+  --uml-usecase: #9b7ec4;
+  --uml-usecase-bg: rgba(155, 126, 196, 0.15);
+  --uml-class: #5a7a96;
+  --uml-class-bg: rgba(90, 122, 150, 0.15);
+  --uml-swimlane-1: rgba(107, 140, 174, 0.08);
+  --uml-swimlane-2: rgba(155, 126, 196, 0.08);
+  --uml-swimlane-3: rgba(90, 158, 124, 0.08);
+  --uml-swimlane-4: rgba(196, 163, 90, 0.08);
+  --uml-aggregation: #6b8cae;
+  --uml-composition: #b57373;
+  --uml-inheritance: #5a9e7c;
+}
+
+/* --- Explanation Tab --- */
+.uml-explanation {
+  max-width: 850px;
+}
+
+.uml-section {
+  margin-bottom: var(--space-8);
+}
+
+.uml-section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.uml-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-3);
+}
+
+.uml-text strong {
+  color: var(--text-primary);
+}
+
+/* --- Diagram Type Cards --- */
+.uml-types-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.uml-type-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.uml-type-card-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-3) 0;
+}
+
+.uml-type-card-icon svg {
+  width: 64px;
+  height: 64px;
+}
+
+.uml-type-card h4 {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.uml-type-card p {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* --- Pruefungswissen Box --- */
+.uml-exam-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--uml-composition);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.uml-exam-box-title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--uml-composition);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.uml-exam-box-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.uml-exam-item {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.uml-exam-item h5 {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.uml-exam-item p {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.uml-exam-item .uml-diamond-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: var(--space-1);
+}
+
+/* --- Concept Info Cards --- */
+.uml-concepts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.uml-concept-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+}
+
+.uml-concept-card h4 {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.uml-concept-card p {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--space-2);
+}
+
+.uml-concept-card p:last-child {
+  margin-bottom: 0;
+}
+
+.uml-concept-card em {
+  color: var(--accent-primary);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.uml-concept-card code {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-sm);
+  padding: 1px 5px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--uml-usecase);
+}
+
+/* --- Free Mode --- */
+.uml-freemode {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.uml-sub-selector {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.uml-sub-btn {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.uml-sub-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.uml-sub-btn.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+/* --- Canvas Shared --- */
+.uml-canvas-wrapper {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.uml-toolbar {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--card-border);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.uml-toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.uml-toolbar-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.uml-toolbar-btn.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.uml-toolbar-btn.uml-btn-danger {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.uml-toolbar-btn.uml-btn-danger:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.uml-toolbar-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-color);
+  margin: 0 var(--space-1);
+}
+
+.uml-canvas {
+  position: relative;
+  min-height: 460px;
+  overflow: auto;
+}
+
+.uml-canvas svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.uml-canvas svg line,
+.uml-canvas svg path {
+  pointer-events: stroke;
+}
+
+/* --- Activity Diagram Elements --- */
+.uml-el {
+  position: absolute;
+  cursor: grab;
+  z-index: 2;
+  user-select: none;
+  transition: box-shadow var(--transition-fast);
+}
+
+.uml-el:hover {
+  z-index: 10;
+}
+
+.uml-el.uml-dragging {
+  cursor: grabbing;
+  z-index: 100;
+  opacity: 0.85;
+}
+
+.uml-el.uml-selected {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+.uml-el-action {
+  background: var(--uml-action-bg);
+  border: 2px solid var(--uml-action);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2) var(--space-4);
+  min-width: 120px;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.uml-el-decision {
+  width: 44px;
+  height: 44px;
+  background: var(--uml-decision-bg);
+  border: 2px solid var(--uml-decision);
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uml-el-decision span {
+  transform: rotate(-45deg);
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+}
+
+.uml-el-start {
+  width: 28px;
+  height: 28px;
+  background: var(--uml-start);
+  border-radius: 50%;
+}
+
+.uml-el-end {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 3px solid var(--uml-end);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uml-el-end::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: var(--uml-end);
+  border-radius: 50%;
+}
+
+.uml-el-fork {
+  width: 120px;
+  height: 6px;
+  background: var(--uml-fork);
+  border-radius: 3px;
+}
+
+/* --- Swimlanes --- */
+.uml-swimlanes {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.uml-swimlane {
+  flex: 1;
+  border-right: 1px dashed var(--border-color);
+  position: relative;
+  min-height: 100%;
+}
+
+.uml-swimlane:last-child {
+  border-right: none;
+}
+
+.uml-swimlane-header {
+  text-align: center;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--card-border);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.uml-swimlane:nth-child(1) {
+  background: var(--uml-swimlane-1);
+}
+
+.uml-swimlane:nth-child(2) {
+  background: var(--uml-swimlane-2);
+}
+
+.uml-swimlane:nth-child(3) {
+  background: var(--uml-swimlane-3);
+}
+
+.uml-swimlane:nth-child(4) {
+  background: var(--uml-swimlane-4);
+}
+
+/* --- Class Diagram Elements --- */
+.uml-class-box {
+  position: absolute;
+  background: var(--bg-secondary);
+  border: 2px solid var(--uml-class);
+  border-radius: var(--radius-md);
+  min-width: 160px;
+  cursor: grab;
+  z-index: 2;
+  user-select: none;
+  font-size: var(--font-size-xs);
+}
+
+.uml-class-box:hover {
+  z-index: 10;
+}
+
+.uml-class-box.uml-dragging {
+  cursor: grabbing;
+  z-index: 100;
+  opacity: 0.85;
+}
+
+.uml-class-box.uml-selected {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+.uml-class-name {
+  text-align: center;
+  font-weight: 700;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--uml-class);
+  color: var(--text-primary);
+}
+
+.uml-class-attrs,
+.uml-class-methods {
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  min-height: 24px;
+}
+
+.uml-class-attrs {
+  border-bottom: 1px solid var(--uml-class);
+}
+
+/* --- Use-Case Diagram Elements --- */
+.uml-uc-boundary {
+  position: absolute;
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-xl);
+  z-index: 0;
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.uml-uc-boundary-title {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-secondary);
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.uml-uc-actor {
+  position: absolute;
+  cursor: grab;
+  z-index: 2;
+  user-select: none;
+  text-align: center;
+  width: 60px;
+}
+
+.uml-uc-actor.uml-dragging {
+  cursor: grabbing;
+  z-index: 100;
+  opacity: 0.85;
+}
+
+.uml-uc-actor.uml-selected {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+.uml-uc-actor svg {
+  width: 40px;
+  height: 48px;
+  display: block;
+  margin: 0 auto var(--space-1);
+}
+
+.uml-uc-actor-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.uml-uc-usecase {
+  position: absolute;
+  cursor: grab;
+  z-index: 2;
+  user-select: none;
+  background: var(--uml-usecase-bg);
+  border: 2px solid var(--uml-usecase);
+  border-radius: 50%;
+  padding: var(--space-2) var(--space-4);
+  min-width: 100px;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+
+.uml-uc-usecase.uml-dragging {
+  cursor: grabbing;
+  z-index: 100;
+  opacity: 0.85;
+}
+
+.uml-uc-usecase.uml-selected {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+/* --- Guard Condition Labels --- */
+.uml-guard-label {
+  position: absolute;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* --- Cardinality Labels --- */
+.uml-card-label {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  padding: 0 3px;
+  border-radius: var(--radius-sm);
+  z-index: 3;
+  cursor: pointer;
+}
+
+.uml-card-label:hover {
+  outline: 1px solid var(--accent-primary);
+}
+
+/* --- Trainer Tab --- */
+.uml-trainer {
+  max-width: 850px;
+}
+
+.uml-trainer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+  gap: var(--space-4);
+}
+
+.uml-trainer-info h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1);
+}
+
+.uml-trainer-info p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.uml-trainer-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3) var(--space-5);
+}
+
+.uml-trainer-score-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.uml-trainer-score-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--accent-primary);
+}
+
+/* --- Kardinalitaeten Trainer --- */
+.uml-kard-diagram {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  margin-bottom: var(--space-4);
+  position: relative;
+  min-height: 180px;
+  overflow-x: auto;
+}
+
+.uml-kard-classes {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: var(--space-8);
+  position: relative;
+}
+
+.uml-kard-class {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--uml-class);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+  font-size: var(--font-size-xs);
+  flex-shrink: 0;
+}
+
+.uml-kard-class-name {
+  text-align: center;
+  font-weight: 700;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--uml-class);
+  color: var(--text-primary);
+}
+
+.uml-kard-class-body {
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.uml-kard-connection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.uml-kard-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  flex: 1;
+  justify-content: center;
+}
+
+.uml-kard-line-visual {
+  width: 80px;
+  height: 2px;
+  background: var(--text-secondary);
+  position: relative;
+}
+
+.uml-kard-line-visual.uml-rel-aggregation::before,
+.uml-kard-line-visual.uml-rel-composition::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--text-secondary);
+  transform: rotate(45deg);
+}
+
+.uml-kard-line-visual.uml-rel-aggregation::before {
+  background: var(--bg-secondary);
+}
+
+.uml-kard-line-visual.uml-rel-composition::before {
+  background: var(--text-secondary);
+}
+
+.uml-kard-line-visual.uml-rel-inheritance::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: -5px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid var(--bg-secondary);
+  border-bottom-color: transparent;
+  border-top: 10px solid var(--text-secondary);
+}
+
+/* --- Drop Zones --- */
+.uml-drop-zone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 32px;
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-tertiary);
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.uml-drop-zone.uml-drop-hover {
+  border-color: var(--accent-primary);
+  background: rgba(90, 122, 150, 0.1);
+}
+
+.uml-drop-zone.uml-drop-filled {
+  border-style: solid;
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(90, 122, 150, 0.08);
+}
+
+.uml-drop-zone.uml-input-correct {
+  border-color: var(--success);
+  color: var(--success);
+  background: var(--success-bg);
+}
+
+.uml-drop-zone.uml-input-wrong {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+/* --- Draggable Chips --- */
+.uml-chips-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-4);
+  justify-content: center;
+}
+
+.uml-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1) var(--space-3);
+  background: var(--accent-primary);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: grab;
+  user-select: none;
+  transition: all var(--transition-fast);
+}
+
+.uml-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.uml-chip.uml-chip-dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.uml-chip.uml-chip-used {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.uml-chip.uml-chip-touch-active {
+  box-shadow:
+    0 0 0 3px var(--accent-primary),
+    0 0 12px rgba(90, 122, 150, 0.4);
+  transform: translateY(-2px);
+}
+
+/* --- Swimlane Trainer --- */
+.uml-swim-scenario {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.uml-swim-scenario strong {
+  color: var(--text-primary);
+}
+
+.uml-swim-scenario p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: var(--space-2) 0 0;
+}
+
+.uml-swim-lanes {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.uml-swim-lane {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.uml-swim-lane-header {
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--card-border);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.uml-swim-lane-drop {
+  min-height: 60px;
+  padding: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.uml-swim-lane-drop.uml-drop-hover {
+  background: rgba(90, 122, 150, 0.06);
+}
+
+.uml-swim-action-chip {
+  padding: var(--space-2) var(--space-3);
+  background: var(--accent-primary);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  cursor: grab;
+  user-select: none;
+  transition: all var(--transition-fast);
+}
+
+.uml-swim-action-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.uml-swim-action-chip.uml-chip-dragging {
+  opacity: 0.5;
+}
+
+.uml-swim-action-chip.uml-chip-touch-active {
+  box-shadow:
+    0 0 0 3px var(--accent-primary),
+    0 0 12px rgba(90, 122, 150, 0.4);
+  transform: translateY(-2px);
+}
+
+.uml-swim-action-chip.uml-swim-correct {
+  background: var(--success);
+}
+
+.uml-swim-action-chip.uml-swim-wrong {
+  background: var(--danger);
+}
+
+/* --- Trainer Actions --- */
+.uml-trainer-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* --- Exercises Tab --- */
+.uml-exercise-nav {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+}
+
+.uml-exercise-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.uml-exercise-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.uml-exercise-btn.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.uml-exercise-btn.completed {
+  border-color: var(--success);
+}
+
+.uml-exercise-btn-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+}
+
+.uml-exercise-check {
+  color: var(--success);
+  font-weight: 700;
+}
+
+/* --- Exercise Card --- */
+.uml-exercise-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+}
+
+.uml-exercise-card h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1);
+}
+
+.uml-exercise-meta {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.uml-exercise-badge {
+  font-size: var(--font-size-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.uml-badge-leicht {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.uml-badge-mittel {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.uml-badge-schwer {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.uml-exercise-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.uml-exercise-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.uml-exercise-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.uml-exercise-option:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.uml-exercise-option.selected {
+  border-color: var(--accent-primary);
+  background: rgba(90, 122, 150, 0.08);
+  color: var(--text-primary);
+}
+
+.uml-exercise-option.uml-option-correct {
+  border-color: var(--success);
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.uml-exercise-option.uml-option-wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.uml-exercise-option-marker {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.uml-exercise-option.selected .uml-exercise-option-marker {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+}
+
+.uml-exercise-option.selected .uml-exercise-option-marker::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+
+.uml-exercise-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* --- Hint Box --- */
+.uml-hint-box {
+  background: var(--info-bg);
+  border: 1px solid var(--info);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-xs);
+  color: var(--info);
+  line-height: var(--line-height-relaxed);
+}
+
+/* --- Solution Steps --- */
+.uml-solution-steps {
+  margin-top: var(--space-4);
+}
+
+/* --- Relationship Type Label --- */
+.uml-rel-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-top: var(--space-1);
+}
+
+/* --- Kard Scenario --- */
+.uml-kard-scenario {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.uml-kard-scenario strong {
+  color: var(--text-primary);
+}
+
+.uml-kard-scenario p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--space-2) 0 0;
+}
+
+/* --- Kard Pairs Grid --- */
+.uml-kard-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.uml-kard-pair {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.uml-kard-pair-class {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--uml-class);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 100px;
+  text-align: center;
+}
+
+.uml-kard-pair-rel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .uml-types-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .uml-exam-box-content {
+    grid-template-columns: 1fr;
+  }
+
+  .uml-concepts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .uml-sub-selector {
+    flex-wrap: wrap;
+  }
+
+  .uml-canvas-wrapper {
+    min-height: 400px;
+  }
+
+  .uml-toolbar {
+    overflow-x: auto;
+  }
+
+  .uml-kard-pair {
+    flex-direction: column;
+  }
+
+  .uml-swim-lanes {
+    grid-template-columns: 1fr !important;
+  }
+
+  .uml-trainer-header {
+    flex-direction: column;
+  }
+}

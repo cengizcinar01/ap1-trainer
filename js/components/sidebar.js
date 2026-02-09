@@ -27,6 +27,8 @@ const Sidebar = (() => {
     numbersystems: `<svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><rect x="10" y="4" width="4" height="4" rx="0.5"/><circle cx="19" cy="6" r="2"/><rect x="3" y="10" width="4" height="4" rx="0.5"/><circle cx="12" cy="12" r="2"/><rect x="17" y="10" width="4" height="4" rx="0.5"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><rect x="17" y="16" width="4" height="4" rx="0.5"/></svg>`,
     // EPK: Hexagon (Ereignis) + abgerundetes Rechteck (Funktion)
     epk: `<svg viewBox="0 0 24 24"><polygon points="12,1 18,4.5 18,11.5 12,15 6,11.5 6,4.5" fill="none" stroke-width="1.5"/><rect x="7" y="17" width="10" height="5" rx="2.5" fill="none" stroke-width="1.5"/><line x1="12" y1="15" x2="12" y2="17" stroke-width="1.5"/></svg>`,
+    // UML: Klassendiagramm (3-Sektionen-Box) + Verbindung
+    uml: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="2" width="12" height="14" rx="1.5"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="2" y1="11" x2="14" y2="11"/><rect x="14" y="8" width="8" height="14" rx="1.5"/><line x1="14" y1="13" x2="22" y2="13"/><line x1="14" y1="17" x2="22" y2="17"/><line x1="14" y1="12" x2="14" y2="8"/></svg>`,
     // Wiki: Offenes Buch
     wiki: `<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
     // Menü: Hamburger
@@ -121,6 +123,10 @@ const Sidebar = (() => {
         <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
           <span class="nav-item-icon">${ICONS.subnetting}</span>
           Subnetting
+        </a>
+        <a href="#/modules/uml" class="nav-item ${currentRoute.startsWith('/modules/uml') ? 'active' : ''}" data-route="/modules/uml">
+          <span class="nav-item-icon">${ICONS.uml}</span>
+          UML-Werkstatt
         </a>
         <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
           <span class="nav-item-icon">${ICONS.numbersystems}</span>
