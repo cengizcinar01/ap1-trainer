@@ -450,7 +450,7 @@ const NumberSystemsView = (() => {
               <p class="page-subtitle">Dez/Bin/Hex/Okt, KiB vs. KB, Transfer & Bildspeicher</p>
             </div>
           </div>
-          <div class="ns-progress-badge" id="nsProgressBadge"></div>
+
         </div>
 
         <div class="module-tabs">
@@ -464,7 +464,7 @@ const NumberSystemsView = (() => {
       </div>
     `;
 
-    updateProgressBadge();
+
 
     container.querySelectorAll('.module-tab').forEach((tab) => {
       const handler = (e) => {
@@ -501,16 +501,7 @@ const NumberSystemsView = (() => {
     }
   }
 
-  function updateProgressBadge() {
-    const badge = document.getElementById('nsProgressBadge');
-    if (!badge) return;
-    const solved = Object.values(progress.exercises).filter(
-      (e) => e.solved
-    ).length;
-    const total = EXERCISES.length;
-    badge.innerHTML = `${solved}/${total} geloest`;
-    badge.className = `ns-progress-badge ${solved === total ? 'ns-progress-complete' : ''}`;
-  }
+
 
   // ============================================================
   // TAB 1: ERKLAERUNG
@@ -781,11 +772,11 @@ Beispiel: 24 Bit → 32 Bit
         <div class="ns-step-block">
           <h4>Dezimal ${decValue} → Binaer (Restwertmethode)</h4>
           <div class="module-step-detail">${binSteps.steps
-            .map(
-              (s) =>
-                `${String(s.dividend).padStart(4)} ÷ 2 = ${String(s.quotient).padStart(4)}  Rest <strong>${s.remainder}</strong>`
-            )
-            .join('\n')}
+          .map(
+            (s) =>
+              `${String(s.dividend).padStart(4)} ÷ 2 = ${String(s.quotient).padStart(4)}  Rest <strong>${s.remainder}</strong>`
+          )
+          .join('\n')}
 ↑ Von unten lesen: <strong>${binSteps.result}</strong></div>
         </div>
       `;
@@ -798,11 +789,11 @@ Beispiel: 24 Bit → 32 Bit
         <div class="ns-step-block">
           <h4>Dezimal ${decValue} → Hexadezimal</h4>
           <div class="module-step-detail">${hexSteps.steps
-            .map(
-              (s) =>
-                `${String(s.dividend).padStart(6)} ÷ 16 = ${String(s.quotient).padStart(5)}  Rest ${String(s.remainder).padStart(2)} → <strong>${s.hexChar}</strong>`
-            )
-            .join('\n')}
+          .map(
+            (s) =>
+              `${String(s.dividend).padStart(6)} ÷ 16 = ${String(s.quotient).padStart(5)}  Rest ${String(s.remainder).padStart(2)} → <strong>${s.hexChar}</strong>`
+          )
+          .join('\n')}
 ↑ Von unten lesen: <strong>${hexSteps.result}</strong></div>
         </div>
       `;
@@ -815,11 +806,11 @@ Beispiel: 24 Bit → 32 Bit
       <div class="ns-step-block">
         <h4>Binaer → Hexadezimal (4er-Gruppierung)</h4>
         <div class="module-step-detail">${hexGroupSteps.groups
-          .map(
-            (g) =>
-              `${g.binary} → ${g.decimal.toString().padStart(2)} → <strong>${g.hex}</strong>`
-          )
-          .join('\n')}
+        .map(
+          (g) =>
+            `${g.binary} → ${g.decimal.toString().padStart(2)} → <strong>${g.hex}</strong>`
+        )
+        .join('\n')}
 Ergebnis: <strong>${hexGroupSteps.result}</strong></div>
       </div>
     `;
@@ -831,11 +822,11 @@ Ergebnis: <strong>${hexGroupSteps.result}</strong></div>
         <div class="ns-step-block">
           <h4>Hexadezimal ${inputVal} → Dezimal (Stellenwertverfahren)</h4>
           <div class="module-step-detail">${hdSteps.steps
-            .map(
-              (s) =>
-                `${s.char} × 16^${s.position} = ${s.value} × ${s.power} = <strong>${s.contribution}</strong>`
-            )
-            .join('\n')}
+          .map(
+            (s) =>
+              `${s.char} × 16^${s.position} = ${s.value} × ${s.power} = <strong>${s.contribution}</strong>`
+          )
+          .join('\n')}
 Summe: <strong>${hdSteps.result}</strong></div>
         </div>
       `;
@@ -995,19 +986,19 @@ Summe: <strong>${hdSteps.result}</strong></div>
       const units =
         system === 'iec'
           ? [
-              ['Byte', 'Byte'],
-              ['KiB', 'KiB'],
-              ['MiB', 'MiB'],
-              ['GiB', 'GiB'],
-              ['TiB', 'TiB'],
-            ]
+            ['Byte', 'Byte'],
+            ['KiB', 'KiB'],
+            ['MiB', 'MiB'],
+            ['GiB', 'GiB'],
+            ['TiB', 'TiB'],
+          ]
           : [
-              ['Byte', 'Byte'],
-              ['KB', 'KB'],
-              ['MB', 'MB'],
-              ['GB', 'GB'],
-              ['TB', 'TB'],
-            ];
+            ['Byte', 'Byte'],
+            ['KB', 'KB'],
+            ['MB', 'MB'],
+            ['GB', 'GB'],
+            ['TB', 'TB'],
+          ];
 
       const fromVal = fromEl.selectedIndex;
       const toVal = toEl.selectedIndex;
@@ -1202,15 +1193,15 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
         <h3 class="ns-compare-title">Farbtiefe-Vergleich (${formatNumber(width)}×${formatNumber(height)})</h3>
         <div class="ns-compare-bars">
           ${depths
-            .map((d) => {
-              const bytes = (pixels * d) / 8;
-              const mib = bytes / 1024 ** 2;
-              const pct = (bytes / ((pixels * 48) / 8)) * 100;
-              const diff24 =
-                d !== 24
-                  ? ` (${d > 24 ? '+' : ''}${(((d - 24) / 24) * 100).toFixed(1)}% vs 24 Bit)`
-                  : ' (Referenz)';
-              return `
+          .map((d) => {
+            const bytes = (pixels * d) / 8;
+            const mib = bytes / 1024 ** 2;
+            const pct = (bytes / ((pixels * 48) / 8)) * 100;
+            const diff24 =
+              d !== 24
+                ? ` (${d > 24 ? '+' : ''}${(((d - 24) / 24) * 100).toFixed(1)}% vs 24 Bit)`
+                : ' (Referenz)';
+            return `
               <div class="ns-compare-bar-row">
                 <span class="ns-compare-bar-label">${d} Bit${diff24}</span>
                 <div class="ns-compare-bar-track">
@@ -1219,8 +1210,8 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
                 <span class="ns-compare-bar-value">${formatNumber(mib)} MiB</span>
               </div>
             `;
-            })
-            .join('')}
+          })
+          .join('')}
         </div>
       `;
     }
@@ -1253,7 +1244,7 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
       <div class="ns-exercises">
         <div class="ns-exercise-nav" id="nsExerciseNav">
           ${EXERCISES.map(
-            (ex, i) => `
+      (ex, i) => `
             <button class="ns-exercise-btn ${i === currentExercise ? 'active' : ''} ${progress.exercises[ex.id]?.solved ? 'completed' : ''}"
                     data-index="${i}">
               <span class="ns-exercise-btn-num">${i + 1}</span>
@@ -1261,7 +1252,7 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
               <span class="ns-diff-badge ns-diff-${ex.difficulty.toLowerCase()}">${ex.difficulty}</span>
             </button>
           `
-          ).join('')}
+    ).join('')}
         </div>
         <div id="nsExerciseContent"></div>
       </div>
@@ -1328,15 +1319,15 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
         tasksEl.innerHTML = `
           <div class="module-input-grid">
             ${ex.tasks
-              .map(
-                (t, i) => `
+            .map(
+              (t, i) => `
               <div class="module-input-group">
                 <label class="module-label">${t.label} → Binaer (${t.bits} Bit)</label>
                 <input type="text" class="module-input module-input-mono ns-task-input" data-index="${i}" placeholder="z.B. 00101010" maxlength="${t.bits}">
               </div>
             `
-              )
-              .join('')}
+            )
+            .join('')}
           </div>
         `;
         break;
@@ -1345,15 +1336,15 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
         tasksEl.innerHTML = `
           <div class="module-input-grid">
             ${ex.tasks
-              .map(
-                (t, i) => `
+            .map(
+              (t, i) => `
               <div class="module-input-group">
                 <label class="module-label">${t.label}</label>
                 <input type="text" class="module-input module-input-mono ns-task-input" data-index="${i}" placeholder="${t.to === 'hex' ? 'z.B. FF' : 'z.B. 255'}">
               </div>
             `
-              )
-              .join('')}
+            )
+            .join('')}
           </div>
         `;
         break;
@@ -1362,15 +1353,15 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
         tasksEl.innerHTML = `
           <div class="module-input-grid">
             ${ex.tasks
-              .map(
-                (t, i) => `
+            .map(
+              (t, i) => `
               <div class="module-input-group">
                 <label class="module-label">${t.label} → Hex</label>
                 <input type="text" class="module-input module-input-mono ns-task-input" data-index="${i}" placeholder="z.B. FA">
               </div>
             `
-              )
-              .join('')}
+            )
+            .join('')}
           </div>
         `;
         break;
@@ -1379,8 +1370,8 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
         tasksEl.innerHTML = `
           <div class="module-input-grid">
             ${ex.tasks
-              .map(
-                (t, i) => `
+            .map(
+              (t, i) => `
               <div class="module-input-group">
                 <label class="module-label">${t.question}</label>
                 <div style="display:flex;align-items:center;gap:var(--space-2)">
@@ -1389,8 +1380,8 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
                 </div>
               </div>
             `
-              )
-              .join('')}
+            )
+            .join('')}
           </div>
         `;
         break;
@@ -1444,9 +1435,8 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
           `
             )
             .join('')}
-          ${
-            ex.bonusQuestion
-              ? `
+          ${ex.bonusQuestion
+            ? `
             <div class="ns-bonus-task">
               <label class="module-label ns-bonus-label">Bonus: ${ex.bonusQuestion.question}</label>
               <div style="display:flex;align-items:center;gap:var(--space-2)">
@@ -1455,7 +1445,7 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
               </div>
             </div>
           `
-              : ''
+            : ''
           }
         `;
         break;
@@ -1744,7 +1734,7 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
             if (
               !Number.isNaN(userBonus) &&
               Math.abs(userBonus - ex.bonusQuestion.answer) <=
-                ex.bonusQuestion.tolerance
+              ex.bonusQuestion.tolerance
             ) {
               bonusInput.classList.add('module-input-correct');
               bonusInput.classList.remove('module-input-wrong');
@@ -1840,7 +1830,7 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
       feedbackEl.innerHTML = `<div class="module-feedback module-feedback-success"><strong>Richtig!</strong> Alle ${correctCount} Antworten sind korrekt.</div>`;
       progress.exercises[ex.id] = { solved: true, timestamp: Date.now() };
       saveProgress();
-      updateProgressBadge();
+
       // Update nav button
       const navBtn = document.querySelector(
         `.ns-exercise-btn[data-index="${currentExercise}"]`
@@ -1869,11 +1859,11 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
             <div class="module-step">
               <div class="module-step-title">${t.label} → Binaer</div>
               <div class="module-step-detail">${steps.steps
-                .map(
-                  (s) =>
-                    `${String(s.dividend).padStart(4)} ÷ 2 = ${String(s.quotient).padStart(4)}  Rest ${s.remainder}`
-                )
-                .join('\n')}
+              .map(
+                (s) =>
+                  `${String(s.dividend).padStart(4)} ÷ 2 = ${String(s.quotient).padStart(4)}  Rest ${s.remainder}`
+              )
+              .join('\n')}
 → Ergebnis: <strong>${decToBin(t.value, t.bits)}</strong></div>
             </div>
           `;
@@ -1889,11 +1879,11 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
               <div class="module-step">
                 <div class="module-step-title">${t.label}</div>
                 <div class="module-step-detail">${steps.steps
-                  .map(
-                    (s) =>
-                      `${s.char} × 16^${s.position} = ${s.value} × ${s.power} = ${s.contribution}`
-                  )
-                  .join('\n')}
+                .map(
+                  (s) =>
+                    `${s.char} × 16^${s.position} = ${s.value} × ${s.power} = ${s.contribution}`
+                )
+                .join('\n')}
 → Summe: <strong>${steps.result}</strong></div>
               </div>
             `;
@@ -1903,11 +1893,11 @@ Faktor: 1 ${from} = ${formatNumber(allUnits[from])} Byte
               <div class="module-step">
                 <div class="module-step-title">${t.label}</div>
                 <div class="module-step-detail">${steps.steps
-                  .map(
-                    (s) =>
-                      `${s.dividend} ÷ 16 = ${s.quotient}  Rest ${s.remainder} → ${s.hexChar}`
-                  )
-                  .join('\n')}
+                .map(
+                  (s) =>
+                    `${s.dividend} ÷ 16 = ${s.quotient}  Rest ${s.remainder} → ${s.hexChar}`
+                )
+                .join('\n')}
 → Ergebnis: <strong>${steps.result}</strong></div>
               </div>
             `;
@@ -1989,11 +1979,10 @@ ${steps.groups.map((g) => `  ${g.binary} → ${g.decimal} → ${g.hex}`).join('\
             <div class="module-step">
               <div class="module-step-title">${t.label} ${t.question}</div>
               ${t.explanation ? `<div class="module-step-detail">${t.explanation}</div>` : ''}
-              <div class="module-step-detail">Antwort: <strong>${
-                t.type === 'transfer'
-                  ? `${t.totalSeconds} Sekunden = ${t.answerMinutes} Min ${t.answerSeconds} Sek`
-                  : `${t.answer}${t.unit ? ` ${t.unit}` : ''}`
-              }</strong></div>
+              <div class="module-step-detail">Antwort: <strong>${t.type === 'transfer'
+              ? `${t.totalSeconds} Sekunden = ${t.answerMinutes} Min ${t.answerSeconds} Sek`
+              : `${t.answer}${t.unit ? ` ${t.unit}` : ''}`
+            }</strong></div>
             </div>
           `;
         });
