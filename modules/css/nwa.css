@@ -19,7 +19,8 @@
   overflow: hidden;
 }
 
-.exam-table th, .exam-table td {
+.exam-table th,
+.exam-table td {
   border: 1px solid var(--border-light);
   padding: var(--space-3);
   text-align: center;
@@ -52,8 +53,16 @@
   box-shadow: 0 0 0 2px var(--accent-primary-light);
 }
 
-.nwa-input-blank.correct { border-color: var(--success); background: var(--success-bg); color: var(--success); }
-.nwa-input-blank.wrong { border-color: var(--danger); background: var(--danger-bg); color: var(--danger); }
+.nwa-input-blank.correct {
+  border-color: var(--success);
+  background: var(--success-bg);
+  color: var(--success);
+}
+.nwa-input-blank.wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  color: var(--danger);
+}
 
 /* --- Scenario Navigation (Integrated in Card) --- */
 .nwa-nav {
@@ -78,8 +87,14 @@
   transition: background 0.2s;
 }
 
-.nwa-nav-btn:hover:not(:disabled) { background: var(--accent-primary-light); color: var(--accent-primary); }
-.nwa-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.nwa-nav-btn:hover:not(:disabled) {
+  background: var(--accent-primary-light);
+  color: var(--accent-primary);
+}
+.nwa-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 
 /* --- Conclusion Box --- */
 .nwa-conclusion {

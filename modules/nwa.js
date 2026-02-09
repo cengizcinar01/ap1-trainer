@@ -17,93 +17,182 @@ const NWAView = (() => {
       id: 1,
       title: 'KustoFlex GmbH — CAD-Arbeitsplätze',
       description: 'Wähle das beste System für fünf neue CAD-Arbeitsplätze.',
-      decisionText: 'Meeting-Beschluss: Nur eine On-Premise-Lösung ist zulässig. Anbieter 3 bietet ausschließlich SaaS an.',
+      decisionText:
+        'Meeting-Beschluss: Nur eine On-Premise-Lösung ist zulässig. Anbieter 3 bietet ausschließlich SaaS an.',
       criteria: [
-        { name: 'Grafikkarte', weight: 20, p: [3, 2, 4, 3], w: [60, 40, 80, 60] },
-        { name: 'Arbeitsspeicher (RAM)', weight: 25, p: [4, 3, 4, 3], w: [100, 75, 100, 75] },
+        {
+          name: 'Grafikkarte',
+          weight: 20,
+          p: [3, 2, 4, 3],
+          w: [60, 40, 80, 60],
+        },
+        {
+          name: 'Arbeitsspeicher (RAM)',
+          weight: 25,
+          p: [4, 3, 4, 3],
+          w: [100, 75, 100, 75],
+        },
         { name: 'Monitor', weight: 40, p: [2, 1, 4, 4], w: [80, 40, 160, 160] },
-        { name: 'Preis', weight: 15, p: [3, 4, 1, 1], w: [45, 60, 15, 15] }
+        { name: 'Preis', weight: 15, p: [3, 4, 1, 1], w: [45, 60, 15, 15] },
       ],
       blanks: [
-        { row: 1, col: 'weight', val: '25' }, { row: 1, col: 'p1', val: '4' },
-        { row: 2, col: 'p2', val: '1' }, { row: 3, col: 'weight', val: '15' },
-        { row: 'sum', col: 'w1', val: '285' }, { row: 'sum', col: 'w2', val: '215' },
-        { row: 'sum', col: 'w4', val: '310' }, { row: 'decision', col: 'final', val: '4' }
+        { row: 1, col: 'weight', val: '25' },
+        { row: 1, col: 'p1', val: '4' },
+        { row: 2, col: 'p2', val: '1' },
+        { row: 3, col: 'weight', val: '15' },
+        { row: 'sum', col: 'w1', val: '285' },
+        { row: 'sum', col: 'w2', val: '215' },
+        { row: 'sum', col: 'w4', val: '310' },
+        { row: 'decision', col: 'final', val: '4' },
       ],
-      sums: { p: [12, 10, 13, 11], w: [285, 215, 355, 310] }
+      sums: { p: [12, 10, 13, 11], w: [285, 215, 355, 310] },
     },
     {
       id: 2,
       title: 'Auswahl einer Cloud-Backup-Lösung',
-      description: 'Die IT-Leitung sucht eine neue Strategie zur Datensicherung.',
-      decisionText: 'Datenschutz-Vorgabe: Serverstandort MUSS in der EU liegen. Anbieter 1 hostet in den USA.',
+      description:
+        'Die IT-Leitung sucht eine neue Strategie zur Datensicherung.',
+      decisionText:
+        'Datenschutz-Vorgabe: Serverstandort MUSS in der EU liegen. Anbieter 1 hostet in den USA.',
       criteria: [
-        { name: 'Sicherheit', weight: 40, p: [4, 4, 3, 2], w: [160, 160, 120, 80] },
-        { name: 'Geschwindigkeit', weight: 30, p: [3, 2, 4, 4], w: [120, 60, 120, 120] },
+        {
+          name: 'Sicherheit',
+          weight: 40,
+          p: [4, 4, 3, 2],
+          w: [160, 160, 120, 80],
+        },
+        {
+          name: 'Geschwindigkeit',
+          weight: 30,
+          p: [3, 2, 4, 4],
+          w: [120, 60, 120, 120],
+        },
         { name: 'Kosten', weight: 20, p: [2, 4, 2, 3], w: [40, 80, 40, 60] },
-        { name: 'Support', weight: 10, p: [1, 3, 4, 2], w: [10, 30, 40, 20] }
+        { name: 'Support', weight: 10, p: [1, 3, 4, 2], w: [10, 30, 40, 20] },
       ],
       blanks: [
-        { row: 0, col: 'weight', val: '40' }, { row: 1, col: 'p2', val: '2' },
-        { row: 2, col: 'w3', val: '40' }, { row: 'sum', col: 'w2', val: '330' },
-        { row: 'decision', col: 'final', val: '2' }
+        { row: 0, col: 'weight', val: '40' },
+        { row: 1, col: 'p2', val: '2' },
+        { row: 2, col: 'w3', val: '40' },
+        { row: 'sum', col: 'w2', val: '330' },
+        { row: 'decision', col: 'final', val: '2' },
       ],
-      sums: { p: [10, 13, 13, 11], w: [330, 330, 320, 280] }
+      sums: { p: [10, 13, 13, 11], w: [330, 330, 320, 280] },
     },
     {
       id: 3,
       title: 'Einführung eines CRM-Systems',
-      description: 'Die Vertriebsabteilung benötigt eine Software zur Kundenpflege.',
-      decisionText: 'Anforderung: Das System muss eine DATEV-Schnittstelle besitzen. Anbieter 2 hat diese nicht.',
+      description:
+        'Die Vertriebsabteilung benötigt eine Software zur Kundenpflege.',
+      decisionText:
+        'Anforderung: Das System muss eine DATEV-Schnittstelle besitzen. Anbieter 2 hat diese nicht.',
       criteria: [
-        { name: 'Bedienbarkeit', weight: 30, p: [4, 3, 2, 4], w: [120, 90, 60, 120] },
-        { name: 'Funktionsumfang', weight: 40, p: [3, 4, 4, 2], w: [120, 160, 160, 80] },
-        { name: 'Schnittstellen', weight: 20, p: [2, 1, 4, 3], w: [40, 20, 80, 60] },
-        { name: 'Mobilfähigkeit', weight: 10, p: [4, 4, 3, 4], w: [40, 40, 30, 40] }
+        {
+          name: 'Bedienbarkeit',
+          weight: 30,
+          p: [4, 3, 2, 4],
+          w: [120, 90, 60, 120],
+        },
+        {
+          name: 'Funktionsumfang',
+          weight: 40,
+          p: [3, 4, 4, 2],
+          w: [120, 160, 160, 80],
+        },
+        {
+          name: 'Schnittstellen',
+          weight: 20,
+          p: [2, 1, 4, 3],
+          w: [40, 20, 80, 60],
+        },
+        {
+          name: 'Mobilfähigkeit',
+          weight: 10,
+          p: [4, 4, 3, 4],
+          w: [40, 40, 30, 40],
+        },
       ],
       blanks: [
-        { row: 1, col: 'weight', val: '40' }, { row: 2, col: 'p3', val: '4' },
-        { row: 3, col: 'w4', val: '40' }, { row: 'sum', col: 'w3', val: '330' },
-        { row: 'decision', col: 'final', val: '3' }
+        { row: 1, col: 'weight', val: '40' },
+        { row: 2, col: 'p3', val: '4' },
+        { row: 3, col: 'w4', val: '40' },
+        { row: 'sum', col: 'w3', val: '330' },
+        { row: 'decision', col: 'final', val: '3' },
       ],
-      sums: { p: [13, 12, 13, 13], w: [320, 310, 330, 300] }
+      sums: { p: [13, 12, 13, 13], w: [320, 310, 330, 300] },
     },
     {
       id: 4,
       title: 'Internetanbindung Hauptsitz',
       description: 'Vergleich von Glasfaser- und Standleitungstarifen.',
-      decisionText: 'Technisches Kriterium: Ein 24/7 Gold-SLA ist Pflicht. Anbieter 4 bietet nur Support zu Geschäftszeiten.',
+      decisionText:
+        'Technisches Kriterium: Ein 24/7 Gold-SLA ist Pflicht. Anbieter 4 bietet nur Support zu Geschäftszeiten.',
       criteria: [
-        { name: 'Bandbreite (Up)', weight: 50, p: [4, 3, 4, 2], w: [200, 150, 200, 100] },
-        { name: 'Verfügbarkeit', weight: 30, p: [4, 4, 2, 1], w: [120, 120, 60, 30] },
-        { name: 'Installation', weight: 10, p: [2, 4, 3, 4], w: [20, 40, 30, 40] },
-        { name: 'Grundgebühr', weight: 10, p: [1, 2, 4, 4], w: [10, 20, 40, 40] }
+        {
+          name: 'Bandbreite (Up)',
+          weight: 50,
+          p: [4, 3, 4, 2],
+          w: [200, 150, 200, 100],
+        },
+        {
+          name: 'Verfügbarkeit',
+          weight: 30,
+          p: [4, 4, 2, 1],
+          w: [120, 120, 60, 30],
+        },
+        {
+          name: 'Installation',
+          weight: 10,
+          p: [2, 4, 3, 4],
+          w: [20, 40, 30, 40],
+        },
+        {
+          name: 'Grundgebühr',
+          weight: 10,
+          p: [1, 2, 4, 4],
+          w: [10, 20, 40, 40],
+        },
       ],
       blanks: [
-        { row: 0, col: 'w1', val: '200' }, { row: 1, col: 'p2', val: '4' },
-        { row: 2, col: 'weight', val: '10' }, { row: 'sum', col: 'w1', val: '350' },
-        { row: 'decision', col: 'final', val: '1' }
+        { row: 0, col: 'w1', val: '200' },
+        { row: 1, col: 'p2', val: '4' },
+        { row: 2, col: 'weight', val: '10' },
+        { row: 'sum', col: 'w1', val: '350' },
+        { row: 'decision', col: 'final', val: '1' },
       ],
-      sums: { p: [11, 13, 13, 11], w: [350, 330, 330, 210] }
+      sums: { p: [11, 13, 13, 11], w: [350, 330, 330, 210] },
     },
     {
       id: 5,
       title: 'Mobile Geräte Außendienst',
       description: 'Beschaffung von 50 Notebooks für mobile Mitarbeiter.',
-      decisionText: 'Mindestanforderung: Displayhelligkeit > 400 Nits. Anbieter 1 erreicht nur 250 Nits.',
+      decisionText:
+        'Mindestanforderung: Displayhelligkeit > 400 Nits. Anbieter 1 erreicht nur 250 Nits.',
       criteria: [
-        { name: 'Akkulaufzeit', weight: 40, p: [4, 3, 2, 4], w: [160, 120, 80, 160] },
+        {
+          name: 'Akkulaufzeit',
+          weight: 40,
+          p: [4, 3, 2, 4],
+          w: [160, 120, 80, 160],
+        },
         { name: 'Gewicht', weight: 20, p: [2, 4, 4, 3], w: [40, 80, 80, 60] },
-        { name: 'Helligkeit', weight: 25, p: [1, 4, 3, 4], w: [25, 100, 75, 100] },
-        { name: 'Garantie', weight: 15, p: [4, 2, 4, 3], w: [60, 30, 60, 45] }
+        {
+          name: 'Helligkeit',
+          weight: 25,
+          p: [1, 4, 3, 4],
+          w: [25, 100, 75, 100],
+        },
+        { name: 'Garantie', weight: 15, p: [4, 2, 4, 3], w: [60, 30, 60, 45] },
       ],
       blanks: [
-        { row: 0, col: 'p4', val: '4' }, { row: 2, col: 'weight', val: '25' },
-        { row: 3, col: 'w3', val: '60' }, { row: 'sum', col: 'w4', val: '365' },
-        { row: 'decision', col: 'final', val: '2' }
+        { row: 0, col: 'p4', val: '4' },
+        { row: 2, col: 'weight', val: '25' },
+        { row: 3, col: 'w3', val: '60' },
+        { row: 'sum', col: 'w4', val: '365' },
+        { row: 'decision', col: 'final', val: '2' },
       ],
-      sums: { p: [11, 13, 13, 14], w: [285, 330, 295, 365] }
-    }
+      sums: { p: [11, 13, 13, 14], w: [285, 330, 295, 365] },
+    },
   ];
 
   // ============================================================
@@ -137,10 +226,12 @@ const NWAView = (() => {
   }
 
   function setupTabEvents(container) {
-    container.querySelectorAll('.module-tab').forEach(btn => {
+    container.querySelectorAll('.module-tab').forEach((btn) => {
       btn.addEventListener('click', () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach(b => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
         renderCurrentTab();
       });
@@ -194,7 +285,7 @@ const NWAView = (() => {
 
   function renderTraining(container) {
     const sc = SCENARIOS[currentScenarioIdx];
-    
+
     container.innerHTML = `
       <div class="module-exercise-card view-enter">
         <div class="scenario-nav">
@@ -227,7 +318,9 @@ const NWAView = (() => {
             </tr>
           </thead>
           <tbody>
-            ${sc.criteria.map((c, i) => `
+            ${sc.criteria
+              .map(
+                (c, i) => `
               <tr>
                 <td>${c.name}</td>
                 <td>${renderInput(sc, i, 'weight', c.weight)}</td>
@@ -236,7 +329,9 @@ const NWAView = (() => {
                 <td>${renderInput(sc, i, 'p3', c.p[2])}</td><td>${renderInput(sc, i, 'w3', c.w[2])}</td>
                 <td>${renderInput(sc, i, 'p4', c.p[3])}</td><td>${renderInput(sc, i, 'w4', c.w[3])}</td>
               </tr>
-            `).join('')}
+            `
+              )
+              .join('')}
             <tr style="background: var(--bg-tertiary); font-weight: 800;">
               <td>SUMME</td>
               <td>100</td>
@@ -270,26 +365,38 @@ const NWAView = (() => {
   }
 
   function renderInput(sc, row, col, correctVal) {
-    const isBlank = sc.blanks.some(b => b.row === row && b.col === col);
+    const isBlank = sc.blanks.some((b) => b.row === row && b.col === col);
     if (!isBlank) return correctVal;
     return `<input type="text" class="nwa-input-blank" data-row="${row}" data-col="${col}" placeholder="?">`;
   }
 
   function setupNav(container) {
-    container.querySelector('#prevSc')?.addEventListener('click', () => { if (currentScenarioIdx > 0) { currentScenarioIdx--; renderTraining(container); } });
-    container.querySelector('#nextSc')?.addEventListener('click', () => { if (currentScenarioIdx < SCENARIOS.length - 1) { currentScenarioIdx++; renderTraining(container); } });
+    container.querySelector('#prevSc')?.addEventListener('click', () => {
+      if (currentScenarioIdx > 0) {
+        currentScenarioIdx--;
+        renderTraining(container);
+      }
+    });
+    container.querySelector('#nextSc')?.addEventListener('click', () => {
+      if (currentScenarioIdx < SCENARIOS.length - 1) {
+        currentScenarioIdx++;
+        renderTraining(container);
+      }
+    });
   }
 
   function setupCheck(container, sc) {
     container.querySelector('#btnCheckNWA').addEventListener('click', () => {
       let allCorrect = true;
-      const inputs = container.querySelectorAll('.nwa-input-blank:not(#inp-decision)');
-      
-      inputs.forEach(input => {
+      const inputs = container.querySelectorAll(
+        '.nwa-input-blank:not(#inp-decision)'
+      );
+
+      inputs.forEach((input) => {
         const row = input.dataset.row;
         const col = input.dataset.col;
-        const blank = sc.blanks.find(b => b.row == row && b.col == col);
-        
+        const blank = sc.blanks.find((b) => b.row === row && b.col === col);
+
         input.classList.remove('correct', 'wrong');
         if (input.value.trim() === blank.val) {
           input.classList.add('correct');
@@ -300,7 +407,7 @@ const NWAView = (() => {
       });
 
       const decInput = container.querySelector('#inp-decision');
-      const decBlank = sc.blanks.find(b => b.row === 'decision');
+      const decBlank = sc.blanks.find((b) => b.row === 'decision');
       decInput.classList.remove('correct', 'wrong');
       if (decInput.value.trim() === decBlank.val) {
         decInput.classList.add('correct');
@@ -317,17 +424,19 @@ const NWAView = (() => {
       }
     });
 
-    container.querySelector('#btnResetNWA').addEventListener('click', () => renderTraining(container));
+    container
+      .querySelector('#btnResetNWA')
+      .addEventListener('click', () => renderTraining(container));
   }
 
   function setupPath(container, sc) {
     container.querySelector('#btnShowPath').addEventListener('click', () => {
       const pathEl = container.querySelector('#nwaCalculationPath');
       pathEl.style.display = pathEl.style.display === 'none' ? 'block' : 'none';
-      
+
       let html = `<div class="module-steps"><h4 class="module-steps-title">Rechenweg für ${sc.title}</h4>`;
-      
-      sc.criteria.forEach((c, i) => {
+
+      sc.criteria.forEach((c, _i) => {
         html += `<div class="module-step">
           <div class="module-step-title">${c.name} (Gewichtung: ${c.weight}%)</div>
           <div class="module-step-detail">
@@ -348,7 +457,7 @@ const NWAView = (() => {
 
       html += `</div>`;
       pathEl.innerHTML = html;
-      
+
       if (pathEl.style.display === 'block') {
         pathEl.scrollIntoView({ behavior: 'smooth' });
       }
@@ -356,7 +465,9 @@ const NWAView = (() => {
   }
 
   function cleanup() {
-    cleanup_fns.forEach(fn => { fn(); });
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
   }
 
