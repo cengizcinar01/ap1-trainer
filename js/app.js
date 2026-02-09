@@ -3,6 +3,7 @@
 // ============================================================
 
 import CommunicationView from '../modules/communication.js';
+import ElectricalView from '../modules/electrical.js';
 import EPKView from '../modules/epk.js';
 import GanttView from '../modules/gantt.js';
 import NetworkPlanView from '../modules/networkplan.js';
@@ -137,6 +138,13 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = NumberSystemsView.cleanup;
       NumberSystemsView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/modules/electrical', () => {
+      cleanupCurrentView();
+      currentCleanup = ElectricalView.cleanup;
+      ElectricalView.render(contentEl);
       Sidebar.updateActive();
     });
 

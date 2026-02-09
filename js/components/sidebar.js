@@ -20,6 +20,7 @@ const Sidebar = (() => {
     networkplan: DOT_ICON,
     nwa: DOT_ICON,
     numbersystems: DOT_ICON,
+    electrical: DOT_ICON,
     epk: DOT_ICON,
     gantt: DOT_ICON,
     wiki: DOT_ICON,
@@ -121,6 +122,14 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.subnetting}</span>
           Subnetting
         </a>
+        <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
+          <span class="nav-item-icon">${ICONS.numbersystems}</span>
+          Zahlensysteme
+        </a>
+        <a href="#/modules/electrical" class="nav-item ${currentRoute.startsWith('/modules/electrical') ? 'active' : ''}" data-route="/modules/electrical">
+          <span class="nav-item-icon">${ICONS.electrical}</span>
+          Elektrotechnik
+        </a>
         <a href="#/modules/networkplan" class="nav-item ${currentRoute.startsWith('/modules/networkplan') ? 'active' : ''}" data-route="/modules/networkplan">
           <span class="nav-item-icon">${ICONS.networkplan}</span>
           Netzplantechnik
@@ -128,10 +137,6 @@ const Sidebar = (() => {
         <a href="#/modules/communication" class="nav-item ${currentRoute.startsWith('/modules/communication') ? 'active' : ''}" data-route="/modules/communication">
           <span class="nav-item-icon">${ICONS.communication}</span>
           4-Ohren-Modell
-        </a>
-        <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
-          <span class="nav-item-icon">${ICONS.numbersystems}</span>
-          Zahlensysteme
         </a>
         <a href="#/modules/pseudocode" class="nav-item ${currentRoute.startsWith('/modules/pseudocode') ? 'active' : ''}" data-route="/modules/pseudocode">
           <span class="nav-item-icon">${ICONS.pseudocode}</span>

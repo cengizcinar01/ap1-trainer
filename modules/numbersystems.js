@@ -1,66 +1,188 @@
-// ============================================================
-// numbersystems.js — Zahlensysteme & Speichergrößen
-// Modernized IHK-focused learning module.
-// ============================================================
+import CardRenderer from '../js/components/cardRenderer.js';
 
 const NumberSystemsView = (() => {
   let currentTab = 'explanation';
+  let currentScenarioIdx = 0;
+  let currentExercise = null;
+  let difficulty = 1;
   let cleanup_fns = [];
 
-  // ============================================================
-  // DATA STRUCTURES
-  // ============================================================
-
-  const _UNITS = {
-    SI: [
-      { label: 'KB (Kilobyte)', value: 1000 },
-      { label: 'MB (Megabyte)', value: 1000 ** 2 },
-      { label: 'GB (Gigabyte)', value: 1000 ** 3 },
-      { label: 'TB (Terabyte)', value: 1000 ** 4 },
-    ],
-    IEC: [
-      { label: 'KiB (Kibibyte)', value: 1024 },
-      { label: 'MiB (Mebibyte)', value: 1024 ** 2 },
-      { label: 'GiB (Gibibyte)', value: 1024 ** 3 },
-      { label: 'TiB (Tebibyte)', value: 1024 ** 4 },
-    ],
-  };
-
-  const QUIZ_QUESTIONS = [
+  const SCENARIOS = [
     {
-      q: 'Welcher Divisor wird bei der Umrechnung von Byte in MiB (Mebibyte) verwendet?',
-      options: ['1.000.000', '1.024.000', '1.048.576', '1.073.741.824'],
-      correct: 2,
-      explain: '1 MiB = 1024 * 1024 Byte = 1.048.576 Byte.',
+      id: 'converter',
+      title: 'Zahlensysteme',
+      description: 'Umrechnung in alle Richtungen (Dezimal, Binär, Hexadezimal).',
     },
     {
-      q: 'Wie viele Bit werden benötigt, um eine Farbtiefe von "True Color" (16,7 Mio. Farben) darzustellen?',
-      options: ['8 Bit', '16 Bit', '24 Bit', '32 Bit'],
-      correct: 2,
-      explain: '2^24 ergibt ca. 16,7 Millionen Farben (True Color).',
+      id: 'storage',
+      title: 'Speicherbedarf',
+      description:
+        'Berechnung für Bilder, Audio und komplexe Datenstrukturen (IHK-typisch).',
     },
     {
-      q: 'Welche Hexadezimal-Zahl entspricht der Dezimalzahl 255?',
-      options: ['F0', 'FE', 'FF', '100'],
-      correct: 2,
-      explain: 'FF (hex) = 15 * 16^1 + 15 * 16^0 = 240 + 15 = 255.',
-    },
-    {
-      q: 'Was ist der Unterschied zwischen SI-Einheiten (MB) und IEC-Einheiten (MiB)?',
-      options: [
-        'Es gibt keinen Unterschied.',
-        'SI basiert auf 1000, IEC basiert auf 1024.',
-        'SI ist für RAM, IEC für Festplatten.',
-        'SI wird nur in Europa verwendet.',
-      ],
-      correct: 1,
-      explain:
-        'SI-Präfixe (Kilo, Mega) nutzen die Basis 10 (10^3), IEC-Präfixe (Kibi, Mebi) nutzen die Basis 2 (2^10).',
+      id: 'transfer',
+      title: 'Datenübertragung',
+      description:
+        'Berechnung der Übertragungsdauer bei gegebener Bandbreite.',
     },
   ];
 
   // ============================================================
-  // CORE FUNCTIONS
+  // HELPERS
+  // ============================================================
+
+  function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // ============================================================
+  // GENERATORS
+  // ============================================================
+
+  function generateConverterExercise(diff) {
+    let dec;
+    if (diff === 1) dec = randomInt(0, 255);
+    else if (diff === 2) dec = randomInt(256, 4095);
+    else dec = randomInt(4096, 65535);
+
+    const bin = dec.toString(2);
+    const hex = dec.toString(16).toUpperCase();
+    const givenIdx = randomInt(0, 2);
+
+    let steps = `### 📝 Umrechnungsweg erklärt\n\n`;
+    
+    // --- DEC -> BIN ---
+    steps += `**Weg 1: Dezimal &rarr; Binär (Restwertmethode)**\n`;
+    let tempDec = dec;
+    let binSteps = [];
+    while (tempDec > 0) {
+        binSteps.push(`${tempDec} / 2 = ${Math.floor(tempDec / 2)} Rest **${tempDec % 2}**`);
+        tempDec = Math.floor(tempDec / 2);
+    }
+    steps += (binSteps.length ? binSteps.join('\n') : '0 / 2 = 0 Rest 0') + `\n\n`;
+
+    // --- DEC -> HEX ---
+    steps += `**Weg 2: Dezimal &rarr; Hexadezimal (Die 16er-Rechnung)**\n`;
+    steps += `Hier schauen wir, wie oft die 16 ganz in die Zahl passt und was übrig bleibt (Rest).\n\n`;
+    
+    tempDec = dec;
+    let hexSteps = [];
+    if (tempDec === 0) hexSteps.push('0 / 16 = 0 Rest **0**');
+    while (tempDec > 0) {
+        let quotient = Math.floor(tempDec / 16);
+        let rest = tempDec % 16;
+        let calcPath = `${tempDec} - (${quotient} * 16) = ${rest}`;
+        let restDisplay = rest > 9 ? `**${rest}** &rarr; **${String.fromCharCode(55 + rest)}**` : `**${rest}**`;
+        
+        hexSteps.push(`${tempDec} / 16 = **${quotient}** | Rest: ${restDisplay} *(Rechnung: ${calcPath})*`);
+        tempDec = quotient;
+    }
+    steps += hexSteps.join('\n') + `\n\n**Ergebnis: ${hex}**\n\n---\n\n`;
+
+    // --- BIN <-> HEX ---
+    steps += `**Weg 3: IHK-Shortcut (Binär &harr; Hex)**\n`;
+    steps += `Teile die Binärzahl von rechts in **4er-Blöcke**. Jeder Block ist eine Hex-Ziffer:\n\n`;
+    const paddedBin = bin.padStart(Math.ceil(bin.length / 4) * 4, '0');
+    const nibbles = paddedBin.match(/.{1,4}/g) || [];
+    steps += `| Binär | Wert | Hex |\n|:---:|:---:|:---:|\n`;
+    nibbles.forEach(n => {
+        const val = parseInt(n, 2);
+        steps += `| ${n} | ${val} | **${val.toString(16).toUpperCase()}** |\n`;
+    });
+
+    return { type: 'converter', dec, bin, hex, givenIdx, steps };
+  }
+
+  function generateStorageExercise(diff) {
+    const types = ['image', 'audio', 'struct'];
+    const type = types[randomInt(0, 2)];
+
+    if (type === 'image') {
+      const width = [1024, 1920, 3840][randomInt(0, 2)];
+      const height = [768, 1080, 2160][randomInt(0, 2)];
+      const depth = [8, 16, 24, 32][randomInt(0, 3)];
+      const totalBits = width * height * depth;
+      const totalBytes = totalBits / 8;
+      const mib = totalBytes / (1024 * 1024);
+
+      return {
+        type: 'image',
+        desc: `Ein Bild hat die Auflösung **${width} x ${height}** Pixel und eine Farbtiefe von **${depth} Bit**.`,
+        sol: {
+          display: `${mib.toFixed(2)} MiB`,
+          steps: `1. **Gesamt-Bits:** ${width} * ${height} * ${depth} = ${totalBits.toLocaleString()} Bit\n2. **Byte:** / 8 = ${totalBytes.toLocaleString()} B\n3. **MiB:** / 1024 / 1024 = **${mib.toFixed(2)} MiB**`
+        },
+      };
+    } else if (type === 'audio') {
+      const freq = [44100, 48000][randomInt(0, 1)];
+      const bitDepth = [16, 24][randomInt(0, 1)];
+      const channels = [1, 2][randomInt(0, 1)];
+      const duration = [60, 180][randomInt(0, 1)];
+      const totalBits = freq * bitDepth * channels * duration;
+      const totalBytes = totalBits / 8;
+      const mib = totalBytes / (1024 * 1024);
+
+      return {
+        type: 'audio',
+        desc: `Audio: **${duration} Sek.**, **${freq / 1000} kHz**, **${bitDepth} Bit**, **${channels === 1 ? 'Mono' : 'Stereo'}**.`,
+        sol: {
+          display: `${mib.toFixed(2)} MiB`,
+          steps: `1. **Formel:** Hz * Bit * Kanäle * Zeit\n2. **Rechnung:** ${freq} * ${bitDepth} * ${channels} * ${duration} = ${totalBits.toLocaleString()} Bit\n3. **Byte:** / 8 = ${totalBytes.toLocaleString()} B\n4. **MiB:** / 1.048.576 = **${mib.toFixed(2)} MiB**`
+        },
+      };
+    } else {
+      const points = [1000, 3840, 5000][randomInt(0, 2)];
+      const totalBitsGeo = points * 3 * 32;
+      const kibGeo = totalBitsGeo / 8 / 1024;
+      const increasePercent = (24 / 96) * 100;
+
+      return {
+        type: 'struct',
+        desc: `PLY-Datei: **${points} Punkte**. Jeder Punkt hat x, y, z Koordinaten (je **32-Bit Float**). \n\n**da)** Berechnen Sie den Speicherbedarf der Geometrie in **KiB**.\n**db)** Jeder Punkt erhält zusätzlich RGB-Werte (je 8 Bit). Wie viele Farben lassen sich damit darstellen?\n**dc)** Wie viel **% Speicher** wird pro Punkt zusätzlich benötigt?`,
+        sol: {
+          val_a: kibGeo.toFixed(2), 
+          val_b: "16777216",
+          val_c: increasePercent.toFixed(1),
+          steps: `
+**Teil da) Geometrie**
+1. Bits pro Punkt: 3 * 32 Bit = 96 Bit
+2. Gesamt: ${points} * 96 = ${totalBitsGeo.toLocaleString()} Bit
+3. Byte: / 8 = ${(totalBitsGeo / 8).toLocaleString()} B
+4. KiB: / 1024 = **${kibGeo.toFixed(2)} KiB**
+
+**Teil db) Farben**
+RGB mit 8 Bit pro Kanal bedeutet 24 Bit Gesamtfarbtiefe ($3 \times 8$).
+Formel: $2^{Bits} = 2^{24} = \mathbf{16.777.216}$ Farben.
+
+**Teil dc) Zuwachs**
+1. Basis: 96 Bit (Geometrie)
+2. Zusatz: 24 Bit (Farbe)
+3. Prozent: (24 / 96) * 100 = **${increasePercent.toFixed(1)} %**
+`
+        }
+      };
+    }
+  }
+
+  function generateTransferExercise(diff) {
+    const sizeGB = randomInt(1, 20);
+    const speedMbit = [50, 100, 250][randomInt(0, 2)];
+    const sizeBits = sizeGB * (1024 ** 3) * 8;
+    const speedBits = speedMbit * 1000000;
+    const seconds = sizeBits / speedBits;
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+    
+    return {
+      type: 'transfer',
+      sizeGB, speedMbit, seconds: Math.round(seconds),
+      steps: `**1. Menge:** ${sizeGB} GiB * 1024³ * 8 = **${sizeBits.toLocaleString()} Bit**\n**2. Speed:** ${speedMbit} * 10⁶ = **${speedBits.toLocaleString()} Bit/s**\n**3. Zeit:** Menge / Speed = ${seconds.toFixed(1)} s &rarr; **${h}h ${m}m ${s}s**`
+    };
+  }
+
+  // ============================================================
+  // RENDER LOGIC
   // ============================================================
 
   function render(container) {
@@ -71,22 +193,17 @@ const NumberSystemsView = (() => {
           <div class="page-header-left">
             <div>
               <h1 class="page-title">Zahlensysteme & Speicher</h1>
-              <p class="page-subtitle">Binärlogik, Umrechnungen und IEC/SI-Einheiten für die AP1.</p>
+              <p class="page-subtitle">Umrechnung, Speicherbedarf und Datenübertragung (IHK-konform).</p>
             </div>
           </div>
         </div>
-
         <nav class="module-tabs">
-          <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Erklärung</button>
-          <button class="module-tab ${currentTab === 'converter' ? 'active' : ''}" data-tab="converter">Umrechner</button>
-          <button class="module-tab ${currentTab === 'storage' ? 'active' : ''}" data-tab="storage">Speicher-Rechner</button>
-          <button class="module-tab ${currentTab === 'quiz' ? 'active' : ''}" data-tab="quiz">Wissens-Check</button>
+          <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Anleitung</button>
+          <button class="module-tab ${currentTab === 'exercise' ? 'active' : ''}" data-tab="exercise">Übung</button>
         </nav>
-
-        <div id="nsContent" class="view-enter"></div>
+        <div id="nsContent" class="view-enter" style="margin-top: var(--space-6)"></div>
       </div>
     `;
-
     setupTabEvents(container);
     renderCurrentTab();
   }
@@ -95,9 +212,7 @@ const NumberSystemsView = (() => {
     container.querySelectorAll('.module-tab').forEach((btn) => {
       btn.addEventListener('click', () => {
         currentTab = btn.dataset.tab;
-        container
-          .querySelectorAll('.module-tab')
-          .forEach((b) => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         renderCurrentTab();
       });
@@ -107,396 +222,201 @@ const NumberSystemsView = (() => {
   function renderCurrentTab() {
     const content = document.getElementById('nsContent');
     if (!content) return;
-
-    switch (currentTab) {
-      case 'explanation':
-        renderExplanation(content);
-        break;
-      case 'converter':
-        renderConverter(content);
-        break;
-      case 'storage':
-        renderStorage(content);
-        break;
-      case 'quiz':
-        renderQuiz(content);
-        break;
-    }
+    if (currentTab === 'explanation') renderExplanation(content);
+    else renderExerciseLayout(content);
   }
-
-  // ============================================================
-  // TAB 1: EXPLANATION
-  // ============================================================
 
   function renderExplanation(container) {
     container.innerHTML = `
-      <div class="ns-explanation">
+      <div class="view-enter">
         <div class="module-exercise-card">
-          <h3 class="comm-section-title">Grundlagen der Datendarstellung</h3>
-          <p class="comm-text">
-            Computer arbeiten intern ausschließlich mit zwei Zuständen: 0 und 1 (Binärsystem). 
-            Zur besseren Lesbarkeit nutzen wir im IT-Bereich das Hexadezimalsystem. 
-            Bei Speicherangaben ist die Unterscheidung zwischen 1000er und 1024er Basis kritisch für die AP1.
-          </p>
-        </div>
-
-        <div class="ns-card-grid">
-          <div class="ns-info-card">
-            <span class="ns-card-header">Basis 2</span>
-            <div class="ns-card-title">Binärsystem</div>
-            <p class="ns-card-text">Nutzt nur 0 und 1. Jede Stelle entspricht einer Zweierpotenz (1, 2, 4, 8, 16...).</p>
-          </div>
-          <div class="ns-info-card">
-            <span class="ns-card-header">Basis 16</span>
-            <div class="ns-card-title">Hexadezimalsystem</div>
-            <p class="ns-card-text">Nutzt 0-9 und A-F. Sehr kompakt: 2 Hex-Ziffern stellen genau 1 Byte (8 Bit) dar.</p>
-          </div>
-          <div class="ns-info-card">
-            <span class="ns-card-header">IEC (Basis 2)</span>
-            <div class="ns-card-title">Kibi, Mebi, Gibi</div>
-            <p class="ns-card-text">Rechnet mit Faktor 1024. Wichtig für RAM und Betriebssystem-Anzeigen.</p>
-          </div>
-          <div class="ns-info-card">
-            <span class="ns-card-header">SI (Basis 10)</span>
-            <div class="ns-card-title">Kilo, Mega, Giga</div>
-            <p class="ns-card-text">Rechnet mit Faktor 1000. Typisch für Festplattenhersteller und Netzwerk-Speeds.</p>
-          </div>
-        </div>
-
-        <div class="module-steps">
-          <div class="module-steps-title">Wichtige Prüfungs-Formeln</div>
-          <div class="module-step">
-            <div class="module-step-title">Bildspeicher-Berechnung</div>
-            <div class="module-step-text">Breite × Höhe × Farbtiefe (in Bit) / 8 = Speicherbedarf in Byte.</div>
-          </div>
-          <div class="module-step">
-            <div class="module-step-title">Übertragungszeit</div>
-            <div class="module-step-text">Zeit (s) = Datenmenge (Bit) / Übertragungsrate (Bit/s). Achtung: Mebibyte ≠ Megabit!</div>
+          <h3 class="comm-section-title">Grundlagen & Einheiten</h3>
+          <div class="module-steps">
+            <div class="module-step">
+              <div class="module-step-title">1. SI vs. IEC Präfixe</div>
+              <div class="module-step-text"><b>SI (1000er):</b> Übertragung (Mbit/s). <b>IEC (1024er):</b> Speicher (MiB, KiB).</div>
+            </div>
+            <div class="module-step">
+              <div class="module-step-title">2. Hexadezimal-Regeln</div>
+              <div class="module-step-text">Basis 16. Ziffern: 0-9 und <b>A (10), B (11), C (12), D (13), E (14), F (15)</b>.</div>
+            </div>
+            <div class="module-step">
+              <div class="module-step-title">3. Der 4-Bit Shortcut</div>
+              <div class="module-step-text">Jede Hex-Stelle entspricht genau 4 Bit. <br>F = 1111, 0 = 0000.</div>
+            </div>
           </div>
         </div>
       </div>
     `;
   }
 
-  // ============================================================
-  // TAB 2: CONVERTER
-  // ============================================================
+  function renderExerciseLayout(container) {
+    const sc = SCENARIOS[currentScenarioIdx];
+    container.innerHTML = `
+      <div class="module-exercise-card view-enter">
+        <div class="scenario-nav">
+          <span class="scenario-nav-label">Szenario</span>
+          <div class="scenario-nav-controls">
+            <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
+            <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
+            <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
+          </div>
+        </div>
+        <h3 style="margin-bottom: var(--space-2)">${sc.title}</h3>
+        <p class="comm-text" style="margin-bottom: var(--space-6)">${sc.description}</p>
+        <div id="exerciseSpecificContent"></div>
+      </div>
+    `;
+    const exContent = container.querySelector('#exerciseSpecificContent');
+    if (sc.id === 'converter') renderConverter(exContent);
+    else if (sc.id === 'storage') renderStorage(exContent);
+    else renderTransfer(exContent);
+    setupNav(container);
+  }
+
+  function setupNav(container) {
+    container.querySelector('#prevScen')?.addEventListener('click', () => {
+      if (currentScenarioIdx > 0) {
+        currentScenarioIdx--;
+        currentExercise = null;
+        renderCurrentTab();
+      }
+    });
+    container.querySelector('#nextScen')?.addEventListener('click', () => {
+      if (currentScenarioIdx < SCENARIOS.length - 1) {
+        currentScenarioIdx++;
+        currentExercise = null;
+        renderCurrentTab();
+      }
+    });
+  }
 
   function renderConverter(container) {
-    container.innerHTML = `
-      <div class="ns-converter-card">
-        <h3>System-Umrechner</h3>
-        <p class="comm-text">Gib einen Wert ein, um die automatische Umrechnung in andere Systeme zu sehen.</p>
-        
-        <div class="module-input-grid">
-          <div class="module-input-group">
-            <label class="module-label">Dezimal</label>
-            <input type="number" id="inpDec" class="module-input" placeholder="z.B. 255">
-          </div>
-          <div class="module-input-group">
-            <label class="module-label">Binär</label>
-            <input type="text" id="inpBin" class="module-input module-input-mono" placeholder="z.B. 11111111">
-          </div>
-          <div class="module-input-group">
-            <label class="module-label">Hexadezimal</label>
-            <input type="text" id="inpHex" class="module-input module-input-mono" placeholder="z.B. FF">
-          </div>
-        </div>
-
-        <div class="ns-result-grid" id="convResults">
-           <!-- Dynamically filled -->
-        </div>
-
-        <div id="nsCalculationSteps" style="margin-top: var(--space-8);">
-           <!-- Detailed steps shown here -->
-        </div>
-      </div>
-    `;
-
-    setupConverterEvents(container);
-  }
-
-  function setupConverterEvents(container) {
-    const inpDec = container.querySelector('#inpDec');
-    const inpBin = container.querySelector('#inpBin');
-    const inpHex = container.querySelector('#inpHex');
-    const stepsEl = container.querySelector('#nsCalculationSteps');
-
-    function updateSteps(decimalValue) {
-      if (Number.isNaN(decimalValue) || decimalValue < 0) {
-        stepsEl.innerHTML = '';
-        return;
-      }
-
-      let html =
-        '<div class="module-steps"><h4 class="module-steps-title">Rechenweg (Manuelle Umrechnung)</h4>';
-
-      // 1. Dezimal -> Binär (Restwertmethode)
-      let tempDec = decimalValue;
-      const binSteps = [];
-      if (tempDec === 0) binSteps.push('0 / 2 = 0 Rest 0');
-      while (tempDec > 0) {
-        const res = Math.floor(tempDec / 2);
-        const rem = tempDec % 2;
-        binSteps.push(`${tempDec} / 2 = ${res} Rest <strong>${rem}</strong>`);
-        tempDec = res;
-      }
-
-      html += `
-        <div class="module-step">
-          <div class="module-step-title">Dezimal → Binär (Restwertmethode)</div>
-          <div class="module-step-text">Teile die Zahl wiederholt durch 2 und notiere den Rest. Lies die Reste von unten nach oben.</div>
-          <div class="module-step-detail">${binSteps.join('\n')}</div>
-        </div>
-      `;
-
-      // 2. Dezimal -> Hexadezimal
-      tempDec = decimalValue;
-      const hexSteps = [];
-      const hexChars = '0123456789ABCDEF';
-      if (tempDec === 0) hexSteps.push('0 / 16 = 0 Rest 0');
-      while (tempDec > 0) {
-        const res = Math.floor(tempDec / 16);
-        const rem = tempDec % 16;
-        hexSteps.push(
-          `${tempDec} / 16 = ${res} Rest ${rem} (${hexChars[rem]})`
-        );
-        tempDec = res;
-      }
-
-      html += `
-        <div class="module-step">
-          <div class="module-step-title">Dezimal → Hexadezimal</div>
-          <div class="module-step-text">Teile die Zahl durch 16. Der Rest ergibt die Hex-Ziffer (10=A, 11=B...).</div>
-          <div class="module-step-detail">${hexSteps.join('\n')}</div>
-        </div>
-      `;
-
-      // 3. Binär -> Dezimal (Stellenwertverfahren)
-      const binStr = decimalValue.toString(2);
-      const binToDecSteps = [];
-      const sumParts = [];
-      for (let i = 0; i < binStr.length; i++) {
-        const bit = binStr[binStr.length - 1 - i];
-        const val = parseInt(bit, 10) * 2 ** i;
-        if (bit === '1') {
-          binToDecSteps.push(`2^${i} = ${val}`);
-          sumParts.push(val);
-        }
-      }
-
-      html += `
-        <div class="module-step">
-          <div class="module-step-title">Binär → Dezimal (Stellenwertverfahren)</div>
-          <div class="module-step-text">Addiere die Zweierpotenzen der Stellen, an denen eine '1' steht.</div>
-          <div class="module-step-detail">${binToDecSteps.reverse().join('\n')}\n---\nSumme: ${sumParts.join(' + ')} = <strong>${decimalValue}</strong></div>
-        </div>
-      `;
-
-      html += '</div>';
-      stepsEl.innerHTML = html;
+    if (!currentExercise || currentExercise.type !== 'converter') {
+      currentExercise = generateConverterExercise(difficulty);
     }
+    const ex = currentExercise;
+    container.innerHTML = `
+      <div class="subnet-grid">
+        <div class="subnet-input-group"><label class="subnet-label">Dezimal</label><input type="number" class="subnet-input" id="inpDec"></div>
+        <div class="subnet-input-group"><label class="subnet-label">Binär</label><input type="text" class="subnet-input module-input-mono" id="inpBin"></div>
+        <div class="subnet-input-group"><label class="subnet-label">Hexadezimal</label><input type="text" class="subnet-input module-input-mono" id="inpHex"></div>
+      </div>
+      <div class="module-difficulty" style="margin: var(--space-6) 0">
+        <button class="module-diff-btn ${difficulty === 1 ? 'active' : ''}" data-d="1">Leicht</button>
+        <button class="module-diff-btn ${difficulty === 2 ? 'active' : ''}" data-d="2">Mittel</button>
+        <button class="module-diff-btn ${difficulty === 3 ? 'active' : ''}" data-d="3">Schwer</button>
+      </div>
+      <div class="module-actions">
+        <button class="btn btn-primary" id="btnCheckConv">Prüfen</button>
+        <button class="btn" id="btnSolveConv">Lösungsweg</button>
+        <button class="btn" id="btnNextConv">Neu</button>
+      </div>
+      <div id="convSol" class="module-steps" style="display:none; margin-top: var(--space-6)"></div>
+    `;
+    const inputs = { inpDec: container.querySelector('#inpDec'), inpBin: container.querySelector('#inpBin'), inpHex: container.querySelector('#inpHex') };
+    const fields = ['inpDec', 'inpBin', 'inpHex'];
+    const values = [ex.dec, ex.bin, ex.hex];
+    inputs[fields[ex.givenIdx]].value = values[ex.givenIdx];
+    inputs[fields[ex.givenIdx]].disabled = true;
+    inputs[fields[ex.givenIdx]].classList.add('correct');
 
-    inpDec.addEventListener('input', () => {
-      const val = parseInt(inpDec.value, 10);
-      if (!Number.isNaN(val)) {
-        inpBin.value = val.toString(2);
-        inpHex.value = val.toString(16).toUpperCase();
-        updateSteps(val);
-      } else {
-        inpBin.value = '';
-        inpHex.value = '';
-        updateSteps(NaN);
-      }
+    container.querySelectorAll('.module-diff-btn').forEach(b => {
+      b.addEventListener('click', () => { difficulty = parseInt(b.dataset.d); currentExercise = null; renderConverter(container); });
     });
-
-    inpBin.addEventListener('input', () => {
-      const val = parseInt(inpBin.value, 2);
-      if (!Number.isNaN(val)) {
-        inpDec.value = val;
-        inpHex.value = val.toString(16).toUpperCase();
-        updateSteps(val);
-      } else {
-        updateSteps(NaN);
-      }
+    container.querySelector('#btnNextConv').addEventListener('click', () => { currentExercise = generateConverterExercise(difficulty); renderConverter(container); });
+    container.querySelector('#btnCheckConv').addEventListener('click', () => {
+      const uDec = parseInt(inputs.inpDec.value, 10);
+      const uBin = inputs.inpBin.value.trim();
+      const uHex = inputs.inpHex.value.trim().toUpperCase();
+      inputs.inpDec.classList.toggle('correct', uDec === ex.dec);
+      inputs.inpBin.classList.toggle('correct', uBin === ex.bin);
+      inputs.inpHex.classList.toggle('correct', uHex === ex.hex);
     });
-
-    inpHex.addEventListener('input', () => {
-      const val = parseInt(inpHex.value, 16);
-      if (!Number.isNaN(val)) {
-        inpDec.value = val;
-        inpBin.value = val.toString(2);
-        updateSteps(val);
-      } else {
-        updateSteps(NaN);
-      }
+    container.querySelector('#btnSolveConv').addEventListener('click', () => {
+       const solEl = container.querySelector('#convSol');
+       solEl.style.display = 'block';
+       solEl.innerHTML = CardRenderer.formatAnswer(ex.steps);
+       inputs.inpDec.value = ex.dec; inputs.inpBin.value = ex.bin; inputs.inpHex.value = ex.hex;
     });
   }
-
-  // ============================================================
-  // TAB 3: STORAGE CALCULATOR
-  // ============================================================
 
   function renderStorage(container) {
-    container.innerHTML = `
-      <div class="ns-explanation">
-        <div class="module-exercise-card">
-          <h3>Bildspeicher-Rechner</h3>
-          <div class="ns-calc-grid">
-            <div class="module-input-group">
-              <label class="module-label">Breite (px)</label>
-              <input type="number" id="imgW" class="module-input" value="1920">
-            </div>
-            <div class="module-input-group">
-              <label class="module-label">Höhe (px)</label>
-              <input type="number" id="imgH" class="module-input" value="1080">
-            </div>
-            <div class="module-input-group">
-              <label class="module-label">Farbtiefe (Bit)</label>
-              <select id="imgD" class="module-input">
-                <option value="8">8 Bit (256 Farben)</option>
-                <option value="16">16 Bit (High Color)</option>
-                <option value="24" selected>24 Bit (True Color)</option>
-                <option value="32">32 Bit (True Color + Alpha)</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="ns-calc-result-box">
-            <div class="ns-calc-res-label">Speicherbedarf</div>
-            <div class="ns-calc-res-value" id="imgRes">---</div>
-          </div>
-        </div>
-
-        <div class="module-exercise-card" style="margin-top: var(--space-6);">
-          <h3>Einheiten-Vergleich</h3>
-          <table class="ns-comparison-table">
-            <thead>
-              <tr>
-                <th>Präfix</th>
-                <th>IEC (Basis 2)</th>
-                <th>SI (Basis 10)</th>
-                <th>Differenz</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Kilo / Kibi</td><td>1.024 Byte</td><td>1.000 Byte</td><td>2.4%</td></tr>
-              <tr><td>Mega / Mebi</td><td>1.048.576 Byte</td><td>1.000.000 Byte</td><td>4.8%</td></tr>
-              <tr><td>Giga / Gibi</td><td>1.073.741.824 Byte</td><td>1.000.000.000 Byte</td><td>7.3%</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    `;
-
-    setupStorageEvents(container);
-  }
-
-  function setupStorageEvents(container) {
-    const w = container.querySelector('#imgW');
-    const h = container.querySelector('#imgH');
-    const d = container.querySelector('#imgD');
-    const res = container.querySelector('#imgRes');
-
-    function calc() {
-      const bytes =
-        (parseInt(w.value, 10) *
-          parseInt(h.value, 10) *
-          parseInt(d.value, 10)) /
-        8;
-      const mib = bytes / (1024 * 1024);
-      res.textContent = `${mib.toFixed(2)} MiB`;
+    if (!currentExercise || !['image', 'audio', 'struct'].includes(currentExercise.type)) {
+      currentExercise = generateStorageExercise(difficulty);
     }
-
-    [w, h, d].forEach((el) => el.addEventListener('input', calc));
-    calc();
-  }
-
-  // ============================================================
-  // TAB 4: QUIZ
-  // ============================================================
-
-  function renderQuiz(container) {
+    const ex = currentExercise;
+    const isStruct = ex.type === 'struct';
     container.innerHTML = `
-      <div class="comm-quiz">
-        <div class="comm-quiz-header">
-          <div class="comm-quiz-progress">
-            <span class="comm-progress-text">Fortschritt</span>
-            <div class="comm-progress-bar"><div class="comm-progress-fill" style="width: 0%"></div></div>
-          </div>
-          <div class="comm-quiz-score" id="nsQuizScore">Score: 0 / ${QUIZ_QUESTIONS.length}</div>
-        </div>
-        <div id="nsQuizList">
-          ${QUIZ_QUESTIONS.map(
-            (q, i) => `
-            <div class="module-exercise-card ns-quiz-card" style="margin-bottom: var(--space-4)" data-idx="${i}">
-              <p class="module-exercise-question"><strong>Frage ${i + 1}:</strong> ${q.q}</p>
-              <div class="ns-quiz-options">
-                ${q.options
-                  .map(
-                    (opt, oi) => `
-                  <div class="ns-quiz-option" data-oi="${oi}">${opt}</div>
-                `
-                  )
-                  .join('')}
-              </div>
-              <div class="quiz-feedback" style="display:none; margin-top: var(--space-4);"></div>
-            </div>
-          `
-          ).join('')}
-        </div>
-        <div id="nsFinalResult"></div>
+      <div class="module-exercise-question">${CardRenderer.formatAnswer(ex.desc)}</div>
+      <div class="subnet-grid">
+        ${isStruct ? `
+          <div class="subnet-input-group"><label class="subnet-label">da) Geometrie (KiB)</label><input type="text" class="subnet-input" id="inpA"></div>
+          <div class="subnet-input-group"><label class="subnet-label">db) Anzahl Farben</label><input type="text" class="subnet-input" id="inpB"></div>
+          <div class="subnet-input-group"><label class="subnet-label">dc) Zuwachs (%)</label><input type="text" class="subnet-input" id="inpC"></div>
+        ` : `<div class="subnet-input-group"><label class="subnet-label">Speicher (MiB)</label><input type="text" class="subnet-input" id="inpRes"></div>`}
       </div>
+      <div class="module-actions">
+        <button class="btn btn-primary" id="btnCheckStore">Prüfen</button>
+        <button class="btn" id="btnSolveStore">Lösungsweg</button>
+        <button class="btn" id="btnNextStore">Neu</button>
+      </div>
+      <div id="storeSol" class="module-steps" style="display:none; margin-top: var(--space-6)"></div>
     `;
-
-    setupQuizEvents(container);
-  }
-
-  function setupQuizEvents(container) {
-    const cards = container.querySelectorAll('.ns-quiz-card');
-    const progressFill = container.querySelector('.comm-progress-fill');
-    const scoreDisplay = container.querySelector('#nsQuizScore');
-
-    let answeredCount = 0;
-    let correctCount = 0;
-
-    cards.forEach((card) => {
-      const idx = parseInt(card.dataset.idx, 10);
-      const question = QUIZ_QUESTIONS[idx];
-      const options = card.querySelectorAll('.ns-quiz-option');
-      const feedback = card.querySelector('.quiz-feedback');
-
-      options.forEach((opt) => {
-        opt.addEventListener('click', () => {
-          if (card.dataset.answered === 'true') return;
-          card.dataset.answered = 'true';
-          answeredCount++;
-
-          const selIdx = parseInt(opt.dataset.oi, 10);
-          const isCorrect = selIdx === question.correct;
-          if (isCorrect) correctCount++;
-
-          options.forEach((o, i) => {
-            if (i === question.correct) o.classList.add('correct');
-            else if (i === selIdx) o.classList.add('wrong');
-          });
-
-          progressFill.style.width = `${(answeredCount / QUIZ_QUESTIONS.length) * 100}%`;
-          scoreDisplay.textContent = `Score: ${correctCount} / ${QUIZ_QUESTIONS.length}`;
-          feedback.style.display = 'block';
-          feedback.innerHTML = `<div class="module-feedback ${isCorrect ? 'module-feedback-success' : 'module-feedback-error'}">
-            <strong>${isCorrect ? 'Richtig!' : 'Falsch.'}</strong> ${question.explain}
-          </div>`;
-        });
-      });
+    container.querySelector('#btnNextStore').addEventListener('click', () => { currentExercise = generateStorageExercise(difficulty); renderStorage(container); });
+    container.querySelector('#btnCheckStore').addEventListener('click', () => {
+      if (isStruct) {
+        const okA = Math.abs(parseFloat(container.querySelector('#inpA').value.replace(',', '.')) - parseFloat(ex.sol.val_a)) < 1;
+        const okB = container.querySelector('#inpB').value.replace(/\./g, '') === ex.sol.val_b;
+        const okC = Math.abs(parseFloat(container.querySelector('#inpC').value.replace(',', '.')) - parseFloat(ex.sol.val_c)) < 0.5;
+        container.querySelector('#inpA').classList.toggle('correct', okA);
+        container.querySelector('#inpB').classList.toggle('correct', okB);
+        container.querySelector('#inpC').classList.toggle('correct', okC);
+      } else {
+        const val = parseFloat(container.querySelector('#inpRes').value.replace(',', '.'));
+        container.querySelector('#inpRes').classList.toggle('correct', Math.abs(val - parseFloat(ex.sol.display)) < 0.1);
+      }
+    });
+    container.querySelector('#btnSolveStore').addEventListener('click', () => {
+      const solEl = container.querySelector('#storeSol');
+      solEl.style.display = 'block';
+      solEl.innerHTML = CardRenderer.formatAnswer(ex.sol.steps);
     });
   }
 
-  function cleanup() {
-    cleanup_fns.forEach((fn) => fn());
-    cleanup_fns = [];
+  function renderTransfer(container) {
+    if (!currentExercise || currentExercise.type !== 'transfer') {
+      currentExercise = generateTransferExercise(difficulty);
+    }
+    const ex = currentExercise;
+    container.innerHTML = `
+      <div class="module-exercise-question">${CardRenderer.formatAnswer(`Dauer für **${ex.sizeGB} GiB** bei **${ex.speedMbit} Mbit/s**?`)}</div>
+      <div class="subnet-grid">
+        <div class="subnet-input-group"><label class="subnet-label">Std</label><input type="number" class="subnet-input" id="inpH"></div>
+        <div class="subnet-input-group"><label class="subnet-label">Min</label><input type="number" class="subnet-input" id="inpM"></div>
+        <div class="subnet-input-group"><label class="subnet-label">Sek</label><input type="number" class="subnet-input" id="inpS"></div>
+      </div>
+      <div class="module-actions">
+        <button class="btn btn-primary" id="btnCheckTrans">Prüfen</button>
+        <button class="btn" id="btnSolveTrans">Lösungsweg</button>
+        <button class="btn" id="btnNextTrans">Neu</button>
+      </div>
+      <div id="transSol" class="module-steps" style="display:none; margin-top: var(--space-6)"></div>
+    `;
+    container.querySelector('#btnNextTrans').addEventListener('click', () => { currentExercise = generateTransferExercise(difficulty); renderTransfer(container); });
+    container.querySelector('#btnCheckTrans').addEventListener('click', () => {
+        const userSec = parseInt(container.querySelector('#inpH').value || 0) * 3600 + parseInt(container.querySelector('#inpM').value || 0) * 60 + parseInt(container.querySelector('#inpS').value || 0);
+        const ok = Math.abs(userSec - ex.seconds) <= 2;
+        container.querySelectorAll('.subnet-input').forEach(i => i.classList.toggle('correct', ok));
+    });
+    container.querySelector('#btnSolveTrans').addEventListener('click', () => {
+      const solEl = container.querySelector('#transSol');
+      solEl.style.display = 'block';
+      solEl.innerHTML = CardRenderer.formatAnswer(ex.steps);
+    });
   }
 
+  function cleanup() { cleanup_fns.forEach((fn) => fn()); cleanup_fns = []; }
   return { render, cleanup };
 })();
 
