@@ -1,124 +1,41 @@
 /* ============================================================
-   osimodel.css — OSI-Modell module styles
+   osimodel.css — Styles for OSI Model Module
    ============================================================ */
 
-/* --- Scoreboard --- */
-.osi-scoreboard {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-3) var(--space-4);
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-4);
-  flex-wrap: wrap;
-}
-
-.osi-scoreboard-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.osi-scoreboard-value {
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--accent-primary);
-}
-
-.osi-scoreboard-label {
-  font-size: var(--font-size-xs);
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.osi-scoreboard-streak {
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--warning, #f59e0b);
-}
-
-.osi-scoreboard-progress {
-  flex: 1;
-  min-width: 120px;
-  height: 6px;
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.osi-scoreboard-progress-bar {
-  height: 100%;
-  background: var(--accent-primary);
-  border-radius: var(--radius-full);
-  transition: width 0.4s ease;
-}
-
-/* --- Mnemonic Banner --- */
-.osi-mnemonic {
-  padding: var(--space-3) var(--space-4);
-  background: var(--accent-primary-light);
-  border: 1px solid var(--accent-primary);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-4);
-  text-align: center;
-  font-size: var(--font-size-sm);
-  color: var(--text-primary);
-  line-height: var(--line-height-relaxed);
-}
-
-.osi-mnemonic strong {
-  color: var(--accent-primary);
-  font-weight: 700;
-}
-
-/* --- Layer Tower --- */
+/* --- Layer Tower (Overview) --- */
 .osi-tower {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin-bottom: var(--space-4);
+  gap: var(--space-2);
+  margin-top: var(--space-6);
 }
 
 .osi-layer {
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: box-shadow var(--transition-fast);
-}
-
-.osi-layer.open {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-normal);
 }
 
 .osi-layer-header {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
   cursor: pointer;
-  background: var(--card-bg);
-  transition: background var(--transition-fast);
-  user-select: none;
-}
-
-.osi-layer-header:hover {
-  background: var(--bg-tertiary);
+  gap: var(--space-4);
 }
 
 .osi-layer-num {
   width: 32px;
   height: 32px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  font-size: var(--font-size-sm);
   color: white;
+  font-weight: 800;
+  font-size: 14px;
   flex-shrink: 0;
 }
 
@@ -129,879 +46,173 @@
 }
 
 .osi-layer-name-de {
-  font-weight: 600;
-  font-size: var(--font-size-base);
+  font-weight: 700;
   color: var(--text-primary);
+  font-size: var(--font-size-sm);
 }
 
 .osi-layer-name-en {
-  font-size: var(--font-size-xs);
+  font-size: 11px;
   color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .osi-layer-pdu {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--accent-primary);
+  background: var(--accent-primary-light);
   padding: 2px 8px;
-  background: var(--bg-tertiary);
   border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  color: var(--text-secondary);
+  text-transform: uppercase;
 }
 
-.osi-layer-chevron {
-  font-size: var(--font-size-sm);
-  color: var(--text-tertiary);
-  transition: transform var(--transition-fast);
-}
-
-.osi-layer.open .osi-layer-chevron {
-  transform: rotate(180deg);
-}
-
-.osi-layer-detail {
+.osi-layer-details {
+  padding: 0 var(--space-4) var(--space-4) 52px;
   display: none;
-  padding: var(--space-4);
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--card-border);
+  animation: slideInDown 0.2s ease-out;
 }
 
-.osi-layer.open .osi-layer-detail {
+.osi-layer.open .osi-layer-details {
   display: block;
 }
 
-.osi-layer-desc {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
+.osi-layer.open .osi-layer-header {
+  border-bottom: 1px solid var(--border-light);
   margin-bottom: var(--space-3);
-  line-height: var(--line-height-relaxed);
 }
 
-.osi-layer-details-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 var(--space-3);
+.osi-detail-section {
+  margin-top: var(--space-2);
 }
 
-.osi-layer-details-list li {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  padding: var(--space-1) 0;
-  padding-left: var(--space-3);
-  position: relative;
+.osi-detail-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
 }
 
-.osi-layer-details-list li::before {
-  content: "\2022";
-  position: absolute;
-  left: 0;
-  color: var(--accent-primary);
-}
-
-.osi-layer-protocols {
+.osi-badge-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1);
-  margin-bottom: var(--space-3);
+  gap: 4px;
 }
 
-.osi-layer-protocol-tag {
-  padding: 2px 8px;
+.osi-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: var(--radius-sm);
   background: var(--bg-tertiary);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-family: var(--font-mono);
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
 }
 
-.osi-layer-exam-tip {
-  padding: var(--space-2) var(--space-3);
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-xs);
-  color: var(--text-secondary);
-  line-height: var(--line-height-relaxed);
+.osi-badge-protocol { border-left: 2px solid var(--accent-primary); }
+.osi-badge-hardware { border-left: 2px solid var(--warning); }
+
+/* --- Puzzle Mode --- */
+.osi-puzzle-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
 }
 
-.osi-layer-exam-tip strong {
-  color: var(--warning, #f59e0b);
-}
-
-/* --- Drag & Drop Layout --- */
-.osi-dnd-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.osi-puzzle-slot {
+  display: flex;
+  align-items: center;
   gap: var(--space-4);
-  margin-bottom: var(--space-4);
+  padding: var(--space-2);
+  background: var(--bg-tertiary);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  min-height: 60px;
+  transition: all var(--transition-fast);
 }
 
-.osi-dnd-source {
-  padding: var(--space-4);
+.osi-puzzle-slot.drag-over {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary-light);
+}
+
+.osi-puzzle-slot-num {
+  width: 32px;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text-tertiary);
+  text-align: center;
+  opacity: 0.3;
+}
+
+.osi-puzzle-chip {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-}
-
-.osi-dnd-source-title {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  cursor: grab;
+  user-select: none;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: var(--space-3);
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.osi-dnd-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+.osi-puzzle-chip.dragging {
+  opacity: 0.4;
+}
+
+.osi-puzzle-chip.correct {
+  border-color: var(--success);
+  background: var(--success-bg);
+}
+
+.osi-puzzle-chip.wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+}
+
+/* --- DND Layout (Protocols/Hardware) --- */
+.osi-dnd-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-4);
 }
 
 .osi-chip {
-  padding: var(--space-1) var(--space-3);
-  background: var(--bg-tertiary);
+  background: var(--bg-primary);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--text-primary);
-  cursor: grab;
-  user-select: none;
-  transition: all var(--transition-fast);
-  touch-action: none;
-}
-
-.osi-chip:hover {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary-light);
-}
-
-.osi-chip:active,
-.osi-chip.dragging {
-  cursor: grabbing;
-  opacity: 0.5;
-}
-
-.osi-chip.correct {
-  background: var(--success-bg);
-  border-color: var(--success);
-  color: var(--success);
-}
-
-.osi-chip.wrong {
-  background: var(--danger-bg);
-  border-color: var(--danger);
-  color: var(--danger);
-  animation: shake 0.4s ease;
-}
-
-.osi-chip.placed {
-  background: var(--accent-primary-light);
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
-}
-
-.osi-dnd-zones {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.osi-dnd-zones-title {
-  font-size: var(--font-size-sm);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  font-size: 12px;
   font-weight: 600;
+  cursor: grab;
+  display: inline-block;
+  margin: 2px;
   color: var(--text-primary);
-  margin-bottom: var(--space-2);
 }
 
 .osi-drop-zone {
-  min-height: 48px;
-  padding: var(--space-2) var(--space-3);
-  border: 2px dashed var(--border-color);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-  transition: all var(--transition-fast);
-}
-
-.osi-drop-zone-label {
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--text-tertiary);
-  min-width: 100px;
-  flex-shrink: 0;
-}
-
-.osi-drop-zone.drag-over {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary-light);
-}
-
-.osi-drop-zone .osi-chip {
-  cursor: pointer;
-}
-
-/* --- Encapsulation Animation --- */
-.osi-encap-steps {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  margin-bottom: var(--space-6);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.osi-encap-step-indicator {
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  background: var(--bg-tertiary);
-  color: var(--text-tertiary);
-  transition: all var(--transition-fast);
-}
-
-.osi-encap-step-indicator.active {
-  background: var(--accent-primary);
-  color: white;
-}
-
-.osi-encap-step-indicator.completed {
-  background: var(--success-bg);
-  color: var(--success);
-}
-
-.osi-encap-arrow {
-  color: var(--text-tertiary);
-  font-size: var(--font-size-xs);
-}
-
-.osi-encap-visual {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--space-4);
-  min-height: 200px;
-  align-items: center;
-}
-
-.osi-encap-box {
-  display: flex;
-  align-items: center;
-  border: 2px solid;
-  border-radius: var(--radius-md);
-  padding: var(--space-2);
-  transition: all 0.4s ease;
-  animation: encapAppear 0.4s ease;
-}
-
-.osi-encap-header-label {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  padding: var(--space-1) var(--space-1);
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  border-radius: var(--radius-sm);
-  color: white;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.osi-encap-data {
-  padding: var(--space-3) var(--space-4);
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
-}
-
-.osi-encap-explanation {
-  padding: var(--space-3) var(--space-4);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-4);
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  line-height: var(--line-height-relaxed);
-}
-
-.osi-encap-explanation strong {
-  color: var(--text-primary);
-}
-
-.osi-encap-explanation code {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  background: var(--code-bg);
-  padding: 1px 4px;
-  border-radius: var(--radius-sm);
-}
-
-.osi-encap-controls {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-2);
-}
-
-/* --- TCP/UDP Comparison --- */
-.osi-comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: var(--space-6);
-  font-size: var(--font-size-sm);
-}
-
-.osi-comparison-table th,
-.osi-comparison-table td {
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--card-border);
-  text-align: left;
-}
-
-.osi-comparison-table th {
   background: var(--bg-secondary);
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.osi-comparison-table td {
-  color: var(--text-secondary);
-}
-
-.osi-comparison-table td:first-child {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-/* --- Handshake Animation --- */
-.osi-handshake {
-  margin-bottom: var(--space-6);
-}
-
-.osi-handshake-title {
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-4);
-  text-align: center;
-}
-
-.osi-handshake-visual {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  max-width: 400px;
-  margin: 0 auto;
-  padding: var(--space-4);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-}
-
-.osi-handshake-parties {
-  display: flex;
-  justify-content: space-between;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
   margin-bottom: var(--space-2);
-}
-
-.osi-handshake-party {
-  padding: var(--space-2) var(--space-3);
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.osi-handshake-step {
+  min-height: 50px;
   display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2);
-  border-radius: var(--radius-md);
-  opacity: 0.3;
-  transition: all 0.4s ease;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
-.osi-handshake-step.active {
-  opacity: 1;
-  background: var(--accent-primary-light);
-}
-
-.osi-handshake-step.completed {
-  opacity: 1;
-}
-
-.osi-handshake-arrow {
-  flex: 1;
-  height: 2px;
-  background: var(--accent-primary);
-  position: relative;
-}
-
-.osi-handshake-arrow::after {
-  content: "";
-  position: absolute;
-  right: -1px;
-  top: -4px;
-  border: 5px solid transparent;
-  border-left-color: var(--accent-primary);
-}
-
-.osi-handshake-arrow.reverse {
-  transform: scaleX(-1);
-}
-
-.osi-handshake-label {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  color: var(--accent-primary);
-  white-space: nowrap;
-  font-family: var(--font-mono);
-}
-
-.osi-handshake-controls {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
-}
-
-/* --- TCP/UDP Quick Quiz --- */
-.osi-tcpudp-quiz {
-  margin-bottom: var(--space-4);
-}
-
-.osi-tcpudp-quiz-title {
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-4);
-}
-
-.osi-tcpudp-scenario {
-  padding: var(--space-4);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-3);
-}
-
-.osi-tcpudp-scenario-text {
-  font-size: var(--font-size-base);
-  color: var(--text-primary);
-  margin-bottom: var(--space-3);
-}
-
-.osi-tcpudp-btns {
-  display: flex;
-  gap: var(--space-2);
-}
-
-.osi-tcpudp-btn {
-  flex: 1;
-  padding: var(--space-2) var(--space-4);
-  border: 2px solid var(--border-color);
-  background: transparent;
-  color: var(--text-primary);
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.osi-tcpudp-btn:hover {
-  border-color: var(--accent-primary);
-}
-
-.osi-tcpudp-btn.correct {
-  background: var(--success-bg);
-  border-color: var(--success);
-  color: var(--success);
-}
-
-.osi-tcpudp-btn.wrong {
-  background: var(--danger-bg);
-  border-color: var(--danger);
-  color: var(--danger);
-  animation: shake 0.4s ease;
-}
-
-.osi-tcpudp-btn:disabled {
-  cursor: default;
-  opacity: 0.7;
-}
-
-.osi-tcpudp-feedback {
-  font-size: var(--font-size-sm);
-  margin-top: var(--space-2);
-  color: var(--text-secondary);
-}
-
-.osi-tcpudp-progress {
-  font-size: var(--font-size-sm);
-  color: var(--text-tertiary);
-  text-align: center;
-  margin-bottom: var(--space-3);
-}
-
-/* --- Quiz Mode --- */
-.osi-quiz-progress {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
-.osi-quiz-progress-bar {
-  flex: 1;
-  height: 6px;
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.osi-quiz-progress-fill {
-  height: 100%;
-  background: var(--accent-primary);
-  border-radius: var(--radius-full);
-  transition: width 0.3s ease;
-}
-
-.osi-quiz-progress-text {
-  font-size: var(--font-size-sm);
-  color: var(--text-tertiary);
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.osi-quiz-question {
-  font-size: var(--font-size-lg);
-  color: var(--text-primary);
-  margin-bottom: var(--space-4);
-  line-height: var(--line-height-relaxed);
-}
-
-.osi-quiz-options {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-}
-
-.osi-quiz-option {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  background: var(--card-bg);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  font-size: var(--font-size-base);
-  color: var(--text-primary);
-}
-
-.osi-quiz-option:hover {
-  border-color: var(--accent-primary);
-}
-
-.osi-quiz-option.selected {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary-light);
-}
-
-.osi-quiz-option.correct {
-  border-color: var(--success);
-  background: var(--success-bg);
-  color: var(--success);
-}
-
-.osi-quiz-option.wrong {
-  border-color: var(--danger);
-  background: var(--danger-bg);
-  color: var(--danger);
-  animation: shake 0.4s ease;
-}
-
-.osi-quiz-option:disabled,
-.osi-quiz-option.disabled {
-  cursor: default;
-  opacity: 0.7;
-}
-
-.osi-quiz-option-letter {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-  background: var(--bg-tertiary);
-  font-weight: 700;
-  font-size: var(--font-size-sm);
-  flex-shrink: 0;
-}
-
-/* --- Layer Select (Quiz Type) --- */
-.osi-quiz-layers {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  margin-bottom: var(--space-4);
-}
-
-.osi-quiz-layer-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  font-size: var(--font-size-sm);
-  color: var(--text-primary);
-}
-
-.osi-quiz-layer-btn:hover {
-  border-color: var(--accent-primary);
-}
-
-.osi-quiz-layer-btn.selected {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary-light);
-}
-
-.osi-quiz-layer-btn.correct {
-  border-color: var(--success);
-  background: var(--success-bg);
-}
-
-.osi-quiz-layer-btn.wrong {
-  border-color: var(--danger);
-  background: var(--danger-bg);
-  animation: shake 0.4s ease;
-}
-
-.osi-quiz-layer-btn:disabled {
-  cursor: default;
-}
-
-/* --- Fill-in Input --- */
-.osi-quiz-fill-input {
-  width: 100%;
-  max-width: 400px;
-  padding: var(--space-2) var(--space-3);
-  background: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  font-size: var(--font-size-base);
-  font-family: var(--font-family);
-  margin-bottom: var(--space-4);
-  box-sizing: border-box;
-}
-
-.osi-quiz-fill-input:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-}
-
-.osi-quiz-fill-input.correct {
-  border-color: var(--success);
-  background: var(--success-bg);
-}
-
-.osi-quiz-fill-input.wrong {
-  border-color: var(--danger);
-  background: var(--danger-bg);
-}
-
-/* --- Quiz Summary --- */
-.osi-quiz-summary {
-  text-align: center;
-  padding: var(--space-6);
-}
-
-.osi-quiz-summary-score {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--accent-primary);
-  margin-bottom: var(--space-2);
-}
-
-.osi-quiz-summary-label {
-  font-size: var(--font-size-lg);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-4);
-}
-
-.osi-quiz-summary-stats {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-6);
-  margin-bottom: var(--space-6);
-}
-
-.osi-quiz-summary-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.osi-quiz-summary-stat-value {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.osi-quiz-summary-stat-label {
-  font-size: var(--font-size-xs);
-  color: var(--text-tertiary);
-}
-
-/* --- Celebration --- */
-.osi-celebration {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 4rem;
-  animation:
-    celebrationBounce 0.6s ease forwards,
-    celebrationFade 1s ease 0.6s forwards;
-  z-index: 1000;
-  pointer-events: none;
-}
-
-/* --- Section Titles --- */
-.osi-section-title {
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-3);
-}
-
-.osi-section-subtitle {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-3);
-}
-
-/* --- Animations --- */
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(-4px);
-  }
-  40% {
-    transform: translateX(4px);
-  }
-  60% {
-    transform: translateX(-4px);
-  }
-  80% {
-    transform: translateX(4px);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-@keyframes celebrationFade {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes celebrationBounce {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.3);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes encapAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* --- Touch ghost element --- */
-.osi-touch-ghost {
-  position: fixed;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.85;
-  transform: scale(1.1);
-}
-
-/* --- Responsive --- */
 @media (max-width: 768px) {
   .osi-dnd-layout {
     grid-template-columns: 1fr;
-  }
-
-  .osi-scoreboard {
-    gap: var(--space-2);
-  }
-
-  .osi-comparison-table {
-    font-size: var(--font-size-xs);
-  }
-
-  .osi-comparison-table th,
-  .osi-comparison-table td {
-    padding: var(--space-1) var(--space-2);
-  }
-
-  .osi-handshake-visual {
-    max-width: 100%;
-  }
-
-  .osi-encap-steps {
-    gap: var(--space-1);
-  }
-
-  .osi-encap-step-indicator {
-    font-size: 10px;
-    padding: var(--space-1) var(--space-2);
-  }
-
-  .osi-quiz-summary-stats {
-    flex-direction: column;
-    gap: var(--space-3);
   }
 }
