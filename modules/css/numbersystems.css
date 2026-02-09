@@ -1,672 +1,174 @@
 /* ============================================================
-   numbersystems.css — Zahlensysteme & Speicher module styles
-   All classes prefixed with ns-
+   numbersystems.css — Styles for Module 4 (Number Systems)
    ============================================================ */
-
-/* --- Explanation Tab --- */
-.ns-explanation {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-}
-
-.ns-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.ns-section-title {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.ns-section-desc {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  margin-top: calc(-1 * var(--space-2));
-}
-
-.ns-alert-title {
-  color: var(--warning) !important;
-}
 
 /* --- Info Cards Grid --- */
 .ns-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--space-3);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .ns-card-grid { grid-template-columns: 1fr; }
 }
 
 .ns-info-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-xl);
-  overflow: hidden;
-}
-
-.ns-info-card-header {
-  padding: var(--space-2) var(--space-4);
-  background: var(--accent-primary-light);
-  color: var(--accent-primary);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-}
-
-.ns-info-card-body {
-  padding: var(--space-3) var(--space-4);
-}
-
-.ns-info-card-body p {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-2);
-}
-
-/* --- Method Cards --- */
-.ns-method-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-xl);
   padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: all var(--transition-fast);
+  border-top: 3px solid var(--accent-primary);
 }
 
-.ns-method-card h3 {
+.ns-info-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+  box-shadow: var(--card-shadow-lg);
+}
+
+.ns-card-header {
+  font-weight: 800;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  letter-spacing: 0.05em;
+}
+
+.ns-card-title {
+  font-weight: 700;
   font-size: var(--font-size-base);
-  font-weight: 600;
-  color: var(--accent-primary);
-  margin-bottom: var(--space-2);
+  color: var(--text-primary);
 }
 
-.ns-method-card p {
+.ns-card-text {
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
-  margin-bottom: var(--space-3);
 }
 
-/* --- Hex Reference Table --- */
-.ns-hex-table {
-  margin-top: var(--space-3);
-  overflow-x: auto;
-}
-
-.ns-hex-table table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-}
-
-.ns-hex-table th {
-  padding: var(--space-1) var(--space-2);
-  background: var(--bg-tertiary);
-  color: var(--text-secondary);
-  font-weight: 600;
-  text-align: center;
-  border: 1px solid var(--border-color);
-}
-
-.ns-hex-table td {
-  padding: var(--space-1) var(--space-2);
-  text-align: center;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-}
-
-/* --- Alert Card (KiB vs KB) --- */
-.ns-alert-card {
-  background: var(--warning-bg);
-  border: 1px solid var(--warning);
+/* --- Converter UI --- */
+.ns-converter-card {
+  background: var(--bg-secondary);
   border-radius: var(--radius-xl);
-  padding: var(--space-5);
-}
-
-.ns-alert-card > p {
-  font-size: var(--font-size-sm);
-  color: var(--warning);
-  margin-bottom: var(--space-4);
-}
-
-.ns-comparison-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-}
-
-.ns-comparison-col {
-  background: var(--card-bg);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-}
-
-.ns-comparison-col h4 {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  margin-bottom: var(--space-2);
-}
-
-.ns-comparison-si h4 {
-  color: var(--info);
-}
-
-.ns-comparison-iec h4 {
-  color: var(--success);
-}
-
-.ns-comparison-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.ns-comparison-col li {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  color: var(--text-primary);
-  padding: var(--space-1) 0;
-}
-
-.ns-comparison-note {
-  font-size: var(--font-size-xs);
-  color: var(--text-tertiary);
-  margin-top: var(--space-2);
-  font-style: italic;
-}
-
-/* --- Formula Grid --- */
-.ns-formula-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-3);
-}
-
-.ns-formula-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4);
-}
-
-.ns-formula-card h4 {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--accent-primary);
-  margin-bottom: var(--space-2);
-}
-
-.ns-formula-example {
-  font-size: var(--font-size-xs);
-  color: var(--text-tertiary);
-  margin-top: var(--space-2);
-  font-style: italic;
-}
-
-/* --- Converter Tab --- */
-.ns-converter {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.ns-converter-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.ns-converter-input-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
-}
-
-.ns-converter-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-/* --- Conversion Results --- */
-.ns-conv-results {
-  min-height: 40px;
-}
-
-.ns-conv-empty {
-  color: var(--text-tertiary);
-  font-size: var(--font-size-sm);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
 }
 
 .ns-result-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-3);
+  margin-top: var(--space-6);
 }
 
 .ns-result-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: var(--space-4);
   border-radius: var(--radius-lg);
-  padding: var(--space-3) var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  transition: border-color var(--transition-fast);
+  text-align: center;
 }
 
-.ns-result-active {
+.ns-result-card.active {
   border-color: var(--accent-primary);
   background: var(--accent-primary-light);
 }
 
 .ns-result-label {
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--text-secondary);
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-1);
 }
 
 .ns-result-value {
   font-family: var(--font-mono);
+  font-weight: 700;
   font-size: var(--font-size-lg);
-  font-weight: 600;
   color: var(--text-primary);
-  word-break: break-all;
 }
 
-/* --- Conversion Steps --- */
-.ns-conv-steps {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.ns-steps-title {
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-2);
-}
-
-.ns-step-block {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-}
-
-.ns-step-block h4 {
+/* --- Storage Table --- */
+.ns-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0;
   font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--accent-primary);
-  margin-bottom: var(--space-2);
 }
 
-/* --- Storage Tab --- */
-.ns-storage {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
+.ns-comparison-table th, .ns-comparison-table td {
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  text-align: left;
 }
 
-.ns-storage-section {
-  display: flex;
-  flex-direction: column;
+.ns-comparison-table th {
+  background: var(--bg-secondary);
+  font-weight: 700;
+}
+
+/* --- Transfer Calc --- */
+.ns-calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 600px) {
+  .ns-calc-grid { grid-template-columns: 1fr; }
+}
+
+.ns-calc-result-box {
+  background: var(--bg-elevated);
+  border: 2px solid var(--accent-primary);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
-}
-
-/* --- Unit Toggle --- */
-.ns-unit-toggle {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-}
-
-.ns-toggle-label {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-
-.ns-toggle-btn {
-  padding: var(--space-1) var(--space-3);
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--text-secondary);
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.ns-toggle-btn:hover {
-  border-color: var(--accent-primary);
-  color: var(--text-primary);
-}
-
-.ns-toggle-active {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: white;
-}
-
-/* --- Unit Converter Row --- */
-.ns-unit-converter-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto 1fr;
-  gap: var(--space-3);
-  align-items: end;
-}
-
-.ns-arrow {
-  font-size: var(--font-size-xl);
-  color: var(--text-tertiary);
-  padding-bottom: var(--space-2);
   text-align: center;
+  margin-bottom: var(--space-6);
+  box-shadow: var(--card-shadow-lg);
 }
 
-/* --- Calc Results --- */
-.ns-unit-result,
-.ns-transfer-result,
-.ns-image-result {
-  min-height: 20px;
+.ns-calc-res-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: var(--space-2);
 }
 
-.ns-calc-result {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.ns-calc-main {
-  font-size: var(--font-size-lg);
-  color: var(--text-primary);
-}
-
-.ns-calc-main strong {
-  color: var(--success);
-}
-
-.ns-calc-time {
+.ns-calc-res-value {
   font-size: var(--font-size-2xl);
-  font-weight: 700;
-  color: var(--accent-primary) !important;
-}
-
-.ns-calc-sub {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-}
-
-.ns-calc-detail {
-  margin-top: var(--space-2);
-}
-
-/* --- Transfer Grid --- */
-.ns-transfer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: var(--space-3);
-}
-
-/* --- Image Grid --- */
-.ns-image-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--space-3);
-}
-
-/* --- Image Comparison Bars --- */
-.ns-image-compare {
-  margin-top: var(--space-2);
-}
-
-.ns-compare-title {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
+  font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: var(--space-3);
 }
 
-.ns-compare-bars {
+/* --- Quiz Styles --- */
+.ns-quiz-option {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.ns-compare-bar-row {
-  display: grid;
-  grid-template-columns: 200px 1fr 80px;
-  gap: var(--space-2);
   align-items: center;
-}
-
-.ns-compare-bar-label {
-  font-size: var(--font-size-xs);
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-
-.ns-compare-bar-track {
-  height: 8px;
+  gap: var(--space-3);
+  padding: var(--space-4);
   background: var(--bg-tertiary);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.ns-compare-bar-fill {
-  height: 100%;
-  background: var(--accent-secondary);
-  border-radius: var(--radius-full);
-  transition: width var(--transition-normal);
-}
-
-.ns-compare-bar-active {
-  background: var(--accent-primary);
-}
-
-.ns-compare-bar-value {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  color: var(--text-primary);
-  text-align: right;
-}
-
-/* --- Exercise Tab --- */
-.ns-exercises {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.ns-exercise-nav {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-.ns-exercise-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) var(--space-3);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all var(--transition-fast);
-  text-align: left;
   color: var(--text-primary);
-  font-family: var(--font-family);
+  margin-bottom: var(--space-2);
 }
 
-.ns-exercise-btn:hover {
+.ns-quiz-option:hover {
   border-color: var(--accent-primary);
-  background: var(--card-bg-hover);
-}
-
-.ns-exercise-btn.active {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary-light);
-}
-
-.ns-exercise-btn.completed {
-  border-left: 3px solid var(--success);
-}
-
-.ns-exercise-btn-num {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--text-secondary);
-  flex-shrink: 0;
-}
-
-.ns-exercise-btn.completed .ns-exercise-btn-num {
-  background: var(--success-bg);
-  color: var(--success);
-}
-
-.ns-exercise-btn-title {
-  flex: 1;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-}
-
-/* --- Difficulty Badges --- */
-.ns-diff-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  border-radius: var(--radius-full);
-  white-space: nowrap;
-}
-
-.ns-diff-leicht {
-  background: var(--success-bg);
-  color: var(--success);
-}
-
-.ns-diff-mittel {
-  background: var(--warning-bg);
-  color: var(--warning);
-}
-
-.ns-diff-schwer {
-  background: var(--danger-bg);
-  color: var(--danger);
-}
-
-.ns-solved-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  background: var(--success-bg);
-  color: var(--success);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  border-radius: var(--radius-full);
-}
-
-/* --- Exercise Task Sections --- */
-.ns-transfer-task,
-.ns-image-task,
-.ns-mixed-task {
   background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-  margin-bottom: var(--space-3);
 }
 
-.ns-transfer-inputs {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--space-3);
-  margin-top: var(--space-2);
-}
-
-.ns-unit-label {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--accent-primary);
-  white-space: nowrap;
-}
-
-.ns-bonus-task {
-  background: var(--warning-bg);
-  border: 1px solid var(--warning);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-  margin-top: var(--space-3);
-}
-
-.ns-bonus-label {
-  color: var(--warning) !important;
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .ns-converter-input-row {
-    grid-template-columns: 1fr;
-  }
-
-  .ns-result-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .ns-unit-converter-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .ns-arrow {
-    display: none;
-  }
-
-  .ns-transfer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .ns-image-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ns-comparison-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ns-compare-bar-row {
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
-  }
-
-  .ns-compare-bar-value {
-    text-align: left;
-  }
-
-  .ns-card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ns-formula-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ns-exercise-btn {
-    flex-wrap: wrap;
-  }
-}
+.ns-quiz-option.correct { border-color: var(--success); background: var(--success-bg); color: var(--success); }
+.ns-quiz-option.wrong { border-color: var(--danger); background: var(--danger-bg); color: var(--danger); }
