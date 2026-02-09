@@ -80,7 +80,7 @@ Diese Themen kommen in fast jeder Prüfung vor und bringen oft 10–25 Punkte au
 
 ---
 
-### Modul 4: 🏗️ UML-Diagramm-Werkstatt (Fokus: Aktivitäts- & Klassendiagramm)
+### Modul 4: 🏗️ UML-Diagramm-Werkstatt (Fokus: Aktivitäts- & Klassendiagramm) ✅ (IMPLEMENTIERT)
 **Bezug:** Topic 8.8 UML
 **Prüfungsrelevanz:** ★★★★★ (seit 2025 noch wichtiger, da Struktogramm/PAP gestrichen)
 
@@ -319,7 +319,7 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 | 1 | Nutzwertanalyse | ✅ Implementiert |
 | 2 | Netzplantechnik | ✅ Implementiert |
 | 3 | Subnetting | ✅ Implementiert |
-| 4 | UML-Werkstatt | ❌ Offen |
+| 4 | UML-Werkstatt | ✅ Implementiert |
 | 5 | ER-Diagramm | ❌ Offen |
 | 6 | Kostenrechnung | ❌ Offen |
 | 7 | Zahlensysteme | ✅ Implementiert |
@@ -337,7 +337,7 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 | 19 | Vertragsrecht | ❌ Offen |
 | 20 | BPMN-Editor | ❌ Offen |
 
-**Implementiert:** 6/20 Module (30%)
+**Implementiert:** 7/20 Module (35%)
 
 ---
 
@@ -348,7 +348,7 @@ Konzentriere dich auf **Tier 1 und Tier 2** — damit deckst du ca. **80% der Pu
 ### Nächste Schritte:
 1. ✅ ~~Nutzwertanalyse~~ (fertig)
 2. ✅ ~~Netzplan~~ (fertig)
-3. ❌ **UML-Aktivitätsdiagramm** — Der neue Standard für Ablauflogik
+3. ✅ ~~UML-Aktivitätsdiagramm~~ — Der neue Standard für Ablauflogik
 4. ✅ ~~Speicher/Zahlensysteme~~ (fertig)
 5. ❌ **ER-Modell** — Grundlage für Datenbanken
 
@@ -363,7 +363,7 @@ modules/
   ├── nwa.js               (Modul 1) ✅
   ├── networkplan.js       (Modul 2) ✅
   ├── subnetting.js        (Modul 3) ✅
-  ├── uml.js               (Modul 4)
+  ├── uml.js               (Modul 4) ✅
   ├── erd.js               (Modul 5)
   ├── costcalc.js          (Modul 6)
   ├── numbersystems.js     (Modul 7) ✅
