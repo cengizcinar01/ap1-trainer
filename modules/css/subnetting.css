@@ -1,116 +1,232 @@
 /* ============================================================
-   subnetting.css — Subnetting-specific module styles
+   subnetting.css — Styles for Subnetting Module
    ============================================================ */
 
-/* --- IP Recognition --- */
-.module-ip-list {
+/* --- Terminal Style (Shared/Adapted from OSI) --- */
+.subnet-terminal {
+  background: #0c0c0c;
+  border: 1px solid #333;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--card-shadow-lg);
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.subnet-terminal-header {
+  background: #2d2d2d;
+  padding: var(--space-2) var(--space-4);
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+  align-items: center;
+  gap: var(--space-4);
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.subnet-terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.subnet-terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4d4d4d;
+}
+
+.subnet-terminal-title {
+  font-size: 11px;
+  color: #999;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.subnet-terminal-body {
+  padding: var(--space-4);
+  color: #e0e0e0;
+}
+
+.subnet-terminal-row {
+  display: flex;
+  margin-bottom: var(--space-2);
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.subnet-terminal-prompt {
+  color: #00ff00;
+  margin-right: var(--space-2);
+}
+
+.subnet-terminal-input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  width: 100%;
+  outline: none;
+}
+
+.subnet-terminal-output {
+  margin-top: var(--space-2);
+  color: #ccc;
+  white-space: pre-wrap;
+}
+
+/* --- Input Grid --- */
+.subnet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
   margin-bottom: var(--space-6);
 }
 
-.module-ip-row {
+.subnet-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.subnet-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.subnet-input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  transition: all var(--transition-fast);
+}
+
+.subnet-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  background: var(--bg-elevated);
+}
+
+.subnet-input.correct {
+  border-color: var(--success);
+  color: var(--success);
+  background: var(--success-bg);
+}
+
+.subnet-input.wrong {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+/* --- Split Visualization --- */
+.subnet-split-visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: var(--space-6) 0;
+}
+
+.subnet-block-base {
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-color);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.subnet-arrow-down {
+  display: flex;
+  justify-content: center;
+  color: var(--text-tertiary);
+  margin: -8px 0;
+}
+
+.subnet-blocks-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.subnet-block-sub {
+  flex: 1;
+  min-width: 120px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* --- IP Recognition --- */
+.subnet-ip-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.subnet-ip-item {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
+  justify-content: space-between;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  flex-wrap: wrap;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
 }
 
-.module-ip-addr {
+.subnet-ip-addr {
   font-family: var(--font-mono);
-  font-size: var(--font-size-base);
-  color: var(--text-primary);
   font-weight: 600;
-  min-width: 160px;
+  color: var(--text-primary);
 }
 
-.module-ip-btns {
+.subnet-ip-actions {
   display: flex;
-  gap: var(--space-1);
+  gap: var(--space-2);
 }
 
-.module-ip-btn {
-  padding: var(--space-1) var(--space-3);
+.subnet-btn-small {
+  padding: 4px 12px;
+  font-size: 11px;
+  border-radius: var(--radius-full);
   border: 1px solid var(--border-color);
   background: transparent;
   color: var(--text-secondary);
-  font-size: var(--font-size-sm);
-  border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-.module-ip-btn:hover {
-  border-color: var(--accent-primary);
+.subnet-btn-small:hover {
+  background: var(--bg-tertiary);
   color: var(--text-primary);
 }
 
-.module-ip-btn.selected {
+.subnet-btn-small.selected {
   background: var(--accent-primary);
   border-color: var(--accent-primary);
   color: white;
 }
 
-.module-ip-btn.correct-answer {
-  background: var(--success-bg);
+.subnet-btn-small.correct {
+  background: var(--success);
   border-color: var(--success);
-  color: var(--success);
+  color: white !important;
 }
 
-.module-ip-btn:disabled {
-  cursor: default;
-  opacity: 0.7;
-}
-
-.module-ip-result {
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  flex-basis: 100%;
-}
-
-.module-ip-result-correct {
-  color: var(--success);
-}
-
-.module-ip-result-wrong {
-  color: var(--danger);
-}
-
-/* --- IPv6 Display --- */
-.module-ipv6-display {
-  padding: var(--space-4);
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-6);
-  text-align: center;
-}
-
-.module-ipv6-display code {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xl);
-  color: var(--accent-primary);
-  font-weight: 600;
-  word-break: break-all;
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .module-ip-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .module-ip-addr {
-    min-width: auto;
-  }
-
-  .module-ipv6-display code {
-    font-size: var(--font-size-base);
-  }
+.subnet-btn-small.wrong {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: white !important;
 }

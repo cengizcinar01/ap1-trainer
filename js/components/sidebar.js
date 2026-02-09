@@ -117,6 +117,10 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.osimodel}</span>
           OSI-Modell
         </a>
+        <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
+          <span class="nav-item-icon">${ICONS.subnetting}</span>
+          Subnetting
+        </a>
         <a href="#/modules/networkplan" class="nav-item ${currentRoute.startsWith('/modules/networkplan') ? 'active' : ''}" data-route="/modules/networkplan">
           <span class="nav-item-icon">${ICONS.networkplan}</span>
           Netzplantechnik
