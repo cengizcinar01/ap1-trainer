@@ -109,7 +109,7 @@ const GanttView = (() => {
 
         <nav class="module-tabs">
           <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Anleitung</button>
-          <button class="module-tab ${currentTab === 'exercise' ? 'active' : ''}" data-tab="exercise">Interaktive Übung</button>
+          <button class="module-tab ${currentTab === 'exercise' ? 'active' : ''}" data-tab="exercise">Übung</button>
         </nav>
 
         <div id="ganttContent"></div>
@@ -165,15 +165,19 @@ const GanttView = (() => {
 
     container.innerHTML = `
       <div class="module-exercise-card view-enter">
+        <div class="scenario-nav">
+          <span class="scenario-nav-label">Szenarien</span>
+          <div class="scenario-nav-controls">
+            <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
+            <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
+            <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
+          </div>
+        </div>
+
         <div class="gantt-card-header">
           <div style="flex: 1">
             <h3 style="margin: 0 0 var(--space-1) 0;">${sc.title}</h3>
             <p class="comm-text" style="font-size: 13px; margin: 0;">${sc.description}</p>
-          </div>
-          <div class="gantt-nav-controls">
-            <button class="gantt-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
-            <span style="font-size: 11px; font-weight: 800; padding: 0 var(--space-2)">${currentScenarioIdx + 1}/${SCENARIOS.length}</span>
-            <button class="gantt-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
           </div>
         </div>
 

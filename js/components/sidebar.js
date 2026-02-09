@@ -8,37 +8,24 @@ import Router from '../router.js';
 import ThemeManager from './themeManager.js';
 
 const Sidebar = (() => {
+  // Simple unified bullet icon for all navigation items
+  const DOT_ICON = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>`;
+
   const ICONS = {
-    // Dashboard: 4 Quadrate (Grid)
-    dashboard: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>`,
-    // Themen: Ordner
-    categories: `<svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`,
-    // Alle Karten: Karten-Stapel mit Refresh
-    review: `<svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M18 10h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>`,
-    // Subnetting: Netzwerk-Baum (IP → Subnetze)
-    subnetting: `<svg viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="5" rx="1.5"/><rect x="2" y="17" width="6" height="5" rx="1.5"/><rect x="9" y="17" width="6" height="5" rx="1.5"/><rect x="16" y="17" width="6" height="5" rx="1.5"/><line x1="12" y1="7" x2="12" y2="11"/><line x1="5" y1="17" x2="5" y2="14"/><line x1="12" y1="17" x2="12" y2="14"/><line x1="19" y1="17" x2="19" y2="14"/><line x1="5" y1="14" x2="19" y2="14"/><line x1="12" y1="11" x2="12" y2="14"/></svg>`,
-    // OSI-Modell: 7 horizontale Schichten (gestaffelt)
-    osimodel: `<svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="2.5" rx="0.5"/><rect x="5" y="5.5" width="14" height="2.5" rx="0.5"/><rect x="6" y="9" width="12" height="2.5" rx="0.5"/><rect x="5" y="12.5" width="14" height="2.5" rx="0.5"/><rect x="4" y="16" width="16" height="2.5" rx="0.5"/><rect x="3" y="19.5" width="18" height="2.5" rx="0.5"/></svg>`,
-    // Netzplantechnik: Workflow-Knoten mit Pfeilen
-    networkplan: `<svg viewBox="0 0 24 24"><rect x="1" y="8" width="6" height="5" rx="1"/><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="9" y="13" width="6" height="5" rx="1"/><rect x="17" y="8" width="6" height="5" rx="1"/><line x1="7" y1="9" x2="9" y2="6.5"/><line x1="7" y1="12" x2="9" y2="14.5"/><line x1="15" y1="6.5" x2="17" y2="9"/><line x1="15" y1="14.5" x2="17" y2="12"/></svg>`,
-    // NWA: Waage/Vergleich mit Checkmark
-    nwa: `<svg viewBox="0 0 24 24"><rect x="3" y="13" width="5" height="8" rx="1"/><rect x="9.5" y="8" width="5" height="13" rx="1"/><rect x="16" y="3" width="5" height="18" rx="1"/><polyline points="5 11 10.5 6 18 3" fill="none" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="3" r="1.5"/></svg>`,
-    // Zahlensysteme: Binär-Code Darstellung (Kreise und Striche)
-    numbersystems: `<svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><rect x="10" y="4" width="4" height="4" rx="0.5"/><circle cx="19" cy="6" r="2"/><rect x="3" y="10" width="4" height="4" rx="0.5"/><circle cx="12" cy="12" r="2"/><rect x="17" y="10" width="4" height="4" rx="0.5"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><rect x="17" y="16" width="4" height="4" rx="0.5"/></svg>`,
-    // EPK: Hexagon (Ereignis) + abgerundetes Rechteck (Funktion)
-    epk: `<svg viewBox="0 0 24 24"><polygon points="12,1 18,4.5 18,11.5 12,15 6,11.5 6,4.5" fill="none" stroke-width="1.5"/><rect x="7" y="17" width="10" height="5" rx="2.5" fill="none" stroke-width="1.5"/><line x1="12" y1="15" x2="12" y2="17" stroke-width="1.5"/></svg>`,
-    // Gantt: Balkendiagramm
-    gantt: `<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 8h7"/><path d="M10 12h10"/><path d="M8 16h5"/></svg>`,
-    // UML: Klassendiagramm (3-Sektionen-Box) + Verbindung
-    uml: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="2" width="12" height="14" rx="1.5"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="2" y1="11" x2="14" y2="11"/><rect x="14" y="8" width="8" height="14" rx="1.5"/><line x1="14" y1="13" x2="22" y2="13"/><line x1="14" y1="17" x2="22" y2="17"/><line x1="14" y1="12" x2="14" y2="8"/></svg>`,
-    // Wiki: Offenes Buch
-    wiki: `<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
-    // Kommunikation: Sprechblase (4-Ohren-Modell)
-    communication: `<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
-    // Menü: Hamburger
+    dashboard: DOT_ICON,
+    categories: DOT_ICON,
+    review: DOT_ICON,
+    subnetting: DOT_ICON,
+    osimodel: DOT_ICON,
+    networkplan: DOT_ICON,
+    nwa: DOT_ICON,
+    numbersystems: DOT_ICON,
+    epk: DOT_ICON,
+    gantt: DOT_ICON,
+    wiki: DOT_ICON,
+    communication: DOT_ICON,
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
-    // Pseudocode: Code-Klammern mit Zeilen
-    pseudocode: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/><line x1="12" y1="18" x2="12" y2="6" stroke-dasharray="2 2"/></svg>`,
+    pseudocode: DOT_ICON,
   };
 
   let sidebarEl = null;
@@ -122,6 +109,10 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.nwa}</span>
           Nutzwertanalyse
         </a>
+        <a href="#/modules/gantt" class="nav-item ${currentRoute.startsWith('/modules/gantt') ? 'active' : ''}" data-route="/modules/gantt">
+          <span class="nav-item-icon">${ICONS.gantt}</span>
+          Gantt-Diagramm
+        </a>
         <a href="#/modules/networkplan" class="nav-item ${currentRoute.startsWith('/modules/networkplan') ? 'active' : ''}" data-route="/modules/networkplan">
           <span class="nav-item-icon">${ICONS.networkplan}</span>
           Netzplantechnik
@@ -130,9 +121,9 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.subnetting}</span>
           Subnetting
         </a>
-        <a href="#/modules/uml" class="nav-item ${currentRoute.startsWith('/modules/uml') ? 'active' : ''}" data-route="/modules/uml">
-          <span class="nav-item-icon">${ICONS.uml}</span>
-          UML-Werkstatt
+        <a href="#/modules/osimodel" class="nav-item ${currentRoute.startsWith('/modules/osimodel') ? 'active' : ''}" data-route="/modules/osimodel">
+          <span class="nav-item-icon">${ICONS.osimodel}</span>
+          OSI-Modell
         </a>
         <a href="#/modules/communication" class="nav-item ${currentRoute.startsWith('/modules/communication') ? 'active' : ''}" data-route="/modules/communication">
           <span class="nav-item-icon">${ICONS.communication}</span>
@@ -149,14 +140,6 @@ const Sidebar = (() => {
         <a href="#/modules/epk" class="nav-item ${currentRoute.startsWith('/modules/epk') ? 'active' : ''}" data-route="/modules/epk">
           <span class="nav-item-icon">${ICONS.epk}</span>
           EPK-Builder
-        </a>
-        <a href="#/modules/gantt" class="nav-item ${currentRoute.startsWith('/modules/gantt') ? 'active' : ''}" data-route="/modules/gantt">
-          <span class="nav-item-icon">${ICONS.gantt}</span>
-          Gantt-Diagramm
-        </a>
-        <a href="#/modules/osimodel" class="nav-item ${currentRoute.startsWith('/modules/osimodel') ? 'active' : ''}" data-route="/modules/osimodel">
-          <span class="nav-item-icon">${ICONS.osimodel}</span>
-          OSI-Modell
         </a>
       </nav>
 `;
