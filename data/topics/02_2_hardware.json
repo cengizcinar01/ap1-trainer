@@ -4,7 +4,19 @@
     "topic": "2. Hardware",
     "subtopic": "2.1 CPU",
     "question": "Was ist eine CPU?",
-    "answer": "Die **CPU** (Central Processing Unit) ist das Hauptrechenwerk eines Computers und führt Befehle aus.\n\n➡️ Sie bestimmt maßgeblich die **Geschwindigkeit** und **Leistungsfähigkeit** eines Systems."
+    "answer": "Die **CPU** (Central Processing Unit) ist das Hauptrechenwerk eines Computers und führt Befehle aus.\n\n➡️ Sie bestimmt maßgeblich die **Geschwindigkeit** und **Leistungsfähigkeit** eines Systems.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Dauerhafte Speicherung von Daten auch ohne Stromzufuhr.",
+        "Ausführung von Befehlen und Steuerung der Datenverarbeitung.",
+        "Bereitstellung der grafischen Benutzeroberfläche.",
+        "Verwaltung der Netzwerkverbindungen.",
+        "Kühlung des Systems.",
+        "Umwandlung von Wechselstrom in Gleichstrom."
+      ],
+      "correctIndices": [1]
+    }
   },
   {
     "id": 19,
@@ -27,14 +39,38 @@
     "subtopic": "2.1 CPU",
     "question": "Welche Funktionsblöcke und Busse hat die Von-Neumann-Architektur?",
     "answer": "### Funktionsblöcke\n\n| Block | Funktion |\n|-------|----------|\n| **Rechenwerk (ALU)** | Arithmetische und logische Operationen |\n| **Leit- & Steuerwerk (CU)** | Kontrolliert Befehlsablauf |\n| **Speicherwerk (RAM)** | Speichert Daten **und** Programme gemeinsam |\n| **Ein-/Ausgabewerk (IO)** | Ein-/Ausgabe von Daten |\n\n### Busse\n\n| Bus | Funktion |\n|-----|----------|\n| **Kontrollbus** | Übermittelt Steuersignale |\n| **Datenbus** | Transportiert Daten |\n| **Adressbus** | Übermittelt Speicheradressen |",
-    "image_ref": "von_neumann_architektur.png"
+    "image_ref": "von_neumann_architektur.png",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Trennung von Programm- und Datenspeicher (physisch getrennt).",
+        "Gemeinsamer Speicher für Programme und Daten.",
+        "Verwendung von vier separaten Bussen für maximale Geschwindigkeit.",
+        "Sequentielle Abarbeitung von Befehlen (Von-Neumann-Flaschenhals).",
+        "Keine Verwendung eines Steuerwerks.",
+        "Direkte Verbindung aller Komponenten ohne Bussystem."
+      ],
+      "correctIndices": [1, 3]
+    }
   },
   {
     "id": 22,
     "topic": "2. Hardware",
     "subtopic": "2.1 CPU",
     "question": "Was ist der Unterschied zwischen CISC und RISC Prozessorarchitekturen?",
-    "answer": "### CISC (Complex Instruction Set Computing)\n\n- Viele **komplexe** Befehle in Hardware\n- Ein Befehl kann komplexe Operationen ausführen\n- Einfachere Programmierung, aber **langsamere** CPU\n\n### RISC (Reduced Instruction Set Computing)\n\n- **Minimaler** Satz einfacher Befehle\n- Befehle in genau **einem Taktzyklus**\n- CPU ist **schneller** und energieeffizienter\n- Programme benötigen mehr Befehle"
+    "answer": "### CISC (Complex Instruction Set Computing)\n\n- Viele **komplexe** Befehle in Hardware\n- Ein Befehl kann komplexe Operationen ausführen\n- Einfachere Programmierung, aber **langsamere** CPU\n\n### RISC (Reduced Instruction Set Computing)\n\n- **Minimaler** Satz einfacher Befehle\n- Befehle in genau **einem Taktzyklus**\n- CPU ist **schneller** und energieeffizienter\n- Programme benötigen mehr Befehle",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "CISC steht für 'Complex Instruction Set Computing' und nutzt viele komplexe Befehle.",
+        "RISC-Prozessoren benötigen mehr Taktzyklen pro Befehl als CISC.",
+        "RISC steht für 'Reduced Instruction Set Computing' und nutzt einen reduzierten, einfachen Befehlssatz.",
+        "CISC ist energieeffizienter als RISC.",
+        "RISC wird ausschließlich in Großrechnern eingesetzt.",
+        "CISC-Befehle werden immer in einem einzigen Taktzyklus ausgeführt."
+      ],
+      "correctIndices": [0, 2]
+    }
   },
   {
     "id": 23,

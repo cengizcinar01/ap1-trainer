@@ -17,6 +17,7 @@ import Router from './router.js';
 import CategoriesView from './views/categories.js';
 import DashboardView from './views/dashboard.js';
 import FlashcardView from './views/flashcard.js';
+import QuizView from './views/quiz.js';
 import ReviewView from './views/review.js';
 import WikiView from './views/wiki.js';
 
@@ -199,6 +200,27 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = WikiView.cleanup;
       WikiView.render(contentEl, params);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/quiz', () => {
+      cleanupCurrentView();
+      currentCleanup = QuizView.cleanup;
+      QuizView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
+    Router.on('/quiz/all', () => {
+      cleanupCurrentView();
+      currentCleanup = QuizView.cleanup;
+      QuizView.render(contentEl, { all: true });
+      Sidebar.updateActive();
+    });
+
+    Router.on('/quiz/:topic', (params) => {
+      cleanupCurrentView();
+      currentCleanup = QuizView.cleanup;
+      QuizView.render(contentEl, params);
       Sidebar.updateActive();
     });
 

@@ -74,6 +74,9 @@ const Sidebar = (() => {
         <a href="#/review" class="nav-item ${currentRoute.startsWith('/review') ? 'active' : ''}" data-route="/review">
           Alle Karten
         </a>
+        <a href="#/quiz" class="nav-item ${currentRoute.startsWith('/quiz') ? 'active' : ''}" data-route="/quiz">
+          Quiz
+        </a>
         <div class="sidebar-section-label">Nachschlagewerk</div>
         <a href="#/wiki" class="nav-item ${currentRoute.startsWith('/wiki') ? 'active' : ''}" data-route="/wiki">
           Wiki

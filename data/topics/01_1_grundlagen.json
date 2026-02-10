@@ -4,7 +4,19 @@
     "topic": "1. Grundlagen",
     "subtopic": "1.1 Künstliche Intelligenz",
     "question": "Was ist Künstliche Intelligenz (KI)?",
-    "answer": "**KI** steht für **Künstliche Intelligenz** und umfasst alles, was Computer und Maschinen befähigt, menschenähnliche Intelligenzleistungen zu erbringen:\n\n- Mustererkennung\n- Verarbeiten natürlicher Sprache\n- Selbstständiges Lernen\n- Problemlösen"
+    "answer": "**KI** steht für **Künstliche Intelligenz** und umfasst alles, was Computer und Maschinen befähigt, menschenähnliche Intelligenzleistungen zu erbringen:\n\n- Mustererkennung\n- Verarbeiten natürlicher Sprache\n- Selbstständiges Lernen\n- Problemlösen",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Ein Algorithmus, der ausschließlich mathematische Berechnungen schneller als Menschen durchführt.",
+        "Ein Teilgebiet der Informatik, das sich mit der Automatisierung intelligenten Verhaltens befasst.",
+        "Eine Hardwarekomponente, die das menschliche Gehirn physisch nachbildet.",
+        "Ein Betriebssystem für Supercomputer.",
+        "Ein Netzwerkprotokoll zur schnellen Datenübertragung.",
+        "Eine Programmiersprache für Roboter."
+      ],
+      "correctIndices": [1]
+    }
   },
   {
     "id": 2,
@@ -17,8 +29,20 @@
     "id": 3,
     "topic": "1. Grundlagen",
     "subtopic": "1.1 Künstliche Intelligenz",
-    "question": "Was ist der Unterschied zwischen überwachtem (Supervised) und unüberwachtem (Unsupervised) Lernverhalten?",
-    "answer": "### Überwachtes Lernen (Supervised Learning)\n\nDie Trainingsdaten werden **vor dem Trainieren beschriftet/klassifiziert**. Das Netzwerk lernt aufgrund dieser gelabelten Daten.\n\n✅ Benötigt mehr Vorarbeit, erzielt aber bessere Ergebnisse\n\n### Unüberwachtes Lernen (Unsupervised Learning)\n\nDie Trainingsdaten werden **NICHT klassifiziert** vor dem Trainieren. Das Netzwerk lernt dadurch z.B. die Daten nur zu *clustern*, also in Gruppen zusammenzufassen."
+    "question": "Welche Aussagen zu Supervised und Unsupervised Learning sind korrekt?",
+    "answer": "### Überwachtes Lernen (Supervised Learning)\n\nDie Trainingsdaten werden **vor dem Trainieren beschriftet/klassifiziert**. Das Netzwerk lernt aufgrund dieser gelabelten Daten.\n\n✅ Benötigt mehr Vorarbeit, erzielt aber bessere Ergebnisse\n\n### Unüberwachtes Lernen (Unsupervised Learning)\n\nDie Trainingsdaten werden **NICHT klassifiziert** vor dem Trainieren. Das Netzwerk lernt dadurch z.B. die Daten nur zu *clustern*, also in Gruppen zusammenzufassen.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Beim Supervised Learning sind die Trainingsdaten bereits gelabelt/klassifiziert.",
+        "Unsupervised Learning erfordert zwingend menschliches Eingreifen während des Trainings.",
+        "Beim Unsupervised Learning sucht der Algorithmus selbstständig nach Mustern (z.B. Clustering).",
+        "Supervised Learning wird hauptsächlich für Clustering verwendet.",
+        "Unsupervised Learning liefert immer präzisere Ergebnisse als Supervised Learning.",
+        "Reinforcement Learning ist ein Synonym für Unsupervised Learning."
+      ],
+      "correctIndices": [0, 2]
+    }
   },
   {
     "id": 4,
@@ -46,7 +70,19 @@
     "topic": "1. Grundlagen",
     "subtopic": "1.1 Künstliche Intelligenz",
     "question": "Was ist der Unterschied zwischen schwacher und starker KI?",
-    "answer": "### Schwache KI\n\nEine Künstliche Intelligenz, welche **nicht selbstständig** handeln kann und Eingabe eines Menschen braucht.\n\n### Starke KI\n\nEine **selbst handelnde** KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist."
+    "answer": "### Schwache KI\n\nEine Künstliche Intelligenz, welche **nicht selbstständig** handeln kann und Eingabe eines Menschen braucht.\n\n### Starke KI\n\nEine **selbst handelnde** KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Schwache KI besitzt ein eigenes Bewusstsein.",
+        "Starke KI kann Probleme lösen, für die sie nicht explizit programmiert wurde (Allgemeine Intelligenz).",
+        "Schwache KI ist auf spezifische Anwendungsgebiete beschränkt (z.B. Schachcomputer).",
+        "Starke KI existiert bereits in den meisten modernen Smartphones.",
+        "Schwache KI benötigt keine Trainingsdaten.",
+        "Starke KI ist immer langsamer als schwache KI."
+      ],
+      "correctIndices": [1, 2]
+    }
   },
   {
     "id": 8,
