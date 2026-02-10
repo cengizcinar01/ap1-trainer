@@ -78,16 +78,48 @@ const WikiView = (() => {
       .join('');
 
     return `
-      <article class="wiki-article" id="card-${card.id}" data-card-id="${card.id}">
-        <h3 class="wiki-article-title">${CardRenderer.escapeHtml(card.question)}</h3>
-        <div class="wiki-article-meta">
-          ${typeLabel ? `<span class="wiki-article-type" data-type="${dataType}">${typeLabel}</span>` : ''}
-          <div class="wiki-article-difficulty">${renderDifficultyDots(card.difficulty)}</div>
-          ${tags ? `<div class="wiki-article-tags">${tags}</div>` : ''}
-        </div>
+      <article class="wiki-article collapsed" id="card-${card.id}" data-card-id="${card.id}">
+        <header class="wiki-article-header">
+          <div class="wiki-article-title-row">
+            <h3 class="wiki-article-title">${CardRenderer.escapeHtml(card.question)}</h3>
+            <svg class="wiki-article-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="wiki-article-meta">
+            ${typeLabel ? `<span class="wiki-article-type" data-type="${dataType}">${typeLabel}</span>` : ''}
+            <div class="wiki-article-difficulty">${renderDifficultyDots(card.difficulty)}</div>
+            ${tags ? `<div class="wiki-article-tags">${tags}</div>` : ''}
+          </div>
+        </header>
         <div class="wiki-article-body flashcard-answer">${CardRenderer.formatAnswer(card.answer)}</div>
       </article>
     `;
+  }
+
+  // --- Helpers ---
+  function findTopicName(slug) {
+    const decoded = unslugify(slug);
+    const topics = DataLoader.getTopics();
+    // Exact match first
+    const exact = topics.find((t) => t.name === decoded);
+    if (exact) return exact.name;
+    // Slug match
+    return topics.find((t) => slugify(t.name) === slug)?.name || null;
+  }
+
+  function findSubtopicName(subtopics, slug) {
+    const decoded = unslugify(slug);
+    const exact = subtopics.find((st) => st.name === decoded);
+    if (exact) return exact.name;
+    return subtopics.find((st) => slugify(st.name) === slug)?.name || null;
+  }
+
+  function toggleArticle(articleEl) {
+    const isCollapsed = articleEl.classList.contains('collapsed');
+    if (isCollapsed) {
+      articleEl.classList.remove('collapsed');
+    } else {
+      articleEl.classList.add('collapsed');
+    }
   }
 
   // --- Search Dropdown Logic ---
@@ -229,9 +261,11 @@ const WikiView = (() => {
         <a href="#/wiki/${slugify(topic.name)}" class="wiki-topic-card">
           <div class="wiki-topic-card-header">
             <span class="wiki-topic-badge">${num}</span>
-            <span class="wiki-topic-name">${CardRenderer.escapeHtml(displayName)}</span>
+            <div class="wiki-topic-title-stack">
+              <span class="wiki-topic-name">${CardRenderer.escapeHtml(displayName)}</span>
+              <span class="wiki-topic-count">${topic.cardCount} Artikel</span>
+            </div>
           </div>
-          <div class="wiki-topic-count">${topic.cardCount} Artikel</div>
           <div class="wiki-topic-tags">${subtopicTags}${more}</div>
         </a>
       `;
@@ -323,14 +357,48 @@ const WikiView = (() => {
           <span class="wiki-search-kbd">/</span>
           <div class="wiki-search-dropdown"></div>
         </div>
-        <div class="wiki-toc">
-          <div class="wiki-toc-title">Inhaltsverzeichnis</div>
-          <ul class="wiki-toc-list">${tocItems}</ul>
+        <div class="wiki-controls">
+          <button type="button" class="wiki-control-btn" id="wiki-toggle-all">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+            Alle aufklappen
+          </button>
         </div>
-        ${sections}
+        <div class="wiki-content-layout">
+          <aside class="wiki-sidebar">
+            <div class="wiki-toc">
+              <div class="wiki-toc-title">Inhaltsverzeichnis</div>
+              <ul class="wiki-toc-list">${tocItems}</ul>
+            </div>
+          </aside>
+          <main class="wiki-main">
+            ${sections}
+          </main>
+        </div>
         <div class="wiki-back-top"><a href="#/wiki">Alle Themen anzeigen</a></div>
       </div>
     `;
+
+    // Toggle All functionality
+    const toggleAllBtn = container.querySelector('#wiki-toggle-all');
+    let allExpanded = false;
+    toggleAllBtn?.addEventListener('click', () => {
+      allExpanded = !allExpanded;
+      const articles = container.querySelectorAll('.wiki-article');
+      articles.forEach((art) => {
+        art.classList.toggle('collapsed', !allExpanded);
+      });
+      toggleAllBtn.innerHTML = allExpanded
+        ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg> Alle einklappen`
+        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg> Alle aufklappen`;
+    });
+
+    // Individual Article Toggle
+    container.querySelectorAll('.wiki-article-header').forEach((header) => {
+      header.addEventListener('click', () => {
+        const article = header.closest('.wiki-article');
+        toggleArticle(article);
+      });
+    });
 
     // TOC smooth scroll
     container.querySelectorAll('.wiki-toc-link').forEach((btn) => {
@@ -381,7 +449,7 @@ const WikiView = (() => {
     }
   }
 
-  function findTopicName(slug) {
+  function _findTopicName(slug) {
     const decoded = unslugify(slug);
     const topics = DataLoader.getTopics();
     // Exact match first
@@ -391,7 +459,7 @@ const WikiView = (() => {
     return topics.find((t) => slugify(t.name) === slug)?.name || null;
   }
 
-  function findSubtopicName(subtopics, slug) {
+  function _findSubtopicName(subtopics, slug) {
     const decoded = unslugify(slug);
     const exact = subtopics.find((st) => st.name === decoded);
     if (exact) return exact.name;
