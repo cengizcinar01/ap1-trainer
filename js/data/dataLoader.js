@@ -8,20 +8,38 @@ const DataLoader = (() => {
   let _subtopics = null;
 
   /**
-   * Load data.json and cache it in memory.
-   * Must be called once before using other methods.
+   * Load all topic JSON files and merge them in memory.
    */
   async function loadData() {
     if (_cards) return _cards;
 
     try {
-      const response = await fetch('./data.json');
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      _cards = await response.json();
+      // 1. Fetch the index of topic files
+      const indexResponse = await fetch('./data/index.json');
+      if (!indexResponse.ok)
+        throw new Error(`HTTP ${indexResponse.status} while fetching index`);
+      const topicFiles = await indexResponse.json();
+
+      // 2. Fetch all topic files in parallel
+      const fetchPromises = topicFiles.map((file) =>
+        fetch(`./data/topics/${file}`).then((res) => {
+          if (!res.ok) throw new Error(`Failed to load ${file}`);
+          return res.json();
+        })
+      );
+
+      const results = await Promise.all(fetchPromises);
+
+      // 3. Merge all cards into one array
+      _cards = results.flat();
+
+      // 4. Sort them (just in case) and build indexes
+      _cards.sort((a, b) => a.id - b.id);
+
       _buildIndexes();
       return _cards;
     } catch (error) {
-      console.error('Failed to load data.json:', error);
+      console.error('Failed to load data:', error);
       throw error;
     }
   }

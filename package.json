@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Interaktive Lernkarten-App zur Vorbereitung auf die IHK-Abschlussprüfung Teil 1 für Fachinformatiker",
   "scripts": {
+    "build": "node build_data.js",
     "format": "biome format --write",
     "lint": "biome lint",
     "check": "biome check",

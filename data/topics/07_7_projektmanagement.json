@@ -1,0 +1,481 @@
+[
+  {
+    "id": 135,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.1 Merkmale",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was sind die Merkmale eines Projekts?",
+    "answer": "### Merkmale\n- **Einmaligkeit** (Keine Routine)\n- **Zielvorgabe** (Definiertes Ergebnis)\n- **Zeitbegrenzung** (Start & Ende)\n- **Begrenzte Ressourcen** (Budget, Personal)\n- **Komplexität** (Neu, risikobehaftet)",
+    "tags": [
+      "Projektmanagement",
+      "Merkmale",
+      "Projekt"
+    ]
+  },
+  {
+    "id": 136,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.2 Projektplanung",
+    "type": "praxis",
+    "difficulty": 4,
+    "question": "Was ist ein Netzplan und welche Elemente hat er?",
+    "answer": "Grafische Darstellung von Ablauf und Abhängigkeiten.\n\n### Begriffe\n- **FAZ / FEZ:** Frühester Anfang / Ende\n- **SAZ / SEZ:** Spätester Anfang / Ende\n- **GP:** Gesamtpuffer (SAZ - FAZ)\n- **FP:** Freier Puffer\n\n⚠️ **Kritischer Weg:** Weg ohne Puffer (bestimmt Projektdauer).",
+    "image_ref": "netzplan_beispiel.png",
+    "tags": [
+      "Projektmanagement",
+      "Netzplan",
+      "Kritischer Weg",
+      "Planung",
+      "Berechnung"
+    ]
+  },
+  {
+    "id": 137,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.2 Projektplanung",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist eine Ereignisgesteuerte Prozesskette (EPK)?",
+    "answer": "Grafische Modellierung von Geschäftsprozessen.\n\n### Regeln\n- **Ereignis** → **Funktion** → **Ereignis** (immer im Wechsel)\n- Start & Ende sind immer Ereignisse\n\n### Konnektoren\n| Symbol | Bedeutung |\n|--------|-----------|\n| **UND** (`∧`) | Alle Pfade müssen folgen |\n| **ODER** (`∨`) | Einer oder alle Pfade |\n| **XOR** (`X`) | Exklusiv (genau einer) |",
+    "image_ref": "epk_symbole_und_beispiel.png",
+    "tags": [
+      "Projektmanagement",
+      "EPK",
+      "Geschäftsprozess",
+      "Modellierung"
+    ]
+  },
+  {
+    "id": 138,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.3 SMART",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Wofür steht das SMART-Prinzip?",
+    "answer": "Ziele müssen **SMART** sein:\n\n- **S**pezifisch (Eindeutig)\n- **M**essbar (Zahlen/Kriterien)\n- **A**ttraktiv (Akzeptiert/Motivierend)\n- **R**ealistisch (Machbar)\n- **T**erminiert (Zeitpunkt)",
+    "tags": [
+      "Projektmanagement",
+      "SMART",
+      "Ziele"
+    ]
+  },
+  {
+    "id": 139,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.4 Projektphasen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche groben Projektphasen gibt es und was ist das Wasserfallmodell?",
+    "answer": "### Standard-Phasen\n1. **Definition**\n2. **Planung**\n3. **Realisierung**\n4. **Abschluss**\n\n### Wasserfallmodell (Linear)\nAnalyse → Design → Implementierung → Test → Betrieb\n\n⚠️ **Nachteil:** Rücksprünge schwierig, starr.",
+    "tags": [
+      "Projektmanagement",
+      "Projektphasen",
+      "Wasserfallmodell"
+    ]
+  },
+  {
+    "id": 140,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.4 Projektphasen",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist SCRUM und welche Elemente hat es?",
+    "answer": "Agiles Framework (iterativ).\n\n### Rollen\n- **Product Owner:** Fachliche Vision, Backlog\n- **Scrum Master:** Prozesshüter, Problemlöser\n- **Team:** Umsetzung (selbstorganisiert)\n\n### Events\n- **Sprint:** Zyklus (2-4 Wochen)\n- **Daily:** 15 Min Abstimmung\n- **Review:** Produktvorstellung\n- **Retrospektive:** Team-Optimierung",
+    "tags": [
+      "Projektmanagement",
+      "SCRUM",
+      "Agil",
+      "Sprint",
+      "Product Owner",
+      "Scrum Master"
+    ]
+  },
+  {
+    "id": 141,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.5 Teambildungs-Phasen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Teambildungs-Phasen gibt es?",
+    "answer": "Phasen nach Tuckman:\n\n1. **Forming:** Beschnuppern, höflich\n2. **Storming:** Konflikte, Rollenkampf\n3. **Norming:** Regeln finden, Wogen glätten\n4. **Performing:** Leistung bringen, Flow\n5. **Adjourning:** Auflösung (bei temporären Teams)",
+    "tags": [
+      "Projektmanagement",
+      "Teambildung",
+      "Forming",
+      "Storming",
+      "Norming",
+      "Performing"
+    ]
+  },
+  {
+    "id": 142,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.6 Reflektionsmethoden",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was sind Lessons Learned und Feedback-Kultur?",
+    "answer": "### Methoden\n- **Lessons Learned:** Systematische Analyse am Projektende (Was lief gut? Was nicht?)\n- **Feedback-Kultur:** Offene, zeitnahe, konstruktive Rückmeldung\n\n🎯 **Ziel:** Fehler in Zukunft vermeiden, Prozesse optimieren.",
+    "tags": [
+      "Projektmanagement",
+      "Lessons Learned",
+      "Feedback",
+      "Reflexion"
+    ]
+  },
+  {
+    "id": 143,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.7 Termine und Netzplantechnik",
+    "type": "praxis",
+    "difficulty": 4,
+    "question": "Wie funktioniert die Netzplantechnik und welche Berechnungen sind wichtig?",
+    "answer": "Berechnung von Terminen & Puffern.\n\n### Formeln\n- **FEZ** = FAZ + Dauer\n- **SAZ** = SEZ - Dauer\n- **GP** (Gesamtpuffer) = SAZ - FAZ\n- **FP** (Freier Puffer) = FAZ(Nachfolger) - FEZ\n\n🔴 **Kritischer Pfad:** GP = 0 (Kein Puffer, bestimmt Projektende).",
+    "tags": [
+      "Projektmanagement",
+      "Netzplan",
+      "Kritischer Pfad",
+      "FAZ",
+      "SAZ",
+      "Prüfungsrelevant"
+    ]
+  },
+  {
+    "id": 144,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.8 Bedarfsanalyse",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist eine Bedarfsanalyse und wie wird sie durchgeführt?",
+    "answer": "Ermittlung der Anforderungen (Requirements).\n\n### Ablauf\n1. **Ist-Analyse:** Status Quo erfassen\n2. **Schwachstellen:** Probleme finden\n3. **Soll-Konzept:** Zielszenario entwerfen\n4. **Gap-Analyse:** Lücke definieren\n\n📋 **Methoden:** Interviews, Workshops, Beobachtung.",
+    "tags": [
+      "Projektmanagement",
+      "Bedarfsanalyse",
+      "Anforderungen",
+      "Ist-Soll"
+    ]
+  },
+  {
+    "id": 145,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.9 Lasten- und Pflichtenheft",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Was ist der Unterschied zwischen Lastenheft und Pflichtenheft?",
+    "answer": "| Dokument | Autor | Inhalt | Frage |\n|----------|-------|--------|-------|\n| **Lastenheft** | Auftraggeber (Kunde) | Anforderungen, Wünsche, grobe Ziele | **Was** und **Wofür**? |\n| **Pflichtenheft** | Auftragnehmer (IT) | Konkrete Umsetzung, technisches Konzept | **Wie** und **Womit**? |",
+    "tags": [
+      "Projektmanagement",
+      "Lastenheft",
+      "Pflichtenheft",
+      "Anforderungen"
+    ]
+  },
+  {
+    "id": 146,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.10 Kundenvorgaben",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Arten von Kundenvorgaben gibt es?",
+    "answer": "### Typen\n- **Funktional:** Was muss das System *können*? (z.B. Login, Drucken)\n- **Nicht-funktional:** Wie gut? (Performance, Sicherheit, Usability)\n- **Rahmenbedingungen:** Budget, Zeit, Gesetze (DSGVO)\n- **Technisch:** OS, Schnittstellen, Hardware",
+    "tags": [
+      "Projektmanagement",
+      "Kundenvorgaben",
+      "Anforderungen"
+    ]
+  },
+  {
+    "id": 147,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.11 Technische Voraussetzungen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche technischen Voraussetzungen müssen für IT-Projekte geprüft werden?",
+    "answer": "Prüfung der Machbarkeit.\n\n### Bereiche\n- **Hardware:** Server, Clients, Storage\n- **Software:** OS, Lizenzen, Kompatibilität\n- **Netzwerk:** Bandbreite, VPN, Firewall\n- **Security:** Datenschutz, Zugriffsrechte\n\n📝 **Ergebnis:** Fließt ins Pflichtenheft ein.",
+    "tags": [
+      "Projektmanagement",
+      "Technik",
+      "Infrastruktur",
+      "Pflichtenheft"
+    ]
+  },
+  {
+    "id": 148,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.12 Einhaltung des Budgets",
+    "type": "praxis",
+    "difficulty": 3,
+    "question": "Wie stellt man die Einhaltung des Budgets in IT-Projekten sicher?",
+    "answer": "Planung & Steuerung der Kosten.\n\n### Methoden\n1. **Earned Value Analysis:** Vergleich von Plan- (PV), Ist- (AC) und Fertigstellungswert (EV).\n2. **Kosten-Controlling:** Soll-Ist-Vergleiche, Change-Requests überwachen.\n3. **Puffer:** Reserven für Unvorhergesehenes.\n\n💰 **Ziel:** Budget am Projektende nicht überschreiten.",
+    "tags": [
+      "Projektmanagement",
+      "Budget",
+      "Kosten",
+      "Earned Value",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 149,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.13 Veränderungsprozesse",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Welche Mitarbeitertypen gibt es im Change Management?",
+    "answer": "| Typ | Verhalten | Umgang |\n|-----|-----------|--------|\n| **Promoter** | Unterstützen aktiv | Als Multiplikatoren nutzen |\n| **Skeptiker** | Zweifeln sachlich | Mit Fakten überzeugen |\n| **Bremser** | Verzögern passiv | Ursachen klären, einbinden |\n| **Widerständler** | Blockieren aktiv | Gespräche führen, Grenzen setzen |",
+    "tags": [
+      "Projektmanagement",
+      "Change Management",
+      "Veränderungsprozesse",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 150,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.14 Leistungsübergabe",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was gehört zur Leistungsübergabe und welche Mängelarten gibt es?",
+    "answer": "Formale Abnahme (**Rechtsfolge:** Beweislastumkehr).\n\n### Mängelarten\n- **Sachmangel:** Defekt, falsche Funktion\n- **Rechtsmangel:** Lizenzprobleme (Urheberrecht)\n- **Offen:** Sofort erkennbar\n- **Versteckt:** Erst später sichtbar\n\n⚠️ **Protokoll:** Enthält Mängelliste & Unterschriften.",
+    "tags": [
+      "Projektmanagement",
+      "Leistungsübergabe",
+      "Mängel",
+      "Abnahmeprotokoll",
+      "Recht"
+    ]
+  },
+  {
+    "id": 151,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.15 Leistungserbringung",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist ein Soll-Ist-Vergleich und eine Abweichungsanalyse?",
+    "answer": "Vergleich Plan (Soll) vs. Realität (Ist).\n\n### Abweichungsanalyse\n1. **Identifizieren:** Wo weichen wir ab? (Zeit, Kosten, qualität)\n2. **Ursachen:** Warum? (Planungsfehler, Krankheit, Technik)\n3. **Maßnahmen:** Gegensteuern (Ressourcen aufstocken, Scope reduzieren)\n\n🔄 **Nachkalkulation:** Learning für nächste Projekte.",
+    "tags": [
+      "Projektmanagement",
+      "Soll-Ist-Vergleich",
+      "Abweichungsanalyse",
+      "Nachkalkulation"
+    ]
+  },
+  {
+    "id": 152,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.16 Agiles vs. klassisches PM",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen agilem und klassischem Projektmanagement?",
+    "answer": "| Merkmal | Klassisch (Wasserfall) | Agil (Scrum) |\n|---------|------------------------|--------------|\n| **Ablauf** | Linear (Phasen) | Zyklisch (Sprints) |\n| **Anforderungen** | Fest definiert (Lastenheft) | Flexibel (Backlog) |\n| **Änderungen** | Teuer / Schwierig | Willkommen |\n| **Doku** | Ausführlich | \"Working Software\" > Doku |\n\n✅ **Wahl:** Klassisch für stabile Ziele, Agil für komplexe/neue Ziele.",
+    "tags": [
+      "Projektmanagement",
+      "Agil",
+      "Klassisch",
+      "Vergleich"
+    ]
+  },
+  {
+    "id": 153,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.17 Scrum",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Scrum und welche Rollen, Artefakte und Events gibt es?",
+    "answer": "### Rollen (3)\n- **Product Owner:** Was? (Backlog, Priorität)\n- **Scrum Master:** Prozess & Hindernisse\n- **Dev Team:** Wie? (Umsetzung)\n\n### Artefakte (3)\n- **Product Backlog** (Alle Wünsche)\n- **Sprint Backlog** (Plan für 1 Sprint)\n- **Increment** (Fertiges Teilprodukt)\n\n### Events (5)\n- Sprint, Planning, Daily, Review, Retro",
+    "tags": [
+      "Projektmanagement",
+      "Scrum",
+      "Agil",
+      "Sprint",
+      "Rollen"
+    ]
+  },
+  {
+    "id": 154,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.18 Kanban",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist Kanban?",
+    "answer": "Visuelle Prozesssteuerung (Board).\n\n### Prinzipien\n- **Visualisieren:** Spalten (To Do, Doing, Done)\n- **Limitieren:** WIP-Limit (Work in Progress) begrenzen\n- **Flow:** Stetiger Fluss (keine festen Sprints)\n- **Pull-System:** Neue Aufgabe erst, wenn Kapazität frei\n\n📌 **Vorteil:** Flexibel, Engpässe sofort sichtbar.",
+    "tags": [
+      "Projektmanagement",
+      "Kanban",
+      "Agil",
+      "Board"
+    ]
+  },
+  {
+    "id": 155,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.19 Wasserfallmodell",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist das Wasserfallmodell?",
+    "answer": "Lineares Vorgehensmodell.\n\n1. **Analyse**\n2. **Design**\n3. **Implementierung**\n4. **Test**\n5. **Deployment**\n\n⬇️ **Prinzip:** Phase N muss fertig sein, bevor N+1 beginnt.\n⚠️ **Nachteil:** Fehlererkennung spät, unflexibel.",
+    "tags": [
+      "Projektmanagement",
+      "Wasserfallmodell",
+      "Klassisch",
+      "Vorgehensmodell"
+    ]
+  },
+  {
+    "id": 156,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.20 V-Modell",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist das V-Modell?",
+    "answer": "Erweiterung des Wasserfallmodells (Test-Fokus).\n\n### Aufbau (V-Form)\n- **Links:** Spezifikation & Entwurf (Grob → Fein)\n- **Rechts:** Tests (Komponente → System → Abnahme)\n\n✅ **Vorteil:** Jeder Ebene steht eine Testphase gegenüber.\n❌ **Nachteil:** Starr, hoher Doku-Aufwand.",
+    "tags": [
+      "Projektmanagement",
+      "V-Modell",
+      "Klassisch",
+      "Vorgehensmodell",
+      "Test"
+    ]
+  },
+  {
+    "id": 157,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.21 Spiralmodell",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist das Spiralmodell?",
+    "answer": "Risikogetriebenes Modell (iterativ).\n\n### 4 Quadranten pro Umgang\n1. **Ziele** festlegen\n2. **Risikoanalyse** & Evaluation\n3. **Entwicklung** & Test (Prototyp)\n4. **Planung** der nächsten Phase\n\n🔄 **Wiederholung** bis Produkt fertig ist.",
+    "tags": [
+      "Projektmanagement",
+      "Spiralmodell",
+      "Iterativ",
+      "Vorgehensmodell",
+      "Risiko"
+    ]
+  },
+  {
+    "id": 158,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.22 Gantt-Diagramm",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist ein Gantt-Diagramm?",
+    "answer": "Balkendiagramm für den Zeitplan.\n\n- **X-Achse:** Zeit (Tage/Wochen)\n- **Y-Achse:** Aufgaben\n- **Balken:** Dauer der Aufgabe\n- **Pfeile:** Abhängigkeiten\n- **Raute:** Meilensteine\n\n📅 Standard-Tool für Projektplanung.",
+    "tags": [
+      "Projektmanagement",
+      "Gantt",
+      "Zeitplanung",
+      "Diagramm"
+    ]
+  },
+  {
+    "id": 159,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.23 Magisches Dreieck",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist das Magische Dreieck im Projektmanagement?",
+    "answer": "Ziele stehen in Konkurrenz zueinander.\n\n1. **Zeit** (Termin)\n2. **Kosten** (Budget)\n3. **Qualität** (Ergebnis)\n\n⚖️ **Regel:** Veränderung an einer Ecke beeinflusst die anderen (z.B. schneller = teurer oder schlechter).",
+    "tags": [
+      "Projektmanagement",
+      "Magisches Dreieck",
+      "Zielgrößen",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 160,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.24 Meilensteine",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was sind Meilensteine im Projektmanagement?",
+    "answer": "Wichtige **Zwischenziele** ohne Dauer.\n\n- Markieren **Prüfpunkte** (Abnahmen, Decisions)\n- Dienen der **Fortschrittskontrolle**\n- Symbol im Gantt: **Raute** ♦️\n\nBeispiel: \"Lastenheft abgenommen\", \"Prototyp fertig\".",
+    "tags": [
+      "Projektmanagement",
+      "Meilensteine",
+      "Planung"
+    ]
+  },
+  {
+    "id": 161,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.25 Risikoanalyse",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist eine Risikoanalyse im Projektmanagement?",
+    "answer": "Umgang mit Gefahren für das Projekt.\n\n### Prozess\n1. **Identifizieren:** Was kann passieren?\n2. **Bewerten:** Wahrscheinlichkeit × Schaden = **Risikowert**\n3. **Maßnahmen:**\n   - Vermeiden\n   - Vermindern\n   - Überwälzen (Versicherung)\n   - Akzeptieren",
+    "tags": [
+      "Projektmanagement",
+      "Risikoanalyse",
+      "Risikomanagement",
+      "Planung"
+    ]
+  },
+  {
+    "id": 162,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.26 Extreme Programming (XP)",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Extreme Programming (XP)?",
+    "answer": "Agile Methode (radikal), Fokus: Code-Qualität.\n\n### Praktiken\n- **Pair Programming** (4 Augen Prinzip)\n- **TDD** (Test-Driven Development)\n- **Continuous Integration**\n- **Refactoring** (Ständige Verbesserung)\n- **KISS** (Keep It Simple, Stupid)\n\n🚀 \"Mut zur Änderung.\"",
+    "tags": [
+      "Projektmanagement",
+      "XP",
+      "Extreme Programming",
+      "Agil",
+      "Pair Programming"
+    ]
+  },
+  {
+    "id": 163,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.27 Lewin-Modell und Kaizen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind das Lewin-Modell und Kaizen im Change Management?",
+    "answer": "### Lewin (3 Phasen)\n1. **Unfreeze:** Auftauen (Vorbereiten)\n2. **Change:** Verändern (Umsetzen)\n3. **Refreeze:** Einfrieren (Stabilisieren)\n\n### Kaizen (KVP)\n- \"Veränderung zum Besseren\"\n- **Ständige kleine Verbesserungen** statt großer Bruch\n- Alle machen mit!",
+    "tags": [
+      "Projektmanagement",
+      "Change Management",
+      "Lewin",
+      "Kaizen",
+      "Continuous Improvement"
+    ]
+  },
+  {
+    "id": 164,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.28 Projektstrukturplan",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist ein Projektstrukturplan (PSP) und welche Erstellungsmethoden gibt es?",
+    "answer": "Zerlegung des Projekts in Arbeitspakete (AP).\n\n### Gliederung\n- **Funktionsorientiert:** Nach Tätigkeit (Planung, Entwicklung)\n- **Objektorientiert:** Nach Bauteil (Motor, Karosserie)\n- **Phasenorientiert:** Nach Zeit (Phase 1, Phase 2)\n\n### Erstellung\n- **Top-Down:** Vom Großen ins Kleine\n- **Bottom-Up:** Vom Detail zum Ganzen",
+    "tags": [
+      "Projektmanagement",
+      "PSP",
+      "Projektstrukturplan",
+      "Top-Down",
+      "Bottom-Up",
+      "Arbeitspaket"
+    ]
+  },
+  {
+    "id": 165,
+    "topic": "7. Projektmanagement",
+    "subtopic": "7.29 Kick-Off-Meeting und Projektdokumentation",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist ein Kick-Off-Meeting und welche Dokumentationen gehören zum Projektmanagement?",
+    "answer": "Startschuss nach der Planung.\n\n### Inhalte Kick-Off\n- Ziele & Zeitplan vorstellen\n- Rollen klären\n- Motivation wecken\n\n### Wichtige Dokumente\n- **Projektauftrag** (Start)\n- **Lasten-/Pflichtenheft** (Anforderungen)\n- **PSP & Netzplan** (Planung)\n- **Statusberichte** (Laufend)\n- **Abnahmeprotokoll** (Ende)",
+    "tags": [
+      "Projektmanagement",
+      "Kick-Off",
+      "Dokumentation",
+      "Lastenheft",
+      "Pflichtenheft"
+    ]
+  }
+]

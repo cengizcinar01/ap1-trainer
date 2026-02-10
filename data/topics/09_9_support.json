@@ -1,0 +1,111 @@
+[
+  {
+    "id": 184,
+    "topic": "9. Support",
+    "subtopic": "9.1 Kommunikation",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Kommunikationsarten und -modelle gibt es im IT-Support?",
+    "answer": "### Arten\n| Art | Beschreibung |\n|---|---|\n| **Verbal** | Wort & Schrift |\n| **Paraverbal** | Tonfall, Lautstärke |\n| **Nonverbal** | Körpersprache, Gestik |\n\n### Modelle\n- **4-Ohren:** Sache, Appell, Beziehung, Selbstoffenbarung\n- **Sender-Empfänger:** Codierung & Störungen\n- **Eisberg:** 20% Sache (sichtbar), 80% Beziehung (unsichtbar)",
+    "tags": [
+      "Support",
+      "Kommunikation",
+      "4-Ohren-Modell",
+      "Eisbergmodell"
+    ]
+  },
+  {
+    "id": 185,
+    "topic": "9. Support",
+    "subtopic": "9.1 Kommunikation",
+    "type": "praxis",
+    "difficulty": 2,
+    "question": "Wie deeskaliert man ein Konfliktgespräch im IT-Support?",
+    "answer": "- **Ruhe bewahren** & ausreden lassen\n- **Empathie** zeigen (\"Ich verstehe Ihren Ärger\")\n- **Versachlichen:** Problem von Person trennen\n- **Lösungsorientiert:** \"Wir finden eine Lösung\"\n- **Keine Schuldzusweisungen**",
+    "tags": [
+      "Support",
+      "Kommunikation",
+      "Deeskalation",
+      "Konflikt"
+    ]
+  },
+  {
+    "id": 186,
+    "topic": "9. Support",
+    "subtopic": "9.2 Fehlermanagement",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was umfasst das Fehlermanagement im IT-Support?",
+    "answer": "| Begriff | Bedeutung |\n|---|---|\n| **Problem Control** | Identifizieren & Klassifizieren |\n| **Error Control** | Bekannte Fehler überwachen (Known Errors) |\n| **Proaktiv** | Fehler finden *vor* Störung |\n| **Workaround** | Temporäre Umgehungslösung |",
+    "tags": [
+      "Support",
+      "Fehlermanagement",
+      "Problem Control",
+      "Error Control",
+      "Workaround"
+    ]
+  },
+  {
+    "id": 187,
+    "topic": "9. Support",
+    "subtopic": "9.3 Störungsmanagement",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind Urgency und Impact im Incident Management?",
+    "answer": "### Matrix\n- **Urgency (Dringlichkeit):** Wie schnell muss es gelöst werden? (Zeit)\n- **Impact (Auswirkung):** Wie viele sind betroffen? (Schaden)\n\n🔥 **Priorität** = Urgency x Impact",
+    "tags": [
+      "Support",
+      "Störungsmanagement",
+      "Incident Management",
+      "Urgency",
+      "Impact"
+    ]
+  },
+  {
+    "id": 188,
+    "topic": "9. Support",
+    "subtopic": "9.4 Ticketsystem",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist ein Ticketsystem?",
+    "answer": "Software zur **strukturierten** Bearbeitung von Anfragen.\n\n- **Issue-Tracker:** Fehlerverwaltung (Dev-Fokus)\n- **Helpdesk:** Kundenanfragen (Support-Fokus)",
+    "tags": [
+      "Support",
+      "Ticketsystem",
+      "Helpdesk",
+      "Issue-Tracking"
+    ]
+  },
+  {
+    "id": 189,
+    "topic": "9. Support",
+    "subtopic": "9.5 Support- und Serviceanfragen",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Welche Support-Level gibt es und welche Anfragetypen werden unterschieden?",
+    "answer": "### Support-Level\n1. **1st Level:** Annahme & einfache Lösungen (User Help Desk)\n2. **2nd Level:** Komplexe Probleme (Admins)\n3. **3rd Level:** Spezialisten / Hersteller\n\n### Anfragetypen (ITIL)\n- **Incident:** Störung (z.B. \"Drucker geht nicht\")\n- **Service Request:** Bestellung (z.B. \"Neuer Laptop\")\n- **Event:** Statusmeldung (z.B. \"Server-Backup fertig\")",
+    "tags": [
+      "Support",
+      "First-Level",
+      "Second-Level",
+      "Third-Level",
+      "Service Request",
+      "Incident"
+    ]
+  },
+  {
+    "id": 190,
+    "topic": "9. Support",
+    "subtopic": "9.6 Service Level",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist ein Service Level Agreement (SLA)?",
+    "answer": "Vertrag zwischen **Kunde** und **Provider**.\n\n### Inhalte\n- **Leistung:** Was wird erbracht?\n- **Verfügbarkeit:** z.B. 99,9% uptime\n- **Reaktionszeit:** Wie schnell muss Support antworten?\n- **Sanktionen:** Vertragsstrafen (Pönale)\n\n📝 **Wichtig:** Kunde hat **Mitwirkungspflicht** (Zugang gewähren).",
+    "tags": [
+      "Support",
+      "SLA",
+      "Service Level",
+      "Vertrag"
+    ]
+  }
+]

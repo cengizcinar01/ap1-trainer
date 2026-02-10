@@ -1,0 +1,643 @@
+[
+  {
+    "id": 199,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.1 Verfügbarkeit, Vertraulichkeit und Integrität",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist die CIA-Triade der IT-Sicherheit?",
+    "answer": "### Die 3 Schutzziele (CIA)\n1. **Verfügbarkeit (Availability):** Systeme laufen, Daten sind da.\n   - *Maßnahme:* Backup, USV, Redundanz\n2. **Vertraulichkeit (Confidentiality):** Nur Berechtigte haben Zugriff.\n   - *Maßnahme:* Verschlüsselung, Rechteverwaltung\n3. **Integrität (Integrity):** Daten sind unverändert.\n   - *Maßnahme:* Checksummen, Signaturen",
+    "tags": [
+      "IT-Sicherheit",
+      "CIA-Triade",
+      "Verfügbarkeit",
+      "Vertraulichkeit",
+      "Integrität"
+    ]
+  },
+  {
+    "id": 200,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.2 Maßnahmen zur Informationssicherheit",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Welche technischen, organisatorischen und personellen Maßnahmen zur Informationssicherheit gibt es?",
+    "answer": "### Technische Maßnahmen (TOMs)\n- **Netzwerk:** Firewall, VPN, VLAN\n- **System:** Updates, Virenscanner\n- **Daten:** Verschlüsselung, Backups\n\n### Organisatorische Maßnahmen\n- **Richtlinien:** Passwort-Policy, Clean Desk\n- **Notfall:** Notfallpläne, Wiederanlauf\n- **Prozesse:** Berechtigungskonzept\n\n### Personelle Maßnahmen\n- **Schulung:** Awareness-Training\n- **Verträge:** Verpflichtung auf Datengeheimnis",
+    "tags": [
+      "IT-Sicherheit",
+      "Maßnahmen",
+      "Technisch",
+      "Organisatorisch",
+      "Personell"
+    ]
+  },
+  {
+    "id": 201,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.3 IT-Sicherheitsbeauftragter",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind die Aufgaben eines IT-Sicherheitsbeauftragten?",
+    "answer": "Verantwortlicher für Informationssicherheit (CISO).\n\n### Aufgaben\n- **Erstellen:** Sicherheitskonzepte & Richtlinien\n- **Überwachen:** Einhaltung der Regeln\n- **Schulen:** Mitarbeiter sensibilisieren\n- **Melden:** Bericht an Geschäftsleitung\n- **Analysieren:** Risiken & SChwachstellen bewerten",
+    "tags": [
+      "IT-Sicherheit",
+      "ITSB",
+      "Sicherheitsbeauftragter",
+      "Aufgaben"
+    ]
+  },
+  {
+    "id": 202,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.4 Datenschutzbeauftragter",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind die Aufgaben eines Datenschutzbeauftragten?",
+    "answer": "Überwacher des Datenschutzes (DSGVO).\n\n### Aufgaben\n- **Überwachung:** Einhaltung DSGVO/BDSG\n- **Beratung:** Geschäftsleitung & Mitarbeiter\n- **Schulung:** Sensibilisierung\n- **Kontakt:** Ansprechpartner für Behörden & Betroffene\n- **Verzeichnis:** Prüfung des Verarbeitungsverzeichnisses",
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "DSB",
+      "DSGVO"
+    ]
+  },
+  {
+    "id": 203,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.5 IT-Sicherheitsrichtlinien",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was enthalten IT-Sicherheitsrichtlinien?",
+    "answer": "Verbindliche Regeln für Mitarbeiter.\n\n### Typische Inhalte\n1. **Passwörter:** Länge, Wechsel, Komplexität\n2. **Internet/E-Mail:** Private Nutzung erlaubt?\n3. **Geräte:** Nutzung von USB-Sticks, Private Geräte (BYOD)\n4. **Mobiles Arbeiten:** Homeoffice-Regeln\n5. **Meldewege:** Was tun bei Sicherheitsvorfällen?",
+    "tags": [
+      "IT-Sicherheit",
+      "Sicherheitsrichtlinien",
+      "Zugriffskontrolle",
+      "Netzwerksicherheit"
+    ]
+  },
+  {
+    "id": 204,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.6 Personelle Maßnahmen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche personellen Maßnahmen zur Entwicklung des Sicherheitsbewusstseins gibt es?",
+    "answer": "Die \"Human Firewall\" stärken.\n\n### Maßnahmen\n- **Schulungen:** Regelmäßige Trainings (DSGVO, Sicherheit)\n- **Phishing-Tests:** Simulierte Angriffe\n- **Richtlinien:** Klar kommunizierte Regeln\n- **Onboarding:** Sicherheitseinweisung neuer Mitarbeiter\n- **Kein Blame:** Fehlerkultur (Melden statt vertuschen)",
+    "tags": [
+      "IT-Sicherheit",
+      "Personelle Maßnahmen",
+      "Schulungen",
+      "Sicherheitsbewusstsein"
+    ]
+  },
+  {
+    "id": 205,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.7 BSI IT-Grundschutz-Kompendium",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist das BSI IT-Grundschutz-Kompendium?",
+    "answer": "Standardwerk des BSI für IT-Sicherheit.\n\n### Aufbau (Bausteine)\n- **ISMS:** Sicherheitsmanagement\n- **ORP:** Organisation & Personal\n- **CON:** Konzeption & Vorgehensweise\n- **OPS:** Betrieb\n- **DER:** Detektion & Reaktion\n- **APP:** Anwendungen\n- **SYS:** IT-Systeme\n- **NET:** Netze\n- **INF:** Infrastruktur",
+    "tags": [
+      "IT-Sicherheit",
+      "BSI",
+      "IT-Grundschutz",
+      "Bausteine"
+    ]
+  },
+  {
+    "id": 206,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.8 Datenschutzgesetze",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Welche Datenschutzgesetze gibt es und welche Prüfpunkte sind relevant?",
+    "answer": "### Gesetze\n- **DSGVO:** EU-weit (einheitlich)\n- **BDSG:** Deutschland (ergänzend)\n\n### Checkliste\n1. **Rechtsgrundlage:** Erlaubnis oder Einwilligung?\n2. **Transparenz:** Info an Betroffene (Art. 13/14)\n3. **Betroffenenrechte:** Auskunft, Löschung etc.\n4. **TOMs:** Sicherheit gewährleistet?\n5. **Meldepflicht:** Panne binnen 72h melden?",
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "DSGVO",
+      "BDSG",
+      "Recht"
+    ]
+  },
+  {
+    "id": 207,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.9 Personenbezogene Daten",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind personenbezogene Daten und welche besonderen Kategorien gibt es?",
+    "answer": "Infos über eine identifizierte/identifizierbare Person.\n\n### Beispiele\n- **Direkt:** Name, E-Mail, Telefon\n- **Indirekt:** IP-Adresse, Personalnummer, KFZ-Kennzeichen\n\n### Besondere Kategorien (Art. 9)\n⚠️ **Besonders geschützt:**\n- Gesundheit, Biometrie, Genetik\n- Religion, Politik, Ethnie",
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "Personenbezogene Daten",
+      "DSGVO"
+    ]
+  },
+  {
+    "id": 208,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.10 Rechte der Betroffenen",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Welche Rechte haben Betroffene nach der DSGVO?",
+    "answer": "### Die wichtigsten Rechte\n1. **Auskunft (Art. 15):** \"Was speichert ihr über mich?\"\n2. **Berichtigung (Art. 16):** \"Korrigiert das!\"\n3. **Löschung (Art. 17):** \"Recht auf Vergessenwerden\"\n4. **Einschränkung (Art. 18):** \"Nicht verarbeiten, nur speichern\"\n5. **Datenübertragbarkeit (Art. 20):** \"Datenexport für Wechsel\"\n6. **Widerspruch (Art. 21):** \"Ich will das nicht mehr\"",
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "DSGVO",
+      "Betroffenenrechte",
+      "Recht"
+    ]
+  },
+  {
+    "id": 209,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.10 Konsequenzen der Einwilligung",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was sind die Voraussetzungen einer gültigen Einwilligung nach DSGVO?",
+    "answer": "Erlaubnis zur Verarbeitung.\n\n### Anforderungen (Kopplungsverbot!)\n1. **Freiwillig:** Kein Zwang\n2. **Informiert:** Zweck muss klar sein\n3. **Unmissverständlich:** Aktive Handlung (Opt-In)\n4. **Widerrufbar:** Jederzeit stoppen\n\n❌ **Folgen bei Fehler:** Verarbeitung illegal → Bußgeld!",
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "Einwilligung",
+      "DSGVO",
+      "Recht"
+    ]
+  },
+  {
+    "id": 210,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.11 Anonymisierung",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen Anonymisierung und Pseudonymisierung?",
+    "answer": "| Methode | Rückkehr zur Person? | DSGVO? |\n|---|---|---|\n| **Anonymisierung** | ❌ Nie mehr möglich | Nein (Daten sind frei) |\n| **Pseudonymisierung** | ✅ Mit Schlüssel möglich | Ja (Personenbezug existiert noch) |\n\n💡 **Beispiel:**\n- *Pseudonym:* \"Kunde 1234\"\n- *Anonym:* \"Ein Kunde aus Berlin\"",
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "Anonymisierung",
+      "Pseudonymisierung",
+      "DSGVO"
+    ]
+  },
+  {
+    "id": 211,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.12 Pseudonymisierung",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Pseudonymisierung und wie unterscheidet sie sich von Anonymisierung?",
+    "answer": "Ersetzen des Namens durch ein Kennzeichen (Pseudonym).\n\n### Zweck\n- Schutz der Daten bei Verlust (Dieb kann nichts damit anfangen)\n- Ermöglicht dennoch Zuordnung durch Berechtigte (Schlüsselbesitzer)\n- **Wichtig:** Gilt laut DSGVO weiter als personenbezogen!",
+    "tags": [
+      "IT-Sicherheit",
+      "Datenschutz",
+      "DSGVO",
+      "Pseudonymisierung",
+      "Anonymisierung",
+      "Prüfungsrelevant"
+    ]
+  },
+  {
+    "id": 212,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.13 Schutzbedarfsanalyse",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Wie wird eine Schutzbedarfsanalyse durchgeführt?",
+    "answer": "Ermittlung: Welche Daten brauchen wie viel Schutz?\n\n### Schutzklassen (BSI)\n1. **Normal:** Auswirkung begrenzt (z.B. Telefonliste)\n2. **Hoch:** Auswirkung beträchtlich (z.B. Verträge, Krankheitstage)\n3. **Sehr hoch:** Existenzbedrohend (z.B. Geschäftsgeheimnisse, Patientendaten)\n\n📌 Bestimmt die **Härte** der Sicherungsmaßnahmen.",
+    "tags": [
+      "IT-Sicherheit",
+      "Schutzbedarfsanalyse",
+      "BSI",
+      "Risikobewertung"
+    ]
+  },
+  {
+    "id": 213,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.14 Arbeitsplatzbezogenes Sicherheitskonzept",
+    "type": "praxis",
+    "difficulty": 3,
+    "question": "Was umfasst ein arbeitsplatzbezogenes Sicherheitskonzept?",
+    "answer": "Schutzkonzept für einen konkreten PC/Arbeitsplatz.\n\n### Inhalte\n- **Zutritt:** Wer darf in den Raum?\n- **Zugang:** Passwortschutz, Bildschirmsperre\n- **Zugriff:** Welche Daten darf der User sehen?\n- **Datensicherung:** Wohin wird gespeichert?\n- **Viren:** Scanner aktiv & aktuell?",
+    "tags": [
+      "IT-Sicherheit",
+      "Sicherheitskonzept",
+      "Arbeitsplatz",
+      "Schutzbedarf"
+    ]
+  },
+  {
+    "id": 214,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.15 ISMS",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist ein ISMS (Information Security Management System)?",
+    "answer": "**Information Security Management System** (nach ISO 27001).\n\n- Systematischer Ansatz (Plan-Do-Check-Act)\n- Ziel: Sicherheit dauerhaft gewährleisten\n- Beinhaltet Riisikoanalysen, Audits & Maßnahmen\n- Management-Aufgabe (Chefsache!)",
+    "tags": [
+      "IT-Sicherheit",
+      "ISMS",
+      "ISO 27001",
+      "Risikomanagement"
+    ]
+  },
+  {
+    "id": 215,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.16 Security by Design",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen Security by Design und Security by Default?",
+    "answer": "### Design (Konzept)\nSicherheit wird **bei der Entwicklung** eingeplant (kein nachträgliches Add-on).\n\n### Default (Standard)\nSicherste Einstellung ist **Voreinstellung**.\n- Nutzer muss *aktiv* unsicherer machen (wenn gewollt)\n- Beispiel: Kamera in App standardmäßig *aus*.",
+    "tags": [
+      "IT-Sicherheit",
+      "Security by Design",
+      "Security by Default",
+      "Prinzipien"
+    ]
+  },
+  {
+    "id": 216,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.17 Security by Default und Security by Design",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was bedeuten Security by Design und Security by Default?",
+    "answer": "### Default (Einstellung)\n- **Standard:** Sicherste Option (z.B. Ports zu)\n- **Nutzer:** Muss aktiv freischalten\n- **Ziel:** Schutz für Laien\n\n### Design (Architektur)\n- **Planung:** Sicherheit von Anfang an dabei\n- **Beispiele:** Verschlüsselung, Trennung von Rechten\n- **Gegenteil:** \"Security through Obscurity\"",
+    "tags": [
+      "IT-Sicherheit",
+      "DSGVO",
+      "Security by Design",
+      "Security by Default",
+      "Privacy by Design",
+      "Prüfungsrelevant"
+    ]
+  },
+  {
+    "id": 217,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.18 Härtung des Betriebssystems",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was umfasst die Härtung eines Betriebssystems (OS Hardening)?",
+    "answer": "System sicher machen (\"abhärten\").\n\n### Maßnahmen\n- **Dienste:** Unnötiges abschalten\n- **User:** Gast-Account deaktivieren\n- **Updates:** Immer aktuell halten\n- **Firewall:** Aktivieren & konfigurieren\n- **Passwörter:** Komplexität erzwingen",
+    "tags": [
+      "IT-Sicherheit",
+      "OS Hardening",
+      "Härtung",
+      "Betriebssystem"
+    ]
+  },
+  {
+    "id": 218,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.19 Datensicherungsverfahren",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Welche Backup-Arten und -Strategien gibt es?",
+    "answer": "### Backup-Arten\n| Art | Was? | Restore? | Platz? |\n|---|---|---|---|\n| **Voll** | Alles | Schnell | Hoch |\n| **Inkrementell** | Seit letztem (irgendeinem) Backup | Langsam (Kette) | Niedrig |\n| **Differenziell** | Seit letztem Voll-Backup | Mittel | Mittel |\n\n### Strategie: 3-2-1\n- **3** Kopien\n- **2** Medien (HDD, Cloud)\n- **1** Extern (Offsite)",
+    "tags": [
+      "IT-Sicherheit",
+      "Backup",
+      "Datensicherung",
+      "3-2-1-Regel"
+    ]
+  },
+  {
+    "id": 219,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.20 Verschlüsselungstechniken",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Welche Verschlüsselungstechniken gibt es?",
+    "answer": "### Verfahren\n| Typ | Schlüssel | Beispiel |\n|---|---|---|\n| **Symmetrisch** | 1 (Geheim) | AES (WLAN, ZIP) |\n| **Asymmetrisch** | 2 (Privat/Öffentlich) | RSA, ECC |\n| **Hybrid** | Kombi | HTTPS (TLS) |\n\n🔑 **Asymmetrisch** für Schlüsseltausch,\n🔒 **Symmetrisch** für Datenübertragung.",
+    "tags": [
+      "IT-Sicherheit",
+      "Verschlüsselung",
+      "Symmetrisch",
+      "Asymmetrisch",
+      "Hybrid",
+      "AES",
+      "RSA"
+    ]
+  },
+  {
+    "id": 220,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.21 Hashverfahren",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was sind Hashverfahren und welche Eigenschaften haben sie?",
+    "answer": "Ein \"digitaler Fingerabdruck\".\n\n### Eigenschaften\n- **Einweg:** Nicht rückrechenbar\n- **Kollisionsfrei:** Kein Hash doppelt\n- **Feste Länge:** Immer gleich lang\n\n### Nutzung\n- Passwörter speichern (nie Klartext!)\n- Datei-Integrität prüfen (Checksum)",
+    "tags": [
+      "IT-Sicherheit",
+      "Hash",
+      "SHA-256",
+      "Kryptografie"
+    ]
+  },
+  {
+    "id": 221,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was sind digitale Zertifikate und wie funktioniert die PKI?",
+    "answer": "Elektronischer Identitätsnachweis (z.B. für HTTPS).\n\n### Inhalt\n- Inhaber (Wer?)\n- Öffentlicher Schlüssel (Key)\n- Aussteller (CA)\n- Gültigkeit (Bis wann?)\n- Signatur der CA\n\n🏗 **PKI:** System zur Verwaltung von Zertifikaten.",
+    "tags": [
+      "IT-Sicherheit",
+      "Zertifikate",
+      "PKI",
+      "CA",
+      "TLS"
+    ]
+  },
+  {
+    "id": 222,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist ein digitales Zertifikat?",
+    "answer": "Ein **elektronischer Nachweis**, der die Identität eines Teilnehmers (Person, Server, Organisation) mit einem **öffentlichen Schlüssel** verknüpft.\n\nVergleich: Wie ein digitaler Ausweis.",
+    "tags": [
+      "IT-Sicherheit",
+      "Zertifikate",
+      "Definition"
+    ]
+  },
+  {
+    "id": 223,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "praxis",
+    "difficulty": 2,
+    "question": "Nennen Sie zwei Einsatzgebiete digitaler Zertifikate.",
+    "answer": "- **Verschlüsselung** von Verbindungen (z.B. HTTPS)\n- **Authentifizierung** von Servern oder Benutzern\n- **Digitale Signaturen** (E-Mails, Software)",
+    "tags": [
+      "IT-Sicherheit",
+      "Zertifikate",
+      "Praxis"
+    ]
+  },
+  {
+    "id": 224,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Aufgabe hat eine Zertifizierungsstelle (CA)?",
+    "answer": "Die **CA (Certificate Authority)** prüft die Identität eines Antragstellers und stellt anschließend ein **digitales Zertifikat** aus (signiert es).",
+    "tags": [
+      "IT-Sicherheit",
+      "Zertifikate",
+      "CA"
+    ]
+  },
+  {
+    "id": 225,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Warum ist der private Schlüssel NICHT im Zertifikat enthalten?",
+    "answer": "Der **private Schlüssel** muss streng **geheim** bleiben. Wäre er im Zertifikat (das öffentlich ist), könnte jeder verschlüsselte Nachrichten entschlüsseln oder die Identität fälschen.",
+    "tags": [
+      "IT-Sicherheit",
+      "Kryptografie",
+      "Private Key"
+    ]
+  },
+  {
+    "id": 226,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "praxis",
+    "difficulty": 3,
+    "question": "Was prüft ein Browser bei einem HTTPS-Zertifikat?",
+    "answer": "1. **Gültigkeit** (Ist das Datum noch gültig?)\n2. **Vertrauenswürdige CA** (Ist der Aussteller bekannt?)\n3. **Übereinstimmung der Domain** (Passt die URL zum Zertifikat?)",
+    "tags": [
+      "IT-Sicherheit",
+      "HTTPS",
+      "Browser"
+    ]
+  },
+  {
+    "id": 227,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was bedeutet HTTPS?",
+    "answer": "**Hypertext Transfer Protocol Secure**.\nEs bezeichnet eine verschlüsselte HTTP-Verbindung (meist über TLS/SSL).",
+    "tags": [
+      "IT-Sicherheit",
+      "Protokolle",
+      "HTTPS"
+    ]
+  },
+  {
+    "id": 228,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Rolle spielt der öffentliche Schlüssel im Zertifikat?",
+    "answer": "Er wird verwendet zur:\n- **Verschlüsselung** von Daten (die nur der Besitzer mit dem privaten Schlüssel lesen kann)\n- **Prüfung** von digitalen Signaturen",
+    "tags": [
+      "IT-Sicherheit",
+      "Kryptografie",
+      "Public Key"
+    ]
+  },
+  {
+    "id": 229,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "praxis",
+    "difficulty": 1,
+    "question": "Nennen Sie bekannte Zertifizierungsstellen (CAs).",
+    "answer": "- **Let's Encrypt** (kostenlos, automatisiert)\n- **DigiCert**\n- **GlobalSign**",
+    "tags": [
+      "IT-Sicherheit",
+      "Zertifikate",
+      "CA"
+    ]
+  },
+  {
+    "id": 230,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "praxis",
+    "difficulty": 2,
+    "question": "Was passiert, wenn ein Zertifikat abgelaufen ist?",
+    "answer": "Der Browser stuft die Verbindung als **unsicher** ein und zeigt eine **Warnmeldung** an.\n\nDie Verschlüsselung funktioniert technisch oft noch, aber das **Vertrauen** in die Identität ist nicht mehr gegeben.",
+    "tags": [
+      "IT-Sicherheit",
+      "Zertifikate",
+      "Fehlerbehebung"
+    ]
+  },
+  {
+    "id": 231,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.22 Zertifikate",
+    "type": "praxis",
+    "difficulty": 1,
+    "question": "Warum sind digitale Zertifikate für Online-Shops wichtig?",
+    "answer": "- Sie schützen **Kundendaten** (Verschlüsselung).\n- Sie ermöglichen **sichere Zahlungen**.\n- Sie schaffen **Vertrauen** beim Nutzer (Schloss-Symbol).",
+    "tags": [
+      "IT-Sicherheit",
+      "E-Commerce",
+      "Datenschutz"
+    ]
+  },
+  {
+    "id": 232,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.23 Digitale Signaturen",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was sind digitale Signaturen und wie funktionieren sie?",
+    "answer": "Gewährleisten **Echtheit** und **Integrität**.\n\n### Ablauf\n1. **Hash** der Nachricht erstellen\n2. Hash mit **Privatem Schlüssel** verschlüsseln (=Signatur)\n3. Empfänger entschlüsselt mit **Öffentlichem Schlüssel**\n4. Vergleicht Hashwerte (stimmen überein = echt)\n\n✅ Nutzt asymmetrische Kryptografie.",
+    "tags": [
+      "IT-Sicherheit",
+      "Digitale Signaturen",
+      "Kryptografie",
+      "Hash"
+    ]
+  },
+  {
+    "id": 233,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.24 Authentifizierung",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Zwei-Faktor-Authentifizierung (2FA) und was ist eine Passwort-Policy?",
+    "answer": "Identitätsnachweis mit 2 Faktoren.\n\n### Faktoren (Wissen, Besitz, Sein)\n1. **Wissen:** Passwort, PIN\n2. **Besitz:** Smartphone, Hardware-Token\n3. **Sein:** Fingerabdruck, FaceID\n\n### Passwort-Policy\n- Mind. 12 Zeichen, Komplexität, kein Re-Use\n- **Besser:** Passphrasen & MFA nutzen!",
+    "tags": [
+      "IT-Sicherheit",
+      "Authentifizierung",
+      "2FA",
+      "Passwort-Policy"
+    ]
+  },
+  {
+    "id": 234,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.25 Personal Firewall",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist eine Personal Firewall und welche Funktionen hat sie?",
+    "answer": "Software-Firewall auf dem Endgerät.\n\n### Funktionen\n- **Paketfilter:** Blockt Traffic (rein/raus)\n- **Anwendungskontrolle:** Welche App darf ins Netz?\n\n🛡 **Ziel:** Schutz vor Zugriffen im öffentlichen WLAN oder LAN.",
+    "tags": [
+      "IT-Sicherheit",
+      "Personal Firewall",
+      "Netzwerksicherheit",
+      "Paketfilterung"
+    ]
+  },
+  {
+    "id": 235,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.26 Cyberbedrohungen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Arten von Cyberbedrohungen gibt es?",
+    "answer": "### Malware-Arten\n| Typ | Beschreibung |\n|---|---|\n| **Virus** | Hängt sich an Programm (Wirt) |\n| **Wurm** | Verbreitet sich selbst (Netzwerk) |\n| **Trojaner** | Tarnt sich als nützlich |\n| **Ransomware** | Verschlüsselt Daten (Erpressung) |\n\n### Angriffe\n- **Phishing:** Datenklau per Fake-Mail\n- **DDoS:** Systemüberlastung\n- **Man-in-the-Middle:** Abhören",
+    "tags": [
+      "IT-Sicherheit",
+      "Cyberbedrohungen",
+      "Malware",
+      "Angriffe",
+      "Phishing"
+    ]
+  },
+  {
+    "id": 236,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.27 Social Engineering",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Social Engineering?",
+    "answer": "Manipulation des Menschen (\"Human Hacking\").\n\n### Methoden\n- **Phishing:** \"Klicken Sie hier\" (Massen-Mail)\n- **Spear Phishing:** Gezielter Angriff auf Person\n- **CEO-Fraud:** \"Chef\" fordert Überweisung\n- **Tailgating:** Unbefugtes Mitgehen durch Tür\n- **Baiting:** USB-Stick als Köder ausgelegt\n\n🛡 **Schutz:** Awareness & \"Gesundes Misstrauen\".",
+    "tags": [
+      "IT-Sicherheit",
+      "Social Engineering",
+      "Phishing",
+      "Manipulation"
+    ]
+  },
+  {
+    "id": 237,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.28 Backup-Arten",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was sind die Unterschiede zwischen Vollbackup, differenziellem und inkrementellem Backup?",
+    "answer": "| Typ | Speichert | Restore | Speicher |\n|---|---|---|---|\n| **Voll** | Alles | Schnell (1 Schritt) | Hoch |\n| **Differenziell** | Seit Vollbackup | Mittel (2 Schritte) | Mittel |\n| **Inkrementell** | Seit letztem Backup | Langsam (Alle Schritte) | Niedrig |\n\n💡 **Tipp:** Inkrementell = Kette (fehlt eines, alles kaputt).",
+    "tags": [
+      "IT-Sicherheit",
+      "Backup",
+      "Vollbackup",
+      "Inkrementell",
+      "Differenziell",
+      "Datensicherung"
+    ]
+  },
+  {
+    "id": 238,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.29 DSGVO Art. 5 Grundsätze",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Grundsätze der Datenverarbeitung nennt Art. 5 DSGVO?",
+    "answer": "### Die 7 Grundsätze\n1. **Rechtmäßigkeit & Transparenz:** Erlaubt & nachvollziehbar\n2. **Zweckbindung:** Nur für definiertes Ziel\n3. **Datenminimierung:** So wenig wie möglich\n4. **Richtigkeit:** Daten müssen aktuell sein\n5. **Speicherbegrenzung:** Löschen, wenn Zweck erfüllt\n6. **Integrität & Vertraulichkeit:** Sicher (TOMs)\n7. **Rechenschaftspflicht:** Nachweispflicht (Doku)",
+    "tags": [
+      "Datenschutz",
+      "DSGVO",
+      "Art. 5",
+      "Grundsätze",
+      "Zweckbindung",
+      "Datenminimierung"
+    ]
+  },
+  {
+    "id": 239,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.30 Persönlichkeitsrechte",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Welche Persönlichkeitsrechte gibt es im Kontext Datenschutz?",
+    "answer": "Basierend auf Art. 2 Abs. 1 GG (Freie Entfaltung).\n\n1. **Informationelle Selbstbestimmung:** Herrschaft über eigene Daten\n2. **Recht am eigenen Bild:** Nur mit Einwilligung (KUG)\n3. **Vertraulichkeit des Wortes:** Keine heimlichen Aufnahmen\n4. **Schutz der Sphären:** Interimsphäre (Tabu) > Privatsphäre > Sozialsphäre",
+    "tags": [
+      "Datenschutz",
+      "Persönlichkeitsrechte",
+      "Recht am Bild",
+      "Grundgesetz"
+    ]
+  },
+  {
+    "id": 240,
+    "topic": "11. IT-Sicherheit und Datenschutz",
+    "subtopic": "11.31 Endpoint Security",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Endpoint Security und wie funktionieren Virenscanner?",
+    "answer": "Schutz von Endgeräten.\n\n### Erkennungsmethoden\n1. **Signatur:** Vergleicht mit bekannter Malware (Datenbank)\n2. **Heuristik:** Sucht nach verdächtigen Mustern (ungenau)\n3. **Verhalten:** Überwacht Aktionen (z.B. Crypto-Aktivität)\n4. **Sandbox:** Testet Datei in isolierter Umgebung\n5. **Cloud:** Prüft Hash online",
+    "tags": [
+      "IT-Sicherheit",
+      "Endpoint Security",
+      "Virenscanner",
+      "Antivirus",
+      "IDS",
+      "IPS"
+    ]
+  }
+]

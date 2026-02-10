@@ -1,0 +1,290 @@
+[
+  {
+    "id": 166,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.1 Variablen, Datentypen und -strukturen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche grundlegenden Datentypen und Datenstrukturen gibt es?",
+    "answer": "### Datentypen\n| Typ | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **int** | Ganzzahlen | `1, 42, -5` |\n| **float** | Kommazahlen | `3.14, -0.01` |\n| **bool** | Wahrheitswerte | `true, false` |\n| **char** | Einzelzeichen | `'a', '!'` |\n| **string** | Text | `\"Hallo Welt\"` |\n\n### Datenstrukturen\n- **Array:** Feste Größe, gleicher Typ (`[1, 2, 3]`)\n- **List:** Dynamische Größe\n- **Stack:** LIFO (Last In First Out)\n- **Queue:** FIFO (First In First Out)",
+    "tags": [
+      "Softwareentwicklung",
+      "Datentypen",
+      "Datenstrukturen",
+      "Array",
+      "Stack",
+      "Queue"
+    ]
+  },
+  {
+    "id": 167,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.2 Kontrollstrukturen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Kontrollstrukturen gibt es in der Programmierung?",
+    "answer": "### Strukturarten\n1. **Sequenz:** Zeile für Zeile\n2. **Verzweigung (Selektion):**\n   - `if` / `else`\n   - `switch` / `case`\n3. **Schleife (Iteration):**\n   - **For:** Feste Anzahl\n   - **While:** Kopfgesteuert (prüft erst)\n   - **Do-While:** Fußgesteuert (läuft mind. 1x)",
+    "tags": [
+      "Softwareentwicklung",
+      "Kontrollstrukturen",
+      "If",
+      "Schleifen",
+      "Switch"
+    ]
+  },
+  {
+    "id": 168,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.3 Prozeduren und Funktionen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Arten von Funktionen gibt es und was ist Call-By-Value vs. Call-By-Reference?",
+    "answer": "### Funktionsarten\n- **Ohne Rückgabe:** `void doSomething()`\n- **Mit Rückgabe:** `int getCount()`\n- **Mit Parameter:** `void setName(String name)`\n\n### Parameterübergabe\n| Typ | Bedeutung | Effekt |\n|-----|-----------|--------|\n| **Value** | Kopie des Wertes | Original bleibt gleich |\n| **Reference** | Adresse im Speicher | Original wird geändert |",
+    "tags": [
+      "Softwareentwicklung",
+      "Funktionen",
+      "Call-By-Value",
+      "Call-By-Reference"
+    ]
+  },
+  {
+    "id": 169,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.4 Objektorientierung",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was sind die Grundkonzepte der Objektorientierung?",
+    "answer": "### Grundbegriffe\n- **Klasse:** Bauplan (`Auto`)\n- **Objekt:** Konkretes Ding (`meinRoterBMW`)\n- **Attribut:** Eigenschaft (`farbe`, `ps`)\n- **Methode:** Verhalten (`fahren()`, `bremsen()`)\n\n### 3 Säulen der OOP\n1. **Kapselung:** Daten verstecken (`private`), Zugriff nur über Methoden\n2. **Vererbung:** Eigenschaften weitergeben (`Auto extends Fahrzeug`)\n3. **Polymorphie:** Vielgestaltigkeit (Gleiche Methode, anderes Verhalten)",
+    "tags": [
+      "Softwareentwicklung",
+      "OOP",
+      "Klasse",
+      "Vererbung",
+      "Kapselung",
+      "Polymorphie"
+    ]
+  },
+  {
+    "id": 170,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.5 Bibliotheken und Frameworks",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen Bibliotheken und Frameworks?",
+    "answer": "| Merkmal | Bibliothek (Library) | Framework |\n|---------|----------------------|-----------|\n| **Kontrolle** | Du rufst Code auf | Framework ruft dich auf (IOC) |\n| **Zweck** | Hilfsfunktionen (Tools) | Grundgerüst (Skelett) |\n| **Beispiel** | jQuery, NumPy | React, Angular, Django |\n\n📌 **IOC:** Inversion of Control (Das Framework gibt den Ablauf vor).",
+    "tags": [
+      "Softwareentwicklung",
+      "Bibliothek",
+      "Framework"
+    ]
+  },
+  {
+    "id": 171,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.6 Skriptsprachen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind Skriptsprachen und Shellscripts?",
+    "answer": "Kleine Programme zur Automatisierung (ohne Kompilieren).\n\n### Merkmale\n- **Interpretiert:** Zeile für Zeile ausgeführt\n- **Shebang:** `#!/bin/bash` (Erste Zeile)\n\n### Beispiel\n```bash\n#!/bin/bash\necho \"Hallo Welt\"\nls -la\n```",
+    "tags": [
+      "Softwareentwicklung",
+      "Skriptsprachen",
+      "Shell",
+      "Bash"
+    ]
+  },
+  {
+    "id": 172,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.7 Pseudocode",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Wie sehen Verzweigungen und Schleifen in Pseudocode aus?",
+    "answer": "Sprachunabhängige Beschreibung von Algorithmen.\n\n### Verzweigung\n```text\nIF alter >= 18 THEN\n  print \"Erwachsen\"\nELSE\n  print \"Kind\"\nENDIF\n```\n\n### Schleife\n```text\nFOR i = 1 TO 10 DO\n  print i\nENDFOR\n```",
+    "tags": [
+      "Softwareentwicklung",
+      "Pseudocode",
+      "Kontrollstrukturen"
+    ]
+  },
+  {
+    "id": 173,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.8 UML",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist ein UML-Aktivitätsdiagramm?",
+    "answer": "Zeigt Ablauf von Aktivitäten (Workflow).\n\n### Symbole\n- ⚫ **Startpunkt:** Gefüllter Kreis\n- 🔄 **Aktivität:** Abgerundetes Rechteck\n- ♦️ **Entscheidung:** Raute (Ja/Nein)\n- ➖ **Kante:** Pfeil (Flussrichtung)\n- 🏁 **Endpunkt:** Kreis mit Punkt\n- 🔱 **Gabel/Join:** Parallelisierung (schwarzer Balken)",
+    "image_ref": "uml_aktivitaetsdiagramm_symbole.png",
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Aktivitätsdiagramm",
+      "Modellierung"
+    ]
+  },
+  {
+    "id": 174,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.8 UML",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist ein UML-Anwendungsfalldiagramm (Use Case)?",
+    "answer": "Zeigt **Wer** (Akteur) **Was** (Use Case) mit dem System macht.\n\n### Elemente\n- 👤 **Akteur:** Benutzer / Fremdsystem\n- ⭕ **Use Case:** Funktion (Ellipse)\n- ➖ **Assoziation:** Linie\n\n### Beziehungen\n- `<<include>>`: Muss ausgeführt werden (Login bei Bestellung)\n- `<<extend>>`: Kann ausgeführt werden (Passwort ändern bei Login)",
+    "image_ref": "uml_anwendungsfalldiagramm_beispiel.png",
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Anwendungsfalldiagramm",
+      "Use Case"
+    ]
+  },
+  {
+    "id": 175,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.8 UML",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist ein UML-Klassendiagramm?",
+    "answer": "Struktur des Systems (Klassen & Beziehungen).\n\n### Aufbau einer Klasse\n| Bereich | Inhalt |\n|---------|--------|\n| **Oben** | Klassenname |\n| **Mitte** | Attribute (`-private`, `+public`) |\n| **Unten** | Methoden (`+get()`, `-set()`) |\n\n### Beziehungen\n- **Vererbung:** Pfeil mit leerem Dreieck (△)\n- **Komposition:** Gefüllte Raute (♦️) - existenzabhängig\n- **Aggregation:** Leere Raute (♢) - teilbar",
+    "image_ref": "uml_klassendiagramm_beispiel.png",
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Klassendiagramm",
+      "OOP"
+    ]
+  },
+  {
+    "id": 176,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.9 Tests",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen White Box Test, Black Box Test und Schreibtisch-Test?",
+    "answer": "| Testart | Wissen | Ziel |\n|---------|--------|------|\n| **White Box** | Code bekannt | Logik, Pfade testen (Unit) |\n| **Black Box** | Nur Input/Output | Funktion testen (System) |\n| **Grey Box** | Mischform | Schnittstellen/API |\n\n📝 **Schreibtischtest:** Manuelle Code-Prüfung (Dry Run).",
+    "tags": [
+      "Softwareentwicklung",
+      "Tests",
+      "White Box",
+      "Black Box",
+      "Unit Test"
+    ]
+  },
+  {
+    "id": 177,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.10 Bildschirmausgabemasken",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind die Prinzipien von Softwareergonomie, Corporate Identity und Barrierefreiheit bei Bildschirmmasken?",
+    "answer": "### 3 Säulen\n1. **Ergonomie:** Benutzerfreundlich (Erwartungskonform, Fehlertolerant)\n2. **Barrierefreiheit (a11y):**\n   - Kontrast > 4,5:1\n   - Skalierbare Schrift\n   - Bedienbar per Tastatur\n   - Screenreader-tauglich (Alt-Texte)\n3. **Corporate Identity (CI):** Einheitliches Design (Farben, Fonts, Logo)",
+    "tags": [
+      "Softwareentwicklung",
+      "Ergonomie",
+      "Corporate Identity",
+      "Barrierefreiheit",
+      "UI"
+    ]
+  },
+  {
+    "id": 178,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.11 Relationale Datenbanken",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was sind die Grundbegriffe relationaler Datenbanken?",
+    "answer": "### Struktur\n- **Tabelle (Relation):** Speichert Daten\n- **Zeile (Tupel):** Datensatz\n- **Spalte (Attribut):** Eigenschaft\n\n### Schlüssel\n- **Primary Key (PK):** Eindeutige ID (z.B. `KundenID`)\n- **Foreign Key (FK):** Verweis auf andere Tabelle\n\n### Kardinalität\n- **1:1** (Ehepartner)\n- **1:n** (Kunde → Bestellungen) - *Häufigste*\n- **m:n** (Student ↔ Kurs) - *Braucht Zwischentabelle*",
+    "tags": [
+      "Softwareentwicklung",
+      "Datenbank",
+      "SQL",
+      "Entität",
+      "Primärschlüssel",
+      "Fremdschlüssel"
+    ]
+  },
+  {
+    "id": 179,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.11 Relationale Datenbanken",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was ist Normalisierung, referenzielle Integrität und welche Anomalien gibt es?",
+    "answer": "### Normalisierung (Ziele: 📉 Redundanz, ✅ Konsistenz)\n1. **1. NF:** Atomar (Keine Listen in Feldern)\n2. **2. NF:** Keine Teilabhängigkeit vom Schlüssel (bei zusammengesetztem PK)\n3. **3. NF:** Keine transitive Abhängigkeit (Nicht-Schlüssel hängt von Nicht-Schlüssel ab)\n\n### Referenzielle Integrität\nFK darf nur auf existierenden PK zeigen (keine \"toten Links\").",
+    "tags": [
+      "Softwareentwicklung",
+      "Datenbank",
+      "Normalisierung",
+      "Anomalien",
+      "Referenzielle Integrität"
+    ]
+  },
+  {
+    "id": 180,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.12 ERD Chen-Notation",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Welche Symbole werden in der ERD Chen-Notation verwendet?",
+    "answer": "### Symbole\n- **Rechteck:** Entität (Objekt)\n- **Ellipse:** Attribut (Eigenschaft) - unterstrichen = PK\n- **Raute:** Beziehung\n\n### Kardinalitäten\n- **1**, **N**, **M** an den Verbindungslinien.\n\nBeispiel: `Kunde -(1)---<kauft>---(N)- Produkt`",
+    "tags": [
+      "Softwareentwicklung",
+      "ERD",
+      "Chen-Notation",
+      "Datenbank",
+      "Modellierung"
+    ]
+  },
+  {
+    "id": 181,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.13 SQL Grundlagen",
+    "type": "praxis",
+    "difficulty": 2,
+    "question": "Welche grundlegenden SQL-Befehle sollte man für die AP1 kennen?",
+    "answer": "### DML (Daten)\n```sql\nSELECT * FROM kunden WHERE ort='Berlin';\nINSERT INTO kunden (name) VALUES ('Müller');\nUPDATE kunden SET ort='München' WHERE id=1;\nDELETE FROM kunden WHERE id=5;\n```\n\n### DDL (Struktur)\n- `CREATE TABLE`\n- `ALTER TABLE`\n- `DROP TABLE`\n\n### Wichtig\n- `JOIN` (Tabellen verbinden)\n- `GROUP BY` (Gruppieren für SUM/COUNT)",
+    "tags": [
+      "Software-Entwicklung",
+      "SQL",
+      "Datenbank",
+      "SELECT",
+      "JOIN"
+    ]
+  },
+  {
+    "id": 182,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.14 Normalisierung",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was sind die Normalformen in Datenbanken (1NF, 2NF, 3NF)?",
+    "answer": "### Die 3 Stufen\n1. **1. NF:** **Atomar** (Keine Listen: \"Rot, Grün\" → zwei Zeilen)\n2. **2. NF:** **Volle Abhängigkeit** (Kein Feld hängt nur von *Teil* des PK ab, wichtig bei Kombi-PK)\n3. **3. NF:** **Keine Transitivität** (Kein Feld hängt von anderem Nicht-Schlüssel ab, z.B. PLZ → Ort)\n\n✅ **Ziel:** Keine Redundanz.",
+    "tags": [
+      "Software-Entwicklung",
+      "Datenbank",
+      "Normalisierung",
+      "1NF",
+      "2NF",
+      "3NF"
+    ]
+  },
+  {
+    "id": 183,
+    "topic": "8. Software-Entwicklung",
+    "subtopic": "8.15 Aussagenlogik",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind die Grundlagen der Aussagenlogik?",
+    "answer": "Wahrheitswerte (`1`/`0` oder `true`/`false`).\n\n### Operatoren\n| Op | Name | Wahr wenn... |\n|----|------|--------------|\n| **AND** | Und | **Beide** 1 sind |\n| **OR** | Oder | **Mind.** einer 1 ist |\n| **XOR** | Exklusiv | **Genau** einer 1 ist |\n| **NOT** | Nicht | Kehrt um (0→1) |\n\n⚠️ `!(A && B) == !A || !B` (De Morgan).",
+    "tags": [
+      "Software-Entwicklung",
+      "Aussagenlogik",
+      "AND",
+      "OR",
+      "NOT",
+      "XOR",
+      "Boolesch"
+    ]
+  }
+]

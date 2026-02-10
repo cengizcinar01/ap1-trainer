@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist Künstliche Intelligenz (KI)?",
+    "answer": "**KI** steht für **Künstliche Intelligenz** und umfasst alles, was Computer und Maschinen befähigt, menschenähnliche Intelligenzleistungen zu erbringen:\n\n- Mustererkennung\n- Verarbeiten natürlicher Sprache\n- Selbstständiges Lernen\n- Problemlösen",
+    "tags": [
+      "KI",
+      "Grundlagen",
+      "Definition"
+    ]
+  },
+  {
+    "id": 2,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist ein Neuronales Netzwerk?",
+    "answer": "Ein **Neuronales Netzwerk** ist ein Algorithmus, welcher Daten verarbeitet – *nachgebaut* nach dem biologischen Neuronalen Netzwerk (Gehirn).",
+    "tags": [
+      "KI",
+      "Neuronales Netzwerk",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 3,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Was ist der Unterschied zwischen überwachtem (Supervised) und unüberwachtem (Unsupervised) Lernverhalten?",
+    "answer": "### Überwachtes Lernen (Supervised Learning)\n\nDie Trainingsdaten werden **vor dem Trainieren beschriftet/klassifiziert**. Das Netzwerk lernt aufgrund dieser gelabelten Daten.\n\n✅ Benötigt mehr Vorarbeit, erzielt aber bessere Ergebnisse\n\n### Unüberwachtes Lernen (Unsupervised Learning)\n\nDie Trainingsdaten werden **NICHT klassifiziert** vor dem Trainieren. Das Netzwerk lernt dadurch z.B. die Daten nur zu *clustern*, also in Gruppen zusammenzufassen.",
+    "tags": [
+      "KI",
+      "Machine Learning",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 4,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Overfitting bei Neuronalen Netzwerken?",
+    "answer": "Von **Overfitting** spricht man, wenn ein Neuronales Netzwerk *zu gut* auf die Trainingsdaten trainiert wurde und somit **NUR** auf die Trainingsdaten angewendet werden kann.\n\n⚠️ Es kann nicht auf neue, unbekannte Daten generalisieren.",
+    "tags": [
+      "KI",
+      "Neuronales Netzwerk",
+      "Overfitting",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 5,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist Maschinelles Lernen?",
+    "answer": "**Maschinelles Lernen** (Machine Learning) ist ein Teilbereich der KI.",
+    "tags": [
+      "KI",
+      "Machine Learning",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 6,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Deep Learning / Deep Neural Network?",
+    "answer": "Ein **Deep Neural Network** ist ein Neuronales Netzwerk mit vielen *Hidden/Zwischen-Layern*.",
+    "tags": [
+      "KI",
+      "Deep Learning",
+      "Neuronales Netzwerk",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 7,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen schwacher und starker KI?",
+    "answer": "### Schwache KI\n\nEine Künstliche Intelligenz, welche **nicht selbstständig** handeln kann und Eingabe eines Menschen braucht.\n\n### Starke KI\n\nEine **selbst handelnde** KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist.",
+    "tags": [
+      "KI",
+      "Schwache KI",
+      "Starke KI",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 8,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist Generative AI?",
+    "answer": "Eine **Generative KI** ist eine KI, welche kunstvolle Sachen generieren kann:\n\n- 📝 Text\n- 🖼️ Bild\n- 🎵 Ton\n- 🎬 Video",
+    "tags": [
+      "KI",
+      "Generative AI",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 9,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist ein Deep Fake?",
+    "answer": "Ein **Deep Fake** ist ein durch KI bearbeitetes Video/Bild.\n\n⚠️ Meistens wird das Gesicht und die Stimme einer anderen Person ersetzt.",
+    "tags": [
+      "KI",
+      "Deep Fake",
+      "Sicherheit",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 10,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.1 Künstliche Intelligenz",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Nenne Beispiele für KI-Software im Alltag und in der Entwicklung.",
+    "answer": "### 🏠 Alltag\n\n| Tool | Beschreibung |\n|------|-------------|\n| **DeepL** | Präziser KI-Übersetzer mit natürlichen Übersetzungen |\n| **Grammarly** | Prüft Rechtschreibung und Grammatik |\n| **Google Lens** | Erkennt Objekte, Text und Landmarken |\n| **Google Fotos** | Kategorisiert Bilder und erkennt Gesichter |\n\n### 💻 Entwicklung\n\n| Tool | Beschreibung |\n|------|-------------|\n| **GitHub Copilot** | KI-gestützte Code-Vorschläge |\n| **ChatGPT** | Code-Erklärungen, Debugging, Programmierkonzepte |",
+    "tags": [
+      "KI",
+      "Software",
+      "Alltag",
+      "Entwicklung",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 11,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.2 Bits & Bytes",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was sind Bits und Bytes?",
+    "answer": "**Bits und Bytes** sind die grundlegenden Maßeinheiten für digitale Daten.\n\n- **Bit (b)** – kleinste Informationseinheit: `0` oder `1`\n- **Byte (B)** – 8 Bits ergeben 1 Byte\n\n```\n8 Bit = 1 Byte\n```",
+    "tags": [
+      "Bits",
+      "Bytes",
+      "Grundlagen",
+      "Speicher"
+    ]
+  },
+  {
+    "id": 12,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.2 Bits & Bytes",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen dem dezimalen (SI) und binären (IEC) System bei Speichergrößen?",
+    "answer": "### Dezimales System (SI) – Basis 10\n\n| Einheit | Wert |\n|---------|------|\n| 1 KB | 1.000 Byte |\n| 1 MB | 1.000.000 Byte |\n| 1 GB | 1.000.000.000 Byte |\n| 1 TB | 1.000.000.000.000 Byte |\n\n### Binäres System (IEC) – Basis 2\n\n| Einheit | Wert |\n|---------|------|\n| 1 KiB | 1.024 Byte |\n| 1 MiB | 1.048.576 Byte |\n| 1 GiB | 1.073.741.824 Byte |\n| 1 TiB | 1.099.511.627.776 Byte |",
+    "tags": [
+      "Bits",
+      "Bytes",
+      "SI",
+      "IEC",
+      "Speicher",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 13,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.3 Zahlensysteme",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was sind Zahlensysteme und welche grundlegenden Zahlenformen gibt es?",
+    "answer": "**Zahlensysteme** sind Methoden zur Darstellung von Zahlen.\n\n### Grundlegende Zahlenformen\n\n| Typ | Beispiel | Beschreibung |\n|-----|----------|--------------|\n| **Ganzzahlen** | `-3`, `0`, `42` | Ganze Zahlen ohne Bruchteil |\n| **Festkommazahlen** | `3.14`, `-0.001` | Feste Anzahl Dezimalstellen |\n| **Gleitkommazahlen** | `1.23e4` | Variable Dezimalstellen |\n| **Buchstaben** | `A`, `F` | In Hex-System verwendet |",
+    "tags": [
+      "Zahlensysteme",
+      "Grundlagen",
+      "Mathematik"
+    ]
+  },
+  {
+    "id": 14,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.3 Zahlensysteme",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Welche wichtigen Zahlensysteme gibt es und wie viele Zeichen verwenden sie?",
+    "answer": "| System | Zeichen | Basis | Verwendung |\n|--------|---------|-------|------------|\n| **Dezimal** | 0-9 | 10 | Alltag (10 Finger) |\n| **Binär** | 0, 1 | 2 | Computertechnik (An/Aus) |\n| **Oktal** | 0-7 | 8 | 1 Stelle = 3 Bit |\n| **Hexadezimal** | 0-9, A-F | 16 | 1 Stelle = 4 Bit |",
+    "tags": [
+      "Zahlensysteme",
+      "Binär",
+      "Dezimal",
+      "Oktal",
+      "Hexadezimal",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 15,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.3 Zahlensysteme",
+    "type": "praxis",
+    "difficulty": 3,
+    "question": "Wie lauten die Dezimalzahlen 0-16 in Binär, Hexadezimal und Oktal?",
+    "answer": "| Dez | Binär | Hex | Okt |\n|-----|-------|-----|-----|\n| 0 | `0000` | 0 | 0 |\n| 1 | `0001` | 1 | 1 |\n| 2 | `0010` | 2 | 2 |\n| 3 | `0011` | 3 | 3 |\n| 4 | `0100` | 4 | 4 |\n| 5 | `0101` | 5 | 5 |\n| 6 | `0110` | 6 | 6 |\n| 7 | `0111` | 7 | 7 |\n| 8 | `1000` | 8 | 10 |\n| 9 | `1001` | 9 | 11 |\n| 10 | `1010` | A | 12 |\n| 11 | `1011` | B | 13 |\n| 12 | `1100` | C | 14 |\n| 13 | `1101` | D | 15 |\n| 14 | `1110` | E | 16 |\n| 15 | `1111` | F | 17 |\n| 16 | `10000` | 10 | 20 |",
+    "image_ref": "zahlensysteme_umrechnungstabelle.png",
+    "tags": [
+      "Zahlensysteme",
+      "Umrechnung",
+      "Binär",
+      "Hexadezimal",
+      "Oktal",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 16,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.3 Zahlensysteme",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Wertebereiche haben Ganzzahlen in verschiedenen Darstellungen?",
+    "answer": "| Darstellung | Wertebereich |\n|-------------|--------------|\n| Dezimal | 0 bis n |\n| Binär (1 Byte) | `0` bis `255` |\n| Binär (2 Bytes) | `0` bis `65.535` |\n| Binär (4 Bytes) | `0` bis ~4 Milliarden |\n| BCD | z.B. `77` = `0111 0111` |",
+    "tags": [
+      "Zahlensysteme",
+      "Ganzzahlen",
+      "Wertebereiche",
+      "BCD",
+      "Grundlagen"
+    ]
+  },
+  {
+    "id": 17,
+    "topic": "1. Grundlagen",
+    "subtopic": "1.3 Zahlensysteme",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen ASCII und Unicode?",
+    "answer": "### ASCII\n\nStandardisierte Codierung für lateinische Buchstaben und Zeichen.\n\n⚠️ Begrenzt auf **128/256 Zeichen**\n\n### Unicode\n\nUmfassende Codierung für Schriftzeichen vieler Sprachen und Symbole weltweit.\n\n✅ Unterstützt **alle Sprachen** und Emojis",
+    "tags": [
+      "Zeichencodierung",
+      "ASCII",
+      "Unicode",
+      "Grundlagen"
+    ]
+  }
+]

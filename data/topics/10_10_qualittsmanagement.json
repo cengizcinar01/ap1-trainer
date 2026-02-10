@@ -1,0 +1,123 @@
+[
+  {
+    "id": 191,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.1 QM-Systeme",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind Qualitätsmanagementsysteme und QS-Normen?",
+    "answer": "Systeme zur **Sicherung & Verbesserung** der Qualität.\n\n### Ziele\n- Kundenzufriedenheit erhöhen\n- Prozesse optimieren\n- Fehlerkosten senken\n\n### Wichtige Normen\n- **ISO 9001:** Allgemeine Qualitätsstandards\n- **ISO 27001:** IT-Sicherheit",
+    "tags": [
+      "Qualitätsmanagement",
+      "QMS",
+      "ISO 9001",
+      "ISO 27001"
+    ]
+  },
+  {
+    "id": 192,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.2 QS-Normen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche wichtigen QS-Normen gibt es in der IT?",
+    "answer": "| Norm | Fokus |\n|---|---|\n| **ISO 9001** | QMS (Allgemein, Prozessorientiert) |\n| **ISO 27001** | IT-Sicherheit (ISMS) |\n| **ISO 25010** | Software-Qualität (8 Merkmale) |\n| **ITIL** | IT-Service-Management (Best Practice) |\n| **CMMI** | Reifegradmodell (Softwareentwicklung) |",
+    "tags": [
+      "Qualitätsmanagement",
+      "ISO",
+      "Normen",
+      "ITIL",
+      "CMMI"
+    ]
+  },
+  {
+    "id": 193,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.3 Zertifizierung",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist eine Zertifizierung und wie läuft sie ab?",
+    "answer": "Nachweis, dass Standards eingehalten werden.\n\n### Ablauf (Audit)\n1. **Vorbereitung:** Doku erstellen, Prozesse prüfen\n2. **Audit:** Externer Prüfer (z.B. TÜV) kommt\n3. **Zertifikat:** Bei Erfolg (gültig für x Jahre)\n4. **Überwachung:** Regelmäßige Checks (Re-Zertifizierung)",
+    "tags": [
+      "Qualitätsmanagement",
+      "Zertifizierung",
+      "Audit",
+      "ISO"
+    ]
+  },
+  {
+    "id": 194,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.4 Qualitätsplanung und -lenkung",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was umfasst Qualitätsplanung und Qualitätslenkung?",
+    "answer": "### Planung (Plan)\n- **Ziele:** Was wollen wir erreichen? (z.B. <1% Fehler)\n- **Maßnahmen:** Wie erreichen wir das?\n\n### Lenkung (Do/Check)\n- **Präventiv:** Vorbeugen (Schulungen, Checklisten)\n- **Korrektiv:** Reagieren (Fehler beheben, Prozess anpassen)\n\n🎯 **Ziel:** Qualität dauerhaft sichern.",
+    "tags": [
+      "Qualitätsmanagement",
+      "Qualitätsplanung",
+      "Qualitätslenkung"
+    ]
+  },
+  {
+    "id": 195,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.5 Qualitätslenkung",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Qualitätslenkung und welche Maßnahmen umfasst sie?",
+    "answer": "Operative Umsetzung der Qualitätssicherung.\n\n### Maßnahmen\n- **Präventiv (Vorher):** Schulungen, Standards, Pair Programming\n- **Prüfend (Während):** Tests, Code Reviews, Audits\n- **Korrektiv (Nachher):** Bugfixes, Refactoring, Lessons Learned",
+    "tags": [
+      "Qualitätsmanagement",
+      "Qualitätslenkung",
+      "Quality Control",
+      "Testing"
+    ]
+  },
+  {
+    "id": 196,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.6 PDCA",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist der PDCA-Zyklus?",
+    "answer": "Kreislauf zur ständigen Verbesserung (KVP).\n\n1. **Plan:** Analysieren & Planen\n2. **Do:** Umsetzen (Testweise)\n3. **Check:** Überprüfen (Erfolg?)\n4. **Act:** Standardisieren (Einführen)\n\n🔄 **Wiederholung** für nächste Verbesserung.",
+    "tags": [
+      "Qualitätsmanagement",
+      "PDCA",
+      "Kontinuierliche Verbesserung"
+    ]
+  },
+  {
+    "id": 197,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.7 Testprotokoll",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist ein Testprotokoll und wie ist es aufgebaut?",
+    "answer": "Schriftlicher Nachweis einer Prüfung.\n\n### Inhalt\n- **Kopfdaten:** Wer, Wann, Was?\n- **Prüfpunkte:** Checkliste (Hardware, Software)\n- **Ergebnis:** i.O. / nicht i.O.\n- **Unterschrift:** Bestätigung\n\n✅ Dient der Absicherung und Qualitätssicherung.",
+    "tags": [
+      "Qualitätsmanagement",
+      "Testprotokoll",
+      "Dokumentation"
+    ]
+  },
+  {
+    "id": 198,
+    "topic": "10. Qualitätsmanagement",
+    "subtopic": "10.8 Siegel und Kennzeichnungen",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Welche IT-relevanten Siegel und Kennzeichnungen gibt es?",
+    "answer": "### Zeichen & Bedeutung\n| Siegel | Bedeutung |\n|---|---|\n| **CE** | EU-Konformität (Pflicht, kein Qualitäts-S.) |\n| **GS** | Geprüfte Sicherheit (Freiwillig, TÜV) |\n| **Blauer Engel** | Umweltfreundlich (DE) |\n| **Energy Star** | Energieeffizient (US/Int) |\n| **TCO** | Ergonomie & Nachhaltigkeit (Monitore) |",
+    "tags": [
+      "Qualitätsmanagement",
+      "Siegel",
+      "CE",
+      "GS",
+      "Blauer Engel",
+      "Energy Star",
+      "ISO"
+    ]
+  }
+]

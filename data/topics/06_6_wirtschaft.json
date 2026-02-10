@@ -1,0 +1,699 @@
+[
+  {
+    "id": 92,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.1 Kosten",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Kostenarten gibt es?",
+    "answer": "### Kostenarten\n\n| Art | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **Anschaffung** | Einmalig (Investition) | Kaufpreis, Installation |\n| **Betrieb** | Laufend (OpEx) | Strom, Wartung, Personal |\n| **Herausgabekosten** | Vertrieb/Marketing | Werbung, Verpackung |\n\n### Weitere Unterscheidung\n- **Fixkosten:** Unabhängig von Auslastung (Miete, Gehälter)\n- **Variable Kosten:** Abhängig von Menge (Material, Strom)\n- **Finanzierung:** Zinsen, Gebühren",
+    "tags": [
+      "Wirtschaft",
+      "Kosten",
+      "Fixkosten",
+      "Variable Kosten",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 93,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.1 Kosten",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Vergleiche die Finanzierungsmodelle: Leasing, Kauf, Finanzierung und Pay-per-Use.",
+    "answer": "| Modell | Vorteile ✅ | Nachteile ❌ |\n|--------|-----------|------------|\n| **Kauf** | Eigentum, keine lfd. Rate | Hohe Startkosten, Wertverlust |\n| **Leasing** | Planbar, keine hohen Startkosten | Kein Eigentum, teurer als Kauf |\n| **Finanzierung** | Eigentum nach Tilgung | Zinsen, Kreditabhängigkeit |\n| **Pay-per-Use** | Kosten nur bei Nutzung | Schwer kalkulierbar, langfristig teuer |",
+    "tags": [
+      "Wirtschaft",
+      "Kosten",
+      "Leasing",
+      "Finanzierung",
+      "Pay-per-Use",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 94,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.2 Qualitativer und quantitativer Angebotsvergleich",
+    "type": "praxis",
+    "difficulty": 3,
+    "question": "Wie führt man einen qualitativen und quantitativen Angebotsvergleich durch?",
+    "answer": "### Quantitativ (Zahlen)\nVergleich von Preis, Lieferzeit, Skonto.\n\n**Bezugspreiskalkulation:**\n```\n  Listenpreis\n- Rabatt\n= Zieleinkaufspreis\n- Skonto\n= Bareinkaufspreis\n+ Bezugskosten\n= Bezugspreis (Einstandspreis)\n```\n\n### Qualitativ (Bewertung)\nNicht messbare Faktoren (Soft Skills):\n- Zuverlässigkeit, Ruf\n- Support-Qualität\n- Innovation\n\n➡️ **Methode:** Nutzwertanalyse",
+    "tags": [
+      "Wirtschaft",
+      "Angebotsvergleich",
+      "Bezugspreis",
+      "Nutzwertanalyse",
+      "Wiso",
+      "Prüfungsrelevant"
+    ]
+  },
+  {
+    "id": 95,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.3 Nutzwertanalyse",
+    "type": "praxis",
+    "difficulty": 4,
+    "question": "Was ist eine Nutzwertanalyse und wie wird sie durchgeführt?",
+    "answer": "Methode zur Entscheidungsfindung mit **qualitativen** Faktoren.\n\n### Ablauf\n1. **Kriterien** festlegen (z.B. Preis, Support)\n2. **Gewichtung** bestimmen (Summe = 100%)\n3. **Punkte** vergeben (1-10)\n4. **Gewichtete Punkte** berechnen (Punkte × Gewicht)\n5. **Summe** bilden → Höchster Wert gewinnt\n\n✅ Ideal für komplexe Entscheidungen (Softwareauswahl, Lieferanten).",
+    "image_ref": "nutzwertanalyse_beispiel.png",
+    "tags": [
+      "Wirtschaft",
+      "Nutzwertanalyse",
+      "Entscheidung",
+      "Wiso",
+      "Berechnung"
+    ]
+  },
+  {
+    "id": 96,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.4 Wertschöpfung",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Wertschöpfung und wie berechnet man sie?",
+    "answer": "**Wertschöpfung** = Der Wert, den ein Unternehmen den Vorleistungen hinzufügt.\n\n```\nProduktionswert (Umsatz)\n- Vorleistungen (Material, Fremdleistung)\n= Wertschöpfung\n```\n\n### Verteilung\n- **Arbeitnehmer:** Löhne\n- **Kapitalgeber:** Zinsen\n- **Staat:** Steuern\n- **Unternehmen:** Gewinn",
+    "tags": [
+      "Wirtschaft",
+      "Wertschöpfung",
+      "Produktion",
+      "Wiso",
+      "Prüfungsrelevant"
+    ]
+  },
+  {
+    "id": 97,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.5 Projekte",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Was umfasst eine Machbarkeitsanalyse mit Budgetvorgabe?",
+    "answer": "### Machbarkeitsanalyse\nPrüfung vor Projektstart:\n- **Technisch:** Ist es möglich?\n- **Wirtschaftlich:** Lohnt es sich?\n- **Rechtlich:** Ist es erlaubt?\n\n### Kalkulation\n- **Vorkalkulation:** Schätzung (Budgetplanung)\n- **Budget:** Personal + Material + Puffer\n- **Nachkalkulation:** Vergleich Plan vs. Ist (Lessons Learned)",
+    "tags": [
+      "Wirtschaft",
+      "Projekte",
+      "Machbarkeit",
+      "Budget",
+      "Kalkulation",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 98,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.5 Projekte",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Wie beurteilt man den Einfluss von Stakeholdern?",
+    "answer": "**Stakeholder** = Interessengruppen am Projekt.\n\n### Analyse\n1. **Identifizieren:** Wer sind sie? (Kunde, Team, Chef, Gesetzgeber)\n2. **Bewerten:** Einfluss & Interesse (Matrix)\n3. **Strategie:**\n   - Hoher Einfluss/Interesse → **Kooperieren**\n   - Niedriger Einfluss → **Informieren**",
+    "tags": [
+      "Wirtschaft",
+      "Stakeholder",
+      "Projektmanagement",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 99,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.5 Projekte",
+    "type": "definition",
+    "difficulty": 3,
+    "question": "Wie wird eine Risikoanalyse durchgeführt?",
+    "answer": "1. **Identifikation:** Was kann schiefgehen? (Technik, Budget, Personal)\n2. **Bewertung:**\n   - Eintrittswahrscheinlichkeit (W)\n   - Schadenshöhe (S)\n   - **Risikowert** = W × S\n3. **Maßnahmen:**\n   - Vermeiden\n   - Vermindern\n   - Verlagern (Versicherung)\n   - Akzeptieren\n4. **Überwachung:** Regelmäßiges Controlling",
+    "tags": [
+      "Wirtschaft",
+      "Risikoanalyse",
+      "Projektmanagement",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 100,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.6 Marktformen",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Welche Marktformen gibt es?",
+    "answer": "| Marktform | Anbieter | Nachfrager | Beispiel |\n|-----------|----------|------------|----------|\n| **Monopol** | Einer | Viele | Bahnnetz, Wasser |\n| **Oligopol** | Wenige | Viele | Mobilfunk, Tankstellen |\n| **Polypol** | Viele | Viele | Supermarkt, Handwerk |\n\n- **Käufermarkt:** Angebot > Nachfrage (Kunde ist König)\n- **Verkäufermarkt:** Nachfrage > Angebot (Verkäufer bestimmt Preis)",
+    "tags": [
+      "Wirtschaft",
+      "Marktformen",
+      "Monopol",
+      "Oligopol",
+      "Polypol",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 101,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.7 Vertriebsformen",
+    "type": "vergleich",
+    "difficulty": 1,
+    "question": "Was ist der Unterschied zwischen direktem und indirektem Vertrieb?",
+    "answer": "### Direkter Vertrieb\nHersteller verkauft **direkt** an Endkunden.\n- ✅ Höhere Marge, Kundenkontakt\n- ❌ Hoher Aufwand\n- *Bsp:* Apple Store, Dell\n\n### Indirekter Vertrieb\nVerkauf über **Zwischenhändler**.\n- ✅ Breite Marktabdeckung, weniger logistischer Aufwand\n- ❌ Marge wird geteilt, kein direkter Kundenkontakt\n- *Bsp:* Supermarkt, MediaMarkt",
+    "tags": [
+      "Wirtschaft",
+      "Vertrieb",
+      "Direktvertrieb",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 102,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.8 Zielgruppendefinition",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist eine Zielgruppendefinition und welche Kriterien werden verwendet?",
+    "answer": "**Zielgruppe** = Personenkreis, der angesprochen werden soll.\n\n### Segmentierung\n- **Demografisch:** Alter, Geschlecht, Einkommen\n- **Geografisch:** Region, Stadt/Land\n- **Psychografisch:** Werte, Lebensstil\n- **Verhalten:** Kaufhäufigkeit, Markentreue\n\n🎯 **Methode:** Personas erstellen (fiktive idealisierte Kunden).",
+    "tags": [
+      "Wirtschaft",
+      "Marketing",
+      "Zielgruppe",
+      "Segmentierung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 103,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.9 Verträge",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Welche Vertragsarten gibt es?",
+    "answer": "| Vertragstyp | Leistung | Beispiel |\n|-------------|----------|----------|\n| **Kauf** | Ware gegen Geld (Eigentum) | Hardware-Kauf |\n| **Miete** | Nutzung auf Zeit | Büroräume |\n| **Leasing** | Nutzung + Raten (spezielle Miete) | Firmenwagen |\n| **Werk** | Erfolg/Ergebnis geschuldet | Website-Erstellung |\n| **Dienst** | Tätigkeit/Bemühen geschuldet | IT-Beratung, Arbeitsvertrag |\n| **Lizenz** | Nutzungsrecht | Software |",
+    "tags": [
+      "Wirtschaft",
+      "Verträge",
+      "Kaufvertrag",
+      "Werkvertrag",
+      "Leasing",
+      "Recht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 104,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.10 Vertragsbestandteile",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind die wesentlichen Vertragsbestandteile?",
+    "answer": "1. **Vertragsparteien** (Wer?)\n2. **Leistungsgegenstand** (Was?)\n3. **Vergütung** (Wieviel?)\n4. **Termine/Fristen** (Wann?)\n5. **Sanktionen** (Was wenn nicht? - Pönale)\n6. **Gerichtsstand** & Schlussbestimmungen (Salvatorische Klausel)",
+    "tags": [
+      "Wirtschaft",
+      "Verträge",
+      "Vertragsbestandteile",
+      "Recht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 105,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.11 Vertragsstörungen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Arten von Vertragsstörungen gibt es?",
+    "answer": "### Störungsarten\n- **Leistungsverzug:** Lieferung zu spät (Mahnung nötig)\n- **Zahlungsverzug:** Geld zu spät\n- **Schlechtleistung:** Mangelhafte Ware (Sach-/Rechtsmangel)\n- **Nichterfüllung:** Leistung unmöglich\n- **Annahmeverzug:** Käufer nimmt Ware nicht ab",
+    "tags": [
+      "Wirtschaft",
+      "Vertragsstörungen",
+      "Recht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 106,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.12 Zielsetzungen",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Welche Zielsetzungen können Verträge haben?",
+    "answer": "| Ziel | Fokus | Beispiel |\n|------|-------|----------|\n| **Ökonomisch** | Profit, Effizienz | Gewinnmaximierung, Kostensenkung |\n| **Ökologisch** | Umwelt | CO2-Reduktion, Recycling |\n| **Sozial** | Menschen | Faire Löhne, Arbeitsschutz |",
+    "tags": [
+      "Wirtschaft",
+      "Zielsetzungen",
+      "Ökonomie",
+      "Ökologie",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 107,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.13 Aufbauorganisation",
+    "type": "vergleich",
+    "difficulty": 3,
+    "question": "Welche Organisationsformen gibt es und worin unterscheiden sie sich?",
+    "answer": "| System | Merkmale | Vorteil/Nachteil |\n|--------|----------|------------------|\n| **Einlinien** | 1 Chef | ✅ Klarheit ❌ Langer Weg |\n| **Mehrlinien** | Mehrere Chefs | ✅ Fachwissen ❌ Konflikte |\n| **Stablinien** | Einlinien + Berater | ✅ Entlastung ❌ Kosten |\n| **Matrix** | Funktion + Projekt | ✅ Flexibel ❌ Machtkämpfe |",
+    "tags": [
+      "Wirtschaft",
+      "Organisation",
+      "Einliniensystem",
+      "Matrixorganisation",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 108,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.14 Vollmachten",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Handlungs- und Entscheidungsvollmachten gibt es?",
+    "answer": "### Vollmachten\n- **Handlungsvollmacht (i.V.):** Alltägliche Geschäfte\n  - *Artvollmacht:* Bestimmte Art von Geschäften\n- **Prokura (ppa.):** Fast alle Geschäfte (außer Bilanz, Grundstücke)\n  - *Einzelprokura:* Allein vertretungsberechtigt\n  - *Gesamtprokura:* Nur mit anderem Prokuristen",
+    "tags": [
+      "Wirtschaft",
+      "Vollmachten",
+      "Prokura",
+      "Organisation",
+      "Recht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 109,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.15 Amortisationsrechnung",
+    "type": "berechnung",
+    "difficulty": 2,
+    "question": "Was ist die Amortisationsrechnung und wie wird sie berechnet?",
+    "answer": "**Amortisation** = Wann hat sich die Investition bezahlt gemacht?\n\nFormel:\n```\nAmortisationsdauer = Anschaffungskosten / jährlicher Rückfluss\n```\n\n### Beispiel\n- **Kosten:** 12.000 €\n- **Ersparnis:** 4.000 €/Jahr\n- **Dauer:** 12.000 / 4.000 = **3 Jahre**\n\n✅ Ziel: Je kürzer, desto besser.",
+    "tags": [
+      "Wirtschaft",
+      "Amortisation",
+      "Investitionsrechnung",
+      "Berechnung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 110,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.16 Bezugskalkulation",
+    "type": "berechnung",
+    "difficulty": 2,
+    "question": "Was ist die Bezugskalkulation und wie ist der Rechenweg?",
+    "answer": "Ermittlung des **Bezugspreises** (Einstandspreis).\n\n### Schema\n```\n  Listeneinkaufspreis (netto)\n- Lieferantenrabatt\n= Zieleinkaufspreis\n- Lieferantenskonto\n= Bareinkaufspreis\n+ Bezugskosten (Fracht, Zoll)\n= Bezugspreis\n```\n\n📌 Basis für die Verkaufskalkulation.",
+    "tags": [
+      "Wirtschaft",
+      "Bezugskalkulation",
+      "Kalkulation",
+      "Berechnung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 111,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.17 ROI - Return on Investment",
+    "type": "berechnung",
+    "difficulty": 2,
+    "question": "Was ist der ROI (Return on Investment) und wie wird er berechnet?",
+    "answer": "**ROI** = Kapitalrendite (Wie viel Gewinn bringt das investierte Kapital?)\n\nFormel:\n```\nROI = (Gewinn / Kapital) × 100\n```\n\n### Beispiel\n- **Invest:** 50.000 €\n- **Gewinn:** 10.000 €\n- **ROI:** (10.000 / 50.000) × 100 = **20%**\n\n✅ Positiver ROI = Gewinn.",
+    "tags": [
+      "Wirtschaft",
+      "ROI",
+      "Investitionsrechnung",
+      "Berechnung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 112,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.18 Rentabilitätsrechnung",
+    "type": "berechnung",
+    "difficulty": 2,
+    "question": "Was ist die Rentabilitätsrechnung?",
+    "answer": "Verzinsung des eingesetzten Kapitals.\n\nFormel:\n```\nRentabilität = (Gewinn / Ø Kapital) × 100\n```\n\n*Ø Kapital = (Anschaffung + Restwert) / 2*\n\n### Bsp\n- **Gewinn:** 6.000 €\n- **Kapital:** 20.000 € (Ø)\n- **Rentabilität:** 30%",
+    "tags": [
+      "Wirtschaft",
+      "Rentabilität",
+      "Investitionsrechnung",
+      "Berechnung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 113,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.19 Make or Buy",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist eine Make-or-Buy-Entscheidung?",
+    "answer": "**Eigenfertigung** (Make) oder **Fremdbezug** (Buy)?\n\n| Option | Vorteile | Nachteile |\n|--------|----------|-----------|\n| **Make** | Kontrolle, Know-how bleibt, Unabhängig | Hohe Fixkosten, Ressourceneinsatz |\n| **Buy** | Günstiger, Flexibel, Spezialwissen | Abhängigkeit, Qualitätsrisiko |\n\n⚠️ **Kriterien:** Kosten, Kapazität, Kompetenz.",
+    "tags": [
+      "Wirtschaft",
+      "Make or Buy",
+      "Outsourcing",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 114,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.20 Ratendarlehen",
+    "type": "berechnung",
+    "difficulty": 2,
+    "question": "Was ist ein Ratendarlehen und wie berechnet man es?",
+    "answer": "Konstante **Abzahlung (Tilgung)** + sinkende **Zinsen**.\n\n### Merkmale\n- **Rate:** Sinkt jährlich (da Zinsen auf Restschuld weniger werden)\n- **Tilgung:** Bleibt gleich\n\n### Beispiel (12.000 €, 4 Jahre, 5%)\n1. Jahr: 3000 Tilgung + 600 Zins = **3600 €**\n2. Jahr: 3000 Tilgung + 450 Zins = **3450 €**",
+    "tags": [
+      "Wirtschaft",
+      "Ratendarlehen",
+      "Finanzierung",
+      "Berechnung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 115,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.21 Harvard-Konzept",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist das Harvard-Konzept und welche Prinzipien hat es?",
+    "answer": "Methode für sachgerechtes Verhandeln (**Win-Win**).\n\n### 4 Prinzipien\n1. **Menschen & Probleme** trennen (Hart in der Sache, weich zum Menschen)\n2. **Interessen** statt Positionen (Warum will er das?)\n3. **Optionen** entwickeln (Alternativen suchen)\n4. **Objektive Kriterien** nutzen (Marktpreise, Gesetze)\n\n📌 **BATNA:** Beste Alternative, falls keine Einigung.",
+    "tags": [
+      "Wirtschaft",
+      "Harvard-Konzept",
+      "Verhandlung",
+      "Kommunikation",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 116,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.22 Wirtschaftssektoren",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Welche Wirtschaftssektoren gibt es?",
+    "answer": "| Sektor | Beschreibung | Beispiel |\n|--------|--------------|----------|\n| **Primär** | Urproduktion | Bergbau, Landwirtschaft |\n| **Sekundär** | Industrie/Handwerk | Autobau, Baugewerbe |\n| **Tertiär** | Dienstleistung | **IT, Handel, Banken** |\n\nℹ️ Deutschland ist eine Dienstleistungsgesellschaft (~70% im Tertiärsektor).",
+    "tags": [
+      "Wirtschaft",
+      "Wirtschaftssektoren",
+      "Grundlagen",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 117,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.23 Win-Win-Strategie",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist die Win-Win-Strategie?",
+    "answer": "Beide Parteien profitieren vom Ergebnis.\n\n**Gegensätze:**\n- **Win-Lose:** Einer gewinnt auf Kosten des anderen (kurzfristig)\n- **Lose-Lose:** Beide verlieren (Streit, Klage)\n\n✅ **Vorteil:** Langfristige Geschäftsbeziehung & Vertrauen.",
+    "tags": [
+      "Wirtschaft",
+      "Win-Win",
+      "Verhandlung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 118,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.24 Kosten-Nutzen-Analyse",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist eine Kosten-Nutzen-Analyse?",
+    "answer": "**Kosten** vs. **Nutzen** einer Investition.\n\n### Faktoren\n- **Kosten:** Anschaffung, Betrieb, Schulung\n- **Nutzen:** Geld (Umsatz), Zeit (Effizienz), Qualität (Image)\n\n### Entscheidung\n- **Nutzen > Kosten** → Investieren ✅\n- Oft kombiniert mit *Nutzwertanalyse* (für qualitative Faktoren).",
+    "tags": [
+      "Wirtschaft",
+      "Kosten-Nutzen",
+      "Investitionsrechnung",
+      "Analyse",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 119,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.25 Deckungsbeitrag und Break-Even-Point",
+    "type": "berechnung",
+    "difficulty": 2,
+    "question": "Was sind Deckungsbeitrag und Break-Even-Point?",
+    "answer": "### Deckungsbeitrag (DB)\nBetrag zur Deckung der Fixkosten.\n```\nDB pro Stück = Preis - var. Kosten\nDB gesamt = Umsatz - var. Gesamtkosten\nGewinn = DB gesamt - Fixkosten\n```\n\n### Break-Even-Point (BEP)\nGewinnschwelle (Kosten = Umsatz).\n```\nBEP (Menge) = Fixkosten / DB pro Stück\n```\n\n📌 **Beispiel:**\n- Fix: 10.000 €\n- DB: 20 €/Stk\n- **BEP:** 500 Stück",
+    "tags": [
+      "Wirtschaft",
+      "Deckungsbeitrag",
+      "Break-Even",
+      "Berechnung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 120,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.26 Handelskalkulation / Zuschlagskalkulation",
+    "type": "berechnung",
+    "difficulty": 3,
+    "question": "Wie funktioniert die Handelskalkulation (Vorwärts)?",
+    "answer": "### Vorwärtskalkulation (Schema)\n```\n  Listeneinkaufspreis (LEP)\n- Lieferantenrabatt\n= Zieleinkaufspreis (ZEP)\n- Skonto\n= Bareinkaufspreis\n+ Bezugskosten\n= Bezugspreis\n+ Handlungskosten (Gemeinkosten)\n= Selbstkosten\n+ Gewinn\n= Barverkaufspreis\n+ Kundenskonto\n+ Kundenrabatt\n= Listenverkaufspreis (LVP)\n```",
+    "tags": [
+      "Wirtschaft",
+      "Handelskalkulation",
+      "Zuschlagskalkulation",
+      "Berechnung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 121,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.27 Zahlungsverzug",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist Zahlungsverzug und welche Konsequenzen hat er?",
+    "answer": "Schuldner zahlt nicht rechtzeitig.\n\n### Voraussetzungen (§286 BGB)\n- Fälligkeit + Mahnung **ODER**\n- Fälligkeit nach Kalenderdatum **ODER**\n- 30 Tage nach Rechnung (bei Unternehmen automatisch)\n\n### Folgen\n- **Verzugszinsen** (5% Privat / 9% Business über Basiszinssatz)\n- **Schadensersatz** (Mahnkosten, Inkasso)",
+    "tags": [
+      "Wirtschaft",
+      "Zahlungsverzug",
+      "Mahnung",
+      "Recht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 122,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.28 Gewährleistung vs. Garantie",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen Gewährleistung und Garantie?",
+    "answer": "| Merkmal | Gewährleistung | Garantie |\n|---------|----------------|----------|\n| **Recht** | Gestzlich (§437 BGB) | Freiwillig |\n| **Inhalt** | Mängelfreiheit bei **Übergabe** | Funktionsfähigkeit auf **Zeit** |\n| **Frist** | 2 Jahre (Beweislastumkehr nach 12 Mon.) | Beliebig (Hersteller) |\n| **Anspruch** | Gegen **Händler** | Gegen **Hersteller** |\n\n⚠️ **Rechte:** Nacherfüllung → Rücktritt/Minderung → Schadensersatz.",
+    "tags": [
+      "Wirtschaft",
+      "Gewährleistung",
+      "Garantie",
+      "Mängel",
+      "Recht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 123,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.29 Unternehmensformen",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Unternehmens- und Gesellschaftsformen gibt es?",
+    "answer": "### Personengesellschaften (Haftung: voll)\n- **GbR:** Einfachste Form, mind. 2 Gründer\n- **OHG:** Wie GbR, aber für Kaufleute\n- **KG:** Komplementär (voll) + Kommanditist (Teilhaftung)\n\n### Kapitalgesellschaften (Haftung: beschränkt)\n- **GmbH:** Mind. 25k € Stammkapital\n- **UG:** Mini-GmbH (ab 1 €)\n- **AG:** Mind. 50k €, Aktien\n\n📌 **Wahlkriterien:** Haftung, Kapital, Steuer, Image.",
+    "tags": [
+      "Wirtschaft",
+      "Unternehmensformen",
+      "GmbH",
+      "AG",
+      "GbR",
+      "OHG",
+      "KG",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 124,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.30 Bedürfnis, Bedarf, Nachfrage",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist der Unterschied zwischen Bedürfnis, Bedarf und Nachfrage?",
+    "answer": "1. **Bedürfnis:** Wunsch (Mangelgefühl) *\"Ich will Handy\"*\n2. **Bedarf:** Bedürfnis + Kaufkraft *\"Ich hab Geld dafür\"*\n3. **Nachfrage:** Kauf am Markt *\"Ich kaufe es\"*\n\n➡️ **Reihenfolge:** Bedürfnis → Bedarf → Nachfrage.",
+    "tags": [
+      "Wirtschaft",
+      "Bedürfnis",
+      "Bedarf",
+      "Nachfrage",
+      "Grundlagen",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 125,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.31 TCO",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist TCO (Total Cost of Ownership)?",
+    "answer": "**TCO** = Gesamtkosten über die komplette Lebensdauer.\n\n### Zusammensetzung\n- **Direkt (Hard):** Anschaffung, Lizenzen, Wartung\n- **Indirekt (Soft):** Ausfallzeiten, Supportaufwand, Schulung\n\n⚠️ **Wichtig:** Anschaffung ist oft nur die Spitze des Eisbergs (20%).",
+    "tags": [
+      "Wirtschaft",
+      "TCO",
+      "Gesamtkosten",
+      "Investition",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 126,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.32 Eigen- und Fremdfinanzierung",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen Eigen- und Fremdfinanzierung?",
+    "answer": "| Art | Quelle | Merkmale |\n|-----|--------|----------|\n| **Eigen** | Eigentümer/Gewinn | Keine Zinsen, Mitspracherecht, sicher |\n| **Fremd** | Bank/Kredit | Zinsen, Tilgungspflicht, steuerlich absetzbar |\n\n- **Leasing:** Miete statt Kauf (Objektfinanzierung, bilanzneutral).",
+    "tags": [
+      "Wirtschaft",
+      "Eigenfinanzierung",
+      "Fremdfinanzierung",
+      "Leasing",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 127,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.33 Betriebliche Grundfunktionen",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was sind die betrieblichen Grundfunktionen?",
+    "answer": "1. **Beschaffung:** Einkauf (Material, Personal)\n2. **Produktion:** Erstellung (Software, Dienstleistung)\n3. **Absatz:** Verkauf (Marketing, Vertrieb)\n4. **Finanzierung:** Geld bereitstellen + verwalten (Buchhaltung)\n\n🔄 **Kreislauf:** Geld → Ware → Produktion → Ware → Geld.",
+    "tags": [
+      "Wirtschaft",
+      "Grundfunktionen",
+      "Beschaffung",
+      "Produktion",
+      "Vertrieb",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 128,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.34 ABC-Analyse",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was ist die ABC-Analyse?",
+    "answer": "Klassifizierung nach Wichtigkeit (Pareto 80/20).\n\n| Klasse | Wertanteil | Menge | Strategie |\n|--------|------------|-------|-----------|\n| **A** | Hoch (~80%) | Gering | Genau planen, pflegen |\n| **B** | Mittel (~15%) | Mittel | Standardisieren |\n| **C** | Niedrig (~5%) | Hoch | Minimieren, automatisieren |\n\n📌 Bsp: Kundenumsatz, Lagerteile.",
+    "tags": [
+      "Wirtschaft",
+      "ABC-Analyse",
+      "Pareto",
+      "Marketing",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 129,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.35 AIDA-Modell",
+    "type": "definition",
+    "difficulty": 1,
+    "question": "Was ist das AIDA-Modell?",
+    "answer": "Werbewirkungs-Modell:\n\n1. **A**ttention (Aufmerksamkeit)\n2. **I**nterest (Interesse wecken)\n3. **D**esire (Verlangen/Wunsch)\n4. **A**ction (Kaufhandlung)\n\n📌 Basis für Marketing-Kampagnen.",
+    "tags": [
+      "Wirtschaft",
+      "AIDA",
+      "Marketing",
+      "Werbung",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 130,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.36 Produktlebenszyklus",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Welche Phasen hat der Produktlebenszyklus?",
+    "answer": "Marktentwicklung eines Produkts:\n1. **Einführung** (Kosten hoch, Umsatz niedrig)\n2. **Wachstum** (Gewinnzone erreicht)\n3. **Reife** (Gewinnmaximum, Sättigung beginnt)\n4. **Sättigung** (Umsatz stabil, Preise fallen)\n5. **Degeneration** (Rückgang, Produkt stirbt)\n\n🔄 **Relaunch:** Versuch, Zyklus zu verlängern.",
+    "tags": [
+      "Wirtschaft",
+      "Produktlebenszyklus",
+      "Marketing",
+      "B2B",
+      "B2C",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 131,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.37 Outsourcing und Offshoring",
+    "type": "vergleich",
+    "difficulty": 1,
+    "question": "Was ist der Unterschied zwischen Outsourcing und Offshoring?",
+    "answer": "| Begriff | Bedeutung |\n|---------|-----------|\n| **Outsourcing** | Aufgaben an Fremdfirma geben (organisatorisch) |\n| **Offshoring** | Verlagerung ins Ausland (geografisch) |\n| **Nearshoring** | Verlagerung in nahes Ausland (z.B. Osteuropa) |\n\n✅ **Vorteil:** Kosten, Fokus. ❌ **Nachteil:** Abhängigkeit.",
+    "tags": [
+      "Wirtschaft",
+      "Outsourcing",
+      "Offshoring",
+      "Nearshoring",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 132,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.38 Werkvertrag vs. Dienstvertrag",
+    "type": "vergleich",
+    "difficulty": 2,
+    "question": "Was ist der Unterschied zwischen Werkvertrag und Dienstvertrag?",
+    "answer": "| Vertrag | Schuldet... | Vergütung für... | Beispiel |\n|---------|-------------|------------------|----------|\n| **Werk** | Erfolg (Ergebnis) | Abnahme | Webseite bauen |\n| **Dienst** | Tätigkeit (Bemühen) | Zeit/Arbeit | Support, Arzt |\n\n⚠️ **Wichtig:** Beim Dienstvertrag kein Erfolgsgarantie!",
+    "tags": [
+      "Wirtschaft",
+      "Werkvertrag",
+      "Dienstvertrag",
+      "Vertragsrecht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 133,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.39 Fernabsatzvertrag und Arbeitsvertrag",
+    "type": "definition",
+    "difficulty": 2,
+    "question": "Was sind Fernabsatzverträge und was gehört in einen Arbeitsvertrag?",
+    "answer": "**Fernabsatz (§312c BGB):**\n- Verträge über Internet/Telefon\n- **14 Tage Widerrufsrecht** (bei Privatkunden)\n\n**Arbeitsvertrag (Inhalte):**\n- Parteien, Beginn, Dauer\n- Tätigkeit, Arbeitsort\n- Gehalt, Urlaub (mind. 24 Werktage/Jahr)\n- Kündigungsfrist\n- Probezeit (max. 6 Monate)",
+    "tags": [
+      "Wirtschaft",
+      "Fernabsatzvertrag",
+      "Arbeitsvertrag",
+      "Widerrufsrecht",
+      "Wiso"
+    ]
+  },
+  {
+    "id": 134,
+    "topic": "6. Wirtschaft",
+    "subtopic": "6.40 Marktforschung",
+    "type": "vergleich",
+    "difficulty": 1,
+    "question": "Was ist der Unterschied zwischen Primär- und Sekundärforschung?",
+    "answer": "| Methode | Beschreibung | Merkmal |\n|---------|--------------|---------|\n| **Primär** | Feldforschung (neu) | Teuer, genau, aktuell |\n| **Sekundär** | Schreibtisch (vorhanden) | Günstig, evtl. veraltet |\n\n**Beispiel:**\n- Primär: Eigene Umfrage starten\n- Sekundär: Statista-Daten nutzen",
+    "tags": [
+      "Wirtschaft",
+      "Marktforschung",
+      "Primärforschung",
+      "Sekundärforschung",
+      "Befragung",
+      "Wiso"
+    ]
+  }
+]
