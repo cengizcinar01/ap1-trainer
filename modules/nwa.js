@@ -308,18 +308,21 @@ const NWAView = (() => {
     const sc = SCENARIOS[currentScenarioIdx];
 
     container.innerHTML = `
-      <div class="module-exercise-card view-enter">
-        <div class="scenario-nav">
-          <span class="scenario-nav-label">Szenarien</span>
-          <div class="scenario-nav-controls">
-            <button class="scenario-nav-btn" id="prevSc" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
-            <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
-            <button class="scenario-nav-btn" id="nextSc" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
-          </div>
+      <div class="scenario-nav">
+        <span class="scenario-nav-label">Aufgaben</span>
+        <div class="scenario-nav-controls">
+          <button class="scenario-nav-btn" id="prevSc" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
+          <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
+          <button class="scenario-nav-btn" id="nextSc" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
         </div>
+      </div>
 
-        <h3 style="margin-bottom: var(--space-2)">${sc.title}</h3>
-        <p class="module-text">${sc.description}</p>
+      <div class="module-exercise-card view-enter">
+        <div class="module-exercise-header">
+          <span class="module-exercise-badge">${sc.title}</span>
+        </div>
+        
+        <p class="module-text" style="margin-bottom: var(--space-6);">${sc.description}</p>
 
         <table class="exam-table">
           <thead>

@@ -255,7 +255,6 @@ Jedes Modul hat einen **eigenen CSS-Prefix** fuer modul-spezifische Styles:
 | Modul | Prefix | Beispiel |
 |-------|--------|---------|
 | Kommunikation | `comm-` | `.comm-square`, `.comm-ear` |
-| OSI-Modell | `osi-` | `.osi-layer`, `.osi-protocol` |
 | Subnetting | `subnet-` | `.subnet-input`, `.subnet-table` |
 | NWA | `nwa-` | `.nwa-table`, `.nwa-slider` |
 | Netzplantechnik | `np-` | `.np-node`, `.np-canvas` |
@@ -492,7 +491,6 @@ modules/
   modules.css              ← Shared Styles (Tabs, Cards, Quiz, etc.)
   css/
     communication.css      ← Nur comm-spezifische Styles
-    osimodel.css           ← Nur osi-spezifische Styles
     subnetting.css         ← Nur subnet-spezifische Styles
     nwa.css                ← Nur nwa-spezifische Styles
     networkplan.css        ← Nur np-spezifische Styles

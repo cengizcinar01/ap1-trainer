@@ -8,7 +8,6 @@ import GanttView from '../modules/gantt.js';
 import MailProtocolsView from '../modules/mailprotocols.js';
 import NumberSystemsView from '../modules/numbersystems.js';
 import NWAView from '../modules/nwa.js';
-import OSIModelView from '../modules/osimodel.js';
 import SubnettingView from '../modules/subnetting.js';
 import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
@@ -115,13 +114,6 @@ const App = (() => {
       cleanupCurrentView();
       currentCleanup = MailProtocolsView.cleanup;
       MailProtocolsView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/osimodel', () => {
-      cleanupCurrentView();
-      currentCleanup = OSIModelView.cleanup;
-      OSIModelView.render(contentEl);
       Sidebar.updateActive();
     });
 

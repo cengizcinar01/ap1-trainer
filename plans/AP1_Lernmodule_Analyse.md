@@ -342,7 +342,6 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 | 10 | EPK-Builder | ✅ Implementiert |
 | 11 | KI-Grundlagen | ❌ Offen |
 | 12 | Gantt-Diagramm | ❌ Offen |
-| 13 | OSI-Modell | ✅ Implementiert |
 | 14 | DSGVO | ❌ Offen |
 | 15 | Konsolenbefehle | ❌ Offen |
 | 16 | Elektrotechnik | ❌ Offen |
@@ -352,7 +351,7 @@ Diese Themen kommen seltener vor oder bringen weniger Punkte.
 | 20 | BPMN-Editor | ❌ Offen |
 | 21 | 4-Ohren-Modell | ✅ Implementiert |
 
-**Implementiert:** 9/21 Module (43%)
+**Implementiert:** 8/21 Module (38%)
 
 ---
 
@@ -388,7 +387,6 @@ modules/
   ├── epk.js               (Modul 10) ✅
   ├── aibasics.js          (Modul 11)
   ├── gantt.js             (Modul 12)
-  ├── osimodel.js          (Modul 13) ✅
   ├── dsgvo.js             (Modul 14)
   ├── terminal.js          (Modul 15)
   ├── electrical.js        (Modul 16)

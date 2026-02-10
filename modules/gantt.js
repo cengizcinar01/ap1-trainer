@@ -245,22 +245,21 @@ const GanttView = (() => {
     initUserBars(sc);
 
     container.innerHTML = `
-      <div class="module-exercise-card view-enter">
-        <div class="scenario-nav">
-          <span class="scenario-nav-label">Szenarien</span>
-          <div class="scenario-nav-controls">
-            <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
-            <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
-            <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
-          </div>
+      <div class="scenario-nav">
+        <span class="scenario-nav-label">Aufgaben</span>
+        <div class="scenario-nav-controls">
+          <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
+          <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
+          <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
         </div>
+      </div>
 
-        <div class="gantt-card-header">
-          <div style="flex: 1">
-            <h3 style="margin: 0 0 var(--space-1) 0;">${sc.title}</h3>
-            <p class="module-text" style="font-size: 13px; margin: 0;">${sc.description}</p>
-          </div>
+      <div class="module-exercise-card view-enter">
+        <div class="module-exercise-header">
+          <span class="module-exercise-badge">${sc.title}</span>
         </div>
+        
+        <p class="module-text" style="font-size: 13px; margin-bottom: var(--space-6);">${sc.description}</p>
 
         <div class="gantt-table-wrapper">
           <table class="gantt-table" id="ganttTable">

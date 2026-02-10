@@ -17,7 +17,6 @@ const Sidebar = (() => {
     review: DOT_ICON,
     subnetting: DOT_ICON,
     mail: DOT_ICON,
-    osimodel: DOT_ICON,
     networkplan: DOT_ICON,
     nwa: DOT_ICON,
     numbersystems: DOT_ICON,
@@ -113,10 +112,6 @@ const Sidebar = (() => {
         <a href="#/modules/gantt" class="nav-item ${currentRoute.startsWith('/modules/gantt') ? 'active' : ''}" data-route="/modules/gantt">
           <span class="nav-item-icon">${ICONS.gantt}</span>
           Gantt-Diagramm
-        </a>
-        <a href="#/modules/osimodel" class="nav-item ${currentRoute.startsWith('/modules/osimodel') ? 'active' : ''}" data-route="/modules/osimodel">
-          <span class="nav-item-icon">${ICONS.osimodel}</span>
-          OSI-Modell
         </a>
         <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
           <span class="nav-item-icon">${ICONS.subnetting}</span>

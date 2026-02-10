@@ -343,20 +343,24 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
           <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
         </div>
       </div>
-      <div class="module-exercise-card">
+
+      <div class="module-exercise-card view-enter">
         <div class="module-exercise-header">
           <span class="module-exercise-badge">${sc.title}</span>
         </div>
-        <div class="module-info-box">
+        
+        <div class="module-info-box" style="margin-bottom: var(--space-4);">
           ${CardRenderer.formatAnswer(sc.description)}
         </div>
+
         <p class="module-exercise-question"><strong>Aufgabe:</strong> ${sc.task}</p>
         <div id="exerciseSpecificContent"></div>
-        <div class="module-actions">
+        
+        <div class="module-actions" style="margin-top: var(--space-8)">
           <button class="btn btn-primary" id="btnShowSolution">Loesungsweg anzeigen</button>
           <button class="btn" id="btnNextTask">Zufaellige Werte</button>
         </div>
-        <div id="elecSolution" class="module-steps" style="display:none;"></div>
+        <div id="elecSolution" style="display:none; margin-top: var(--space-6);"></div>
       </div>
     `;
     const exContent = container.querySelector('#exerciseSpecificContent');
@@ -375,7 +379,14 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
       .addEventListener('click', () => {
         const solEl = container.querySelector('#elecSolution');
         solEl.style.display = 'block';
-        solEl.innerHTML = `<div class="module-step"><div class="module-step-title">Detaillierter Rechenweg</div><div class="module-step-text">${CardRenderer.formatAnswer(getDetailedSolution(sc))}</div></div>`;
+        solEl.innerHTML = `
+          <div class="module-steps">
+            <div class="module-step">
+              <div class="module-step-title">Detaillierter Rechenweg</div>
+              <div class="module-step-text">${CardRenderer.formatAnswer(getDetailedSolution(sc))}</div>
+            </div>
+          </div>
+        `;
         solEl.scrollIntoView({ behavior: 'smooth' });
       });
     container.querySelector('#btnNextTask').addEventListener('click', () => {
