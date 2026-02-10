@@ -366,12 +366,12 @@ const CommunicationView = (() => {
           <h3 class="module-section-title">Was ist das 4-Ohren-Modell?</h3>
           <p class="module-text">
             Das <strong>Vier-Seiten-Modell</strong> von Friedemann Schulz von Thun besagt, dass jede Nachricht
-            auf vier Ebenen gleichzeitig gesendet und empfangen wird. Ein Sender hat "vier Schnaebel",
-            ein Empfaenger "vier Ohren".
+            auf vier Ebenen gleichzeitig gesendet und empfangen wird. Ein Sender hat "vier Schnäbel",
+            ein Empfänger "vier Ohren".
           </p>
           <div class="module-info-box">
-            Haeufige Missverstaendnisse entstehen, wenn der Sender eine Nachricht auf einer Ebene meint (z.B. Sache),
-            der Empfaenger sie aber auf einer anderen Ebene hoert (z.B. Beziehung).
+            Häufige Missverständnisse entstehen, wenn der Sender eine Nachricht auf einer Ebene meint (z.B. Sache),
+            der Empfänger sie aber auf einer anderen Ebene hört (z.B. Beziehung).
           </div>
         </div>
 
@@ -527,8 +527,8 @@ const CommunicationView = (() => {
           </div>
 
           <div class="module-actions">
-            <button class="btn btn-primary" id="btnCheckScenario" disabled>Zuordnung pruefen</button>
-            <button class="btn btn-primary" id="btnNextScenario" style="display:none">Naechstes Szenario &rarr;</button>
+            <button class="btn btn-primary" id="btnCheckScenario" disabled>Zuordnung prüfen</button>
+            <button class="btn btn-primary" id="btnNextScenario" style="display:none">Nächstes Szenario &rarr;</button>
           </div>
           <div id="scenarioFeedback"></div>
       </div>
@@ -834,7 +834,7 @@ const CommunicationView = (() => {
         ? 'Perfekt! Du beherrschst alle 4 Ohren!'
         : pct >= 60
           ? 'Gut gemacht! Weiter so.'
-          : 'Weiter ueben — du schaffst das!';
+          : 'Weiter üben — du schaffst das!';
     document.getElementById('commQuizResult').innerHTML = `
       <div class="module-exercise-card module-quiz-result">
         <h2 class="module-quiz-result-title">Quiz beendet!</h2>

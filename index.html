@@ -43,15 +43,8 @@
   <script>
     (() => {
       const storedTheme =
-        localStorage.getItem('theme-preference') || 'system';
-      let effectiveTheme = storedTheme;
-      if (storedTheme === 'system') {
-        effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)')
-          .matches
-          ? 'dark'
-          : 'light';
-      }
-      if (effectiveTheme === 'light') {
+        localStorage.getItem('theme-preference') || 'light';
+      if (storedTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
       } else {
         document.documentElement.removeAttribute('data-theme');
