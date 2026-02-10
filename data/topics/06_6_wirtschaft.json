@@ -7,7 +7,13 @@
     "difficulty": 2,
     "question": "Welche Kostenarten gibt es?",
     "answer": "### Kostenarten\n\n| Art | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **Anschaffung** | Einmalig (Investition) | Kaufpreis, Installation |\n| **Betrieb** | Laufend (OpEx) | Strom, Wartung, Personal |\n| **Herausgabekosten** | Vertrieb/Marketing | Werbung, Verpackung |\n\n### Weitere Unterscheidung\n- **Fixkosten:** Unabhängig von Auslastung (Miete, Gehälter)\n- **Variable Kosten:** Abhängig von Menge (Material, Strom)\n- **Finanzierung:** Zinsen, Gebühren",
-    "tags": ["Wirtschaft", "Kosten", "Fixkosten", "Variable Kosten", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Kosten",
+      "Fixkosten",
+      "Variable Kosten",
+      "Wiso"
+    ]
   },
   {
     "id": 93,
@@ -101,7 +107,12 @@
     "difficulty": 2,
     "question": "Wie beurteilt man den Einfluss von Stakeholdern?",
     "answer": "**Stakeholder** = Interessengruppen am Projekt.\n\n### Analyse\n1. **Identifizieren:** Wer sind sie? (Kunde, Team, Chef, Gesetzgeber)\n2. **Bewerten:** Einfluss & Interesse (Matrix)\n3. **Strategie:**\n   - Hoher Einfluss/Interesse → **Kooperieren**\n   - Niedriger Einfluss → **Informieren**",
-    "tags": ["Wirtschaft", "Stakeholder", "Projektmanagement", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Stakeholder",
+      "Projektmanagement",
+      "Wiso"
+    ]
   },
   {
     "id": 99,
@@ -111,7 +122,12 @@
     "difficulty": 3,
     "question": "Wie wird eine Risikoanalyse durchgeführt?",
     "answer": "1. **Identifikation:** Was kann schiefgehen? (Technik, Budget, Personal)\n2. **Bewertung:**\n   - Eintrittswahrscheinlichkeit (W)\n   - Schadenshöhe (S)\n   - **Risikowert** = W × S\n3. **Maßnahmen:**\n   - Vermeiden\n   - Vermindern\n   - Verlagern (Versicherung)\n   - Akzeptieren\n4. **Überwachung:** Regelmäßiges Controlling",
-    "tags": ["Wirtschaft", "Risikoanalyse", "Projektmanagement", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Risikoanalyse",
+      "Projektmanagement",
+      "Wiso"
+    ]
   },
   {
     "id": 100,
@@ -138,7 +154,12 @@
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen direktem und indirektem Vertrieb?",
     "answer": "### Direkter Vertrieb\nHersteller verkauft **direkt** an Endkunden.\n- ✅ Höhere Marge, Kundenkontakt\n- ❌ Hoher Aufwand\n- *Bsp:* Apple Store, Dell\n\n### Indirekter Vertrieb\nVerkauf über **Zwischenhändler**.\n- ✅ Breite Marktabdeckung, weniger logistischer Aufwand\n- ❌ Marge wird geteilt, kein direkter Kundenkontakt\n- *Bsp:* Supermarkt, MediaMarkt",
-    "tags": ["Wirtschaft", "Vertrieb", "Direktvertrieb", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Vertrieb",
+      "Direktvertrieb",
+      "Wiso"
+    ]
   },
   {
     "id": 102,
@@ -148,7 +169,13 @@
     "difficulty": 2,
     "question": "Was ist eine Zielgruppendefinition und welche Kriterien werden verwendet?",
     "answer": "**Zielgruppe** = Personenkreis, der angesprochen werden soll.\n\n### Segmentierung\n- **Demografisch:** Alter, Geschlecht, Einkommen\n- **Geografisch:** Region, Stadt/Land\n- **Psychografisch:** Werte, Lebensstil\n- **Verhalten:** Kaufhäufigkeit, Markentreue\n\n🎯 **Methode:** Personas erstellen (fiktive idealisierte Kunden).",
-    "tags": ["Wirtschaft", "Marketing", "Zielgruppe", "Segmentierung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Marketing",
+      "Zielgruppe",
+      "Segmentierung",
+      "Wiso"
+    ]
   },
   {
     "id": 103,
@@ -176,7 +203,13 @@
     "difficulty": 2,
     "question": "Was sind die wesentlichen Vertragsbestandteile?",
     "answer": "1. **Vertragsparteien** (Wer?)\n2. **Leistungsgegenstand** (Was?)\n3. **Vergütung** (Wieviel?)\n4. **Termine/Fristen** (Wann?)\n5. **Sanktionen** (Was wenn nicht? - Pönale)\n6. **Gerichtsstand** & Schlussbestimmungen (Salvatorische Klausel)",
-    "tags": ["Wirtschaft", "Verträge", "Vertragsbestandteile", "Recht", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Verträge",
+      "Vertragsbestandteile",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 105,
@@ -186,7 +219,12 @@
     "difficulty": 2,
     "question": "Welche Arten von Vertragsstörungen gibt es?",
     "answer": "### Störungsarten\n- **Leistungsverzug:** Lieferung zu spät (Mahnung nötig)\n- **Zahlungsverzug:** Geld zu spät\n- **Schlechtleistung:** Mangelhafte Ware (Sach-/Rechtsmangel)\n- **Nichterfüllung:** Leistung unmöglich\n- **Annahmeverzug:** Käufer nimmt Ware nicht ab",
-    "tags": ["Wirtschaft", "Vertragsstörungen", "Recht", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Vertragsstörungen",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 106,
@@ -196,7 +234,13 @@
     "difficulty": 1,
     "question": "Welche Zielsetzungen können Verträge haben?",
     "answer": "| Ziel | Fokus | Beispiel |\n|------|-------|----------|\n| **Ökonomisch** | Profit, Effizienz | Gewinnmaximierung, Kostensenkung |\n| **Ökologisch** | Umwelt | CO2-Reduktion, Recycling |\n| **Sozial** | Menschen | Faire Löhne, Arbeitsschutz |",
-    "tags": ["Wirtschaft", "Zielsetzungen", "Ökonomie", "Ökologie", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Zielsetzungen",
+      "Ökonomie",
+      "Ökologie",
+      "Wiso"
+    ]
   },
   {
     "id": 107,
@@ -271,7 +315,13 @@
     "difficulty": 2,
     "question": "Was ist der ROI (Return on Investment) und wie wird er berechnet?",
     "answer": "**ROI** = Kapitalrendite (Wie viel Gewinn bringt das investierte Kapital?)\n\nFormel:\n```\nROI = (Gewinn / Kapital) × 100\n```\n\n### Beispiel\n- **Invest:** 50.000 €\n- **Gewinn:** 10.000 €\n- **ROI:** (10.000 / 50.000) × 100 = **20%**\n\n✅ Positiver ROI = Gewinn.",
-    "tags": ["Wirtschaft", "ROI", "Investitionsrechnung", "Berechnung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "ROI",
+      "Investitionsrechnung",
+      "Berechnung",
+      "Wiso"
+    ]
   },
   {
     "id": 112,
@@ -297,7 +347,12 @@
     "difficulty": 2,
     "question": "Was ist eine Make-or-Buy-Entscheidung?",
     "answer": "**Eigenfertigung** (Make) oder **Fremdbezug** (Buy)?\n\n| Option | Vorteile | Nachteile |\n|--------|----------|-----------|\n| **Make** | Kontrolle, Know-how bleibt, Unabhängig | Hohe Fixkosten, Ressourceneinsatz |\n| **Buy** | Günstiger, Flexibel, Spezialwissen | Abhängigkeit, Qualitätsrisiko |\n\n⚠️ **Kriterien:** Kosten, Kapazität, Kompetenz.",
-    "tags": ["Wirtschaft", "Make or Buy", "Outsourcing", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Make or Buy",
+      "Outsourcing",
+      "Wiso"
+    ]
   },
   {
     "id": 114,
@@ -339,7 +394,12 @@
     "difficulty": 1,
     "question": "Welche Wirtschaftssektoren gibt es?",
     "answer": "| Sektor | Beschreibung | Beispiel |\n|--------|--------------|----------|\n| **Primär** | Urproduktion | Bergbau, Landwirtschaft |\n| **Sekundär** | Industrie/Handwerk | Autobau, Baugewerbe |\n| **Tertiär** | Dienstleistung | **IT, Handel, Banken** |\n\nℹ️ Deutschland ist eine Dienstleistungsgesellschaft (~70% im Tertiärsektor).",
-    "tags": ["Wirtschaft", "Wirtschaftssektoren", "Grundlagen", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Wirtschaftssektoren",
+      "Grundlagen",
+      "Wiso"
+    ]
   },
   {
     "id": 117,
@@ -349,7 +409,12 @@
     "difficulty": 1,
     "question": "Was ist die Win-Win-Strategie?",
     "answer": "Beide Parteien profitieren vom Ergebnis.\n\n**Gegensätze:**\n- **Win-Lose:** Einer gewinnt auf Kosten des anderen (kurzfristig)\n- **Lose-Lose:** Beide verlieren (Streit, Klage)\n\n✅ **Vorteil:** Langfristige Geschäftsbeziehung & Vertrauen.",
-    "tags": ["Wirtschaft", "Win-Win", "Verhandlung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Win-Win",
+      "Verhandlung",
+      "Wiso"
+    ]
   },
   {
     "id": 118,
@@ -407,7 +472,13 @@
     "difficulty": 2,
     "question": "Was ist Zahlungsverzug und welche Konsequenzen hat er?",
     "answer": "Schuldner zahlt nicht rechtzeitig.\n\n### Voraussetzungen (§286 BGB)\n- Fälligkeit + Mahnung **ODER**\n- Fälligkeit nach Kalenderdatum **ODER**\n- 30 Tage nach Rechnung (bei Unternehmen automatisch)\n\n### Folgen\n- **Verzugszinsen** (5% Privat / 9% Business über Basiszinssatz)\n- **Schadensersatz** (Mahnkosten, Inkasso)",
-    "tags": ["Wirtschaft", "Zahlungsverzug", "Mahnung", "Recht", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Zahlungsverzug",
+      "Mahnung",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 122,
@@ -470,7 +541,13 @@
     "difficulty": 2,
     "question": "Was ist TCO (Total Cost of Ownership)?",
     "answer": "**TCO** = Gesamtkosten über die komplette Lebensdauer.\n\n### Zusammensetzung\n- **Direkt (Hard):** Anschaffung, Lizenzen, Wartung\n- **Indirekt (Soft):** Ausfallzeiten, Supportaufwand, Schulung\n\n⚠️ **Wichtig:** Anschaffung ist oft nur die Spitze des Eisbergs (20%).",
-    "tags": ["Wirtschaft", "TCO", "Gesamtkosten", "Investition", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "TCO",
+      "Gesamtkosten",
+      "Investition",
+      "Wiso"
+    ]
   },
   {
     "id": 126,
@@ -513,7 +590,13 @@
     "difficulty": 2,
     "question": "Was ist die ABC-Analyse?",
     "answer": "Klassifizierung nach Wichtigkeit (Pareto 80/20).\n\n| Klasse | Wertanteil | Menge | Strategie |\n|--------|------------|-------|-----------|\n| **A** | Hoch (~80%) | Gering | Genau planen, pflegen |\n| **B** | Mittel (~15%) | Mittel | Standardisieren |\n| **C** | Niedrig (~5%) | Hoch | Minimieren, automatisieren |\n\n📌 Bsp: Kundenumsatz, Lagerteile.",
-    "tags": ["Wirtschaft", "ABC-Analyse", "Pareto", "Marketing", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "ABC-Analyse",
+      "Pareto",
+      "Marketing",
+      "Wiso"
+    ]
   },
   {
     "id": 129,
@@ -523,7 +606,13 @@
     "difficulty": 1,
     "question": "Was ist das AIDA-Modell?",
     "answer": "Werbewirkungs-Modell:\n\n1. **A**ttention (Aufmerksamkeit)\n2. **I**nterest (Interesse wecken)\n3. **D**esire (Verlangen/Wunsch)\n4. **A**ction (Kaufhandlung)\n\n📌 Basis für Marketing-Kampagnen.",
-    "tags": ["Wirtschaft", "AIDA", "Marketing", "Werbung", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "AIDA",
+      "Marketing",
+      "Werbung",
+      "Wiso"
+    ]
   },
   {
     "id": 130,
@@ -550,7 +639,13 @@
     "difficulty": 1,
     "question": "Was ist der Unterschied zwischen Outsourcing und Offshoring?",
     "answer": "| Begriff | Bedeutung |\n|---------|-----------|\n| **Outsourcing** | Aufgaben an Fremdfirma geben (organisatorisch) |\n| **Offshoring** | Verlagerung ins Ausland (geografisch) |\n| **Nearshoring** | Verlagerung in nahes Ausland (z.B. Osteuropa) |\n\n✅ **Vorteil:** Kosten, Fokus. ❌ **Nachteil:** Abhängigkeit.",
-    "tags": ["Wirtschaft", "Outsourcing", "Offshoring", "Nearshoring", "Wiso"]
+    "tags": [
+      "Wirtschaft",
+      "Outsourcing",
+      "Offshoring",
+      "Nearshoring",
+      "Wiso"
+    ]
   },
   {
     "id": 132,

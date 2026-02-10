@@ -23,7 +23,11 @@
     "difficulty": 1,
     "question": "Welche Beurteilungskriterien gibt es für Software?",
     "answer": "### Wichtige Kriterien\n\n- **Benutzerfreundlichkeit** (Usability)\n- **Stabilität/Zuverlässigkeit**\n- **Support/Updates**\n- **Kosten** (Lizenzen, Wartung)\n- **Systemanforderungen**\n- **Kompatibilität** (Schnittstellen)",
-    "tags": ["Software", "Beurteilung", "Kriterien"]
+    "tags": [
+      "Software",
+      "Beurteilung",
+      "Kriterien"
+    ]
   },
   {
     "id": 68,
@@ -33,7 +37,13 @@
     "difficulty": 2,
     "question": "Was ist das BIOS und wie unterscheidet es sich von UEFI?",
     "answer": "Das **BIOS** (Basic Input/Output System) ist die Firmware, die Hardware initialisiert.\n\n### BIOS vs. UEFI\n\n| Merkmal | BIOS | UEFI |\n|---------|------|------|\n| **Speicherort** | ROM/EEPROM | Flash-Speicher |\n| **Boot-Modus** | MBR (max. 2 TB) | GPT (unbegrenzt) |\n| **Oberfläche** | Textbasiert | Grafisch + Maus |\n| **Sicherheit** | Keine | Secure Boot, TPM |\n\n⌨️ **Tasten:** `DEL`/`F2` (Setup), `F12`/`ESC` (Boot-Menü)",
-    "tags": ["Software", "BIOS", "UEFI", "Firmware", "Boot"]
+    "tags": [
+      "Software",
+      "BIOS",
+      "UEFI",
+      "Firmware",
+      "Boot"
+    ]
   },
   {
     "id": 69,
@@ -60,7 +70,12 @@
     "difficulty": 2,
     "question": "Was ist eine IDE und ein Debugger?",
     "answer": "### IDE (Integrated Development Environment)\nKomplettpaket für Entwickler: **Editor + Compiler + Debugger**.\n- *Beispiele:* IntelliJ, VS Code, Visual Studio\n\n### Debugger\nWerkzeug zur **Fehlersuche**:\n- 🐞 Laufzeitvariablen prüfen\n- 🛑 Breakpoints setzen (Programm anhalten)\n- 👣 Code schrittweise ausführen (Stepping)",
-    "tags": ["Software", "Entwicklung", "IDE", "Debugger"]
+    "tags": [
+      "Software",
+      "Entwicklung",
+      "IDE",
+      "Debugger"
+    ]
   },
   {
     "id": 71,
@@ -70,7 +85,14 @@
     "difficulty": 2,
     "question": "Welche Cloud-Service-Modelle gibt es?",
     "answer": "| Modell | Beschreibung | Beispiel |\n|--------|--------------|----------|\n| **SaaS** | Software über Internet nutzen | Office 365, Salesforce |\n| **PaaS** | Plattform für Entwickler | Google App Engine |\n| **IaaS** | Infrastruktur mieten (VMs, Netz) | AWS EC2 |\n| **DaaS** | Virtueller Desktop | Citrix, Azure Virtual Desktop |",
-    "tags": ["Software", "Cloud", "SaaS", "IaaS", "PaaS", "DaaS"]
+    "tags": [
+      "Software",
+      "Cloud",
+      "SaaS",
+      "IaaS",
+      "PaaS",
+      "DaaS"
+    ]
   },
   {
     "id": 72,
@@ -80,7 +102,11 @@
     "difficulty": 1,
     "question": "Was sind virtuelle Desktops?",
     "answer": "**Virtuelle Desktops** ermöglichen mehrere Desktop-Oberflächen auf einem Bildschirm.\n\n✅ Bessere Organisation\n✅ Erhöhte Produktivität\n\n### Beispiele\n- **Windows:** Task View (`Win + Tab`)\n- **macOS:** Spaces (Mission Control)\n- **Linux:** Workspaces",
-    "tags": ["Software", "Virtuelle Desktops", "Produktivität"]
+    "tags": [
+      "Software",
+      "Virtuelle Desktops",
+      "Produktivität"
+    ]
   },
   {
     "id": 73,
@@ -90,7 +116,13 @@
     "difficulty": 2,
     "question": "Welche funktionalen, ökonomischen und ökologischen Aspekte werden bei IT-Systemen bewertet?",
     "answer": "### 1. Funktional (Nutzen)\n- **Ergonomie** (Bedienbarkeit)\n- **Leistung** (Speed, Skalierbarkeit)\n\n### 2. Ökonomisch (Kosten)\n- **TCO** (Total Cost of Ownership)\n- Anschaffung vs. Betriebskosten\n- ROI (Return on Investment)\n\n### 3. Ökologisch (Umwelt)\n- **Energieeffizienz** (Green IT)\n- **Ressourcenverbrauch** & Entsorgung",
-    "tags": ["Software", "Bewertung", "Ökonomie", "Ökologie", "Ergonomie"]
+    "tags": [
+      "Software",
+      "Bewertung",
+      "Ökonomie",
+      "Ökologie",
+      "Ergonomie"
+    ]
   },
   {
     "id": 74,
@@ -100,7 +132,11 @@
     "difficulty": 1,
     "question": "Welche Kommunikationssysteme nutzen moderne Unternehmen?",
     "answer": "- **Videokonferenzen:** Teams, Zoom (Ortsunabhängigkeit)\n- **Messenger:** Slack, Teams (Schnelle Abstimmung)\n- **Social Media:** LinkedIn, X, Insta (Marketing/Support)\n- **Kollaboration:** SharePoint, Confluence (Wissensmanagement)",
-    "tags": ["Software", "Kommunikation", "Videokonferenz"]
+    "tags": [
+      "Software",
+      "Kommunikation",
+      "Videokonferenz"
+    ]
   },
   {
     "id": 75,
@@ -110,7 +146,12 @@
     "difficulty": 2,
     "question": "Was ist ein Client-Server-System?",
     "answer": "Ein zentraler **Server** stellt Dienste für mehrere **Clients** bereit.\n\n### Typische Server\n| Servertyp | Funktion |\n|-----------|----------|\n| **Dateiserver** | Zentrale Ablage (NAS) |\n| **Mailserver** | E-Mail-Verwaltung (Exchange) |\n| **Datenbank** | SQL-Server, Oracle |\n| **Webserver** | Hosting von Websites (Apache, IIS) |",
-    "tags": ["Software", "Client-Server", "Netzwerk", "Server"]
+    "tags": [
+      "Software",
+      "Client-Server",
+      "Netzwerk",
+      "Server"
+    ]
   },
   {
     "id": 76,
@@ -120,7 +161,12 @@
     "difficulty": 2,
     "question": "Was ist eine Domäne in der Netzwerkverwaltung?",
     "answer": "Eine **Domäne** ist ein zentraler Verwaltungsbereich für Netzwerke (z.B. Windows Active Directory).\n\n### Funktionen des Domain Controllers (DC)\n- 🔐 **Zentrale Authentifizierung** (Single Sign-On)\n- 👥 **Benutzerverwaltung** & Rechte\n- 📜 **Gruppenrichtlinien** (Policies)\n- 📂 **Ressourcenfreigabe** (Drucker, Laufwerke)",
-    "tags": ["Software", "Domäne", "Netzwerk", "Active Directory"]
+    "tags": [
+      "Software",
+      "Domäne",
+      "Netzwerk",
+      "Active Directory"
+    ]
   },
   {
     "id": 77,
@@ -130,7 +176,14 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen VDI und DaaS?",
     "answer": "### VDI (Virtual Desktop Infrastructure)\n- **Eigenes Rechenzentrum** (On-Premises)\n- Volle Kontrolle über Daten & Hardware\n- Hohe Anfangsinvestition (Server, Lizenzen)\n\n### DaaS (Desktop as a Service)\n- **Cloud-Service** (Drittanbieter)\n- Provider verwaltet Infrastruktur\n- Pay-per-Use (keine hohen Startkosten)\n\n✅ **Gemeinsamkeit:** Zentralisierter Zugriff von überall.",
-    "tags": ["Software", "VDI", "DaaS", "Virtualisierung", "Cloud", "Desktop"]
+    "tags": [
+      "Software",
+      "VDI",
+      "DaaS",
+      "Virtualisierung",
+      "Cloud",
+      "Desktop"
+    ]
   },
   {
     "id": 78,
@@ -140,7 +193,14 @@
     "difficulty": 1,
     "question": "Was sind ERP, CRM, DMS und andere Branchensoftware-Typen?",
     "answer": "| Kürzel | Name | Funktion |\n|--------|------|----------|\n| **ERP** | Enterprise Resource Planning | Zentrale Steuerung (Finanzen, Personal, Lager) - z.B. SAP |\n| **CRM** | Customer Relationship Mgmt | Kundenbeziehungen (Vertrieb, Marketing) - z.B. Salesforce |\n| **DMS** | Dokumenten-Mgmt | Digitale Archivierung & Suche |\n| **CMS** | Content Management | Website-Inhalte - z.B. WordPress |\n| **CAD** | Computer-Aided Design | Technisches Zeichnen |\n| **SCM** | Supply Chain Mgmt | Lieferkette steuern |",
-    "tags": ["Software", "ERP", "CRM", "DMS", "CMS", "Branchensoftware"]
+    "tags": [
+      "Software",
+      "ERP",
+      "CRM",
+      "DMS",
+      "CMS",
+      "Branchensoftware"
+    ]
   },
   {
     "id": 79,
@@ -167,6 +227,13 @@
     "difficulty": 2,
     "question": "Was ist ITIL und welche Grundbegriffe gibt es?",
     "answer": "**ITIL** (IT Infrastructure Library) ist ein Framework für **IT-Service-Management (ITSM)**.\n\n### Wichtige Begriffe\n- **Service:** Mehrwert für Kunden ohne Risikobesitz\n- **SLA:** Vereinbarte Servicequalität\n- **Incident:** Störung (ungeplant)\n- **Problem:** Ursache von Störungen\n- **Change:** Kontrollierte Änderung\n\n### Prozess-Beispiele\n1. **Incident Mgmt:** Störung beheben (schnell)\n2. **Problem Mgmt:** Ursache finden (nachhaltig)\n3. **Change Mgmt:** Änderungen risikoarm durchführen",
-    "tags": ["Software", "ITIL", "ITSM", "Incident", "Change", "SLA"]
+    "tags": [
+      "Software",
+      "ITIL",
+      "ITSM",
+      "Incident",
+      "Change",
+      "SLA"
+    ]
   }
 ]

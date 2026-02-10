@@ -7,7 +7,11 @@
     "difficulty": 1,
     "question": "Was sind die Merkmale eines Projekts?",
     "answer": "### Merkmale\n- **Einmaligkeit** (Keine Routine)\n- **Zielvorgabe** (Definiertes Ergebnis)\n- **Zeitbegrenzung** (Start & Ende)\n- **Begrenzte Ressourcen** (Budget, Personal)\n- **Komplexität** (Neu, risikobehaftet)",
-    "tags": ["Projektmanagement", "Merkmale", "Projekt"]
+    "tags": [
+      "Projektmanagement",
+      "Merkmale",
+      "Projekt"
+    ]
   },
   {
     "id": 136,
@@ -35,7 +39,12 @@
     "question": "Was ist eine Ereignisgesteuerte Prozesskette (EPK)?",
     "answer": "Grafische Modellierung von Geschäftsprozessen.\n\n### Regeln\n- **Ereignis** → **Funktion** → **Ereignis** (immer im Wechsel)\n- Start & Ende sind immer Ereignisse\n\n### Konnektoren\n| Symbol | Bedeutung |\n|--------|-----------|\n| **UND** (`∧`) | Alle Pfade müssen folgen |\n| **ODER** (`∨`) | Einer oder alle Pfade |\n| **XOR** (`X`) | Exklusiv (genau einer) |",
     "image_ref": "epk_symbole_und_beispiel.png",
-    "tags": ["Projektmanagement", "EPK", "Geschäftsprozess", "Modellierung"]
+    "tags": [
+      "Projektmanagement",
+      "EPK",
+      "Geschäftsprozess",
+      "Modellierung"
+    ]
   },
   {
     "id": 138,
@@ -45,7 +54,11 @@
     "difficulty": 1,
     "question": "Wofür steht das SMART-Prinzip?",
     "answer": "Ziele müssen **SMART** sein:\n\n- **S**pezifisch (Eindeutig)\n- **M**essbar (Zahlen/Kriterien)\n- **A**ttraktiv (Akzeptiert/Motivierend)\n- **R**ealistisch (Machbar)\n- **T**erminiert (Zeitpunkt)",
-    "tags": ["Projektmanagement", "SMART", "Ziele"]
+    "tags": [
+      "Projektmanagement",
+      "SMART",
+      "Ziele"
+    ]
   },
   {
     "id": 139,
@@ -55,7 +68,11 @@
     "difficulty": 2,
     "question": "Welche groben Projektphasen gibt es und was ist das Wasserfallmodell?",
     "answer": "### Standard-Phasen\n1. **Definition**\n2. **Planung**\n3. **Realisierung**\n4. **Abschluss**\n\n### Wasserfallmodell (Linear)\nAnalyse → Design → Implementierung → Test → Betrieb\n\n⚠️ **Nachteil:** Rücksprünge schwierig, starr.",
-    "tags": ["Projektmanagement", "Projektphasen", "Wasserfallmodell"]
+    "tags": [
+      "Projektmanagement",
+      "Projektphasen",
+      "Wasserfallmodell"
+    ]
   },
   {
     "id": 140,
@@ -99,7 +116,12 @@
     "difficulty": 1,
     "question": "Was sind Lessons Learned und Feedback-Kultur?",
     "answer": "### Methoden\n- **Lessons Learned:** Systematische Analyse am Projektende (Was lief gut? Was nicht?)\n- **Feedback-Kultur:** Offene, zeitnahe, konstruktive Rückmeldung\n\n🎯 **Ziel:** Fehler in Zukunft vermeiden, Prozesse optimieren.",
-    "tags": ["Projektmanagement", "Lessons Learned", "Feedback", "Reflexion"]
+    "tags": [
+      "Projektmanagement",
+      "Lessons Learned",
+      "Feedback",
+      "Reflexion"
+    ]
   },
   {
     "id": 143,
@@ -126,7 +148,12 @@
     "difficulty": 2,
     "question": "Was ist eine Bedarfsanalyse und wie wird sie durchgeführt?",
     "answer": "Ermittlung der Anforderungen (Requirements).\n\n### Ablauf\n1. **Ist-Analyse:** Status Quo erfassen\n2. **Schwachstellen:** Probleme finden\n3. **Soll-Konzept:** Zielszenario entwerfen\n4. **Gap-Analyse:** Lücke definieren\n\n📋 **Methoden:** Interviews, Workshops, Beobachtung.",
-    "tags": ["Projektmanagement", "Bedarfsanalyse", "Anforderungen", "Ist-Soll"]
+    "tags": [
+      "Projektmanagement",
+      "Bedarfsanalyse",
+      "Anforderungen",
+      "Ist-Soll"
+    ]
   },
   {
     "id": 145,
@@ -151,7 +178,11 @@
     "difficulty": 2,
     "question": "Welche Arten von Kundenvorgaben gibt es?",
     "answer": "### Typen\n- **Funktional:** Was muss das System *können*? (z.B. Login, Drucken)\n- **Nicht-funktional:** Wie gut? (Performance, Sicherheit, Usability)\n- **Rahmenbedingungen:** Budget, Zeit, Gesetze (DSGVO)\n- **Technisch:** OS, Schnittstellen, Hardware",
-    "tags": ["Projektmanagement", "Kundenvorgaben", "Anforderungen"]
+    "tags": [
+      "Projektmanagement",
+      "Kundenvorgaben",
+      "Anforderungen"
+    ]
   },
   {
     "id": 147,
@@ -161,7 +192,12 @@
     "difficulty": 2,
     "question": "Welche technischen Voraussetzungen müssen für IT-Projekte geprüft werden?",
     "answer": "Prüfung der Machbarkeit.\n\n### Bereiche\n- **Hardware:** Server, Clients, Storage\n- **Software:** OS, Lizenzen, Kompatibilität\n- **Netzwerk:** Bandbreite, VPN, Firewall\n- **Security:** Datenschutz, Zugriffsrechte\n\n📝 **Ergebnis:** Fließt ins Pflichtenheft ein.",
-    "tags": ["Projektmanagement", "Technik", "Infrastruktur", "Pflichtenheft"]
+    "tags": [
+      "Projektmanagement",
+      "Technik",
+      "Infrastruktur",
+      "Pflichtenheft"
+    ]
   },
   {
     "id": 148,
@@ -171,7 +207,13 @@
     "difficulty": 3,
     "question": "Wie stellt man die Einhaltung des Budgets in IT-Projekten sicher?",
     "answer": "Planung & Steuerung der Kosten.\n\n### Methoden\n1. **Earned Value Analysis:** Vergleich von Plan- (PV), Ist- (AC) und Fertigstellungswert (EV).\n2. **Kosten-Controlling:** Soll-Ist-Vergleiche, Change-Requests überwachen.\n3. **Puffer:** Reserven für Unvorhergesehenes.\n\n💰 **Ziel:** Budget am Projektende nicht überschreiten.",
-    "tags": ["Projektmanagement", "Budget", "Kosten", "Earned Value", "Wiso"]
+    "tags": [
+      "Projektmanagement",
+      "Budget",
+      "Kosten",
+      "Earned Value",
+      "Wiso"
+    ]
   },
   {
     "id": 149,
@@ -227,7 +269,12 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen agilem und klassischem Projektmanagement?",
     "answer": "| Merkmal | Klassisch (Wasserfall) | Agil (Scrum) |\n|---------|------------------------|--------------|\n| **Ablauf** | Linear (Phasen) | Zyklisch (Sprints) |\n| **Anforderungen** | Fest definiert (Lastenheft) | Flexibel (Backlog) |\n| **Änderungen** | Teuer / Schwierig | Willkommen |\n| **Doku** | Ausführlich | \"Working Software\" > Doku |\n\n✅ **Wahl:** Klassisch für stabile Ziele, Agil für komplexe/neue Ziele.",
-    "tags": ["Projektmanagement", "Agil", "Klassisch", "Vergleich"]
+    "tags": [
+      "Projektmanagement",
+      "Agil",
+      "Klassisch",
+      "Vergleich"
+    ]
   },
   {
     "id": 153,
@@ -237,7 +284,13 @@
     "difficulty": 2,
     "question": "Was ist Scrum und welche Rollen, Artefakte und Events gibt es?",
     "answer": "### Rollen (3)\n- **Product Owner:** Was? (Backlog, Priorität)\n- **Scrum Master:** Prozess & Hindernisse\n- **Dev Team:** Wie? (Umsetzung)\n\n### Artefakte (3)\n- **Product Backlog** (Alle Wünsche)\n- **Sprint Backlog** (Plan für 1 Sprint)\n- **Increment** (Fertiges Teilprodukt)\n\n### Events (5)\n- Sprint, Planning, Daily, Review, Retro",
-    "tags": ["Projektmanagement", "Scrum", "Agil", "Sprint", "Rollen"]
+    "tags": [
+      "Projektmanagement",
+      "Scrum",
+      "Agil",
+      "Sprint",
+      "Rollen"
+    ]
   },
   {
     "id": 154,
@@ -247,7 +300,12 @@
     "difficulty": 1,
     "question": "Was ist Kanban?",
     "answer": "Visuelle Prozesssteuerung (Board).\n\n### Prinzipien\n- **Visualisieren:** Spalten (To Do, Doing, Done)\n- **Limitieren:** WIP-Limit (Work in Progress) begrenzen\n- **Flow:** Stetiger Fluss (keine festen Sprints)\n- **Pull-System:** Neue Aufgabe erst, wenn Kapazität frei\n\n📌 **Vorteil:** Flexibel, Engpässe sofort sichtbar.",
-    "tags": ["Projektmanagement", "Kanban", "Agil", "Board"]
+    "tags": [
+      "Projektmanagement",
+      "Kanban",
+      "Agil",
+      "Board"
+    ]
   },
   {
     "id": 155,
@@ -304,7 +362,12 @@
     "difficulty": 1,
     "question": "Was ist ein Gantt-Diagramm?",
     "answer": "Balkendiagramm für den Zeitplan.\n\n- **X-Achse:** Zeit (Tage/Wochen)\n- **Y-Achse:** Aufgaben\n- **Balken:** Dauer der Aufgabe\n- **Pfeile:** Abhängigkeiten\n- **Raute:** Meilensteine\n\n📅 Standard-Tool für Projektplanung.",
-    "tags": ["Projektmanagement", "Gantt", "Zeitplanung", "Diagramm"]
+    "tags": [
+      "Projektmanagement",
+      "Gantt",
+      "Zeitplanung",
+      "Diagramm"
+    ]
   },
   {
     "id": 159,
@@ -329,7 +392,11 @@
     "difficulty": 1,
     "question": "Was sind Meilensteine im Projektmanagement?",
     "answer": "Wichtige **Zwischenziele** ohne Dauer.\n\n- Markieren **Prüfpunkte** (Abnahmen, Decisions)\n- Dienen der **Fortschrittskontrolle**\n- Symbol im Gantt: **Raute** ♦️\n\nBeispiel: \"Lastenheft abgenommen\", \"Prototyp fertig\".",
-    "tags": ["Projektmanagement", "Meilensteine", "Planung"]
+    "tags": [
+      "Projektmanagement",
+      "Meilensteine",
+      "Planung"
+    ]
   },
   {
     "id": 161,

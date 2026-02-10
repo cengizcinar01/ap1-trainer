@@ -7,7 +7,11 @@
     "difficulty": 1,
     "question": "Welche Schritte umfasst die Hardware-Installation und -Konfiguration?",
     "answer": "### 1. Physische Installation\n- **Einbau:** CPU, RAM, Datenträger, GPU\n- **Anschluss:** Peripherie (Maus, Tastatur, Monitor)\n- **Check:** Verkabelung & Strom\n\n### 2. Hardware-Konfiguration\n- **BIOS/UEFI:** Boot-Reihenfolge, Secure Boot, TPM\n- **Diagnose:** Funktionstest (POST)\n- **Firmware:** Updates einspielen",
-    "tags": ["Installation", "Hardware", "Konfiguration"]
+    "tags": [
+      "Installation",
+      "Hardware",
+      "Konfiguration"
+    ]
   },
   {
     "id": 82,
@@ -17,7 +21,11 @@
     "difficulty": 2,
     "question": "Welche Schritte umfasst die Installation und Konfiguration eines Betriebssystems?",
     "answer": "### 1. Installation\n- **Medium:** USB-Stick / ISO / PXE\n- **Partitionierung:** Laufwerke einrichten (GPT/MBR)\n- **Treiber:** Systemtreiber laden\n\n### 2. Konfiguration\n- **Basis:** Sprache, Zeit, Region, Tastatur\n- **Benutzer:** Admin-Konto anlegen\n- **Netzwerk:** IP, DNS, Hostname\n- **Updates:** Sicherheitspatches installieren",
-    "tags": ["Installation", "Betriebssystem", "Konfiguration"]
+    "tags": [
+      "Installation",
+      "Betriebssystem",
+      "Konfiguration"
+    ]
   },
   {
     "id": 83,
@@ -27,7 +35,13 @@
     "difficulty": 2,
     "question": "Was sind die Grundlagen der Kommandozeile?",
     "answer": "**Shells:** `cmd` (Windows), `PowerShell`, `Bash` (Linux/Mac)\n\n### Wichtige Befehle\n| Aktion | Windows | Linux/Mac |\n|--------|---------|-----------|\n| **Verzeichnis** | `dir` | `ls` |\n| **Navigieren** | `cd` | `cd` |\n| **Pfad anzeigem** | `cd` | `pwd` |\n| **Erstellen** | `mkdir` | `mkdir` |\n| **Löschen** | `del` | `rm` |\n\n💡 **Tipp:** Mit `Tab` Befehle vervollständigen (Autocomplete).",
-    "tags": ["Installation", "Kommandozeile", "Shell", "Bash", "CMD"]
+    "tags": [
+      "Installation",
+      "Kommandozeile",
+      "Shell",
+      "Bash",
+      "CMD"
+    ]
   },
   {
     "id": 84,
@@ -70,7 +84,13 @@
     "difficulty": 2,
     "question": "Welche wichtigen Konsolenbefehle gibt es für Windows und Linux?",
     "answer": "### Datei-Operationen\n| Funktion | Windows (CMD) | Linux (Bash) |\n|----------|---------------|--------------|\n| Anzeigen | `dir` | `ls` (-l) |\n| Kopieren | `copy` / `robocopy` | `cp` |\n| Verschieben | `move` | `mv` |\n| Löschen | `del` | `rm` |\n| Rechte | `icacls` | `chmod` / `chown` |\n\n### Netzwerk\n| Funktion | Windows | Linux |\n|----------|---------|-------|\n| IP-Config | `ipconfig` | `ip a` / `ifconfig` |\n| Verb. testen | `ping` | `ping` |\n| Routing | `tracert` | `traceroute` |\n| DNS | `nslookup` | `dig` / `nslookup` |",
-    "tags": ["Konsolenbefehle", "Windows", "Linux", "Netzwerk", "Dateisystem"]
+    "tags": [
+      "Konsolenbefehle",
+      "Windows",
+      "Linux",
+      "Netzwerk",
+      "Dateisystem"
+    ]
   },
   {
     "id": 87,
@@ -80,7 +100,13 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Prozess, Thread und Task sowie kooperativem und präemptivem Multitasking?",
     "answer": "### Definitionen\n- **Prozess:** Laufendes Programm, eigener Speicher, vom OS verwaltet.\n- **Thread:** Leichtgewichtiger Teil eines Prozesses, teilt sich Speicher mit anderen Threads.\n- **Task:** Aufgabe (Prozess oder Thread).\n\n### Multitasking-Arten\n| Art | Beschreibung |\n|-----|--------------|\n| **Kooperativ** | Prozesse geben CPU *freiwillig* ab (veraltet, Blockadegefahr) |\n| **Präemptiv** | OS entzieht CPU nach Zeitintervall (*Time Slicing*) – Standard heute (Win, Lin, Mac) |",
-    "tags": ["Betriebssystem", "Prozess", "Thread", "Multitasking", "Scheduler"]
+    "tags": [
+      "Betriebssystem",
+      "Prozess",
+      "Thread",
+      "Multitasking",
+      "Scheduler"
+    ]
   },
   {
     "id": 88,

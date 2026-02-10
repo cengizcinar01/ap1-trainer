@@ -72,7 +72,11 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Bibliotheken und Frameworks?",
     "answer": "| Merkmal | Bibliothek (Library) | Framework |\n|---------|----------------------|-----------|\n| **Kontrolle** | Du rufst Code auf | Framework ruft dich auf (IOC) |\n| **Zweck** | Hilfsfunktionen (Tools) | Grundgerüst (Skelett) |\n| **Beispiel** | jQuery, NumPy | React, Angular, Django |\n\n📌 **IOC:** Inversion of Control (Das Framework gibt den Ablauf vor).",
-    "tags": ["Softwareentwicklung", "Bibliothek", "Framework"]
+    "tags": [
+      "Softwareentwicklung",
+      "Bibliothek",
+      "Framework"
+    ]
   },
   {
     "id": 171,
@@ -82,7 +86,12 @@
     "difficulty": 2,
     "question": "Was sind Skriptsprachen und Shellscripts?",
     "answer": "Kleine Programme zur Automatisierung (ohne Kompilieren).\n\n### Merkmale\n- **Interpretiert:** Zeile für Zeile ausgeführt\n- **Shebang:** `#!/bin/bash` (Erste Zeile)\n\n### Beispiel\n```bash\n#!/bin/bash\necho \"Hallo Welt\"\nls -la\n```",
-    "tags": ["Softwareentwicklung", "Skriptsprachen", "Shell", "Bash"]
+    "tags": [
+      "Softwareentwicklung",
+      "Skriptsprachen",
+      "Shell",
+      "Bash"
+    ]
   },
   {
     "id": 172,
@@ -92,7 +101,11 @@
     "difficulty": 2,
     "question": "Wie sehen Verzweigungen und Schleifen in Pseudocode aus?",
     "answer": "Sprachunabhängige Beschreibung von Algorithmen.\n\n### Verzweigung\n```text\nIF alter >= 18 THEN\n  print \"Erwachsen\"\nELSE\n  print \"Kind\"\nENDIF\n```\n\n### Schleife\n```text\nFOR i = 1 TO 10 DO\n  print i\nENDFOR\n```",
-    "tags": ["Softwareentwicklung", "Pseudocode", "Kontrollstrukturen"]
+    "tags": [
+      "Softwareentwicklung",
+      "Pseudocode",
+      "Kontrollstrukturen"
+    ]
   },
   {
     "id": 173,
@@ -103,7 +116,12 @@
     "question": "Was ist ein UML-Aktivitätsdiagramm?",
     "answer": "Zeigt Ablauf von Aktivitäten (Workflow).\n\n### Symbole\n- ⚫ **Startpunkt:** Gefüllter Kreis\n- 🔄 **Aktivität:** Abgerundetes Rechteck\n- ♦️ **Entscheidung:** Raute (Ja/Nein)\n- ➖ **Kante:** Pfeil (Flussrichtung)\n- 🏁 **Endpunkt:** Kreis mit Punkt\n- 🔱 **Gabel/Join:** Parallelisierung (schwarzer Balken)",
     "image_ref": "uml_aktivitaetsdiagramm_symbole.png",
-    "tags": ["Softwareentwicklung", "UML", "Aktivitätsdiagramm", "Modellierung"]
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Aktivitätsdiagramm",
+      "Modellierung"
+    ]
   },
   {
     "id": 174,
@@ -114,7 +132,12 @@
     "question": "Was ist ein UML-Anwendungsfalldiagramm (Use Case)?",
     "answer": "Zeigt **Wer** (Akteur) **Was** (Use Case) mit dem System macht.\n\n### Elemente\n- 👤 **Akteur:** Benutzer / Fremdsystem\n- ⭕ **Use Case:** Funktion (Ellipse)\n- ➖ **Assoziation:** Linie\n\n### Beziehungen\n- `<<include>>`: Muss ausgeführt werden (Login bei Bestellung)\n- `<<extend>>`: Kann ausgeführt werden (Passwort ändern bei Login)",
     "image_ref": "uml_anwendungsfalldiagramm_beispiel.png",
-    "tags": ["Softwareentwicklung", "UML", "Anwendungsfalldiagramm", "Use Case"]
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Anwendungsfalldiagramm",
+      "Use Case"
+    ]
   },
   {
     "id": 175,
@@ -125,7 +148,12 @@
     "question": "Was ist ein UML-Klassendiagramm?",
     "answer": "Struktur des Systems (Klassen & Beziehungen).\n\n### Aufbau einer Klasse\n| Bereich | Inhalt |\n|---------|--------|\n| **Oben** | Klassenname |\n| **Mitte** | Attribute (`-private`, `+public`) |\n| **Unten** | Methoden (`+get()`, `-set()`) |\n\n### Beziehungen\n- **Vererbung:** Pfeil mit leerem Dreieck (△)\n- **Komposition:** Gefüllte Raute (♦️) - existenzabhängig\n- **Aggregation:** Leere Raute (♢) - teilbar",
     "image_ref": "uml_klassendiagramm_beispiel.png",
-    "tags": ["Softwareentwicklung", "UML", "Klassendiagramm", "OOP"]
+    "tags": [
+      "Softwareentwicklung",
+      "UML",
+      "Klassendiagramm",
+      "OOP"
+    ]
   },
   {
     "id": 176,
@@ -216,7 +244,13 @@
     "difficulty": 2,
     "question": "Welche grundlegenden SQL-Befehle sollte man für die AP1 kennen?",
     "answer": "### DML (Daten)\n```sql\nSELECT * FROM kunden WHERE ort='Berlin';\nINSERT INTO kunden (name) VALUES ('Müller');\nUPDATE kunden SET ort='München' WHERE id=1;\nDELETE FROM kunden WHERE id=5;\n```\n\n### DDL (Struktur)\n- `CREATE TABLE`\n- `ALTER TABLE`\n- `DROP TABLE`\n\n### Wichtig\n- `JOIN` (Tabellen verbinden)\n- `GROUP BY` (Gruppieren für SUM/COUNT)",
-    "tags": ["Software-Entwicklung", "SQL", "Datenbank", "SELECT", "JOIN"]
+    "tags": [
+      "Software-Entwicklung",
+      "SQL",
+      "Datenbank",
+      "SELECT",
+      "JOIN"
+    ]
   },
   {
     "id": 182,

@@ -7,7 +7,13 @@
     "difficulty": 2,
     "question": "Was sind die Grundlagen des Urheberschutzes?",
     "answer": "Grundlage: **Urheberrechtsgesetz (UrhG)**.\n\n### Werke & Entstehung\n- **Geschützt:** Texte, Musik, Bilder, Software, Filme\n- **Entstehung:** Automatisch mit Schöpfung (keine Registrierung)\n- **Dauer:** 70 Jahre nach Tod des Urhebers\n\n### Rechte des Urhebers\n| Recht | Beispiel |\n|-------|----------|\n| **Persönlich** | Namensnennung, Schutz vor Entstellung |\n| **Verwertung** | Vervielfältigung, Verbreitung |\n| **Nutzung** | Lizenzen erteilen |\n\n⚠️ **Verstöße:** Abmahnung, Schadensersatz, Strafe.",
-    "tags": ["Lizenzen", "Urheberrecht", "UrhG", "Recht", "Wiso"]
+    "tags": [
+      "Lizenzen",
+      "Urheberrecht",
+      "UrhG",
+      "Recht",
+      "Wiso"
+    ]
   },
   {
     "id": 90,
@@ -17,7 +23,13 @@
     "difficulty": 2,
     "question": "Welche Creative-Commons-Lizenzen gibt es?",
     "answer": "**Creative Commons (CC)** erlaubt kostenlose Nutzung unter Bedingungen.\n\n### Module\n| Kürzel | Bedeutung | Symbol |\n|--------|-----------|--------|\n| **BY** | Attribution | Namensnennung |\n| **SA** | ShareAlike | Gleiche Bedingungen |\n| **ND** | NoDerivatives | Keine Bearbeitung |\n| **NC** | NonCommercial | Keine kommerzielle Nutzung |\n\n### Beispiele\n- **CC0:** Gemeinfrei (Alles erlaubt)\n- **CC BY-SA:** Wikipedia-Lizenz (Namen nennen + teilen unter gleichen Bedingungen)",
-    "tags": ["Lizenzen", "Creative Commons", "CC", "Open Source", "Recht"]
+    "tags": [
+      "Lizenzen",
+      "Creative Commons",
+      "CC",
+      "Open Source",
+      "Recht"
+    ]
   },
   {
     "id": 91,
