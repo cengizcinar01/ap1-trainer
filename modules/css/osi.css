@@ -1,3 +1,4 @@
+/* OSI Game Container */
 .osi-game-container {
   display: flex;
   flex-direction: column;
@@ -11,6 +12,7 @@
   }
 }
 
+/* Drop Zones */
 .osi-drop-zones {
   flex: 1;
   display: flex;
@@ -19,7 +21,7 @@
 }
 
 .osi-drop-zone {
-  background: var(--surface-hover);
+  background: var(--bg-tertiary); /* Use tertiary bg */
   border: 2px dashed var(--border-color);
   border-radius: var(--radius-md);
   padding: var(--space-2);
@@ -30,15 +32,15 @@
 }
 
 .osi-drop-zone.hover {
-  background: var(--brand-primary-light);
-  border-color: var(--brand-primary);
+  background: var(--bg-secondary);
+  border-color: var(--accent-primary); /* Use accent color */
 }
 
 .osi-zone-label {
   font-size: 0.75rem;
-  color: var(--text-secondary);
+  color: var(--text-tertiary); /* Use tertiary text */
   margin-bottom: var(--space-1);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -49,20 +51,21 @@
   flex: 1;
 }
 
+/* Drag Items */
 .osi-drag-items {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
   align-content: flex-start;
-  background: var(--surface-hover);
+  background: var(--bg-tertiary);
   padding: var(--space-4);
   border-radius: var(--radius-md);
   min-height: 200px;
 }
 
 .osi-drag-item {
-  background: var(--surface-card);
+  background: var(--card-bg);
   border: 1px solid var(--border-color);
   padding: var(--space-3);
   border-radius: var(--radius-md);
@@ -82,9 +85,9 @@
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 800;
-  color: var(--text-secondary);
-  background: var(--surface-tertiary);
+  font-weight: 700;
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
   padding: 2px 6px;
   border-radius: 4px;
   width: fit-content;
@@ -101,96 +104,76 @@
 }
 
 .osi-drag-item.correct {
-  background: var(--green-100);
-  color: var(--green-800);
-  border-color: var(--green-500);
+  background: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success);
   cursor: default;
 }
 
-[data-theme="dark"] .osi-drag-item.correct {
-  background: rgba(34, 197, 94, 0.2);
-  color: var(--green-400);
-}
-
-/* Explanation Stack Design */
+/* Explanation Stack Design - Redesigned */
 .osi-explanation-stack {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 1px; /* Tighter gap for stack feel */
   margin-top: var(--space-6);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  background: var(--border-color); /* For the gap lines */
 }
 
 .osi-stack-group-label {
-  background: var(--surface-tertiary);
-  padding: var(--space-2) var(--space-4);
-  font-size: 0.7rem;
-  font-weight: 800;
+  background: var(--bg-tertiary);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-secondary);
-  border-left: 4px solid transparent;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .osi-stack-layer {
-  background: var(--surface-card);
+  background: var(--card-bg);
   padding: var(--space-4);
   display: grid;
-  grid-template-columns: 50px 1fr auto;
+  grid-template-columns: 40px 1fr auto; /* Adjusted columns */
   align-items: center;
   gap: var(--space-4);
-  border-left: 4px solid var(--layer-color, var(--brand-primary));
-  transition: all 0.2s ease;
-}
-
-.osi-stack-layer[data-layer="7"] {
-  --layer-color: #6366f1;
-}
-.osi-stack-layer[data-layer="6"] {
-  --layer-color: #8b5cf6;
-}
-.osi-stack-layer[data-layer="5"] {
-  --layer-color: #a855f7;
-}
-.osi-stack-layer[data-layer="4"] {
-  --layer-color: #ec4899;
-}
-.osi-stack-layer[data-layer="3"] {
-  --layer-color: #f97316;
-}
-.osi-stack-layer[data-layer="2"] {
-  --layer-color: #eab308;
-}
-.osi-stack-layer[data-layer="1"] {
-  --layer-color: #22c55e;
+  transition: background-color 0.2s ease;
+  position: relative;
 }
 
 .osi-stack-layer:hover {
-  background: var(--surface-hover);
-  transform: translateX(6px);
-  box-shadow: var(--shadow-sm);
+  background: var(--bg-hover); /* Or card-bg-hover */
 }
 
+/* Layer Numbers - Clean & Subtle */
 .osi-stack-num {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: var(--layer-color);
-  opacity: 0.3;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
   text-align: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
 }
 
 .osi-stack-info {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .osi-stack-title {
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-primary);
-  margin-bottom: 2px;
 }
 
 .osi-stack-desc {
@@ -202,10 +185,10 @@
 .osi-stack-pdu {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  background: var(--surface-hover);
   color: var(--text-secondary);
-  padding: 4px 10px;
-  border-radius: 20px;
+  background: var(--bg-tertiary);
+  padding: 4px 8px;
+  border-radius: 4px;
   border: 1px solid var(--border-color);
   white-space: nowrap;
 }
@@ -218,23 +201,60 @@
   margin-top: var(--space-2);
 }
 
+/* Protocol Tags - Clean */
 .osi-stack-proto-tag {
   font-size: 0.7rem;
-  background: color-mix(in srgb, var(--layer-color) 15%, transparent);
-  color: var(--layer-color);
-  border: 1px solid color-mix(in srgb, var(--layer-color) 30%, transparent);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
   padding: 2px 8px;
   border-radius: 4px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
+/* Optional: Subtle accent line on hover instead of full border */
+.osi-stack-layer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--accent-primary);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.osi-stack-layer:hover::after {
+  opacity: 1;
+}
+
+/* Responsive */
 @media (max-width: 640px) {
   .osi-stack-layer {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
   }
-  .osi-stack-pdu {
+  
+  .osi-stack-num {
+    grid-row: 1;
+    width: 24px;
+    height: 24px;
+    font-size: 0.9rem;
+  }
+  
+  .osi-stack-info {
     grid-column: 2;
+  }
+  
+  .osi-stack-pdu {
+    grid-column: 2; /* Move PDU below info */
     justify-self: start;
     margin-top: 4px;
+  }
+  
+  .osi-stack-protocols {
+    grid-column: 1 / -1; /* Full width protocols */
+    margin-top: var(--space-2);
   }
 }
