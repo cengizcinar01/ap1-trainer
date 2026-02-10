@@ -8,25 +8,8 @@ import Router from '../router.js';
 import ThemeManager from './themeManager.js';
 
 const Sidebar = (() => {
-  // Simple unified bullet icon for all navigation items
-  const DOT_ICON = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>`;
-
   const ICONS = {
-    dashboard: DOT_ICON,
-    categories: DOT_ICON,
-    review: DOT_ICON,
-    subnetting: DOT_ICON,
-    mail: DOT_ICON,
-    networkplan: DOT_ICON,
-    nwa: DOT_ICON,
-    numbersystems: DOT_ICON,
-    electrical: DOT_ICON,
-    gantt: DOT_ICON,
-    wiki: DOT_ICON,
-    communication: DOT_ICON,
-    osi: DOT_ICON,
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
-    pseudocode: DOT_ICON,
   };
 
   let sidebarEl = null;
@@ -45,17 +28,11 @@ const Sidebar = (() => {
         <button class="mobile-menu-btn" id="mobileMenuBtn">
           <span class="nav-item-icon">${ICONS.menu}</span>
         </button>
-
       `;
       document.body.prepend(header);
       header
         .querySelector('#mobileMenuBtn')
         .addEventListener('click', toggleMobile);
-
-      const headerThemeBtn = header.querySelector('#headerThemeBtn');
-      if (headerThemeBtn) {
-        themeManager.registerButton(headerThemeBtn);
-      }
     }
 
     // Overlay
@@ -89,53 +66,41 @@ const Sidebar = (() => {
       </div>
       <nav class="sidebar-nav">
         <a href="#/" class="nav-item ${currentRoute === '/' ? 'active' : ''}" data-route="/">
-          <span class="nav-item-icon">${ICONS.dashboard}</span>
           Dashboard
         </a>
         <a href="#/categories" class="nav-item ${currentRoute === '/categories' ? 'active' : ''}" data-route="/categories">
-          <span class="nav-item-icon">${ICONS.categories}</span>
           Themen
         </a>
         <a href="#/review" class="nav-item ${currentRoute.startsWith('/review') ? 'active' : ''}" data-route="/review">
-          <span class="nav-item-icon">${ICONS.review}</span>
           Alle Karten
         </a>
         <div class="sidebar-section-label">Nachschlagewerk</div>
         <a href="#/wiki" class="nav-item ${currentRoute.startsWith('/wiki') ? 'active' : ''}" data-route="/wiki">
-          <span class="nav-item-icon">${ICONS.wiki}</span>
           Wiki
         </a>
         <div class="sidebar-section-label">Module</div>
         <a href="#/modules/nwa" class="nav-item ${currentRoute.startsWith('/modules/nwa') ? 'active' : ''}" data-route="/modules/nwa">
-          <span class="nav-item-icon">${ICONS.nwa}</span>
           Nutzwertanalyse
         </a>
         <a href="#/modules/gantt" class="nav-item ${currentRoute.startsWith('/modules/gantt') ? 'active' : ''}" data-route="/modules/gantt">
-          <span class="nav-item-icon">${ICONS.gantt}</span>
           Gantt-Diagramm
         </a>
         <a href="#/modules/subnetting" class="nav-item ${currentRoute.startsWith('/modules/subnetting') ? 'active' : ''}" data-route="/modules/subnetting">
-          <span class="nav-item-icon">${ICONS.subnetting}</span>
           Subnetting
         </a>
         <a href="#/modules/mail" class="nav-item ${currentRoute.startsWith('/modules/mail') ? 'active' : ''}" data-route="/modules/mail">
-          <span class="nav-item-icon">${ICONS.mail}</span>
           E-Mail Protokolle
         </a>
         <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
-          <span class="nav-item-icon">${ICONS.numbersystems}</span>
           Zahlensysteme
         </a>
         <a href="#/modules/electrical" class="nav-item ${currentRoute.startsWith('/modules/electrical') ? 'active' : ''}" data-route="/modules/electrical">
-          <span class="nav-item-icon">${ICONS.electrical}</span>
           Elektrotechnik
         </a>
         <a href="#/modules/communication" class="nav-item ${currentRoute.startsWith('/modules/communication') ? 'active' : ''}" data-route="/modules/communication">
-          <span class="nav-item-icon">${ICONS.communication}</span>
           4-Ohren-Modell
         </a>
         <a href="#/modules/osi" class="nav-item ${currentRoute.startsWith('/modules/osi') ? 'active' : ''}" data-route="/modules/osi">
-          <span class="nav-item-icon">${ICONS.osi}</span>
           OSI-Modell
         </a>
       </nav>
