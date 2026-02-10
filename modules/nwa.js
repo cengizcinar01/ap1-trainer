@@ -217,7 +217,7 @@ const NWAView = (() => {
           <button class="module-tab ${currentTab === 'training' ? 'active' : ''}" data-tab="training">Übung</button>
         </nav>
 
-        <div id="nwaContent"></div>
+        <div id="nwaContent" class="view-enter"></div>
       </div>
     `;
 
@@ -253,8 +253,8 @@ const NWAView = (() => {
     container.innerHTML = `
       <div class="view-enter">
         <div class="module-exercise-card">
-          <h3 class="comm-section-title">Berechnungslogik der NWA</h3>
-          <p class="comm-text">
+          <h3 class="module-section-title">Berechnungslogik der NWA</h3>
+          <p class="module-text">
             In der IHK-Prüfung begegnet dir die Nutzwertanalyse fast immer als Tabelle. 
             Hier ist der mathematische Kern, den du beherrschen musst:
           </p>
@@ -298,7 +298,7 @@ const NWAView = (() => {
         </div>
 
         <h3 style="margin-bottom: var(--space-2)">${sc.title}</h3>
-        <p class="comm-text">${sc.description}</p>
+        <p class="module-text">${sc.description}</p>
 
         <table class="exam-table">
           <thead>
@@ -344,7 +344,7 @@ const NWAView = (() => {
         </table>
 
         <div class="nwa-conclusion">
-          <p class="comm-text" style="font-size: 13px; margin-bottom: var(--space-3)"><strong>Entscheidungs-Check:</strong> ${sc.decisionText}</p>
+          <p class="module-text" style="font-size: 13px; margin-bottom: var(--space-3)"><strong>Entscheidungs-Check:</strong> ${sc.decisionText}</p>
           <label class="module-label">Welcher Anbieter erhält den Auftrag (Zahl 1-4)?</label>
           <input type="text" class="nwa-input-blank" id="inp-decision" style="width: 60px; margin-left: 12px;" placeholder="?">
         </div>

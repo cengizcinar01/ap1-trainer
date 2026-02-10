@@ -241,7 +241,7 @@ Formel: $2^{Bits} = 2^{24} = mathbf{16.777.216}$ Farben.
     container.innerHTML = `
       <div class="view-enter">
         <div class="module-exercise-card">
-          <h3 class="comm-section-title">Grundlagen & Einheiten</h3>
+          <h3 class="module-section-title">Grundlagen & Einheiten</h3>
           <div class="module-steps">
             <div class="module-step">
               <div class="module-step-title">1. SI vs. IEC Präfixe</div>
@@ -274,7 +274,7 @@ Formel: $2^{Bits} = 2^{24} = mathbf{16.777.216}$ Farben.
           </div>
         </div>
         <h3 style="margin-bottom: var(--space-2)">${sc.title}</h3>
-        <p class="comm-text" style="margin-bottom: var(--space-6)">${sc.description}</p>
+        <p class="module-text" style="margin-bottom: var(--space-6)">${sc.description}</p>
         <div id="exerciseSpecificContent"></div>
       </div>
     `;

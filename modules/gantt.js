@@ -168,7 +168,7 @@ const GanttView = (() => {
           <button class="module-tab ${currentTab === 'exercise' ? 'active' : ''}" data-tab="exercise">Übung</button>
         </nav>
 
-        <div id="ganttContent"></div>
+        <div id="ganttContent" class="view-enter"></div>
       </div>
     `;
 
@@ -200,8 +200,8 @@ const GanttView = (() => {
     container.innerHTML = `
       <div class="gantt-explanation view-enter">
         <div class="module-exercise-card">
-          <h3 class="comm-section-title">Grundlagen & Zeichnung</h3>
-          <p class="comm-text">In dieser Übung zeichnest du Balken für Projektvorgänge ein. Beachte:</p>
+          <h3 class="module-section-title">Grundlagen & Zeichnung</h3>
+          <p class="module-text">In dieser Übung zeichnest du Balken für Projektvorgänge ein. Beachte:</p>
           <div class="module-steps">
             <div class="module-step">
               <div class="module-step-title">Früheste Anfangszeit (FAZ)</div>
@@ -235,7 +235,7 @@ const GanttView = (() => {
         <div class="gantt-card-header">
           <div style="flex: 1">
             <h3 style="margin: 0 0 var(--space-1) 0;">${sc.title}</h3>
-            <p class="comm-text" style="font-size: 13px; margin: 0;">${sc.description}</p>
+            <p class="module-text" style="font-size: 13px; margin: 0;">${sc.description}</p>
           </div>
         </div>
 

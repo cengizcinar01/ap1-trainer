@@ -252,7 +252,7 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
           <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Anleitung</button>
           <button class="module-tab ${currentTab === 'exercise' ? 'active' : ''}" data-tab="exercise">Übung</button>
         </nav>
-        <div id="elecContent" class="view-enter" style="margin-top: var(--space-6)"></div>
+        <div id="elecContent" class="view-enter"></div>
       </div>
     `;
     setupTabEvents(container);
@@ -261,14 +261,14 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
 
   function setupTabEvents(container) {
     container.querySelectorAll('.module-tab').forEach((btn) => {
-      btn.addEventListener('click', () => {
+      const handler = () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => {
-          b.classList.remove('active');
-        });
+        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         renderCurrentTab();
-      });
+      };
+      btn.addEventListener('click', handler);
+      cleanup_fns.push(() => btn.removeEventListener('click', handler));
     });
   }
 
@@ -281,25 +281,49 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
 
   function renderExplanation(container) {
     container.innerHTML = `
-      <div class="view-enter">
-        <div class="module-exercise-card" style="text-align: left;">
-          <h3 class="comm-section-title">IHK-Kernwissen: Energie</h3>
-          <div class="module-steps">
-            <div class="module-step">
-              <div class="module-step-title">1. Der Wirkungsgrad-Trick ($eta$)</div>
-              <div class="module-step-text">Das Netzteil liefert Strom an den PC ($P_{ab}$), zieht aber mehr aus der Wand ($P_{zu}$).</div>
-              <div class="module-step-detail">P_zu = P_ab / Wirkungsgrad (z.B. 400W / 0,90)</div>
-            </div>
-            <div class="module-step">
-              <div class="module-step-title">2. USV & Scheinleistung (VA)</div>
-              <div class="module-step-text">USVs werden in VA angegeben. Um von Watt (W) dorthin zu kommen, teilt man durch den Leistungsfaktor.</div>
-              <div class="module-step-detail">S (VA) = P (Watt) / cos φ</div>
-            </div>
-            <div class="module-step">
-              <div class="module-step-title">3. Green IT: PUE-Wert</div>
-              <div class="module-step-text">Power Usage Effectiveness: Verhältnis von Gesamtenergie zu IT-Energie.</div>
-              <div class="module-step-detail">PUE = Gesamt-Energie / IT-Energie</div>
-            </div>
+      <div class="module-explanation">
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">IHK-Kernwissen: Energie</h3>
+          <p class="module-text">Die IHK-Pruefung fragt haeufig nach Netzteil-Dimensionierung, Stromkosten und USV-Auslegung. Hier die drei wichtigsten Formeln:</p>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">1. Der Wirkungsgrad-Trick</h3>
+          <p class="module-text">Das Netzteil liefert Strom an den PC (P_ab), zieht aber mehr aus der Wand (P_zu). Die Differenz ist Abwaerme.</p>
+          <div class="module-info-box">
+            <strong>Formel:</strong> P_zu = P_ab / Wirkungsgrad (z.B. 400W / 0,90 = 444W)
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">2. USV & Scheinleistung (VA)</h3>
+          <p class="module-text">USVs werden in VA (Volt-Ampere) angegeben. Um von Watt (W) dorthin zu kommen, teilt man durch den Leistungsfaktor cos phi.</p>
+          <div class="module-info-box">
+            <strong>Formel:</strong> S (VA) = P (Watt) / cos phi
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">3. Green IT: PUE-Wert</h3>
+          <p class="module-text">Power Usage Effectiveness: Verhaeltnis von Gesamtenergie zu IT-Energie. Ein PUE von 1.0 waere perfekt, ab 2.0 gilt ein Rechenzentrum als ineffizient.</p>
+          <div class="module-info-box">
+            <strong>Formel:</strong> PUE = Gesamt-Energie / IT-Energie
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">4. Akkulaufzeit</h3>
+          <p class="module-text">Energie in Wh = (Kapazitaet in mAh * Spannung in V) / 1000. Laufzeit = Energie / Verbrauch.</p>
+          <div class="module-info-box">
+            <strong>Formel:</strong> Laufzeit (h) = (mAh * V / 1000) / Verbrauch (W)
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">5. Netzteil-Dimensionierung</h3>
+          <p class="module-text">Alle Komponentenleistungen addieren, Sicherheitspuffer draufrechnen, dann die naechste verfuegbare Netzteilegroesse waehlen.</p>
+          <div class="module-tip-box">
+            <strong>Tipp:</strong> Netzteile gibt es typisch in 50W-Schritten (400W, 450W, 500W, ...). Immer aufrunden!
           </div>
         </div>
       </div>
@@ -309,26 +333,28 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
   function renderExerciseLayout(container) {
     const sc = SCENARIOS[currentScenarioIdx];
     container.innerHTML = `
-      <div class="module-exercise-card view-enter" style="text-align: left;">
-        <div class="scenario-nav">
-          <span class="scenario-nav-label">Prüfungsaufgabe</span>
-          <div class="scenario-nav-controls">
-            <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
-            <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
-            <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
-          </div>
+      <div class="scenario-nav">
+        <span class="scenario-nav-label">Aufgaben</span>
+        <div class="scenario-nav-controls">
+          <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
+          <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
+          <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
         </div>
-        <h3 style="margin-bottom: var(--space-2)">${sc.title}</h3>
-        <div class="comm-text" style="margin-bottom: var(--space-4); background: var(--bg-tertiary); padding: 16px; border-radius: 8px; border-left: 4px solid var(--accent-primary);">
-            ${CardRenderer.formatAnswer(sc.description)}
+      </div>
+      <div class="module-exercise-card">
+        <div class="module-exercise-header">
+          <span class="module-exercise-badge">${sc.title}</span>
         </div>
-        <p class="module-exercise-question" style="font-size: 15px; margin-bottom: var(--space-6)"><strong>Aufgabe:</strong> ${sc.task}</p>
+        <div class="module-info-box">
+          ${CardRenderer.formatAnswer(sc.description)}
+        </div>
+        <p class="module-exercise-question"><strong>Aufgabe:</strong> ${sc.task}</p>
         <div id="exerciseSpecificContent"></div>
-        <div class="module-actions" style="margin-top: 32px;">
-          <button class="btn btn-primary" id="btnShowSolution">Lösungsweg anzeigen</button>
-          <button class="btn" id="btnNextTask">Zufällige Werte</button>
+        <div class="module-actions">
+          <button class="btn btn-primary" id="btnShowSolution">Loesungsweg anzeigen</button>
+          <button class="btn" id="btnNextTask">Zufaellige Werte</button>
         </div>
-        <div id="elecSolution" class="module-steps" style="display:none; margin-top: var(--space-6)"></div>
+        <div id="elecSolution" class="module-steps" style="display:none;"></div>
       </div>
     `;
     const exContent = container.querySelector('#exerciseSpecificContent');
@@ -356,24 +382,93 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
     });
   }
 
+  function renderDataGrid(pairs) {
+    return `
+      <div class="module-input-grid">
+        ${pairs.map(([label, value]) => `
+          <div class="module-input-group">
+            <label class="module-label">${label}</label>
+            <div class="module-text" style="margin:0;">${value}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
   function renderTaskInputs(container, sc) {
     const d = sc.data;
     if (sc.id === 'psu_sizing') {
       const rows = d.components
         .map(
           (c) =>
-            `<tr><td style="padding:8px;border-bottom:1px solid var(--border-subtle);">${c.name}</td><td style="padding:8px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:var(--font-mono);">${c.w} W</td></tr>`
+            `<tr><td>${c.name}</td><td class="elec-val">${c.w} W</td></tr>`
         )
         .join('');
-      container.innerHTML = `<table style="width:100%;border-collapse:collapse;margin-bottom:24px;"><thead style="background:var(--surface-submerged);"><th style="text-align:left;padding:8px;">Teil</th><th style="text-align:right;padding:8px;">Watt</th></thead><tbody>${rows}</tbody></table><div class="comm-text mb-4"><strong>Sicherheitsreserve:</strong> ${d.buffer}%</div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Netzteil (Watt)</label><input type="text" class="subnet-input" placeholder="z.B. 600"></div></div>`;
+      container.innerHTML = `
+        <table class="module-table">
+          <thead><tr><th>Komponente</th><th>Leistung</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <p class="module-text"><strong>Sicherheitsreserve:</strong> ${d.buffer}%</p>
+        <div class="module-input-grid">
+          <div class="module-input-group">
+            <label class="module-label">Netzteil (Watt)</label>
+            <input type="text" class="module-input module-input-mono" placeholder="z.B. 600">
+          </div>
+        </div>`;
     } else if (sc.id === 'efficiency_costs') {
-      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Netzteil</label><div class="comm-text">${d.psuWatt} Watt</div></div><div class="subnet-input-group"><label class="subnet-label">Auslastung</label><div class="comm-text">${d.utilization} %</div></div><div class="subnet-input-group"><label class="subnet-label">Wirkungsgrad</label><div class="comm-text">${d.efficiency} %</div></div><div class="subnet-input-group"><label class="subnet-label">Zeitraum</label><div class="comm-text">${d.days} d / ${d.hours} h</div></div><div class="subnet-input-group"><label class="subnet-label">Preis</label><div class="comm-text">${d.priceKWh.toFixed(2)} €/kWh</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Jahreskosten (€)</label><input type="text" class="subnet-input" placeholder="0.00"></div></div>`;
+      container.innerHTML = `
+        ${renderDataGrid([
+          ['Netzteil', `${d.psuWatt} Watt`],
+          ['Auslastung', `${d.utilization} %`],
+          ['Wirkungsgrad', `${d.efficiency} %`],
+          ['Zeitraum', `${d.days} Tage / ${d.hours} h`],
+          ['Preis', `${d.priceKWh.toFixed(2)} EUR/kWh`],
+        ])}
+        <div class="module-input-grid">
+          <div class="module-input-group">
+            <label class="module-label">Jahreskosten (EUR)</label>
+            <input type="text" class="module-input module-input-mono" placeholder="0.00">
+          </div>
+        </div>`;
     } else if (sc.id === 'ups_capacity') {
-      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Last</label><div class="comm-text">${d.watt} W</div></div><div class="subnet-input-group"><label class="subnet-label">cos φ</label><div class="comm-text">${d.cosPhi}</div></div><div class="subnet-input-group"><label class="subnet-label">Reserve</label><div class="comm-text">${d.reserve} %</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Benötigte VA</label><input type="text" class="subnet-input" placeholder="0"></div></div>`;
+      container.innerHTML = `
+        ${renderDataGrid([
+          ['Last', `${d.watt} W`],
+          ['cos phi', `${d.cosPhi}`],
+          ['Reserve', `${d.reserve} %`],
+        ])}
+        <div class="module-input-grid">
+          <div class="module-input-group">
+            <label class="module-label">Benoetigte VA</label>
+            <input type="text" class="module-input module-input-mono" placeholder="0">
+          </div>
+        </div>`;
     } else if (sc.id === 'pue_value') {
-      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Gesamt</label><div class="comm-text">${d.total.toLocaleString()} kWh</div></div><div class="subnet-input-group"><label class="subnet-label">IT</label><div class="comm-text">${d.it.toLocaleString()} kWh</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">PUE-Wert</label><input type="text" class="subnet-input" placeholder="1.00"></div></div>`;
+      container.innerHTML = `
+        ${renderDataGrid([
+          ['Gesamtenergie', `${d.total.toLocaleString()} kWh`],
+          ['IT-Energie', `${d.it.toLocaleString()} kWh`],
+        ])}
+        <div class="module-input-grid">
+          <div class="module-input-group">
+            <label class="module-label">PUE-Wert</label>
+            <input type="text" class="module-input module-input-mono" placeholder="1.00">
+          </div>
+        </div>`;
     } else if (sc.id === 'battery_runtime') {
-      container.innerHTML = `<div class="subnet-grid" style="margin-bottom:12px;"><div class="subnet-input-group"><label class="subnet-label">Kapazität</label><div class="comm-text">${d.mah} mAh</div></div><div class="subnet-input-group"><label class="subnet-label">Spannung</label><div class="comm-text">3.7 V</div></div><div class="subnet-input-group"><label class="subnet-label">Verbrauch</label><div class="comm-text">${d.consumption} W</div></div></div><div class="subnet-grid"><div class="subnet-input-group"><label class="subnet-label">Laufzeit (h)</label><input type="text" class="subnet-input" placeholder="0.0"></div></div>`;
+      container.innerHTML = `
+        ${renderDataGrid([
+          ['Kapazitaet', `${d.mah} mAh`],
+          ['Spannung', `3.7 V`],
+          ['Verbrauch', `${d.consumption} W`],
+        ])}
+        <div class="module-input-grid">
+          <div class="module-input-group">
+            <label class="module-label">Laufzeit (h)</label>
+            <input type="text" class="module-input module-input-mono" placeholder="0.0">
+          </div>
+        </div>`;
     }
   }
 

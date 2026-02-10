@@ -4,15 +4,12 @@
 
 import CommunicationView from '../modules/communication.js';
 import ElectricalView from '../modules/electrical.js';
-import EPKView from '../modules/epk.js';
 import GanttView from '../modules/gantt.js';
-import NetworkPlanView from '../modules/networkplan.js';
 import NumberSystemsView from '../modules/numbersystems.js';
 import NWAView from '../modules/nwa.js';
 import OSIModelView from '../modules/osimodel.js';
-import PseudocodeView from '../modules/pseudocode.js';
 import SubnettingView from '../modules/subnetting.js';
-import UMLView from '../modules/uml.js';
+import MailProtocolsView from '../modules/mailprotocols.js';
 import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
 import StorageManager from './data/storageManager.js';
@@ -114,17 +111,17 @@ const App = (() => {
       Sidebar.updateActive();
     });
 
+    Router.on('/modules/mail', () => {
+      cleanupCurrentView();
+      currentCleanup = MailProtocolsView.cleanup;
+      MailProtocolsView.render(contentEl);
+      Sidebar.updateActive();
+    });
+
     Router.on('/modules/osimodel', () => {
       cleanupCurrentView();
       currentCleanup = OSIModelView.cleanup;
       OSIModelView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/networkplan', () => {
-      cleanupCurrentView();
-      currentCleanup = NetworkPlanView.cleanup;
-      NetworkPlanView.render(contentEl);
       Sidebar.updateActive();
     });
 

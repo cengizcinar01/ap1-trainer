@@ -16,13 +16,12 @@ const Sidebar = (() => {
     categories: DOT_ICON,
     review: DOT_ICON,
     subnetting: DOT_ICON,
+    mail: DOT_ICON,
     osimodel: DOT_ICON,
     networkplan: DOT_ICON,
     nwa: DOT_ICON,
     numbersystems: DOT_ICON,
     electrical: DOT_ICON,
-    uml: DOT_ICON,
-    epk: DOT_ICON,
     gantt: DOT_ICON,
     wiki: DOT_ICON,
     communication: DOT_ICON,
@@ -123,6 +122,10 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.subnetting}</span>
           Subnetting
         </a>
+        <a href="#/modules/mail" class="nav-item ${currentRoute.startsWith('/modules/mail') ? 'active' : ''}" data-route="/modules/mail">
+          <span class="nav-item-icon">${ICONS.mail}</span>
+          E-Mail Protokolle
+        </a>
         <a href="#/modules/numbersystems" class="nav-item ${currentRoute.startsWith('/modules/numbersystems') ? 'active' : ''}" data-route="/modules/numbersystems">
           <span class="nav-item-icon">${ICONS.numbersystems}</span>
           Zahlensysteme
@@ -131,25 +134,9 @@ const Sidebar = (() => {
           <span class="nav-item-icon">${ICONS.electrical}</span>
           Elektrotechnik
         </a>
-        <a href="#/modules/uml" class="nav-item ${currentRoute.startsWith('/modules/uml') ? 'active' : ''}" data-route="/modules/uml">
-          <span class="nav-item-icon">${ICONS.uml}</span>
-          UML-Werkstatt
-        </a>
-        <a href="#/modules/networkplan" class="nav-item ${currentRoute.startsWith('/modules/networkplan') ? 'active' : ''}" data-route="/modules/networkplan">
-          <span class="nav-item-icon">${ICONS.networkplan}</span>
-          Netzplantechnik
-        </a>
         <a href="#/modules/communication" class="nav-item ${currentRoute.startsWith('/modules/communication') ? 'active' : ''}" data-route="/modules/communication">
           <span class="nav-item-icon">${ICONS.communication}</span>
           4-Ohren-Modell
-        </a>
-        <a href="#/modules/pseudocode" class="nav-item ${currentRoute.startsWith('/modules/pseudocode') ? 'active' : ''}" data-route="/modules/pseudocode">
-          <span class="nav-item-icon">${ICONS.pseudocode}</span>
-          Pseudocode-Trainer
-        </a>
-        <a href="#/modules/epk" class="nav-item ${currentRoute.startsWith('/modules/epk') ? 'active' : ''}" data-route="/modules/epk">
-          <span class="nav-item-icon">${ICONS.epk}</span>
-          EPK-Builder
         </a>
       </nav>
 `;

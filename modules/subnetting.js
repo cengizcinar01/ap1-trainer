@@ -382,25 +382,28 @@ const SubnettingView = (() => {
           <button class="module-tab ${currentTab === 'exercise' ? 'active' : ''}" data-tab="exercise">Übung</button>
         </nav>
 
-        <div id="subnetContent" class="view-enter" style="margin-top: var(--space-6)"></div>
+        <div id="subnetContent" class="view-enter"></div>
       </div>
     `;
 
-    container.querySelectorAll('.module-tab').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => {
-          b.classList.remove('active');
-        });
-        btn.classList.add('active');
-        renderTabContent();
-      });
-    });
-
-    renderTabContent();
+    setupTabEvents(container);
+    renderCurrentTab();
   }
 
-  function renderTabContent() {
+  function setupTabEvents(container) {
+    container.querySelectorAll('.module-tab').forEach((btn) => {
+      const handler = () => {
+        currentTab = btn.dataset.tab;
+        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderCurrentTab();
+      };
+      btn.addEventListener('click', handler);
+      cleanup_fns.push(() => btn.removeEventListener('click', handler));
+    });
+  }
+
+  function renderCurrentTab() {
     const content = document.getElementById('subnetContent');
     if (!content) return;
     if (currentTab === 'explanation') renderExplanation(content);
@@ -409,38 +412,47 @@ const SubnettingView = (() => {
 
   function renderExplanation(container) {
     container.innerHTML = `
-      <div class="view-enter">
+      <div class="module-explanation">
         <div class="module-exercise-card">
-          <h3 class="comm-section-title">Berechnungslogik & IP-Grundlagen</h3>
-          <p class="comm-text">Das Beherrschen von IP-Adressbereichen und Subnetting ist essenziell für die IHK-Prüfung.</p>
-          
-          <div class="module-steps">
-            <div class="module-step">
-              <div class="module-step-title">1. Private IP-Adressen (RFC 1918)</div>
-              <div class="module-step-text">Diese Adressen werden im Internet nicht geroutet und sind für lokale Netze reserviert:</div>
-              <div class="module-step-detail" style="white-space: pre-line">• <b>10.0.0.0 - 10.255.255.255</b> (Class A, /8)
-• <b>172.16.0.0 - 172.31.255.255</b> (Class B, /12)
-• <b>192.168.0.0 - 192.168.255.255</b> (Class C, /16)</div>
-            </div>
-            <div class="module-step">
-              <div class="module-step-title">2. Spezielle Adressbereiche</div>
-              <div class="module-step-text">Wichtige reservierte Bereiche für Sonderfunktionen:</div>
-              <div class="module-step-detail" style="white-space: pre-line">• <b>127.0.0.0/8</b>: Loopback (Localhost)
-• <b>169.254.0.0/16</b>: APIPA (Link-Local, wenn kein DHCP verfügbar)
-• <b>224.0.0.0 - 239.255.255.255</b>: Multicast (Class D)</div>
-            </div>
-            <div class="module-step">
-              <div class="module-step-title">3. Die Magic Number (Subnetting)</div>
-              <div class="module-step-text">Berechne die Blockgröße eines Subnetzes: <strong>256 - [Masken-Oktett]</strong>.</div>
-              <div class="module-step-text" style="font-size: 12px; color: var(--text-tertiary)">Beispiel bei /26 (Maske .192): 256 - 192 = 64er Schritte.</div>
-            </div>
-            <div class="module-step">
-              <div class="module-step-title">4. EUI-64 Erkennungsmerkmale</div>
-              <div class="module-step-text">Woran erkenne ich in der IHK-Prüfung eine EUI-64 Adresse?</div>
-              <div class="module-step-detail" style="white-space: pre-line">• <b>FFFE-Marker:</b> In der Mitte der Interface-ID stehen immer die Hex-Werte <b>ff:fe</b>.
-                • <b>7. Bit (U/L):</b> Das erste Byte wurde modifiziert (meist +2 im Hex-Wert, z.B. 00 &rarr; 02).
-                • <b>Herkunft:</b> Die Adresse wurde direkt aus der 48-Bit MAC-Adresse des Geräts generiert.</div>
-            </div>
+          <h3 class="module-section-title">Berechnungslogik & IP-Grundlagen</h3>
+          <p class="module-text">Das Beherrschen von IP-Adressbereichen und Subnetting ist essenziell fuer die IHK-Pruefung.</p>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">1. Private IP-Adressen (RFC 1918)</h3>
+          <p class="module-text">Diese Adressen werden im Internet nicht geroutet und sind fuer lokale Netze reserviert:</p>
+          <div class="module-info-box">
+            <strong>10.0.0.0 - 10.255.255.255</strong> (Class A, /8)<br>
+            <strong>172.16.0.0 - 172.31.255.255</strong> (Class B, /12)<br>
+            <strong>192.168.0.0 - 192.168.255.255</strong> (Class C, /16)
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">2. Spezielle Adressbereiche</h3>
+          <p class="module-text">Wichtige reservierte Bereiche fuer Sonderfunktionen:</p>
+          <div class="module-info-box">
+            <strong>127.0.0.0/8</strong>: Loopback (Localhost)<br>
+            <strong>169.254.0.0/16</strong>: APIPA (Link-Local, wenn kein DHCP verfuegbar)<br>
+            <strong>224.0.0.0 - 239.255.255.255</strong>: Multicast (Class D)
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">3. Die Magic Number (Subnetting)</h3>
+          <p class="module-text">Berechne die Blockgroesse eines Subnetzes: <strong>256 - [Masken-Oktett]</strong>.</p>
+          <div class="module-tip-box">
+            <strong>Beispiel:</strong> Bei /26 (Maske .192): 256 - 192 = 64er Schritte.
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">4. EUI-64 Erkennungsmerkmale</h3>
+          <p class="module-text">Woran erkenne ich in der IHK-Pruefung eine EUI-64 Adresse?</p>
+          <div class="module-info-box">
+            <strong>FFFE-Marker:</strong> In der Mitte der Interface-ID stehen immer die Hex-Werte ff:fe.<br>
+            <strong>7. Bit (U/L):</strong> Das erste Byte wurde modifiziert (meist +2 im Hex-Wert, z.B. 00 &rarr; 02).<br>
+            <strong>Herkunft:</strong> Die Adresse wurde direkt aus der 48-Bit MAC-Adresse des Geraets generiert.
           </div>
         </div>
       </div>
@@ -450,18 +462,19 @@ const SubnettingView = (() => {
   function renderExerciseLayout(container) {
     const sc = SCENARIOS[currentScenarioIdx];
     container.innerHTML = `
-      <div class="module-exercise-card view-enter">
-        <div class="scenario-nav">
-          <span class="scenario-nav-label">Übungstyp</span>
-          <div class="scenario-nav-controls">
-            <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
-            <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
-            <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
-          </div>
+      <div class="scenario-nav">
+        <span class="scenario-nav-label">Aufgaben</span>
+        <div class="scenario-nav-controls">
+          <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
+          <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
+          <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
         </div>
-
-        <h3 style="margin-bottom: var(--space-2)">${sc.title}</h3>
-        <p class="comm-text" style="margin-bottom: var(--space-6)">${sc.description}</p>
+      </div>
+      <div class="module-exercise-card">
+        <div class="module-exercise-header">
+          <span class="module-exercise-badge">${sc.title}</span>
+        </div>
+        <p class="module-text">${sc.description}</p>
 
         <div id="exerciseSpecificContent"></div>
       </div>
@@ -482,14 +495,14 @@ const SubnettingView = (() => {
       if (currentScenarioIdx > 0) {
         currentScenarioIdx--;
         currentExercise = null;
-        renderTabContent();
+        renderCurrentTab();
       }
     });
     container.querySelector('#nextScen')?.addEventListener('click', () => {
       if (currentScenarioIdx < SCENARIOS.length - 1) {
         currentScenarioIdx++;
         currentExercise = null;
-        renderTabContent();
+        renderCurrentTab();
       }
     });
   }

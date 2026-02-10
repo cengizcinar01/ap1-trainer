@@ -225,8 +225,8 @@ const OSIModelView = (() => {
     container.innerHTML = `
       <div class="gantt-explanation view-enter">
         <div class="module-exercise-card">
-          <h3 class="comm-section-title">Grundlagen des Schichtenmodells</h3>
-          <p class="comm-text">Das OSI-Modell (Open Systems Interconnection) ist ein theoretisches Modell zur Beschreibung der Kommunikation zwischen Systemen.</p>
+          <h3 class="module-section-title">Grundlagen des Schichtenmodells</h3>
+          <p class="module-text">Das OSI-Modell (Open Systems Interconnection) ist ein theoretisches Modell zur Beschreibung der Kommunikation zwischen Systemen.</p>
           
           <div class="osi-tower" style="margin-top: var(--space-6)">
             ${OSI_LAYERS.map(
@@ -241,7 +241,7 @@ const OSIModelView = (() => {
                   <span class="osi-layer-pdu">${l.pdu}</span>
                 </div>
                 <div class="osi-layer-details">
-                  <p class="comm-text" style="font-size: 13px; margin-bottom: var(--space-3);">${l.description}</p>
+                  <p class="module-text" style="font-size: 13px; margin-bottom: var(--space-3);">${l.description}</p>
                   <div class="osi-badge-grid">
                     ${l.protocols.map((p) => `<span class="osi-badge osi-badge-protocol">${p}</span>`).join('')}
                     ${l.hardware.map((h) => `<span class="osi-badge osi-badge-hardware">${h}</span>`).join('')}
@@ -284,7 +284,7 @@ const OSIModelView = (() => {
         </div>
 
         <h3 style="margin-bottom: var(--space-2)">${sc.title}</h3>
-        <p class="comm-text">${sc.description}</p>
+        <p class="module-text">${sc.description}</p>
 
         <div id="exerciseSpecificContent"></div>
 

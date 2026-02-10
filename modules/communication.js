@@ -325,14 +325,14 @@ const CommunicationView = (() => {
 
   function setupTabEvents(container) {
     container.querySelectorAll('.module-tab').forEach((btn) => {
-      btn.addEventListener('click', () => {
+      const handler = () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => {
-          b.classList.remove('active');
-        });
+        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         renderCurrentTab();
-      });
+      };
+      btn.addEventListener('click', handler);
+      cleanup_fns.push(() => btn.removeEventListener('click', handler));
     });
   }
 
@@ -361,17 +361,17 @@ const CommunicationView = (() => {
 
   function renderExplanation(container) {
     container.innerHTML = `
-      <div class="comm-explanation">
-        <div class="module-exercise-card comm-intro-card">
-          <h3 class="comm-section-title">Kommunikation verstehen</h3>
-          <p class="comm-text">
-            Das <strong>Vier-Seiten-Modell</strong> von Friedemann Schulz von Thun besagt, dass jede Nachricht 
-            auf vier Ebenen gleichzeitig gesendet und empfangen wird. Ein Sender hat "vier Schnäbel", 
-            ein Empfänger "vier Ohren".
+      <div class="module-explanation">
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">Kommunikation verstehen</h3>
+          <p class="module-text">
+            Das <strong>Vier-Seiten-Modell</strong> von Friedemann Schulz von Thun besagt, dass jede Nachricht
+            auf vier Ebenen gleichzeitig gesendet und empfangen wird. Ein Sender hat "vier Schnaebel",
+            ein Empfaenger "vier Ohren".
           </p>
-          <p class="comm-text" style="margin-bottom: 0;">
-            Häufige Missverständnisse entstehen, wenn der Sender eine Nachricht auf einer Ebene meint (z.B. Sache), 
-            der Empfänger sie aber auf einer anderen Ebene hört (z.B. Beziehung).
+          <p class="module-text">
+            Haeufige Missverstaendnisse entstehen, wenn der Sender eine Nachricht auf einer Ebene meint (z.B. Sache),
+            der Empfaenger sie aber auf einer anderen Ebene hoert (z.B. Beziehung).
           </p>
         </div>
 
@@ -461,21 +461,20 @@ const CommunicationView = (() => {
     );
 
     container.innerHTML = `
-      <div class="comm-scenarios">
-        <div class="module-exercise-card">
-          <div class="comm-training-header">
-            <div>
-              <h3 style="margin: 0;">${scenario.title}</h3>
-              <p class="comm-text" style="margin: 0; font-size: 12px;">${scenario.context}</p>
-            </div>
-            <div class="comm-training-progress">
-              <span>Szenario ${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
-              <div class="comm-progress-bar" style="width: 80px;">
-                <div class="comm-progress-fill" style="width: ${((currentScenarioIdx + 1) / SCENARIOS.length) * 100}%"></div>
-              </div>
-            </div>
+      <div class="scenario-nav">
+        <span class="scenario-nav-label">Szenarien</span>
+        <div class="scenario-nav-controls">
+          <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
+          <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
+          <button class="scenario-nav-btn" id="nextScen" ${currentScenarioIdx === SCENARIOS.length - 1 ? 'disabled' : ''}>&rarr;</button>
+        </div>
+      </div>
+      <div class="module-exercise-card">
+          <div class="module-exercise-header">
+            <span class="module-exercise-badge">${scenario.title}</span>
           </div>
-          
+          <p class="module-text">${scenario.context}</p>
+
           <div class="comm-scenario-msg">
             ${scenario.message}
           </div>
@@ -528,31 +527,43 @@ const CommunicationView = (() => {
           </div>
 
           <div class="module-actions">
-            <button class="btn btn-primary" id="btnCheckScenario" disabled>Zuordnung prüfen</button>
-            <button class="btn btn-primary" id="btnNextScenario" style="display:none">
-              Nächstes Szenario
-              <span style="margin-left: 8px;">→</span>
-            </button>
+            <button class="btn btn-primary" id="btnCheckScenario" disabled>Zuordnung pruefen</button>
+            <button class="btn btn-primary" id="btnNextScenario" style="display:none">Naechstes Szenario &rarr;</button>
           </div>
           <div id="scenarioFeedback"></div>
-        </div>
       </div>
     `;
 
     setupDragAndDrop(container);
 
-    container
-      .querySelector('#btnCheckScenario')
-      .addEventListener('click', () => {
-        checkScenario(container);
-      });
+    const prevBtn = container.querySelector('#prevScen');
+    const nextBtn = container.querySelector('#nextScen');
+    const checkBtn = container.querySelector('#btnCheckScenario');
+    const nextScenBtn = container.querySelector('#btnNextScenario');
 
-    container
-      .querySelector('#btnNextScenario')
-      .addEventListener('click', () => {
+    if (prevBtn) {
+      const h = () => { currentScenarioIdx--; renderTraining(container); };
+      prevBtn.addEventListener('click', h);
+      cleanup_fns.push(() => prevBtn.removeEventListener('click', h));
+    }
+    if (nextBtn) {
+      const h = () => { currentScenarioIdx++; renderTraining(container); };
+      nextBtn.addEventListener('click', h);
+      cleanup_fns.push(() => nextBtn.removeEventListener('click', h));
+    }
+    if (checkBtn) {
+      const h = () => checkScenario(container);
+      checkBtn.addEventListener('click', h);
+      cleanup_fns.push(() => checkBtn.removeEventListener('click', h));
+    }
+    if (nextScenBtn) {
+      const h = () => {
         currentScenarioIdx = (currentScenarioIdx + 1) % SCENARIOS.length;
         renderTraining(container);
-      });
+      };
+      nextScenBtn.addEventListener('click', h);
+      cleanup_fns.push(() => nextScenBtn.removeEventListener('click', h));
+    }
   }
 
   function setupDragAndDrop(container) {
@@ -734,143 +745,105 @@ const CommunicationView = (() => {
   ];
 
   function renderQuiz(container) {
+    let score = 0;
+    let answered = 0;
+
     container.innerHTML = `
-      <div class="comm-quiz">
-        <div class="comm-quiz-header">
-          <div class="comm-quiz-progress">
-            <span class="comm-progress-text">Quiz-Fortschritt</span>
-            <div class="comm-progress-bar">
-              <div class="comm-progress-fill" style="width: 0%"></div>
+      <div class="module-quiz">
+        <div class="module-quiz-header">
+          <div class="module-quiz-progress">
+            <span class="module-quiz-progress-text">Quiz-Fortschritt</span>
+            <div class="module-quiz-progress-bar">
+              <div class="module-quiz-progress-fill" id="commQuizProgress" style="width: 0%"></div>
             </div>
           </div>
-          <div class="comm-quiz-score" id="quizScoreDisplay">Score: 0 / ${QUIZ_QUESTIONS.length}</div>
+          <span class="module-quiz-score" id="commQuizScore">0 / ${QUIZ_QUESTIONS.length}</span>
         </div>
 
-        <div id="quizQuestionsList">
+        <div id="commQuizQuestions">
           ${QUIZ_QUESTIONS.map(
             (q, i) => `
-            <div class="module-exercise-card comm-quiz-card" style="margin-bottom: var(--space-4)" data-idx="${i}">
+            <div class="module-exercise-card module-quiz-card" style="margin-bottom: var(--space-4)" data-idx="${i}">
               <p class="module-exercise-question"><strong>Frage ${i + 1}:</strong> ${q.q}</p>
-              <div class="comm-quiz-options">
+              <div class="module-quiz-options">
                 ${q.options
                   .map(
                     (opt, oi) => `
-                  <div class="comm-quiz-option" data-oi="${oi}">
+                  <div class="module-quiz-option" data-qi="${i}" data-oi="${oi}">
                     ${opt}
                   </div>
                 `
                   )
                   .join('')}
               </div>
-              <div class="quiz-feedback" style="display:none; margin-top: var(--space-4);"></div>
+              <div class="module-quiz-explanation" style="display:none;"></div>
             </div>
           `
           ).join('')}
         </div>
 
-        <div id="finalResultContainer"></div>
+        <div id="commQuizResult"></div>
       </div>
     `;
 
-    setupQuizEvents(container);
-  }
+    container.querySelectorAll('.module-quiz-option').forEach((opt) => {
+      const handler = () => {
+        const qi = +opt.dataset.qi;
+        const oi = +opt.dataset.oi;
+        const card = opt.closest('.module-quiz-card');
+        if (card.classList.contains('answered')) return;
+        card.classList.add('answered');
+        answered++;
 
-  function setupQuizEvents(container) {
-    const cards = container.querySelectorAll('.comm-quiz-card');
-    const progressFill = container.querySelector('.comm-progress-fill');
-    const scoreDisplay = container.querySelector('#quizScoreDisplay');
-    const resultContainer = container.querySelector('#finalResultContainer');
+        const isCorrect = oi === QUIZ_QUESTIONS[qi].correct;
+        if (isCorrect) score++;
+        opt.classList.add(isCorrect ? 'correct' : 'wrong');
 
-    let answeredCount = 0;
-    let correctCount = 0;
+        if (!isCorrect) {
+          card.querySelectorAll('.module-quiz-option')[QUIZ_QUESTIONS[qi].correct].classList.add(
+            'correct'
+          );
+        }
 
-    cards.forEach((card) => {
-      const idx = parseInt(card.dataset.idx, 10);
-      const question = QUIZ_QUESTIONS[idx];
-      const options = card.querySelectorAll('.comm-quiz-option');
-      const feedback = card.querySelector('.quiz-feedback');
+        const expl = card.querySelector('.module-quiz-explanation');
+        expl.style.display = 'block';
+        expl.textContent = QUIZ_QUESTIONS[qi].explain;
 
-      options.forEach((opt) => {
-        opt.addEventListener('click', () => {
-          if (card.dataset.answered === 'true') return;
+        const pct = (answered / QUIZ_QUESTIONS.length) * 100;
+        document.getElementById('commQuizProgress').style.width = pct + '%';
+        document.getElementById('commQuizScore').textContent = `${score} / ${QUIZ_QUESTIONS.length}`;
 
-          const selectedIdx = parseInt(opt.dataset.oi, 10);
-          card.dataset.answered = 'true';
-          card.classList.add('answered');
-          answeredCount++;
-
-          const isCorrect = selectedIdx === question.correct;
-          if (isCorrect) correctCount++;
-
-          // Update UI
-          options.forEach((o, i) => {
-            if (i === question.correct) {
-              o.classList.add('correct');
-            } else if (i === selectedIdx) {
-              o.classList.add('wrong');
-            }
-          });
-
-          // Progress & Score
-          const progressPct = (answeredCount / QUIZ_QUESTIONS.length) * 100;
-          progressFill.style.width = `${progressPct}%`;
-          scoreDisplay.textContent = `Score: ${correctCount} / ${QUIZ_QUESTIONS.length}`;
-
-          feedback.style.display = 'block';
-          feedback.innerHTML = `
-            <div class="module-feedback ${isCorrect ? 'module-feedback-success' : 'module-feedback-error'}">
-              <strong>${isCorrect ? 'Richtig!' : 'Falsch.'}</strong> ${question.explain}
-            </div>
-          `;
-
-          // Check for completion
-          if (answeredCount === QUIZ_QUESTIONS.length) {
-            renderFinalResult(resultContainer, correctCount);
-          }
-        });
-      });
+        if (answered === QUIZ_QUESTIONS.length) {
+          showCommQuizResult(score);
+        }
+      };
+      opt.addEventListener('click', handler);
+      cleanup_fns.push(() => opt.removeEventListener('click', handler));
     });
   }
 
-  function renderFinalResult(container, score) {
-    const pct = (score / QUIZ_QUESTIONS.length) * 100;
-    let message = '';
-    let icon = '';
-
-    if (pct === 100) {
-      message =
-        'Perfekt! Du bist ein wahrer Kommunikationsexperte und beherrschst alle 4 Ohren!';
-      icon = '🏆';
-    } else if (pct >= 75) {
-      message =
-        'Sehr gut! Du hast ein starkes Verständnis für die verschiedenen Kommunikationsebenen.';
-      icon = '🌟';
-    } else if (pct >= 50) {
-      message =
-        'Gut gemacht! Du verstehst die Grundlagen, achte aber noch mehr auf die Nuancen der Beziehungsebene.';
-      icon = '👍';
-    } else {
-      message =
-        'Das war ein guter Versuch. Schau dir die Erklärungen noch einmal an, um Missverständnisse in der Prüfung zu vermeiden.';
-      icon = '📚';
+  function showCommQuizResult(score) {
+    const pct = Math.round((score / QUIZ_QUESTIONS.length) * 100);
+    const text =
+      pct === 100
+        ? 'Perfekt! Du beherrschst alle 4 Ohren!'
+        : pct >= 60
+          ? 'Gut gemacht! Weiter so.'
+          : 'Weiter ueben — du schaffst das!';
+    document.getElementById('commQuizResult').innerHTML = `
+      <div class="module-exercise-card module-quiz-result">
+        <h2 class="module-quiz-result-title">Quiz beendet!</h2>
+        <div class="module-quiz-result-score">${pct}%</div>
+        <p class="module-quiz-result-text">${text} ${score} von ${QUIZ_QUESTIONS.length} richtig.</p>
+        <button class="btn btn-primary" id="commRestartQuiz">Nochmal versuchen</button>
+      </div>
+    `;
+    const btn = document.getElementById('commRestartQuiz');
+    if (btn) {
+      const handler = () => renderQuiz(document.getElementById('commContent'));
+      btn.addEventListener('click', handler);
+      cleanup_fns.push(() => btn.removeEventListener('click', handler));
     }
-
-    container.innerHTML = `
-      <div class="module-exercise-card comm-result-card view-enter">
-        <div style="font-size: 48px; margin-bottom: var(--space-2)">${icon}</div>
-        <h2 class="comm-result-title">Ergebnis</h2>
-        <div class="comm-result-score">${score} / ${QUIZ_QUESTIONS.length}</div>
-        <p class="comm-result-text">${message}</p>
-        <button class="btn btn-primary" id="btnRestartQuiz">Quiz neustarten</button>
-      </div>
-    `;
-
-    container.querySelector('#btnRestartQuiz').addEventListener('click', () => {
-      renderQuiz(document.getElementById('commContent'));
-    });
-
-    // Smooth scroll to result
-    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   function cleanup() {
