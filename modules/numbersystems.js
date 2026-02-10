@@ -239,22 +239,43 @@ Formel: $2^{Bits} = 2^{24} = mathbf{16.777.216}$ Farben.
 
   function renderExplanation(container) {
     container.innerHTML = `
-      <div class="view-enter">
+      <div class="module-explanation">
         <div class="module-exercise-card">
-          <h3 class="module-section-title">Grundlagen & Einheiten</h3>
+          <h3 class="module-section-title">Zahlensysteme im Überblick</h3>
+          <p class="module-text">In der IT begegnen uns vor allem drei Systeme:</p>
           <div class="module-steps">
             <div class="module-step">
-              <div class="module-step-title">1. SI vs. IEC Präfixe</div>
-              <div class="module-step-text"><b>SI (1000er):</b> Übertragung (Mbit/s). <b>IEC (1024er):</b> Speicher (MiB, KiB).</div>
+              <div class="module-step-title">Dezimalsystem (Basis 10)</div>
+              <div class="module-step-text">Unser Alltagssystem. Ziffern 0-9.</div>
             </div>
             <div class="module-step">
-              <div class="module-step-title">2. Hexadezimal-Regeln</div>
-              <div class="module-step-text">Basis 16. Ziffern: 0-9 und <b>A (10), B (11), C (12), D (13), E (14), F (15)</b>.</div>
+              <div class="module-step-title">Binaersystem (Basis 2)</div>
+              <div class="module-step-text">Die Sprache der Hardware. Nur 0 und 1. Jede Stelle entspricht einer Zweierpotenz (1, 2, 4, 8, 16...).</div>
             </div>
             <div class="module-step">
-              <div class="module-step-title">3. Der 4-Bit Shortcut</div>
-              <div class="module-step-text">Jede Hex-Stelle entspricht genau 4 Bit. <br>F = 1111, 0 = 0000.</div>
+              <div class="module-step-title">Hexadezimalsystem (Basis 16)</div>
+              <div class="module-step-text">Kompakte Darstellung von Binaerwerten. Ziffern 0-9 und <b>A-F</b> (10-15).</div>
             </div>
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">Speicherbedarf & Einheiten</h3>
+          <p class="module-text">Unterscheide strikt zwischen SI- und IEC-Praefixen:</p>
+          <div class="module-info-box">
+            <strong>SI (Dezimal):</strong> 1 kB = 1.000 Byte. (Meist fuer Hardware-Marketing genutzt).<br>
+            <strong>IEC (Binaer):</strong> 1 KiB = 1.024 Byte. (Der Standard fuer Dateigroessen in der IT).
+          </div>
+          <p class="module-text" style="margin-top: var(--space-4)">
+            Formel fuer Bilder: Breite &times; Hoehe &times; Farbtiefe (in Bit).
+          </p>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">Pruefungs-Shortcut</h3>
+          <div class="module-tip-box">
+            <strong>Der 4-Bit Trick:</strong> Eine Hexadezimalstelle entspricht genau 4 Bit (einem "Nibble"). <br>
+            Beispiel: F (Hex) = 15 (Dez) = 1111 (Bin). Das macht die Umrechnung zwischen Binaer und Hex extrem einfach!
           </div>
         </div>
       </div>

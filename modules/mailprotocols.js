@@ -83,7 +83,7 @@ const MailProtocolsView = (() => {
         </div>
 
         <nav class="module-tabs">
-          <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Erklaerung</button>
+          <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Anleitung</button>
           <button class="module-tab ${currentTab === 'comparison' ? 'active' : ''}" data-tab="comparison">Vergleich</button>
           <button class="module-tab ${currentTab === 'quiz' ? 'active' : ''}" data-tab="quiz">Quiz</button>
         </nav>
@@ -100,7 +100,9 @@ const MailProtocolsView = (() => {
     container.querySelectorAll('.module-tab').forEach((btn) => {
       const handler = () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
         renderCurrentTab();
       };
@@ -323,9 +325,9 @@ const MailProtocolsView = (() => {
         opt.classList.add(isCorrect ? 'correct' : 'wrong');
 
         if (!isCorrect) {
-          card.querySelectorAll('.module-quiz-option')[QUIZ_DATA[qi].correct].classList.add(
-            'correct'
-          );
+          card
+            .querySelectorAll('.module-quiz-option')
+            [QUIZ_DATA[qi].correct].classList.add('correct');
         }
 
         const expl = card.querySelector('.module-quiz-explanation');
@@ -333,8 +335,9 @@ const MailProtocolsView = (() => {
         expl.textContent = QUIZ_DATA[qi].explain;
 
         const pct = (answered / QUIZ_DATA.length) * 100;
-        document.getElementById('mailQuizProgress').style.width = pct + '%';
-        document.getElementById('mailQuizScore').textContent = `${score} / ${QUIZ_DATA.length}`;
+        document.getElementById('mailQuizProgress').style.width = `${pct}%`;
+        document.getElementById('mailQuizScore').textContent =
+          `${score} / ${QUIZ_DATA.length}`;
 
         if (answered === QUIZ_DATA.length) {
           showQuizResult(score);
@@ -374,7 +377,9 @@ const MailProtocolsView = (() => {
   // ============================================================
 
   function cleanup() {
-    cleanup_fns.forEach((fn) => fn());
+    cleanup_fns.forEach((fn) => {
+      fn();
+    });
     cleanup_fns = [];
   }
 

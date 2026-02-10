@@ -251,28 +251,49 @@ const NWAView = (() => {
 
   function renderExplanation(container) {
     container.innerHTML = `
-      <div class="view-enter">
+      <div class="module-explanation">
         <div class="module-exercise-card">
-          <h3 class="module-section-title">Berechnungslogik der NWA</h3>
+          <h3 class="module-section-title">Was ist eine Nutzwertanalyse?</h3>
           <p class="module-text">
-            In der IHK-Prüfung begegnet dir die Nutzwertanalyse fast immer als Tabelle. 
-            Hier ist der mathematische Kern, den du beherrschen musst:
+            Die Nutzwertanalyse (NWA) ist ein quantitatives Verfahren der Entscheidungstheorie. Sie hilft dabei, verschiedene Handlungsalternativen (z.B. unterschiedliche Angebote von Dienstleistern) anhand von mehreren Kriterien vergleichbar zu machen.
+          </p>
+          <div class="module-info-box">
+            <strong>Das Ziel:</strong> Die Alternative mit dem hoechsten Gesamtnutzwert zu identifizieren.
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">Die Berechnungslogik</h3>
+          <p class="module-text">
+            In der IHK-Pruefung begegnet dir die NWA fast immer als Tabelle. Die Berechnung folgt einem einfachen Schema:
           </p>
           
           <div class="module-steps">
             <div class="module-step">
-              <div class="module-step-title">Formel pro Zeile</div>
-              <div class="module-step-text">Nutzwert = Gewichtung (%) &times; Bewertung (Punkte)</div>
-              <div class="module-step-text" style="font-size: 12px; color: var(--text-tertiary)">Beispiel: 20% Gewichtung &times; 3 Punkte = 60 Nutzwert-Punkte.</div>
+              <div class="module-step-title">1. Gewichtung & Bewertung</div>
+              <div class="module-step-text">Jedes Kriterium hat eine Gewichtung (in %) und jedes Angebot eine Bewertung (Punkte, meist 1-10).</div>
             </div>
             <div class="module-step">
-              <div class="module-step-title">Die Spaltensumme</div>
-              <div class="module-step-text">Addiere alle berechneten Nutzwerte einer Spalte (Anbieter), um den Gesamtnutzwert zu erhalten.</div>
+              <div class="module-step-title">2. Nutzwert berechnen</div>
+              <div class="module-step-text">
+                Nutzwert = Gewichtung &times; Punkte. <br>
+                <em>Beispiel: 20% Gewichtung &times; 8 Punkte = 1,6 (oder 160 bei IHK-Skalierung).</em>
+              </div>
             </div>
             <div class="module-step">
-              <div class="module-step-title">Das Ausschlussprinzip</div>
-              <div class="module-step-text">Prüfe, ob im Text Bedingungen stehen (z.B. "Kein Cloud-Zwang"). Anbieter, die diese Bedingung nicht erfüllen, fliegen aus dem Ranking – egal wie viele Punkte sie haben!</div>
+              <div class="module-step-title">3. Summen bilden</div>
+              <div class="module-step-text">Addiere alle Nutzwerte einer Spalte (Anbieter), um den Gesamtnutzwert zu erhalten.</div>
             </div>
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">Pruefungs-Tipp: K.O.-Kriterien</h3>
+          <p class="module-text">
+            Achte in der Aufgabenstellung peinlich genau auf Ausschlusskriterien (K.O.-Kriterien).
+          </p>
+          <div class="module-tip-box">
+            <strong>Wichtig:</strong> Wenn ein Anbieter eine Mindestanforderung nicht erfuellt (z.B. "Serverstandort muss in Deutschland sein"), scheidet er sofort aus – egal wie viele Punkte er in anderen Bereichen gesammelt hat!
           </div>
         </div>
       </div>

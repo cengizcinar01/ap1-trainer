@@ -198,19 +198,42 @@ const GanttView = (() => {
 
   function renderExplanation(container) {
     container.innerHTML = `
-      <div class="gantt-explanation view-enter">
+      <div class="module-explanation">
         <div class="module-exercise-card">
-          <h3 class="module-section-title">Grundlagen & Zeichnung</h3>
-          <p class="module-text">In dieser Übung zeichnest du Balken für Projektvorgänge ein. Beachte:</p>
+          <h3 class="module-section-title">Was ist ein Gantt-Diagramm?</h3>
+          <p class="module-text">
+            Das Gantt-Diagramm ist ein Instrument des Projektmanagements, das die zeitliche Abfolge von Aktivitaeten grafisch in Form von Balken auf einer Zeitachse darstellt.
+          </p>
+          <div class="module-info-box">
+            <strong>Der Kern:</strong> Jede Zeile stellt einen Vorgang dar, die Laenge des Balkens entspricht der Dauer.
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">Wichtige Fachbegriffe</h3>
           <div class="module-steps">
             <div class="module-step">
-              <div class="module-step-title">Früheste Anfangszeit (FAZ)</div>
-              <div class="module-step-text">Ein Vorgang startet am Tag NACH seinem Vorgänger.</div>
+              <div class="module-step-title">FAZ & FEZ</div>
+              <div class="module-step-text">Fruehester Anfangszeitpunkt und Fruehester Endzeitpunkt. Ein Vorgang kann erst starten, wenn alle Vorgaenger abgeschlossen sind.</div>
             </div>
             <div class="module-step">
-              <div class="module-step-title">Pufferzeiten</div>
-              <div class="module-step-text">Einige Aufgaben haben Spielraum, ohne das Projektende zu verzögern.</div>
+              <div class="module-step-title">Gesamtpuffer</div>
+              <div class="module-step-text">Zeitspanne, um die ein Vorgang verschoben werden kann, ohne das Projektende zu gefaehrden.</div>
             </div>
+            <div class="module-step">
+              <div class="module-step-title">Kritischer Pfad</div>
+              <div class="module-step-text">Die Kette von Vorgaengen, bei denen ein Puffer von 0 vorliegt. Verzoegerungen hier verzoegern das gesamte Projekt.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">Bedienung des Trainers</h3>
+          <p class="module-text">
+            In der Uebung kannst du die Balken direkt in das Raster zeichnen.
+          </p>
+          <div class="module-tip-box">
+            <strong>Tipp:</strong> Klicke und ziehe mit der Maus (oder dem Finger auf dem Tablet), um mehrere Tage gleichzeitig zu markieren. Ein erneuter Klick loescht einen markierten Tag wieder.
           </div>
         </div>
       </div>

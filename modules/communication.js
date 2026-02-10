@@ -310,9 +310,9 @@ const CommunicationView = (() => {
         </div>
 
         <nav class="module-tabs">
-          <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Erklärung</button>
-          <button class="module-tab ${currentTab === 'training' ? 'active' : ''}" data-tab="training">Szenarien-Training</button>
-          <button class="module-tab ${currentTab === 'quiz' ? 'active' : ''}" data-tab="quiz">Wissens-Check</button>
+          <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Anleitung</button>
+          <button class="module-tab ${currentTab === 'training' ? 'active' : ''}" data-tab="training">Training</button>
+          <button class="module-tab ${currentTab === 'quiz' ? 'active' : ''}" data-tab="quiz">Quiz</button>
         </nav>
 
         <div id="commContent" class="view-enter"></div>
@@ -327,7 +327,9 @@ const CommunicationView = (() => {
     container.querySelectorAll('.module-tab').forEach((btn) => {
       const handler = () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
         renderCurrentTab();
       };
@@ -542,12 +544,18 @@ const CommunicationView = (() => {
     const nextScenBtn = container.querySelector('#btnNextScenario');
 
     if (prevBtn) {
-      const h = () => { currentScenarioIdx--; renderTraining(container); };
+      const h = () => {
+        currentScenarioIdx--;
+        renderTraining(container);
+      };
       prevBtn.addEventListener('click', h);
       cleanup_fns.push(() => prevBtn.removeEventListener('click', h));
     }
     if (nextBtn) {
-      const h = () => { currentScenarioIdx++; renderTraining(container); };
+      const h = () => {
+        currentScenarioIdx++;
+        renderTraining(container);
+      };
       nextBtn.addEventListener('click', h);
       cleanup_fns.push(() => nextBtn.removeEventListener('click', h));
     }
@@ -800,9 +808,9 @@ const CommunicationView = (() => {
         opt.classList.add(isCorrect ? 'correct' : 'wrong');
 
         if (!isCorrect) {
-          card.querySelectorAll('.module-quiz-option')[QUIZ_QUESTIONS[qi].correct].classList.add(
-            'correct'
-          );
+          card
+            .querySelectorAll('.module-quiz-option')
+            [QUIZ_QUESTIONS[qi].correct].classList.add('correct');
         }
 
         const expl = card.querySelector('.module-quiz-explanation');
@@ -810,8 +818,9 @@ const CommunicationView = (() => {
         expl.textContent = QUIZ_QUESTIONS[qi].explain;
 
         const pct = (answered / QUIZ_QUESTIONS.length) * 100;
-        document.getElementById('commQuizProgress').style.width = pct + '%';
-        document.getElementById('commQuizScore').textContent = `${score} / ${QUIZ_QUESTIONS.length}`;
+        document.getElementById('commQuizProgress').style.width = `${pct}%`;
+        document.getElementById('commQuizScore').textContent =
+          `${score} / ${QUIZ_QUESTIONS.length}`;
 
         if (answered === QUIZ_QUESTIONS.length) {
           showCommQuizResult(score);

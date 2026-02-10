@@ -263,7 +263,9 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
     container.querySelectorAll('.module-tab').forEach((btn) => {
       const handler = () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
         renderCurrentTab();
       };
@@ -385,12 +387,16 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
   function renderDataGrid(pairs) {
     return `
       <div class="module-input-grid">
-        ${pairs.map(([label, value]) => `
+        ${pairs
+          .map(
+            ([label, value]) => `
           <div class="module-input-group">
             <label class="module-label">${label}</label>
             <div class="module-text" style="margin:0;">${value}</div>
           </div>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
     `;
   }
@@ -400,8 +406,7 @@ ${wh.toFixed(1)} Wh / ${d.consumption} W = **${hours.toFixed(1)} Stunden**
     if (sc.id === 'psu_sizing') {
       const rows = d.components
         .map(
-          (c) =>
-            `<tr><td>${c.name}</td><td class="elec-val">${c.w} W</td></tr>`
+          (c) => `<tr><td>${c.name}</td><td class="elec-val">${c.w} W</td></tr>`
         )
         .join('');
       container.innerHTML = `

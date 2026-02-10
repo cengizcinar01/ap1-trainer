@@ -394,7 +394,9 @@ const SubnettingView = (() => {
     container.querySelectorAll('.module-tab').forEach((btn) => {
       const handler = () => {
         currentTab = btn.dataset.tab;
-        container.querySelectorAll('.module-tab').forEach((b) => b.classList.remove('active'));
+        container.querySelectorAll('.module-tab').forEach((b) => {
+          b.classList.remove('active');
+        });
         btn.classList.add('active');
         renderCurrentTab();
       };
