@@ -13,12 +13,6 @@ const CardRenderer = (() => {
    * @returns {string}
    */
   function renderCard(card, showMeta = true) {
-    const difficultyDots = Array.from(
-      { length: 3 },
-      (_, i) =>
-        `<span class="flashcard-difficulty-dot ${i < card.difficulty ? 'active' : ''}"></span>`
-    ).join('');
-
     // Image path — cards can have an `image` field, or we check for assets/images/{id}.png
     const imagePath = card.image || null;
 
@@ -34,7 +28,6 @@ const CardRenderer = (() => {
                 ? `
               <div class="flashcard-meta">
                 <span class="flashcard-topic-badge">${escapeHtml(card.subtopic)}</span>
-                <div class="flashcard-difficulty">${difficultyDots}</div>
               </div>
             `
                 : ''
@@ -63,7 +56,6 @@ const CardRenderer = (() => {
                 ? `
               <div class="flashcard-meta">
                 <span class="flashcard-topic-badge">${escapeHtml(card.subtopic)}</span>
-                <div class="flashcard-difficulty">${difficultyDots}</div>
               </div>
             `
                 : ''

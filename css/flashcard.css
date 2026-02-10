@@ -305,22 +305,6 @@
   color: var(--text-tertiary);
 }
 
-.flashcard-difficulty {
-  display: flex;
-  gap: 3px;
-}
-
-.flashcard-difficulty-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--bg-tertiary);
-}
-
-.flashcard-difficulty-dot.active {
-  background: var(--accent-primary);
-}
-
 /* --- Rating Buttons --- */
 .rating-buttons {
   display: flex;

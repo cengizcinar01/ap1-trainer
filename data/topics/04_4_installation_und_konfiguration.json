@@ -3,126 +3,56 @@
     "id": 81,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.1 Hardware",
-    "type": "definition",
-    "difficulty": 1,
     "question": "Welche Schritte umfasst die Hardware-Installation und -Konfiguration?",
-    "answer": "### 1. Physische Installation\n- **Einbau:** CPU, RAM, Datenträger, GPU\n- **Anschluss:** Peripherie (Maus, Tastatur, Monitor)\n- **Check:** Verkabelung & Strom\n\n### 2. Hardware-Konfiguration\n- **BIOS/UEFI:** Boot-Reihenfolge, Secure Boot, TPM\n- **Diagnose:** Funktionstest (POST)\n- **Firmware:** Updates einspielen",
-    "tags": [
-      "Installation",
-      "Hardware",
-      "Konfiguration"
-    ]
+    "answer": "### 1. Physische Installation\n- **Einbau:** CPU, RAM, Datenträger, GPU\n- **Anschluss:** Peripherie (Maus, Tastatur, Monitor)\n- **Check:** Verkabelung & Strom\n\n### 2. Hardware-Konfiguration\n- **BIOS/UEFI:** Boot-Reihenfolge, Secure Boot, TPM\n- **Diagnose:** Funktionstest (POST)\n- **Firmware:** Updates einspielen"
   },
   {
     "id": 82,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.2 Betriebssystem",
-    "type": "definition",
-    "difficulty": 2,
     "question": "Welche Schritte umfasst die Installation und Konfiguration eines Betriebssystems?",
-    "answer": "### 1. Installation\n- **Medium:** USB-Stick / ISO / PXE\n- **Partitionierung:** Laufwerke einrichten (GPT/MBR)\n- **Treiber:** Systemtreiber laden\n\n### 2. Konfiguration\n- **Basis:** Sprache, Zeit, Region, Tastatur\n- **Benutzer:** Admin-Konto anlegen\n- **Netzwerk:** IP, DNS, Hostname\n- **Updates:** Sicherheitspatches installieren",
-    "tags": [
-      "Installation",
-      "Betriebssystem",
-      "Konfiguration"
-    ]
+    "answer": "### 1. Installation\n- **Medium:** USB-Stick / ISO / PXE\n- **Partitionierung:** Laufwerke einrichten (GPT/MBR)\n- **Treiber:** Systemtreiber laden\n\n### 2. Konfiguration\n- **Basis:** Sprache, Zeit, Region, Tastatur\n- **Benutzer:** Admin-Konto anlegen\n- **Netzwerk:** IP, DNS, Hostname\n- **Updates:** Sicherheitspatches installieren"
   },
   {
     "id": 83,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.3 Kommandozeile",
-    "type": "definition",
-    "difficulty": 2,
     "question": "Was sind die Grundlagen der Kommandozeile?",
-    "answer": "**Shells:** `cmd` (Windows), `PowerShell`, `Bash` (Linux/Mac)\n\n### Wichtige Befehle\n| Aktion | Windows | Linux/Mac |\n|--------|---------|-----------|\n| **Verzeichnis** | `dir` | `ls` |\n| **Navigieren** | `cd` | `cd` |\n| **Pfad anzeigem** | `cd` | `pwd` |\n| **Erstellen** | `mkdir` | `mkdir` |\n| **Löschen** | `del` | `rm` |\n\n💡 **Tipp:** Mit `Tab` Befehle vervollständigen (Autocomplete).",
-    "tags": [
-      "Installation",
-      "Kommandozeile",
-      "Shell",
-      "Bash",
-      "CMD"
-    ]
+    "answer": "**Shells:** `cmd` (Windows), `PowerShell`, `Bash` (Linux/Mac)\n\n### Wichtige Befehle\n| Aktion | Windows | Linux/Mac |\n|--------|---------|-----------|\n| **Verzeichnis** | `dir` | `ls` |\n| **Navigieren** | `cd` | `cd` |\n| **Pfad anzeigem** | `cd` | `pwd` |\n| **Erstellen** | `mkdir` | `mkdir` |\n| **Löschen** | `del` | `rm` |\n\n💡 **Tipp:** Mit `Tab` Befehle vervollständigen (Autocomplete)."
   },
   {
     "id": 84,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.4 Anpassung von Software",
-    "type": "definition",
-    "difficulty": 2,
     "question": "Welche Möglichkeiten gibt es zur Anpassung von Software (Customizing)?",
-    "answer": "**Customizing** = Anpassung an Unternehmensbedarf (ohne Code-Änderung).\n\n### Methoden\n| Methode | Beschreibung |\n|---------|--------------|\n| **Konfiguration** | Einstellungen (GUI, JSON, XML, Registry) |\n| **Parametrisierung** | Standardwerte definieren |\n| **Scripting** | Automatisierung (Bash, PowerShell, VBA) |\n| **Plugins** | Module hinzufügen (Extensions) |\n| **Schnittstellen** | APIs anbinden (REST, SOAP) |\n\n✅ **Vorteil:** Günstiger & schneller als Neuentwicklung.",
-    "tags": [
-      "Installation",
-      "Konfiguration",
-      "Customizing",
-      "Software",
-      "Anpassung"
-    ]
+    "answer": "**Customizing** = Anpassung an Unternehmensbedarf (ohne Code-Änderung).\n\n### Methoden\n| Methode | Beschreibung |\n|---------|--------------|\n| **Konfiguration** | Einstellungen (GUI, JSON, XML, Registry) |\n| **Parametrisierung** | Standardwerte definieren |\n| **Scripting** | Automatisierung (Bash, PowerShell, VBA) |\n| **Plugins** | Module hinzufügen (Extensions) |\n| **Schnittstellen** | APIs anbinden (REST, SOAP) |\n\n✅ **Vorteil:** Günstiger & schneller als Neuentwicklung."
   },
   {
     "id": 85,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.5 Netzwerkverbindungen",
-    "type": "definition",
-    "difficulty": 3,
     "question": "Welche Netzwerk-Diagnosewerkzeuge gibt es?",
-    "answer": "| Tool | Funktion |\n|------|----------|\n| `ping` | Erreichbarkeit prüfen (ICMP) |\n| `tracert` / `traceroute` | Weg der Pakete verfolgen (Hops) |\n| `nslookup` | DNS-Namen auflösen (IP finden) |\n| `ipconfig` / `ip a` | Eigene IP-Konfiguration anzeigen |\n| `arp` | MAC-Adressen zu IPs anzeigen |\n| **Wireshark** | Paketanalyse (Sniffer) |",
-    "tags": [
-      "Netzwerk",
-      "Troubleshooting",
-      "Diagnose",
-      "ping",
-      "traceroute",
-      "nslookup"
-    ]
+    "answer": "| Tool | Funktion |\n|------|----------|\n| `ping` | Erreichbarkeit prüfen (ICMP) |\n| `tracert` / `traceroute` | Weg der Pakete verfolgen (Hops) |\n| `nslookup` | DNS-Namen auflösen (IP finden) |\n| `ipconfig` / `ip a` | Eigene IP-Konfiguration anzeigen |\n| `arp` | MAC-Adressen zu IPs anzeigen |\n| **Wireshark** | Paketanalyse (Sniffer) |"
   },
   {
     "id": 86,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.6 Konsolenbefehle",
-    "type": "vergleich",
-    "difficulty": 2,
     "question": "Welche wichtigen Konsolenbefehle gibt es für Windows und Linux?",
-    "answer": "### Datei-Operationen\n| Funktion | Windows (CMD) | Linux (Bash) |\n|----------|---------------|--------------|\n| Anzeigen | `dir` | `ls` (-l) |\n| Kopieren | `copy` / `robocopy` | `cp` |\n| Verschieben | `move` | `mv` |\n| Löschen | `del` | `rm` |\n| Rechte | `icacls` | `chmod` / `chown` |\n\n### Netzwerk\n| Funktion | Windows | Linux |\n|----------|---------|-------|\n| IP-Config | `ipconfig` | `ip a` / `ifconfig` |\n| Verb. testen | `ping` | `ping` |\n| Routing | `tracert` | `traceroute` |\n| DNS | `nslookup` | `dig` / `nslookup` |",
-    "tags": [
-      "Konsolenbefehle",
-      "Windows",
-      "Linux",
-      "Netzwerk",
-      "Dateisystem"
-    ]
+    "answer": "### Datei-Operationen\n| Funktion | Windows (CMD) | Linux (Bash) |\n|----------|---------------|--------------|\n| Anzeigen | `dir` | `ls` (-l) |\n| Kopieren | `copy` / `robocopy` | `cp` |\n| Verschieben | `move` | `mv` |\n| Löschen | `del` | `rm` |\n| Rechte | `icacls` | `chmod` / `chown` |\n\n### Netzwerk\n| Funktion | Windows | Linux |\n|----------|---------|-------|\n| IP-Config | `ipconfig` | `ip a` / `ifconfig` |\n| Verb. testen | `ping` | `ping` |\n| Routing | `tracert` | `traceroute` |\n| DNS | `nslookup` | `dig` / `nslookup` |"
   },
   {
     "id": 87,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.7 Multitasking und Prozesse",
-    "type": "definition",
-    "difficulty": 2,
     "question": "Was ist der Unterschied zwischen Prozess, Thread und Task sowie kooperativem und präemptivem Multitasking?",
-    "answer": "### Definitionen\n- **Prozess:** Laufendes Programm, eigener Speicher, vom OS verwaltet.\n- **Thread:** Leichtgewichtiger Teil eines Prozesses, teilt sich Speicher mit anderen Threads.\n- **Task:** Aufgabe (Prozess oder Thread).\n\n### Multitasking-Arten\n| Art | Beschreibung |\n|-----|--------------|\n| **Kooperativ** | Prozesse geben CPU *freiwillig* ab (veraltet, Blockadegefahr) |\n| **Präemptiv** | OS entzieht CPU nach Zeitintervall (*Time Slicing*) – Standard heute (Win, Lin, Mac) |",
-    "tags": [
-      "Betriebssystem",
-      "Prozess",
-      "Thread",
-      "Multitasking",
-      "Scheduler"
-    ]
+    "answer": "### Definitionen\n- **Prozess:** Laufendes Programm, eigener Speicher, vom OS verwaltet.\n- **Thread:** Leichtgewichtiger Teil eines Prozesses, teilt sich Speicher mit anderen Threads.\n- **Task:** Aufgabe (Prozess oder Thread).\n\n### Multitasking-Arten\n| Art | Beschreibung |\n|-----|--------------|\n| **Kooperativ** | Prozesse geben CPU *freiwillig* ab (veraltet, Blockadegefahr) |\n| **Präemptiv** | OS entzieht CPU nach Zeitintervall (*Time Slicing*) – Standard heute (Win, Lin, Mac) |"
   },
   {
     "id": 88,
     "topic": "4. Installation und Konfiguration",
     "subtopic": "4.8 Linux-Dateisystem und Rechte",
-    "type": "definition",
-    "difficulty": 2,
     "question": "Wie ist das Linux-Dateisystem aufgebaut und wie funktionieren Dateirechte?",
-    "answer": "### Wichtige Verzeichnisse\n| Pfad | Inhalt |\n|------|--------|\n| `/` | **Root** (Wurzel) |\n| `/home` | Benutzerdaten |\n| `/etc` | Konfigurationen |\n| `/var` | Logs, Mail, Datenbanken |\n| `/root` | Admin-Home |\n| `/bin` | Systembefehle |\n\n### Dateirechte (`chmod`)\nRechte: **r**ead (4), **w**rite (2), e**x**ecute (1)\n\nBsp: `chmod 755 datei`\n- **Besitzer (7):** r+w+x (4+2+1)\n- **Gruppe (5):** r+x (4+0+1)\n- **Andere (5):** r+x (4+0+1)\n\n`chown user:group datei` → Besitzer ändern",
-    "tags": [
-      "Betriebssystem",
-      "Linux",
-      "Dateisystem",
-      "chmod",
-      "Rechte",
-      "Verzeichnisse"
-    ]
+    "answer": "### Wichtige Verzeichnisse\n| Pfad | Inhalt |\n|------|--------|\n| `/` | **Root** (Wurzel) |\n| `/home` | Benutzerdaten |\n| `/etc` | Konfigurationen |\n| `/var` | Logs, Mail, Datenbanken |\n| `/root` | Admin-Home |\n| `/bin` | Systembefehle |\n\n### Dateirechte (`chmod`)\nRechte: **r**ead (4), **w**rite (2), e**x**ecute (1)\n\nBsp: `chmod 755 datei`\n- **Besitzer (7):** r+w+x (4+2+1)\n- **Gruppe (5):** r+x (4+0+1)\n- **Andere (5):** r+x (4+0+1)\n\n`chown user:group datei` → Besitzer ändern"
   }
 ]

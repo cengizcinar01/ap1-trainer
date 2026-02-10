@@ -12,14 +12,6 @@ const WikiView = (() => {
 
   const SEARCH_ICON = `<svg class="wiki-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`;
 
-  // --- Type label mapping ---
-  const TYPE_LABELS = {
-    definition: 'Definition',
-    vergleich: 'Vergleich',
-    praxis: 'Praxis',
-    berechnung: 'Berechnung',
-  };
-
   // --- Helpers ---
 
   function slugify(str) {
@@ -42,7 +34,7 @@ const WikiView = (() => {
   function buildSearchIndex(cards) {
     return cards.map((card) => ({
       card,
-      text: `${card.question} ${card.answer} ${(card.tags || []).join(' ')}`.toLowerCase(),
+      text: `${card.question} ${card.answer}`.toLowerCase(),
     }));
   }
 
@@ -59,35 +51,13 @@ const WikiView = (() => {
     return results;
   }
 
-  function renderDifficultyDots(difficulty) {
-    return Array.from(
-      { length: 3 },
-      (_, i) =>
-        `<span class="wiki-article-difficulty-dot ${i < difficulty ? 'active' : ''}"></span>`
-    ).join('');
-  }
-
   function renderArticle(card) {
-    const typeLabel = TYPE_LABELS[card.type] || card.type || '';
-    const dataType = card.type || 'definition';
-    const tags = (card.tags || [])
-      .map(
-        (t) =>
-          `<span class="wiki-article-tag">${CardRenderer.escapeHtml(t)}</span>`
-      )
-      .join('');
-
     return `
       <article class="wiki-article collapsed" id="card-${card.id}" data-card-id="${card.id}">
         <header class="wiki-article-header">
           <div class="wiki-article-title-row">
             <h3 class="wiki-article-title">${CardRenderer.escapeHtml(card.question)}</h3>
             <svg class="wiki-article-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="wiki-article-meta">
-            ${typeLabel ? `<span class="wiki-article-type" data-type="${dataType}">${typeLabel}</span>` : ''}
-            <div class="wiki-article-difficulty">${renderDifficultyDots(card.difficulty)}</div>
-            ${tags ? `<div class="wiki-article-tags">${tags}</div>` : ''}
           </div>
         </header>
         <div class="wiki-article-body flashcard-answer">${CardRenderer.formatAnswer(card.answer)}</div>
