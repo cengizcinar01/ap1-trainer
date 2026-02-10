@@ -24,6 +24,7 @@ const Sidebar = (() => {
     gantt: DOT_ICON,
     wiki: DOT_ICON,
     communication: DOT_ICON,
+    osi: DOT_ICON,
     menu: `<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
     pseudocode: DOT_ICON,
   };
@@ -132,6 +133,10 @@ const Sidebar = (() => {
         <a href="#/modules/communication" class="nav-item ${currentRoute.startsWith('/modules/communication') ? 'active' : ''}" data-route="/modules/communication">
           <span class="nav-item-icon">${ICONS.communication}</span>
           4-Ohren-Modell
+        </a>
+        <a href="#/modules/osi" class="nav-item ${currentRoute.startsWith('/modules/osi') ? 'active' : ''}" data-route="/modules/osi">
+          <span class="nav-item-icon">${ICONS.osi}</span>
+          OSI-Modell
         </a>
       </nav>
 `;
