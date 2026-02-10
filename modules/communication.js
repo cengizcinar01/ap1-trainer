@@ -311,7 +311,7 @@ const CommunicationView = (() => {
 
         <nav class="module-tabs">
           <button class="module-tab ${currentTab === 'explanation' ? 'active' : ''}" data-tab="explanation">Anleitung</button>
-          <button class="module-tab ${currentTab === 'training' ? 'active' : ''}" data-tab="training">Training</button>
+          <button class="module-tab ${currentTab === 'training' ? 'active' : ''}" data-tab="training">Übung</button>
           <button class="module-tab ${currentTab === 'quiz' ? 'active' : ''}" data-tab="quiz">Quiz</button>
         </nav>
 
@@ -342,8 +342,6 @@ const CommunicationView = (() => {
     const content = document.getElementById('commContent');
     if (!content) return;
 
-    cleanup();
-
     switch (currentTab) {
       case 'explanation':
         renderExplanation(content);
@@ -365,16 +363,16 @@ const CommunicationView = (() => {
     container.innerHTML = `
       <div class="module-explanation">
         <div class="module-exercise-card">
-          <h3 class="module-section-title">Kommunikation verstehen</h3>
+          <h3 class="module-section-title">Was ist das 4-Ohren-Modell?</h3>
           <p class="module-text">
             Das <strong>Vier-Seiten-Modell</strong> von Friedemann Schulz von Thun besagt, dass jede Nachricht
             auf vier Ebenen gleichzeitig gesendet und empfangen wird. Ein Sender hat "vier Schnaebel",
             ein Empfaenger "vier Ohren".
           </p>
-          <p class="module-text">
+          <div class="module-info-box">
             Haeufige Missverstaendnisse entstehen, wenn der Sender eine Nachricht auf einer Ebene meint (z.B. Sache),
             der Empfaenger sie aber auf einer anderen Ebene hoert (z.B. Beziehung).
-          </p>
+          </div>
         </div>
 
         <div class="comm-square-container">
@@ -464,7 +462,7 @@ const CommunicationView = (() => {
 
     container.innerHTML = `
       <div class="scenario-nav">
-        <span class="scenario-nav-label">Szenarien</span>
+        <span class="scenario-nav-label">Aufgaben</span>
         <div class="scenario-nav-controls">
           <button class="scenario-nav-btn" id="prevScen" ${currentScenarioIdx === 0 ? 'disabled' : ''}>&larr;</button>
           <span class="scenario-nav-current">${currentScenarioIdx + 1} / ${SCENARIOS.length}</span>
@@ -795,7 +793,7 @@ const CommunicationView = (() => {
     `;
 
     container.querySelectorAll('.module-quiz-option').forEach((opt) => {
-      const handler = () => {
+      opt.addEventListener('click', () => {
         const qi = +opt.dataset.qi;
         const oi = +opt.dataset.oi;
         const card = opt.closest('.module-quiz-card');
@@ -825,9 +823,7 @@ const CommunicationView = (() => {
         if (answered === QUIZ_QUESTIONS.length) {
           showCommQuizResult(score);
         }
-      };
-      opt.addEventListener('click', handler);
-      cleanup_fns.push(() => opt.removeEventListener('click', handler));
+      });
     });
   }
 
@@ -849,9 +845,9 @@ const CommunicationView = (() => {
     `;
     const btn = document.getElementById('commRestartQuiz');
     if (btn) {
-      const handler = () => renderQuiz(document.getElementById('commContent'));
-      btn.addEventListener('click', handler);
-      cleanup_fns.push(() => btn.removeEventListener('click', handler));
+      btn.addEventListener('click', () =>
+        renderQuiz(document.getElementById('commContent'))
+      );
     }
   }
 
