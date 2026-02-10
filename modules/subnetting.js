@@ -39,6 +39,12 @@ const SubnettingView = (() => {
       description:
         'Verstehe die Zuordnung von IP- zu MAC-Adressen (Address Resolution Protocol) im LAN.',
     },
+    {
+      id: 'assignment',
+      title: 'IP-Zuweisung',
+      description:
+        'Ermittle eine gültige und freie IP-Adresse für ein neues Endgerät in einem bestehenden Netzwerk.',
+    },
   ];
 
   // ============================================================
@@ -360,6 +366,41 @@ const SubnettingView = (() => {
     };
   }
 
+  function generateAssignmentExercise() {
+    const netPart = `172.161.${randomInt(1, 250)}`;
+    const routerIp = `${netPart}.1`;
+    const switchIp = `${netPart}.10`;
+    const cidr = 24;
+
+    const invalidIps = [
+      { ip: `${netPart}.0`, reason: 'Netz-ID (nicht für Endgeräte)' },
+      {
+        ip: `${netPart}.255`,
+        reason: 'Broadcast-Adresse (nicht für Endgeräte)',
+      },
+      { ip: routerIp, reason: 'Bereits vom Router belegt' },
+      { ip: switchIp, reason: 'Bereits vom Switch belegt' },
+      { ip: `172.160.10.5`, reason: 'Falsches Subnetz' },
+    ];
+
+    const validIps = [
+      `${netPart}.${randomInt(2, 9)}`,
+      `${netPart}.${randomInt(11, 254)}`,
+      `${netPart}.${randomInt(11, 254)}`,
+    ];
+
+    return {
+      type: 'assignment',
+      routerIp,
+      switchIp,
+      cidr,
+      netPart,
+      invalidIps,
+      validIps,
+      sol: validIps[0],
+    };
+  }
+
   // ============================================================
   // RENDER LOGIC
   // ============================================================
@@ -457,6 +498,22 @@ const SubnettingView = (() => {
             <strong>Herkunft:</strong> Die Adresse wurde direkt aus der 48-Bit MAC-Adresse des Geraets generiert.
           </div>
         </div>
+
+        <div class="module-exercise-card">
+          <h3 class="module-section-title">5. IP-Zuweisung: Ein Gerät ins Netz bringen</h3>
+          <p class="module-text">Stell dir ein Netzwerk wie ein Haus vor. Damit die Post (Daten) ankommt, braucht jedes Zimmer eine eindeutige Nummer.</p>
+          
+          <div class="module-info-box">
+            <strong>Die 3 goldenen Regeln:</strong><br>
+            1. <strong>Subnetz-Check:</strong> Der PC muss im selben Bereich sein (z.B. alle fangen mit 172.161.10.x an).<br>
+            2. <strong>Reservierte Nummern:</strong> Die allererste (.0) und die allerletzte (.255) Adresse eines Bereichs darfst du nie einem PC geben.<br>
+            3. <strong>Kein Streit:</strong> Jede Nummer darf nur einmal vorkommen. Wenn der Router die .1 hat, ist sie für den PC gesperrt.
+          </div>
+
+          <div class="module-tip-box">
+            <strong>Tipp für Anfänger:</strong> Das <strong>Standard-Gateway</strong> ist meistens der Router (deine "Tür" nach draußen). PCs bekommen ihre Adresse oft automatisch via <strong>DHCP</strong>, aber in der Prüfung musst du sie oft manuell bestimmen.
+          </div>
+        </div>
       </div>
     `;
   }
@@ -487,6 +544,7 @@ const SubnettingView = (() => {
     else if (sc.id === 'split') renderSplit(exContent);
     else if (sc.id === 'check') renderCheck(exContent);
     else if (sc.id === 'ipv6') renderIPv6(exContent);
+    else if (sc.id === 'assignment') renderAssignment(exContent);
     else renderARP(exContent);
 
     setupNav(container);
@@ -1118,6 +1176,81 @@ const SubnettingView = (() => {
       const solEl = container.querySelector('#arpSolution');
       solEl.style.display = solEl.style.display === 'none' ? 'block' : 'none';
     });
+  }
+
+  function renderAssignment(container) {
+    if (!currentExercise || currentExercise.type !== 'assignment') {
+      currentExercise = generateAssignmentExercise();
+    }
+    const ex = currentExercise;
+
+    const allOptions = [
+      ...ex.validIps.map((ip) => ({ ip, valid: true })),
+      ...ex.invalidIps.map((obj) => ({ ...obj, valid: false })),
+    ].sort(() => Math.random() - 0.5);
+
+    container.innerHTML = `
+      <div class="module-info-box" style="margin-bottom: var(--space-6)">
+        <strong>Netzwerk-Informationen:</strong><br>
+        • Router (Gateway): <b>${ex.routerIp}</b><br>
+        • Switch (Management): <b>${ex.switchIp}</b><br>
+        • Netzmaske: <b>/24</b> (255.255.255.0)
+      </div>
+
+      <p class="module-exercise-question">Wählen Sie eine <b>gültige und freie</b> IPv4-Adresse für einen neuen PC im LAN aus:</p>
+
+      <div class="assignment-options" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-3); margin-top: var(--space-4)">
+        ${allOptions
+          .map(
+            (opt, i) => `
+          <button class="subnet-btn-small assignment-opt" data-idx="${i}" style="padding: var(--space-3); font-family: var(--font-mono);">${opt.ip}</button>
+        `
+          )
+          .join('')}
+      </div>
+
+      <div id="assignmentFeedback" style="display:none; margin-top: var(--space-6)"></div>
+      
+      <div class="module-actions" style="margin-top: var(--space-8)">
+        <button class="btn" id="btnNextAssignment">Neu</button>
+      </div>
+    `;
+
+    container.querySelectorAll('.assignment-opt').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const opt = allOptions[parseInt(btn.dataset.idx, 10)];
+        const feedbackEl = container.querySelector('#assignmentFeedback');
+
+        container.querySelectorAll('.assignment-opt').forEach((b) => {
+          b.classList.remove('selected', 'correct', 'wrong');
+        });
+        btn.classList.add('selected');
+
+        if (opt.valid) {
+          btn.classList.add('correct');
+          feedbackEl.innerHTML = `
+            <div class="module-feedback module-feedback-success">
+              <strong>Korrekt!</strong> ${opt.ip} ist eine gültige Host-Adresse in diesem Subnetz und wird noch nicht verwendet.
+            </div>
+          `;
+        } else {
+          btn.classList.add('wrong');
+          feedbackEl.innerHTML = `
+            <div class="module-feedback module-feedback-error">
+              <strong>Falsch.</strong> ${opt.ip} kann nicht verwendet werden: ${opt.reason}.
+            </div>
+          `;
+        }
+        feedbackEl.style.display = 'block';
+      });
+    });
+
+    container
+      .querySelector('#btnNextAssignment')
+      .addEventListener('click', () => {
+        currentExercise = generateAssignmentExercise();
+        renderAssignment(container);
+      });
   }
 
   function cleanup() {

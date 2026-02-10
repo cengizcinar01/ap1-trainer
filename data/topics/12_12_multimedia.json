@@ -7,13 +7,7 @@
     "difficulty": 2,
     "question": "Was sind ASCII, Unicode und UTF-8?",
     "answer": "### Zeichensätze\n| Standard | Bit/Zeichen | Umfang | Beispiel |\n|---|---|---|---|\n| **ASCII** | 7 Bit | 128 (EN) | `A` (65) |\n| **Unicode** | Flexibel | >140k (Welt) | `😊` (U+1F60A) |\n| **UTF-8** | 1-4 Byte | Unicode-Kodierung | Standard im Web |\n\n💡 **UTF-8** ist abwärtskompatibel zu ASCII.",
-    "tags": [
-      "Multimedia",
-      "ASCII",
-      "Unicode",
-      "UTF-8",
-      "Zeichensatz"
-    ]
+    "tags": ["Multimedia", "ASCII", "Unicode", "UTF-8", "Zeichensatz"]
   },
   {
     "id": 242,
@@ -58,14 +52,7 @@
     "difficulty": 3,
     "question": "Wie berechnet man Dateigrößen von Bildern, Audio und Video?",
     "answer": "### Formeln (Unkomprimiert)\n\n🖼 **Bild:** `Breite × Höhe × Farbtiefe`\n- *Bsp:* 1920×1080 × 3 Byte (24 Bit) ≈ 6 MB\n\n🎵 **Audio:** `Abtastrate × Bit × Kanäle × Zeit`\n- *Bsp:* 44.100 Hz × 16 Bit × 2 × 60s ≈ 10 MB/min\n\n🎬 **Video:** `Bildgröße × FPS × Zeit`\n- *Bsp:* 6 MB (Bild) × 30 FPS × 1s ≈ 180 MB/s",
-    "tags": [
-      "Multimedia",
-      "Berechnung",
-      "Dateigröße",
-      "Bild",
-      "Audio",
-      "Video"
-    ]
+    "tags": ["Multimedia", "Berechnung", "Dateigröße", "Bild", "Audio", "Video"]
   },
   {
     "id": 245,
@@ -92,13 +79,7 @@
     "difficulty": 2,
     "question": "Was ist Sampling und wie funktioniert die Digitalisierung von Audio?",
     "answer": "Umwandlung analoger Wellen in digitale Nullen & Einsen.\n\n### Parameter\n- **Abtastrate (Hz):** Messungen pro Sekunde (CD: 44.1 kHz)\n- **Bit-Tiefe:** Genauigkeit pro Messung (CD: 16 Bit)\n- **Kanäle:** Mono, Stereo (2), Surround (5.1)\n\n### Nyquist-Theorem\nAbtastrate muss **doppelt so hoch** sein wie höchste Frequenz.\n(Mensch hört bis 20kHz → Rate > 40kHz)",
-    "tags": [
-      "Multimedia",
-      "Audio",
-      "Sampling",
-      "Abtastrate",
-      "MP3"
-    ]
+    "tags": ["Multimedia", "Audio", "Sampling", "Abtastrate", "MP3"]
   },
   {
     "id": 247,
@@ -108,14 +89,7 @@
     "difficulty": 1,
     "question": "Welche Videoauflösungen und Codecs gibt es?",
     "answer": "### Auflösungen\n- **Full HD:** 1920 × 1080\n- **4K (UHD):** 3840 × 2160\n\n### Codecs (Komprimierung)\n- **H.264:** Standard, hohe Kompatibilität\n- **H.265 (HEVC):** Bessere Kompression, rechenintensiv\n- **AV1:** Neu, offen, effizient\n\n📦 **Container:** MP4, MKV, MOV (Enthalten Video, Audio, Subs)",
-    "tags": [
-      "Multimedia",
-      "Video",
-      "Auflösung",
-      "HD",
-      "4K",
-      "Codec"
-    ]
+    "tags": ["Multimedia", "Video", "Auflösung", "HD", "4K", "Codec"]
   },
   {
     "id": 248,
@@ -141,14 +115,6 @@
     "difficulty": 2,
     "question": "Wie ist eine URL aufgebaut und welche Web-Grundlagen gibt es?",
     "answer": "### URL-Aufbau\n`https://www.example.com/pfad?suche=xyz#anker`\n1. **Protokoll:** `https`\n2. **Host:** `www.example.com`\n3. **Pfad:** `/pfad`\n4. **Query:** `?suche=xyz`\n\n### Web-Technologien\n- **HTML:** Struktur (Skelett)\n- **CSS:** Design (Kleidung)\n- **JS:** Funktion (Muskeln)\n- **CMS:** Inhalte verwalten (Wordpress)",
-    "tags": [
-      "Internet",
-      "URL",
-      "HTML",
-      "CSS",
-      "Responsive",
-      "CMS",
-      "Impressum"
-    ]
+    "tags": ["Internet", "URL", "HTML", "CSS", "Responsive", "CMS", "Impressum"]
   }
 ]

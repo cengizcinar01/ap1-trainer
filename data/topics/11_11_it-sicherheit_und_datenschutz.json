@@ -39,12 +39,7 @@
     "difficulty": 2,
     "question": "Was sind die Aufgaben eines IT-Sicherheitsbeauftragten?",
     "answer": "Verantwortlicher für Informationssicherheit (CISO).\n\n### Aufgaben\n- **Erstellen:** Sicherheitskonzepte & Richtlinien\n- **Überwachen:** Einhaltung der Regeln\n- **Schulen:** Mitarbeiter sensibilisieren\n- **Melden:** Bericht an Geschäftsleitung\n- **Analysieren:** Risiken & SChwachstellen bewerten",
-    "tags": [
-      "IT-Sicherheit",
-      "ITSB",
-      "Sicherheitsbeauftragter",
-      "Aufgaben"
-    ]
+    "tags": ["IT-Sicherheit", "ITSB", "Sicherheitsbeauftragter", "Aufgaben"]
   },
   {
     "id": 202,
@@ -54,12 +49,7 @@
     "difficulty": 2,
     "question": "Was sind die Aufgaben eines Datenschutzbeauftragten?",
     "answer": "Überwacher des Datenschutzes (DSGVO).\n\n### Aufgaben\n- **Überwachung:** Einhaltung DSGVO/BDSG\n- **Beratung:** Geschäftsleitung & Mitarbeiter\n- **Schulung:** Sensibilisierung\n- **Kontakt:** Ansprechpartner für Behörden & Betroffene\n- **Verzeichnis:** Prüfung des Verarbeitungsverzeichnisses",
-    "tags": [
-      "IT-Sicherheit",
-      "Datenschutz",
-      "DSB",
-      "DSGVO"
-    ]
+    "tags": ["IT-Sicherheit", "Datenschutz", "DSB", "DSGVO"]
   },
   {
     "id": 203,
@@ -99,12 +89,7 @@
     "difficulty": 3,
     "question": "Was ist das BSI IT-Grundschutz-Kompendium?",
     "answer": "Standardwerk des BSI für IT-Sicherheit.\n\n### Aufbau (Bausteine)\n- **ISMS:** Sicherheitsmanagement\n- **ORP:** Organisation & Personal\n- **CON:** Konzeption & Vorgehensweise\n- **OPS:** Betrieb\n- **DER:** Detektion & Reaktion\n- **APP:** Anwendungen\n- **SYS:** IT-Systeme\n- **NET:** Netze\n- **INF:** Infrastruktur",
-    "tags": [
-      "IT-Sicherheit",
-      "BSI",
-      "IT-Grundschutz",
-      "Bausteine"
-    ]
+    "tags": ["IT-Sicherheit", "BSI", "IT-Grundschutz", "Bausteine"]
   },
   {
     "id": 206,
@@ -114,13 +99,7 @@
     "difficulty": 3,
     "question": "Welche Datenschutzgesetze gibt es und welche Prüfpunkte sind relevant?",
     "answer": "### Gesetze\n- **DSGVO:** EU-weit (einheitlich)\n- **BDSG:** Deutschland (ergänzend)\n\n### Checkliste\n1. **Rechtsgrundlage:** Erlaubnis oder Einwilligung?\n2. **Transparenz:** Info an Betroffene (Art. 13/14)\n3. **Betroffenenrechte:** Auskunft, Löschung etc.\n4. **TOMs:** Sicherheit gewährleistet?\n5. **Meldepflicht:** Panne binnen 72h melden?",
-    "tags": [
-      "IT-Sicherheit",
-      "Datenschutz",
-      "DSGVO",
-      "BDSG",
-      "Recht"
-    ]
+    "tags": ["IT-Sicherheit", "Datenschutz", "DSGVO", "BDSG", "Recht"]
   },
   {
     "id": 207,
@@ -130,12 +109,7 @@
     "difficulty": 2,
     "question": "Was sind personenbezogene Daten und welche besonderen Kategorien gibt es?",
     "answer": "Infos über eine identifizierte/identifizierbare Person.\n\n### Beispiele\n- **Direkt:** Name, E-Mail, Telefon\n- **Indirekt:** IP-Adresse, Personalnummer, KFZ-Kennzeichen\n\n### Besondere Kategorien (Art. 9)\n⚠️ **Besonders geschützt:**\n- Gesundheit, Biometrie, Genetik\n- Religion, Politik, Ethnie",
-    "tags": [
-      "IT-Sicherheit",
-      "Datenschutz",
-      "Personenbezogene Daten",
-      "DSGVO"
-    ]
+    "tags": ["IT-Sicherheit", "Datenschutz", "Personenbezogene Daten", "DSGVO"]
   },
   {
     "id": 208,
@@ -161,13 +135,7 @@
     "difficulty": 3,
     "question": "Was sind die Voraussetzungen einer gültigen Einwilligung nach DSGVO?",
     "answer": "Erlaubnis zur Verarbeitung.\n\n### Anforderungen (Kopplungsverbot!)\n1. **Freiwillig:** Kein Zwang\n2. **Informiert:** Zweck muss klar sein\n3. **Unmissverständlich:** Aktive Handlung (Opt-In)\n4. **Widerrufbar:** Jederzeit stoppen\n\n❌ **Folgen bei Fehler:** Verarbeitung illegal → Bußgeld!",
-    "tags": [
-      "IT-Sicherheit",
-      "Datenschutz",
-      "Einwilligung",
-      "DSGVO",
-      "Recht"
-    ]
+    "tags": ["IT-Sicherheit", "Datenschutz", "Einwilligung", "DSGVO", "Recht"]
   },
   {
     "id": 210,
@@ -210,12 +178,7 @@
     "difficulty": 3,
     "question": "Wie wird eine Schutzbedarfsanalyse durchgeführt?",
     "answer": "Ermittlung: Welche Daten brauchen wie viel Schutz?\n\n### Schutzklassen (BSI)\n1. **Normal:** Auswirkung begrenzt (z.B. Telefonliste)\n2. **Hoch:** Auswirkung beträchtlich (z.B. Verträge, Krankheitstage)\n3. **Sehr hoch:** Existenzbedrohend (z.B. Geschäftsgeheimnisse, Patientendaten)\n\n📌 Bestimmt die **Härte** der Sicherungsmaßnahmen.",
-    "tags": [
-      "IT-Sicherheit",
-      "Schutzbedarfsanalyse",
-      "BSI",
-      "Risikobewertung"
-    ]
+    "tags": ["IT-Sicherheit", "Schutzbedarfsanalyse", "BSI", "Risikobewertung"]
   },
   {
     "id": 213,
@@ -240,12 +203,7 @@
     "difficulty": 3,
     "question": "Was ist ein ISMS (Information Security Management System)?",
     "answer": "**Information Security Management System** (nach ISO 27001).\n\n- Systematischer Ansatz (Plan-Do-Check-Act)\n- Ziel: Sicherheit dauerhaft gewährleisten\n- Beinhaltet Riisikoanalysen, Audits & Maßnahmen\n- Management-Aufgabe (Chefsache!)",
-    "tags": [
-      "IT-Sicherheit",
-      "ISMS",
-      "ISO 27001",
-      "Risikomanagement"
-    ]
+    "tags": ["IT-Sicherheit", "ISMS", "ISO 27001", "Risikomanagement"]
   },
   {
     "id": 215,
@@ -287,12 +245,7 @@
     "difficulty": 3,
     "question": "Was umfasst die Härtung eines Betriebssystems (OS Hardening)?",
     "answer": "System sicher machen (\"abhärten\").\n\n### Maßnahmen\n- **Dienste:** Unnötiges abschalten\n- **User:** Gast-Account deaktivieren\n- **Updates:** Immer aktuell halten\n- **Firewall:** Aktivieren & konfigurieren\n- **Passwörter:** Komplexität erzwingen",
-    "tags": [
-      "IT-Sicherheit",
-      "OS Hardening",
-      "Härtung",
-      "Betriebssystem"
-    ]
+    "tags": ["IT-Sicherheit", "OS Hardening", "Härtung", "Betriebssystem"]
   },
   {
     "id": 218,
@@ -302,12 +255,7 @@
     "difficulty": 3,
     "question": "Welche Backup-Arten und -Strategien gibt es?",
     "answer": "### Backup-Arten\n| Art | Was? | Restore? | Platz? |\n|---|---|---|---|\n| **Voll** | Alles | Schnell | Hoch |\n| **Inkrementell** | Seit letztem (irgendeinem) Backup | Langsam (Kette) | Niedrig |\n| **Differenziell** | Seit letztem Voll-Backup | Mittel | Mittel |\n\n### Strategie: 3-2-1\n- **3** Kopien\n- **2** Medien (HDD, Cloud)\n- **1** Extern (Offsite)",
-    "tags": [
-      "IT-Sicherheit",
-      "Backup",
-      "Datensicherung",
-      "3-2-1-Regel"
-    ]
+    "tags": ["IT-Sicherheit", "Backup", "Datensicherung", "3-2-1-Regel"]
   },
   {
     "id": 219,
@@ -335,12 +283,7 @@
     "difficulty": 3,
     "question": "Was sind Hashverfahren und welche Eigenschaften haben sie?",
     "answer": "Ein \"digitaler Fingerabdruck\".\n\n### Eigenschaften\n- **Einweg:** Nicht rückrechenbar\n- **Kollisionsfrei:** Kein Hash doppelt\n- **Feste Länge:** Immer gleich lang\n\n### Nutzung\n- Passwörter speichern (nie Klartext!)\n- Datei-Integrität prüfen (Checksum)",
-    "tags": [
-      "IT-Sicherheit",
-      "Hash",
-      "SHA-256",
-      "Kryptografie"
-    ]
+    "tags": ["IT-Sicherheit", "Hash", "SHA-256", "Kryptografie"]
   },
   {
     "id": 221,
@@ -350,13 +293,7 @@
     "difficulty": 3,
     "question": "Was sind digitale Zertifikate und wie funktioniert die PKI?",
     "answer": "Elektronischer Identitätsnachweis (z.B. für HTTPS).\n\n### Inhalt\n- Inhaber (Wer?)\n- Öffentlicher Schlüssel (Key)\n- Aussteller (CA)\n- Gültigkeit (Bis wann?)\n- Signatur der CA\n\n🏗 **PKI:** System zur Verwaltung von Zertifikaten.",
-    "tags": [
-      "IT-Sicherheit",
-      "Zertifikate",
-      "PKI",
-      "CA",
-      "TLS"
-    ]
+    "tags": ["IT-Sicherheit", "Zertifikate", "PKI", "CA", "TLS"]
   },
   {
     "id": 222,
@@ -366,11 +303,7 @@
     "difficulty": 1,
     "question": "Was ist ein digitales Zertifikat?",
     "answer": "Ein **elektronischer Nachweis**, der die Identität eines Teilnehmers (Person, Server, Organisation) mit einem **öffentlichen Schlüssel** verknüpft.\n\nVergleich: Wie ein digitaler Ausweis.",
-    "tags": [
-      "IT-Sicherheit",
-      "Zertifikate",
-      "Definition"
-    ]
+    "tags": ["IT-Sicherheit", "Zertifikate", "Definition"]
   },
   {
     "id": 223,
@@ -380,11 +313,7 @@
     "difficulty": 2,
     "question": "Nennen Sie zwei Einsatzgebiete digitaler Zertifikate.",
     "answer": "- **Verschlüsselung** von Verbindungen (z.B. HTTPS)\n- **Authentifizierung** von Servern oder Benutzern\n- **Digitale Signaturen** (E-Mails, Software)",
-    "tags": [
-      "IT-Sicherheit",
-      "Zertifikate",
-      "Praxis"
-    ]
+    "tags": ["IT-Sicherheit", "Zertifikate", "Praxis"]
   },
   {
     "id": 224,
@@ -394,11 +323,7 @@
     "difficulty": 2,
     "question": "Welche Aufgabe hat eine Zertifizierungsstelle (CA)?",
     "answer": "Die **CA (Certificate Authority)** prüft die Identität eines Antragstellers und stellt anschließend ein **digitales Zertifikat** aus (signiert es).",
-    "tags": [
-      "IT-Sicherheit",
-      "Zertifikate",
-      "CA"
-    ]
+    "tags": ["IT-Sicherheit", "Zertifikate", "CA"]
   },
   {
     "id": 225,
@@ -408,11 +333,7 @@
     "difficulty": 3,
     "question": "Warum ist der private Schlüssel NICHT im Zertifikat enthalten?",
     "answer": "Der **private Schlüssel** muss streng **geheim** bleiben. Wäre er im Zertifikat (das öffentlich ist), könnte jeder verschlüsselte Nachrichten entschlüsseln oder die Identität fälschen.",
-    "tags": [
-      "IT-Sicherheit",
-      "Kryptografie",
-      "Private Key"
-    ]
+    "tags": ["IT-Sicherheit", "Kryptografie", "Private Key"]
   },
   {
     "id": 226,
@@ -422,11 +343,7 @@
     "difficulty": 3,
     "question": "Was prüft ein Browser bei einem HTTPS-Zertifikat?",
     "answer": "1. **Gültigkeit** (Ist das Datum noch gültig?)\n2. **Vertrauenswürdige CA** (Ist der Aussteller bekannt?)\n3. **Übereinstimmung der Domain** (Passt die URL zum Zertifikat?)",
-    "tags": [
-      "IT-Sicherheit",
-      "HTTPS",
-      "Browser"
-    ]
+    "tags": ["IT-Sicherheit", "HTTPS", "Browser"]
   },
   {
     "id": 227,
@@ -436,11 +353,7 @@
     "difficulty": 1,
     "question": "Was bedeutet HTTPS?",
     "answer": "**Hypertext Transfer Protocol Secure**.\nEs bezeichnet eine verschlüsselte HTTP-Verbindung (meist über TLS/SSL).",
-    "tags": [
-      "IT-Sicherheit",
-      "Protokolle",
-      "HTTPS"
-    ]
+    "tags": ["IT-Sicherheit", "Protokolle", "HTTPS"]
   },
   {
     "id": 228,
@@ -450,11 +363,7 @@
     "difficulty": 2,
     "question": "Welche Rolle spielt der öffentliche Schlüssel im Zertifikat?",
     "answer": "Er wird verwendet zur:\n- **Verschlüsselung** von Daten (die nur der Besitzer mit dem privaten Schlüssel lesen kann)\n- **Prüfung** von digitalen Signaturen",
-    "tags": [
-      "IT-Sicherheit",
-      "Kryptografie",
-      "Public Key"
-    ]
+    "tags": ["IT-Sicherheit", "Kryptografie", "Public Key"]
   },
   {
     "id": 229,
@@ -464,11 +373,7 @@
     "difficulty": 1,
     "question": "Nennen Sie bekannte Zertifizierungsstellen (CAs).",
     "answer": "- **Let's Encrypt** (kostenlos, automatisiert)\n- **DigiCert**\n- **GlobalSign**",
-    "tags": [
-      "IT-Sicherheit",
-      "Zertifikate",
-      "CA"
-    ]
+    "tags": ["IT-Sicherheit", "Zertifikate", "CA"]
   },
   {
     "id": 230,
@@ -478,11 +383,7 @@
     "difficulty": 2,
     "question": "Was passiert, wenn ein Zertifikat abgelaufen ist?",
     "answer": "Der Browser stuft die Verbindung als **unsicher** ein und zeigt eine **Warnmeldung** an.\n\nDie Verschlüsselung funktioniert technisch oft noch, aber das **Vertrauen** in die Identität ist nicht mehr gegeben.",
-    "tags": [
-      "IT-Sicherheit",
-      "Zertifikate",
-      "Fehlerbehebung"
-    ]
+    "tags": ["IT-Sicherheit", "Zertifikate", "Fehlerbehebung"]
   },
   {
     "id": 231,
@@ -492,11 +393,7 @@
     "difficulty": 1,
     "question": "Warum sind digitale Zertifikate für Online-Shops wichtig?",
     "answer": "- Sie schützen **Kundendaten** (Verschlüsselung).\n- Sie ermöglichen **sichere Zahlungen**.\n- Sie schaffen **Vertrauen** beim Nutzer (Schloss-Symbol).",
-    "tags": [
-      "IT-Sicherheit",
-      "E-Commerce",
-      "Datenschutz"
-    ]
+    "tags": ["IT-Sicherheit", "E-Commerce", "Datenschutz"]
   },
   {
     "id": 232,
@@ -506,12 +403,7 @@
     "difficulty": 3,
     "question": "Was sind digitale Signaturen und wie funktionieren sie?",
     "answer": "Gewährleisten **Echtheit** und **Integrität**.\n\n### Ablauf\n1. **Hash** der Nachricht erstellen\n2. Hash mit **Privatem Schlüssel** verschlüsseln (=Signatur)\n3. Empfänger entschlüsselt mit **Öffentlichem Schlüssel**\n4. Vergleicht Hashwerte (stimmen überein = echt)\n\n✅ Nutzt asymmetrische Kryptografie.",
-    "tags": [
-      "IT-Sicherheit",
-      "Digitale Signaturen",
-      "Kryptografie",
-      "Hash"
-    ]
+    "tags": ["IT-Sicherheit", "Digitale Signaturen", "Kryptografie", "Hash"]
   },
   {
     "id": 233,
@@ -521,12 +413,7 @@
     "difficulty": 2,
     "question": "Was ist Zwei-Faktor-Authentifizierung (2FA) und was ist eine Passwort-Policy?",
     "answer": "Identitätsnachweis mit 2 Faktoren.\n\n### Faktoren (Wissen, Besitz, Sein)\n1. **Wissen:** Passwort, PIN\n2. **Besitz:** Smartphone, Hardware-Token\n3. **Sein:** Fingerabdruck, FaceID\n\n### Passwort-Policy\n- Mind. 12 Zeichen, Komplexität, kein Re-Use\n- **Besser:** Passphrasen & MFA nutzen!",
-    "tags": [
-      "IT-Sicherheit",
-      "Authentifizierung",
-      "2FA",
-      "Passwort-Policy"
-    ]
+    "tags": ["IT-Sicherheit", "Authentifizierung", "2FA", "Passwort-Policy"]
   },
   {
     "id": 234,
@@ -567,12 +454,7 @@
     "difficulty": 2,
     "question": "Was ist Social Engineering?",
     "answer": "Manipulation des Menschen (\"Human Hacking\").\n\n### Methoden\n- **Phishing:** \"Klicken Sie hier\" (Massen-Mail)\n- **Spear Phishing:** Gezielter Angriff auf Person\n- **CEO-Fraud:** \"Chef\" fordert Überweisung\n- **Tailgating:** Unbefugtes Mitgehen durch Tür\n- **Baiting:** USB-Stick als Köder ausgelegt\n\n🛡 **Schutz:** Awareness & \"Gesundes Misstrauen\".",
-    "tags": [
-      "IT-Sicherheit",
-      "Social Engineering",
-      "Phishing",
-      "Manipulation"
-    ]
+    "tags": ["IT-Sicherheit", "Social Engineering", "Phishing", "Manipulation"]
   },
   {
     "id": 237,

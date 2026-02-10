@@ -7,11 +7,7 @@
     "difficulty": 1,
     "question": "Was ist Künstliche Intelligenz (KI)?",
     "answer": "**KI** steht für **Künstliche Intelligenz** und umfasst alles, was Computer und Maschinen befähigt, menschenähnliche Intelligenzleistungen zu erbringen:\n\n- Mustererkennung\n- Verarbeiten natürlicher Sprache\n- Selbstständiges Lernen\n- Problemlösen",
-    "tags": [
-      "KI",
-      "Grundlagen",
-      "Definition"
-    ]
+    "tags": ["KI", "Grundlagen", "Definition"]
   },
   {
     "id": 2,
@@ -21,11 +17,7 @@
     "difficulty": 2,
     "question": "Was ist ein Neuronales Netzwerk?",
     "answer": "Ein **Neuronales Netzwerk** ist ein Algorithmus, welcher Daten verarbeitet – *nachgebaut* nach dem biologischen Neuronalen Netzwerk (Gehirn).",
-    "tags": [
-      "KI",
-      "Neuronales Netzwerk",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Neuronales Netzwerk", "Grundlagen"]
   },
   {
     "id": 3,
@@ -51,12 +43,7 @@
     "difficulty": 2,
     "question": "Was ist Overfitting bei Neuronalen Netzwerken?",
     "answer": "Von **Overfitting** spricht man, wenn ein Neuronales Netzwerk *zu gut* auf die Trainingsdaten trainiert wurde und somit **NUR** auf die Trainingsdaten angewendet werden kann.\n\n⚠️ Es kann nicht auf neue, unbekannte Daten generalisieren.",
-    "tags": [
-      "KI",
-      "Neuronales Netzwerk",
-      "Overfitting",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Neuronales Netzwerk", "Overfitting", "Grundlagen"]
   },
   {
     "id": 5,
@@ -66,11 +53,7 @@
     "difficulty": 1,
     "question": "Was ist Maschinelles Lernen?",
     "answer": "**Maschinelles Lernen** (Machine Learning) ist ein Teilbereich der KI.",
-    "tags": [
-      "KI",
-      "Machine Learning",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Machine Learning", "Grundlagen"]
   },
   {
     "id": 6,
@@ -80,12 +63,7 @@
     "difficulty": 2,
     "question": "Was ist Deep Learning / Deep Neural Network?",
     "answer": "Ein **Deep Neural Network** ist ein Neuronales Netzwerk mit vielen *Hidden/Zwischen-Layern*.",
-    "tags": [
-      "KI",
-      "Deep Learning",
-      "Neuronales Netzwerk",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Deep Learning", "Neuronales Netzwerk", "Grundlagen"]
   },
   {
     "id": 7,
@@ -95,12 +73,7 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen schwacher und starker KI?",
     "answer": "### Schwache KI\n\nEine Künstliche Intelligenz, welche **nicht selbstständig** handeln kann und Eingabe eines Menschen braucht.\n\n### Starke KI\n\nEine **selbst handelnde** KI, die nicht auf irgendeine menschliche Interaktion angewiesen ist.",
-    "tags": [
-      "KI",
-      "Schwache KI",
-      "Starke KI",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Schwache KI", "Starke KI", "Grundlagen"]
   },
   {
     "id": 8,
@@ -110,11 +83,7 @@
     "difficulty": 1,
     "question": "Was ist Generative AI?",
     "answer": "Eine **Generative KI** ist eine KI, welche kunstvolle Sachen generieren kann:\n\n- 📝 Text\n- 🖼️ Bild\n- 🎵 Ton\n- 🎬 Video",
-    "tags": [
-      "KI",
-      "Generative AI",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Generative AI", "Grundlagen"]
   },
   {
     "id": 9,
@@ -124,12 +93,7 @@
     "difficulty": 1,
     "question": "Was ist ein Deep Fake?",
     "answer": "Ein **Deep Fake** ist ein durch KI bearbeitetes Video/Bild.\n\n⚠️ Meistens wird das Gesicht und die Stimme einer anderen Person ersetzt.",
-    "tags": [
-      "KI",
-      "Deep Fake",
-      "Sicherheit",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Deep Fake", "Sicherheit", "Grundlagen"]
   },
   {
     "id": 10,
@@ -139,13 +103,7 @@
     "difficulty": 1,
     "question": "Nenne Beispiele für KI-Software im Alltag und in der Entwicklung.",
     "answer": "### 🏠 Alltag\n\n| Tool | Beschreibung |\n|------|-------------|\n| **DeepL** | Präziser KI-Übersetzer mit natürlichen Übersetzungen |\n| **Grammarly** | Prüft Rechtschreibung und Grammatik |\n| **Google Lens** | Erkennt Objekte, Text und Landmarken |\n| **Google Fotos** | Kategorisiert Bilder und erkennt Gesichter |\n\n### 💻 Entwicklung\n\n| Tool | Beschreibung |\n|------|-------------|\n| **GitHub Copilot** | KI-gestützte Code-Vorschläge |\n| **ChatGPT** | Code-Erklärungen, Debugging, Programmierkonzepte |",
-    "tags": [
-      "KI",
-      "Software",
-      "Alltag",
-      "Entwicklung",
-      "Grundlagen"
-    ]
+    "tags": ["KI", "Software", "Alltag", "Entwicklung", "Grundlagen"]
   },
   {
     "id": 11,
@@ -155,12 +113,7 @@
     "difficulty": 1,
     "question": "Was sind Bits und Bytes?",
     "answer": "**Bits und Bytes** sind die grundlegenden Maßeinheiten für digitale Daten.\n\n- **Bit (b)** – kleinste Informationseinheit: `0` oder `1`\n- **Byte (B)** – 8 Bits ergeben 1 Byte\n\n```\n8 Bit = 1 Byte\n```",
-    "tags": [
-      "Bits",
-      "Bytes",
-      "Grundlagen",
-      "Speicher"
-    ]
+    "tags": ["Bits", "Bytes", "Grundlagen", "Speicher"]
   },
   {
     "id": 12,
@@ -170,14 +123,7 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen dem dezimalen (SI) und binären (IEC) System bei Speichergrößen?",
     "answer": "### Dezimales System (SI) – Basis 10\n\n| Einheit | Wert |\n|---------|------|\n| 1 KB | 1.000 Byte |\n| 1 MB | 1.000.000 Byte |\n| 1 GB | 1.000.000.000 Byte |\n| 1 TB | 1.000.000.000.000 Byte |\n\n### Binäres System (IEC) – Basis 2\n\n| Einheit | Wert |\n|---------|------|\n| 1 KiB | 1.024 Byte |\n| 1 MiB | 1.048.576 Byte |\n| 1 GiB | 1.073.741.824 Byte |\n| 1 TiB | 1.099.511.627.776 Byte |",
-    "tags": [
-      "Bits",
-      "Bytes",
-      "SI",
-      "IEC",
-      "Speicher",
-      "Grundlagen"
-    ]
+    "tags": ["Bits", "Bytes", "SI", "IEC", "Speicher", "Grundlagen"]
   },
   {
     "id": 13,
@@ -187,11 +133,7 @@
     "difficulty": 1,
     "question": "Was sind Zahlensysteme und welche grundlegenden Zahlenformen gibt es?",
     "answer": "**Zahlensysteme** sind Methoden zur Darstellung von Zahlen.\n\n### Grundlegende Zahlenformen\n\n| Typ | Beispiel | Beschreibung |\n|-----|----------|--------------|\n| **Ganzzahlen** | `-3`, `0`, `42` | Ganze Zahlen ohne Bruchteil |\n| **Festkommazahlen** | `3.14`, `-0.001` | Feste Anzahl Dezimalstellen |\n| **Gleitkommazahlen** | `1.23e4` | Variable Dezimalstellen |\n| **Buchstaben** | `A`, `F` | In Hex-System verwendet |",
-    "tags": [
-      "Zahlensysteme",
-      "Grundlagen",
-      "Mathematik"
-    ]
+    "tags": ["Zahlensysteme", "Grundlagen", "Mathematik"]
   },
   {
     "id": 14,
@@ -252,11 +194,6 @@
     "difficulty": 2,
     "question": "Was ist der Unterschied zwischen ASCII und Unicode?",
     "answer": "### ASCII\n\nStandardisierte Codierung für lateinische Buchstaben und Zeichen.\n\n⚠️ Begrenzt auf **128/256 Zeichen**\n\n### Unicode\n\nUmfassende Codierung für Schriftzeichen vieler Sprachen und Symbole weltweit.\n\n✅ Unterstützt **alle Sprachen** und Emojis",
-    "tags": [
-      "Zeichencodierung",
-      "ASCII",
-      "Unicode",
-      "Grundlagen"
-    ]
+    "tags": ["Zeichencodierung", "ASCII", "Unicode", "Grundlagen"]
   }
 ]

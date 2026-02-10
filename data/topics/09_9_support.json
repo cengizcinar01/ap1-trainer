@@ -7,12 +7,7 @@
     "difficulty": 2,
     "question": "Welche Kommunikationsarten und -modelle gibt es im IT-Support?",
     "answer": "### Arten\n| Art | Beschreibung |\n|---|---|\n| **Verbal** | Wort & Schrift |\n| **Paraverbal** | Tonfall, Lautstärke |\n| **Nonverbal** | Körpersprache, Gestik |\n\n### Modelle\n- **4-Ohren:** Sache, Appell, Beziehung, Selbstoffenbarung\n- **Sender-Empfänger:** Codierung & Störungen\n- **Eisberg:** 20% Sache (sichtbar), 80% Beziehung (unsichtbar)",
-    "tags": [
-      "Support",
-      "Kommunikation",
-      "4-Ohren-Modell",
-      "Eisbergmodell"
-    ]
+    "tags": ["Support", "Kommunikation", "4-Ohren-Modell", "Eisbergmodell"]
   },
   {
     "id": 185,
@@ -22,12 +17,7 @@
     "difficulty": 2,
     "question": "Wie deeskaliert man ein Konfliktgespräch im IT-Support?",
     "answer": "- **Ruhe bewahren** & ausreden lassen\n- **Empathie** zeigen (\"Ich verstehe Ihren Ärger\")\n- **Versachlichen:** Problem von Person trennen\n- **Lösungsorientiert:** \"Wir finden eine Lösung\"\n- **Keine Schuldzusweisungen**",
-    "tags": [
-      "Support",
-      "Kommunikation",
-      "Deeskalation",
-      "Konflikt"
-    ]
+    "tags": ["Support", "Kommunikation", "Deeskalation", "Konflikt"]
   },
   {
     "id": 186,
@@ -69,12 +59,7 @@
     "difficulty": 1,
     "question": "Was ist ein Ticketsystem?",
     "answer": "Software zur **strukturierten** Bearbeitung von Anfragen.\n\n- **Issue-Tracker:** Fehlerverwaltung (Dev-Fokus)\n- **Helpdesk:** Kundenanfragen (Support-Fokus)",
-    "tags": [
-      "Support",
-      "Ticketsystem",
-      "Helpdesk",
-      "Issue-Tracking"
-    ]
+    "tags": ["Support", "Ticketsystem", "Helpdesk", "Issue-Tracking"]
   },
   {
     "id": 189,
@@ -101,11 +86,6 @@
     "difficulty": 2,
     "question": "Was ist ein Service Level Agreement (SLA)?",
     "answer": "Vertrag zwischen **Kunde** und **Provider**.\n\n### Inhalte\n- **Leistung:** Was wird erbracht?\n- **Verfügbarkeit:** z.B. 99,9% uptime\n- **Reaktionszeit:** Wie schnell muss Support antworten?\n- **Sanktionen:** Vertragsstrafen (Pönale)\n\n📝 **Wichtig:** Kunde hat **Mitwirkungspflicht** (Zugang gewähren).",
-    "tags": [
-      "Support",
-      "SLA",
-      "Service Level",
-      "Vertrag"
-    ]
+    "tags": ["Support", "SLA", "Service Level", "Vertrag"]
   }
 ]
