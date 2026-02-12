@@ -1,0 +1,193 @@
+/* ============================================================
+   sidebar.css — Modern Sidebar Design (Updated)
+   ============================================================ */
+
+/* --- Variables --- */
+:root {
+  --sidebar-w: 280px;
+  --sidebar-bg: var(--bg-secondary);
+  --sidebar-border: 1px solid var(--border-color);
+  --sidebar-item-h: 40px;
+  --sidebar-icon-size: 20px;
+  --sidebar-radius: var(--radius-md);
+  --sidebar-hover: var(--surface-hover);
+  --sidebar-active: rgba(var(--brand-primary-rgb), 0.1);
+  --sidebar-active-text: var(--brand-primary);
+  --sidebar-text: var(--text-secondary);
+  --sidebar-text-header: var(--text-tertiary);
+
+  --transition-smooth: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- Layout --- */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--sidebar-bg);
+  border-right: var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  transition: transform var(--transition-slow);
+  z-index: 50;
+  height: 100dvh;
+}
+
+.main-content {
+  margin-left: var(--sidebar-w);
+  transition: margin-left var(--transition-slow);
+}
+
+/* --- Header & Minimal Toggle --- */
+.sidebar-header {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.theme-minimal-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.theme-minimal-btn:hover {
+  background: var(--sidebar-hover);
+  color: var(--text-primary);
+  border-color: var(--text-tertiary);
+}
+
+.theme-minimal-btn .icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Scroll Area --- */
+.sidebar-nav-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.sidebar-nav-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-nav-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
+/* --- Navigation Groups --- */
+.sidebar-group {
+  margin-bottom: 24px;
+}
+
+.sidebar-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sidebar-text-header);
+  margin-bottom: 6px;
+  user-select: none;
+}
+
+.sidebar-group-header.collapsible {
+  cursor: pointer;
+}
+
+.sidebar-group-header.collapsible:hover {
+  color: var(--text-primary);
+}
+
+.sidebar-group-chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+  color: var(--text-tertiary);
+  transform: rotate(90deg); /* Standard: Offen -> Zeigt nach unten */
+}
+
+.sidebar-group.collapsed .sidebar-group-chevron {
+  transform: rotate(0deg); /* Collapsed: Geschlossen -> Zeigt nach rechts */
+}
+
+.sidebar-group.collapsed .sidebar-group-content {
+  display: none;
+}
+
+/* --- Nav Items --- */
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: var(--sidebar-item-h);
+  padding: 0 12px;
+  margin-bottom: 2px;
+  border-radius: var(--sidebar-radius);
+  color: var(--sidebar-text);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  background: transparent;
+}
+
+.nav-item:hover {
+  background: var(--sidebar-hover);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: var(--sidebar-active);
+  color: var(--sidebar-active-text);
+  font-weight: 600;
+}
+
+.nav-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sidebar-icon-size);
+  height: var(--sidebar-icon-size);
+  margin-right: 12px;
+  color: inherit;
+}
+
+.nav-item-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
