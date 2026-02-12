@@ -23,7 +23,19 @@
     "topic": "2. Hardware",
     "subtopic": "2.1 CPU",
     "question": "Welche Funktionsblöcke hat die Harvard-Architektur?",
-    "answer": "| Block | Funktion |\n|-------|----------|\n| **Rechenwerk (ALU)** | Führt arithmetische und logische Operationen durch |\n| **Leit- & Steuerwerk (CU)** | Kontrolliert den Ablauf der Befehle |\n| **Speicherwerk** | Getrennte Speicher für Daten und Programme |\n| **Ein-/Ausgabewerk (IO)** | Ein- und Ausgabe von Daten |\n\n✅ Die Harvard-Architektur verwendet **getrennte Busse** für Daten und Programme → höhere Verarbeitungsgeschwindigkeit."
+    "answer": "| Block | Funktion |\n|-------|----------|\n| **Rechenwerk (ALU)** | Führt arithmetische und logische Operationen durch |\n| **Leit- & Steuerwerk (CU)** | Kontrolliert den Ablauf der Befehle |\n| **Speicherwerk** | Getrennte Speicher für Daten und Programme |\n| **Ein-/Ausgabewerk (IO)** | Ein- und Ausgabe von Daten |\n\n✅ Die Harvard-Architektur verwendet **getrennte Busse** für Daten und Programme → höhere Verarbeitungsgeschwindigkeit.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Rechenwerk (ALU), Steuerwerk (CU), Ein-/Ausgabewerk",
+        "Gemeinsamer Speicher für Programme und Daten",
+        "Nur ein Bus für Daten und Programme",
+        "CPU, GPU und RAM in einem Block",
+        "Prozessor, Cache und Festplatte",
+        "Nur Steuerwerk und Rechenwerk"
+      ],
+      "correctIndices": [0]
+    }
   },
   {
     "id": 20,
@@ -31,7 +43,19 @@
     "subtopic": "2.1 CPU",
     "question": "Was sind die Vor- und Nachteile der Harvard-Architektur?",
     "answer": "### ✅ Vorteile\n\n- Höhere Geschwindigkeit\n- Weniger Zugriffskonflikte\n- Bessere Sicherheit\n\n### ❌ Nachteile\n\n- Komplexere Struktur\n- Höherer Hardwareaufwand\n- Geringere Flexibilität\n\n📍 **Anwendungsbereiche:** Eingebettete Systeme, Mikrocontroller",
-    "image_ref": "harvard_architektur_vorteile_nachteile.png"
+    "image_ref": "harvard_architektur_vorteile_nachteile.png",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Höhere Geschwindigkeit durch getrennte Busse",
+        "Gemeinsamer Speicher für Daten und Programme",
+        "Niedriger Hardwareaufwand",
+        "Weniger Zugriffskonflikte",
+        "Einfachere Struktur als Von-Neumann",
+        "Hauptsächlich für PCs verwendet"
+      ],
+      "correctIndices": [0, 3]
+    }
   },
   {
     "id": 21,
@@ -58,7 +82,7 @@
     "topic": "2. Hardware",
     "subtopic": "2.1 CPU",
     "question": "Was ist der Unterschied zwischen CISC und RISC Prozessorarchitekturen?",
-    "answer": "### CISC (Complex Instruction Set Computing)\n\n- Viele **komplexe** Befehle in Hardware\n- Ein Befehl kann komplexe Operationen ausführen\n- Einfachere Programmierung, aber **langsamere** CPU\n\n### RISC (Reduced Instruction Set Computing)\n\n- **Minimaler** Satz einfacher Befehle\n- Befehle in genau **einem Taktzyklus**\n- CPU ist **schneller** und energieeffizienter\n- Programme benötigen mehr Befehle",
+    "answer": "### CISC (Complex Instruction Set Computing)\n\n- Viele **komplexe** Befehle in Hardware\n- Ein Befehl kann komplexe Operationen ausführen\n- Einfachere Programmierung, aber **langsamere** CPUISC (Reduced Instruction\n\n### R Set Computing)\n\n- **Minimaler** Satz einfacher Befehle\n- Befehle in genau **einem Taktzyklus**\n- CPU ist **schneller** und energieeffizienter\n- Programme benötigen mehr Befehle",
     "quiz": {
       "type": "multiple-choice",
       "options": [
@@ -77,133 +101,361 @@
     "topic": "2. Hardware",
     "subtopic": "2.1 CPU",
     "question": "Was ist ein Bus in der CPU und welche Busarten gibt es?",
-    "answer": "Der **Bus** ist das System zur Datenübertragung innerhalb der CPU und zwischen Komponenten.\n\n| Busart | Funktion |\n|--------|----------|\n| **Datenbus** | Transportiert Daten zwischen CPU, RAM etc. |\n| **Adressbus** | Bestimmt Speicheradressen für Zugriffe |\n| **Steuerbus** | Überträgt Steuerbefehle zur Synchronisation |"
+    "answer": "Der **Bus** ist das System zur Datenübertragung innerhalb der CPU und zwischen Komponenten.\n\n| Busart | Funktion |\n|--------|----------|\n| **Datenbus** | Transportiert Daten zwischen CPU, RAM etc. |\n| **Adressbus** | Bestimmt Speicheradressen für Zugriffe |\n| **Steuerbus** | Überträgt Steuerbefehle zur Synchronisation |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Der Bus dient der Datenübertragung zwischen Komponenten.",
+        "Der Datenbus transportiert Daten.",
+        "Der Adressbus bestimmt Speicheradressen.",
+        "Der Steuerbus überträgt Steuerbefehle.",
+        "Es gibt nur einen einzigen Bus im Computer.",
+        "Der Bus speichert Daten dauerhaft."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 24,
     "topic": "2. Hardware",
     "subtopic": "2.2 Speicher (RAM)",
     "question": "Was ist RAM und welche Arten gibt es?",
-    "answer": "Der **Arbeitsspeicher** (RAM – Random Access Memory) dient als kurzfristiger Speicher für laufende Prozesse.\n\n⚠️ **Flüchtig** – verliert Inhalt beim Ausschalten\n\n### Arten\n\n| Typ | Eigenschaft | Verwendung |\n|-----|-------------|------------|\n| **SRAM** | Schnell, teuer | Cache-Speicher |\n| **DRAM** | Günstiger, langsamer | Hauptspeicher |\n| **DDR4/DDR5** | Aktuelle Standards | Desktop/Laptop |\n\n### Merkmale\n\n- **Kapazität:** Wie viele Programme gleichzeitig laufen\n- **Taktfrequenz:** Geschwindigkeit (z.B. `3200 MHz`)\n- **Latenz (CL):** Verzögerung bei Zugriffen"
+    "answer": "Der **Arbeitsspeicher** (RAM – Random Access Memory) dient als kurzfristiger Speicher für laufende Prozesse.\n\n⚠️ **Flüchtig** – verliert Inhalt beim Ausschalten\n\n### Arten\n\n| Typ | Eigenschaft | Verwendung |\n|-----|-------------|------------|\n| **SRAM** | Schnell, teuer | Cache-Speicher |\n| **DRAM** | Günstiger, langsamer | Hauptspeicher |\n| **DDR4/DDR5** | Aktuelle Standards | Desktop/Laptop |\n\n### Merkmale\n\n- **Kapazität:** Wie viele Programme gleichzeitig laufen\n- **Taktfrequenz:** Geschwindigkeit (z.B. `3200 MHz`)\n- **Latenz (CL):** Verzögerung bei Zugriffen",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "RAM ist flüchtig und verliert Daten bei Stromausfall.",
+        "SRAM ist schneller als DRAM.",
+        "DDR4 und DDR5 sind aktuelle RAM-Standards.",
+        "DRAM wird hauptsächlich als Cache-Speicher verwendet.",
+        "RAM speichert Daten dauerhaft.",
+        "SRAM ist günstiger als DRAM."
+      ],
+      "correctIndices": [0, 1, 2]
+    }
   },
   {
     "id": 25,
     "topic": "2. Hardware",
     "subtopic": "2.2 Speicher (RAM)",
     "question": "Wie rechnet man die Datenrate von DDR-RAM um? Berechne die Datenrate von DDR4-3200.",
-    "answer": "DDR-RAM überträgt pro Takt **zwei Datenpakete** (Double Data Rate).\n\nTypische Busbreite: `64 Bit = 8 Byte`\n\n### Formeln\n\n**Taktfrequenz → Datenrate:**\n```\nDatenrate (MB/s) = Taktfrequenz (MHz) × 2 × 8\n```\n\n**Beispiel DDR4-3200:**\n```\n3200 × 2 × 8 = 51.200 MB/s = 51,2 GB/s\n```\n\n**Datenrate → Taktfrequenz:**\n```\nTaktfrequenz (MHz) = Datenrate (MB/s) / 16\n```"
+    "answer": "DDR-RAM überträgt pro Takt **zwei Datenpakete** (Double Data Rate).\n\nTypische Busbreite: `64 Bit = 8 Byte`\n\n### Formeln\n\n**Taktfrequenz → Datenrate:**\n```\nDatenrate (MB/s) = Taktfrequenz (MHz) × 2 × 8\n```\n\n**Beispiel DDR4-3200:**\n```\n3200 × 2 × 8 = 51.200 MB/s = 51,2 GB/s\n```\n\n**Datenrate → Taktfrequenz:**\n```\nTaktfrequenz (MHz) = Datenrate (MB/s) / 16\n```",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Datenrate = Taktfrequenz × 2 × 8",
+        "DDR4-3200 hat eine Datenrate von 51,2 GB/s",
+        "DDR bedeutet 'Double Data Rate'.",
+        "Die Busbreite beträgt typischerweise 64 Bit.",
+        "Datenrate = Taktfrequenz × 8",
+        "DDR überträgt nur ein Datenpaket pro Takt."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 26,
     "topic": "2. Hardware",
     "subtopic": "2.3 Datenspeicher",
     "question": "Was sind die Unterschiede zwischen HDD und SSD?",
-    "answer": "### HDD (Hard Disk Drive)\n\nMechanische Festplatte mit magnetischen Platten\n\n| | |\n|---|---|\n| ✅ Vorteile | Günstig, hohe Speicherkapazität |\n| ❌ Nachteile | Langsam, empfindlich gegen Erschütterungen |\n\n### SSD (Solid State Drive)\n\nSpeicherchips ohne bewegliche Teile\n\n| | |\n|---|---|\n| ✅ Vorteile | Schnell, robust, leise |\n| ❌ Nachteile | Teurer, begrenzte Schreibzyklen |"
+    "answer": "### HDD (Hard Disk Drive)\n\nMechanische Festplatte mit magnetischen Platten\n\n| | |\n|---|---|\n| ✅ Vorteile | Günstig, hohe Speicherkapazität |\n| ❌ Nachteile | Langsam, empfindlich gegen Erschütterungen |\n\n### SSD (Solid State Drive)\n\nSpeicherchips ohne bewegliche Teile\n\n| | |\n|---|---|\n| ✅ Vorteile | Schnell, robust, leise |\n| ❌ Nachteile | Teurer, begrenzte Schreibzyklen |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "SSD ist schneller als HDD.",
+        "HDD hat bewegliche Teile, SSD nicht.",
+        "SSD ist unempfindlich gegen Erschütterungen.",
+        "HDD ist günstiger pro GB als SSD.",
+        "SSD hat unbegrenzte Schreibzyklen.",
+        "Beide sind gleich schnell."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 27,
     "topic": "2. Hardware",
     "subtopic": "2.3 Datenspeicher",
     "question": "Was ist Flash-Speicher und welche Arten gibt es?",
-    "answer": "**Flash-Speicher** ist die Speichertechnologie für SSDs, USB-Sticks und SD-Karten.\n\n| Typ | Eigenschaft | Verwendung |\n|-----|-------------|------------|\n| **NAND-Flash** | Günstig, langlebig | SSDs, USB-Sticks |\n| **NOR-Flash** | Schnell | Firmware |"
+    "answer": "**Flash-Speicher** ist die Speichertechnologie für SSDs, USB-Sticks und SD-Karten.\n\n| Typ | Eigenschaft | Verwendung |\n|-----|-------------|------------|\n| **NAND-Flash** | Günstig, langlebig | SSDs, USB-Sticks |\n| **NOR-Flash** | Schnell | Firmware |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Flash-Speicher wird für SSDs und USB-Sticks verwendet.",
+        "NAND-Flash ist günstig und langlebig.",
+        "NOR-Flash wird hauptsächlich für Firmware verwendet.",
+        "Flash-Speicher ist flüchtig.",
+        "NOR-Flash hat höhere Kapazitäten als NAND.",
+        "Flash-Speicher hat keine begrenzten Schreibzyklen."
+      ],
+      "correctIndices": [0, 1, 2]
+    }
   },
   {
     "id": 28,
     "topic": "2. Hardware",
     "subtopic": "2.3 Datenspeicher",
     "question": "Welche Dateisysteme gibt es und worin unterscheiden sie sich?",
-    "answer": "| Dateisystem | Eigenschaft |\n|-------------|-------------|\n| **FAT32** | Kompatibel, max. 4 GB Dateigröße |\n| **NTFS** | Windows-Standard, große Dateien |\n| **exFAT** | Optimiert für externe Geräte |\n| **EXT4** | Standard für Linux |"
+    "answer": "| Dateisystem | Eigenschaft |\n|-------------|-------------|\n| **FAT32** | Kompatibel, max. 4 GB Dateigröße |\n| **NTFS** | Windows-Standard, große Dateien |\n| **exFAT** | Optimiert für externe Geräte |\n| **EXT4** | Standard für Linux |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "FAT32 hat eine maximale Dateigröße von 4 GB.",
+        "NTFS ist der Windows-Standard.",
+        "EXT4 ist das Standard-Dateisystem für Linux.",
+        "exFAT ist für externe Geräte optimiert.",
+        "NTFS kann nur unter Linux verwendet werden.",
+        "FAT32 unterstützt Dateien über 4 GB."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 29,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Was sind die wichtigsten Netzwerk-Hardwarekomponenten?",
-    "answer": "| Komponente | Beschreibung |\n|------------|--------------|\n| **RJ45** | Ethernet-Stecker (100 Mbit/s bis 10 Gbit/s) |\n| **LWL** | Glasfaser, hohe Bandbreite, geringe Latenz |\n| **Netzwerkkarte** | Hardware für Ethernet/WLAN |\n| **WLAN** | Kabellos (IEEE 802.11), z.B. Wi-Fi 6 |\n| **LAN** | Lokales Netzwerk (Haus/Firma) |"
+    "answer": "| Komponente | Beschreibung |\n|------------|--------------|\n| **RJ45** | Ethernet-Stecker (100 Mbit/s bis 10 Gbit/s) |\n| **LWL** | Glasfaser, hohe Bandbreite, geringe Latenz |\n| **Netzwerkkarte** | Hardware für Ethernet/WLAN |\n| **WLAN** | Kabellos (IEEE 802.11), z.B. Wi-Fi 6 |\n| **LAN** | Lokales Netzwerk (Haus/Firma) |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "RJ45 ist ein Ethernet-Stecker.",
+        "LWL steht für Lichtwellenleiter (Glasfaser).",
+        "WLAN ist kabellos nach IEEE 802.11.",
+        "Netzwerkkarte ermöglicht Ethernet/WLAN-Verbindungen.",
+        "LAN steht für Local Area Network.",
+        "RJ45 ist ein drahtloser Standard."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 30,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Was ist der Unterschied zwischen Router, Switch und Access Point?",
-    "answer": "### Router/Gateway\n\nVerbindet verschiedene Netzwerke (z.B. Heimnetz ↔ Internet)\n\n### Switch\n\nVerteilt Netzwerkverkehr innerhalb eines LANs (OSI Schicht 2)\n\n### Access Point\n\nErweitert WLAN-Abdeckung, oft in Router integriert"
+    "answer": "### Router/Gateway\n\nVerbindet verschiedene Netzwerke (z.B. Heimnetz ↔ Internet)\n\n### Switch\n\nVerteilt Netzwerkverkehr innerhalb eines LANs (OSI Schicht 2)\n\n### Access Point\n\nErweitert WLAN-Abdeckung, oft in Router integriert",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Router verbindet verschiedene Netzwerke miteinander.",
+        "Switch verteilt Netzwerkverkehr innerhalb eines LANs.",
+        "Access Point erweitert die WLAN-Abdeckung.",
+        "Router arbeitet auf OSI Schicht 3.",
+        "Switch verbindet ein LAN mit dem Internet.",
+        "Access Point kann keine WLAN-Signale senden."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 31,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Was ist DHCP?",
-    "answer": "**DHCP** (Dynamic Host Configuration Protocol) ermöglicht die **automatische Vergabe** von IP-Adressen innerhalb eines Netzwerks.\n\n✅ Geräte benötigen keine feste IP-Adresse\n✅ Vereinfacht die Netzwerkkonfiguration"
+    "answer": "**DHCP** (Dynamic Host Configuration Protocol) ermöglicht die **automatische Vergabe** von IP-Adressen innerhalb eines Netzwerks.\n\n✅ Geräte benötigen keine feste IP-Adresse\n✅ Vereinfacht die Netzwerkkonfiguration",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "DHCP vergibt automatisch IP-Adressen.",
+        "DHCP vereinfacht die Netzwerkkonfiguration.",
+        "DHCP ist ein Protokoll zur manuellen IP-Vergabe.",
+        "Geräte benötigen bei DHCP keine feste IP-Adresse.",
+        "DHCP funktioniert nur mit festen IP-Adressen.",
+        "DHCP wird für DNS verwendet."
+      ],
+      "correctIndices": [0, 1, 3]
+    }
   },
   {
     "id": 32,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Was ist NAT und welche Arten gibt es?",
-    "answer": "**NAT** (Network Address Translation) übersetzt private IP-Adressen in öffentliche für den Internetzugriff.\n\n| Typ | Funktion |\n|-----|----------|\n| **SNAT** | Private → Öffentliche IP |\n| **DNAT** | Öffentliche → Private IP |\n| **PAT** | Mehrere private IPs teilen eine öffentliche |"
+    "answer": "**NAT** (Network Address Translation) übersetzt private IP-Adressen in öffentliche für den Internetzugriff.\n\n| Typ | Funktion |\n|-----|----------|\n| **SNAT** | Private → Öffentliche IP |\n| **DNAT** | Öffentliche → Private IP |\n| **PAT** | Mehrere private IPs teilen eine öffentliche |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "NAT übersetzt private in öffentliche IP-Adressen.",
+        "SNAT wandelt private in öffentliche IPs um.",
+        "DNAT leitet öffentliche an private IPs weiter.",
+        "PAT teilt mehrere private IPs auf eine öffentliche.",
+        "NAT wird für lokale Netzwerke nicht benötigt.",
+        "NAT funktioniert nur mit IPv6."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 33,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Was ist IPv4 und wie ist eine IPv4-Adresse aufgebaut?",
-    "answer": "**IPv4** (Internet Protocol Version 4) ist ein verbindungsloses, paketvermitteltes Protokoll.\n\n`32-Bit-Adressen` in vier Oktetten, z.B. `192.168.1.1`\n\n⚠️ Begrenzt auf ca. **4,3 Milliarden** Adressen\n\n### Aufbau\n\n| Teil | Funktion |\n|------|----------|\n| **Netzwerkanteil** | Identifiziert das Netzwerk |\n| **Hostanteil** | Identifiziert das Gerät |"
+    "answer": "**IPv4** (Internet Protocol Version 4) ist ein verbindungsloses, paketvermitteltes Protokoll.\n\n`32-Bit-Adressen` in vier Oktetten, z.B. `192.168.1.1`\n\n⚠️ Begrenzt auf ca. **4,3 Milliarden** Adressen\n\n### Aufbau\n\n| Teil | Funktion |\n|------|----------|\n| **Netzwerkanteil** | Identifiziert das Netzwerk |\n| **Hostanteil** | Identifiziert das Gerät |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "IPv4 hat 32-Bit-Adressen.",
+        "IPv4-Adressen bestehen aus vier Oktetten.",
+        "IPv4 ist auf ca. 4,3 Milliarden Adressen begrenzt.",
+        "IPv4-Adressen haben einen Netzwerk- und Hostanteil.",
+        "IPv4 verwendet 128 Bit.",
+        "IPv4 ist ein verbindungsorientiertes Protokoll."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 34,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Wie funktioniert Subnetting bei IPv4? Erläutere anhand eines Beispiels.",
-    "answer": "**Subnetting** unterteilt ein Netzwerk in kleinere Teilnetze.\n\n### Subnetzmasken\n\n| Notation | Maske |\n|----------|-------|\n| `/8` | 255.0.0.0 |\n| `/16` | 255.255.0.0 |\n| `/24` | 255.255.255.0 |\n\n### Berechnung\n\n```\n1. Subnetze: 2^n (n = zusätzliche Bits)\n2. Hosts/Subnetz: 2^h - 2 (h = Host-Bits)\n3. Subnetzgröße: 256 - letzte Maske\n```\n\n### Beispiel\n\n`192.168.1.0/24` → `/26` (255.255.255.192):\n- **4 Subnetze** (2² = 4)\n- **62 Hosts** pro Subnetz (2⁶ - 2 = 62)"
+    "answer": "**Subnetting** unterteilt ein Netzwerk in kleinere Teilnetze.\n\n### Subnetzmasken\n\n| Notation | Maske |\n|----------|-------|\n| `/8` | 255.0.0.0 |\n| `/16` | 255.255.0.0 |\n| `/24` | 255.255.255.0 |\n\n### Berechnung\n\n```\n1. Subnetze: 2^n (n = zusätzliche Bits)\n2. Hosts/Subnetz: 2^h - 2 (h = Host-Bits)\n3. Subnetzgröße: 256 - letzte Maske\n```\n\n### Beispiel\n\n`192.168.1.0/24` → `/26` (255.255.255.192):\n- **4 Subnetze** (2² = 4)\n- **62 Hosts** pro Subnetz (2⁶ - 2 = 62)",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Subnetting teilt ein Netzwerk in kleinere Teilnetze.",
+        "Bei /26 gibt es 4 Subnetze mit je 62 Hosts.",
+        "Hosts pro Subnetz = 2^h - 2.",
+        "Subnetzgröße = 256 - letzte Maske.",
+        "/24 entspricht 255.255.255.0.",
+        "Subnetting erhöht die Anzahl der verfügbaren IP-Adressen."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 35,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Welche privaten IPv4-Adressbereiche gibt es?",
-    "answer": "Private IPv4-Adressen sind **nicht im Internet routbar** und werden in privaten Netzwerken genutzt.\n\n| Klasse | Adressbereich |\n|--------|---------------|\n| **A** | `10.0.0.0` – `10.255.255.255` |\n| **B** | `172.16.0.0` – `172.31.255.255` |\n| **C** | `192.168.0.0` – `192.168.255.255` |"
+    "answer": "Private IPv4-Adressen sind **nicht im Internet routbar** und werden in privaten Netzwerken genutzt.\n\n| Klasse | Adressbereich |\n|--------|---------------|\n| **A** | `10.0.0.0` – `10.255.255.255` |\n| **B** | `172.16.0.0` – `172.31.255.255` |\n| **C** | `192.168.0.0` – `192.168.255.255` |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Private IPv4-Adressen sind nicht im Internet routbar.",
+        "Klasse A: 10.0.0.0 - 10.255.255.255",
+        "Klasse B: 172.16.0.0 - 172.31.255.255",
+        "Klasse C: 192.168.0.0 - 192.168.255.255",
+        "8.8.8.8 ist eine private IP-Adresse.",
+        "Alle IPv4-Adressen sind im Internet routbar."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 36,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Welche wichtigen IPv4-Sonderadressen gibt es?",
-    "answer": "| Adresse | Funktion | Beispiel |\n|---------|----------|----------|\n| **Netzwerkadresse** | Erste Adresse im Subnetz | `192.168.1.0` |\n| **Broadcast** | Letzte Adresse im Subnetz | `192.168.1.255` |\n| **Loopback** | Lokale Tests | `127.0.0.1` |\n| **APIPA** | Automatisch wenn kein DHCP | `169.254.x.x` |"
+    "answer": "| Adresse | Funktion | Beispiel |\n|---------|----------|----------|\n| **Netzwerkadresse** | Erste Adresse im Subnetz | `192.168.1.0` |\n| **Broadcast** | Letzte Adresse im Subnetz | `192.168.1.255` |\n| **Loopback** | Lokale Tests | `127.0.0.1` |\n| **APIPA** | Automatisch wenn kein DHCP | `169.254.x.x` |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Loopback-Adresse ist 127.0.0.1",
+        "Broadcast-Adresse ist die letzte im Subnetz.",
+        "APIPA-Adressen sind 169.254.x.x",
+        "Netzwerkadresse ist die erste im Subnetz.",
+        "192.168.1.1 ist eine öffentliche IP.",
+        "APIPA wird von DHCP-Servern zugewiesen."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 37,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Was ist IPv6 und wie ist eine IPv6-Adresse aufgebaut?",
-    "answer": "**IPv6** ist der Nachfolger von IPv4 mit `128-Bit-Adressen`.\n\nAcht Gruppen à vier Hex-Ziffern:\n`2001:0db8:85a3:0000:0000:8a2e:0370:7334`\n\n### Aufbau\n\n| Teil | Beschreibung |\n|------|--------------|\n| **Netzwerkpräfix** | Identifiziert Netzwerk (meist 64 Bit) |\n| **Interface ID** | Identifiziert Gerät (meist 64 Bit) |\n\n### Verkürzte Schreibweise\n\nFührende Nullen weglassen, Nullgruppen durch `::` ersetzen:\n`2001:db8:85a3::8a2e:370:7334`"
+    "answer": "**IPv6** ist der Nachfolger von IPv4 mit `128-Bit-Adressen`.\n\nAcht Gruppen à vier Hex-Ziffern:\n`2001:0db8:85a3:0000:0000:8a2e:0370:7334`\n\n### Aufbau\n\n| Teil | Beschreibung |\n|------|--------------|\n| **Netzwerkpräfix** | Identifiziert Netzwerk (meist 64 Bit) |\n| **Interface ID** | Identifiziert Gerät (meist 64 Bit) |\n\n### Verkürzte Schreibweise\n\nFührende Nullen weglassen, Nullgruppen durch `::` ersetzen:\n`2001:db8:85a3::8a2e:370:7334`",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "IPv6 verwendet 128-Bit-Adressen.",
+        "IPv6-Adresse besteht aus 8 Gruppen zu je 4 Hex-Ziffern.",
+        "Es gibt einen Netzwerkpräfix und eine Interface ID.",
+        "Führende Nullen können weggelassen werden.",
+        "IPv6 löst IPv4 komplett ab.",
+        "IPv6 hat weniger Adressen als IPv4."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 38,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Welche IPv6-Adresstypen gibt es?",
-    "answer": "### Unicast\n\nKommunikation mit **einem** Empfänger\n\n| Typ | Bereich |\n|-----|---------|\n| **Global Unicast** | Öffentlich routbar (`2000::/3`) |\n| **Link-Local** | Nur lokales Netz (`FE80::/10`) |\n| **Unique Local** | Private IPv6 (`FC00::/7`) |\n\n### Multicast\n\nKommunikation mit **mehreren** Empfängern (`FF00::/8`)\n\n### Anycast\n\nMehrere Geräte teilen eine Adresse, das **nächstgelegene** antwortet"
+    "answer": "### Unicast\n\nKommunikation mit **einem** Empfänger\n\n| Typ | Bereich |\n|-----|---------|\n| **Global Unicast** | Öffentlich routbar (`2000::/3`) |\n| **Link-Local** | Nur lokales Netz (`FE80::/10`) |\n| **Unique Local** | Private IPv6 (`FC00::/7`) |\n\n### Multicast\n\nKommunikation mit **mehreren** Empfängern (`FF00::/8`)\n\n### Anycast\n\nMehrere Geräte teilen eine Adresse, das **nächstgelegene** antwortet",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Unicast ist für die Kommunikation mit einem Empfänger.",
+        "Multicast ist für mehrere Empfänger.",
+        "Global Unicast ist öffentlich routbar.",
+        "Link-Local ist nur im lokalen Netzwerk nutzbar.",
+        "Anycast antwortet vom nächstgelegenen Gerät.",
+        "IPv6 hat keine Multicast-Adressen."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 39,
     "topic": "2. Hardware",
     "subtopic": "2.4 Netzwerk",
     "question": "Welche IPv6-Adresszuweisungsmethoden gibt es?",
-    "answer": "### Zuweisungsmethoden\n\n| Methode | Beschreibung |\n|---------|--------------|\n| **Statisch** | Manuelle Vergabe |\n| **DHCPv6** | Automatisch via Server |\n| **SLAAC** | Selbstkonfiguration (Präfix + MAC) |\n\n### Präfixe\n\n| Präfix | Verwendung |\n|--------|------------|\n| `/64` | Standard für Netzwerke |\n| `/48` | Unternehmen |\n| `/32` | ISPs |\n\n### Sonderadressen\n\n- **Loopback:** `::1`\n- **All Nodes:** `FF02::1`\n- **All Routers:** `FF02::2`"
+    "answer": "### Zuweisungsmethoden\n\n| Methode | Beschreibung |\n|---------|--------------|\n| **Statisch** | Manuelle Vergabe |\n| **DHCPv6** | Automatisch via Server |\n| **SLAAC** | Selbstkonfiguration (Präfix + MAC) |\n\n### Präfixe\n\n| Präfix | Verwendung |\n|--------|------------|\n| `/64` | Standard für Netzwerke |\n| `/48` | Unternehmen |\n| `/32` | ISPs |\n\n### Sonderadressen\n\n- **Loopback:** `::1`\n- **All Nodes:** `FF02::1`\n- **All Routers:** `FF02::2`",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Statisch bedeutet manuelle IP-Vergabe.",
+        "DHCPv6 vergibt IPv6 automatisch.",
+        "SLAAC nutzt Präfix und MAC-Adresse.",
+        "/64 ist der Standard für IPv6-Netzwerke.",
+        "Loopback-Adresse ist ::1.",
+        "DHCPv6 wird für IPv4 verwendet."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 40,
     "topic": "2. Hardware",
     "subtopic": "2.5 Grafikkarte",
     "question": "Was ist eine Grafikkarte und welche Arten gibt es?",
-    "answer": "Die **Grafikkarte** (GPU – Graphics Processing Unit) ist für Bildberechnung und Darstellung verantwortlich.\n\n### Arten\n\n| Typ | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **Integriert** | In CPU, energiesparend | Intel UHD, AMD Vega |\n| **Dediziert** | Eigenständig, hohe Leistung | NVIDIA GeForce, AMD Radeon |\n\n### Merkmale\n\n- **VRAM:** Speichert Texturen (z.B. `8 GB GDDR6`)\n- **CUDA / OpenCL:** Parallele Berechnungen\n- **Raytracing:** Echtzeit-Lichtsimulation\n\n🎮 **Anwendung:** Gaming, 3D-Modellierung, Deep Learning"
+    "answer": "Die **Grafikkarte** (GPU – Graphics Processing Unit) ist für Bildberechnung und Darstellung verantwortlich.\n\n### Arten\n\n| Typ | Beschreibung | Beispiel |\n|-----|--------------|----------|\n| **Integriert** | In CPU, energiesparend | Intel UHD, AMD Vega |\n| **Dediziert** | Eigenständig, hohe Leistung | NVIDIA GeForce, AMD Radeon |\n\n### Merkmale\n\n- **VRAM:** Speichert Texturen (z.B. `8 GB GDDR6`)\n- **CUDA / OpenCL:** Parallele Berechnungen\n- **Raytracing:** Echtzeit-Lichtsimulation\n\n🎮 **Anwendung:** Gaming, 3D-Modellierung, Deep Learning",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "GPU steht für Graphics Processing Unit.",
+        "Integrierte Grafikkarten sind in der CPU verbaut.",
+        "Dedizierte Grafikkarten haben mehr Leistung.",
+        "VRAM speichert Texturen.",
+        "Raytracing ist eine Echtzeit-Lichtsimulation.",
+        "GPU wird nur für Gaming verwendet."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 41,
     "topic": "2. Hardware",
     "subtopic": "2.6 Netzwerkprotokolle und OSI-Modell",
     "question": "Welche wichtigen Netzwerkprotokolle gibt es und auf welchen Ports arbeiten sie?",
-    "answer": "| Protokoll | Port | Funktion |\n|-----------|------|----------|\n| **TCP** | variabel | Zuverlässige Übertragung mit Fehlerkorrektur |\n| **UDP** | variabel | Schnell, ohne Fehlerkorrektur |\n| **HTTP** | 80 | Webübertragung |\n| **HTTPS** | 443 | Verschlüsselt (TLS/SSL) |\n| **FTP** | 20/21 | Dateiübertragung |\n| **SFTP** | 22 | Sichere Dateiübertragung |\n| **DNS** | 53 | Domain → IP |\n| **SMTP** | 25/465/587 | E-Mail-Versand |\n| **IMAP** | 143/993 | E-Mail-Abruf (Sync) |\n| **POP3** | 110/995 | E-Mail-Download |\n| **DHCP** | 67/68 | IP-Vergabe |"
+    "answer": "| Protokoll | Port | Funktion |\n|-----------|------|----------|\n| **TCP** | variabel | Zuverlässige Übertragung mit Fehlerkorrektur |\n| **UDP** | variabel | Schnell, ohne Fehlerkorrektur |\n| **HTTP** | 80 | Webübertragung |\n| **HTTPS** | 443 | Verschlüsselt (TLS/SSL) |\n| **FTP** | 20/21 | Dateiübertragung |\n| **SFTP** | 22 | Sichere Dateiübertragung |\n| **DNS** | 53 | Domain → IP |\n| **SMTP** | 25/465/587 | E-Mail-Versand |\n| **IMAP** | 143/993 | E-Mail-Abruf (Sync) |\n| **POP3** | 110/995 | E-Mail-Download |\n| **DHCP** | 67/68 | IP-Vergabe |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "HTTP arbeitet auf Port 80.",
+        "HTTPS verschlüsselt mit TLS/SSL auf Port 443.",
+        "DNS übersetzt Domainnamen in IP-Adressen auf Port 53.",
+        "FTP dient der Dateiübertragung auf Ports 20/21.",
+        "DHCP vergibt IP-Adressen auf Ports 67/68.",
+        "SSH arbeitet auf Port 80."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 42,
@@ -211,167 +463,455 @@
     "subtopic": "2.6 Netzwerkprotokolle und OSI-Modell",
     "question": "Beschreibe die 7 Schichten des OSI-Modells.",
     "answer": "| Schicht | Name | Funktion | Beispiel |\n|---------|------|----------|----------|\n| **7** | Anwendung | Netzwerkdienste | HTTP, FTP, DNS |\n| **6** | Darstellung | Formatierung, Verschlüsselung | TLS, JPEG |\n| **5** | Sitzung | Sitzungssteuerung | NetBIOS, RPC |\n| **4** | Transport | Zuverlässige Übertragung | TCP, UDP |\n| **3** | Vermittlung | Routing, IP-Adressen | IPv4, IPv6 |\n| **2** | Sicherung | MAC-Adressen, Switches | Ethernet |\n| **1** | Bitübertragung | Physikalische Medien | WLAN, Glasfaser |\n\n📝 **Merkspruch:** *All People Seem To Need Data Processing*",
-    "image_ref": "osi_modell_7_schichten.png"
+    "image_ref": "osi_modell_7_schichten.png",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Schicht 7 ist die Anwendungsschicht (HTTP, FTP).",
+        "Schicht 4 ist die Transportschicht (TCP, UDP).",
+        "Schicht 3 ist die Vermittlungsschicht (IP).",
+        "Schicht 2 ist die Sicherungsschicht (Ethernet).",
+        "Schicht 1 ist die Bitübertragung (WLAN, Glasfaser).",
+        "TCP arbeitet auf Schicht 7."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 43,
     "topic": "2. Hardware",
     "subtopic": "2.7 Strukturierte Verkabelung",
     "question": "Was ist strukturierte Verkabelung und welche Bereiche gibt es?",
-    "answer": "**Strukturierte Verkabelung** ist ein standardisiertes, modulares Verkabelungssystem.\n\n| Bereich | Verbindet | Technologie |\n|---------|-----------|-------------|\n| **Primär** (Campus) | Gebäude untereinander | Glasfaser/Kupfer |\n| **Sekundär** (Gebäude) | Etagen mit Hauptverteiler | Glasfaser/Cat 6 |\n| **Tertiär** (Etage) | Etagenverteiler mit Dosen | Cat 6a/7 |\n\n✅ **Vorteile:** Zukunftssicher, flexibel, einfache Wartung"
+    "answer": "**Strukturierte Verkabelung** ist ein standardisiertes, modulares Verkabelungssystem.\n\n| Bereich | Verbindet | Technologie |\n|---------|-----------|-------------|\n| **Primär** (Campus) | Gebäude untereinander | Glasfaser/Kupfer |\n| **Sekundär** (Gebäude) | Etagen mit Hauptverteiler | Glasfaser/Cat 6 |\n| **Tertiär** (Etage) | Etagenverteiler mit Dosen | Cat 6a/7 |\n\n✅ **Vorteile:** Zukunftssicher, flexibel, einfache Wartung",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Strukturierte Verkabelung ist standardisiert und modular.",
+        "Primär (Campus) verbindet Gebäude untereinander.",
+        "Sekundär (Gebäude) verbindet Etagen mit Hauptverteiler.",
+        "Tertiär (Etage) verbindet Etagenverteiler mit Dosen.",
+        "Strukturierte Verkabelung ist nicht zukunftssicher.",
+        "Es gibt nur einen Bereich."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 44,
     "topic": "2. Hardware",
     "subtopic": "2.8 USV",
     "question": "Welche USV-Arten gibt es und worin unterscheiden sie sich?",
-    "answer": "| Typ | Eigenschaft | Anwendung |\n|-----|-------------|-----------|\n| **Offline (VFD)** | ~10ms Umschaltzeit | PCs, kleine Router |\n| **Line-Interactive** | Mit Spannungsregler (AVR) | Server, Netzwerk |\n| **Online (VFI)** | Keine Umschaltzeit! | Rechenzentren |\n| **Hybrid** | Mit Schwungrad, effizient | Große Rechenzentren |\n\n### Funktionen\n\n- Schutz vor Stromausfällen/Spannungsspitzen\n- Überbrückung von Netzausfällen\n- Geordnetes Herunterfahren\n- Filterung von Netzstörungen"
+    "answer": "| Typ | Eigenschaft | Anwendung |\n|-----|-------------|-----------|\n| **Offline (VFD)** | ~10ms Umschaltzeit | PCs, kleine Router |\n| **Line-Interactive** | Mit Spannungsregler (AVR) | Server, Netzwerk |\n| **Online (VFI)** | Keine Umschaltzeit! | Rechenzentren |\n| **Hybrid** | Mit Schwungrad, effizient | Große Rechenzentren |\n\n### Funktionen\n\n- Schutz vor Stromausfällen/Spannungsspitzen\n- Überbrückung von Netzausfällen\n- Geordnetes Herunterfahren\n- Filterung von Netzstörungen",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Offline-USV hat eine Umschaltzeit von ca. 10ms.",
+        "Line-Interactive hat einen Spannungsregler (AVR).",
+        "Online-USV hat keine Umschaltzeit.",
+        "Online-USV wird für Rechenzentren verwendet.",
+        "USV schützt vor Stromausfällen.",
+        "USV erhöht die Stromrechnung."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 45,
     "topic": "2. Hardware",
     "subtopic": "2.9 Energie",
     "question": "Welche elektrischen Grundgrößen gibt es und wie berechnet man Leistung und Wirkungsgrad?",
-    "answer": "### Grundgrößen\n\n| Größe | Einheit | Formel |\n|-------|---------|--------|\n| **Stromstärke (I)** | Ampere (A) | `I = U/R` oder `I = P/U` |\n| **Spannung (U)** | Volt (V) | `U = P/I` |\n| **Leistung (P)** | Watt (W) | `P = U × I` |\n\n### Wirkungsgrad (η)\n\n```\nη = (Pab / Pzu) × 100%\n```\n\n💡 Beispiel: Netzteil mit **80 Plus Gold** ≈ 90% Wirkungsgrad"
+    "answer": "### Grundgrößen\n\n| Größe | Einheit | Formel |\n|-------|---------|--------|\n| **Stromstärke (I)** | Ampere (A) | `I = U/R` oder `I = P/U` |\n| **Spannung (U)** | Volt (V) | `U = P/I` |\n| **Leistung (P)** | Watt (W) | `P = U × I` |\n\n### Wirkungsgrad (η)\n\n```\nη = (Pab / Pzu) × 100%\n```\n\n💡 Beispiel: Netzteil mit **80 Plus Gold** ≈ 90% Wirkungsgrad",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Leistung P = U × I",
+        "Stromstärke I = P / U",
+        "Wirkungsgrad = (Pab / Pzu) × 100%",
+        "80 Plus Gold hat ca. 90% Wirkungsgrad.",
+        "Spannung wird in Watt gemessen.",
+        "Leistung wird in Volt gemessen."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 46,
     "topic": "2. Hardware",
     "subtopic": "2.10 Geräteklassen",
     "question": "Welche IT-Geräteklassen gibt es?",
-    "answer": "| Geräteklasse | Beschreibung |\n|--------------|--------------|\n| **Desktops** | Stationäre PCs |\n| **Notebooks** | Mobile Laptops |\n| **All-in-One** | Monitor + PC in einem Gehäuse |\n| **Thin Clients** | Zugriff auf zentrale Server |\n| **Tablets** | Touch-basierte Geräte |\n| **Smartphones** | Kompakte mobile Endgeräte |"
+    "answer": "| Geräteklasse | Beschreibung |\n|--------------|--------------|\n| **Desktops** | Stationäre PCs |\n| **Notebooks** | Mobile Laptops |\n| **All-in-One** | Monitor + PC in einem Gehäuse |\n| **Thin Clients** | Zugriff auf zentrale Server |\n| **Tablets** | Touch-basierte Geräte |\n| **Smartphones** | Kompakte mobile Endgeräte |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Desktops sind stationäre PCs.",
+        "Notebooks sind mobile Laptops.",
+        "All-in-One kombiniert Monitor und PC.",
+        "Thin Clients greifen auf zentrale Server zu.",
+        "Tablets sind touch-basierte Geräte.",
+        "Smartphones sind keine IT-Geräte."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 47,
     "topic": "2. Hardware",
     "subtopic": "2.11 Barrierefreiheit",
     "question": "Was bedeutet Barrierefreiheit in der IT und welche Hardware kann helfen?",
-    "answer": "**Barrierefreiheit** bezeichnet Maßnahmen zur Nutzung von IT-Systemen für Menschen mit Einschränkungen.\n\n### Unterstützende Hardware\n\n| Gerät | Hilft bei |\n|-------|-----------|\n| **Größerer Monitor** | Sehschwäche |\n| **Breitere Tastatur** | Motorische Einschränkungen |\n| **Lautsprecher/Mikrofon** | Sprachsteuerung, Sehbehinderung |"
+    "answer": "**Barrierefreiheit** bezeichnet Maßnahmen zur Nutzung von IT-Systemen für Menschen mit Einschränkungen.\n\n### Unterstützende Hardware\n\n| Gerät | Hilft bei |\n|-------|-----------|\n| **Größerer Monitor** | Sehschwäche |\n| **Breitere Tastatur** | Motorische Einschränkungen |\n| **Lautsprecher/Mikrofon** | Sprachsteuerung, Sehbehinderung |",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Barrierefreiheit ermöglicht IT-Nutzung für Menschen mit Einschränkungen.",
+        "Größerer Monitor hilft bei Sehschwäche.",
+        "Breitere Tastatur hilft bei motorischen Einschränkungen.",
+        "Lautsprecher/Mikrofon ermöglichen Sprachsteuerung.",
+        "Barrierefreiheit ist nur für Rollstuhlfahrer relevant.",
+        "Barrierefreiheit hat nichts mit Hardware zu tun."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 48,
     "topic": "2. Hardware",
     "subtopic": "2.12 Netzwerktopologien",
     "question": "Welche Netzwerktopologien gibt es?",
-    "answer": "Stern-Topologie:\n- Alle Geräte mit zentralem Switch/Hub verbunden\n- Ausfall eines Geräts betrifft nicht das Netz\n- Ausfall des zentralen Knotens = Netzausfall\n- Heute am häufigsten verwendet\n\nBus-Topologie:\n- Alle Geräte an einem gemeinsamen Kabel\n- Einfach, aber kollisionsanfällig\n- Ausfall des Kabels = Netzausfall\n\nRing-Topologie:\n- Geräte in geschlossener Kette verbunden\n- Token-Passing-Verfahren\n- Ausfall eines Geräts kann gesamten Ring stören\n\nMesh-Topologie (Vermascht):\n- Jedes Gerät mit mehreren anderen verbunden\n- Hohe Ausfallsicherheit/Redundanz\n- Teuer und komplex\n\nBaum-Topologie: Hierarchische Kombination aus Stern-Topologien."
+    "answer": "Stern-Topologie:\n- Alle Geräte mit zentralem Switch/Hub verbunden\n- Ausfall eines Geräts betrifft nicht das Netz\n- Ausfall des zentralen Knotens = Netzausfall\n- Heute am häufigsten verwendet\n\nBus-Topologie:\n- Alle Geräte an einem gemeinsamen Kabel\n- Einfach, aber kollisionsanfällig\n- Ausfall des Kabels = Netzausfall\n\nRing-Topologie:\n- Geräte in geschlossener Kette verbunden\n- Token-Passing-Verfahren\n- Ausfall eines Geräts kann gesamten Ring stören\n\nMesh-Topologie (Vermascht):\n- Jedes Gerät mit mehreren anderen verbunden\n- Hohe Ausfallsicherheit/Redundanz\n- Teuer und komplex\n\nBaum-Topologie: Hierarchische Kombination aus Stern-Topologien.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Stern-Topologie ist heute am häufigsten verwendet.",
+        "Bei Bus-Topologie sind alle Geräte an einem Kabel.",
+        "Ring-Topologie nutzt Token-Passing.",
+        "Mesh-Topologie hat hohe Ausfallsicherheit.",
+        "Baum-Topologie ist eine Kombination aus Stern-Topologien.",
+        "Stern-Topologie hat keine Nachteile."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 49,
     "topic": "2. Hardware",
     "subtopic": "2.13 VLAN",
     "question": "Was ist ein VLAN (Virtual Local Area Network)?",
-    "answer": "Ein VLAN ist ein logisches Teilnetzwerk innerhalb eines physischen Netzwerks. Es ermöglicht die Segmentierung des Netzwerks unabhängig von der physischen Verkabelung.\n\nVorteile:\n- Sicherheit: Trennung von Datenverkehr (z.B. Buchhaltung von Entwicklung)\n- Performance: Reduzierung von Broadcast-Domänen\n- Flexibilität: Geräte können unabhängig vom Standort gruppiert werden\n- Kostenersparnis: Keine separate physische Infrastruktur nötig\n\nArten:\n- Port-basiertes VLAN: Zuordnung über Switch-Ports\n- Tag-basiertes VLAN (802.1Q): VLAN-Tag im Ethernet-Frame\n\nTrunk: Verbindung zwischen Switches, die mehrere VLANs transportiert.\nInter-VLAN-Routing: Router oder Layer-3-Switch verbindet VLANs."
+    "answer": "Ein VLAN ist ein logisches Teilnetzwerk innerhalb eines physischen Netzwerks. Es ermöglicht die Segmentierung des Netzwerks unabhängig von der physischen Verkabelung.\n\nVorteile:\n- Sicherheit: Trennung von Datenverkehr (z.B. Buchhaltung von Entwicklung)\n- Performance: Reduzierung von Broadcast-Domänen\n- Flexibilität: Geräte können unabhängig vom Standort gruppiert werden\n- Kostenersparnis: Keine separate physische Infrastruktur nötig\n\nArten:\n- Port-basiertes VLAN: Zuordnung über Switch-Ports\n- Tag-basiertes VLAN (802.1Q): VLAN-Tag im Ethernet-Frame\n\nTrunk: Verbindung zwischen Switches, die mehrere VLANs transportiert.\nInter-VLAN-Routing: Router oder Layer-3-Switch verbindet VLANs.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "VLAN ist ein logisches Teilnetzwerk.",
+        "VLAN ermöglicht Sicherheitstrennung.",
+        "802.1Q ist tag-basiertes VLAN.",
+        "Trunk verbindet Switches mit mehreren VLANs.",
+        "VLAN erhöht Broadcast-Domänen.",
+        "VLAN erfordert immer separate Verkabelung."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 50,
     "topic": "2. Hardware",
     "subtopic": "2.14 Storage-Systeme",
     "question": "Was ist der Unterschied zwischen SAN, NAS und DAS?",
-    "answer": "DAS (Direct Attached Storage):\n- Direkt am Server angeschlossen (USB, SATA, SAS)\n- Einfach und günstig\n- Kein Netzwerkzugriff, nur vom angeschlossenen Server nutzbar\n\nNAS (Network Attached Storage):\n- Netzwerkspeicher, über LAN erreichbar\n- Dateibasierter Zugriff (SMB/CIFS, NFS)\n- Eigenes Betriebssystem\n- Einfach einzurichten, gut für Dateifreigabe\n\nSAN (Storage Area Network):\n- Eigenes Hochgeschwindigkeitsnetzwerk für Storage\n- Blockbasierter Zugriff (wie lokale Festplatte)\n- Fibre Channel oder iSCSI\n- Hohe Performance, teuer\n- Für Datenbanken und Virtualisierung\n\nFaustregel: DAS = lokal, NAS = Dateien im Netzwerk, SAN = Blöcke im eigenen Netzwerk."
+    "answer": "DAS (Direct Attached Storage):\n- Direkt am Server angeschlossen (USB, SATA, SAS)\n- Einfach und günstig\n- Kein Netzwerkzugriff, nur vom angeschlossenen Server nutzbar\n\nNAS (Network Attached Storage):\n- Netzwerkspeicher, über LAN erreichbar\n- Dateibasierter Zugriff (SMB/CIFS, NFS)\n- Eigenes Betriebssystem\n- Einfach einzurichten, gut für Dateifreigabe\n\nSAN (Storage Area Network):\n- Eigenes Hochgeschwindigkeitsnetzwerk für Storage\n- Blockbasierter Zugriff (wie lokale Festplatte)\n- Fibre Channel oder iSCSI\n- Hohe Performance, teuer\n- Für Datenbanken und Virtualisierung\n\nFaustregel: DAS = lokal, NAS = Dateien im Netzwerk, SAN = Blöcke im eigenen Netzwerk.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "DAS ist direkt am Server angeschlossen.",
+        "NAS hat dateibasierten Zugriff über SMB/CIFS.",
+        "SAN hat blockbasierten Zugriff.",
+        "NAS ist gut für Dateifreigabe geeignet.",
+        "DAS ist über das Netzwerk erreichbar.",
+        "SAN verwendet kein eigenes Netzwerk."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 51,
     "topic": "2. Hardware",
     "subtopic": "2.15 Thin Clients",
     "question": "Was sind Thin Clients und welche Arten gibt es?",
-    "answer": "Ein Thin Client ist ein minimaler Computer, der die meiste Verarbeitung auf einem zentralen Server durchführt.\n\nArten:\n- All-in-One Thin Client: Kompaktes Gerät mit Monitor, Tastatur, Maus. Hat ein minimales OS.\n- Zero Client: Noch minimaler, kein lokales OS. Verbindet sich direkt mit der Serverinfrastruktur.\n\nVorteile:\n- Geringe Kosten pro Arbeitsplatz\n- Zentrale Verwaltung und Updates\n- Hohe Sicherheit (keine lokalen Daten)\n- Niedriger Energieverbrauch\n- Längere Lebensdauer\n\nNachteile:\n- Abhängig von Netzwerk und Server\n- Eingeschränkte lokale Funktionalität\n- Nicht für grafikintensive Anwendungen geeignet"
+    "answer": "Ein Thin Client ist ein minimaler Computer, der die meiste Verarbeitung auf einem zentralen Server durchführt.\n\nArten:\n- All-in-One Thin Client: Kompaktes Gerät mit Monitor, Tastatur, Maus. Hat ein minimales OS.\n- Zero Client: Noch minimaler, kein lokales OS. Verbindet sich direkt mit der Serverinfrastruktur.\n\nVorteile:\n- Geringe Kosten pro Arbeitsplatz\n- Zentrale Verwaltung und Updates\n- Hohe Sicherheit (keine lokalen Daten)\n- Niedriger Energieverbrauch\n- Längere Lebensdauer\n\nNachteile:\n- Abhängig von Netzwerk und Server\n- Eingeschränkte lokale Funktionalität\n- Nicht für grafikintensive Anwendungen geeignet",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Thin Clients führen Verarbeitung auf Servern durch.",
+        "Zero Client hat kein lokales OS.",
+        "Vorteile: Geringe Kosten, zentrale Verwaltung.",
+        "Nachteile: Abhängig vom Netzwerk.",
+        "Thin Clients sind für grafikintensive Anwendungen geeignet.",
+        "Thin Clients speichern viele lokalen Daten."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 52,
     "topic": "2. Hardware",
     "subtopic": "2.16 DSL-Arten",
     "question": "Was sind die Unterschiede zwischen ADSL, VDSL und SDSL?",
-    "answer": "ADSL (Asymmetric DSL):\n- Asymmetrisch: Download schneller als Upload\n- Download bis ca. 16 Mbit/s\n- Typisch für Privathaushalte\n- Über Telefonleitung (Kupfer)\n\nVDSL (Very High Speed DSL):\n- Asymmetrisch, aber deutlich schneller\n- Download bis 250 Mbit/s (VDSL2 Vectoring)\n- Kombiniert Glasfaser bis zum Verteiler + Kupfer zum Haus\n- Für Streaming und Homeoffice geeignet\n\nSDSL (Symmetric DSL):\n- Symmetrisch: Upload = Download\n- Bis ca. 20 Mbit/s\n- Typisch für Geschäftskunden (Server, VPN, VoIP)\n- Teurer als ADSL/VDSL\n\nFaustregel: ADSL = günstig, VDSL = schnell, SDSL = symmetrisch für Firmen."
+    "answer": "ADSL (Asymmetric DSL):\n- Asymmetrisch: Download schneller als Upload\n- Download bis ca. 16 Mbit/s\n- Typisch für Privathaushalte\n- Über Telefonleitung (Kupfer)\n\nVDSL (Very High Speed DSL):\n- Asymmetrisch, aber deutlich schneller\n- Download bis 250 Mbit/s (VDSL2 Vectoring)\n- Kombiniert Glasfaser bis zum Verteiler + Kupfer zum Haus\n- Für Streaming und Homeoffice geeignet\n\nSDSL (Symmetric DSL):\n- Symmetrisch: Upload = Download\n- Bis ca. 20 Mbit/s\n- Typisch für Geschäftskunden (Server, VPN, VoIP)\n- Teurer als ADSL/VDSL\n\nFaustregel: ADSL = günstig, VDSL = schnell, SDSL = symmetrisch für Firmen.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "ADSL ist asymmetrisch (Download > Upload).",
+        "VDSL ist schneller als ADSL (bis 250 Mbit/s).",
+        "SDSL ist symmetrisch (Upload = Download).",
+        "SDSL ist typisch für Geschäftskunden.",
+        "ADSL wird hauptsächlich von Firmen genutzt.",
+        "VDSL nutzt nur Glasfaser."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 53,
     "topic": "2. Hardware",
     "subtopic": "2.17 RAID-Systeme",
     "question": "Was sind die wichtigsten RAID-Level?",
-    "answer": "RAID 0 (Striping):\n- Daten auf mind. 2 Platten verteilt\n- Hohe Geschwindigkeit\n- KEINE Redundanz! Ein Ausfall = Datenverlust\n\nRAID 1 (Mirroring):\n- Daten werden gespiegelt (mind. 2 Platten)\n- Volle Redundanz, Ausfall einer Platte kein Problem\n- Nutzbare Kapazität: 50%\n\nRAID 5 (Striping mit Parität):\n- Mind. 3 Platten, Paritätsdaten verteilt\n- Eine Platte darf ausfallen\n- Nutzbar: (n-1) Platten\n- Guter Kompromiss aus Geschwindigkeit, Redundanz, Kapazität\n\nRAID 6:\n- Wie RAID 5, aber mit doppelter Parität\n- Zwei Platten dürfen gleichzeitig ausfallen\n- Mind. 4 Platten\n\nRAID 10 (1+0):\n- Kombination aus RAID 1 und RAID 0\n- Gespiegelt UND gestriped\n- Hohe Performance und Redundanz, teuer"
+    "answer": "RAID 0 (Striping):\n- Daten auf mind. 2 Platten verteilt\n- Hohe Geschwindigkeit\n- KEINE Redundanz! Ein Ausfall = Datenverlust\n\nRAID 1 (Mirroring):\n- Daten werden gespiegelt (mind. 2 Platten)\n- Volle Redundanz, Ausfall einer Platte kein Problem\n- Nutzbare Kapazität: 50%\n\nRAID 5 (Striping mit Parität):\n- Mind. 3 Platten, Paritätsdaten verteilt\n- Eine Platte darf ausfallen\n- Nutzbar: (n-1) Platten\n- Guter Kompromiss aus Geschwindigkeit, Redundanz, Kapazität\n\nRAID 6:\n- Wie RAID 5, aber mit doppelter Parität\n- Zwei Platten dürfen gleichzeitig ausfallen\n- Mind. 4 Platten\n\nRAID 10 (1+0):\n- Kombination aus RAID 1 und RAID 0\n- Gespiegelt UND gestriped\n- Hohe Performance und Redundanz, teuer",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "RAID 0 bietet keine Redundanz.",
+        "RAID 1 spiegelt Daten auf zwei Platten.",
+        "RAID 5 nutzt Paritätsdaten.",
+        "RAID 6 verträgt den Ausfall von zwei Platten.",
+        "RAID 10 kombiniert RAID 1 und RAID 0.",
+        "RAID 5 hat nutzbare Kapazität von 100%."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 54,
     "topic": "2. Hardware",
     "subtopic": "2.18 IPv4 und Subnetting",
     "question": "Wie funktioniert IPv4-Subnetting?",
-    "answer": "IPv4-Adresse: 32 Bit, z.B. 192.168.1.0\n\nSubnetzmaske teilt in Netzwerk- und Hostanteil:\n- /24 = 255.255.255.0 → 256 Adressen, 254 nutzbar\n- /25 = 255.255.255.128 → 128 Adressen, 126 nutzbar\n- /26 = 255.255.255.192 → 64 Adressen, 62 nutzbar\n- /27 = 255.255.255.224 → 32 Adressen, 30 nutzbar\n- /28 = 255.255.255.240 → 16 Adressen, 14 nutzbar\n\nFormel: Anzahl Hosts = 2^(32-Präfixlänge) - 2\n(Abzug für Netz- und Broadcast-Adresse)\n\nPrivate IP-Bereiche:\n- Klasse A: 10.0.0.0/8\n- Klasse B: 172.16.0.0/12\n- Klasse C: 192.168.0.0/16\n\nBeispiel: 192.168.1.0/26\n→ Netz 1: 192.168.1.0 - .63 (Broadcast: .63)\n→ Netz 2: 192.168.1.64 - .127\n→ Netz 3: 192.168.1.128 - .191\n→ Netz 4: 192.168.1.192 - .255"
+    "answer": "IPv4-Adresse: 32 Bit, z.B. 192.168.1.0\n\nSubnetzmaske teilt in Netzwerk- und Hostanteil:\n- /24 = 255.255.255.0 → 256 Adressen, 254 nutzbar\n- /25 = 255.255.255.128 → 128 Adressen, 126 nutzbar\n- /26 = 255.255.255.192 → 64 Adressen, 62 nutzbar\n- /27 = 255.255.255.224 → 32 Adressen, 30 nutzbar\n- /28 = 255.255.255.240 → 16 Adressen, 14 nutzbar\n\nFormel: Anzahl Hosts = 2^(32-Präfixlänge) - 2\n(Abzug für Netz- und Broadcast-Adresse)\n\nPrivate IP-Bereiche:\n- Klasse A: 10.0.0.0/8\n- Klasse B: 172.16.0.0/12\n- Klasse C: 192.168.0.0/16\n\nBeispiel: 192.168.1.0/26\n→ Netz 1: 192.168.1.0 - .63 (Broadcast: .63)\n→ Netz 2: 192.168.1.64 - .127\n→ Netz 3: 192.168.1.128 - .191\n→ Netz 4: 192.168.1.192 - .255",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "IPv4-Adresse hat 32 Bit.",
+        "/24 hat 256 Adressen, 254 nutzbar.",
+        "Hosts = 2^(32-Präfix) - 2",
+        "192.168.0.0/16 ist ein privater Bereich.",
+        "/26 hat 62 nutzbare Hosts.",
+        "Alle IPv4-Adressen sind öffentlich."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 55,
     "topic": "2. Hardware",
     "subtopic": "2.19 TCP vs. UDP",
     "question": "Was ist der Unterschied zwischen TCP und UDP?",
-    "answer": "TCP (Transmission Control Protocol):\n- Verbindungsorientiert (3-Way-Handshake)\n- Zuverlässig: Reihenfolge garantiert, Fehlerkorrektur\n- Flusskontrolle und Staukontrolle\n- Langsamer durch Overhead\n- Einsatz: HTTP/S, FTP, SMTP, SSH, Datenbanken\n\nUDP (User Datagram Protocol):\n- Verbindungslos (kein Handshake)\n- Unzuverlässig: Keine Garantie für Reihenfolge oder Zustellung\n- Kein Overhead → schneller\n- Einsatz: DNS, DHCP, VoIP, Streaming, Gaming, NTP\n\nTCP 3-Way-Handshake:\n1. SYN → Client sendet Verbindungsanfrage\n2. SYN-ACK ← Server bestätigt und antwortet\n3. ACK → Client bestätigt\n→ Verbindung ist aufgebaut\n\nVerbindungsabbau: 4-Way-Handshake (FIN → ACK → FIN → ACK)"
+    "answer": "TCP (Transmission Control Protocol):\n- Verbindungsorientiert (3-Way-Handshake)\n- Zuverlässig: Reihenfolge garantiert, Fehlerkorrektur\n- Flusskontrolle und Staukontrolle\n- Langsamer durch Overhead\n- Einsatz: HTTP/S, FTP, SMTP, SSH, Datenbanken\n\nUDP (User Datagram Protocol):\n- Verbindungslos (kein Handshake)\n- Unzuverlässig: Keine Garantie für Reihenfolge oder Zustellung\n- Kein Overhead → schneller\n- Einsatz: DNS, DHCP, VoIP, Streaming, Gaming, NTP\n\nTCP 3-Way-Handshake:\n1. SYN → Client sendet Verbindungsanfrage\n2. SYN-ACK ← Server bestätigt und antwortet\n3. ACK → Client bestätigt\n→ Verbindung ist aufgebaut\n\nVerbindungsabbau: 4-Way-Handshake (FIN → ACK → FIN → ACK)",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "TCP ist verbindungsorientiert mit 3-Way-Handshake.",
+        "UDP ist verbindungslos und schneller.",
+        "TCP garantiert Reihenfolge und Zuverlässigkeit.",
+        "UDP wird für DNS, DHCP, VoIP verwendet.",
+        "TCP ist schneller als UDP.",
+        "UDP hat keine Fehlerkorrektur."
+      ],
+      "correctIndices": [0, 1, 2, 3, 5]
+    }
   },
   {
     "id": 56,
     "topic": "2. Hardware",
     "subtopic": "2.20 DNS",
     "question": "Wie funktioniert DNS und welche DNS-Einträge gibt es?",
-    "answer": "DNS (Domain Name System): Übersetzt Domainnamen in IP-Adressen ('Telefonbuch des Internets').\n\nAuflösungsprozess:\n1. Browser prüft lokalen Cache\n2. Anfrage an lokalen DNS-Resolver (z.B. Router/ISP)\n3. Anfrage an Root-Server → TLD-Server → Autoritativer Server\n4. IP-Adresse wird zurückgegeben und gecacht\n\nWichtige DNS-Einträge (Resource Records):\n- A: Domain → IPv4-Adresse\n- AAAA: Domain → IPv6-Adresse\n- CNAME: Alias auf eine andere Domain\n- MX: Mail-Exchange-Server für die Domain\n- NS: Zuständiger Nameserver\n- PTR: Reverse-Lookup (IP → Domain)\n- SOA: Start of Authority (Zoneninfo, Seriennummer, TTL)\n- TXT: Freitext (oft für SPF, DKIM, DMARC)\n- SRV: Dienst-Lokalisierung (z.B. SIP, LDAP)\n\nDatei /etc/hosts (Linux) bzw. C:\\Windows\\System32\\drivers\\etc\\hosts (Windows): Lokale Namensauflösung."
+    "answer": "DNS (Domain Name System): Übersetzt Domainnamen in IP-Adressen ('Telefonbuch des Internets').\n\nAuflösungsprozess:\n1. Browser prüft lokalen Cache\n2. Anfrage an lokalen DNS-Resolver (z.B. Router/ISP)\n3. Anfrage an Root-Server → TLD-Server → Autoritativer Server\n4. IP-Adresse wird zurückgegeben und gecacht\n\nWichtige DNS-Einträge (Resource Records):\n- A: Domain → IPv4-Adresse\n- AAAA: Domain → IPv6-Adresse\n- CNAME: Alias auf eine andere Domain\n- MX: Mail-Exchange-Server für die Domain\n- NS: Zuständiger Nameserver\n- PTR: Reverse-Lookup (IP → Domain)\n- SOA: Start of Authority (Zoneninfo, Seriennummer, TTL)\n- TXT: Freitext (oft für SPF, DKIM, DMARC)\n- SRV: Dienst-Lokalisierung (z.B. SIP, LDAP)\n\nDatei /etc/hosts (Linux) bzw. C:\\Windows\\System32\\drivers\\etc\\hosts (Windows): Lokale Namensauflösung.",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "DNS übersetzt Domainnamen in IP-Adressen.",
+        "A-Record zeigt auf IPv4-Adresse.",
+        "AAAA-Record zeigt auf IPv6-Adresse.",
+        "CNAME ist ein Alias auf eine andere Domain.",
+        "MX-Record ist für Mail-Server zuständig.",
+        "DNS funktioniert ohne Server."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 57,
     "topic": "2. Hardware",
     "subtopic": "2.21 Firewall und DMZ",
     "question": "Welche Firewall-Arten gibt es und was ist eine DMZ?",
-    "answer": "Firewall-Arten:\n1. Paketfilter (Packet Filter):\n   - Filtert nach IP, Port, Protokoll\n   - Arbeitet auf Schicht 3-4 (Netzwerk/Transport)\n   - Einfach, schnell, aber wenig intelligent\n\n2. Stateful Packet Inspection (SPI):\n   - Merkt sich Verbindungszustände\n   - Erkennt, ob Paket zu bestehender Verbindung gehört\n   - Schicht 3-4\n\n3. Application Layer Firewall (Proxy):\n   - Analysiert Anwendungsdaten (Schicht 7)\n   - Kann z.B. HTTP-Inhalte prüfen\n\n4. Web Application Firewall (WAF):\n   - Speziell für Webanwendungen\n   - Schutz vor SQL-Injection, XSS, CSRF\n\n5. Next-Generation Firewall (NGFW):\n   - Kombination aller Typen + IDS/IPS\n\nDMZ (Demilitarisierte Zone):\n- Netzwerksegment zwischen Internet und internem LAN\n- Öffentlich erreichbare Server (Webserver, Mailserver) stehen in der DMZ\n- Zwei Firewalls: Internet ↔ Firewall ↔ DMZ ↔ Firewall ↔ LAN\n- Kompromittierung der DMZ gefährdet nicht das interne Netz"
+    "answer": "Firewall-Arten:\n1. Paketfilter (Packet Filter):\n   - Filtert nach IP, Port, Protokoll\n   - Arbeitet auf Schicht 3-4 (Netzwerk/Transport)\n   - Einfach, schnell, aber wenig intelligent\n\n2. Stateful Packet Inspection (SPI):\n   - Merkt sich Verbindungszustände\n   - Erkennt, ob Paket zu bestehender Verbindung gehört\n   - Schicht 3-4\n\n3. Application Layer Firewall (Proxy):\n   - Analysiert Anwendungsdaten (Schicht 7)\n   - Kann z.B. HTTP-Inhalte prüfen\n\n4. Web Application Firewall (WAF):\n   - Speziell für Webanwendungen\n   - Schutz vor SQL-Injection, XSS, CSRF\n\n5. Next-Generation Firewall (NGFW):\n   - Kombination aller Typen + IDS/IPS\n\nDMZ (Demilitarisierte Zone):\n- Netzwerksegment zwischen Internet und internem LAN\n- Öffentlich erreichbare Server (Webserver, Mailserver) stehen in der DMZ\n- Zwei Firewalls: Internet ↔ Firewall ↔ DMZ ↔ Firewall ↔ LAN\n- Kompromittierung der DMZ gefährdet nicht das interne Netz",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Paketfilter arbeitet auf Schicht 3-4.",
+        "SPI merkt sich Verbindungszustände.",
+        "Proxy-Firewall analysiert Schicht 7.",
+        "WAF schützt vor SQL-Injection.",
+        "DMZ liegt zwischen Internet und internem Netz.",
+        "Firewall ist immer auf Schicht 1."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 58,
     "topic": "2. Hardware",
     "subtopic": "2.22 VPN",
     "question": "Was ist ein VPN und welche Arten gibt es?",
-    "answer": "VPN (Virtual Private Network): Verschlüsselte Verbindung über ein öffentliches Netzwerk (Internet).\n\nArten:\n1. Site-to-Site VPN:\n   - Verbindet zwei Netzwerke (z.B. Standorte)\n   - Router/Firewall baut Tunnel auf\n   - Transparent für Endgeräte\n\n2. End-to-Site VPN (Remote Access):\n   - Einzelner Client verbindet sich mit Firmennetz\n   - Typisch für Homeoffice\n   - VPN-Client-Software nötig\n\n3. End-to-End VPN:\n   - Direkte Verbindung zwischen zwei Endgeräten\n   - z.B. SSH-Tunnel\n\nProtokolle:\n- IPsec: Standard für Site-to-Site, Schicht 3, sehr sicher\n- L2TP/IPsec: Kombination, häufig für Remote Access\n- OpenVPN: Open Source, SSL/TLS-basiert, flexibel\n- WireGuard: Modern, schnell, einfach\n- SSL-VPN: Über Browser nutzbar (HTTPS)\n\nVorteile: Verschlüsselung, Standortunabhängigkeit, Kostenersparnis ggü. Standleitungen"
+    "answer": "VPN (Virtual Private Network): Verschlüsselte Verbindung über ein öffentliches Netzwerk (Internet).\n\nArten:\n1. Site-to-Site VPN:\n   - Verbindet zwei Netzwerke (z.B. Standorte)\n   - Router/Firewall baut Tunnel auf\n   - Transparent für Endgeräte\n\n2. End-to-Site VPN (Remote Access):\n   - Einzelner Client verbindet sich mit Firmennetz\n   - Typisch für Homeoffice\n   - VPN-Client-Software nötig\n\n3. End-to-End VPN:\n   - Direkte Verbindung zwischen zwei Endgeräten\n   - z.B. SSH-Tunnel\n\nProtokolle:\n- IPsec: Standard für Site-to-Site, Schicht 3, sehr sicher\n- L2TP/IPsec: Kombination, häufig für Remote Access\n- OpenVPN: Open Source, SSL/TLS-basiert, flexibel\n- WireGuard: Modern, schnell, einfach\n- SSL-VPN: Über Browser nutzbar (HTTPS)\n\nVorteile: Verschlüsselung, Standortunabhängigkeit, Kostenersparnis ggü. Standleitungen",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "VPN erstellt verschlüsselte Verbindung über öffentliches Netz.",
+        "Site-to-Site verbindet zwei Netzwerke.",
+        "End-to-Site ist typisch für Homeoffice.",
+        "IPsec ist ein VPN-Protokoll.",
+        "OpenVPN ist Open Source.",
+        "VPN erhöht die Kosten gegenüber Standleitungen."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 59,
     "topic": "2. Hardware",
     "subtopic": "2.23 WLAN-Sicherheit",
     "question": "Welche WLAN-Sicherheitsstandards gibt es?",
-    "answer": "Sicherheitsstandards (chronologisch):\n\nWEP (Wired Equivalent Privacy):\n- Veraltet und unsicher! Leicht zu knacken\n- RC4-Verschlüsselung mit statischem Schlüssel\n\nWPA (Wi-Fi Protected Access):\n- Verbesserung von WEP, TKIP-Verschlüsselung\n- Dynamische Schlüssel, aber auch nicht mehr sicher\n\nWPA2 (aktueller Standard):\n- AES-Verschlüsselung (CCMP)\n- PSK (Pre-Shared Key): Gemeinsames Passwort (Privat)\n- Enterprise: Authentifizierung über RADIUS-Server (Firma)\n\nWPA3 (neuester Standard):\n- SAE (Simultaneous Authentication of Equals) statt PSK\n- Schutz gegen Offline-Wörterbuch-Angriffe\n- Forward Secrecy\n\nWeitere Maßnahmen:\n- SSID: Netzwerkname (Verstecken bietet kaum Sicherheit)\n- MAC-Filter: Nur bestimmte Geräte erlaubt (leicht umgehbar)\n- WPS (Wi-Fi Protected Setup): Einfache Kopplung, aber Sicherheitsrisiko → deaktivieren!\n- RADIUS: Zentraler Authentifizierungsserver (802.1X)"
+    "answer": "Sicherheitsstandards (chronologisch):\n\nWEP (Wired Equivalent Privacy):\n- Veraltet und unsicher! Leicht zu knacken\n- RC4-Verschlüsselung mit statischem Schlüssel\n\nWPA (Wi-Fi Protected Access):\n- Verbesserung von WEP, TKIP-Verschlüsselung\n- Dynamische Schlüssel, aber auch nicht mehr sicher\n\nWPA2 (aktueller Standard):\n- AES-Verschlüsselung (CCMP)\n- PSK (Pre-Shared Key): Gemeinsames Passwort (Privat)\n- Enterprise: Authentifizierung über RADIUS-Server (Firma)\n\nWPA3 (neuester Standard):\n- SAE (Simultaneous Authentication of Equals) statt PSK\n- Schutz gegen Offline-Wörterbuch-Angriffe\n- Forward Secrecy\n\nWeitere Maßnahmen:\n- SSID: Netzwerkname (Verstecken bietet kaum Sicherheit)\n- MAC-Filter: Nur bestimmte Geräte erlaubt (leicht umgehbar)\n- WPS (Wi-Fi Protected Setup): Einfache Kopplung, aber Sicherheitsrisiko → deaktivieren!\n- RADIUS: Zentraler Authentifizierungsserver (802.1X)",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "WEP ist veraltet und unsicher.",
+        "WPA2 nutzt AES-Verschlüsselung.",
+        "WPA3 hat SAE statt PSK.",
+        "WPS ist ein Sicherheitsrisiko.",
+        "MAC-Filter bietet starke Sicherheit.",
+        "SSID-Verstecken bietet guten Schutz."
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
   },
   {
     "id": 60,
     "topic": "2. Hardware",
     "subtopic": "2.24 QoS und VoIP",
     "question": "Was sind QoS und VoIP?",
-    "answer": "QoS (Quality of Service):\n- Priorisierung von Netzwerkverkehr nach Wichtigkeit\n- Sichert Bandbreite, minimiert Latenz und Jitter\n- Wichtig für: VoIP, Videokonferenzen, Echtzeitanwendungen\n- Methoden: Traffic Shaping, Traffic Policing, Priorisierung (DSCP)\n- Beispiel: VoIP-Pakete werden vor Download-Paketen bevorzugt\n\nVoIP (Voice over IP):\n- Telefonie über das Internet/IP-Netzwerk\n- Protokoll: SIP (Session Initiation Protocol) für Verbindungsaufbau\n- Codec wandelt Sprache in digitale Pakete um\n- Vorteile: Kostengünstig, flexibel, Integration mit IT\n- Nachteile: Abhängig von Netzwerkqualität und Strom\n- Anforderungen: Geringe Latenz (<150ms), geringer Jitter, QoS\n\nSIP (Session Initiation Protocol):\n- Signalisierungsprotokoll für VoIP\n- Port 5060 (unverschlüsselt), 5061 (TLS)\n- Aufgaben: Verbindungsaufbau, -abbau, Rufumleitung"
+    "answer": "QoS (Quality of Service):\n- Priorisierung von Netzwerkverkehr nach Wichtigkeit\n- Sichert Bandbreite, minimiert Latenz und Jitter\n- Wichtig für: VoIP, Videokonferenzen, Echtzeitanwendungen\n- Methoden: Traffic Shaping, Traffic Policing, Priorisierung (DSCP)\n- Beispiel: VoIP-Pakete werden vor Download-Paketen bevorzugt\n\nVoIP (Voice over IP):\n- Telefonie über das Internet/IP-Netzwerk\n- Protokoll: SIP (Session Initiation Protocol) für Verbindungsaufbau\n- Codec wandelt Sprache in digitale Pakete um\n- Vorteile: Kostengünstig, flexibel, Integration mit IT\n- Nachteile: Abhängigkeit von Netzwerkqualität und Strom\n- Anforderungen: Geringe Latenz (<150ms), geringer Jitter, QoS\n\nSIP (Session Initiation Protocol):\n- Signalisierungsprotokoll für VoIP\n- Port 5060 (unverschlüsselt), 5061 (TLS)\n- Aufgaben: Verbindungsaufbau, -abbau, Rufumleitung",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "QoS priorisiert Netzwerkverkehr nach Wichtigkeit.",
+        "VoIP ist Telefonie über IP-Netzwerke.",
+        "SIP ist das Signalisierungsprotokoll für VoIP.",
+        "VoIP benötigt geringe Latenz unter 150ms.",
+        "QoS ist wichtig für Echtzeitanwendungen.",
+        "VoIP funktioniert ohne Netzwerk."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 61,
     "topic": "2. Hardware",
     "subtopic": "2.25 Bootvorgang",
     "question": "Wie läuft der Bootvorgang eines Computers ab?",
-    "answer": "1. Einschalten → Strom fließt\n2. POST (Power-On Self-Test):\n   - BIOS/UEFI prüft Hardware (CPU, RAM, Grafik, Laufwerke)\n   - Fehlermeldung durch Pieptöne (Beep Codes) bei Problemen\n   - Erfolgreich → weiter zum Boot Loader\n\n3. BIOS/UEFI sucht Boot-Medium:\n   - Reihenfolge in BIOS/UEFI eingestellt (Boot Order)\n   - Liest MBR (Master Boot Record) oder GPT (GUID Partition Table)\n\n4. Boot Loader wird geladen:\n   - Windows: Windows Boot Manager (bootmgr)\n   - Linux: GRUB (Grand Unified Bootloader)\n   - Lädt den Betriebssystem-Kernel\n\n5. Betriebssystem startet:\n   - Kernel wird geladen und initialisiert Hardware-Treiber\n   - Systemdienste/Daemons starten\n   - Benutzeranmeldung\n\nS.M.A.R.T. (Self-Monitoring, Analysis and Reporting Technology):\n- Überwachung der Festplattengesundheit\n- Warnt vor drohenden Ausfällen\n- Parameter: Temperatur, Betriebsstunden, Fehlerrate"
+    "answer": "1. Einschalten → Strom fließt\n2. POST (Power-On Self-Test):\n   - BIOS/UEFI prüft Hardware (CPU, RAM, Grafik, Laufwerke)\n   - Fehlermeldung durch Pieptöne (Beep Codes) bei Problemen\n   - Erfolgreich → weiter zum Boot Loader\n\n3. BIOS/UEFI sucht Boot-Medium:\n   - Reihenfolge in BIOS/UEFI eingestellt (Boot Order)\n   - Liest MBR (Master Boot Record) oder GPT (GUID Partition Table)\n\n4. Boot Loader wird geladen:\n   - Windows: Windows Boot Manager (bootmgr)\n   - Linux: GRUB (Grand Unified Bootloader)\n   - Lädt den Betriebssystem-Kernel\n\n5. Betriebssystem startet:\n   - Kernel wird geladen und initialisiert Hardware-Treiber\n   - Systemdienste/Daemons starten\n   - Benutzeranmeldung\n\nS.M.A.R.T. (Self-Monitoring, Analysis and Reporting Technology):\n- Überwachung der Festplattengesundheit\n- Warnt vor drohenden Ausfällen\n- Parameter: Temperatur, Betriebsstunden, Fehlerrate",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "POST prüft die Hardware beim Einschalten.",
+        "BIOS/UEFI sucht nach dem Boot-Medium.",
+        "Boot Loader lädt den OS-Kernel.",
+        "GRUB ist der Linux-Bootloader.",
+        "S.M.A.R.T. überwacht die Festplattengesundheit.",
+        "MBR wird bei UEFI nicht verwendet."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 62,
     "topic": "2. Hardware",
     "subtopic": "2.26 Peripherie",
     "question": "Welche Peripheriegeräte (Drucker, Scanner, Monitore) gibt es?",
-    "answer": "Druckerarten:\n- Tintenstrahldrucker: Tropfen auf Papier, günstig, gut für Fotos\n- Laserdrucker: Toner + Trommel, schnell, scharf, gut für Büro\n- Thermodrucker: Wärme auf Spezialpapier, Kassenbons, Etiketten\n- Nadeldrucker: Anschlag durch Nadeln, Durchschläge möglich (veraltet)\n- 3D-Drucker: Additive Fertigung, Schicht für Schicht\n\nScannerarten:\n- Flachbettscanner: Vorlage auf Glasplatte, universell\n- Dokumentenscanner: Einzug, schnell, für Büro\n- Handscanner: Mobil, für Barcodes\n- OCR (Optical Character Recognition): Texterkennung aus gescannten Dokumenten\n\nMonitortypen:\n- LCD/TFT: Flüssigkristalle, Standard\n- LED: LCD mit LED-Hintergrundbeleuchtung\n- OLED: Organische LEDs, selbstleuchtend, bestes Schwarz\n- IPS: Weite Blickwinkel, gute Farben\n\nVideo-Schnittstellen:\n- VGA: Analog, veraltet (D-Sub 15-polig)\n- DVI: Digital/Analog\n- HDMI: Digital, Audio+Video, Consumer-Standard\n- DisplayPort: Digital, höchste Bandbreite, Daisy-Chain möglich"
+    "answer": "Druckerarten:\n- Tintenstrahldrucker: Tropfen auf Papier, günstig, gut für Fotos\n- Laserdrucker: Toner + Trommel, schnell, scharf, gut für Büro\n- Thermodrucker: Wärme auf Spezialpapier, Kassenbons, Etiketten\n- Nadeldrucker: Anschlag durch Nadeln, Durchschläge möglich (veraltet)\n- 3D-Drucker: Additive Fertigung, Schicht für Schicht\n\nScannerarten:\n- Flachbettscanner: Vorlage auf Glasplatte, universell\n- Dokumentenscanner: Einzug, schnell, für Büro\n- Handscanner: Mobil, für Barcodes\n- OCR (Optical Character Recognition): Texterkennung aus gescannten Dokumenten\n\nMonitortypen:\n- LCD/TFT: Flüssigkristalle, Standard\n- LED: LCD mit LED-Hintergrundbeleuchtung\n- OLED: Organische LEDs, selbstleuchtend, bestes Schwarz\n- IPS: Weite Blickwinkel, gute Farben\n\nVideo-Schnittstellen:\n- VGA: Analog, veraltet (D-Sub 15-polig)\n- DVI: Digital/Analog\n- HDMI: Digital, Audio+Video, Consumer-Standard\n- DisplayPort: Digital, höchste Bandbreite, Daisy-Chain möglich",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Laserdrucker nutzt Toner und ist schnell.",
+        "Flachbettscanner hat Vorlage auf Glasplatte.",
+        "OCR ermöglicht Texterkennung.",
+        "OLED hat selbstleuchtende Pixel.",
+        "HDMI überträgt Audio und Video.",
+        "VGA ist die neueste Schnittstelle."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 63,
     "topic": "2. Hardware",
     "subtopic": "2.27 SSD-Formfaktoren und Hot Swap/Spare",
     "question": "Welche SSD-Formfaktoren gibt es und was ist Hot Swap vs. Hot Spare?",
-    "answer": "SSD-Formfaktoren:\n- 2,5 Zoll: SATA-Anschluss, passt in HDD-Schächte, bis ~550 MB/s\n- M.2: Kompakte Steckkarte, direkt auf Mainboard\n  - M.2 SATA: Bis 550 MB/s (wie 2,5\")\n  - M.2 NVMe (PCIe): Bis 7.000+ MB/s, deutlich schneller!\n- mSATA: Veraltet, kleiner Formfaktor für Laptops\n- U.2: Server/Enterprise, 2,5\" mit NVMe-Anschluss\n\nSchnittstellen:\n- SATA III: 6 Gbit/s (effektiv ~550 MB/s)\n- PCIe NVMe (Gen 3): ~3.500 MB/s\n- PCIe NVMe (Gen 4): ~7.000 MB/s\n- PCIe NVMe (Gen 5): ~12.000 MB/s\n\nHot Swap:\n- Austausch eines Geräts (z.B. Festplatte) im laufenden Betrieb\n- Kein Herunterfahren nötig\n- Typisch bei RAID-Systemen, Servern\n\nHot Spare:\n- Reservegerät, das bereitsteht und bei Ausfall automatisch einspringt\n- Festplatte im RAID-Array, die leer mitläuft\n- Bei Ausfall einer Platte: Automatic Rebuild auf Hot Spare"
+    "answer": "SSD-Formfaktoren:\n- 2,5 Zoll: SATA-Anschluss, passt in HDD-Schächte, bis ~550 MB/s\n- M.2: Kompakte Steckkarte, direkt auf Mainboard\n  - M.2 SATA: Bis 550 MB/s (wie 2,5\")\n  - M.2 NVMe (PCIe): Bis 7.000+ MB/s, deutlich schneller!\n- mSATA: Veraltet, kleiner Formfaktor für Laptops\n- U.2: Server/Enterprise, 2,5\" mit NVMe-Anschluss\n\nSchnittstellen:\n- SATA III: 6 Gbit/s (effektiv ~550 MB/s)\n- PCIe NVMe (Gen 3): ~3.500 MB/s\n- PCIe NVMe (Gen 4): ~7.000 MB/s\n- PCIe NVMe (Gen 5): ~12.000 MB/s\n\nHot Swap:\n- Austausch eines Geräts (z.B. Festplatte) im laufenden Betrieb\n- Kein Herunterfahren nötig\n- Typisch bei RAID-Systemen, Servern\n\nHot Spare:\n- Reservegerät, das bereitsteht und bei Ausfall automatisch einspringt\n- Festplatte im RAID-Array, die leer mitläuft\n- Bei Ausfall einer Platte: Automatic Rebuild auf Hot Spare",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "M.2 NVMe ist deutlich schneller als SATA-SSD.",
+        "Hot Swap ermöglicht Austausch im laufenden Betrieb.",
+        "Hot Spare ist ein Reservegerät für autom. Ersatz.",
+        "SATA III hat max. ~550 MB/s.",
+        "PCIe Gen 4 hat bis 7.000 MB/s.",
+        "Hot Swap erfordert Systemabschaltung."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   },
   {
     "id": 64,
     "topic": "2. Hardware",
     "subtopic": "2.28 PoE, RFID, Barcodes",
     "question": "Was sind PoE, RFID und Barcodes?",
-    "answer": "PoE (Power over Ethernet):\n- Stromversorgung über das Netzwerkkabel (Cat5e/Cat6)\n- Kein separates Netzteil nötig\n- IEEE 802.3af (bis 15,4W), 802.3at (bis 25,5W), 802.3bt (bis 90W)\n- Einsatz: IP-Kameras, Access Points, VoIP-Telefone\n\nRFID (Radio Frequency Identification):\n- Kontaktlose Identifikation per Funk\n- Bestandteile: Tag (Transponder) + Lesegerät\n- Passiv (ohne Batterie, kurze Reichweite) vs. Aktiv (mit Batterie, bis 100m)\n- Einsatz: Zugangskontrolle, Lagerverwaltung, Logistik, Reisepass\n\nBarcodes:\n- 1D-Barcode (Strichcode): z.B. EAN (European Article Number)\n  - Nur in einer Richtung lesbar\n  - Begrenzte Datenmenge\n- 2D-Code (QR-Code, DataMatrix):\n  - In zwei Richtungen lesbar\n  - Mehr Daten, Fehlerkorrektur\n  - QR-Code: bis 4.296 Zeichen\n\nAsset Tag: Inventarnummer zur Vermögensverwaltung\nService Tag: Herstellerspezifische Seriennummer für Support"
+    "answer": "PoE (Power over Ethernet):\n- Stromversorgung über das Netzwerkkabel (Cat5e/Cat6)\n- Kein separates Netzteil nötig\n- IEEE 802.3af (bis 15,4W), 802.3at (bis 25,5W), 802.3bt (bis 90W)\n- Einsatz: IP-Kameras, Access Points, VoIP-Telefone\n\nRFID (Radio Frequency Identification):\n- Kontaktlose Identifikation per Funk\n- Bestandteile: Tag (Transponder) + Lesegerät\n- Passiv (ohne Batterie, kurze Reichweite) vs. Aktiv (mit Batterie, bis 100m)\n- Einsatz: Zugangskontrolle, Lagerverwaltung, Logistik, Reisepass\n\nBarcodes:\n- 1D-Barcode (Strichcode): z.B. EAN (European Article Number)\n  - Nur in einer Richtung lesbar\n  - Begrenzte Datenmenge\n- 2D-Code (QR-Code, DataMatrix):\n  - In zwei Richtungen lesbar\n  - Mehr Daten, Fehlerkorrektur\n  - QR-Code: bis 4.296 Zeichen\n\nAsset Tag: Inventarnummer zur Vermögensverwaltung\nService Tag: Herstellerspezifische Seriennummer für Support",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "PoE versorgt Geräte über Netzwerkkabel.",
+        "RFID ist kontaktlose Identifikation per Funk.",
+        "1D-Barcode (EAN) ist nur in einer Richtung lesbar.",
+        "QR-Code ist ein 2D-Code mit mehr Daten.",
+        "Passiv-RFID hat Batterie.",
+        "PoE wird für IP-Kameras verwendet."
+      ],
+      "correctIndices": [0, 1, 2, 3, 5]
+    }
   },
   {
     "id": 65,
     "topic": "2. Hardware",
     "subtopic": "2.29 Ergonomie am Arbeitsplatz",
     "question": "Welche Ergonomie-Anforderungen gelten für IT-Arbeitsplätze?",
-    "answer": "Rechtsgrundlage: Arbeitsstättenverordnung (ArbStättV) + Bildschirmarbeitsverordnung\n\nMonitor:\n- Oberkante auf Augenhöhe oder leicht darunter\n- Mindestabstand: 50-70 cm\n- Blendfreie Aufstellung (seitlich zum Fenster)\n- Flimmerfreie Darstellung, angemessene Helligkeit\n\nSchreibtisch:\n- Höhenverstellbar (68-76 cm) oder Steh-Sitz-Arbeitsplatz\n- Mindestfläche: 160×80 cm\n- Beinfreiheit\n\nStuhl:\n- Höhenverstellbar, Rückenlehne verstellbar\n- Armlehnen\n- 5-Stern-Fußkreuz mit Rollen\n\nUmgebung:\n- Temperatur: 20-26°C\n- Beleuchtung: 500 Lux (Büro)\n- Lärmpegel: <55 dB (geistige Arbeit)\n\nSoftware-Ergonomie (DIN EN ISO 9241):\n- Aufgabenangemessenheit, Selbstbeschreibungsfähigkeit\n- Steuerbarkeit, Erwartungskonformität\n- Fehlertoleranz, Individualisierbarkeit, Lernförderlichkeit\n\nBarrierefreier Zugriff: Screenreader, Schriftvergrößerung, Kontrasteinstellungen, Sprachsteuerung"
+    "answer": "Rechtsgrundlage: Arbeitsstättenverordnung (ArbStättV) + Bildschirmarbeitsverordnung\n\nMonitor:\n- Oberkante auf Augenhöhe oder leicht darunter\n- Mindestabstand: 50-70 cm\n- Blendfreie Aufstellung (seitlich zum Fenster)\n- Flimmerfreie Darstellung, angemessene Helligkeit\n\nSchreibtisch:\n- Höhenverstellbar (68-76 cm) oder Steh-Sitz-Arbeitsplatz\n- Mindestfläche: 160×80 cm\n- Beinfreiheit\n\nStuhl:\n- Höhenverstellbar, Rückenlehne verstellbar\n- Armlehnen\n- 5-Stern-Fußkreuz mit Rollen\n\nUmgebung:\n- Temperatur: 20-26°C\n- Beleuchtung: 500 Lux (Büro)\n- Lärmpegel: <55 dB (geistige Arbeit)\n\nSoftware-Ergonomie (DIN EN ISO 9241):\n- Aufgabenangemessenheit, Selbstbeschreibungsfähigkeit\n- Steuerbarkeit, Erwartungskonformität\n- Fehlertoleranz, Individualisierbarkeit, Lernförderlichkeit\n\nBarrierefreier Zugriff: Screenreader, Schriftvergrößerung, Kontrasteinstellungen, Sprachsteuerung",
+    "quiz": {
+      "type": "multiple-choice",
+      "options": [
+        "Monitor: Oberkante auf Augenhöhe, Mindestabstand 50-70 cm.",
+        "Schreibtisch: Höhenverstellbar, Mindestfläche 160×80 cm.",
+        "Stuhl: Höhenverstellbar mit Rückenlehne und Armlehnen.",
+        "Beleuchtung: 500 Lux für Büro.",
+        "Software-Ergonomie nach DIN EN ISO 9241.",
+        "Temperatur sollte unter 15°C liegen."
+      ],
+      "correctIndices": [0, 1, 2, 3, 4]
+    }
   }
 ]
