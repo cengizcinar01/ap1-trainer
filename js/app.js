@@ -11,9 +11,10 @@ import NWAView from '../modules/nwa.js';
 import OSIView from '../modules/osi.js';
 import SubnettingView from '../modules/subnetting.js';
 import Sidebar from './components/sidebar.js';
-import DataLoader from './data/dataLoader.js';
-import StorageManager from './data/storageManager.js';
-import Router from './router.js';
+import Router from './core/Router.js';
+import DataLoader from './services/DataLoader.js';
+import StorageManager from './services/StorageManager.js';
+
 import DashboardView from './views/dashboard.js';
 import FlashcardView from './views/flashcard.js';
 import QuizView from './views/quiz.js';
@@ -21,22 +22,20 @@ import WikiView from './views/wiki.js';
 
 const App = (() => {
   let contentEl = null;
-  let currentCleanup = null;
+  let currentViewInstance = null;
+  let legacyCleanup = null;
 
   async function init() {
     try {
-      // Show loading
       document.getElementById('app').innerHTML = `
         <div class="loader" style="height:100vh">
           <div class="loader-spinner"></div>
         </div>
       `;
 
-      // Load data
       await DataLoader.loadData();
       StorageManager.init();
 
-      // Setup app shell
       document.getElementById('app').innerHTML = `
         <div class="app">
           <main class="main-content">
@@ -48,13 +47,8 @@ const App = (() => {
 
       contentEl = document.getElementById('pageContent');
 
-      // Render sidebar
       Sidebar.render();
-
-      // Setup routes
       setupRoutes();
-
-      // Start router
       Router.start();
     } catch (error) {
       console.error('App initialization failed:', error);
@@ -70,166 +64,49 @@ const App = (() => {
   }
 
   function setupRoutes() {
-    Router.on('/', () => {
-      cleanupCurrentView();
-      DashboardView.render(contentEl);
-      Sidebar.updateActive();
-    });
+    Router.on('/', () => switchView(DashboardView));
 
-    Router.on('/flashcards', () => {
-      cleanupCurrentView();
-      currentCleanup = FlashcardView.cleanup;
-      FlashcardView.render(contentEl);
-      Sidebar.updateActive();
-    });
+    Router.on('/flashcards', () => switchViewLegacy(FlashcardView));
+    Router.on('/flashcards/all', () =>
+      switchViewLegacy(FlashcardView, { all: true })
+    );
+    Router.on('/flashcards/:topic', (params) =>
+      switchViewLegacy(FlashcardView, params)
+    );
+    Router.on('/flashcards/:topic/:subtopic', (params) =>
+      switchViewLegacy(FlashcardView, params)
+    );
 
-    Router.on('/flashcards/all', () => {
-      cleanupCurrentView();
-      currentCleanup = FlashcardView.cleanup;
-      FlashcardView.render(contentEl, { all: true });
-      Sidebar.updateActive();
-    });
+    Router.on('/modules/subnetting', () => switchViewLegacy(SubnettingView));
+    Router.on('/modules/mail', () => switchViewLegacy(MailProtocolsView));
+    Router.on('/modules/nwa', () => switchViewLegacy(NWAView));
+    Router.on('/modules/numbersystems', () =>
+      switchViewLegacy(NumberSystemsView)
+    );
+    Router.on('/modules/electrical', () => switchViewLegacy(ElectricalView));
+    Router.on('/modules/osi', () => switchViewLegacy(OSIView));
 
-    Router.on('/flashcards/:topic', (params) => {
-      cleanupCurrentView();
-      currentCleanup = FlashcardView.cleanup;
-      FlashcardView.render(contentEl, params);
-      Sidebar.updateActive();
-    });
+    Router.on('/modules/gantt', () => switchViewLegacy(GanttView));
+    Router.on('/modules/communication', () =>
+      switchViewLegacy(CommunicationView)
+    );
 
-    Router.on('/flashcards/:topic/:subtopic', (params) => {
-      cleanupCurrentView();
-      currentCleanup = FlashcardView.cleanup;
-      FlashcardView.render(contentEl, params);
-      Sidebar.updateActive();
-    });
+    Router.on('/wiki', () => switchViewLegacy(WikiView));
+    Router.on('/wiki/:topic', (params) => switchViewLegacy(WikiView, params));
+    Router.on('/wiki/:topic/:subtopic', (params) =>
+      switchViewLegacy(WikiView, params)
+    );
 
-    Router.on('/modules/subnetting', () => {
-      cleanupCurrentView();
-      currentCleanup = SubnettingView.cleanup;
-      SubnettingView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/mail', () => {
-      cleanupCurrentView();
-      currentCleanup = MailProtocolsView.cleanup;
-      MailProtocolsView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/nwa', () => {
-      cleanupCurrentView();
-      currentCleanup = NWAView.cleanup;
-      NWAView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/numbersystems', () => {
-      cleanupCurrentView();
-      currentCleanup = NumberSystemsView.cleanup;
-      NumberSystemsView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/electrical', () => {
-      cleanupCurrentView();
-      currentCleanup = ElectricalView.cleanup;
-      ElectricalView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/osi', () => {
-      cleanupCurrentView();
-      currentCleanup = OSIView.cleanup;
-      OSIView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/uml', () => {
-      cleanupCurrentView();
-      currentCleanup = UMLView.cleanup;
-      UMLView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/pseudocode', () => {
-      cleanupCurrentView();
-      currentCleanup = PseudocodeView.cleanup;
-      PseudocodeView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/epk', () => {
-      cleanupCurrentView();
-      currentCleanup = EPKView.cleanup;
-      EPKView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/gantt', () => {
-      cleanupCurrentView();
-      currentCleanup = GanttView.cleanup;
-      GanttView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/modules/communication', () => {
-      cleanupCurrentView();
-      currentCleanup = CommunicationView.cleanup;
-      CommunicationView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/wiki', () => {
-      cleanupCurrentView();
-      currentCleanup = WikiView.cleanup;
-      WikiView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/wiki/:topic', (params) => {
-      cleanupCurrentView();
-      currentCleanup = WikiView.cleanup;
-      WikiView.render(contentEl, params);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/wiki/:topic/:subtopic', (params) => {
-      cleanupCurrentView();
-      currentCleanup = WikiView.cleanup;
-      WikiView.render(contentEl, params);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/quiz', () => {
-      cleanupCurrentView();
-      currentCleanup = QuizView.cleanup;
-      QuizView.render(contentEl);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/quiz/all', () => {
-      cleanupCurrentView();
-      currentCleanup = QuizView.cleanup;
-      QuizView.render(contentEl, { all: true });
-      Sidebar.updateActive();
-    });
-
-    Router.on('/quiz/:topic', (params) => {
-      cleanupCurrentView();
-      currentCleanup = QuizView.cleanup;
-      QuizView.render(contentEl, params);
-      Sidebar.updateActive();
-    });
+    Router.on('/quiz', () => switchViewLegacy(QuizView));
+    Router.on('/quiz/all', () => switchViewLegacy(QuizView, { all: true }));
+    Router.on('/quiz/:topic', (params) => switchViewLegacy(QuizView, params));
 
     Router.on('/statistics', () => {
-      // Redirect to dashboard (statistics are now integrated there)
       window.location.hash = '#/';
     });
 
     Router.onNotFound(() => {
-      cleanupCurrentView();
+      cleanup();
       contentEl.innerHTML = `
         <div class="view-enter">
           <div class="empty-state">
@@ -244,19 +121,43 @@ const App = (() => {
     });
   }
 
-  function cleanupCurrentView() {
-    if (currentCleanup) {
-      currentCleanup();
-      currentCleanup = null;
+  function switchView(ViewClass, params = {}) {
+    cleanup();
+    try {
+      currentViewInstance = new ViewClass();
+      currentViewInstance.mount(contentEl, params);
+      Sidebar.updateActive();
+    } catch (e) {
+      console.error('Error switching view:', e);
     }
-    // Scroll to top
+  }
+
+  function switchViewLegacy(ViewObject, params = {}) {
+    cleanup();
+    if (ViewObject && typeof ViewObject.render === 'function') {
+      if (typeof ViewObject.cleanup === 'function') {
+        legacyCleanup = () => ViewObject.cleanup();
+      }
+      ViewObject.render(contentEl, params);
+      Sidebar.updateActive();
+    }
+  }
+
+  function cleanup() {
+    if (currentViewInstance) {
+      currentViewInstance.unmount();
+      currentViewInstance = null;
+    }
+    if (legacyCleanup) {
+      legacyCleanup();
+      legacyCleanup = null;
+    }
     window.scrollTo(0, 0);
   }
 
   return { init };
 })();
 
-// Start the app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   App.init();
 });

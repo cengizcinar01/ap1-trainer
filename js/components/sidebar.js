@@ -2,10 +2,10 @@
 // sidebar.js — Sidebar navigation component (minimalist)
 // ============================================================
 
-import DataLoader from '../data/dataLoader.js';
-import StorageManager from '../data/storageManager.js';
-import Router from '../router.js';
-import ThemeManager from './themeManager.js';
+import Router from '../core/Router.js';
+import DataLoader from '../services/DataLoader.js';
+import StorageManager from '../services/StorageManager.js';
+import {themeManager} from '../services/ThemeManager.js';
 
 const Sidebar = (() => {
   const ICONS = {
@@ -14,7 +14,6 @@ const Sidebar = (() => {
 
   let sidebarEl = null;
   let overlayEl = null;
-  const themeManager = new ThemeManager();
 
   function render() {
     DataLoader.getAllCards(); // Ensure data is loaded
@@ -115,7 +114,6 @@ const Sidebar = (() => {
     // Initialize Theme Manager
     const headerThemeBtn = sidebarEl.querySelector('#desktopThemeBtn');
     if (headerThemeBtn) {
-      themeManager.init(); // Init theme state on load
       themeManager.registerButton(headerThemeBtn);
     }
   }
@@ -159,7 +157,7 @@ const Sidebar = (() => {
     if (streakLabel) streakLabel.textContent = `${stats.todayReviews} heute`;
   }
 
-  return { render, updateActive, closeMobile };
+  return {render, updateActive, closeMobile};
 })();
 
 export default Sidebar;

@@ -3,7 +3,7 @@
 // ============================================================
 
 import CardRenderer from '../components/cardRenderer.js';
-import DataLoader from '../data/dataLoader.js';
+import DataLoader from '../services/DataLoader.js';
 
 const WikiView = (() => {
   let _keydownHandler = null;

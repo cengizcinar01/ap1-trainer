@@ -1,6 +1,6 @@
 import CardRenderer from '../components/cardRenderer.js';
 import ProgressBar from '../components/progressBar.js';
-import DataLoader from '../data/dataLoader.js';
+import DataLoader from '../services/DataLoader.js';
 
 const QuizView = (() => {
   let quizCards = [];

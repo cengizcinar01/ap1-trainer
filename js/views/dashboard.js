@@ -4,17 +4,18 @@
 
 import ProgressBar from '../components/progressBar.js';
 import StatsChart from '../components/statsChart.js';
-import DataLoader from '../data/dataLoader.js';
-import StorageManager from '../data/storageManager.js';
+import BaseView from '../core/BaseView.js';
+import DataLoader from '../services/DataLoader.js';
+import StorageManager from '../services/StorageManager.js';
 
-const DashboardView = (() => {
-  function render(container) {
+export default class DashboardView extends BaseView {
+  render() {
     const allCards = DataLoader.getAllCards();
     const topics = DataLoader.getTopics();
     const stats = StorageManager.getStatistics(allCards);
     const overallProgress = StorageManager.getProgress(allCards);
 
-    container.innerHTML = `
+    this.container.innerHTML = `
       <div class="view-enter">
         <!-- Header -->
         <div class="page-header">
@@ -125,7 +126,7 @@ const DashboardView = (() => {
             <h3 class="card-title">Fortschritt nach Thema</h3>
           </div>
           <div class="topic-progress-list">
-            ${topics.map((topic) => renderTopicProgress(topic, stats)).join('')}
+            ${topics.map((topic) => this.renderTopicProgress(topic, stats)).join('')}
           </div>
         </div>
 
@@ -140,16 +141,18 @@ const DashboardView = (() => {
       </div>
     `;
 
-    // Bind reset button
-    container.querySelector('#resetBtn').addEventListener('click', () => {
-      if (confirm('Bist du sicher? Alle Lernfortschritte werden gelöscht.')) {
-        StorageManager.resetProgress();
-        render(container);
-      }
-    });
+    // Bind events
+    this.$('#resetBtn').addEventListener('click', () => this.handleReset());
   }
 
-  function renderTopicProgress(topic, stats) {
+  handleReset() {
+    if (confirm('Bist du sicher? Alle Lernfortschritte werden gelöscht.')) {
+      StorageManager.resetProgress();
+      this.render(); // Re-render the view
+    }
+  }
+
+  renderTopicProgress(topic, stats) {
     const topicStat = stats.topicStats[topic.name] || {
       knew: 0,
       partial: 0,
@@ -180,8 +183,4 @@ const DashboardView = (() => {
       </a>
     `;
   }
-
-  return { render };
-})();
-
-export default DashboardView;
+}

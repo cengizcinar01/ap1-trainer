@@ -30,10 +30,7 @@ function addQuizData() {
     const card3 = grundlagenData.find((c) => c.id === 3);
     if (card3) {
       card3.question =
-        'Welche Aussagen zu Supervised und Unsupervised Learning sind korrekt?'; // Adjust question slightly for quiz context if needed, but keeping original question text is usually safer. Let's keep original question text in main card, but maybe the quiz view uses the card question. Ideally, quiz object could have its own 'question' override if needed, but for now we rely on card.question.
-      // Wait, if I change card.question here, it changes the flashcard too. That's fine if it's compatible.
-      // "Was ist der Unterschied..." is the original.
-      // Let's leave the question text alone and just provide options that answer it.
+        'Welche Aussagen zu Supervised und Unsupervised Learning sind korrekt?';
 
       card3.quiz = {
         type: 'multiple-choice',

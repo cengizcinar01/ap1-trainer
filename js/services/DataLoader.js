@@ -1,17 +1,19 @@
 // ============================================================
-// dataLoader.js — Fetches and caches data.json, provides query API
+// DataLoader.js — Fetches and caches data.json, provides query API
 // ============================================================
 
-const DataLoader = (() => {
-  let _cards = null;
-  let _topics = null;
-  let _subtopics = null;
+class DataLoader {
+  constructor() {
+    this._cards = null;
+    this._topics = null;
+    this._subtopics = null;
+  }
 
   /**
    * Load all topic JSON files and merge them in memory.
    */
-  async function loadData() {
-    if (_cards) return _cards;
+  async loadData() {
+    if (this._cards) return this._cards;
 
     try {
       // 1. Fetch the index of topic files
@@ -31,13 +33,13 @@ const DataLoader = (() => {
       const results = await Promise.all(fetchPromises);
 
       // 3. Merge all cards into one array
-      _cards = results.flat();
+      this._cards = results.flat();
 
       // 4. Sort them (just in case) and build indexes
-      _cards.sort((a, b) => a.id - b.id);
+      this._cards.sort((a, b) => a.id - b.id);
 
-      _buildIndexes();
-      return _cards;
+      this._buildIndexes();
+      return this._cards;
     } catch (error) {
       console.error('Failed to load data:', error);
       throw error;
@@ -47,11 +49,11 @@ const DataLoader = (() => {
   /**
    * Build topic/subtopic indexes for fast lookup.
    */
-  function _buildIndexes() {
+  _buildIndexes() {
     const topicMap = new Map();
     const subtopicMap = new Map();
 
-    _cards.forEach((card) => {
+    this._cards.forEach((card) => {
       // Build topic index
       if (!topicMap.has(card.topic)) {
         topicMap.set(card.topic, {
@@ -85,90 +87,79 @@ const DataLoader = (() => {
       topic.subtopics = Array.from(topic.subtopics);
     });
 
-    _topics = topicMap;
-    _subtopics = subtopicMap;
+    this._topics = topicMap;
+    this._subtopics = subtopicMap;
   }
 
   /**
    * Get all cards.
    */
-  function getAllCards() {
-    return _cards || [];
+  getAllCards() {
+    return this._cards || [];
   }
 
   /**
    * Get list of unique topics with metadata.
    * Returns: [{ name, subtopics: [string], cardCount, cards: [card] }]
    */
-  function getTopics() {
-    if (!_topics) return [];
-    return Array.from(_topics.values());
+  getTopics() {
+    if (!this._topics) return [];
+    return Array.from(this._topics.values());
   }
 
   /**
    * Get subtopics for a given topic name.
    * Returns: [{ name, topic, cardCount, cards: [card] }]
    */
-  function getSubtopics(topicName) {
-    if (!_topics) return [];
-    const topic = _topics.get(topicName);
+  getSubtopics(topicName) {
+    if (!this._topics) return [];
+    const topic = this._topics.get(topicName);
     if (!topic) return [];
-    return topic.subtopics.map((st) => _subtopics.get(st)).filter(Boolean);
+    return topic.subtopics.map((st) => this._subtopics.get(st)).filter(Boolean);
   }
 
   /**
    * Get all subtopics across all topics.
    */
-  function getAllSubtopics() {
-    if (!_subtopics) return [];
-    return Array.from(_subtopics.values());
+  getAllSubtopics() {
+    if (!this._subtopics) return [];
+    return Array.from(this._subtopics.values());
   }
 
   /**
    * Get cards filtered by topic name.
    */
-  function getCardsByTopic(topicName) {
-    if (!_topics) return [];
-    const topic = _topics.get(topicName);
+  getCardsByTopic(topicName) {
+    if (!this._topics) return [];
+    const topic = this._topics.get(topicName);
     return topic ? topic.cards : [];
   }
 
   /**
    * Get cards filtered by subtopic name.
    */
-  function getCardsBySubtopic(subtopicName) {
-    if (!_subtopics) return [];
-    const subtopic = _subtopics.get(subtopicName);
+  getCardsBySubtopic(subtopicName) {
+    if (!this._subtopics) return [];
+    const subtopic = this._subtopics.get(subtopicName);
     return subtopic ? subtopic.cards : [];
   }
 
   /**
    * Get a single card by ID.
    */
-  function getCardById(id) {
-    if (!_cards) return null;
-    return _cards.find((c) => c.id === id) || null;
+  getCardById(id) {
+    if (!this._cards) return null;
+    return this._cards.find((c) => c.id === id) || null;
   }
 
   /**
    * Get topic metadata by name.
    */
-  function getTopic(topicName) {
-    if (!_topics) return null;
-    return _topics.get(topicName) || null;
+  getTopic(topicName) {
+    if (!this._topics) return null;
+    return this._topics.get(topicName) || null;
   }
+}
 
-  return {
-    loadData,
-    getAllCards,
-    getTopics,
-    getSubtopics,
-    getAllSubtopics,
-    getCardsByTopic,
-    getCardsBySubtopic,
-    getCardById,
-    getTopic,
-  };
-})();
-
-export default DataLoader;
+// Export singleton
+export default new DataLoader();

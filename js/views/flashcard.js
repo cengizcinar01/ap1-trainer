@@ -8,8 +8,8 @@
 import CardRenderer from '../components/cardRenderer.js';
 import ProgressBar from '../components/progressBar.js';
 import Sidebar from '../components/sidebar.js';
-import DataLoader from '../data/dataLoader.js';
-import StorageManager from '../data/storageManager.js';
+import DataLoader from '../services/DataLoader.js';
+import StorageManager from '../services/StorageManager.js';
 
 const FlashcardView = (() => {
   let sessionCards = [];
