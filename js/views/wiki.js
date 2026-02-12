@@ -375,7 +375,31 @@ const WikiView = (() => {
       btn.addEventListener('click', () => {
         const idx = btn.dataset.tocIndex;
         const target = document.getElementById(`wiki-section-${idx}`);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+
+          // Visual highlight after scrolling
+          const observer = new IntersectionObserver(
+            (entries) => {
+              if (entries[0].isIntersecting) {
+                observer.disconnect();
+                // Clear any existing highlights
+                container
+                  .querySelectorAll('.wiki-subtopic-section.highlight-flash')
+                  .forEach((el) => {
+                    el.classList.remove('highlight-flash');
+                  });
+
+                // Trigger new highlight
+                requestAnimationFrame(() => {
+                  target.classList.add('highlight-flash');
+                });
+              }
+            },
+            { threshold: 0.2 }
+          );
+          observer.observe(target);
+        }
       });
     });
 

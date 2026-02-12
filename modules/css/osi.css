@@ -214,7 +214,7 @@
 
 /* Optional: Subtle accent line on hover instead of full border */
 .osi-stack-layer::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -235,24 +235,24 @@
     grid-template-columns: auto 1fr;
     gap: var(--space-3);
   }
-  
+
   .osi-stack-num {
     grid-row: 1;
     width: 24px;
     height: 24px;
     font-size: 0.9rem;
   }
-  
+
   .osi-stack-info {
     grid-column: 2;
   }
-  
+
   .osi-stack-pdu {
     grid-column: 2; /* Move PDU below info */
     justify-self: start;
     margin-top: 4px;
   }
-  
+
   .osi-stack-protocols {
     grid-column: 1 / -1; /* Full width protocols */
     margin-top: var(--space-2);

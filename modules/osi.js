@@ -74,10 +74,10 @@ const OSIView = (() => {
   ];
 
   const TCPIP_LAYERS = [
-    {name: 'Anwendung'},
-    {name: 'Transport'},
-    {name: 'Internet'},
-    {name: 'Netzzugriff'},
+    { name: 'Anwendung' },
+    { name: 'Transport' },
+    { name: 'Internet' },
+    { name: 'Netzzugriff' },
   ];
 
   const EXERCISES = [
@@ -346,7 +346,7 @@ const OSIView = (() => {
         if (isCorrect) {
           if (mode === 'osi') {
             const lData = OSI_LAYERS.find(
-              (l) => l.id === parseInt(draggingEl.dataset.layer, 10),
+              (l) => l.id === parseInt(draggingEl.dataset.layer, 10)
             );
             zone.querySelector('.osi-zone-label').innerText =
               `L${lData.id}: ${lData.name}`;
@@ -378,8 +378,8 @@ const OSIView = (() => {
 
   function renderMixedExercise(container) {
     const items = OSI_LAYERS.flatMap((l) => [
-      {text: l.protocols[0], layer: l.id, type: 'prot.'},
-      {text: l.hardware.split(' / ')[0], layer: l.id, type: 'hw.'},
+      { text: l.protocols[0], layer: l.id, type: 'prot.' },
+      { text: l.hardware.split(' / ')[0], layer: l.id, type: 'hw.' },
     ])
       .sort(() => 0.5 - Math.random())
       .slice(0, 8);
@@ -399,8 +399,8 @@ const OSIView = (() => {
   }
 
   function renderPDUExercise(container) {
-    const items = OSI_LAYERS.map((l) => ({text: l.pdu, layer: l.id})).sort(
-      () => 0.5 - Math.random(),
+    const items = OSI_LAYERS.map((l) => ({ text: l.pdu, layer: l.id })).sort(
+      () => 0.5 - Math.random()
     );
     container.innerHTML = `
       <div style="font-weight:600; margin-bottom: var(--space-4);">Fortschritt: <span class="osi-score-val">0</span> / ${items.length}</div>
@@ -450,14 +450,14 @@ const OSIView = (() => {
 
     const hCheck = () => {
       const order = [...list.querySelectorAll('.sortable-node')].map((n) =>
-        parseInt(n.dataset.layer, 10),
+        parseInt(n.dataset.layer, 10)
       );
       const correct = [7, 6, 5, 4, 3, 2, 1];
       const isCorrect = JSON.stringify(order) === JSON.stringify(correct);
       if (isCorrect) {
         list.querySelectorAll('.sortable-node').forEach((n) => {
           const l = OSI_LAYERS.find(
-            (x) => x.id === parseInt(n.dataset.layer, 10),
+            (x) => x.id === parseInt(n.dataset.layer, 10)
           );
           n.innerText = `${l.id}: ${l.name}`;
           n.classList.add('correct');
@@ -466,7 +466,7 @@ const OSIView = (() => {
       showFeedbackLocal(
         feedback,
         isCorrect,
-        isCorrect ? 'Korrekt!' : 'Falsche Reihenfolge.',
+        isCorrect ? 'Korrekt!' : 'Falsche Reihenfolge.'
       );
     };
     checkBtn.addEventListener('click', hCheck);
@@ -478,14 +478,14 @@ const OSIView = (() => {
 
   function renderTCPIPExercise(container) {
     const items = [
-      {text: 'HTTP/HTTPS', target: 'Anwendung', type: 'prot.'},
-      {text: 'TCP/UDP', target: 'Transport', type: 'prot.'},
-      {text: 'IP / ICMP', target: 'Internet', type: 'prot.'},
-      {text: 'Ethernet / DSL', target: 'Netzzugriff', type: 'prot.'},
-      {text: 'Router', target: 'Internet', type: 'hw.'},
-      {text: 'Switch', target: 'Netzzugriff', type: 'hw.'},
-      {text: 'Webbrowser', target: 'Anwendung', type: 'app'},
-      {text: 'Netzwerkkabel', target: 'Netzzugriff', type: 'hw.'},
+      { text: 'HTTP/HTTPS', target: 'Anwendung', type: 'prot.' },
+      { text: 'TCP/UDP', target: 'Transport', type: 'prot.' },
+      { text: 'IP / ICMP', target: 'Internet', type: 'prot.' },
+      { text: 'Ethernet / DSL', target: 'Netzzugriff', type: 'prot.' },
+      { text: 'Router', target: 'Internet', type: 'hw.' },
+      { text: 'Switch', target: 'Netzzugriff', type: 'hw.' },
+      { text: 'Webbrowser', target: 'Anwendung', type: 'app' },
+      { text: 'Netzwerkkabel', target: 'Netzzugriff', type: 'hw.' },
     ].sort(() => 0.5 - Math.random());
 
     container.innerHTML = `
@@ -527,7 +527,7 @@ const OSIView = (() => {
             </div>
             <div class="module-quiz-explanation" style="display:none; margin-top: var(--space-4); padding: var(--space-3); background: var(--surface-hover); border-radius: var(--radius-sm); font-size: 0.9rem;"></div>
           </div>
-        `,
+        `
         ).join('')}
         <div id="osiQuizFinal" style="margin-top: var(--space-8);"></div>
       </div>
@@ -576,7 +576,7 @@ const OSIView = (() => {
     sub_cleanup_fns.push(() =>
       target
         .querySelector('#btnRestartOsiQuiz')
-        ?.removeEventListener('click', h),
+        ?.removeEventListener('click', h)
     );
   }
 
@@ -596,10 +596,10 @@ const OSIView = (() => {
         const box = child.getBoundingClientRect();
         const offset = y - box.top - box.height / 2;
         if (offset < 0 && offset > closest.offset)
-          return {offset, element: child};
+          return { offset, element: child };
         return closest;
       },
-      {offset: Number.NEGATIVE_INFINITY},
+      { offset: Number.NEGATIVE_INFINITY }
     ).element;
   }
 
@@ -616,7 +616,7 @@ const OSIView = (() => {
     });
   }
 
-  return {render, cleanup};
+  return { render, cleanup };
 })();
 
 export default OSIView;

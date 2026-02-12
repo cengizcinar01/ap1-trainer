@@ -484,6 +484,10 @@
   border-color: var(--accent-primary);
 }
 
+.wiki-subtopic-section.highlight-flash .wiki-subtopic-title {
+  animation: wiki-section-highlight 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @keyframes wiki-highlight {
   0% {
     background: rgba(var(--accent-primary-rgb), 0.1);
@@ -492,6 +496,19 @@
   100% {
     background: var(--card-bg);
     border-color: var(--card-border);
+  }
+}
+
+@keyframes wiki-section-highlight {
+  0% {
+    background: rgba(var(--accent-primary-rgb), 0.15);
+    box-shadow: 0 0 0 8px rgba(var(--accent-primary-rgb), 0.15);
+    border-bottom-color: var(--accent-primary);
+  }
+  100% {
+    background: transparent;
+    box-shadow: 0 0 0 0 rgba(var(--accent-primary-rgb), 0);
+    border-bottom-color: var(--bg-tertiary);
   }
 }
 
