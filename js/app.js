@@ -127,6 +127,9 @@ const App = (() => {
       currentViewInstance = new ViewClass();
       currentViewInstance.mount(contentEl, params);
       Sidebar.updateActive();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
     } catch (e) {
       console.error('Error switching view:', e);
     }
@@ -140,6 +143,9 @@ const App = (() => {
       }
       ViewObject.render(contentEl, params);
       Sidebar.updateActive();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
     }
   }
 

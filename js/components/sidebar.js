@@ -1,10 +1,9 @@
 /* ============================================================
-   sidebar.js — Modern Sidebar Logic (IconManager Update)
+   sidebar.js — Modern Sidebar Logic
    ============================================================ */
 
 import Router from '../core/Router.js';
 import DataLoader from '../services/DataLoader.js';
-import IconManager from '../services/IconManager.js';
 import { themeManager } from '../services/ThemeManager.js';
 
 const Sidebar = (() => {
@@ -16,10 +15,10 @@ const Sidebar = (() => {
       type: 'group',
       label: 'Hauptmenü',
       items: [
-        { label: 'Dashboard', icon: 'dashboard', route: '/' },
-        { label: 'Flashcards', icon: 'flashcards', route: '/flashcards' },
-        { label: 'Quiz', icon: 'quiz', route: '/quiz' },
-        { label: 'Wiki', icon: 'wiki', route: '/wiki' },
+        { label: 'Dashboard', icon: 'layout-grid', route: '/' },
+        { label: 'Flashcards', icon: 'layers', route: '/flashcards' },
+        { label: 'Quiz', icon: 'help-circle', route: '/quiz' },
+        { label: 'Wiki', icon: 'library', route: '/wiki' },
       ],
     },
     {
@@ -27,26 +26,26 @@ const Sidebar = (() => {
       label: 'Lernmodule',
       collapsible: true,
       items: [
-        { label: 'Nutzwertanalyse', icon: 'module', route: '/modules/nwa' },
-        { label: 'Gantt-Diagramm', icon: 'module', route: '/modules/gantt' },
-        { label: 'Subnetting', icon: 'module', route: '/modules/subnetting' },
-        { label: 'E-Mail Protokolle', icon: 'module', route: '/modules/mail' },
+        { label: 'Nutzwertanalyse', icon: 'box', route: '/modules/nwa' },
+        { label: 'Gantt-Diagramm', icon: 'box', route: '/modules/gantt' },
+        { label: 'Subnetting', icon: 'box', route: '/modules/subnetting' },
+        { label: 'E-Mail Protokolle', icon: 'box', route: '/modules/mail' },
         {
           label: 'Zahlensysteme',
-          icon: 'module',
+          icon: 'box',
           route: '/modules/numbersystems',
         },
         {
           label: 'Elektrotechnik',
-          icon: 'module',
+          icon: 'box',
           route: '/modules/electrical',
         },
         {
           label: '4-Ohren-Modell',
-          icon: 'module',
+          icon: 'box',
           route: '/modules/communication',
         },
-        { label: 'OSI-Modell', icon: 'module', route: '/modules/osi' },
+        { label: 'OSI-Modell', icon: 'box', route: '/modules/osi' },
       ],
     },
   ];
@@ -66,6 +65,10 @@ const Sidebar = (() => {
     renderContent();
     setupEventListeners();
     updateActive();
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   }
 
   function renderContent() {
@@ -95,7 +98,7 @@ const Sidebar = (() => {
         ? `
         <div class="sidebar-group-header ${group.collapsible ? 'collapsible' : ''}">
           <span>${group.label}</span>
-          ${group.collapsible ? `<span class="sidebar-group-chevron">${IconManager.get('chevronRight', 16)}</span>` : ''}
+          ${group.collapsible ? `<span class="sidebar-group-chevron"><i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></span>` : ''}
         </div>`
         : '';
 
@@ -103,7 +106,7 @@ const Sidebar = (() => {
         .map(
           (item) => `
         <a href="#${item.route}" class="nav-item" data-route="${item.route}">
-          <span class="nav-item-icon">${IconManager.get(item.icon, 18)}</span>
+          <span class="nav-item-icon"><i data-lucide="${item.icon}" style="width: 18px; height: 18px;"></i></span>
           <span class="nav-item-text">${item.label}</span>
         </a>
       `
@@ -128,7 +131,7 @@ const Sidebar = (() => {
     header.innerHTML = `
       <span class="mobile-logo">AP1 Trainer</span>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
-        ${IconManager.get('menu', 20)}
+        <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
       </button>
     `;
     document.body.prepend(header);

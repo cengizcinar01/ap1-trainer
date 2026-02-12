@@ -1,5 +1,3 @@
-import IconManager from './IconManager.js';
-
 export default class ThemeManager {
   constructor() {
     this.themeLink = document.documentElement;
@@ -50,6 +48,9 @@ export default class ThemeManager {
     this.buttons.forEach((btn) => {
       this._updateButtonState(btn, theme);
     });
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   }
 
   _updateButtonState(btn, theme) {
@@ -57,10 +58,8 @@ export default class ThemeManager {
     if (icon) {
       // If light theme, show moon (action: switch to dark)
       // If dark theme, show sun (action: switch to light)
-      icon.innerHTML =
-        theme === 'light'
-          ? IconManager.get('moon', 16)
-          : IconManager.get('sun', 16);
+      const iconName = theme === 'light' ? 'moon' : 'sun';
+      icon.innerHTML = `<i data-lucide="${iconName}" style="width: 16px; height: 16px;"></i>`;
     }
     const label = btn.querySelector('.label');
     if (label) {
