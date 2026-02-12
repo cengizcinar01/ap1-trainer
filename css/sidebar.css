@@ -15,7 +15,7 @@
   --sidebar-active-text: var(--brand-primary);
   --sidebar-text: var(--text-secondary);
   --sidebar-text-header: var(--text-tertiary);
-
+  
   --transition-smooth: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -28,7 +28,7 @@
   flex-direction: column;
   padding: 0;
   transition: transform var(--transition-slow);
-  z-index: 50;
+  z-index: var(--z-sidebar);
   height: 100dvh;
 }
 
@@ -44,6 +44,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0; /* Prevent header from collapsing */
 }
 
 .theme-minimal-btn {
@@ -121,11 +122,11 @@
   height: 14px;
   transition: transform 0.3s ease;
   color: var(--text-tertiary);
-  transform: rotate(90deg); /* Standard: Offen -> Zeigt nach unten */
+  transform: rotate(90deg); /* Open by default */
 }
 
 .sidebar-group.collapsed .sidebar-group-chevron {
-  transform: rotate(0deg); /* Collapsed: Geschlossen -> Zeigt nach rechts */
+  transform: rotate(0deg);
 }
 
 .sidebar-group.collapsed .sidebar-group-content {
@@ -183,6 +184,7 @@
     left: 0;
     height: 100dvh;
     transform: translateX(-100%);
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
   }
   .sidebar.open {
     transform: translateX(0);
@@ -190,4 +192,10 @@
   .main-content {
     margin-left: 0;
   }
+  
+  /* Ensure logo text is legible on mobile */
+  .sidebar-logo-title {
+    font-size: 16px;
+  }
 }
+

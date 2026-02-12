@@ -117,10 +117,10 @@
   --content-max-width: 960px;
 
   /* Z-index */
-  --z-sidebar: 100;
-  --z-overlay: 200;
-  --z-modal: 300;
-  --z-toast: 400;
+  --z-overlay: 1000;
+  --z-sidebar: 1100;
+  --z-modal: 1200;
+  --z-toast: 1300;
 }
 
 /* --- Light Mode Overrides --- */
