@@ -14,11 +14,9 @@ import Sidebar from './components/sidebar.js';
 import DataLoader from './data/dataLoader.js';
 import StorageManager from './data/storageManager.js';
 import Router from './router.js';
-import CategoriesView from './views/categories.js';
 import DashboardView from './views/dashboard.js';
 import FlashcardView from './views/flashcard.js';
 import QuizView from './views/quiz.js';
-import ReviewView from './views/review.js';
 import WikiView from './views/wiki.js';
 
 const App = (() => {
@@ -78,30 +76,31 @@ const App = (() => {
       Sidebar.updateActive();
     });
 
-    Router.on('/categories', () => {
+    Router.on('/flashcards', () => {
       cleanupCurrentView();
-      CategoriesView.render(contentEl);
+      currentCleanup = FlashcardView.cleanup;
+      FlashcardView.render(contentEl);
       Sidebar.updateActive();
     });
 
-    Router.on('/learn/:topic', (params) => {
+    Router.on('/flashcards/all', () => {
+      cleanupCurrentView();
+      currentCleanup = FlashcardView.cleanup;
+      FlashcardView.render(contentEl, { all: true });
+      Sidebar.updateActive();
+    });
+
+    Router.on('/flashcards/:topic', (params) => {
       cleanupCurrentView();
       currentCleanup = FlashcardView.cleanup;
       FlashcardView.render(contentEl, params);
       Sidebar.updateActive();
     });
 
-    Router.on('/learn/:topic/:subtopic', (params) => {
+    Router.on('/flashcards/:topic/:subtopic', (params) => {
       cleanupCurrentView();
       currentCleanup = FlashcardView.cleanup;
       FlashcardView.render(contentEl, params);
-      Sidebar.updateActive();
-    });
-
-    Router.on('/review', () => {
-      cleanupCurrentView();
-      currentCleanup = ReviewView.cleanup;
-      ReviewView.render(contentEl);
       Sidebar.updateActive();
     });
 

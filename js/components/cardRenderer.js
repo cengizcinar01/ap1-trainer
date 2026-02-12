@@ -149,7 +149,7 @@ const CardRenderer = (() => {
         </div>
         <div class="session-actions">
           <a href="#/" class="btn btn-ghost">Dashboard</a>
-          <a href="#/review" class="btn btn-primary">Nochmal lernen</a>
+          <a href="#/flashcards" class="btn btn-primary">Nochmal lernen</a>
         </div>
       </div>
     `;

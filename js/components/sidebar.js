@@ -68,11 +68,8 @@ const Sidebar = (() => {
         <a href="#/" class="nav-item ${currentRoute === '/' ? 'active' : ''}" data-route="/">
           Dashboard
         </a>
-        <a href="#/categories" class="nav-item ${currentRoute === '/categories' ? 'active' : ''}" data-route="/categories">
-          Themen
-        </a>
-        <a href="#/review" class="nav-item ${currentRoute.startsWith('/review') ? 'active' : ''}" data-route="/review">
-          Alle Karten
+        <a href="#/flashcards" class="nav-item ${currentRoute.startsWith('/flashcards') ? 'active' : ''}" data-route="/flashcards">
+          Flashcards
         </a>
         <a href="#/quiz" class="nav-item ${currentRoute.startsWith('/quiz') ? 'active' : ''}" data-route="/quiz">
           Quiz

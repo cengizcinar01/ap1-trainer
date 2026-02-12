@@ -160,7 +160,7 @@ const DashboardView = (() => {
     const topicNum = topic.name.match(/^(\d+)/)?.[1] || '?';
 
     return `
-      <a href="#/learn/${topicParam}" class="topic-progress-item">
+      <a href="#/flashcards/${topicParam}" class="topic-progress-item">
         <div class="topic-progress-header">
           <div class="topic-progress-info">
             <span class="topic-progress-num">${topicNum}</span>

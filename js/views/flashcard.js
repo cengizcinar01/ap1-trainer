@@ -22,12 +22,70 @@ const FlashcardView = (() => {
   let currentTopic = null;
   let currentSubtopic = null;
 
-  function render(container, params) {
+  function render(container, params = {}) {
     const topicName = params.topic ? decodeURIComponent(params.topic) : null;
     const subtopicName = params.subtopic
       ? decodeURIComponent(params.subtopic)
       : null;
 
+    // If no topic is selected (and not explicitly "all" or filtered by URL), show selection screen
+    if (!topicName && !params.all) {
+      renderSelectionScreen(container);
+      return;
+    }
+
+    startSession(container, topicName, subtopicName);
+  }
+
+  function renderSelectionScreen(container) {
+    const topics = DataLoader.getTopics();
+    const allCards = DataLoader.getAllCards();
+
+    container.innerHTML = `
+      <div class="view-enter quiz-container">
+        <div class="page-header" style="text-align: center; margin-bottom: 3rem;">
+          <h1 class="page-title">Flashcards</h1>
+          <p class="page-subtitle">Wähle ein Thema zum Lernen</p>
+        </div>
+
+        <div class="quiz-selection-grid">
+          <!-- All Topics Option -->
+          <div class="quiz-selection-card main-option" onclick="window.location.hash='#/flashcards/all'">
+            <div class="quiz-selection-icon">📚</div>
+            <div class="quiz-selection-content">
+              <h3 class="quiz-selection-title">Alle Themen</h3>
+              <p class="quiz-selection-subtitle">${allCards.length} Karten verfügbar</p>
+            </div>
+            <div class="quiz-selection-arrow">→</div>
+          </div>
+
+          <div class="quiz-selection-divider">oder wähle ein spezifisches Thema</div>
+
+          ${topics
+            .map((topic) => {
+              const topicCards = topic.cardCount;
+              const topicNum = topic.name.match(/^(\d+)/)?.[1] || '?';
+              const cleanName = topic.name.replace(/^\d+\.\s*/, '');
+              const safeTopicName = encodeURIComponent(topic.name);
+
+              return `
+              <div class="quiz-selection-card" onclick="window.location.hash='#/flashcards/${safeTopicName}'">
+                <div class="quiz-selection-number">${topicNum}</div>
+                <div class="quiz-selection-content">
+                  <h3 class="quiz-selection-title">${CardRenderer.escapeHtml(cleanName)}</h3>
+                  <p class="quiz-selection-subtitle">${topicCards} Karten</p>
+                </div>
+                <div class="quiz-selection-arrow">→</div>
+              </div>
+            `;
+            })
+            .join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function startSession(container, topicName, subtopicName) {
     currentTopic = topicName;
     currentSubtopic = subtopicName;
 
@@ -36,7 +94,7 @@ const FlashcardView = (() => {
     if (subtopicName) {
       cards = DataLoader.getCardsBySubtopic(subtopicName);
       sessionTitle = subtopicName;
-    } else if (topicName) {
+    } else if (topicName && topicName !== 'all') {
       cards = DataLoader.getCardsByTopic(topicName);
       sessionTitle = topicName;
     } else {
@@ -50,7 +108,7 @@ const FlashcardView = (() => {
           <div class="empty-state">
             <div class="empty-state-title">Keine Karten</div>
             <p class="empty-state-text">Für dieses Thema gibt es noch keine Lernkarten.</p>
-            <a href="#/" class="btn btn-primary">Dashboard</a>
+            <a href="#/flashcards" class="btn btn-primary">Zurück zur Auswahl</a>
           </div>
         </div>
       `;
@@ -76,13 +134,11 @@ const FlashcardView = (() => {
     const { card } = sessionCards[currentIndex];
     isFlipped = false;
 
-    const backUrl = buildBackUrl();
-
     container.innerHTML = `
       <div class="view-enter">
         <div class="session-topbar">
           <div class="session-topbar-left">
-            <a href="${backUrl}" class="btn btn-ghost btn-sm">← Zurück</a>
+            <a href="#/flashcards" class="btn btn-ghost btn-sm">← Beenden</a>
             <span class="text-xs text-tertiary">${CardRenderer.escapeHtml(sessionTitle)}</span>
           </div>
           <span class="session-counter">${currentIndex + 1} / ${sessionCards.length}</span>
@@ -162,18 +218,16 @@ const FlashcardView = (() => {
     cleanup();
 
     // Build the "learn again" URL based on the current topic/subtopic
-    let learnAgainUrl = '#/review'; // fallback to all cards
+    let learnAgainUrl = '#/flashcards/all';
     if (currentTopic) {
       const topicParam = encodeURIComponent(currentTopic);
       if (currentSubtopic) {
         const subtopicParam = encodeURIComponent(currentSubtopic);
-        learnAgainUrl = `#/learn/${topicParam}/${subtopicParam}`;
+        learnAgainUrl = `#/flashcards/${topicParam}/${subtopicParam}`;
       } else {
-        learnAgainUrl = `#/learn/${topicParam}`;
+        learnAgainUrl = `#/flashcards/${topicParam}`;
       }
     }
-
-    const backUrl = buildBackUrl();
 
     container.innerHTML = `
       <div class="view-enter">
@@ -198,7 +252,7 @@ const FlashcardView = (() => {
               </div>
             </div>
             <div class="session-actions">
-              <a href="${backUrl}" class="btn btn-ghost">Zurück zu Themen</a>
+              <a href="#/flashcards" class="btn btn-ghost">Zurück zur Auswahl</a>
               <button type="button" id="learnAgainBtn" class="btn btn-primary">Nochmal lernen</button>
             </div>
           </div>
@@ -211,7 +265,9 @@ const FlashcardView = (() => {
     if (learnAgainBtn) {
       learnAgainBtn.addEventListener('click', () => {
         window.location.hash = '/';
-        window.location.hash = learnAgainUrl.slice(1);
+        setTimeout(() => {
+          window.location.hash = learnAgainUrl;
+        }, 10);
       });
     }
   }
@@ -246,18 +302,6 @@ const FlashcardView = (() => {
       document.removeEventListener('keydown', keyHandler);
       keyHandler = null;
     }
-  }
-
-  function buildBackUrl() {
-    const params = new URLSearchParams();
-    if (currentTopic) {
-      params.set('openTopic', currentTopic);
-    }
-    if (currentSubtopic) {
-      params.set('highlight', currentSubtopic);
-    }
-    const query = params.toString();
-    return query ? `#/categories?${query}` : '#/categories';
   }
 
   return { render, cleanup };
