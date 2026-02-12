@@ -15,7 +15,7 @@
   --sidebar-active-text: var(--brand-primary);
   --sidebar-text: var(--text-secondary);
   --sidebar-text-header: var(--text-tertiary);
-  
+
   --transition-smooth: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -184,7 +184,7 @@
     left: 0;
     height: 100dvh;
     transform: translateX(-100%);
-    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   }
   .sidebar.open {
     transform: translateX(0);
@@ -192,10 +192,9 @@
   .main-content {
     margin-left: 0;
   }
-  
+
   /* Ensure logo text is legible on mobile */
   .sidebar-logo-title {
     font-size: 16px;
   }
 }
-

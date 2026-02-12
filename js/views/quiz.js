@@ -29,7 +29,7 @@ const QuizView = (() => {
     const allCards = DataLoader.getAllCards();
     const availableTopics = topics.filter((topic) => {
       const topicCards = allCards.filter(
-        (c) => c.topic === topic.name && c.quiz?.options?.length > 0,
+        (c) => c.topic === topic.name && c.quiz?.options?.length > 0
       );
       return topicCards.length > 0;
     });
@@ -59,7 +59,7 @@ const QuizView = (() => {
           ${availableTopics
             .map((topic) => {
               const topicCards = allCards.filter(
-                (c) => c.topic === topic.name && c.quiz,
+                (c) => c.topic === topic.name && c.quiz
               ).length;
               const topicNum = topic.name.match(/^(\d+)/)?.[1] || '?';
               const cleanName = topic.name.replace(/^\d+\.\s*/, '');
@@ -86,7 +86,7 @@ const QuizView = (() => {
     // Load all cards and filter for those with quiz data
     const allCards = DataLoader.getAllCards();
     let eligibleCards = allCards.filter(
-      (card) => card.quiz?.options?.length > 0,
+      (card) => card.quiz?.options?.length > 0
     );
 
     if (topicName && topicName !== 'all') {
@@ -172,7 +172,7 @@ const QuizView = (() => {
                 <span class="quiz-option-key">${index + 1}</span>
                 ${CardRenderer.escapeHtml(option)}
               </button>
-            `,
+            `
               )
               .join('')}
           </div>
@@ -211,7 +211,7 @@ const QuizView = (() => {
     const isMulti = quizData.type === 'multiple-choice'; // Assuming we add 'type' to data, default to single if check needed, but requirement said standard multiple choice
 
     const btn = container.querySelector(
-      `.quiz-option-btn[data-index="${index}"]`,
+      `.quiz-option-btn[data-index="${index}"]`
     );
 
     if (isMulti) {
@@ -359,7 +359,7 @@ const QuizView = (() => {
     return arr;
   }
 
-  return {render, cleanup};
+  return { render, cleanup };
 })();
 
 export default QuizView;

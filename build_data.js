@@ -17,7 +17,7 @@ function updateIndexCacheBusting() {
       /(href="(?:css|modules)\/[^"]+\.css)(\?v=\d+)?/g,
       `$1?v=${version}`
     );
-    
+
     // Update JS scripts
     content = content.replace(
       /(src="js\/[^"]+\.js)(\?v=\d+)?/g,
@@ -25,7 +25,9 @@ function updateIndexCacheBusting() {
     );
 
     fs.writeFileSync(indexPath, content);
-    console.log(`Successfully updated index.html with cache-buster v${version}`);
+    console.log(
+      `Successfully updated index.html with cache-buster v${version}`
+    );
   } catch (error) {
     console.error('Failed to update index.html:', error);
   }
